@@ -1143,7 +1143,7 @@
         let mapCloseTimer = null;
         let mapCurrentIndex = -1;
         const searchInput = document.getElementById('searchInput');
-        const mapMarkersData = [{"coords": [19.575801977151432, 10.226570342209419], "count": 2, "news_full": [{"impact": 95.0, "link": "https://www.gamblinginsider.com/news/163547/fertitta-entertainment-acquire-caesars-17-6bn-deal", "sentiment": "\u5229\u591a", "title": "Fertitta Entertainment \u4ee5 176 \u5104\u7f8e\u5143\u6536\u8cfc Caesars Entertainment", "title_en": "Fertitta Entertainment to Acquire Caesars Entertainment for $17.6 Billion", "title_hi": "Fertitta Entertainment 17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0921\u0949\u0932\u0930 \u092e\u0947\u0902 Caesars Entertainment \u0915\u093e \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u0930\u0947\u0917\u0940", "title_th": "Fertitta Entertainment \u0e40\u0e02\u0e49\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23 Caesars Entertainment \u0e21\u0e39\u0e25\u0e04\u0e48\u0e32 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 85.0}, {"impact": 85.0, "link": "https://www.gamblinginsider.com/news/163425/google-polymarket-insider-trading-alpharaccoon-jpg", "sentiment": "\u5229\u7a7a", "title": "Google \u54e1\u5de5\u6d89\u5acc\u5229\u7528 Polymarket \u9032\u884c\u5167\u90e8\u4ea4\u6613\u7372\u5229\u88ab\u8d77\u8a34", "title_en": "Google Employee Indicted for Insider Trading on Polymarket", "title_hi": "Google \u0915\u0930\u094d\u092e\u091a\u093e\u0930\u0940 \u092a\u0930 Polymarket \u092a\u0930 \u0907\u0928\u0938\u093e\u0907\u0921\u0930 \u091f\u094d\u0930\u0947\u0921\u093f\u0902\u0917 \u0915\u0947 \u0932\u093f\u090f \u0905\u092d\u093f\u092f\u094b\u0917", "title_th": "\u0e1e\u0e19\u0e31\u0e01\u0e07\u0e32\u0e19 Google \u0e16\u0e39\u0e01\u0e1f\u0e49\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e2b\u0e32\u0e43\u0e0a\u0e49\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e20\u0e32\u0e22\u0e43\u0e19\u0e17\u0e33\u0e01\u0e33\u0e44\u0e23\u0e1a\u0e19 Polymarket", "urgency": 80.0}], "region": "\u5168\u7403", "sentiment": "\u5229\u7a7a"}, {"coords": [37.5561647740105, -95.97256133113689], "count": 1, "news_full": [{"impact": 80.0, "link": "https://www.gamblinginsider.com/news/163520/kalshi-sues-minnesota-prediction-market-ban", "sentiment": "\u5229\u7a7a", "title": "Kalshi \u56e0\u660e\u5c3c\u8607\u9054\u5dde\u767c\u5e03\u9810\u6e2c\u5e02\u5834\u7981\u4ee4\u767c\u8d77\u6cd5\u5f8b\u8a34\u8a1f", "title_en": "Kalshi Files Lawsuit Against Minnesota Prediction Market Ban", "title_hi": "Kalshi \u0928\u0947 \u092e\u093f\u0928\u0947\u0938\u094b\u091f\u093e \u0915\u0947 \u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f \u092c\u0948\u0928 \u0915\u0947 \u0916\u093f\u0932\u093e\u092b \u092e\u0941\u0915\u0926\u092e\u093e \u0926\u093e\u092f\u0930 \u0915\u093f\u092f\u093e", "title_th": "Kalshi \u0e1f\u0e49\u0e2d\u0e07\u0e23\u0e31\u0e10\u0e1a\u0e32\u0e25\u0e21\u0e34\u0e19\u0e19\u0e34\u0e42\u0e0b\u0e15\u0e32\u0e2b\u0e25\u0e31\u0e07\u0e2a\u0e31\u0e48\u0e07\u0e41\u0e1a\u0e19\u0e15\u0e25\u0e32\u0e14\u0e1e\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c", "urgency": 75.0}], "region": "\u7f8e\u570b", "sentiment": "\u5229\u7a7a"}];
+        const mapMarkersData = [{"coords": [20.098749207524044, 10.222842778604434], "count": 2, "news_full": [{"impact": 95.0, "link": "https://www.gamblinginsider.com/news/163547/fertitta-entertainment-acquire-caesars-17-6bn-deal", "sentiment": "\u5229\u591a", "title": "Fertitta Entertainment \u4ee5 176 \u5104\u7f8e\u5143\u6536\u8cfc Caesars Entertainment", "title_en": "Fertitta Entertainment to Acquire Caesars Entertainment for $17.6 Billion", "title_hi": "Fertitta Entertainment 17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0921\u0949\u0932\u0930 \u092e\u0947\u0902 Caesars Entertainment \u0915\u093e \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u0930\u0947\u0917\u0940", "title_th": "Fertitta Entertainment \u0e40\u0e02\u0e49\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23 Caesars Entertainment \u0e21\u0e39\u0e25\u0e04\u0e48\u0e32 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 85.0}, {"impact": 85.0, "link": "https://www.gamblinginsider.com/news/163425/google-polymarket-insider-trading-alpharaccoon-jpg", "sentiment": "\u5229\u7a7a", "title": "Google \u54e1\u5de5\u6d89\u5acc\u5229\u7528 Polymarket \u9032\u884c\u5167\u90e8\u4ea4\u6613\u7372\u5229\u88ab\u8d77\u8a34", "title_en": "Google Employee Indicted for Insider Trading on Polymarket", "title_hi": "Google \u0915\u0930\u094d\u092e\u091a\u093e\u0930\u0940 \u092a\u0930 Polymarket \u092a\u0930 \u0907\u0928\u0938\u093e\u0907\u0921\u0930 \u091f\u094d\u0930\u0947\u0921\u093f\u0902\u0917 \u0915\u0947 \u0932\u093f\u090f \u0905\u092d\u093f\u092f\u094b\u0917", "title_th": "\u0e1e\u0e19\u0e31\u0e01\u0e07\u0e32\u0e19 Google \u0e16\u0e39\u0e01\u0e1f\u0e49\u0e2d\u0e07\u0e02\u0e49\u0e2d\u0e2b\u0e32\u0e43\u0e0a\u0e49\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e20\u0e32\u0e22\u0e43\u0e19\u0e17\u0e33\u0e01\u0e33\u0e44\u0e23\u0e1a\u0e19 Polymarket", "urgency": 80.0}], "region": "\u5168\u7403", "sentiment": "\u5229\u7a7a"}, {"coords": [36.895057234172555, -95.52327786635085], "count": 1, "news_full": [{"impact": 80.0, "link": "https://www.gamblinginsider.com/news/163520/kalshi-sues-minnesota-prediction-market-ban", "sentiment": "\u5229\u7a7a", "title": "Kalshi \u56e0\u660e\u5c3c\u8607\u9054\u5dde\u767c\u5e03\u9810\u6e2c\u5e02\u5834\u7981\u4ee4\u767c\u8d77\u6cd5\u5f8b\u8a34\u8a1f", "title_en": "Kalshi Files Lawsuit Against Minnesota Prediction Market Ban", "title_hi": "Kalshi \u0928\u0947 \u092e\u093f\u0928\u0947\u0938\u094b\u091f\u093e \u0915\u0947 \u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f \u092c\u0948\u0928 \u0915\u0947 \u0916\u093f\u0932\u093e\u092b \u092e\u0941\u0915\u0926\u092e\u093e \u0926\u093e\u092f\u0930 \u0915\u093f\u092f\u093e", "title_th": "Kalshi \u0e1f\u0e49\u0e2d\u0e07\u0e23\u0e31\u0e10\u0e1a\u0e32\u0e25\u0e21\u0e34\u0e19\u0e19\u0e34\u0e42\u0e0b\u0e15\u0e32\u0e2b\u0e25\u0e31\u0e07\u0e2a\u0e31\u0e48\u0e07\u0e41\u0e1a\u0e19\u0e15\u0e25\u0e32\u0e14\u0e1e\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c", "urgency": 75.0}], "region": "\u7f8e\u570b", "sentiment": "\u5229\u7a7a"}];
         const regionMarkers = {};
 
         function updateMapTiles(isDark) {
@@ -1845,38 +1845,36 @@
             try { renderRegionReel(); } catch(e) { console.warn('renderRegionReel failed:', e); }
         }
 
-        // 點擊切換導航選單顯示狀態
-        document.querySelectorAll('.menu-trigger').forEach(btn => {
-            const targetId = btn.dataset.target;
-            const panel = document.getElementById(targetId);
-            if (!panel) return;
+        // 點擊事件委派與選單切換控制
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('.menu-trigger');
+            const inPanel = e.target.closest('.filter-panel');
             
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isHidden = panel.classList.contains('hidden');
-                
-                // 關閉所有其他面板
-                document.querySelectorAll('.filter-panel').forEach(p => {
-                    if (p.id !== targetId) p.classList.add('hidden');
-                });
-                
-                if (isHidden) {
-                    panel.classList.remove('hidden');
-                } else {
-                    panel.classList.add('hidden');
+            // 如果點擊的是有 data-target 的選單按鈕
+            if (trigger && trigger.dataset.target) {
+                const targetId = trigger.dataset.target;
+                const panel = document.getElementById(targetId);
+                if (panel) {
+                    const isHidden = panel.classList.contains('hidden');
+                    
+                    // 關閉所有選單
+                    document.querySelectorAll('.filter-panel').forEach(p => {
+                        p.classList.add('hidden');
+                    });
+                    
+                    // 切換目前的選單
+                    if (isHidden) {
+                        panel.classList.remove('hidden');
+                    }
                 }
-            });
-            
-            panel.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        });
-
-        // 點擊外部關閉所有選單
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.filter-panel').forEach(p => {
-                p.classList.add('hidden');
-            });
+            } else if (inPanel) {
+                // 點擊選單內部，不影響
+            } else {
+                // 點擊其他地方（包括沒有 data-target 的 menu-trigger 如日期按鈕，或是空白處），關閉所有選單
+                document.querySelectorAll('.filter-panel').forEach(p => {
+                    p.classList.add('hidden');
+                });
+            }
         });
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
         searchInput.addEventListener('input', () => {
