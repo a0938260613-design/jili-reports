@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="zh-Hant">
 
@@ -351,6 +351,172 @@
         .badge-中立 { background-color: rgba(59, 130, 246, 0.1); color: #2563eb; border: 1px solid #3b82f6; }
 
         .dark .badge-中立 { background-color: rgba(0, 240, 255, 0.1); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4); text-shadow: 0 0 10px rgba(0,240,255,0.5); }
+
+        /* 區域情緒明細卡 */
+        .market-tab-btn {
+            border: 1px solid var(--border-color);
+            border-radius: 0.45rem;
+            padding: 0.32rem 0.58rem;
+            font-size: 0.68rem;
+            line-height: 1;
+            font-weight: 900;
+            color: #475569;
+            background: #fff;
+            white-space: nowrap;
+        }
+        .dark .market-tab-btn { color: #b8c4d0; background: #0a0a0f; border-color: rgba(0,240,255,0.15); }
+        .market-tab-btn.active {
+            color: #1d4ed8;
+            background: #eff6ff;
+            border-color: #3b82f6;
+            box-shadow: inset 0 0 0 1px rgba(59,130,246,0.35);
+        }
+        .dark .market-tab-btn.active {
+            color: #00f0ff;
+            background: rgba(0,240,255,0.1);
+            border-color: rgba(0,240,255,0.55);
+            box-shadow: 0 0 10px rgba(0,240,255,0.12);
+        }
+        .regional-sentiment-row {
+            display: grid;
+            grid-template-columns: minmax(7.6rem, 0.62fr) minmax(0, 1.38fr);
+            gap: 0.55rem;
+            padding: 0.52rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.65rem;
+            background: rgba(255,255,255,0.72);
+        }
+        .dark .regional-sentiment-row {
+            border-color: rgba(0,240,255,0.1);
+            background: rgba(10,10,15,0.46);
+        }
+        .regional-region-name {
+            font-size: 0.82rem;
+            line-height: 1.18;
+            font-weight: 900;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .regional-total {
+            margin-top: 0.2rem;
+            font-size: 0.68rem;
+            line-height: 1;
+            font-weight: 900;
+            color: #64748b;
+        }
+        .dark .regional-total { color: #94a3b8; }
+        .regional-count-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.45rem;
+            white-space: nowrap;
+        }
+        .regional-count-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.22rem;
+            font-size: 0.68rem;
+            line-height: 1;
+            font-weight: 900;
+        }
+        .regional-count-dot::before,
+        .regional-sentiment-dot {
+            content: "";
+            display: inline-block;
+            width: 0.42rem;
+            height: 0.42rem;
+            border-radius: 999px;
+            flex: 0 0 auto;
+        }
+        .regional-count-dot.bearish { color: #dc2626; }
+        .regional-count-dot.bullish { color: #059669; }
+        .regional-count-dot.neutral { color: #2563eb; }
+        .dark .regional-count-dot.bearish { color: #ff0055; }
+        .dark .regional-count-dot.bullish { color: #00ff88; }
+        .dark .regional-count-dot.neutral { color: #00f0ff; }
+        .regional-count-dot.bearish::before,
+        .regional-sentiment-dot.bearish { background: #dc2626; }
+        .regional-count-dot.bullish::before,
+        .regional-sentiment-dot.bullish { background: #059669; }
+        .regional-count-dot.neutral::before,
+        .regional-sentiment-dot.neutral { background: #2563eb; }
+        .dark .regional-count-dot.bearish::before,
+        .dark .regional-sentiment-dot.bearish { background: #ff0055; box-shadow: 0 0 8px rgba(255,0,85,0.35); }
+        .dark .regional-count-dot.bullish::before,
+        .dark .regional-sentiment-dot.bullish { background: #00ff88; box-shadow: 0 0 8px rgba(0,255,136,0.35); }
+        .dark .regional-count-dot.neutral::before,
+        .dark .regional-sentiment-dot.neutral { background: #00f0ff; box-shadow: 0 0 8px rgba(0,240,255,0.35); }
+        .regional-mini-bar {
+            display: flex;
+            width: 100%;
+            height: 0.36rem;
+            margin-top: 0.42rem;
+            border-radius: 999px;
+            overflow: hidden;
+            background: #e2e8f0;
+        }
+        .dark .regional-mini-bar { background: rgba(148,163,184,0.16); }
+        .regional-mini-bar span.bearish { background: #dc2626; }
+        .regional-mini-bar span.bullish { background: #059669; }
+        .regional-mini-bar span.neutral { background: #2563eb; }
+        .dark .regional-mini-bar span.bearish { background: #ff0055; }
+        .dark .regional-mini-bar span.bullish { background: #00ff88; }
+        .dark .regional-mini-bar span.neutral { background: #00f0ff; }
+        .regional-sentiment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.45rem;
+            min-width: 0;
+        }
+        .regional-sentiment-cell {
+            min-width: 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.52rem;
+            padding: 0.45rem;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .regional-sentiment-cell:hover { border-color: #93c5fd; background: #f8fafc; }
+        .dark .regional-sentiment-cell {
+            border-color: rgba(0,240,255,0.1);
+            background: rgba(5,5,5,0.22);
+        }
+        .dark .regional-sentiment-cell:hover { border-color: rgba(0,240,255,0.35); background: rgba(0,240,255,0.05); }
+        .regional-sentiment-cell.empty {
+            cursor: default;
+            color: #94a3b8;
+            background: #f8fafc;
+            border-color: #e2e8f0;
+            opacity: 0.72;
+        }
+        .dark .regional-sentiment-cell.empty {
+            color: #64748b;
+            background: rgba(148,163,184,0.06);
+            border-color: rgba(148,163,184,0.12);
+        }
+        .regional-sentiment-cell.empty .regional-sentiment-dot { background: #cbd5e1 !important; box-shadow: none !important; }
+        .dark .regional-sentiment-cell.empty .regional-sentiment-dot { background: #475569 !important; }
+        .regional-sentiment-title {
+            margin-top: 0.38rem;
+            font-size: 0.68rem;
+            line-height: 1.35;
+            font-weight: 900;
+            color: #334155;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .dark .regional-sentiment-title { color: #e2e8f0; }
+        .regional-sentiment-cell.empty .regional-sentiment-title { color: #94a3b8; }
+        .dark .regional-sentiment-cell.empty .regional-sentiment-title { color: #64748b; }
+        @media (max-width: 900px) {
+            .regional-sentiment-row { grid-template-columns: 1fr; }
+            .regional-sentiment-grid { grid-template-columns: 1fr; }
+        }
 
         
 
@@ -1274,9 +1440,9 @@
 
                         <div>
 
-                            <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step3-title">各地區核心情報 (TOP 3) Reels 看板</h4>
+                            <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step3-title">各地區市場情緒明細</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step3-desc">卡片左側為國家輪播選單（按上下按鈕循環切換），右側會顯示選定國家的本日最核心前三大情報，點擊即可查閱新聞大綱。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step3-desc">卡片內可切換市場範圍，逐區顯示利空、利多、中立數量，並列出各情緒最重要新聞。</p>
 
                         </div>
 
@@ -1446,57 +1612,21 @@
 
             </div>
 
-            <!-- 本日各地區核心情報 (Reel 捲軸式切換設計) -->
+            <!-- 本日各地區核心情報：區域情緒明細 -->
 
             <div class="card-base p-6 md:col-span-2 flex flex-col" style="height: 23.5rem;">
 
-                <h3 class="text-sm font-mono font-black uppercase mb-4 tracking-widest border-b border-slate-200 dark:border-obsidian-600 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="top-news-by-region-title">本日各地區核心情報 (Top 3)</h3>
+                <h3 class="text-sm font-mono font-black uppercase mb-3 tracking-widest border-b border-slate-200 dark:border-obsidian-600 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="top-news-by-region-title">本日各地市場情緒明細</h3>
 
-                
+                <div id="regionMarketTabs" class="flex items-center gap-1.5 mb-2 overflow-x-auto custom-scrollbar shrink-0 pb-1">
 
-                <div class="flex flex-1 gap-4 overflow-hidden">
+                    <!-- 由 JavaScript 動態生成市場切換 -->
 
-                    <!-- 左側：國家選單 Reel 輪播 -->
+                </div>
 
-                    <div class="w-1/3 flex flex-col justify-between items-center border-r border-slate-200 dark:border-obsidian-700 pr-4">
+                <div id="regionalSentimentBoard" class="flex-1 overflow-y-auto custom-scrollbar pr-1 flex flex-col gap-2">
 
-                        <button id="regionReelUpBtn" onclick="switchRegionReel(-1)" class="w-full py-1 text-xs text-mid-contrast hover:text-blue-600 dark:hover:text-neon-cyan transition-colors" title="上一個">
-
-                            <i class="fa-solid fa-chevron-up"></i>
-
-                        </button>
-
-                        
-
-                        <div id="regionReelList" class="flex-1 w-full my-1 overflow-y-auto scroll-smooth custom-scrollbar flex flex-col gap-1.5" style="max-height: 13.5rem;">
-
-                            <!-- 由 JavaScript 動態生成國家按鈕 -->
-
-                        </div>
-
-                        
-
-                        <button id="regionReelDownBtn" onclick="switchRegionReel(1)" class="w-full py-1 text-xs text-mid-contrast hover:text-blue-600 dark:hover:text-neon-cyan transition-colors" title="下一個">
-
-                            <i class="fa-solid fa-chevron-down"></i>
-
-                        </button>
-
-                    </div>
-
-                    
-
-                    <!-- 右側：選定國家最重要三件新聞 -->
-
-                    <div class="w-2/3 flex flex-col justify-start pl-2">
-
-                        <div id="topNewsByRegionList" class="flex flex-col gap-3 py-1 overflow-y-auto custom-scrollbar" style="max-height: 16.5rem;">
-
-                            <!-- 由 JavaScript 動態生成新聞 -->
-
-                        </div>
-
-                    </div>
+                    <!-- 由 JavaScript 動態生成區域情緒列 -->
 
                 </div>
 
@@ -4882,7 +5012,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"coords": [25.503473493547233, 55.21014007495494], "count": 1, "news_full": [{"impact": 80.0, "link": "https://asgam.com/2026/05/29/igt-cammegh-granted-uae-vendor-licenses/", "sentiment": "\u5229\u591a", "title": "IGT \u8207 Cammegh \u7372\u963f\u806f\u914b\u4f9b\u61c9\u5546\u724c\u7167", "title_en": "IGT and Cammegh Obtain UAE Supplier Licenses", "title_hi": "IGT \u0914\u0930 Cammegh \u0915\u094b \u0938\u0902\u092f\u0941\u0915\u094d\u0924 \u0905\u0930\u092c \u0905\u092e\u0940\u0930\u093e\u0924 \u092e\u0947\u0902 \u0906\u092a\u0942\u0930\u094d\u0924\u093f\u0915\u0930\u094d\u0924\u093e \u0932\u093e\u0907\u0938\u0947\u0902\u0938 \u092a\u094d\u0930\u093e\u092a\u094d\u0924 \u0939\u0941\u090f", "title_th": "IGT \u0e41\u0e25\u0e30 Cammegh \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e08\u0e33\u0e2b\u0e19\u0e48\u0e32\u0e22\u0e43\u0e19\u0e2a\u0e2b\u0e23\u0e31\u0e10\u0e2d\u0e32\u0e2b\u0e23\u0e31\u0e1a\u0e40\u0e2d\u0e21\u0e34\u0e40\u0e23\u0e15\u0e2a\u0e4c", "urgency": 60.0}], "region": "\u963f\u806f\u914b", "sentiment": "\u5229\u591a"}, {"coords": [38.002256604486746, 127.09023308308029], "count": 1, "news_full": [{"impact": 55.0, "link": "https://asgam.com/2026/05/29/jeju-dream-tour-benefitting-from-trend-of-higher-jeju-visitation-equalling-higher-casino-drop/", "sentiment": "\u5229\u591a", "title": "\u6fdf\u5dde\u5cf6\u904a\u5ba2\u56de\u5347\u63a8\u52d5\u8ced\u5834\u535a\u5f08\u984d\u589e\u9577", "title_en": "Jeju Island Tourism Recovery Boosts Casino Gaming Revenue", "title_hi": "\u091c\u0947\u091c\u0942 \u0926\u094d\u0935\u0940\u092a \u092a\u0930 \u092a\u0930\u094d\u092f\u091f\u0928 \u092e\u0947\u0902 \u0938\u0941\u0927\u093e\u0930 \u0938\u0947 \u0915\u0948\u0938\u0940\u0928\u094b \u0917\u0947\u092e\u093f\u0902\u0917 \u0930\u093e\u091c\u0938\u094d\u0935 \u092e\u0947\u0902 \u0935\u0943\u0926\u094d\u0927\u093f", "title_th": "\u0e01\u0e32\u0e23\u0e1f\u0e37\u0e49\u0e19\u0e15\u0e31\u0e27\u0e02\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e17\u0e48\u0e2d\u0e07\u0e40\u0e17\u0e35\u0e48\u0e22\u0e27\u0e43\u0e19\u0e40\u0e01\u0e32\u0e30\u0e40\u0e0a\u0e08\u0e39\u0e0a\u0e48\u0e27\u0e22\u0e01\u0e23\u0e30\u0e15\u0e38\u0e49\u0e19\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e08\u0e32\u0e01\u0e04\u0e32\u0e2a\u0e34\u0e42\u0e19", "urgency": 40.0}], "region": "\u97d3\u570b", "sentiment": "\u5229\u591a"}, {"coords": [14.296920909067655, 120.9779032553953], "count": 2, "news_full": [{"impact": 65.0, "link": "https://asgam.com/2026/05/29/iec-inks-new-us9-million-construction-contract-for-further-upgrade-works-at-manilas-lavie-resort-casino/", "sentiment": "\u5229\u591a", "title": "IEC \u7c3d\u7f72 900 \u842c\u7f8e\u5143\u5408\u7d04\u5347\u7d1a\u99ac\u5c3c\u62c9 LaVie \u5ea6\u5047\u6751", "title_en": "IEC Signs $9 Million Contract to Upgrade Manila\u0027s LaVie Resort", "title_hi": "IEC \u0928\u0947 \u092e\u0928\u0940\u0932\u093e \u0915\u0947 LaVie \u0930\u093f\u0938\u0949\u0930\u094d\u091f \u0915\u094b \u0905\u092a\u0917\u094d\u0930\u0947\u0921 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f 9 \u092e\u093f\u0932\u093f\u092f\u0928 \u0921\u0949\u0932\u0930 \u0915\u0947 \u0905\u0928\u0941\u092c\u0902\u0927 \u092a\u0930 \u0939\u0938\u094d\u0924\u093e\u0915\u094d\u0937\u0930 \u0915\u093f\u090f", "title_th": "IEC \u0e25\u0e07\u0e19\u0e32\u0e21\u0e2a\u0e31\u0e0d\u0e0d\u0e32 9 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e22\u0e01\u0e23\u0e30\u0e14\u0e31\u0e1a LaVie Resort \u0e43\u0e19\u0e21\u0e30\u0e19\u0e34\u0e25\u0e32", "urgency": 40.0}, {"impact": 50.0, "link": "https://agbrief.com/news/philippines/28/05/2026/international-entertainment-upgrades-manila-casino-hotel-with-9-2m-construction-deal/", "sentiment": "\u5229\u591a", "title": "International Entertainment\u65a5\u8cc7920\u842c\u7f8e\u5143\u5347\u7d1a\u99ac\u5c3c\u62c9\u8ced\u5834\u98ef\u5e97", "title_en": "International Entertainment Invests $9.2 Million to Upgrade Manila Casino Hotel", "title_hi": "International Entertainment \u0928\u0947 \u092e\u0928\u0940\u0932\u093e \u0915\u0948\u0938\u0940\u0928\u094b \u0939\u094b\u091f\u0932 \u0915\u094b \u0905\u092a\u0917\u094d\u0930\u0947\u0921 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f $9.2 \u092e\u093f\u0932\u093f\u092f\u0928 \u0915\u093e \u0928\u093f\u0935\u0947\u0936 \u0915\u093f\u092f\u093e", "title_th": "International Entertainment \u0e17\u0e38\u0e48\u0e21\u0e40\u0e07\u0e34\u0e19 9.2 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c \u0e22\u0e01\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e42\u0e23\u0e07\u0e41\u0e23\u0e21\u0e04\u0e32\u0e2a\u0e34\u0e42\u0e19\u0e43\u0e19\u0e21\u0e30\u0e19\u0e34\u0e25\u0e32", "urgency": 40.0}], "region": "\u83f2\u5f8b\u8cd3", "sentiment": "\u5229\u591a"}, {"coords": [37.58085582287472, -95.76117104930071], "count": 11, "news_full": [{"impact": 85.0, "link": "https://asgam.com/2026/05/29/fertitta-entertainment-to-acquire-us-casino-giant-caesars-via-us17-6-billion-deal/", "sentiment": "\u4e2d\u7acb", "title": "Fertitta Entertainment \u4ee5 176 \u5104\u7f8e\u5143\u6536\u8cfc\u51f1\u6492\u5a1b\u6a02", "title_en": "Fertitta Entertainment Acquires Caesars Entertainment for $17.6 Billion", "title_hi": "Fertitta Entertainment \u0928\u0947 17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0921\u0949\u0932\u0930 \u092e\u0947\u0902 Caesars Entertainment \u0915\u093e \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u093f\u092f\u093e", "title_th": "Fertitta Entertainment \u0e40\u0e02\u0e49\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23 Caesars Entertainment \u0e14\u0e49\u0e27\u0e22\u0e21\u0e39\u0e25\u0e04\u0e48\u0e32 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 50.0}, {"impact": 90.0, "link": "https://agbrief.com/news/usa/29/05/2026/caesars-agrees-to-17-6b-all-cash-takeover-by-fertitta-entertainment/", "sentiment": "\u5229\u7a7a", "title": "Fertitta Entertainment\u65a5\u8cc7176\u5104\u7f8e\u5143\u5168\u73fe\u91d1\u6536\u8cfc\u51f1\u6492\u5a1b\u6a02", "title_en": "Fertitta Entertainment Acquires Caesars Entertainment in $17.6 Billion All-Cash Deal", "title_hi": "Fertitta Entertainment \u0928\u0947 $17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0915\u0947 \u0911\u0932-\u0915\u0948\u0936 \u0938\u094c\u0926\u0947 \u092e\u0947\u0902 Caesars Entertainment \u0915\u093e \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u093f\u092f\u093e", "title_th": "Fertitta Entertainment \u0e17\u0e38\u0e48\u0e21\u0e40\u0e07\u0e34\u0e19 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c \u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23 Caesars Entertainment \u0e14\u0e49\u0e27\u0e22\u0e40\u0e07\u0e34\u0e19\u0e2a\u0e14\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14", "urgency": 75.0}, {"impact": 15.0, "link": "https://www.gamblingnews.com/news/california-man-wins-15m-from-the-lottery/", "sentiment": "\u4e2d\u7acb", "title": "\u52a0\u5dde\u6c11\u773e\u8d0f\u5f97 1,500 \u842c\u7f8e\u5143\u5f69\u5238\u982d\u734e", "title_en": "California Resident Wins $15 Million Lottery Jackpot", "title_hi": "\u0915\u0948\u0932\u093f\u092b\u093c\u094b\u0930\u094d\u0928\u093f\u092f\u093e \u0915\u0947 \u0928\u093f\u0935\u093e\u0938\u0940 \u0928\u0947 $15 \u092e\u093f\u0932\u093f\u092f\u0928 \u0915\u093e \u0932\u0949\u091f\u0930\u0940 \u091c\u0948\u0915\u092a\u0949\u091f \u091c\u0940\u0924\u093e", "title_th": "\u0e0a\u0e32\u0e27\u0e41\u0e04\u0e25\u0e34\u0e1f\u0e2d\u0e23\u0e4c\u0e40\u0e19\u0e35\u0e22\u0e16\u0e39\u0e01\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e25\u0e2d\u0e15\u0e40\u0e15\u0e2d\u0e23\u0e35\u0e48\u0e41\u0e08\u0e47\u0e04\u0e1e\u0e2d\u0e15 15 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 5.0}, {"impact": 35.0, "link": "https://www.gamblingnews.com/news/massive-cockfighting-ring-busted-in-southern-nevada/", "sentiment": "\u5229\u7a7a", "title": "\u5167\u83ef\u9054\u5dde\u5357\u90e8\u7834\u7372\u5927\u898f\u6a21\u9b25\u96de\u975e\u6cd5\u8ced\u535a\u96c6\u5718", "title_en": "Southern Nevada Cracks Down on Illegal Cockfighting Ring", "title_hi": "\u0926\u0915\u094d\u0937\u093f\u0923\u0940 \u0928\u0947\u0935\u093e\u0926\u093e \u092e\u0947\u0902 \u0905\u0935\u0948\u0927 \u092e\u0941\u0930\u094d\u0917\u093e \u0932\u0921\u093c\u093e\u0908 \u091c\u0941\u0906 \u0917\u093f\u0930\u094b\u0939 \u0915\u093e \u092d\u0902\u0921\u093e\u092b\u094b\u0921\u093c", "title_th": "\u0e40\u0e19\u0e27\u0e32\u0e14\u0e32\u0e15\u0e2d\u0e19\u0e43\u0e15\u0e49\u0e17\u0e25\u0e32\u0e22\u0e40\u0e04\u0e23\u0e37\u0e2d\u0e02\u0e48\u0e32\u0e22\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19\u0e44\u0e01\u0e48\u0e0a\u0e19\u0e1c\u0e34\u0e14\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e23\u0e32\u0e22\u0e43\u0e2b\u0e0d\u0e48", "urgency": 20.0}, {"impact": 10.0, "link": "https://www.gamblingnews.com/news/ncaa-leaves-sorsby-out-of-the-game-despite-the-players-legal-actions/", "sentiment": "\u4e2d\u7acb", "title": "NCAA \u5728\u6cd5\u5f8b\u884c\u52d5\u5f8c\u4ecd\u62d2\u7d55\u9078\u624b Sorsby \u53c3\u8cfd\u8cc7\u683c", "title_en": "NCAA Denies Athlete Sorsby Eligibility Despite Legal Action", "title_hi": "NCAA \u0928\u0947 \u0915\u093e\u0928\u0942\u0928\u0940 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0947 \u092c\u093e\u0935\u091c\u0942\u0926 \u090f\u0925\u0932\u0940\u091f Sorsby \u0915\u0940 \u092a\u093e\u0924\u094d\u0930\u0924\u093e \u0915\u094b \u0928\u0915\u093e\u0930\u093e", "title_th": "NCAA \u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e01\u0e32\u0e23\u0e41\u0e02\u0e48\u0e07\u0e02\u0e31\u0e19\u0e02\u0e2d\u0e07\u0e19\u0e31\u0e01\u0e01\u0e35\u0e2c\u0e32 Sorsby \u0e41\u0e21\u0e49\u0e08\u0e30\u0e21\u0e35\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e17\u0e32\u0e07\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22", "urgency": 5.0}, {"impact": 0.0, "link": "https://www.gamblingnews.com/news/singer-ray-j-recovering-after-being-hospitalized-following-las-vegas-mma-fight/", "sentiment": "\u4e2d\u7acb", "title": "\u6b4c\u624b Ray J \u56e0\u62c9\u65af\u7dad\u52a0\u65af MMA \u62f3\u8cfd\u53d7\u50b7\u4f4f\u9662", "title_en": "Singer Ray J Hospitalized After Las Vegas MMA Fight", "title_hi": "\u0932\u093e\u0938 \u0935\u0947\u0917\u093e\u0938 MMA \u092b\u093e\u0907\u091f \u0915\u0947 \u092c\u093e\u0926 \u0917\u093e\u092f\u0915 \u0930\u0947 \u091c\u0947 \u0905\u0938\u094d\u092a\u0924\u093e\u0932 \u092e\u0947\u0902 \u092d\u0930\u094d\u0924\u0940", "title_th": "\u0e19\u0e31\u0e01\u0e23\u0e49\u0e2d\u0e07 Ray J \u0e40\u0e02\u0e49\u0e32\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e23\u0e31\u0e01\u0e29\u0e32\u0e43\u0e19\u0e42\u0e23\u0e07\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25\u0e2b\u0e25\u0e31\u0e07\u0e0a\u0e01 MMA \u0e17\u0e35\u0e48\u0e25\u0e32\u0e2a\u0e40\u0e27\u0e01\u0e31\u0e2a", "urgency": 0.0}, {"impact": 95.0, "link": "https://www.gamblingnews.com/news/caesars-agrees-to-be-acquired-by-fertitta-entertainment-in-17-6b-deal/", "sentiment": "\u5229\u591a", "title": "\u51f1\u6492\u5a1b\u6a02 (Caesars) \u540c\u610f\u4ee5 176 \u5104\u7f8e\u5143\u88ab Fertitta Entertainment \u6536\u8cfc", "title_en": "Caesars Entertainment Agrees to $17.6 Billion Acquisition by Fertitta Entertainment", "title_hi": "Caesars Entertainment \u0928\u0947 Fertitta Entertainment \u0926\u094d\u0935\u093e\u0930\u093e $17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0915\u0947 \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u0947 \u0932\u093f\u090f \u0938\u0939\u092e\u0924\u093f \u0926\u0940", "title_th": "Caesars Entertainment \u0e15\u0e01\u0e25\u0e07\u0e16\u0e39\u0e01 Fertitta Entertainment \u0e40\u0e02\u0e49\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23\u0e21\u0e39\u0e25\u0e04\u0e48\u0e32 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 80.0}, {"impact": 30.0, "link": "https://www.gamblingnews.com/news/eight-powerball-players-win-200k-prizes-each-jackpot-reaches-172m/", "sentiment": "\u5229\u591a", "title": "\u516b\u540d\u5a01\u529b\u7403\u73a9\u5bb6\u5404\u4e2d 20 \u842c\u7f8e\u5143\uff0c\u982d\u734e\u7d2f\u7a4d\u81f3 1.72 \u5104\u7f8e\u5143", "title_en": "Eight Powerball Players Win $200k Each, Jackpot Hits $172 Million", "title_hi": "\u0906\u0920 \u092a\u093e\u0935\u0930\u092c\u0949\u0932 \u0916\u093f\u0932\u093e\u0921\u093c\u093f\u092f\u094b\u0902 \u0928\u0947 $200k \u091c\u0940\u0924\u0947, \u091c\u0948\u0915\u092a\u0949\u091f $172 \u092e\u093f\u0932\u093f\u092f\u0928 \u0924\u0915 \u092a\u0939\u0941\u0902\u091a\u093e", "title_th": "\u0e1c\u0e39\u0e49\u0e40\u0e25\u0e48\u0e19 Powerball \u0e41\u0e1b\u0e14\u0e04\u0e19\u0e23\u0e31\u0e1a\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e04\u0e19\u0e25\u0e30 2 \u0e41\u0e2a\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c \u0e41\u0e08\u0e47\u0e04\u0e1e\u0e2d\u0e15\u0e1e\u0e38\u0e48\u0e07\u0e2a\u0e39\u0e48 172 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 10.0}, {"impact": 65.0, "link": "https://www.gamblinginsider.com/news/163284/ncaa-denies-brendan-sorsby-reinstatement-gambling-violations", "sentiment": "\u5229\u7a7a", "title": "NCAA \u62d2\u7d55 Brendan Sorsby \u5fa9\u8cfd\u8acb\u6c42\uff0c\u7403\u54e1\u5766\u627f\u535a\u5f08\u6210\u766e\u554f\u984c", "title_en": "NCAA Rejects Brendan Sorsby\u0027s Reinstatement Request as Player Admits Gambling Addiction", "title_hi": "NCAA \u0928\u0947 \u092c\u094d\u0930\u0947\u0902\u0921\u0928 \u0938\u094b\u0930\u094d\u0938\u092c\u0940 \u0915\u0940 \u0935\u093e\u092a\u0938\u0940 \u0915\u0940 \u0905\u092a\u0940\u0932 \u0916\u093e\u0930\u093f\u091c \u0915\u0940, \u0916\u093f\u0932\u093e\u0921\u093c\u0940 \u0928\u0947 \u091c\u0941\u090f \u0915\u0940 \u0932\u0924 \u0938\u094d\u0935\u0940\u0915\u093e\u0930 \u0915\u0940", "title_th": "NCAA \u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e01\u0e25\u0e31\u0e1a\u0e21\u0e32\u0e25\u0e07\u0e40\u0e25\u0e48\u0e19\u0e02\u0e2d\u0e07 Brendan Sorsby \u0e2b\u0e25\u0e31\u0e07\u0e19\u0e31\u0e01\u0e01\u0e35\u0e2c\u0e32\u0e40\u0e1c\u0e22\u0e27\u0e48\u0e32\u0e15\u0e34\u0e14\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19", "urgency": 50.0}, {"impact": 80.0, "link": "https://www.gamblinginsider.com/news/163174/draftkings-self-certifies-sports-event-contracts-dkex-platform", "sentiment": "\u5229\u591a", "title": "DraftKings \u5b8c\u6210 DKeX \u5e73\u53f0\u9ad4\u80b2\u8cfd\u4e8b\u5408\u7d04\u4e4b\u81ea\u6211\u8a8d\u8b49", "title_en": "DraftKings Completes Self-Certification for DKeX Platform Sports Contracts", "title_hi": "DraftKings \u0928\u0947 DKeX \u092a\u094d\u0932\u0947\u091f\u092b\u0949\u0930\u094d\u092e \u092a\u0930 \u0916\u0947\u0932 \u0905\u0928\u0941\u092c\u0902\u0927\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0938\u094d\u0935-\u092a\u094d\u0930\u092e\u093e\u0923\u0928 \u092a\u0942\u0930\u093e \u0915\u093f\u092f\u093e", "title_th": "DraftKings \u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07\u0e15\u0e19\u0e40\u0e2d\u0e07 (Self-Certification) \u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e02\u0e32\u0e22\u0e01\u0e35\u0e2c\u0e32\u0e1a\u0e19\u0e41\u0e1e\u0e25\u0e15\u0e1f\u0e2d\u0e23\u0e4c\u0e21 DKeX \u0e2a\u0e33\u0e40\u0e23\u0e47\u0e08", "urgency": 75.0}, {"impact": 90.0, "link": "https://www.gamblinginsider.com/news/163131/trump-endorses-prediction-markets-financial-market-cftc", "sentiment": "\u5229\u591a", "title": "\u5ddd\u666e\u516c\u958b\u8868\u614b\u652f\u6301\u9810\u6e2c\u5e02\u5834\uff0c\u8b9a\u63da CFTC \u4e4b\u76e3\u7ba1\u89d2\u8272", "title_en": "Trump Publicly Supports Prediction Markets, Praises CFTC\u0027s Regulatory Role", "title_hi": "\u091f\u094d\u0930\u092e\u094d\u092a \u0928\u0947 \u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f\u094d\u0938 \u0915\u093e \u0938\u093e\u0930\u094d\u0935\u091c\u0928\u093f\u0915 \u0938\u092e\u0930\u094d\u0925\u0928 \u0915\u093f\u092f\u093e, \u0938\u0940\u090f\u092b\u091f\u0940\u0938\u0940 (CFTC) \u0915\u0940 \u0928\u093f\u092f\u093e\u092e\u0915 \u092d\u0942\u092e\u093f\u0915\u093e \u0915\u0940 \u0938\u0930\u093e\u0939\u0928\u093e \u0915\u0940", "title_th": "\u0e17\u0e23\u0e31\u0e21\u0e1b\u0e4c\u0e1b\u0e23\u0e30\u0e01\u0e32\u0e28\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19\u0e15\u0e25\u0e32\u0e14\u0e1e\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c (Prediction Markets) \u0e22\u0e01\u0e22\u0e48\u0e2d\u0e07\u0e1a\u0e17\u0e1a\u0e32\u0e17\u0e01\u0e32\u0e23\u0e01\u0e33\u0e01\u0e31\u0e1a\u0e14\u0e39\u0e41\u0e25\u0e02\u0e2d\u0e07 CFTC", "urgency": 60.0}], "region": "\u7f8e\u570b", "sentiment": "\u5229\u7a7a"}, {"coords": [19.703498682599374, 10.102709851200983], "count": 17, "news_full": [{"impact": 60.0, "link": "https://asgam.com/2026/05/28/editorial-a-mountain-to-climb/", "sentiment": "\u5229\u7a7a", "title": "\u535a\u5f08\u7522\u696d\u767c\u5c55\u9762\u81e8\u8271\u9245\u6311\u6230", "title_en": "Gaming Industry Faces Formidable Challenges", "title_hi": "\u0917\u0947\u092e\u093f\u0902\u0917 \u0909\u0926\u094d\u092f\u094b\u0917 \u0915\u0920\u093f\u0928 \u091a\u0941\u0928\u094c\u0924\u093f\u092f\u094b\u0902 \u0915\u093e \u0938\u093e\u092e\u0928\u093e \u0915\u0930 \u0930\u0939\u093e \u0939\u0948", "title_th": "\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e40\u0e01\u0e21\u0e40\u0e1c\u0e0a\u0e34\u0e0d\u0e01\u0e31\u0e1a\u0e04\u0e27\u0e32\u0e21\u0e17\u0e49\u0e32\u0e17\u0e32\u0e22\u0e17\u0e35\u0e48\u0e22\u0e32\u0e01\u0e25\u0e33\u0e1a\u0e32\u0e01", "urgency": 40.0}, {"impact": 70.0, "link": "https://asgam.com/2026/05/28/reviving-the-igt-empire/", "sentiment": "\u4e2d\u7acb", "title": "IGT \u5e1d\u570b\u7684\u5fa9\u8208\u5c55\u671b", "title_en": "Outlook for the Revival of the IGT Empire", "title_hi": "IGT \u0938\u093e\u092e\u094d\u0930\u093e\u091c\u094d\u092f \u0915\u0947 \u092a\u0941\u0928\u0930\u0941\u0926\u094d\u0927\u093e\u0930 \u0915\u0947 \u0932\u093f\u090f \u0926\u0943\u0937\u094d\u091f\u093f\u0915\u094b\u0923", "title_th": "\u0e21\u0e38\u0e21\u0e21\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1f\u0e37\u0e49\u0e19\u0e15\u0e31\u0e27\u0e02\u0e2d\u0e07\u0e2d\u0e32\u0e13\u0e32\u0e08\u0e31\u0e01\u0e23 IGT", "urgency": 30.0}, {"impact": 75.0, "link": "https://asgam.com/2026/05/28/coming-out-swinging/", "sentiment": "\u5229\u7a7a", "title": "\u7522\u696d\u7af6\u722d\u52a0\u5287\uff1a\u5f37\u52e2\u9032\u64ca", "title_en": "Escalating Industry Competition: Aggressive Advances", "title_hi": "\u092c\u0922\u093c\u0924\u0940 \u0909\u0926\u094d\u092f\u094b\u0917 \u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u093e: \u0906\u0915\u094d\u0930\u093e\u092e\u0915 \u0905\u0917\u094d\u0930\u093f\u092e", "title_th": "\u0e01\u0e32\u0e23\u0e41\u0e02\u0e48\u0e07\u0e02\u0e31\u0e19\u0e43\u0e19\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e17\u0e27\u0e35\u0e04\u0e27\u0e32\u0e21\u0e23\u0e38\u0e19\u0e41\u0e23\u0e07\u0e02\u0e36\u0e49\u0e19: \u0e01\u0e32\u0e23\u0e23\u0e38\u0e01\u0e04\u0e37\u0e1a\u0e17\u0e35\u0e48\u0e14\u0e38\u0e14\u0e31\u0e19", "urgency": 50.0}, {"impact": 60.0, "link": "https://asgam.com/2026/05/28/smart-tables-in-practice/", "sentiment": "\u5229\u591a", "title": "\u667a\u6167\u8ced\u684c\u7684\u5be6\u52d9\u61c9\u7528\u8207\u6210\u6548", "title_en": "Practical Application and Effectiveness of Smart Gaming Tables", "title_hi": "\u0938\u094d\u092e\u093e\u0930\u094d\u091f \u0917\u0947\u092e\u093f\u0902\u0917 \u091f\u0947\u092c\u0932 \u0915\u093e \u0935\u094d\u092f\u093e\u0935\u0939\u093e\u0930\u093f\u0915 \u0905\u0928\u0941\u092a\u094d\u0930\u092f\u094b\u0917 \u0914\u0930 \u092a\u094d\u0930\u092d\u093e\u0935\u0936\u0940\u0932\u0924\u093e", "title_th": "\u0e01\u0e32\u0e23\u0e1b\u0e23\u0e30\u0e22\u0e38\u0e01\u0e15\u0e4c\u0e43\u0e0a\u0e49\u0e41\u0e25\u0e30\u0e1b\u0e23\u0e30\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e1c\u0e25\u0e02\u0e2d\u0e07\u0e42\u0e15\u0e4a\u0e30\u0e40\u0e01\u0e21\u0e2d\u0e31\u0e08\u0e09\u0e23\u0e34\u0e22\u0e30", "urgency": 30.0}, {"impact": 35.0, "link": "https://www.ggrasia.com/nrts-foreign-currency-exchange-kiosk-pledges-conversion-of-multiple-currencies-in-one-transaction?utm_source=rss\u0026utm_medium=rss\u0026utm_campaign=nrts-foreign-currency-exchange-kiosk-pledges-conversion-of-multiple-currencies-in-one-transaction", "sentiment": "\u4e2d\u7acb", "title": "NRT\u63a8\u51fa\u5916\u5e63\u514c\u63db\u4e00\u9ad4\u6a5f\uff0c\u7c21\u5316\u591a\u5e63\u7a2e\u4ea4\u6613\u6d41\u7a0b", "title_en": "NRT Launches All-in-One Foreign Currency Exchange Kiosk to Streamline Multi-Currency Transactions", "title_hi": "NRT \u0928\u0947 \u0911\u0932-\u0907\u0928-\u0935\u0928 \u0935\u093f\u0926\u0947\u0936\u0940 \u092e\u0941\u0926\u094d\u0930\u093e \u0935\u093f\u0928\u093f\u092e\u092f \u0915\u093f\u092f\u094b\u0938\u094d\u0915 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e, \u092c\u0939\u0941-\u092e\u0941\u0926\u094d\u0930\u093e \u0932\u0947\u0928\u0926\u0947\u0928 \u092a\u094d\u0930\u0915\u094d\u0930\u093f\u092f\u093e \u0915\u094b \u0938\u0930\u0932 \u092c\u0928\u093e\u092f\u093e", "title_th": "NRT \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27\u0e15\u0e39\u0e49\u0e41\u0e25\u0e01\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e40\u0e07\u0e34\u0e19\u0e15\u0e23\u0e32\u0e15\u0e48\u0e32\u0e07\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28\u0e41\u0e1a\u0e1a\u0e04\u0e23\u0e1a\u0e27\u0e07\u0e08\u0e23 \u0e0a\u0e48\u0e27\u0e22\u0e25\u0e14\u0e04\u0e27\u0e32\u0e21\u0e0b\u0e31\u0e1a\u0e0b\u0e49\u0e2d\u0e19\u0e02\u0e2d\u0e07\u0e18\u0e38\u0e23\u0e01\u0e23\u0e23\u0e21\u0e2b\u0e25\u0e32\u0e22\u0e2a\u0e01\u0e38\u0e25\u0e40\u0e07\u0e34\u0e19", "urgency": 25.0}, {"impact": 45.0, "link": "https://agbrief.com/news/europe/28/05/2026/inside-1xbets-strategy-chris-bird-on-responsible-gambling-and-high-stakes-football-tournaments/", "sentiment": "\u4e2d\u7acb", "title": "1xBet\u6230\u7565\u63ed\u79d8\uff1aChris Bird\u8ad6\u8ff0\u8cac\u4efb\u535a\u5f08\u8207\u8db3\u7403\u8cfd\u4e8b\u71b1\u5ea6", "title_en": "1xBet Strategy Unveiled: Chris Bird Discusses Responsible Gaming and Football Heat", "title_hi": "1xBet \u0930\u0923\u0928\u0940\u0924\u093f \u0915\u093e \u0905\u0928\u093e\u0935\u0930\u0923: \u0915\u094d\u0930\u093f\u0938 \u092c\u0930\u094d\u0921 \u0928\u0947 \u091c\u093f\u092e\u094d\u092e\u0947\u0926\u093e\u0930 \u0917\u0947\u092e\u093f\u0902\u0917 \u0914\u0930 \u092b\u0941\u091f\u092c\u0949\u0932 \u0915\u0947 \u0909\u0924\u094d\u0938\u093e\u0939 \u092a\u0930 \u091a\u0930\u094d\u091a\u093e \u0915\u0940", "title_th": "\u0e40\u0e1b\u0e34\u0e14\u0e01\u0e25\u0e22\u0e38\u0e17\u0e18\u0e4c 1xBet: Chris Bird \u0e1e\u0e39\u0e14\u0e04\u0e38\u0e22\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e23\u0e31\u0e1a\u0e1c\u0e34\u0e14\u0e0a\u0e2d\u0e1a\u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e23\u0e49\u0e2d\u0e19\u0e41\u0e23\u0e07\u0e02\u0e2d\u0e07\u0e1f\u0e38\u0e15\u0e1a\u0e2d\u0e25", "urgency": 35.0}, {"impact": 75.0, "link": "https://agbrief.com/news/world/28/05/2026/continent-8-releases-intelligence8-suite-ai-solutions/", "sentiment": "\u5229\u591a", "title": "Continent 8 \u63a8\u51fa intelligence8 \u4eba\u5de5\u667a\u6167\u5408\u898f\u89e3\u6c7a\u65b9\u6848", "title_en": "Continent 8 Launches intelligence8 AI Compliance Solution", "title_hi": "Continent 8 \u0928\u0947 intelligence8 AI \u0905\u0928\u0941\u092a\u093e\u0932\u0928 \u0938\u092e\u093e\u0927\u093e\u0928 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e", "title_th": "Continent 8 \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27 intelligence8 \u0e42\u0e0b\u0e25\u0e39\u0e0a\u0e31\u0e19 AI \u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e1b\u0e0f\u0e34\u0e1a\u0e31\u0e15\u0e34\u0e15\u0e32\u0e21\u0e01\u0e0e\u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a", "urgency": 50.0}, {"impact": 45.0, "link": "https://www.gamblingnews.com/news/bgaming-wraps-up-may-with-the-release-of-shark-spark-hold-win/", "sentiment": "\u4e2d\u7acb", "title": "BGaming \u767c\u5e03\u65b0\u904a\u6232 Shark \u0026 Spark Hold \u0026 Win", "title_en": "BGaming Releases New Game Shark \u0026 Spark Hold \u0026 Win", "title_hi": "BGaming \u0928\u0947 \u0928\u092f\u093e \u0917\u0947\u092e Shark \u0026 Spark Hold \u0026 Win \u091c\u093e\u0930\u0940 \u0915\u093f\u092f\u093e", "title_th": "BGaming \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27\u0e40\u0e01\u0e21\u0e43\u0e2b\u0e21\u0e48 Shark \u0026 Spark Hold \u0026 Win", "urgency": 30.0}, {"impact": 65.0, "link": "https://www.gamblingnews.com/news/prediction-markets-face-growing-regulatory-backlash/", "sentiment": "\u5229\u7a7a", "title": "\u9810\u6e2c\u5e02\u5834\u9762\u81e8\u65e5\u76ca\u56b4\u91cd\u7684\u76e3\u7ba1\u53cd\u5f48", "title_en": "Prediction Markets Face Increasing Regulatory Backlash", "title_hi": "\u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f \u0915\u094b \u092c\u0922\u093c\u0924\u0940 \u0928\u093f\u092f\u093e\u092e\u0915 \u092a\u094d\u0930\u0924\u093f\u0915\u094d\u0930\u093f\u092f\u093e \u0915\u093e \u0938\u093e\u092e\u0928\u093e \u0915\u0930\u0928\u093e \u092a\u0921\u093c \u0930\u0939\u093e \u0939\u0948", "title_th": "\u0e15\u0e25\u0e32\u0e14\u0e17\u0e33\u0e19\u0e32\u0e22\u0e1c\u0e25\u0e40\u0e1c\u0e0a\u0e34\u0e0d\u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d\u0e15\u0e49\u0e32\u0e19\u0e14\u0e49\u0e32\u0e19\u0e01\u0e0e\u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a\u0e17\u0e35\u0e48\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e02\u0e36\u0e49\u0e19", "urgency": 60.0}, {"impact": 20.0, "link": "https://www.gamblingnews.com/news/gentoo-media-parts-ways-with-cfo-mads-haugegaard-albrechtsen/", "sentiment": "\u4e2d\u7acb", "title": "Gentoo Media \u8ca1\u52d9\u9577 Mads Haugegaard Albrechtsen \u96e2\u8077", "title_en": "Gentoo Media CFO Mads Haugegaard Albrechtsen Resigns", "title_hi": "Gentoo Media \u0915\u0947 CFO \u092e\u0948\u0921\u094d\u0938 \u0939\u094c\u0917\u0947\u0917\u093e\u0930\u094d\u0921 \u0905\u0932\u094d\u092c\u094d\u0930\u0947\u0915\u094d\u091f\u0938\u0947\u0928 \u0928\u0947 \u0907\u0938\u094d\u0924\u0940\u092b\u093e \u0926\u093f\u092f\u093e", "title_th": "Mads Haugegaard Albrechtsen \u0e0b\u0e35\u0e40\u0e2d\u0e1f\u0e42\u0e2d\u0e02\u0e2d\u0e07 Gentoo Media \u0e25\u0e32\u0e2d\u0e2d\u0e01", "urgency": 15.0}, {"impact": 55.0, "link": "https://www.gamblingnews.com/news/citizens-prediction-market-combo-users-have-worse-roi-than-parlay-bettors/", "sentiment": "\u4e2d\u7acb", "title": "\u535a\u5f08\u6578\u64da\u5206\u6790\uff1a\u9810\u6e2c\u5e02\u5834\u7d44\u5408\u6295\u6ce8\u8005 ROI \u8868\u73fe\u905c\u65bc\u9023\u8d0f\u904e\u95dc\u6295\u6ce8\u8005", "title_en": "Gambling Data Analysis: Prediction Market Portfolio Bettors Show Lower ROI Than Parlay Bettors", "title_hi": "\u091c\u0941\u090f \u0915\u0947 \u0906\u0902\u0915\u0921\u093c\u094b\u0902 \u0915\u093e \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0923: \u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f \u092a\u094b\u0930\u094d\u091f\u092b\u094b\u0932\u093f\u092f\u094b \u0938\u091f\u094d\u091f\u0947\u092c\u093e\u091c\u094b\u0902 \u0915\u093e ROI \u092a\u093e\u0930\u094d\u0932\u0947 \u0938\u091f\u094d\u091f\u0947\u092c\u093e\u091c\u094b\u0902 \u0938\u0947 \u0915\u092e", "title_th": "\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19: \u0e19\u0e31\u0e01\u0e1e\u0e19\u0e31\u0e19\u0e41\u0e1a\u0e1a\u0e1e\u0e2d\u0e23\u0e4c\u0e15\u0e42\u0e1f\u0e25\u0e34\u0e42\u0e2d\u0e43\u0e19\u0e15\u0e25\u0e32\u0e14\u0e1e\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e43\u0e2b\u0e49\u0e1c\u0e25\u0e15\u0e2d\u0e1a\u0e41\u0e17\u0e19 (ROI) \u0e15\u0e48\u0e33\u0e01\u0e27\u0e48\u0e32\u0e19\u0e31\u0e01\u0e1e\u0e19\u0e31\u0e19\u0e41\u0e1a\u0e1a\u0e0a\u0e38\u0e14 (Parlay)", "urgency": 40.0}, {"impact": 40.0, "link": "https://www.gamingdose.com/feature/playstation-state-of-play-june-2026/", "sentiment": "\u4e2d\u7acb", "title": "2026\u5e746\u6708 PlayStation State of Play \u91cd\u9ede\u767c\u8868\u56de\u9867", "title_en": "Recap of June 2026 PlayStation State of Play", "title_hi": "\u091c\u0942\u0928 2026 \u092a\u094d\u0932\u0947\u0938\u094d\u091f\u0947\u0936\u0928 \u0938\u094d\u091f\u0947\u091f \u0911\u092b \u092a\u094d\u0932\u0947 \u0915\u093e \u0930\u093f\u0915\u0948\u092a", "title_th": "\u0e2a\u0e23\u0e38\u0e1b\u0e07\u0e32\u0e19 PlayStation State of Play \u0e40\u0e14\u0e37\u0e2d\u0e19\u0e21\u0e34\u0e16\u0e38\u0e19\u0e32\u0e22\u0e19 2026", "urgency": 10.0}, {"impact": 35.0, "link": "https://www.gamingdose.com/news/call-of-duty-%e0%b9%80%e0%b8%a3%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%a1%e0%b8%97%e0%b8%a0%e0%b8%b2%e0%b8%84%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88%e0%b9%81%e0%b8%a5/", "sentiment": "\u4e2d\u7acb", "title": "\u300a\u6c7a\u52dd\u6642\u523b\u300b\u65b0\u4f5c\u5ba3\u50b3\u555f\u52d5\uff0c\u5f15\u767c\u5e02\u5834\u5ee3\u6cdb\u95dc\u6ce8", "title_en": "Marketing Campaign for New \u0027Call of Duty\u0027 Title Begins", "title_hi": "\u0027\u0915\u0949\u0932 \u0911\u092b \u0921\u094d\u092f\u0942\u091f\u0940\u0027 \u0915\u0947 \u0928\u090f \u091f\u093e\u0907\u091f\u0932 \u0915\u093e \u092e\u093e\u0930\u094d\u0915\u0947\u091f\u093f\u0902\u0917 \u0905\u092d\u093f\u092f\u093e\u0928 \u0936\u0941\u0930\u0942", "title_th": "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e15 \u0027Call of Duty\u0027 \u0e20\u0e32\u0e04\u0e43\u0e2b\u0e21\u0e48 \u0e2a\u0e23\u0e49\u0e32\u0e07\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e19\u0e43\u0e08\u0e17\u0e31\u0e48\u0e27\u0e15\u0e25\u0e32\u0e14", "urgency": 25.0}, {"impact": 45.0, "link": "https://www.gamingdose.com/news/%e0%b8%97%e0%b8%b5%e0%b8%a1%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-diablo-iv-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7%e0%b8%96%e0%b8%b6%e0%b8%87%e0%b8%97%e0%b8%b5%e0%b8%9e%e0%b8%b1%e0%b8%92/", "sentiment": "\u5229\u7a7a", "title": "\u300a\u6697\u9ed1\u7834\u58de\u795e IV\u300b\u958b\u767c\u5718\u968a\u900f\u9732\u5c0f\u578b\u5de5\u4f5c\u5ba4\u751f\u5b58\u6311\u6230", "title_en": "\u0027Diablo IV\u0027 Dev Team Reveals Survival Challenges for Small Studios", "title_hi": "\u0027\u0921\u093e\u092f\u092c\u094d\u0932\u094b IV\u0027 \u0915\u0940 \u091f\u0940\u092e \u0928\u0947 \u091b\u094b\u091f\u0947 \u0938\u094d\u091f\u0942\u0921\u093f\u092f\u094b \u0915\u0947 \u0932\u093f\u090f \u0905\u0938\u094d\u0924\u093f\u0924\u094d\u0935 \u0915\u0940 \u091a\u0941\u0928\u094c\u0924\u093f\u092f\u094b\u0902 \u0915\u093e \u0916\u0941\u0932\u093e\u0938\u093e \u0915\u093f\u092f\u093e", "title_th": "\u0e17\u0e35\u0e21\u0e1e\u0e31\u0e12\u0e19\u0e32 \u0027Diablo IV\u0027 \u0e40\u0e1c\u0e22\u0e04\u0e27\u0e32\u0e21\u0e17\u0e49\u0e32\u0e17\u0e32\u0e22\u0e43\u0e19\u0e01\u0e32\u0e23\u0e2d\u0e22\u0e39\u0e48\u0e23\u0e2d\u0e14\u0e02\u0e2d\u0e07\u0e2a\u0e15\u0e39\u0e14\u0e34\u0e42\u0e2d\u0e02\u0e19\u0e32\u0e14\u0e40\u0e25\u0e47\u0e01", "urgency": 30.0}, {"impact": 40.0, "link": "https://www.gamingdose.com/news/valve-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b9%80%e0%b8%95%e0%b8%b4%e0%b8%a1%e0%b8%aa%e0%b8%95%e0%b9%8a%e0%b8%ad%e0%b8%81-steam-deck-oled-%e0%b9%81%e0%b8%a5%e0%b9%89%e0%b8%a7/", "sentiment": "\u5229\u7a7a", "title": "Valve \u8abf\u6f32\u591a\u5730 Steam Deck OLED \u552e\u50f9\u4e26\u64f4\u5927\u4f9b\u61c9", "title_en": "Valve Raises Steam Deck OLED Prices and Expands Supply", "title_hi": "Valve \u0928\u0947 Steam Deck OLED \u0915\u0940 \u0915\u0940\u092e\u0924\u0947\u0902 \u092c\u0922\u093c\u093e\u0908\u0902 \u0914\u0930 \u0906\u092a\u0942\u0930\u094d\u0924\u093f \u0915\u093e \u0935\u093f\u0938\u094d\u0924\u093e\u0930 \u0915\u093f\u092f\u093e", "title_th": "Valve \u0e1b\u0e23\u0e31\u0e1a\u0e02\u0e36\u0e49\u0e19\u0e23\u0e32\u0e04\u0e32 Steam Deck OLED \u0e43\u0e19\u0e2b\u0e25\u0e32\u0e22\u0e20\u0e39\u0e21\u0e34\u0e20\u0e32\u0e04\u0e41\u0e25\u0e30\u0e02\u0e22\u0e32\u0e22\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e2a\u0e48\u0e07", "urgency": 35.0}, {"impact": 30.0, "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-final-sentence-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%9a%e0%b8%ad%e0%b8%81%e0%b8%84%e0%b8%99%e0%b8%8b/", "sentiment": "\u4e2d\u7acb", "title": "\u300aFinal Sentence\u300b\u958b\u767c\u8005\u900f\u660e\u5316\u92b7\u552e\u7b56\u7565\uff1a\u63d0\u9192\u73a9\u5bb6\u7b49\u5019\u6298\u6263", "title_en": "\u0027Final Sentence\u0027 Developer\u0027s Transparent Sales Strategy: Advising Players to Wait for Discounts", "title_hi": "\u0027\u092b\u093e\u0907\u0928\u0932 \u0938\u0947\u0902\u091f\u0947\u0902\u0938\u0027 \u0915\u0947 \u0921\u0947\u0935\u0932\u092a\u0930 \u0915\u0940 \u092a\u093e\u0930\u0926\u0930\u094d\u0936\u0940 \u092c\u093f\u0915\u094d\u0930\u0940 \u0930\u0923\u0928\u0940\u0924\u093f: \u0916\u093f\u0932\u093e\u0921\u093c\u093f\u092f\u094b\u0902 \u0915\u094b \u091b\u0942\u091f \u0915\u093e \u0907\u0902\u0924\u091c\u093e\u0930 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0938\u0932\u093e\u0939", "title_th": "\u0e1c\u0e39\u0e49\u0e1e\u0e31\u0e12\u0e19\u0e32 \u0027Final Sentence\u0027 \u0e40\u0e1c\u0e22\u0e01\u0e25\u0e22\u0e38\u0e17\u0e18\u0e4c\u0e01\u0e32\u0e23\u0e02\u0e32\u0e22\u0e41\u0e1a\u0e1a\u0e42\u0e1b\u0e23\u0e48\u0e07\u0e43\u0e2a: \u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e25\u0e48\u0e19\u0e43\u0e2b\u0e49\u0e23\u0e2d\u0e0a\u0e48\u0e27\u0e07\u0e25\u0e14\u0e23\u0e32\u0e04\u0e32", "urgency": 20.0}, {"impact": 50.0, "link": "https://www.gamingdose.com/news/samsung-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%88%e0%b8%ad-4k-qd-oled-%e0%b8%a3%e0%b8%b8%e0%b9%88%e0%b8%99%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-%e0%b8%81%e0%b8%b1/", "sentiment": "\u5229\u591a", "title": "\u4e09\u661f\u63a8\u51fa\u5168\u7403\u9996\u6b3e 360Hz 4K QD-OLED \u96fb\u7af6\u986f\u793a\u5668", "title_en": "Samsung Launches World\u0027s First 360Hz 4K QD-OLED Gaming Monitor", "title_hi": "Samsung \u0928\u0947 \u0926\u0941\u0928\u093f\u092f\u093e \u0915\u093e \u092a\u0939\u0932\u093e 360Hz 4K QD-OLED \u0917\u0947\u092e\u093f\u0902\u0917 \u092e\u0949\u0928\u093f\u091f\u0930 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e", "title_th": "Samsung \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27\u0e08\u0e2d\u0e40\u0e01\u0e21\u0e21\u0e34\u0e48\u0e07 QD-OLED 4K 360Hz \u0e23\u0e38\u0e48\u0e19\u0e41\u0e23\u0e01\u0e02\u0e2d\u0e07\u0e42\u0e25\u0e01", "urgency": 30.0}], "region": "\u5168\u7403", "sentiment": "\u5229\u7a7a"}, {"coords": [-41.3101210722445, 174.9908556949162], "count": 1, "news_full": [{"impact": 70.0, "link": "https://asgam.com/2026/05/28/new-zealands-online-casino-reform/", "sentiment": "\u5229\u591a", "title": "\u7d10\u897f\u862d\u7dda\u4e0a\u535a\u5f08\u6539\u9769\u52d5\u5411", "title_en": "Reform Trends in New Zealand\u0027s Online Gaming", "title_hi": "\u0928\u094d\u092f\u0942\u091c\u0940\u0932\u0948\u0902\u0921 \u092e\u0947\u0902 \u0911\u0928\u0932\u093e\u0907\u0928 \u0917\u0947\u092e\u093f\u0902\u0917 \u092e\u0947\u0902 \u0938\u0941\u0927\u093e\u0930 \u0915\u0947 \u0930\u0941\u091d\u093e\u0928", "title_th": "\u0e41\u0e19\u0e27\u0e42\u0e19\u0e49\u0e21\u0e01\u0e32\u0e23\u0e1b\u0e0f\u0e34\u0e23\u0e39\u0e1b\u0e40\u0e01\u0e21\u0e2d\u0e2d\u0e19\u0e44\u0e25\u0e19\u0e4c\u0e43\u0e19\u0e19\u0e34\u0e27\u0e0b\u0e35\u0e41\u0e25\u0e19\u0e14\u0e4c", "urgency": 60.0}], "region": "\u7d10\u897f\u862d", "sentiment": "\u5229\u591a"}, {"coords": [21.979598044958877, 113.67835448021468], "count": 3, "news_full": [{"impact": 30.0, "link": "https://asgam.com/2026/05/28/macaus-diversification-hurdle/", "sentiment": "\u5229\u7a7a", "title": "\u6fb3\u9580\u7d93\u6fdf\u591a\u5143\u5316\u7684\u767c\u5c55\u963b\u7919", "title_en": "Obstacles to Economic Diversification in Macau", "title_hi": "\u092e\u0915\u093e\u090a \u092e\u0947\u0902 \u0906\u0930\u094d\u0925\u093f\u0915 \u0935\u093f\u0935\u093f\u0927\u0940\u0915\u0930\u0923 \u0915\u0947 \u0930\u093e\u0938\u094d\u0924\u0947 \u092e\u0947\u0902 \u092c\u093e\u0927\u093e\u090f\u0902", "title_th": "\u0e2d\u0e38\u0e1b\u0e2a\u0e23\u0e23\u0e04\u0e15\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e01\u0e23\u0e30\u0e08\u0e32\u0e22\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e25\u0e32\u0e01\u0e2b\u0e25\u0e32\u0e22\u0e17\u0e32\u0e07\u0e40\u0e28\u0e23\u0e29\u0e10\u0e01\u0e34\u0e08\u0e02\u0e2d\u0e07\u0e21\u0e32\u0e40\u0e01\u0e4a\u0e32", "urgency": 30.0}, {"impact": 30.0, "link": "https://agbrief.com/news/macau/28/05/2026/wynn-macau-agm-backs-final-dividend-grants-1-7m-share-awards/", "sentiment": "\u4e2d\u7acb", "title": "\u6c38\u5229\u6fb3\u9580\u80a1\u6771\u5927\u6703\u901a\u904e\u6700\u7d42\u80a1\u606f\uff0c\u4e26\u6279\u51c6170\u842c\u80a1\u80a1\u4efd\u734e\u52f5", "title_en": "Wynn Macau Shareholders Approve Final Dividend and 1.7 Million Share Award Scheme", "title_hi": "Wynn Macau \u0915\u0947 \u0936\u0947\u092f\u0930\u0927\u093e\u0930\u0915\u094b\u0902 \u0928\u0947 \u0905\u0902\u0924\u093f\u092e \u0932\u093e\u092d\u093e\u0902\u0936 \u0914\u0930 1.7 \u092e\u093f\u0932\u093f\u092f\u0928 \u0936\u0947\u092f\u0930 \u0905\u0935\u093e\u0930\u094d\u0921 \u092f\u094b\u091c\u0928\u093e \u0915\u094b \u092e\u0902\u091c\u0942\u0930\u0940 \u0926\u0940", "title_th": "\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e2b\u0e38\u0e49\u0e19 Wynn Macau \u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e40\u0e07\u0e34\u0e19\u0e1b\u0e31\u0e19\u0e1c\u0e25\u0e02\u0e31\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e17\u0e49\u0e32\u0e22\u0e41\u0e25\u0e30\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e2b\u0e38\u0e49\u0e19 1.7 \u0e25\u0e49\u0e32\u0e19\u0e2b\u0e38\u0e49\u0e19", "urgency": 30.0}, {"impact": 30.0, "link": "https://agbrief.com/news/macau/28/05/2026/sjm-and-mgto-launch-second-star-service-formula-series-to-elevate-macaus-hospitality-standards/", "sentiment": "\u5229\u591a", "title": "\u6fb3\u535a\u8207\u65c5\u904a\u5c40\u5408\u4f5c\uff0c\u63a8\u52d5\u300c\u661f\u7d1a\u670d\u52d9\u65b9\u7a0b\u5f0f\u300d\u63d0\u5347\u670d\u52d9\u6c34\u6e96", "title_en": "SJM Partners with MGTO to Launch \u0027Star Service Formula\u0027 to Enhance Service Standards", "title_hi": "SJM \u0928\u0947 \u0938\u0947\u0935\u093e \u092e\u093e\u0928\u0915\u094b\u0902 \u0915\u094b \u092c\u0922\u093c\u093e\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f MGTO \u0915\u0947 \u0938\u093e\u0925 \u0027\u0938\u094d\u091f\u093e\u0930 \u0938\u0930\u094d\u0935\u093f\u0938 \u092b\u0949\u0930\u094d\u092e\u0942\u0932\u093e\u0027 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e", "title_th": "SJM \u0e23\u0e48\u0e27\u0e21\u0e21\u0e37\u0e2d\u0e01\u0e31\u0e1a MGTO \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27 \u0027Star Service Formula\u0027 \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e22\u0e01\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23", "urgency": 30.0}], "region": "\u6fb3\u9580", "sentiment": "\u5229\u7a7a"}, {"coords": [36.06770236878752, 139.29196430131952], "count": 1, "news_full": [{"impact": 55.0, "link": "https://agbrief.com/news/japan/28/05/2026/dynam-japan-profit-falls-35-in-fy2026-final-dividend-maintained/", "sentiment": "\u5229\u7a7a", "title": "Dynam Japan\u5e74\u5ea6\u8ca1\u5831\u5229\u6f64\u4e0b\u6ed135%\uff0c\u4ecd\u7dad\u6301\u672b\u671f\u80a1\u606f\u6c34\u6e96", "title_en": "Dynam Japan Reports 35% Decline in Annual Profits, Maintains Dividend Level", "title_hi": "Dynam Japan \u0928\u0947 \u0935\u093e\u0930\u094d\u0937\u093f\u0915 \u092e\u0941\u0928\u093e\u092b\u0947 \u092e\u0947\u0902 35% \u0915\u0940 \u0917\u093f\u0930\u093e\u0935\u091f \u0926\u0930\u094d\u091c \u0915\u0940, \u0932\u093e\u092d\u093e\u0902\u0936 \u0938\u094d\u0924\u0930 \u0915\u094b \u092c\u0930\u0915\u0930\u093e\u0930 \u0930\u0916\u093e", "title_th": "Dynam Japan \u0e40\u0e1c\u0e22\u0e01\u0e33\u0e44\u0e23\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e1b\u0e35\u0e25\u0e14\u0e25\u0e07 35% \u0e41\u0e15\u0e48\u0e22\u0e31\u0e07\u0e04\u0e07\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e40\u0e07\u0e34\u0e19\u0e1b\u0e31\u0e19\u0e1c\u0e25", "urgency": 45.0}], "region": "\u65e5\u672c", "sentiment": "\u5229\u7a7a"}, {"coords": [-14.736629046391805, -59.55989807865459], "count": 1, "news_full": [{"impact": 25.0, "link": "https://agbrief.com/news/world/28/05/2026/mibr-our-main-goal-is-to-become-regions-no-1-esports-team/", "sentiment": "\u5229\u591a", "title": "MIBR\u96fb\u7af6\u6230\u968a\uff1a\u76ee\u6a19\u6210\u70ba\u5730\u5340\u7b2c\u4e00", "title_en": "MIBR Esports Team Aims to Become Regional Number One", "title_hi": "\u090f\u0938\u094d\u092a\u094b\u0930\u094d\u091f\u094d\u0938 \u091f\u0940\u092e MIBR \u0915\u093e \u0932\u0915\u094d\u0937\u094d\u092f \u0915\u094d\u0937\u0947\u0924\u094d\u0930\u0940\u092f \u0928\u0902\u092c\u0930 \u0935\u0928 \u092c\u0928\u0928\u093e", "title_th": "\u0e17\u0e35\u0e21\u0e2d\u0e35\u0e2a\u0e1b\u0e2d\u0e23\u0e4c\u0e15 MIBR \u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e02\u0e36\u0e49\u0e19\u0e40\u0e1b\u0e47\u0e19\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e20\u0e39\u0e21\u0e34\u0e20\u0e32\u0e04", "urgency": 20.0}], "region": "\u62c9\u4e01\u7f8e\u6d32", "sentiment": "\u5229\u591a"}, {"coords": [50.385003234855205, 15.179353323780381], "count": 4, "news_full": [{"impact": 65.0, "link": "https://agbrief.com/news/europe/28/05/2026/ballys-intralot-and-qualco-group-added-to-euronext-tech-leaders/", "sentiment": "\u5229\u591a", "title": "Bally\u2019s\u3001Intralot\u53caQualco Group\u7372\u9078\u5217\u5165Euronext\u79d1\u6280\u9818\u8896\u6307\u6578", "title_en": "Bally\u2019s, Intralot, and Qualco Group Included in Euronext Tech Leaders Index", "title_hi": "Bally\u2019s, Intralot \u0914\u0930 Qualco Group \u0915\u094b Euronext \u091f\u0947\u0915 \u0932\u0940\u0921\u0930\u094d\u0938 \u0907\u0902\u0921\u0947\u0915\u094d\u0938 \u092e\u0947\u0902 \u0936\u093e\u092e\u093f\u0932 \u0915\u093f\u092f\u093e \u0917\u092f\u093e", "title_th": "Bally\u2019s, Intralot \u0e41\u0e25\u0e30 Qualco Group \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e43\u0e2b\u0e49\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e14\u0e31\u0e0a\u0e19\u0e35 Euronext Tech Leaders", "urgency": 40.0}, {"impact": 70.0, "link": "https://agbrief.com/news/europe/28/05/2026/digitain-secures-denmark-license-and-expands-regulated-european-footprint/", "sentiment": "\u5229\u591a", "title": "Digitain\u7372\u4e39\u9ea5\u724c\u7167\uff0c\u64f4\u5c55\u6b50\u6d32\u5408\u898f\u696d\u52d9\u7248\u5716", "title_en": "Digitain Obtains Danish License, Expanding European Compliance Operations", "title_hi": "Digitain \u0928\u0947 \u0921\u0947\u0928\u092e\u093e\u0930\u094d\u0915 \u0915\u093e \u0932\u093e\u0907\u0938\u0947\u0902\u0938 \u092a\u094d\u0930\u093e\u092a\u094d\u0924 \u0915\u093f\u092f\u093e, \u092f\u0942\u0930\u094b\u092a\u0940\u092f \u0905\u0928\u0941\u092a\u093e\u0932\u0928 \u0938\u0902\u091a\u093e\u0932\u0928 \u0915\u093e \u0935\u093f\u0938\u094d\u0924\u093e\u0930 \u0915\u093f\u092f\u093e", "title_th": "Digitain \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e19\u0e40\u0e14\u0e19\u0e21\u0e32\u0e23\u0e4c\u0e01 \u0e02\u0e22\u0e32\u0e22\u0e18\u0e38\u0e23\u0e01\u0e34\u0e08\u0e17\u0e35\u0e48\u0e1b\u0e0f\u0e34\u0e1a\u0e31\u0e15\u0e34\u0e15\u0e32\u0e21\u0e01\u0e0e\u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a\u0e43\u0e19\u0e22\u0e38\u0e42\u0e23\u0e1b", "urgency": 50.0}, {"impact": 50.0, "link": "https://www.gamblinginsider.com/in-depth/162991/minister-of-justice-nigel-feetham-gibraltar-gambling-history", "sentiment": "\u4e2d\u7acb", "title": "\u76f4\u5e03\u7f85\u9640\u53f8\u6cd5\u90e8\u9577 Nigel Feetham \u5256\u6790\u7576\u5730\u535a\u5f08\u7522\u696d\u767c\u5c55\u8da8\u52e2", "title_en": "Gibraltar Minister for Justice Nigel Feetham Analyzes Local Gambling Industry Trends", "title_hi": "\u091c\u093f\u092c\u094d\u0930\u093e\u0932\u094d\u091f\u0930 \u0915\u0947 \u0928\u094d\u092f\u093e\u092f \u092e\u0902\u0924\u094d\u0930\u0940 \u0928\u093e\u0907\u091c\u0947\u0932 \u092b\u0940\u0925\u092e \u0928\u0947 \u0938\u094d\u0925\u093e\u0928\u0940\u092f \u091c\u0941\u0906 \u0909\u0926\u094d\u092f\u094b\u0917 \u0915\u0947 \u0930\u0941\u091d\u093e\u0928\u094b\u0902 \u0915\u093e \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0923 \u0915\u093f\u092f\u093e", "title_th": "Nigel Feetham \u0e23\u0e31\u0e10\u0e21\u0e19\u0e15\u0e23\u0e35\u0e27\u0e48\u0e32\u0e01\u0e32\u0e23\u0e01\u0e23\u0e30\u0e17\u0e23\u0e27\u0e07\u0e22\u0e38\u0e15\u0e34\u0e18\u0e23\u0e23\u0e21\u0e22\u0e34\u0e1a\u0e23\u0e2d\u0e25\u0e15\u0e32\u0e23\u0e4c \u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e41\u0e19\u0e27\u0e42\u0e19\u0e49\u0e21\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19\u0e43\u0e19\u0e17\u0e49\u0e2d\u0e07\u0e16\u0e34\u0e48\u0e19", "urgency": 30.0}, {"impact": 65.0, "link": "https://agbrief.com/news/europe/28/05/2026/softswiss-showcases-expanded-igaming-portfolio-at-next-valletta-2026/", "sentiment": "\u5229\u591a", "title": "SOFTSWISS\u65bcNEXT Valletta 2026\u5c55\u73fe\u64f4\u5c55\u5f8c\u4e4biGaming\u7522\u54c1\u7d44\u5408", "title_en": "SOFTSWISS Displays Expanded iGaming Portfolio at NEXT Valletta 2026", "title_hi": "SOFTSWISS \u0928\u0947 NEXT \u0935\u0948\u0932\u0947\u091f\u094d\u091f\u093e 2026 \u092e\u0947\u0902 \u0905\u092a\u0928\u093e \u0935\u093f\u0938\u094d\u0924\u093e\u0930\u093f\u0924 iGaming \u092a\u094b\u0930\u094d\u091f\u092b\u094b\u0932\u093f\u092f\u094b \u092a\u094d\u0930\u0926\u0930\u094d\u0936\u093f\u0924 \u0915\u093f\u092f\u093e", "title_th": "SOFTSWISS \u0e08\u0e31\u0e14\u0e41\u0e2a\u0e14\u0e07\u0e1e\u0e2d\u0e23\u0e4c\u0e15\u0e42\u0e1f\u0e25\u0e34\u0e42\u0e2d iGaming \u0e17\u0e35\u0e48\u0e02\u0e22\u0e32\u0e22\u0e15\u0e31\u0e27\u0e43\u0e19\u0e07\u0e32\u0e19 NEXT Valletta 2026", "urgency": 40.0}], "region": "\u6b50\u6d32", "sentiment": "\u5229\u591a"}];
+        const mapMarkersData = [{"coords": [25.601209668485385, 55.461365389939864], "count": 1, "news_full": [{"impact": 80.0, "link": "https://asgam.com/2026/05/29/igt-cammegh-granted-uae-vendor-licenses/", "sentiment": "\u5229\u591a", "title": "IGT \u8207 Cammegh \u7372\u963f\u806f\u914b\u4f9b\u61c9\u5546\u724c\u7167", "title_en": "IGT and Cammegh Obtain UAE Supplier Licenses", "title_hi": "IGT \u0914\u0930 Cammegh \u0915\u094b \u0938\u0902\u092f\u0941\u0915\u094d\u0924 \u0905\u0930\u092c \u0905\u092e\u0940\u0930\u093e\u0924 \u092e\u0947\u0902 \u0906\u092a\u0942\u0930\u094d\u0924\u093f\u0915\u0930\u094d\u0924\u093e \u0932\u093e\u0907\u0938\u0947\u0902\u0938 \u092a\u094d\u0930\u093e\u092a\u094d\u0924 \u0939\u0941\u090f", "title_th": "IGT \u0e41\u0e25\u0e30 Cammegh \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e08\u0e33\u0e2b\u0e19\u0e48\u0e32\u0e22\u0e43\u0e19\u0e2a\u0e2b\u0e23\u0e31\u0e10\u0e2d\u0e32\u0e2b\u0e23\u0e31\u0e1a\u0e40\u0e2d\u0e21\u0e34\u0e40\u0e23\u0e15\u0e2a\u0e4c", "urgency": 60.0}], "region": "\u963f\u806f\u914b", "sentiment": "\u5229\u591a"}, {"coords": [37.35589504899615, 127.16164155440535], "count": 1, "news_full": [{"impact": 55.0, "link": "https://asgam.com/2026/05/29/jeju-dream-tour-benefitting-from-trend-of-higher-jeju-visitation-equalling-higher-casino-drop/", "sentiment": "\u5229\u591a", "title": "\u6fdf\u5dde\u5cf6\u904a\u5ba2\u56de\u5347\u63a8\u52d5\u8ced\u5834\u535a\u5f08\u984d\u589e\u9577", "title_en": "Jeju Island Tourism Recovery Boosts Casino Gaming Revenue", "title_hi": "\u091c\u0947\u091c\u0942 \u0926\u094d\u0935\u0940\u092a \u092a\u0930 \u092a\u0930\u094d\u092f\u091f\u0928 \u092e\u0947\u0902 \u0938\u0941\u0927\u093e\u0930 \u0938\u0947 \u0915\u0948\u0938\u0940\u0928\u094b \u0917\u0947\u092e\u093f\u0902\u0917 \u0930\u093e\u091c\u0938\u094d\u0935 \u092e\u0947\u0902 \u0935\u0943\u0926\u094d\u0927\u093f", "title_th": "\u0e01\u0e32\u0e23\u0e1f\u0e37\u0e49\u0e19\u0e15\u0e31\u0e27\u0e02\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e17\u0e48\u0e2d\u0e07\u0e40\u0e17\u0e35\u0e48\u0e22\u0e27\u0e43\u0e19\u0e40\u0e01\u0e32\u0e30\u0e40\u0e0a\u0e08\u0e39\u0e0a\u0e48\u0e27\u0e22\u0e01\u0e23\u0e30\u0e15\u0e38\u0e49\u0e19\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e08\u0e32\u0e01\u0e04\u0e32\u0e2a\u0e34\u0e42\u0e19", "urgency": 40.0}], "region": "\u97d3\u570b", "sentiment": "\u5229\u591a"}, {"coords": [14.554818435923302, 120.6689547059878], "count": 2, "news_full": [{"impact": 65.0, "link": "https://asgam.com/2026/05/29/iec-inks-new-us9-million-construction-contract-for-further-upgrade-works-at-manilas-lavie-resort-casino/", "sentiment": "\u5229\u591a", "title": "IEC \u7c3d\u7f72 900 \u842c\u7f8e\u5143\u5408\u7d04\u5347\u7d1a\u99ac\u5c3c\u62c9 LaVie \u5ea6\u5047\u6751", "title_en": "IEC Signs $9 Million Contract to Upgrade Manila\u0027s LaVie Resort", "title_hi": "IEC \u0928\u0947 \u092e\u0928\u0940\u0932\u093e \u0915\u0947 LaVie \u0930\u093f\u0938\u0949\u0930\u094d\u091f \u0915\u094b \u0905\u092a\u0917\u094d\u0930\u0947\u0921 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f 9 \u092e\u093f\u0932\u093f\u092f\u0928 \u0921\u0949\u0932\u0930 \u0915\u0947 \u0905\u0928\u0941\u092c\u0902\u0927 \u092a\u0930 \u0939\u0938\u094d\u0924\u093e\u0915\u094d\u0937\u0930 \u0915\u093f\u090f", "title_th": "IEC \u0e25\u0e07\u0e19\u0e32\u0e21\u0e2a\u0e31\u0e0d\u0e0d\u0e32 9 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e22\u0e01\u0e23\u0e30\u0e14\u0e31\u0e1a LaVie Resort \u0e43\u0e19\u0e21\u0e30\u0e19\u0e34\u0e25\u0e32", "urgency": 40.0}, {"impact": 50.0, "link": "https://agbrief.com/news/philippines/28/05/2026/international-entertainment-upgrades-manila-casino-hotel-with-9-2m-construction-deal/", "sentiment": "\u5229\u591a", "title": "International Entertainment\u65a5\u8cc7920\u842c\u7f8e\u5143\u5347\u7d1a\u99ac\u5c3c\u62c9\u8ced\u5834\u98ef\u5e97", "title_en": "International Entertainment Invests $9.2 Million to Upgrade Manila Casino Hotel", "title_hi": "International Entertainment \u0928\u0947 \u092e\u0928\u0940\u0932\u093e \u0915\u0948\u0938\u0940\u0928\u094b \u0939\u094b\u091f\u0932 \u0915\u094b \u0905\u092a\u0917\u094d\u0930\u0947\u0921 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f $9.2 \u092e\u093f\u0932\u093f\u092f\u0928 \u0915\u093e \u0928\u093f\u0935\u0947\u0936 \u0915\u093f\u092f\u093e", "title_th": "International Entertainment \u0e17\u0e38\u0e48\u0e21\u0e40\u0e07\u0e34\u0e19 9.2 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c \u0e22\u0e01\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e42\u0e23\u0e07\u0e41\u0e23\u0e21\u0e04\u0e32\u0e2a\u0e34\u0e42\u0e19\u0e43\u0e19\u0e21\u0e30\u0e19\u0e34\u0e25\u0e32", "urgency": 40.0}], "region": "\u83f2\u5f8b\u8cd3", "sentiment": "\u5229\u591a"}, {"coords": [37.167871280976996, -95.7164005740215], "count": 11, "news_full": [{"impact": 85.0, "link": "https://asgam.com/2026/05/29/fertitta-entertainment-to-acquire-us-casino-giant-caesars-via-us17-6-billion-deal/", "sentiment": "\u4e2d\u7acb", "title": "Fertitta Entertainment \u4ee5 176 \u5104\u7f8e\u5143\u6536\u8cfc\u51f1\u6492\u5a1b\u6a02", "title_en": "Fertitta Entertainment Acquires Caesars Entertainment for $17.6 Billion", "title_hi": "Fertitta Entertainment \u0928\u0947 17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0921\u0949\u0932\u0930 \u092e\u0947\u0902 Caesars Entertainment \u0915\u093e \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u093f\u092f\u093e", "title_th": "Fertitta Entertainment \u0e40\u0e02\u0e49\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23 Caesars Entertainment \u0e14\u0e49\u0e27\u0e22\u0e21\u0e39\u0e25\u0e04\u0e48\u0e32 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 50.0}, {"impact": 90.0, "link": "https://agbrief.com/news/usa/29/05/2026/caesars-agrees-to-17-6b-all-cash-takeover-by-fertitta-entertainment/", "sentiment": "\u5229\u7a7a", "title": "Fertitta Entertainment\u65a5\u8cc7176\u5104\u7f8e\u5143\u5168\u73fe\u91d1\u6536\u8cfc\u51f1\u6492\u5a1b\u6a02", "title_en": "Fertitta Entertainment Acquires Caesars Entertainment in $17.6 Billion All-Cash Deal", "title_hi": "Fertitta Entertainment \u0928\u0947 $17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0915\u0947 \u0911\u0932-\u0915\u0948\u0936 \u0938\u094c\u0926\u0947 \u092e\u0947\u0902 Caesars Entertainment \u0915\u093e \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u093f\u092f\u093e", "title_th": "Fertitta Entertainment \u0e17\u0e38\u0e48\u0e21\u0e40\u0e07\u0e34\u0e19 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c \u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23 Caesars Entertainment \u0e14\u0e49\u0e27\u0e22\u0e40\u0e07\u0e34\u0e19\u0e2a\u0e14\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14", "urgency": 75.0}, {"impact": 15.0, "link": "https://www.gamblingnews.com/news/california-man-wins-15m-from-the-lottery/", "sentiment": "\u4e2d\u7acb", "title": "\u52a0\u5dde\u6c11\u773e\u8d0f\u5f97 1,500 \u842c\u7f8e\u5143\u5f69\u5238\u982d\u734e", "title_en": "California Resident Wins $15 Million Lottery Jackpot", "title_hi": "\u0915\u0948\u0932\u093f\u092b\u093c\u094b\u0930\u094d\u0928\u093f\u092f\u093e \u0915\u0947 \u0928\u093f\u0935\u093e\u0938\u0940 \u0928\u0947 $15 \u092e\u093f\u0932\u093f\u092f\u0928 \u0915\u093e \u0932\u0949\u091f\u0930\u0940 \u091c\u0948\u0915\u092a\u0949\u091f \u091c\u0940\u0924\u093e", "title_th": "\u0e0a\u0e32\u0e27\u0e41\u0e04\u0e25\u0e34\u0e1f\u0e2d\u0e23\u0e4c\u0e40\u0e19\u0e35\u0e22\u0e16\u0e39\u0e01\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e25\u0e2d\u0e15\u0e40\u0e15\u0e2d\u0e23\u0e35\u0e48\u0e41\u0e08\u0e47\u0e04\u0e1e\u0e2d\u0e15 15 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 5.0}, {"impact": 35.0, "link": "https://www.gamblingnews.com/news/massive-cockfighting-ring-busted-in-southern-nevada/", "sentiment": "\u5229\u7a7a", "title": "\u5167\u83ef\u9054\u5dde\u5357\u90e8\u7834\u7372\u5927\u898f\u6a21\u9b25\u96de\u975e\u6cd5\u8ced\u535a\u96c6\u5718", "title_en": "Southern Nevada Cracks Down on Illegal Cockfighting Ring", "title_hi": "\u0926\u0915\u094d\u0937\u093f\u0923\u0940 \u0928\u0947\u0935\u093e\u0926\u093e \u092e\u0947\u0902 \u0905\u0935\u0948\u0927 \u092e\u0941\u0930\u094d\u0917\u093e \u0932\u0921\u093c\u093e\u0908 \u091c\u0941\u0906 \u0917\u093f\u0930\u094b\u0939 \u0915\u093e \u092d\u0902\u0921\u093e\u092b\u094b\u0921\u093c", "title_th": "\u0e40\u0e19\u0e27\u0e32\u0e14\u0e32\u0e15\u0e2d\u0e19\u0e43\u0e15\u0e49\u0e17\u0e25\u0e32\u0e22\u0e40\u0e04\u0e23\u0e37\u0e2d\u0e02\u0e48\u0e32\u0e22\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19\u0e44\u0e01\u0e48\u0e0a\u0e19\u0e1c\u0e34\u0e14\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e23\u0e32\u0e22\u0e43\u0e2b\u0e0d\u0e48", "urgency": 20.0}, {"impact": 10.0, "link": "https://www.gamblingnews.com/news/ncaa-leaves-sorsby-out-of-the-game-despite-the-players-legal-actions/", "sentiment": "\u4e2d\u7acb", "title": "NCAA \u5728\u6cd5\u5f8b\u884c\u52d5\u5f8c\u4ecd\u62d2\u7d55\u9078\u624b Sorsby \u53c3\u8cfd\u8cc7\u683c", "title_en": "NCAA Denies Athlete Sorsby Eligibility Despite Legal Action", "title_hi": "NCAA \u0928\u0947 \u0915\u093e\u0928\u0942\u0928\u0940 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0947 \u092c\u093e\u0935\u091c\u0942\u0926 \u090f\u0925\u0932\u0940\u091f Sorsby \u0915\u0940 \u092a\u093e\u0924\u094d\u0930\u0924\u093e \u0915\u094b \u0928\u0915\u093e\u0930\u093e", "title_th": "NCAA \u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c\u0e01\u0e32\u0e23\u0e41\u0e02\u0e48\u0e07\u0e02\u0e31\u0e19\u0e02\u0e2d\u0e07\u0e19\u0e31\u0e01\u0e01\u0e35\u0e2c\u0e32 Sorsby \u0e41\u0e21\u0e49\u0e08\u0e30\u0e21\u0e35\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e17\u0e32\u0e07\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22", "urgency": 5.0}, {"impact": 0.0, "link": "https://www.gamblingnews.com/news/singer-ray-j-recovering-after-being-hospitalized-following-las-vegas-mma-fight/", "sentiment": "\u4e2d\u7acb", "title": "\u6b4c\u624b Ray J \u56e0\u62c9\u65af\u7dad\u52a0\u65af MMA \u62f3\u8cfd\u53d7\u50b7\u4f4f\u9662", "title_en": "Singer Ray J Hospitalized After Las Vegas MMA Fight", "title_hi": "\u0932\u093e\u0938 \u0935\u0947\u0917\u093e\u0938 MMA \u092b\u093e\u0907\u091f \u0915\u0947 \u092c\u093e\u0926 \u0917\u093e\u092f\u0915 \u0930\u0947 \u091c\u0947 \u0905\u0938\u094d\u092a\u0924\u093e\u0932 \u092e\u0947\u0902 \u092d\u0930\u094d\u0924\u0940", "title_th": "\u0e19\u0e31\u0e01\u0e23\u0e49\u0e2d\u0e07 Ray J \u0e40\u0e02\u0e49\u0e32\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e23\u0e31\u0e01\u0e29\u0e32\u0e43\u0e19\u0e42\u0e23\u0e07\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25\u0e2b\u0e25\u0e31\u0e07\u0e0a\u0e01 MMA \u0e17\u0e35\u0e48\u0e25\u0e32\u0e2a\u0e40\u0e27\u0e01\u0e31\u0e2a", "urgency": 0.0}, {"impact": 95.0, "link": "https://www.gamblingnews.com/news/caesars-agrees-to-be-acquired-by-fertitta-entertainment-in-17-6b-deal/", "sentiment": "\u5229\u591a", "title": "\u51f1\u6492\u5a1b\u6a02 (Caesars) \u540c\u610f\u4ee5 176 \u5104\u7f8e\u5143\u88ab Fertitta Entertainment \u6536\u8cfc", "title_en": "Caesars Entertainment Agrees to $17.6 Billion Acquisition by Fertitta Entertainment", "title_hi": "Caesars Entertainment \u0928\u0947 Fertitta Entertainment \u0926\u094d\u0935\u093e\u0930\u093e $17.6 \u092c\u093f\u0932\u093f\u092f\u0928 \u0915\u0947 \u0905\u0927\u093f\u0917\u094d\u0930\u0939\u0923 \u0915\u0947 \u0932\u093f\u090f \u0938\u0939\u092e\u0924\u093f \u0926\u0940", "title_th": "Caesars Entertainment \u0e15\u0e01\u0e25\u0e07\u0e16\u0e39\u0e01 Fertitta Entertainment \u0e40\u0e02\u0e49\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e01\u0e34\u0e08\u0e01\u0e32\u0e23\u0e21\u0e39\u0e25\u0e04\u0e48\u0e32 1.76 \u0e2b\u0e21\u0e37\u0e48\u0e19\u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 80.0}, {"impact": 30.0, "link": "https://www.gamblingnews.com/news/eight-powerball-players-win-200k-prizes-each-jackpot-reaches-172m/", "sentiment": "\u5229\u591a", "title": "\u516b\u540d\u5a01\u529b\u7403\u73a9\u5bb6\u5404\u4e2d 20 \u842c\u7f8e\u5143\uff0c\u982d\u734e\u7d2f\u7a4d\u81f3 1.72 \u5104\u7f8e\u5143", "title_en": "Eight Powerball Players Win $200k Each, Jackpot Hits $172 Million", "title_hi": "\u0906\u0920 \u092a\u093e\u0935\u0930\u092c\u0949\u0932 \u0916\u093f\u0932\u093e\u0921\u093c\u093f\u092f\u094b\u0902 \u0928\u0947 $200k \u091c\u0940\u0924\u0947, \u091c\u0948\u0915\u092a\u0949\u091f $172 \u092e\u093f\u0932\u093f\u092f\u0928 \u0924\u0915 \u092a\u0939\u0941\u0902\u091a\u093e", "title_th": "\u0e1c\u0e39\u0e49\u0e40\u0e25\u0e48\u0e19 Powerball \u0e41\u0e1b\u0e14\u0e04\u0e19\u0e23\u0e31\u0e1a\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e04\u0e19\u0e25\u0e30 2 \u0e41\u0e2a\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c \u0e41\u0e08\u0e47\u0e04\u0e1e\u0e2d\u0e15\u0e1e\u0e38\u0e48\u0e07\u0e2a\u0e39\u0e48 172 \u0e25\u0e49\u0e32\u0e19\u0e14\u0e2d\u0e25\u0e25\u0e32\u0e23\u0e4c", "urgency": 10.0}, {"impact": 65.0, "link": "https://www.gamblinginsider.com/news/163284/ncaa-denies-brendan-sorsby-reinstatement-gambling-violations", "sentiment": "\u5229\u7a7a", "title": "NCAA \u62d2\u7d55 Brendan Sorsby \u5fa9\u8cfd\u8acb\u6c42\uff0c\u7403\u54e1\u5766\u627f\u535a\u5f08\u6210\u766e\u554f\u984c", "title_en": "NCAA Rejects Brendan Sorsby\u0027s Reinstatement Request as Player Admits Gambling Addiction", "title_hi": "NCAA \u0928\u0947 \u092c\u094d\u0930\u0947\u0902\u0921\u0928 \u0938\u094b\u0930\u094d\u0938\u092c\u0940 \u0915\u0940 \u0935\u093e\u092a\u0938\u0940 \u0915\u0940 \u0905\u092a\u0940\u0932 \u0916\u093e\u0930\u093f\u091c \u0915\u0940, \u0916\u093f\u0932\u093e\u0921\u093c\u0940 \u0928\u0947 \u091c\u0941\u090f \u0915\u0940 \u0932\u0924 \u0938\u094d\u0935\u0940\u0915\u093e\u0930 \u0915\u0940", "title_th": "NCAA \u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e01\u0e25\u0e31\u0e1a\u0e21\u0e32\u0e25\u0e07\u0e40\u0e25\u0e48\u0e19\u0e02\u0e2d\u0e07 Brendan Sorsby \u0e2b\u0e25\u0e31\u0e07\u0e19\u0e31\u0e01\u0e01\u0e35\u0e2c\u0e32\u0e40\u0e1c\u0e22\u0e27\u0e48\u0e32\u0e15\u0e34\u0e14\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19", "urgency": 50.0}, {"impact": 80.0, "link": "https://www.gamblinginsider.com/news/163174/draftkings-self-certifies-sports-event-contracts-dkex-platform", "sentiment": "\u5229\u591a", "title": "DraftKings \u5b8c\u6210 DKeX \u5e73\u53f0\u9ad4\u80b2\u8cfd\u4e8b\u5408\u7d04\u4e4b\u81ea\u6211\u8a8d\u8b49", "title_en": "DraftKings Completes Self-Certification for DKeX Platform Sports Contracts", "title_hi": "DraftKings \u0928\u0947 DKeX \u092a\u094d\u0932\u0947\u091f\u092b\u0949\u0930\u094d\u092e \u092a\u0930 \u0916\u0947\u0932 \u0905\u0928\u0941\u092c\u0902\u0927\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0938\u094d\u0935-\u092a\u094d\u0930\u092e\u093e\u0923\u0928 \u092a\u0942\u0930\u093e \u0915\u093f\u092f\u093e", "title_th": "DraftKings \u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e23\u0e31\u0e1a\u0e23\u0e2d\u0e07\u0e15\u0e19\u0e40\u0e2d\u0e07 (Self-Certification) \u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e0b\u0e37\u0e49\u0e2d\u0e02\u0e32\u0e22\u0e01\u0e35\u0e2c\u0e32\u0e1a\u0e19\u0e41\u0e1e\u0e25\u0e15\u0e1f\u0e2d\u0e23\u0e4c\u0e21 DKeX \u0e2a\u0e33\u0e40\u0e23\u0e47\u0e08", "urgency": 75.0}, {"impact": 90.0, "link": "https://www.gamblinginsider.com/news/163131/trump-endorses-prediction-markets-financial-market-cftc", "sentiment": "\u5229\u591a", "title": "\u5ddd\u666e\u516c\u958b\u8868\u614b\u652f\u6301\u9810\u6e2c\u5e02\u5834\uff0c\u8b9a\u63da CFTC \u4e4b\u76e3\u7ba1\u89d2\u8272", "title_en": "Trump Publicly Supports Prediction Markets, Praises CFTC\u0027s Regulatory Role", "title_hi": "\u091f\u094d\u0930\u092e\u094d\u092a \u0928\u0947 \u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f\u094d\u0938 \u0915\u093e \u0938\u093e\u0930\u094d\u0935\u091c\u0928\u093f\u0915 \u0938\u092e\u0930\u094d\u0925\u0928 \u0915\u093f\u092f\u093e, \u0938\u0940\u090f\u092b\u091f\u0940\u0938\u0940 (CFTC) \u0915\u0940 \u0928\u093f\u092f\u093e\u092e\u0915 \u092d\u0942\u092e\u093f\u0915\u093e \u0915\u0940 \u0938\u0930\u093e\u0939\u0928\u093e \u0915\u0940", "title_th": "\u0e17\u0e23\u0e31\u0e21\u0e1b\u0e4c\u0e1b\u0e23\u0e30\u0e01\u0e32\u0e28\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19\u0e15\u0e25\u0e32\u0e14\u0e1e\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c (Prediction Markets) \u0e22\u0e01\u0e22\u0e48\u0e2d\u0e07\u0e1a\u0e17\u0e1a\u0e32\u0e17\u0e01\u0e32\u0e23\u0e01\u0e33\u0e01\u0e31\u0e1a\u0e14\u0e39\u0e41\u0e25\u0e02\u0e2d\u0e07 CFTC", "urgency": 60.0}], "region": "\u7f8e\u570b", "sentiment": "\u5229\u7a7a"}, {"coords": [19.61409498332546, 9.648010911033063], "count": 17, "news_full": [{"impact": 60.0, "link": "https://asgam.com/2026/05/28/editorial-a-mountain-to-climb/", "sentiment": "\u5229\u7a7a", "title": "\u535a\u5f08\u7522\u696d\u767c\u5c55\u9762\u81e8\u8271\u9245\u6311\u6230", "title_en": "Gaming Industry Faces Formidable Challenges", "title_hi": "\u0917\u0947\u092e\u093f\u0902\u0917 \u0909\u0926\u094d\u092f\u094b\u0917 \u0915\u0920\u093f\u0928 \u091a\u0941\u0928\u094c\u0924\u093f\u092f\u094b\u0902 \u0915\u093e \u0938\u093e\u092e\u0928\u093e \u0915\u0930 \u0930\u0939\u093e \u0939\u0948", "title_th": "\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e40\u0e01\u0e21\u0e40\u0e1c\u0e0a\u0e34\u0e0d\u0e01\u0e31\u0e1a\u0e04\u0e27\u0e32\u0e21\u0e17\u0e49\u0e32\u0e17\u0e32\u0e22\u0e17\u0e35\u0e48\u0e22\u0e32\u0e01\u0e25\u0e33\u0e1a\u0e32\u0e01", "urgency": 40.0}, {"impact": 70.0, "link": "https://asgam.com/2026/05/28/reviving-the-igt-empire/", "sentiment": "\u4e2d\u7acb", "title": "IGT \u5e1d\u570b\u7684\u5fa9\u8208\u5c55\u671b", "title_en": "Outlook for the Revival of the IGT Empire", "title_hi": "IGT \u0938\u093e\u092e\u094d\u0930\u093e\u091c\u094d\u092f \u0915\u0947 \u092a\u0941\u0928\u0930\u0941\u0926\u094d\u0927\u093e\u0930 \u0915\u0947 \u0932\u093f\u090f \u0926\u0943\u0937\u094d\u091f\u093f\u0915\u094b\u0923", "title_th": "\u0e21\u0e38\u0e21\u0e21\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1f\u0e37\u0e49\u0e19\u0e15\u0e31\u0e27\u0e02\u0e2d\u0e07\u0e2d\u0e32\u0e13\u0e32\u0e08\u0e31\u0e01\u0e23 IGT", "urgency": 30.0}, {"impact": 75.0, "link": "https://asgam.com/2026/05/28/coming-out-swinging/", "sentiment": "\u5229\u7a7a", "title": "\u7522\u696d\u7af6\u722d\u52a0\u5287\uff1a\u5f37\u52e2\u9032\u64ca", "title_en": "Escalating Industry Competition: Aggressive Advances", "title_hi": "\u092c\u0922\u093c\u0924\u0940 \u0909\u0926\u094d\u092f\u094b\u0917 \u092a\u094d\u0930\u0924\u093f\u0938\u094d\u092a\u0930\u094d\u0927\u093e: \u0906\u0915\u094d\u0930\u093e\u092e\u0915 \u0905\u0917\u094d\u0930\u093f\u092e", "title_th": "\u0e01\u0e32\u0e23\u0e41\u0e02\u0e48\u0e07\u0e02\u0e31\u0e19\u0e43\u0e19\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e17\u0e27\u0e35\u0e04\u0e27\u0e32\u0e21\u0e23\u0e38\u0e19\u0e41\u0e23\u0e07\u0e02\u0e36\u0e49\u0e19: \u0e01\u0e32\u0e23\u0e23\u0e38\u0e01\u0e04\u0e37\u0e1a\u0e17\u0e35\u0e48\u0e14\u0e38\u0e14\u0e31\u0e19", "urgency": 50.0}, {"impact": 60.0, "link": "https://asgam.com/2026/05/28/smart-tables-in-practice/", "sentiment": "\u5229\u591a", "title": "\u667a\u6167\u8ced\u684c\u7684\u5be6\u52d9\u61c9\u7528\u8207\u6210\u6548", "title_en": "Practical Application and Effectiveness of Smart Gaming Tables", "title_hi": "\u0938\u094d\u092e\u093e\u0930\u094d\u091f \u0917\u0947\u092e\u093f\u0902\u0917 \u091f\u0947\u092c\u0932 \u0915\u093e \u0935\u094d\u092f\u093e\u0935\u0939\u093e\u0930\u093f\u0915 \u0905\u0928\u0941\u092a\u094d\u0930\u092f\u094b\u0917 \u0914\u0930 \u092a\u094d\u0930\u092d\u093e\u0935\u0936\u0940\u0932\u0924\u093e", "title_th": "\u0e01\u0e32\u0e23\u0e1b\u0e23\u0e30\u0e22\u0e38\u0e01\u0e15\u0e4c\u0e43\u0e0a\u0e49\u0e41\u0e25\u0e30\u0e1b\u0e23\u0e30\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e1c\u0e25\u0e02\u0e2d\u0e07\u0e42\u0e15\u0e4a\u0e30\u0e40\u0e01\u0e21\u0e2d\u0e31\u0e08\u0e09\u0e23\u0e34\u0e22\u0e30", "urgency": 30.0}, {"impact": 35.0, "link": "https://www.ggrasia.com/nrts-foreign-currency-exchange-kiosk-pledges-conversion-of-multiple-currencies-in-one-transaction?utm_source=rss\u0026utm_medium=rss\u0026utm_campaign=nrts-foreign-currency-exchange-kiosk-pledges-conversion-of-multiple-currencies-in-one-transaction", "sentiment": "\u4e2d\u7acb", "title": "NRT\u63a8\u51fa\u5916\u5e63\u514c\u63db\u4e00\u9ad4\u6a5f\uff0c\u7c21\u5316\u591a\u5e63\u7a2e\u4ea4\u6613\u6d41\u7a0b", "title_en": "NRT Launches All-in-One Foreign Currency Exchange Kiosk to Streamline Multi-Currency Transactions", "title_hi": "NRT \u0928\u0947 \u0911\u0932-\u0907\u0928-\u0935\u0928 \u0935\u093f\u0926\u0947\u0936\u0940 \u092e\u0941\u0926\u094d\u0930\u093e \u0935\u093f\u0928\u093f\u092e\u092f \u0915\u093f\u092f\u094b\u0938\u094d\u0915 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e, \u092c\u0939\u0941-\u092e\u0941\u0926\u094d\u0930\u093e \u0932\u0947\u0928\u0926\u0947\u0928 \u092a\u094d\u0930\u0915\u094d\u0930\u093f\u092f\u093e \u0915\u094b \u0938\u0930\u0932 \u092c\u0928\u093e\u092f\u093e", "title_th": "NRT \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27\u0e15\u0e39\u0e49\u0e41\u0e25\u0e01\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e40\u0e07\u0e34\u0e19\u0e15\u0e23\u0e32\u0e15\u0e48\u0e32\u0e07\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28\u0e41\u0e1a\u0e1a\u0e04\u0e23\u0e1a\u0e27\u0e07\u0e08\u0e23 \u0e0a\u0e48\u0e27\u0e22\u0e25\u0e14\u0e04\u0e27\u0e32\u0e21\u0e0b\u0e31\u0e1a\u0e0b\u0e49\u0e2d\u0e19\u0e02\u0e2d\u0e07\u0e18\u0e38\u0e23\u0e01\u0e23\u0e23\u0e21\u0e2b\u0e25\u0e32\u0e22\u0e2a\u0e01\u0e38\u0e25\u0e40\u0e07\u0e34\u0e19", "urgency": 25.0}, {"impact": 45.0, "link": "https://agbrief.com/news/europe/28/05/2026/inside-1xbets-strategy-chris-bird-on-responsible-gambling-and-high-stakes-football-tournaments/", "sentiment": "\u4e2d\u7acb", "title": "1xBet\u6230\u7565\u63ed\u79d8\uff1aChris Bird\u8ad6\u8ff0\u8cac\u4efb\u535a\u5f08\u8207\u8db3\u7403\u8cfd\u4e8b\u71b1\u5ea6", "title_en": "1xBet Strategy Unveiled: Chris Bird Discusses Responsible Gaming and Football Heat", "title_hi": "1xBet \u0930\u0923\u0928\u0940\u0924\u093f \u0915\u093e \u0905\u0928\u093e\u0935\u0930\u0923: \u0915\u094d\u0930\u093f\u0938 \u092c\u0930\u094d\u0921 \u0928\u0947 \u091c\u093f\u092e\u094d\u092e\u0947\u0926\u093e\u0930 \u0917\u0947\u092e\u093f\u0902\u0917 \u0914\u0930 \u092b\u0941\u091f\u092c\u0949\u0932 \u0915\u0947 \u0909\u0924\u094d\u0938\u093e\u0939 \u092a\u0930 \u091a\u0930\u094d\u091a\u093e \u0915\u0940", "title_th": "\u0e40\u0e1b\u0e34\u0e14\u0e01\u0e25\u0e22\u0e38\u0e17\u0e18\u0e4c 1xBet: Chris Bird \u0e1e\u0e39\u0e14\u0e04\u0e38\u0e22\u0e40\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e23\u0e31\u0e1a\u0e1c\u0e34\u0e14\u0e0a\u0e2d\u0e1a\u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e23\u0e49\u0e2d\u0e19\u0e41\u0e23\u0e07\u0e02\u0e2d\u0e07\u0e1f\u0e38\u0e15\u0e1a\u0e2d\u0e25", "urgency": 35.0}, {"impact": 75.0, "link": "https://agbrief.com/news/world/28/05/2026/continent-8-releases-intelligence8-suite-ai-solutions/", "sentiment": "\u5229\u591a", "title": "Continent 8 \u63a8\u51fa intelligence8 \u4eba\u5de5\u667a\u6167\u5408\u898f\u89e3\u6c7a\u65b9\u6848", "title_en": "Continent 8 Launches intelligence8 AI Compliance Solution", "title_hi": "Continent 8 \u0928\u0947 intelligence8 AI \u0905\u0928\u0941\u092a\u093e\u0932\u0928 \u0938\u092e\u093e\u0927\u093e\u0928 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e", "title_th": "Continent 8 \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27 intelligence8 \u0e42\u0e0b\u0e25\u0e39\u0e0a\u0e31\u0e19 AI \u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e1b\u0e0f\u0e34\u0e1a\u0e31\u0e15\u0e34\u0e15\u0e32\u0e21\u0e01\u0e0e\u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a", "urgency": 50.0}, {"impact": 45.0, "link": "https://www.gamblingnews.com/news/bgaming-wraps-up-may-with-the-release-of-shark-spark-hold-win/", "sentiment": "\u4e2d\u7acb", "title": "BGaming \u767c\u5e03\u65b0\u904a\u6232 Shark \u0026 Spark Hold \u0026 Win", "title_en": "BGaming Releases New Game Shark \u0026 Spark Hold \u0026 Win", "title_hi": "BGaming \u0928\u0947 \u0928\u092f\u093e \u0917\u0947\u092e Shark \u0026 Spark Hold \u0026 Win \u091c\u093e\u0930\u0940 \u0915\u093f\u092f\u093e", "title_th": "BGaming \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27\u0e40\u0e01\u0e21\u0e43\u0e2b\u0e21\u0e48 Shark \u0026 Spark Hold \u0026 Win", "urgency": 30.0}, {"impact": 65.0, "link": "https://www.gamblingnews.com/news/prediction-markets-face-growing-regulatory-backlash/", "sentiment": "\u5229\u7a7a", "title": "\u9810\u6e2c\u5e02\u5834\u9762\u81e8\u65e5\u76ca\u56b4\u91cd\u7684\u76e3\u7ba1\u53cd\u5f48", "title_en": "Prediction Markets Face Increasing Regulatory Backlash", "title_hi": "\u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f \u0915\u094b \u092c\u0922\u093c\u0924\u0940 \u0928\u093f\u092f\u093e\u092e\u0915 \u092a\u094d\u0930\u0924\u093f\u0915\u094d\u0930\u093f\u092f\u093e \u0915\u093e \u0938\u093e\u092e\u0928\u093e \u0915\u0930\u0928\u093e \u092a\u0921\u093c \u0930\u0939\u093e \u0939\u0948", "title_th": "\u0e15\u0e25\u0e32\u0e14\u0e17\u0e33\u0e19\u0e32\u0e22\u0e1c\u0e25\u0e40\u0e1c\u0e0a\u0e34\u0e0d\u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d\u0e15\u0e49\u0e32\u0e19\u0e14\u0e49\u0e32\u0e19\u0e01\u0e0e\u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a\u0e17\u0e35\u0e48\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e02\u0e36\u0e49\u0e19", "urgency": 60.0}, {"impact": 20.0, "link": "https://www.gamblingnews.com/news/gentoo-media-parts-ways-with-cfo-mads-haugegaard-albrechtsen/", "sentiment": "\u4e2d\u7acb", "title": "Gentoo Media \u8ca1\u52d9\u9577 Mads Haugegaard Albrechtsen \u96e2\u8077", "title_en": "Gentoo Media CFO Mads Haugegaard Albrechtsen Resigns", "title_hi": "Gentoo Media \u0915\u0947 CFO \u092e\u0948\u0921\u094d\u0938 \u0939\u094c\u0917\u0947\u0917\u093e\u0930\u094d\u0921 \u0905\u0932\u094d\u092c\u094d\u0930\u0947\u0915\u094d\u091f\u0938\u0947\u0928 \u0928\u0947 \u0907\u0938\u094d\u0924\u0940\u092b\u093e \u0926\u093f\u092f\u093e", "title_th": "Mads Haugegaard Albrechtsen \u0e0b\u0e35\u0e40\u0e2d\u0e1f\u0e42\u0e2d\u0e02\u0e2d\u0e07 Gentoo Media \u0e25\u0e32\u0e2d\u0e2d\u0e01", "urgency": 15.0}, {"impact": 55.0, "link": "https://www.gamblingnews.com/news/citizens-prediction-market-combo-users-have-worse-roi-than-parlay-bettors/", "sentiment": "\u4e2d\u7acb", "title": "\u535a\u5f08\u6578\u64da\u5206\u6790\uff1a\u9810\u6e2c\u5e02\u5834\u7d44\u5408\u6295\u6ce8\u8005 ROI \u8868\u73fe\u905c\u65bc\u9023\u8d0f\u904e\u95dc\u6295\u6ce8\u8005", "title_en": "Gambling Data Analysis: Prediction Market Portfolio Bettors Show Lower ROI Than Parlay Bettors", "title_hi": "\u091c\u0941\u090f \u0915\u0947 \u0906\u0902\u0915\u0921\u093c\u094b\u0902 \u0915\u093e \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0923: \u092a\u094d\u0930\u0947\u0921\u093f\u0915\u094d\u0936\u0928 \u092e\u093e\u0930\u094d\u0915\u0947\u091f \u092a\u094b\u0930\u094d\u091f\u092b\u094b\u0932\u093f\u092f\u094b \u0938\u091f\u094d\u091f\u0947\u092c\u093e\u091c\u094b\u0902 \u0915\u093e ROI \u092a\u093e\u0930\u094d\u0932\u0947 \u0938\u091f\u094d\u091f\u0947\u092c\u093e\u091c\u094b\u0902 \u0938\u0947 \u0915\u092e", "title_th": "\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19: \u0e19\u0e31\u0e01\u0e1e\u0e19\u0e31\u0e19\u0e41\u0e1a\u0e1a\u0e1e\u0e2d\u0e23\u0e4c\u0e15\u0e42\u0e1f\u0e25\u0e34\u0e42\u0e2d\u0e43\u0e19\u0e15\u0e25\u0e32\u0e14\u0e1e\u0e22\u0e32\u0e01\u0e23\u0e13\u0e4c\u0e43\u0e2b\u0e49\u0e1c\u0e25\u0e15\u0e2d\u0e1a\u0e41\u0e17\u0e19 (ROI) \u0e15\u0e48\u0e33\u0e01\u0e27\u0e48\u0e32\u0e19\u0e31\u0e01\u0e1e\u0e19\u0e31\u0e19\u0e41\u0e1a\u0e1a\u0e0a\u0e38\u0e14 (Parlay)", "urgency": 40.0}, {"impact": 40.0, "link": "https://www.gamingdose.com/feature/playstation-state-of-play-june-2026/", "sentiment": "\u4e2d\u7acb", "title": "2026\u5e746\u6708 PlayStation State of Play \u91cd\u9ede\u767c\u8868\u56de\u9867", "title_en": "Recap of June 2026 PlayStation State of Play", "title_hi": "\u091c\u0942\u0928 2026 \u092a\u094d\u0932\u0947\u0938\u094d\u091f\u0947\u0936\u0928 \u0938\u094d\u091f\u0947\u091f \u0911\u092b \u092a\u094d\u0932\u0947 \u0915\u093e \u0930\u093f\u0915\u0948\u092a", "title_th": "\u0e2a\u0e23\u0e38\u0e1b\u0e07\u0e32\u0e19 PlayStation State of Play \u0e40\u0e14\u0e37\u0e2d\u0e19\u0e21\u0e34\u0e16\u0e38\u0e19\u0e32\u0e22\u0e19 2026", "urgency": 10.0}, {"impact": 35.0, "link": "https://www.gamingdose.com/news/call-of-duty-%e0%b9%80%e0%b8%a3%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%a1%e0%b8%97%e0%b8%a0%e0%b8%b2%e0%b8%84%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88%e0%b9%81%e0%b8%a5/", "sentiment": "\u4e2d\u7acb", "title": "\u300a\u6c7a\u52dd\u6642\u523b\u300b\u65b0\u4f5c\u5ba3\u50b3\u555f\u52d5\uff0c\u5f15\u767c\u5e02\u5834\u5ee3\u6cdb\u95dc\u6ce8", "title_en": "Marketing Campaign for New \u0027Call of Duty\u0027 Title Begins", "title_hi": "\u0027\u0915\u0949\u0932 \u0911\u092b \u0921\u094d\u092f\u0942\u091f\u0940\u0027 \u0915\u0947 \u0928\u090f \u091f\u093e\u0907\u091f\u0932 \u0915\u093e \u092e\u093e\u0930\u094d\u0915\u0947\u091f\u093f\u0902\u0917 \u0905\u092d\u093f\u092f\u093e\u0928 \u0936\u0941\u0930\u0942", "title_th": "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e15 \u0027Call of Duty\u0027 \u0e20\u0e32\u0e04\u0e43\u0e2b\u0e21\u0e48 \u0e2a\u0e23\u0e49\u0e32\u0e07\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e19\u0e43\u0e08\u0e17\u0e31\u0e48\u0e27\u0e15\u0e25\u0e32\u0e14", "urgency": 25.0}, {"impact": 45.0, "link": "https://www.gamingdose.com/news/%e0%b8%97%e0%b8%b5%e0%b8%a1%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-diablo-iv-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7%e0%b8%96%e0%b8%b6%e0%b8%87%e0%b8%97%e0%b8%b5%e0%b8%9e%e0%b8%b1%e0%b8%92/", "sentiment": "\u5229\u7a7a", "title": "\u300a\u6697\u9ed1\u7834\u58de\u795e IV\u300b\u958b\u767c\u5718\u968a\u900f\u9732\u5c0f\u578b\u5de5\u4f5c\u5ba4\u751f\u5b58\u6311\u6230", "title_en": "\u0027Diablo IV\u0027 Dev Team Reveals Survival Challenges for Small Studios", "title_hi": "\u0027\u0921\u093e\u092f\u092c\u094d\u0932\u094b IV\u0027 \u0915\u0940 \u091f\u0940\u092e \u0928\u0947 \u091b\u094b\u091f\u0947 \u0938\u094d\u091f\u0942\u0921\u093f\u092f\u094b \u0915\u0947 \u0932\u093f\u090f \u0905\u0938\u094d\u0924\u093f\u0924\u094d\u0935 \u0915\u0940 \u091a\u0941\u0928\u094c\u0924\u093f\u092f\u094b\u0902 \u0915\u093e \u0916\u0941\u0932\u093e\u0938\u093e \u0915\u093f\u092f\u093e", "title_th": "\u0e17\u0e35\u0e21\u0e1e\u0e31\u0e12\u0e19\u0e32 \u0027Diablo IV\u0027 \u0e40\u0e1c\u0e22\u0e04\u0e27\u0e32\u0e21\u0e17\u0e49\u0e32\u0e17\u0e32\u0e22\u0e43\u0e19\u0e01\u0e32\u0e23\u0e2d\u0e22\u0e39\u0e48\u0e23\u0e2d\u0e14\u0e02\u0e2d\u0e07\u0e2a\u0e15\u0e39\u0e14\u0e34\u0e42\u0e2d\u0e02\u0e19\u0e32\u0e14\u0e40\u0e25\u0e47\u0e01", "urgency": 30.0}, {"impact": 40.0, "link": "https://www.gamingdose.com/news/valve-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b9%80%e0%b8%95%e0%b8%b4%e0%b8%a1%e0%b8%aa%e0%b8%95%e0%b9%8a%e0%b8%ad%e0%b8%81-steam-deck-oled-%e0%b9%81%e0%b8%a5%e0%b9%89%e0%b8%a7/", "sentiment": "\u5229\u7a7a", "title": "Valve \u8abf\u6f32\u591a\u5730 Steam Deck OLED \u552e\u50f9\u4e26\u64f4\u5927\u4f9b\u61c9", "title_en": "Valve Raises Steam Deck OLED Prices and Expands Supply", "title_hi": "Valve \u0928\u0947 Steam Deck OLED \u0915\u0940 \u0915\u0940\u092e\u0924\u0947\u0902 \u092c\u0922\u093c\u093e\u0908\u0902 \u0914\u0930 \u0906\u092a\u0942\u0930\u094d\u0924\u093f \u0915\u093e \u0935\u093f\u0938\u094d\u0924\u093e\u0930 \u0915\u093f\u092f\u093e", "title_th": "Valve \u0e1b\u0e23\u0e31\u0e1a\u0e02\u0e36\u0e49\u0e19\u0e23\u0e32\u0e04\u0e32 Steam Deck OLED \u0e43\u0e19\u0e2b\u0e25\u0e32\u0e22\u0e20\u0e39\u0e21\u0e34\u0e20\u0e32\u0e04\u0e41\u0e25\u0e30\u0e02\u0e22\u0e32\u0e22\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e2a\u0e48\u0e07", "urgency": 35.0}, {"impact": 30.0, "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-final-sentence-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%9a%e0%b8%ad%e0%b8%81%e0%b8%84%e0%b8%99%e0%b8%8b/", "sentiment": "\u4e2d\u7acb", "title": "\u300aFinal Sentence\u300b\u958b\u767c\u8005\u900f\u660e\u5316\u92b7\u552e\u7b56\u7565\uff1a\u63d0\u9192\u73a9\u5bb6\u7b49\u5019\u6298\u6263", "title_en": "\u0027Final Sentence\u0027 Developer\u0027s Transparent Sales Strategy: Advising Players to Wait for Discounts", "title_hi": "\u0027\u092b\u093e\u0907\u0928\u0932 \u0938\u0947\u0902\u091f\u0947\u0902\u0938\u0027 \u0915\u0947 \u0921\u0947\u0935\u0932\u092a\u0930 \u0915\u0940 \u092a\u093e\u0930\u0926\u0930\u094d\u0936\u0940 \u092c\u093f\u0915\u094d\u0930\u0940 \u0930\u0923\u0928\u0940\u0924\u093f: \u0916\u093f\u0932\u093e\u0921\u093c\u093f\u092f\u094b\u0902 \u0915\u094b \u091b\u0942\u091f \u0915\u093e \u0907\u0902\u0924\u091c\u093e\u0930 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0938\u0932\u093e\u0939", "title_th": "\u0e1c\u0e39\u0e49\u0e1e\u0e31\u0e12\u0e19\u0e32 \u0027Final Sentence\u0027 \u0e40\u0e1c\u0e22\u0e01\u0e25\u0e22\u0e38\u0e17\u0e18\u0e4c\u0e01\u0e32\u0e23\u0e02\u0e32\u0e22\u0e41\u0e1a\u0e1a\u0e42\u0e1b\u0e23\u0e48\u0e07\u0e43\u0e2a: \u0e40\u0e15\u0e37\u0e2d\u0e19\u0e1c\u0e39\u0e49\u0e40\u0e25\u0e48\u0e19\u0e43\u0e2b\u0e49\u0e23\u0e2d\u0e0a\u0e48\u0e27\u0e07\u0e25\u0e14\u0e23\u0e32\u0e04\u0e32", "urgency": 20.0}, {"impact": 50.0, "link": "https://www.gamingdose.com/news/samsung-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%88%e0%b8%ad-4k-qd-oled-%e0%b8%a3%e0%b8%b8%e0%b9%88%e0%b8%99%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-%e0%b8%81%e0%b8%b1/", "sentiment": "\u5229\u591a", "title": "\u4e09\u661f\u63a8\u51fa\u5168\u7403\u9996\u6b3e 360Hz 4K QD-OLED \u96fb\u7af6\u986f\u793a\u5668", "title_en": "Samsung Launches World\u0027s First 360Hz 4K QD-OLED Gaming Monitor", "title_hi": "Samsung \u0928\u0947 \u0926\u0941\u0928\u093f\u092f\u093e \u0915\u093e \u092a\u0939\u0932\u093e 360Hz 4K QD-OLED \u0917\u0947\u092e\u093f\u0902\u0917 \u092e\u0949\u0928\u093f\u091f\u0930 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e", "title_th": "Samsung \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27\u0e08\u0e2d\u0e40\u0e01\u0e21\u0e21\u0e34\u0e48\u0e07 QD-OLED 4K 360Hz \u0e23\u0e38\u0e48\u0e19\u0e41\u0e23\u0e01\u0e02\u0e2d\u0e07\u0e42\u0e25\u0e01", "urgency": 30.0}], "region": "\u5168\u7403", "sentiment": "\u5229\u7a7a"}, {"coords": [-40.81515411289198, 174.64236965443664], "count": 1, "news_full": [{"impact": 70.0, "link": "https://asgam.com/2026/05/28/new-zealands-online-casino-reform/", "sentiment": "\u5229\u591a", "title": "\u7d10\u897f\u862d\u7dda\u4e0a\u535a\u5f08\u6539\u9769\u52d5\u5411", "title_en": "Reform Trends in New Zealand\u0027s Online Gaming", "title_hi": "\u0928\u094d\u092f\u0942\u091c\u0940\u0932\u0948\u0902\u0921 \u092e\u0947\u0902 \u0911\u0928\u0932\u093e\u0907\u0928 \u0917\u0947\u092e\u093f\u0902\u0917 \u092e\u0947\u0902 \u0938\u0941\u0927\u093e\u0930 \u0915\u0947 \u0930\u0941\u091d\u093e\u0928", "title_th": "\u0e41\u0e19\u0e27\u0e42\u0e19\u0e49\u0e21\u0e01\u0e32\u0e23\u0e1b\u0e0f\u0e34\u0e23\u0e39\u0e1b\u0e40\u0e01\u0e21\u0e2d\u0e2d\u0e19\u0e44\u0e25\u0e19\u0e4c\u0e43\u0e19\u0e19\u0e34\u0e27\u0e0b\u0e35\u0e41\u0e25\u0e19\u0e14\u0e4c", "urgency": 60.0}], "region": "\u7d10\u897f\u862d", "sentiment": "\u5229\u591a"}, {"coords": [22.2030992898659, 113.71917505626338], "count": 3, "news_full": [{"impact": 30.0, "link": "https://asgam.com/2026/05/28/macaus-diversification-hurdle/", "sentiment": "\u5229\u7a7a", "title": "\u6fb3\u9580\u7d93\u6fdf\u591a\u5143\u5316\u7684\u767c\u5c55\u963b\u7919", "title_en": "Obstacles to Economic Diversification in Macau", "title_hi": "\u092e\u0915\u093e\u090a \u092e\u0947\u0902 \u0906\u0930\u094d\u0925\u093f\u0915 \u0935\u093f\u0935\u093f\u0927\u0940\u0915\u0930\u0923 \u0915\u0947 \u0930\u093e\u0938\u094d\u0924\u0947 \u092e\u0947\u0902 \u092c\u093e\u0927\u093e\u090f\u0902", "title_th": "\u0e2d\u0e38\u0e1b\u0e2a\u0e23\u0e23\u0e04\u0e15\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e01\u0e23\u0e30\u0e08\u0e32\u0e22\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e25\u0e32\u0e01\u0e2b\u0e25\u0e32\u0e22\u0e17\u0e32\u0e07\u0e40\u0e28\u0e23\u0e29\u0e10\u0e01\u0e34\u0e08\u0e02\u0e2d\u0e07\u0e21\u0e32\u0e40\u0e01\u0e4a\u0e32", "urgency": 30.0}, {"impact": 30.0, "link": "https://agbrief.com/news/macau/28/05/2026/wynn-macau-agm-backs-final-dividend-grants-1-7m-share-awards/", "sentiment": "\u4e2d\u7acb", "title": "\u6c38\u5229\u6fb3\u9580\u80a1\u6771\u5927\u6703\u901a\u904e\u6700\u7d42\u80a1\u606f\uff0c\u4e26\u6279\u51c6170\u842c\u80a1\u80a1\u4efd\u734e\u52f5", "title_en": "Wynn Macau Shareholders Approve Final Dividend and 1.7 Million Share Award Scheme", "title_hi": "Wynn Macau \u0915\u0947 \u0936\u0947\u092f\u0930\u0927\u093e\u0930\u0915\u094b\u0902 \u0928\u0947 \u0905\u0902\u0924\u093f\u092e \u0932\u093e\u092d\u093e\u0902\u0936 \u0914\u0930 1.7 \u092e\u093f\u0932\u093f\u092f\u0928 \u0936\u0947\u092f\u0930 \u0905\u0935\u093e\u0930\u094d\u0921 \u092f\u094b\u091c\u0928\u093e \u0915\u094b \u092e\u0902\u091c\u0942\u0930\u0940 \u0926\u0940", "title_th": "\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e2b\u0e38\u0e49\u0e19 Wynn Macau \u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e40\u0e07\u0e34\u0e19\u0e1b\u0e31\u0e19\u0e1c\u0e25\u0e02\u0e31\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e17\u0e49\u0e32\u0e22\u0e41\u0e25\u0e30\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e23\u0e32\u0e07\u0e27\u0e31\u0e25\u0e2b\u0e38\u0e49\u0e19 1.7 \u0e25\u0e49\u0e32\u0e19\u0e2b\u0e38\u0e49\u0e19", "urgency": 30.0}, {"impact": 30.0, "link": "https://agbrief.com/news/macau/28/05/2026/sjm-and-mgto-launch-second-star-service-formula-series-to-elevate-macaus-hospitality-standards/", "sentiment": "\u5229\u591a", "title": "\u6fb3\u535a\u8207\u65c5\u904a\u5c40\u5408\u4f5c\uff0c\u63a8\u52d5\u300c\u661f\u7d1a\u670d\u52d9\u65b9\u7a0b\u5f0f\u300d\u63d0\u5347\u670d\u52d9\u6c34\u6e96", "title_en": "SJM Partners with MGTO to Launch \u0027Star Service Formula\u0027 to Enhance Service Standards", "title_hi": "SJM \u0928\u0947 \u0938\u0947\u0935\u093e \u092e\u093e\u0928\u0915\u094b\u0902 \u0915\u094b \u092c\u0922\u093c\u093e\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f MGTO \u0915\u0947 \u0938\u093e\u0925 \u0027\u0938\u094d\u091f\u093e\u0930 \u0938\u0930\u094d\u0935\u093f\u0938 \u092b\u0949\u0930\u094d\u092e\u0942\u0932\u093e\u0027 \u0932\u0949\u0928\u094d\u091a \u0915\u093f\u092f\u093e", "title_th": "SJM \u0e23\u0e48\u0e27\u0e21\u0e21\u0e37\u0e2d\u0e01\u0e31\u0e1a MGTO \u0e40\u0e1b\u0e34\u0e14\u0e15\u0e31\u0e27 \u0027Star Service Formula\u0027 \u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e22\u0e01\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e21\u0e32\u0e15\u0e23\u0e10\u0e32\u0e19\u0e01\u0e32\u0e23\u0e1a\u0e23\u0e34\u0e01\u0e32\u0e23", "urgency": 30.0}], "region": "\u6fb3\u9580", "sentiment": "\u5229\u7a7a"}, {"coords": [35.86471329653833, 139.15772880870634], "count": 1, "news_full": [{"impact": 55.0, "link": "https://agbrief.com/news/japan/28/05/2026/dynam-japan-profit-falls-35-in-fy2026-final-dividend-maintained/", "sentiment": "\u5229\u7a7a", "title": "Dynam Japan\u5e74\u5ea6\u8ca1\u5831\u5229\u6f64\u4e0b\u6ed135%\uff0c\u4ecd\u7dad\u6301\u672b\u671f\u80a1\u606f\u6c34\u6e96", "title_en": "Dynam Japan Reports 35% Decline in Annual Profits, Maintains Dividend Level", "title_hi": "Dynam Japan \u0928\u0947 \u0935\u093e\u0930\u094d\u0937\u093f\u0915 \u092e\u0941\u0928\u093e\u092b\u0947 \u092e\u0947\u0902 35% \u0915\u0940 \u0917\u093f\u0930\u093e\u0935\u091f \u0926\u0930\u094d\u091c \u0915\u0940, \u0932\u093e\u092d\u093e\u0902\u0936 \u0938\u094d\u0924\u0930 \u0915\u094b \u092c\u0930\u0915\u0930\u093e\u0930 \u0930\u0916\u093e", "title_th": "Dynam Japan \u0e40\u0e1c\u0e22\u0e01\u0e33\u0e44\u0e23\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e1b\u0e35\u0e25\u0e14\u0e25\u0e07 35% \u0e41\u0e15\u0e48\u0e22\u0e31\u0e07\u0e04\u0e07\u0e23\u0e30\u0e14\u0e31\u0e1a\u0e40\u0e07\u0e34\u0e19\u0e1b\u0e31\u0e19\u0e1c\u0e25", "urgency": 45.0}], "region": "\u65e5\u672c", "sentiment": "\u5229\u7a7a"}, {"coords": [-14.630325703398547, -59.677808718199636], "count": 1, "news_full": [{"impact": 25.0, "link": "https://agbrief.com/news/world/28/05/2026/mibr-our-main-goal-is-to-become-regions-no-1-esports-team/", "sentiment": "\u5229\u591a", "title": "MIBR\u96fb\u7af6\u6230\u968a\uff1a\u76ee\u6a19\u6210\u70ba\u5730\u5340\u7b2c\u4e00", "title_en": "MIBR Esports Team Aims to Become Regional Number One", "title_hi": "\u090f\u0938\u094d\u092a\u094b\u0930\u094d\u091f\u094d\u0938 \u091f\u0940\u092e MIBR \u0915\u093e \u0932\u0915\u094d\u0937\u094d\u092f \u0915\u094d\u0937\u0947\u0924\u094d\u0930\u0940\u092f \u0928\u0902\u092c\u0930 \u0935\u0928 \u092c\u0928\u0928\u093e", "title_th": "\u0e17\u0e35\u0e21\u0e2d\u0e35\u0e2a\u0e1b\u0e2d\u0e23\u0e4c\u0e15 MIBR \u0e15\u0e31\u0e49\u0e07\u0e40\u0e1b\u0e49\u0e32\u0e02\u0e36\u0e49\u0e19\u0e40\u0e1b\u0e47\u0e19\u0e2d\u0e31\u0e19\u0e14\u0e31\u0e1a\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e20\u0e39\u0e21\u0e34\u0e20\u0e32\u0e04", "urgency": 20.0}], "region": "\u62c9\u4e01\u7f8e\u6d32", "sentiment": "\u5229\u591a"}, {"coords": [50.43525661887541, 15.0654202142122], "count": 4, "news_full": [{"impact": 65.0, "link": "https://agbrief.com/news/europe/28/05/2026/ballys-intralot-and-qualco-group-added-to-euronext-tech-leaders/", "sentiment": "\u5229\u591a", "title": "Bally\u2019s\u3001Intralot\u53caQualco Group\u7372\u9078\u5217\u5165Euronext\u79d1\u6280\u9818\u8896\u6307\u6578", "title_en": "Bally\u2019s, Intralot, and Qualco Group Included in Euronext Tech Leaders Index", "title_hi": "Bally\u2019s, Intralot \u0914\u0930 Qualco Group \u0915\u094b Euronext \u091f\u0947\u0915 \u0932\u0940\u0921\u0930\u094d\u0938 \u0907\u0902\u0921\u0947\u0915\u094d\u0938 \u092e\u0947\u0902 \u0936\u093e\u092e\u093f\u0932 \u0915\u093f\u092f\u093e \u0917\u092f\u093e", "title_th": "Bally\u2019s, Intralot \u0e41\u0e25\u0e30 Qualco Group \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e43\u0e2b\u0e49\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e14\u0e31\u0e0a\u0e19\u0e35 Euronext Tech Leaders", "urgency": 40.0}, {"impact": 70.0, "link": "https://agbrief.com/news/europe/28/05/2026/digitain-secures-denmark-license-and-expands-regulated-european-footprint/", "sentiment": "\u5229\u591a", "title": "Digitain\u7372\u4e39\u9ea5\u724c\u7167\uff0c\u64f4\u5c55\u6b50\u6d32\u5408\u898f\u696d\u52d9\u7248\u5716", "title_en": "Digitain Obtains Danish License, Expanding European Compliance Operations", "title_hi": "Digitain \u0928\u0947 \u0921\u0947\u0928\u092e\u093e\u0930\u094d\u0915 \u0915\u093e \u0932\u093e\u0907\u0938\u0947\u0902\u0938 \u092a\u094d\u0930\u093e\u092a\u094d\u0924 \u0915\u093f\u092f\u093e, \u092f\u0942\u0930\u094b\u092a\u0940\u092f \u0905\u0928\u0941\u092a\u093e\u0932\u0928 \u0938\u0902\u091a\u093e\u0932\u0928 \u0915\u093e \u0935\u093f\u0938\u094d\u0924\u093e\u0930 \u0915\u093f\u092f\u093e", "title_th": "Digitain \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e43\u0e19\u0e40\u0e14\u0e19\u0e21\u0e32\u0e23\u0e4c\u0e01 \u0e02\u0e22\u0e32\u0e22\u0e18\u0e38\u0e23\u0e01\u0e34\u0e08\u0e17\u0e35\u0e48\u0e1b\u0e0f\u0e34\u0e1a\u0e31\u0e15\u0e34\u0e15\u0e32\u0e21\u0e01\u0e0e\u0e23\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e1a\u0e43\u0e19\u0e22\u0e38\u0e42\u0e23\u0e1b", "urgency": 50.0}, {"impact": 50.0, "link": "https://www.gamblinginsider.com/in-depth/162991/minister-of-justice-nigel-feetham-gibraltar-gambling-history", "sentiment": "\u4e2d\u7acb", "title": "\u76f4\u5e03\u7f85\u9640\u53f8\u6cd5\u90e8\u9577 Nigel Feetham \u5256\u6790\u7576\u5730\u535a\u5f08\u7522\u696d\u767c\u5c55\u8da8\u52e2", "title_en": "Gibraltar Minister for Justice Nigel Feetham Analyzes Local Gambling Industry Trends", "title_hi": "\u091c\u093f\u092c\u094d\u0930\u093e\u0932\u094d\u091f\u0930 \u0915\u0947 \u0928\u094d\u092f\u093e\u092f \u092e\u0902\u0924\u094d\u0930\u0940 \u0928\u093e\u0907\u091c\u0947\u0932 \u092b\u0940\u0925\u092e \u0928\u0947 \u0938\u094d\u0925\u093e\u0928\u0940\u092f \u091c\u0941\u0906 \u0909\u0926\u094d\u092f\u094b\u0917 \u0915\u0947 \u0930\u0941\u091d\u093e\u0928\u094b\u0902 \u0915\u093e \u0935\u093f\u0936\u094d\u0932\u0947\u0937\u0923 \u0915\u093f\u092f\u093e", "title_th": "Nigel Feetham \u0e23\u0e31\u0e10\u0e21\u0e19\u0e15\u0e23\u0e35\u0e27\u0e48\u0e32\u0e01\u0e32\u0e23\u0e01\u0e23\u0e30\u0e17\u0e23\u0e27\u0e07\u0e22\u0e38\u0e15\u0e34\u0e18\u0e23\u0e23\u0e21\u0e22\u0e34\u0e1a\u0e23\u0e2d\u0e25\u0e15\u0e32\u0e23\u0e4c \u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e41\u0e19\u0e27\u0e42\u0e19\u0e49\u0e21\u0e2d\u0e38\u0e15\u0e2a\u0e32\u0e2b\u0e01\u0e23\u0e23\u0e21\u0e01\u0e32\u0e23\u0e1e\u0e19\u0e31\u0e19\u0e43\u0e19\u0e17\u0e49\u0e2d\u0e07\u0e16\u0e34\u0e48\u0e19", "urgency": 30.0}, {"impact": 65.0, "link": "https://agbrief.com/news/europe/28/05/2026/softswiss-showcases-expanded-igaming-portfolio-at-next-valletta-2026/", "sentiment": "\u5229\u591a", "title": "SOFTSWISS\u65bcNEXT Valletta 2026\u5c55\u73fe\u64f4\u5c55\u5f8c\u4e4biGaming\u7522\u54c1\u7d44\u5408", "title_en": "SOFTSWISS Displays Expanded iGaming Portfolio at NEXT Valletta 2026", "title_hi": "SOFTSWISS \u0928\u0947 NEXT \u0935\u0948\u0932\u0947\u091f\u094d\u091f\u093e 2026 \u092e\u0947\u0902 \u0905\u092a\u0928\u093e \u0935\u093f\u0938\u094d\u0924\u093e\u0930\u093f\u0924 iGaming \u092a\u094b\u0930\u094d\u091f\u092b\u094b\u0932\u093f\u092f\u094b \u092a\u094d\u0930\u0926\u0930\u094d\u0936\u093f\u0924 \u0915\u093f\u092f\u093e", "title_th": "SOFTSWISS \u0e08\u0e31\u0e14\u0e41\u0e2a\u0e14\u0e07\u0e1e\u0e2d\u0e23\u0e4c\u0e15\u0e42\u0e1f\u0e25\u0e34\u0e42\u0e2d iGaming \u0e17\u0e35\u0e48\u0e02\u0e22\u0e32\u0e22\u0e15\u0e31\u0e27\u0e43\u0e19\u0e07\u0e32\u0e19 NEXT Valletta 2026", "urgency": 40.0}], "region": "\u6b50\u6d32", "sentiment": "\u5229\u591a"}];
 
         const regionMarkers = {};
 
@@ -5684,148 +5814,204 @@
 
 
 
-            // 初始化並渲染地區 Reels 看板
+            // 初始化並渲染區域情緒明細
 
-            renderRegionReel();
+            renderRegionalSentimentBoard();
 
         }
 
 
 
-        // 渲染地區選單
+        let selectedRegionMarket = '全部';
 
-        function renderRegionReel() {
+        const regionalSentiments = ['利空', '利多', '中立'];
 
-            const listEl = document.getElementById('regionReelList');
+        const regionalMarketKeys = {
+            '東南亞': ['菲律賓', '泰國', '越南', '馬來西亞', '印尼', '柬埔寨', '新加坡', '緬甸', '寮國', '老撾'],
+            '大中華': ['中國', '香港', '澳門', '台灣', '臺灣'],
+            '亞洲': ['日本', '韓國', '印度', '斯里蘭卡', '哈薩克', '烏茲別克', '巴基斯坦', '尼泊爾', '孟加拉'],
+            '歐美': ['美國', '加拿大', '英國', '德國', '法國', '西班牙', '義大利', '葡萄牙', '荷蘭', '波蘭', '巴西', '阿根廷', '墨西哥', '歐洲', '美洲']
+        };
 
-            if (!listEl) return;
+        const regionalMarketLabels = {
+            '全部': { cn: '全部', en: 'All', th: 'ทั้งหมด', hi: 'सभी' },
+            '東南亞': { cn: '東南亞', en: 'SEA', th: 'อาเซียน', hi: 'द.पू. एशिया' },
+            '大中華': { cn: '大中華', en: 'Greater CN', th: 'จีนใหญ่', hi: 'ग्रेटर चीन' },
+            '亞洲': { cn: '亞洲', en: 'Asia', th: 'เอเชีย', hi: 'एशिया' },
+            '歐美': { cn: '歐美', en: 'EU/US', th: 'ยุโรป/สหรัฐฯ', hi: 'यूरोप/अमेरिका' },
+            '全球': { cn: '全球', en: 'Global', th: 'ทั่วโลก', hi: 'वैश्विक' },
+            '其他': { cn: '其他', en: 'Other', th: 'อื่นๆ', hi: 'अन्य' }
+        };
 
-            listEl.innerHTML = '';
+        function getRegionalMarketLabel(market) {
+            const lang = currentLang || 'cn';
+            return (regionalMarketLabels[market] && (regionalMarketLabels[market][lang] || regionalMarketLabels[market].en)) || market;
+        }
 
+        function getRegionalMarket(region) {
+            if (!region) return '其他';
+            if (String(region).includes('全球') || String(region).includes('世界')) return '全球';
+            for (const [market, keys] of Object.entries(regionalMarketKeys)) {
+                if (keys.some(key => String(region).includes(key))) return market;
+            }
+            return '其他';
+        }
 
+        function getRegionalCounts(newsList) {
+            return regionalSentiments.reduce((acc, sentiment) => {
+                acc[sentiment] = newsList.filter(n => (n.sentiment || n['情感'] || '中立') === sentiment).length;
+                return acc;
+            }, {});
+        }
 
-            const activeMarkers = mapMarkersData.filter(m => m.news_full && m.news_full.length > 0);
+        function getRegionalPriority(marker) {
+            const maxScore = Math.max(...(marker.news_full || []).map(n => (parseFloat(n.impact) || 0) + (parseFloat(n.urgency) || 0)), 0);
+            return (marker.news_full?.length || 0) * 1000 + maxScore;
+        }
 
-            if (activeMarkers.length === 0) {
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, ch => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            }[ch]));
+        }
 
-                listEl.innerHTML = '<span class="text-xs opacity-50 font-mono text-center py-8">NO DATA</span>';
+        function findNewsCardByLink(link) {
+            if (!link) return null;
+            return Array.from(document.querySelectorAll('.news-card')).find(card => {
+                const linkEl = card.querySelector('a[href]');
+                return linkEl && linkEl.getAttribute('href') === link;
+            });
+        }
 
-                document.getElementById('topNewsByRegionList').innerHTML = '';
+        function renderRegionalSentimentBoard() {
+            const tabsEl = document.getElementById('regionMarketTabs');
+            const boardEl = document.getElementById('regionalSentimentBoard');
+            if (!tabsEl || !boardEl) return;
 
+            const markers = mapMarkersData
+                .filter(m => m.news_full && m.news_full.length > 0)
+                .map(m => ({ ...m, market: getRegionalMarket(m.region) }))
+                .sort((a, b) => getRegionalPriority(b) - getRegionalPriority(a));
+
+            if (markers.length === 0) {
+                tabsEl.innerHTML = '';
+                boardEl.innerHTML = '<span class="text-xs opacity-50 font-mono text-center py-8">NO DATA</span>';
                 return;
-
             }
 
+            const availableMarkets = ['全部', '東南亞', '大中華', '亞洲', '歐美', '全球', '其他']
+                .filter(market => market === '全部' || markers.some(m => m.market === market));
 
+            if (!availableMarkets.includes(selectedRegionMarket)) selectedRegionMarket = '全部';
 
-            // 預設選中第一個地區
-
-            const hasSelected = activeMarkers.some(m => m.region === selectedRegion);
-
-            if (!selectedRegion || !hasSelected) {
-
-                selectedRegion = activeMarkers[0].region;
-
-            }
-
-
-
-            activeMarkers.forEach(m => {
+            tabsEl.innerHTML = '';
+            availableMarkets.forEach(market => {
+                const count = market === '全部' ? markers.length : markers.filter(m => m.market === market).length;
                 const btn = document.createElement('button');
-                const isSelected = m.region === selectedRegion;
-                const activeClasses = 'bg-blue-50 dark:bg-neon-cyan/10 border-blue-300 dark:border-neon-cyan/35 text-blue-700 dark:text-neon-cyan shadow-sm';
-                const inactiveClasses = 'border-transparent text-mid-contrast hover:bg-slate-100 dark:hover:bg-obsidian-700/50';
-                
-                btn.className = `w-full text-left px-3 py-2 rounded-lg text-[13px] sm:text-[14px] font-bold tracking-wider border transition-all flex justify-between items-center ${isSelected ? activeClasses : inactiveClasses}`;
-                
-                // 計算各情緒數
-                const sents = m.news_full.map(n => n.sentiment || n['情感'] || '中立');
-                const pos = sents.filter(s => s === '利多').length;
-                const neu = sents.filter(s => s === '中立').length;
-                const neg = sents.filter(s => s === '利空').length;
-
-                // 產生微型情緒指示器 HTML (純實心圓點，不標數量數字)
-                let pillHtml = '<div class="flex gap-1 items-center">';
-                if (pos > 0) pillHtml += `<span class="w-2 h-2 rounded-full bg-emerald-500" title="利多"></span>`;
-                if (neu > 0) pillHtml += `<span class="w-2 h-2 rounded-full bg-blue-500 dark:bg-neon-cyan" title="中立"></span>`;
-                if (neg > 0) pillHtml += `<span class="w-2 h-2 rounded-full bg-red-500" title="利空"></span>`;
-                if (pos === 0 && neu === 0 && neg === 0) pillHtml += `<span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-obsidian-600 opacity-40"></span>`;
-                pillHtml += '</div>';
-
-                btn.innerHTML = `
-                    <span class="truncate pr-1 font-bold">${getLocalRegion(m.region)}</span>
-                    <div class="flex items-center gap-2 shrink-0 text-[11px] font-bold">
-                        <div class="mr-1 opacity-90">${pillHtml}</div>
-                        <span class="px-1.5 py-0.5 rounded text-[10px] font-mono ${isSelected ? 'bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900' : 'bg-slate-200 dark:bg-obsidian-800 text-mid-contrast'}">${m.news_full.length}</span>
-                    </div>
-                `;
-                
-                btn.onclick = () => selectRegion(m.region);
-                listEl.appendChild(btn);
+                btn.type = 'button';
+                btn.className = `market-tab-btn ${market === selectedRegionMarket ? 'active' : ''}`;
+                btn.dataset.market = market;
+                btn.innerHTML = `${escapeHtml(getRegionalMarketLabel(market))}<span class="ml-1 opacity-60">${count}</span>`;
+                btn.onclick = () => {
+                    selectedRegionMarket = market;
+                    renderRegionalSentimentBoard();
+                };
+                tabsEl.appendChild(btn);
             });
 
+            const visibleMarkers = selectedRegionMarket === '全部'
+                ? markers
+                : markers.filter(m => m.market === selectedRegionMarket);
 
-
-            // 渲染右側對應的新聞
-
-            updateTopNewsList();
-
+            boardEl.innerHTML = '';
+            visibleMarkers.forEach(marker => {
+                boardEl.appendChild(createRegionalSentimentRow(marker));
+            });
         }
 
+        function createRegionalSentimentRow(marker) {
+            const row = document.createElement('article');
+            row.className = 'regional-sentiment-row';
+            row.dataset.region = marker.region;
+            row.dataset.market = marker.market;
 
+            const newsList = marker.news_full || [];
+            const total = newsList.length || 1;
+            const counts = getRegionalCounts(newsList);
 
-        function selectRegion(region) {
+            const info = document.createElement('div');
+            info.className = 'min-w-0';
+            info.innerHTML = `
+                <div class="regional-region-name" data-region-cn="${escapeHtml(marker.region)}">${escapeHtml(getLocalRegion(marker.region))}</div>
+                <div class="regional-total">${newsList.length} ${currentLang === 'en' ? 'items' : '則'}</div>
+                <div class="regional-count-line">
+                    ${regionalSentiments.map(sentiment => `
+                        <span class="regional-count-dot ${getSentimentClass(sentiment)}" title="${escapeHtml(getLocalSentiment(sentiment))} ${counts[sentiment]}">
+                            <strong>${counts[sentiment]}</strong>
+                        </span>
+                    `).join('')}
+                </div>
+                <div class="regional-mini-bar">
+                    ${regionalSentiments.map(sentiment => {
+                        const width = total ? (counts[sentiment] / total) * 100 : 0;
+                        return `<span class="${getSentimentClass(sentiment)}" style="width:${width.toFixed(2)}%"></span>`;
+                    }).join('')}
+                </div>
+            `;
 
-            selectedRegion = region;
+            const grid = document.createElement('div');
+            grid.className = 'regional-sentiment-grid';
+            regionalSentiments.forEach(sentiment => {
+                grid.appendChild(createRegionalSentimentCell(marker, sentiment));
+            });
 
-            renderRegionReel();
-
+            row.appendChild(info);
+            row.appendChild(grid);
+            return row;
         }
 
+        function getSentimentClass(sentiment) {
+            if (sentiment === '利空') return 'bearish';
+            if (sentiment === '利多') return 'bullish';
+            return 'neutral';
+        }
 
+        function createRegionalSentimentCell(marker, sentiment) {
+            const filtered = (marker.news_full || [])
+                .filter(n => (n.sentiment || n['情感'] || '中立') === sentiment)
+                .sort((a, b) => ((parseFloat(b.impact) || 0) + (parseFloat(b.urgency) || 0)) - ((parseFloat(a.impact) || 0) + (parseFloat(a.urgency) || 0)));
 
-        function switchRegionReel(direction) {
+            const cell = document.createElement('button');
+            cell.type = 'button';
+            const sentClass = getSentimentClass(sentiment);
+            cell.className = `regional-sentiment-cell ${sentClass}${filtered.length ? '' : ' empty'}`;
+            cell.title = `${getLocalSentiment(sentiment)} ${filtered.length}`;
 
-            const activeMarkers = mapMarkersData.filter(m => m.news_full && m.news_full.length > 0);
+            if (!filtered.length) {
+                cell.disabled = true;
+                cell.innerHTML = `
+                    <span class="regional-sentiment-dot ${sentClass}"></span>
+                    <div class="regional-sentiment-title" data-i18n="empty-no-signals">暫無相關情報</div>
+                `;
+                return cell;
+            }
 
-            if (activeMarkers.length <= 1) return;
-
-            
-
-            let idx = activeMarkers.findIndex(m => m.region === selectedRegion);
-
-            if (idx === -1) idx = 0;
-
-            
-
-            // 循環切換選中地區
-
-            let newIdx = (idx + direction + activeMarkers.length) % activeMarkers.length;
-
-            selectedRegion = activeMarkers[newIdx].region;
-
-            
-
-            renderRegionReel();
-
-            
-
-            // 同步將該國家的按鈕滾動到可視區域
-
-            setTimeout(() => {
-
-                const listEl = document.getElementById('regionReelList');
-
-                const selectedBtn = listEl?.querySelector('.bg-blue-50, .dark\\:bg-neon-cyan\\/10');
-
-                if (selectedBtn) {
-
-                    selectedBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-                }
-
-            }, 50);
-
+            const topNews = filtered[0];
+            const link = topNews.link || topNews['連結'] || '#';
+            cell.innerHTML = `
+                <span class="regional-sentiment-dot ${sentClass}"></span>
+                <div class="regional-sentiment-title">${escapeHtml(getLocalTitle(topNews))}</div>
+            `;
+            cell.onclick = () => {
+                const targetCard = findNewsCardByLink(link);
+                if (targetCard) highlightCard(targetCard);
+                else window.open(link, '_blank');
+            };
+            return cell;
         }
 
 
@@ -5844,125 +6030,6 @@
 
             return (sentimentMap[sent] && sentimentMap[sent][currentLang]) || sent;
 
-        }
-
-
-
-        // 渲染右側指定國家的最重要 3 件新聞
-
-                function updateTopNewsList() {
-            const listEl = document.getElementById('topNewsByRegionList');
-            if (!listEl) return;
-            listEl.innerHTML = '';
-
-            const m = mapMarkersData.find(x => x.region === selectedRegion);
-            if (!m || !m.news_full || m.news_full.length === 0) {
-                listEl.innerHTML = '<span class="text-xs opacity-50 font-mono text-center py-8">NO NEWS</span>';
-                return;
-            }
-
-            // 1. 計算該國家各情緒的新聞數
-            const sents = m.news_full.map(n => n.sentiment || n['情感'] || '中立');
-            const posCount = sents.filter(s => s === '利多').length;
-            const neuCount = sents.filter(s => s === '中立').length;
-            const negCount = sents.filter(s => s === '利空').length;
-
-            // 2. 渲染頂部情緒統計膠囊列 (字型放大，不使用等寬 Mono 體)
-            const statsHeader = document.createElement('div');
-            statsHeader.className = 'flex gap-2 mb-2 text-[11px] font-bold tracking-wider justify-start';
-            statsHeader.innerHTML = `
-                <span class="px-2.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-neon-mint flex items-center gap-1">🟢 <span data-i18n="label-bullish">利多</span>: ${posCount}</span>
-                <span class="px-2.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-neon-cyan flex items-center gap-1">🔵 <span data-i18n="label-neutral">中立</span>: ${neuCount}</span>
-                <span class="px-2.5 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-red-600 dark:text-neon-rose flex items-center gap-1">🔴 <span data-i18n="label-bearish">利空</span>: ${negCount}</span>
-            `;
-            listEl.appendChild(statsHeader);
-
-            // 3. 分情緒提取最重要新聞
-            const sentiments = ['利多', '中立', '利空'];
-            sentiments.forEach((sentiment, idx) => {
-                const filtered = m.news_full.filter(n => (n.sentiment || n['情感'] || '中立') === sentiment);
-                
-                const itemEl = document.createElement('div');
-                itemEl.style.animationDelay = (idx * 90) + 'ms';
-                itemEl.classList.add('animate-fade-in-up');
-
-                let badgeClass = 'bg-blue-50/70 dark:bg-blue-500/10 border-blue-200/50 dark:border-blue-500/30 text-blue-600 dark:text-neon-cyan';
-                let dotBg = '#3b82f6';
-                let textShadow = '';
-                let hoverBorderClass = 'hover:border-blue-500/70 dark:hover:border-neon-cyan/60 hover:bg-blue-50/10 dark:hover:bg-neon-cyan/5';
-                
-                if (sentiment === '利多') {
-                    badgeClass = 'bg-emerald-50/70 dark:bg-emerald-500/10 border-emerald-200/50 dark:border-emerald-500/30 text-emerald-600 dark:text-neon-mint';
-                    dotBg = '#10b981';
-                    textShadow = '0 0 10px rgba(0, 255, 136, 0.4)';
-                    hoverBorderClass = 'hover:border-emerald-500/70 dark:hover:border-neon-mint/60 hover:bg-emerald-50/10 dark:hover:bg-neon-mint/5';
-                } else if (sentiment === '利空') {
-                    badgeClass = 'bg-rose-50/70 dark:bg-rose-500/10 border-rose-200/50 dark:border-rose-500/30 text-rose-600 dark:text-neon-rose';
-                    dotBg = '#ff0055';
-                    textShadow = '0 0 10px rgba(255, 0, 85, 0.4)';
-                    hoverBorderClass = 'hover:border-rose-500/70 dark:hover:border-neon-rose/60 hover:bg-rose-50/10 dark:hover:bg-neon-rose/5';
-                }
-
-                if (filtered.length > 0) {
-                    // 依 (impact + urgency) 降序排序
-                    filtered.sort((a, b) => {
-                        const impactB = parseFloat(b.impact) || 0;
-                        const urgencyB = parseFloat(b.urgency) || 0;
-                        const impactA = parseFloat(a.impact) || 0;
-                        const urgencyA = parseFloat(a.urgency) || 0;
-                        return (impactB + urgencyB) - (impactA + urgencyA);
-                    });
-
-                    const n = filtered[0];
-                    const link = n.link || n['連結'] || '#';
-                    const titleText = getLocalTitle(n);
-
-                    // 卡片邊距增加至 p-3，圓角增大為 rounded-xl，套用對應的懸停發光框線
-                    itemEl.className = `p-3 rounded-xl border border-slate-200/80 dark:border-obsidian-700/60 bg-white/70 dark:bg-obsidian-800/40 hover:shadow-md cursor-pointer transition-all duration-300 ease-out flex flex-col gap-2 group hover:translate-x-1 ${hoverBorderClass}`;
-                    
-                    // 情感徽章極簡化為純圓點 w-5 h-5 徽章，標題放大至 text-xs sm:text-sm 並支持雙行 line-clamp-2
-                    itemEl.innerHTML = `
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="flex items-center justify-center w-5 h-5 border rounded-full ${badgeClass}" title="${getLocalSentiment(sentiment)}代表情報">
-                                <span class="w-1.5 h-1.5 rounded-full" style="background-color: ${dotBg}; box-shadow: ${textShadow};"></span>
-                            </span>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-mono text-mid-contrast opacity-40 group-hover:opacity-100 transition-opacity">SCORE: ${(parseFloat(n.impact)+parseFloat(n.urgency)) || 0}</span>
-                                <i class="fa-solid fa-crosshairs text-[10px] text-mid-contrast group-hover:text-blue-600 dark:group-hover:text-neon-cyan opacity-40 group-hover:opacity-100 transition-all"></i>
-                            </div>
-                        </div>
-                        <div class="font-bold text-xs sm:text-sm text-high-contrast group-hover:text-blue-600 dark:group-hover:text-neon-cyan transition-colors leading-relaxed line-clamp-2 overflow-hidden">${titleText}</div>
-                    `;
-
-                    itemEl.onclick = () => {
-                        const cards = Array.from(document.querySelectorAll('.news-card'));
-                        const targetCard = cards.find(card => {
-                            const linkEl = card.querySelector('a[href]');
-                            return linkEl && linkEl.getAttribute('href') === link;
-                        });
-                        if (targetCard) {
-                            highlightCard(targetCard);
-                        } else {
-                            window.open(link, '_blank');
-                        }
-                    };
-                } else {
-                    // 無訊號佔位符，同樣極簡化為純圓點徽章，字體調大
-                    itemEl.className = 'p-3 rounded-xl border border-dashed border-slate-200 dark:border-obsidian-700/50 bg-slate-50/5 dark:bg-obsidian-900/10 flex items-center justify-between opacity-40 hover:opacity-60 transition-opacity duration-300';
-                    itemEl.innerHTML = `
-                        <span class="flex items-center justify-center w-5 h-5 border border-dashed rounded-full ${badgeClass}" title="${getLocalSentiment(sentiment)}">
-                            <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-obsidian-600" style="opacity: 0.4;"></span>
-                        </span>
-                        <span class="text-[11px] font-bold tracking-wider text-mid-contrast" data-i18n="empty-no-signals">暫無相關情報</span>
-                    `;
-                }
-                listEl.appendChild(itemEl);
-            });
-            // 重繪可能需要更新多語系文本
-            document.querySelectorAll('#topNewsByRegionList [data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-                if (i18n[currentLang] && i18n[currentLang][key]) el.innerText = i18n[currentLang][key];
-            });
         }
 
 
@@ -6083,13 +6150,13 @@ const regionMap = {
 
         const i18n = {
 
-            cn: { 'btn-guide-title':'使用指南','guide-title':'JILI 戰略情報站 — 使用指南','guide-close':'我知道了，不再顯示','guide-step1-title':'市場情緒指標釋義','guide-step1-desc':'點擊「市場情緒分佈」標題右側的「 ? 」按鈕，即可開啟懸浮說明視窗，查閱系統對「利多 / 中立 / 利空」情報的分類與判定標準。','guide-step2-title':'互動情報雷達地圖','guide-step2-desc':'地圖上的圓點代表各國情報熱度，點擊即可彈出新聞快訊視窗，直接掌握焦點；按住 Ctrl 鍵可使用滑鼠滾輪進行地圖縮放。','guide-step3-title':'各地區核心情報 Reels 看板','guide-step3-desc':'卡片左側為國家輪播選單（按上下按鈕循環切換），右側會顯示選定國家的本日最核心前三大情報，點擊即可查閱新聞大綱。','guide-step4-title':'進階資料流過濾器','guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。','sentiment-metrics':'情緒解析','top-news-by-region-title':'本日各地區核心情報 (TOP 3)','desc-bullish':'有利擴展與合規鬆綁','desc-neutral':'無明確影響或純資訊','desc-bearish':'監管打擊與合規收緊','dashboard-title':'分析總覽','strategic-hub':'戰略情報站','map-title':'全球雷達','map-ctrl-zoom':'[按住 CTRL 縮放]','empty-no-signals':'無訊號偵測','search-placeholder':'搜尋關鍵字... ( / )','sentiment-title':'市場情緒分佈 (24H)','matrix-title':'戰略重要性與急迫性矩陣','matrix-expand':'點擊放大','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空','filter-region':'區域','filter-sentiment':'情緒','filter-source':'來源','filter-keyword':'關鍵字','score-filter':'得分篩選','impact-min':'影響力 ≥','urgency-min':'急迫性 ≥','card-impact':'影響:','card-urgency':'急迫:','card-link':'新聞連結','card-copy':'複製連結','axis-x':'急迫性','axis-y':'影響力','fab-search':'回到搜尋欄','fab-top':'回到頂部','exec-title':'戰略內參','sort-impact':'影響力','sort-urgency':'急迫性','toggle-view':'切換緊湊/格狀檢視','news-feed-label':'情報快訊','empty-hint':'請調整篩選條件以查看更多新聞','quad-tr':'立即處理','quad-tl':'計劃處理','quad-br':'快速應對','quad-bl':'觀察追蹤','date-history':'歷史紀錄','date-latest':'最新','date-viewing-history':'查看歷史報告','date-prev':'前一天','date-next':'後一天','highlight-locked':'目標鎖定','reset':'重置()' },
+            cn: { 'btn-guide-title':'使用指南','guide-title':'JILI 戰略情報站 — 使用指南','guide-close':'我知道了，不再顯示','guide-step1-title':'市場情緒指標釋義','guide-step1-desc':'點擊「市場情緒分佈」標題右側的「 ? 」按鈕，即可開啟懸浮說明視窗，查閱系統對「利多 / 中立 / 利空」情報的分類與判定標準。','guide-step2-title':'互動情報雷達地圖','guide-step2-desc':'地圖上的圓點代表各國情報熱度，點擊即可彈出新聞快訊視窗，直接掌握焦點；按住 Ctrl 鍵可使用滑鼠滾輪進行地圖縮放。','guide-step3-title':'各地區市場情緒明細','guide-step3-desc':'卡片內可切換市場範圍，逐區顯示利空、利多、中立數量，並列出各情緒最重要新聞。','guide-step4-title':'進階資料流過濾器','guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。','sentiment-metrics':'情緒解析','top-news-by-region-title':'本日各地市場情緒明細','desc-bullish':'有利擴展與合規鬆綁','desc-neutral':'無明確影響或純資訊','desc-bearish':'監管打擊與合規收緊','dashboard-title':'分析總覽','strategic-hub':'戰略情報站','map-title':'全球雷達','map-ctrl-zoom':'[按住 CTRL 縮放]','empty-no-signals':'無訊號偵測','search-placeholder':'搜尋關鍵字... ( / )','sentiment-title':'市場情緒分佈 (24H)','matrix-title':'戰略重要性與急迫性矩陣','matrix-expand':'點擊放大','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空','filter-region':'區域','filter-sentiment':'情緒','filter-source':'來源','filter-keyword':'關鍵字','score-filter':'得分篩選','impact-min':'影響力 ≥','urgency-min':'急迫性 ≥','card-impact':'影響:','card-urgency':'急迫:','card-link':'新聞連結','card-copy':'複製連結','axis-x':'急迫性','axis-y':'影響力','fab-search':'回到搜尋欄','fab-top':'回到頂部','exec-title':'戰略內參','sort-impact':'影響力','sort-urgency':'急迫性','toggle-view':'切換緊湊/格狀檢視','news-feed-label':'情報快訊','empty-hint':'請調整篩選條件以查看更多新聞','quad-tr':'立即處理','quad-tl':'計劃處理','quad-br':'快速應對','quad-bl':'觀察追蹤','date-history':'歷史紀錄','date-latest':'最新','date-viewing-history':'查看歷史報告','date-prev':'前一天','date-next':'後一天','highlight-locked':'目標鎖定','reset':'重置()' },
 
-            en: { 'btn-guide-title':'User Guide','guide-title':'JILI Strategic Hub — User Guide','guide-close':'Got it, do not show again','guide-step1-title':'Market Sentiment Definition','guide-step1-desc':'Click the "?" button next to "Market Sentiment" to open a popover explaining the classification and criteria for Bullish/Neutral/Bearish news.','guide-step2-title':'Interactive Radar Map','guide-step2-desc':'Dots on the map represent regional hot intel. Click to pop up a brief, or hold Ctrl and use your mouse wheel to zoom the map.','guide-step3-title':'Regional Core Intel Reels','guide-step3-desc':"The left column is a region list (switch via arrow buttons). The right column shows today's top 3 core intel for the selected region. Click to read.",'guide-step4-title':'Advanced Intel Filter Console','guide-step4-desc':'Click region, source, or sentiment buttons, or adjust impact/urgency sliders to filter data. Switch grid or compact views at the top right.','sentiment-metrics':'Sentiment Metrics','top-news-by-region-title':"TODAY'S TOP 3 BY REGION",'desc-bullish':'Favorable for expansion & compliance easing','desc-neutral':'No clear impact or purely informational','desc-bearish':'Regulatory crackdowns & tighter compliance','dashboard-title':'Analytics Overview','strategic-hub':'Strategic Intel Hub','map-title':'Global Radar','map-ctrl-zoom':'[HOLD CTRL TO ZOOM]','empty-no-signals':'NO SIGNALS DETECTED','search-placeholder':'Search keywords... ( / )','sentiment-title':'Market Sentiment (24H)','matrix-title':'Impact vs Urgency Matrix','matrix-expand':'Click to expand','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish','filter-region':'Region','filter-sentiment':'Sentiment','filter-source':'Source','filter-keyword':'Keywords','score-filter':'Score Filter','impact-min':'Impact ≥','urgency-min':'Urgency ≥','card-impact':'Impact:','card-urgency':'Urgency:','card-link':'Read More','card-copy':'Copy Link','axis-x':'Urgency','axis-y':'Impact','fab-search':'Back to Search','fab-top':'Back to Top','exec-title':'Strategic Brief','sort-impact':'Impact','sort-urgency':'Urgency','toggle-view':'Toggle Compact/Grid View','news-feed-label':'Intel Feed','empty-hint':'Adjust filters to see more results','quad-tr':'Act Now','quad-tl':'Plan Ahead','quad-br':'Quick Response','quad-bl':'Monitor','date-history':'History','date-latest':'Latest','date-viewing-history':'Viewing Historical Report','date-prev':'Previous','date-next':'Next','highlight-locked':'TARGET LOCKED','reset':'RESET()' },
+            en: { 'btn-guide-title':'User Guide','guide-title':'JILI Strategic Hub — User Guide','guide-close':'Got it, do not show again','guide-step1-title':'Market Sentiment Definition','guide-step1-desc':'Click the "?" button next to "Market Sentiment" to open a popover explaining the classification and criteria for Bullish/Neutral/Bearish news.','guide-step2-title':'Interactive Radar Map','guide-step2-desc':'Dots on the map represent regional hot intel. Click to pop up a brief, or hold Ctrl and use your mouse wheel to zoom the map.','guide-step3-title':'Regional Sentiment Details','guide-step3-desc':"Switch markets inside the card to see each region's Bearish/Bullish/Neutral counts and the most important story for each sentiment.",'guide-step4-title':'Advanced Intel Filter Console','guide-step4-desc':'Click region, source, or sentiment buttons, or adjust impact/urgency sliders to filter data. Switch grid or compact views at the top right.','sentiment-metrics':'Sentiment Metrics','top-news-by-region-title':"REGIONAL SENTIMENT DETAILS",'desc-bullish':'Favorable for expansion & compliance easing','desc-neutral':'No clear impact or purely informational','desc-bearish':'Regulatory crackdowns & tighter compliance','dashboard-title':'Analytics Overview','strategic-hub':'Strategic Intel Hub','map-title':'Global Radar','map-ctrl-zoom':'[HOLD CTRL TO ZOOM]','empty-no-signals':'NO SIGNALS DETECTED','search-placeholder':'Search keywords... ( / )','sentiment-title':'Market Sentiment (24H)','matrix-title':'Impact vs Urgency Matrix','matrix-expand':'Click to expand','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish','filter-region':'Region','filter-sentiment':'Sentiment','filter-source':'Source','filter-keyword':'Keywords','score-filter':'Score Filter','impact-min':'Impact ≥','urgency-min':'Urgency ≥','card-impact':'Impact:','card-urgency':'Urgency:','card-link':'Read More','card-copy':'Copy Link','axis-x':'Urgency','axis-y':'Impact','fab-search':'Back to Search','fab-top':'Back to Top','exec-title':'Strategic Brief','sort-impact':'Impact','sort-urgency':'Urgency','toggle-view':'Toggle Compact/Grid View','news-feed-label':'Intel Feed','empty-hint':'Adjust filters to see more results','quad-tr':'Act Now','quad-tl':'Plan Ahead','quad-br':'Quick Response','quad-bl':'Monitor','date-history':'History','date-latest':'Latest','date-viewing-history':'Viewing Historical Report','date-prev':'Previous','date-next':'Next','highlight-locked':'TARGET LOCKED','reset':'RESET()' },
 
-            th: { 'btn-guide-title':'คู่มือการใช้งาน','guide-title':'ศูนย์ข่าวกรองยุทธศาสตร์ JILI — คู่มือการใช้งาน','guide-close':'ฉันรับทราบแล้ว ไม่ต้องแสดงอีก','guide-step1-title':'1. คำอธิบายความเชื่อมั่นตลาด Popover','guide-step1-desc':'ปุ่มคำถาม ? ข้างชื่อการ์ดความเชื่อมั่นตลาดคือปุ่มอธิบายคำจำกัดความ คลิกเพื่อดูคำจำกัดความของกระทิง/กลาง/หมี','guide-step2-title':'2. แผนที่เรดาร์ข่าวกรองแบบโต้ตอบ','guide-step2-desc':'จุดบนแผนที่แสดงระดับความร้อนของข่าวกรอง คลิกเพื่อแสดงหน้าต่างข่าวกรองสั้นทันที และกดปุ่ม Ctrl ค้างไว้เพื่อซูมแผนที่','guide-step3-title':'3. กระดานข่าวกรองภูมิภาคเด่น Reels','guide-step3-desc':'ด้านซ้ายเป็นเมนูเลื่อนประเทศ (กดปุ่มขึ้นลงเพื่อสลับ) ด้านขวาจะแสดงข่าวกรองหลัก 3 อันดับแรกประจำวันของประเทศที่เลือก','guide-step4-title':'4. คอนโซลตัวกรองข้อมูลขั้นสูง','guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนผลกระทบ/ความเร่งด่วนเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา','sentiment-metrics':'เกณฑ์ความรู้สึก','top-news-by-region-title':'3 อันดับข่าวเด่นตามภูมิภาควันนี้','desc-bullish':'เป็นประโยชน์ต่อการขยายตัวและผ่อนปรน','desc-neutral':'ไม่มีผลกระทบที่ชัดเจนหรือข้อมูลทั่วไป','desc-bearish':'การปราบปรามและการควบคุมที่เข้มงวดขึ้น','dashboard-title':'ภาพรวมการวิเคราะห์','strategic-hub':'ศูนย์ข่าวกรองยุทธศาสตร์','map-title':'เรดาร์ทั่วโลก','map-ctrl-zoom':'[กด CTRL เพื่อซูม]','empty-no-signals':'ไม่พบสัญญาณ','search-placeholder':'ค้นหาคำสำคัญ... ( / )','sentiment-title':'ความเชื่อมั่นตลาด (24H)','matrix-title':'เมทริกซ์ผลกระทบและความเร่งด่วน','matrix-expand':'คลิกเพื่อขยาย','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี','filter-region':'ภูมิภาค','filter-sentiment':'ความรู้สึก','filter-source':'แหล่งข่าว','filter-keyword':'คำสำคัญ','score-filter':'กรองคะแนน','impact-min':'ผลกระทบ ≥','urgency-min':'ความเร่งด่วน ≥','card-impact':'ผลกระทบ:','card-urgency':'ความเร่งด่วน:','card-link':'อ่านข่าว','card-copy':'คัดลอกลิงก์','axis-x':'ความเร่งด่วน','axis-y':'ผลกระทบ','fab-search':'กลับไปค้นหา','fab-top':'กลับขึ้นด้านบน','exec-title':'สรุปกลยุทธ์','sort-impact':'ผลกระทบ','sort-urgency':'ความเร่งด่วน','toggle-view':'สลับมุมมอง','news-feed-label':'ฟีดข่าวกรอง','empty-hint':'ปรับตัวกรองเพื่อดูข้อมูลเพิ่มเติม','quad-tr':'ดำเนินการทันที','quad-tl':'วางแผนล่วงหน้า','quad-br':'ตอบสนองเร็ว','quad-bl':'ติดตาม','date-history':'ประวัติ','date-latest':'ล่าสุด','date-viewing-history':'กำลังดูรายงานเก่า','date-prev':'ก่อนหน้า','date-next':'ถัดไป','highlight-locked':'ล็อคเป้าหมาย','reset':'รีเซ็ต()' },
+            th: { 'btn-guide-title':'คู่มือการใช้งาน','guide-title':'ศูนย์ข่าวกรองยุทธศาสตร์ JILI — คู่มือการใช้งาน','guide-close':'ฉันรับทราบแล้ว ไม่ต้องแสดงอีก','guide-step1-title':'1. คำอธิบายความเชื่อมั่นตลาด Popover','guide-step1-desc':'ปุ่มคำถาม ? ข้างชื่อการ์ดความเชื่อมั่นตลาดคือปุ่มอธิบายคำจำกัดความ คลิกเพื่อดูคำจำกัดความของกระทิง/กลาง/หมี','guide-step2-title':'2. แผนที่เรดาร์ข่าวกรองแบบโต้ตอบ','guide-step2-desc':'จุดบนแผนที่แสดงระดับความร้อนของข่าวกรอง คลิกเพื่อแสดงหน้าต่างข่าวกรองสั้นทันที และกดปุ่ม Ctrl ค้างไว้เพื่อซูมแผนที่','guide-step3-title':'3. กระดานข่าวกรองภูมิภาคเด่น Reels','guide-step3-desc':'ด้านซ้ายเป็นเมนูเลื่อนประเทศ (กดปุ่มขึ้นลงเพื่อสลับ) ด้านขวาจะแสดงข่าวกรองหลัก 3 อันดับแรกประจำวันของประเทศที่เลือก','guide-step4-title':'4. คอนโซลตัวกรองข้อมูลขั้นสูง','guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนผลกระทบ/ความเร่งด่วนเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา','sentiment-metrics':'เกณฑ์ความรู้สึก','top-news-by-region-title':'รายละเอียดความรู้สึกตามภูมิภาควันนี้','desc-bullish':'เป็นประโยชน์ต่อการขยายตัวและผ่อนปรน','desc-neutral':'ไม่มีผลกระทบที่ชัดเจนหรือข้อมูลทั่วไป','desc-bearish':'การปราบปรามและการควบคุมที่เข้มงวดขึ้น','dashboard-title':'ภาพรวมการวิเคราะห์','strategic-hub':'ศูนย์ข่าวกรองยุทธศาสตร์','map-title':'เรดาร์ทั่วโลก','map-ctrl-zoom':'[กด CTRL เพื่อซูม]','empty-no-signals':'ไม่พบสัญญาณ','search-placeholder':'ค้นหาคำสำคัญ... ( / )','sentiment-title':'ความเชื่อมั่นตลาด (24H)','matrix-title':'เมทริกซ์ผลกระทบและความเร่งด่วน','matrix-expand':'คลิกเพื่อขยาย','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี','filter-region':'ภูมิภาค','filter-sentiment':'ความรู้สึก','filter-source':'แหล่งข่าว','filter-keyword':'คำสำคัญ','score-filter':'กรองคะแนน','impact-min':'ผลกระทบ ≥','urgency-min':'ความเร่งด่วน ≥','card-impact':'ผลกระทบ:','card-urgency':'ความเร่งด่วน:','card-link':'อ่านข่าว','card-copy':'คัดลอกลิงก์','axis-x':'ความเร่งด่วน','axis-y':'ผลกระทบ','fab-search':'กลับไปค้นหา','fab-top':'กลับขึ้นด้านบน','exec-title':'สรุปกลยุทธ์','sort-impact':'ผลกระทบ','sort-urgency':'ความเร่งด่วน','toggle-view':'สลับมุมมอง','news-feed-label':'ฟีดข่าวกรอง','empty-hint':'ปรับตัวกรองเพื่อดูข้อมูลเพิ่มเติม','quad-tr':'ดำเนินการทันที','quad-tl':'วางแผนล่วงหน้า','quad-br':'ตอบสนองเร็ว','quad-bl':'ติดตาม','date-history':'ประวัติ','date-latest':'ล่าสุด','date-viewing-history':'กำลังดูรายงานเก่า','date-prev':'ก่อนหน้า','date-next':'ถัดไป','highlight-locked':'ล็อคเป้าหมาย','reset':'รีเซ็ต()' },
 
-            hi: { 'btn-guide-title':'उपयोगकर्ता मार्गदर्शिका','guide-title':'JILI रणनीतिक इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका','guide-close':'समझ गया, फिर न दिखाएं','guide-step1-title':'1. बाजार भावना पॉपओवर स्पष्टीकरण','guide-step1-desc':'बाजार भावना कार्ड शीर्षक के बगल में प्रश्न चिह्न बटन ? स्पष्टीकरण बटन है, तेजड़िया/तटस्थ/मंदड़िया की परिभाषा देखने के लिए क्लिक करें।','guide-step2-title':'2. इंटरैक्टिव इंटेलिजेंस रडार मानचित्र','guide-step2-desc':'मानचित्र पर बिंदु क्षेत्रीय खुफिया हॉटस्पॉट का प्रतिनिधित्व करते हैं, समाचार फ्लैश देखने के लिए क्लिक करें; ज़ूम करने के लिए Ctrl दबाएं और माउस व्हील घुमाएं।','guide-step3-title':'3. क्षेत्रीय मुख्य समाचार (शीर्ष 3) रील्स','guide-step3-desc':'कार्ड के बाईं ओर देश रोटेशन menu है (ऊपर और नीचे बटन दबाएं), दाईं ओर चयनित देश की शीर्ष 3 मुख्य समाचार दिखाई देंगे।','guide-step4-title':'4. उन्नत डेटा फ़िल्टर कंसोल','guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रभाव/तात्कालिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू स्विच करें。','sentiment-metrics':'भावना मीट्रिक','top-news-by-region-title':'आज के क्षेत्रीय मुख्य समाचार (शीर्ष 3)','desc-bullish':'विस्तार और ढील के लिए अनुकूल','desc-neutral':'कोई स्पष्ट प्रभाव नहीं या सूचनात्मक','desc-bearish':'नियामक कार्रवाई और कड़ा अनुपालन','dashboard-title':'विश्लेषण अवलोकन','strategic-hub':'रणनीतिक इंटेलिजेंस हब','map-title':'वैश्विक रडาร','map-ctrl-zoom':'[ज़ूम के लिए CTRL दबाएं]','empty-no-signals':'कोई संकेत नहीं मिला','search-placeholder':'कीवर्ड खोजें... ( / )','sentiment-title':'बाजार भावना (24H)','matrix-title':'प्रभाव बनाम तात्कालिकता मैट्रिक्स','matrix-expand':'बड़ा करने के लिए क्लिक करें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया','filter-region':'क्षेत्र','filter-sentiment':'भावना','filter-source':'स्रोत','filter-keyword':'कीवर्ड','score-filter':'स्कोर फ़िल्टर','impact-min':'प्रभाव ≥','urgency-min':'तात्कालिकता ≥','card-impact':'प्रभाव:','card-urgency':'तात्कालिकता:','card-link':'खबर पढ़ें','card-copy':'लिंक कॉपी करें','axis-x':'तात्कालिकता','axis-y':'प्रभाव','fab-search':'खोज पर वापस जाएं','fab-top':'शीर्ष पर वापस जाएं','exec-title':'रणनीतिक संक्षेप','sort-impact':'प्रभाव','sort-urgency':'तात्कालिकता','toggle-view':'व्यू बदलें','news-feed-label':'इंटेल फ़ीड','empty-hint':'अधिक समाचार देखने के लिए फ़िल्टर समायोजित करें','quad-tr':'तुरंत कार्य करें','quad-tl':'योजना बनाएं','quad-br':'त्वरित प्रतिक्रिया','quad-bl':'निगरानी करें','date-history':'इतिहास','date-latest':'नवीनतम','date-viewing-history':'ऐतिहासिक रिपोर्ट देख रहे हैं','date-prev':'पिछला','date-next':'अगला','highlight-locked':'लक्षय लॉक','reset':'रीसेट()' }
+            hi: { 'btn-guide-title':'उपयोगकर्ता मार्गदर्शिका','guide-title':'JILI रणनीतिक इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका','guide-close':'समझ गया, फिर न दिखाएं','guide-step1-title':'1. बाजार भावना पॉपओवर स्पष्टीकरण','guide-step1-desc':'बाजार भावना कार्ड शीर्षक के बगल में प्रश्न चिह्न बटन ? स्पष्टीकरण बटन है, तेजड़िया/तटस्थ/मंदड़िया की परिभाषा देखने के लिए क्लिक करें।','guide-step2-title':'2. इंटरैक्टिव इंटेलिजेंस रडार मानचित्र','guide-step2-desc':'मानचित्र पर बिंदु क्षेत्रीय खुफिया हॉटस्पॉट का प्रतिनिधित्व करते हैं, समाचार फ्लैश देखने के लिए क्लिक करें; ज़ूम करने के लिए Ctrl दबाएं और माउस व्हील घुमाएं।','guide-step3-title':'3. क्षेत्रीय मुख्य समाचार (शीर्ष 3) रील्स','guide-step3-desc':'कार्ड के बाईं ओर देश रोटेशन menu है (ऊपर और नीचे बटन दबाएं), दाईं ओर चयनित देश की शीर्ष 3 मुख्य समाचार दिखाई देंगे।','guide-step4-title':'4. उन्नत डेटा फ़िल्टर कंसोल','guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रभाव/तात्कालिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू स्विच करें。','sentiment-metrics':'भावना मीट्रिक','top-news-by-region-title':'आज का क्षेत्रीय भावना विवरण','desc-bullish':'विस्तार और ढील के लिए अनुकूल','desc-neutral':'कोई स्पष्ट प्रभाव नहीं या सूचनात्मक','desc-bearish':'नियामक कार्रवाई और कड़ा अनुपालन','dashboard-title':'विश्लेषण अवलोकन','strategic-hub':'रणनीतिक इंटेलिजेंस हब','map-title':'वैश्विक रडาร','map-ctrl-zoom':'[ज़ूम के लिए CTRL दबाएं]','empty-no-signals':'कोई संकेत नहीं मिला','search-placeholder':'कीवर्ड खोजें... ( / )','sentiment-title':'बाजार भावना (24H)','matrix-title':'प्रभाव बनाम तात्कालिकता मैट्रिक्स','matrix-expand':'बड़ा करने के लिए क्लिक करें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया','filter-region':'क्षेत्र','filter-sentiment':'भावना','filter-source':'स्रोत','filter-keyword':'कीवर्ड','score-filter':'स्कोर फ़िल्टर','impact-min':'प्रभाव ≥','urgency-min':'तात्कालिकता ≥','card-impact':'प्रभाव:','card-urgency':'तात्कालिकता:','card-link':'खबर पढ़ें','card-copy':'लिंक कॉपी करें','axis-x':'तात्कालिकता','axis-y':'प्रभाव','fab-search':'खोज पर वापस जाएं','fab-top':'शीर्ष पर वापस जाएं','exec-title':'रणनीतिक संक्षेप','sort-impact':'प्रभाव','sort-urgency':'तात्कालिकता','toggle-view':'व्यू बदलें','news-feed-label':'इंटेल फ़ीड','empty-hint':'अधिक समाचार देखने के लिए फ़िल्टर समायोजित करें','quad-tr':'तुरंत कार्य करें','quad-tl':'योजना बनाएं','quad-br':'त्वरित प्रतिक्रिया','quad-bl':'निगरानी करें','date-history':'इतिहास','date-latest':'नवीनतम','date-viewing-history':'ऐतिहासिक रिपोर्ट देख रहे हैं','date-prev':'पिछला','date-next':'अगला','highlight-locked':'लक्षय लॉक','reset':'रीसेट()' }
 
         };
 
@@ -6267,9 +6334,9 @@ const regionMap = {
 
             buildActiveFilterChips();
 
-            // 重繪地區 Reels 看板
+            // 重繪區域情緒明細
 
-            try { renderRegionReel(); } catch(e) { console.warn('renderRegionReel failed:', e); }
+            try { renderRegionalSentimentBoard(); } catch(e) { console.warn('renderRegionalSentimentBoard failed:', e); }
 
         }
 
