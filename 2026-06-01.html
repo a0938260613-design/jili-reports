@@ -3097,9 +3097,10 @@
 
             const info = document.createElement('div');
             info.className = 'min-w-0';
+            const logsLabel = {cn:'則',en:'items',th:'รายการ',hi:'आइटम'}[currentLang] || 'items';
             info.innerHTML = `
                 <div class="regional-region-name" data-region-cn="${escapeHtml(marker.region)}">${escapeHtml(getLocalRegion(marker.region))}</div>
-                <div class="regional-total">${newsList.length} ${currentLang === 'en' ? 'items' : '則'}</div>
+                <div class="regional-total">${newsList.length} ${logsLabel}</div>
                 <div class="regional-count-line">
                     ${regionalSentiments.map(sentiment => `
                         <span class="regional-count-dot ${getSentimentClass(sentiment)}" title="${escapeHtml(getLocalSentiment(sentiment))} ${counts[sentiment]}">
