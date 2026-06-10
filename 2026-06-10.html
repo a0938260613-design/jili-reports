@@ -1727,69 +1727,25 @@
             
 
             <div id="keywordsRow" class="flex flex-wrap items-center gap-2 px-2 pt-2.5 pb-1">
-
-                <span class="text-[10px] font-mono font-black uppercase tracking-widest text-mid-contrast whitespace-nowrap opacity-60 self-center" data-i18n="filter-keyword">關鍵字</span>
-
+                <span class="text-[10px] font-mono font-black uppercase tracking-widest text-mid-contrast whitespace-nowrap opacity-60 self-center" data-i18n="filter-keyword">Keywords</span>
                 <span class="text-mid-contrast opacity-30 self-center text-xs">—</span>
-
                 
-
-                <button data-kw="博弈" onclick="toggleKeyword('博弈', this)"
-
-                        data-cn="博弈" data-en="Gambling" data-th="การพนัน" data-hi="जुआ"
-
-                        class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">博弈</button>
-
                 
-
-                <button data-kw="評估" onclick="toggleKeyword('評估', this)"
-
-                        data-cn="評估" data-en="評估" data-th="評估" data-hi="評估"
-
-                        class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">評估</button>
-
+                <button data-kw="博弈" onclick="toggleKeyword('博弈', this)" data-cn="博弈" data-en="Gambling" data-th="การพนัน" data-hi="जुआ" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">博弈</button>
                 
-
-                <button data-kw="運動" onclick="toggleKeyword('運動', this)"
-
-                        data-cn="運動" data-en="運動" data-th="運動" data-hi="運動"
-
-                        class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">運動</button>
-
+                <button data-kw="評估" onclick="toggleKeyword('評估', this)" data-cn="評估" data-en="Assessment" data-th="การประเมิน" data-hi="मूल्यांकन" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">評估</button>
                 
-
-                <button data-kw="動博" onclick="toggleKeyword('動博', this)"
-
-                        data-cn="動博" data-en="動博" data-th="動博" data-hi="動博"
-
-                        class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">動博</button>
-
+                <button data-kw="運動" onclick="toggleKeyword('運動', this)" data-cn="運動" data-en="Sports" data-th="กีฬา" data-hi="खेल" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">運動</button>
                 
-
-                <button data-kw="運動博" onclick="toggleKeyword('運動博', this)"
-
-                        data-cn="運動博" data-en="運動博" data-th="運動博" data-hi="運動博"
-
-                        class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">運動博</button>
-
+                <button data-kw="動博" onclick="toggleKeyword('動博', this)" data-cn="動博" data-en="Anim/Bet" data-th="แอนิเมชั่น/พนัน" data-hi="एनिमेशन/सट्टा" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">動博</button>
                 
-
-                <button data-kw="動博弈" onclick="toggleKeyword('動博弈', this)"
-
-                        data-cn="動博弈" data-en="動博弈" data-th="動博弈" data-hi="動博弈"
-
-                        class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">動博弈</button>
-
+                <button data-kw="運動博" onclick="toggleKeyword('運動博', this)" data-cn="運動博" data-en="Sports Bet" data-th="พนันกีฬา" data-hi="खेल सट्टा" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">運動博</button>
                 
-
-                <button data-kw="運動博弈" onclick="toggleKeyword('運動博弈', this)"
-
-                        data-cn="運動博弈" data-en="運動博弈" data-th="運動博弈" data-hi="運動博弈"
-
-                        class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">運動博弈</button>
-
+                <button data-kw="動博弈" onclick="toggleKeyword('動博弈', this)" data-cn="動博弈" data-en="Action Betting" data-th="พนันแอคชั่น" data-hi="एक्शन सट्टेबाजी" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">動博弈</button>
                 
-
+                <button data-kw="運動博弈" onclick="toggleKeyword('運動博弈', this)" data-cn="運動博弈" data-en="Sports Betting" data-th="การพนันกีฬา" data-hi="खेल सट्टेबाजी" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">運動博弈</button>
+                
+                
             </div>
 
             
@@ -3630,7 +3586,7 @@
             const logsLabel = {cn:'則',en:'items',th:'รายการ',hi:'आइटम'}[currentLang] || 'items';
             info.innerHTML = `
                 <div class="regional-region-name" data-region-cn="${escapeHtml(marker.region)}">${escapeHtml(getLocalRegion(marker.region))}</div>
-                <div class="regional-total">${newsList.length} ${logsLabel}</div>
+                <div class="regional-total">\$\{newsList.length\}<span data-i18n="label-items">\$\{logsLabel\}</span></div>
                 <div class="regional-count-line">
                     ${regionalSentiments.map(sentiment => `
                         <span class="regional-count-dot ${getSentimentClass(sentiment)}" title="${escapeHtml(getLocalSentiment(sentiment))} ${counts[sentiment]}">
