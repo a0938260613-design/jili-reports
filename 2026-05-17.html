@@ -985,8 +985,49 @@
             /* Outer container: tighter padding */
             .max-w-7xl { padding-left: 0.75rem; padding-right: 0.75rem; padding-top: 1rem !important; padding-bottom: 2rem !important; }
 
+            /* === DATE NAV: bigger touch targets (min 44px) === */
+            #datePrevBtn, #dateNextBtn {
+                width: 2.75rem !important;
+                height: 2.75rem !important;
+                min-width: 44px !important;
+                min-height: 44px !important;
+            }
+            /* Date picker: wider so date doesn't truncate */
+            #datePicker { width: 8.5rem !important; font-size: 0.78rem !important; }
+            /* Date nav label: hide on very small screens to save space */
+            #dateNavBar > span:first-child { display: none !important; }
+
+            /* === MAP === */
             /* Strategic map: shorter on mobile */
             #strategicMap { height: 300px; }
+
+            /* Map touch overlay hint */
+            #mapTouchOverlay {
+                display: flex !important;
+                position: absolute;
+                inset: 0;
+                z-index: 9999;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0,0,0,0.42);
+                backdrop-filter: blur(2px);
+                flex-direction: column;
+                gap: 0.5rem;
+                cursor: pointer;
+                border-radius: inherit;
+                transition: opacity 0.3s;
+            }
+            #mapTouchOverlay.dismissed { display: none !important; }
+            #mapTouchOverlay .overlay-icon { font-size: 2.2rem; }
+            #mapTouchOverlay .overlay-text {
+                font-family: 'Noto Sans TC', sans-serif;
+                font-size: 0.78rem;
+                font-weight: 700;
+                color: rgba(255,255,255,0.9);
+                text-align: center;
+                line-height: 1.5;
+            }
+            .dark #mapTouchOverlay .overlay-text { color: #00f0ff; }
 
             /* Map custom popup: center + pin to bottom */
             #mapCustomPopup {
@@ -1003,23 +1044,46 @@
             /* Leaflet popup: shrink */
             .leaflet-popup-content { min-width: 220px !important; max-width: 85vw !important; }
 
-            /* News cards: less padding, no hover lift */
+            /* Leaflet zoom controls: bigger touch targets */
+            .leaflet-control-zoom a { width: 36px !important; height: 36px !important; line-height: 36px !important; font-size: 1.1rem !important; }
+
+            /* === USER GUIDE: hide image, compact layout === */
+            #guideImageCol { display: none !important; }
+            #guideTextCol { grid-column: span 5 / span 5 !important; }
+            #userGuidePanel { padding: 1rem !important; margin-bottom: 1rem !important; }
+            #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
+
+            /* === FILTER BAR === */
+            /* Stick to absolute top on mobile */
+            .sticky { top: 0 !important; }
+            /* Tighter spacing */
+            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
+            /* Filter buttons: ensure min 40px touch height */
+            .menu-trigger {
+                padding-left: 0.6rem !important;
+                padding-right: 0.6rem !important;
+                min-height: 40px !important;
+            }
+            .sort-btn { min-height: 40px !important; }
+            /* Search input: full width on its own row */
+            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+
+            /* === NEWS CARDS === */
+            /* Less padding, no hover lift */
             .news-card { padding: 1rem !important; }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
+            /* News container: less gap */
+            #newsContainer { gap: 0.75rem !important; }
+            /* News card link row: wrap instead of overflow */
+            .news-card a[href] { word-break: break-all; }
 
-            /* FAB: compact */
+            /* === FAB: compact === */
             .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
             .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
 
-            /* Date picker: tighter */
-            #datePicker { width: 6.5rem !important; font-size: 0.75rem !important; }
-
-            /* Filter bar: tighter buttons */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            .menu-trigger { padding-left: 0.65rem !important; padding-right: 0.65rem !important; }
-
-            /* Splash screen: stack dark top / light bottom */
+            /* === SPLASH SCREEN === */
+            /* Stack dark top / light bottom */
             #darkHalf  { width: 100% !important; height: 50% !important; top: 0 !important; left: 0 !important; right: auto !important; justify-content: flex-end !important; padding-bottom: 1.5rem !important; }
             #lightHalf { width: 100% !important; height: 50% !important; top: 50% !important; left: 0 !important; right: auto !important; justify-content: flex-start !important; padding-top: 1.5rem !important; }
             #splitDivider {
@@ -1036,6 +1100,15 @@
             /* Splash step 2: tighter */
             #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
             .splash-lang-btn { padding: 16px 10px !important; }
+
+            /* === MISC SPACING === */
+            /* Dashboard section: tighter gap */
+            #dashboardSection { gap: 1rem !important; }
+            /* Reduce mb on various sections */
+            .mb-8 { margin-bottom: 1.5rem !important; }
+            .mb-10 { margin-bottom: 1.5rem !important; }
+            /* Section titles: slightly smaller */
+            h2.text-xl { font-size: 1rem !important; }
 
         }
 
@@ -1453,7 +1526,7 @@
 
                 <!-- Left: Illustration -->
 
-                <div class="md:col-span-2 flex justify-center w-full">
+                <div id="guideImageCol" class="md:col-span-2 flex justify-center w-full">
 
                     <div class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-neon-cyan/20 shadow-lg max-w-full bg-slate-900 w-full group/img">
 
@@ -1469,7 +1542,7 @@
 
                 <!-- Right: Step lists -->
 
-                <div class="md:col-span-3 space-y-3.5 text-left">
+                <div id="guideTextCol" class="md:col-span-3 space-y-3.5 text-left">
 
                     <div class="flex items-start gap-3">
 
@@ -1724,6 +1797,12 @@
             <div id="mapSection" class="section-body" style="max-height:700px;">
 
                 <div id="mapContainer" class="shadow-2xl">
+
+                    <!-- Mobile touch overlay: tap to interact with map -->
+                    <div id="mapTouchOverlay" style="display:none;" onclick="dismissMapOverlay()">
+                        <span class="overlay-icon">☝️</span>
+                        <span class="overlay-text" data-i18n="map-touch-hint">點擊查看情報<br>雙指縮放地圖</span>
+                    </div>
 
                     <div id="strategicMap"></div>
 
@@ -3091,7 +3170,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "柬埔寨", "count": 3, "coords": [11.799482865368503, 104.5422025803985], "sentiment": "利空", "news_full": [{"title": "標普調升NagaCorp信用評級：債務壓力緩解但貴賓廳衰退陰霾未散", "title_en": "S&P Upgrades NagaCorp Rating: Debt Pressure Eased but VIP Downturn Remains", "title_th": "S&P ปรับเพิ่มอันดับความน่าเชื่อถือ NagaCorp: แรงกดดันหนี้ลดลงแต่ธุรกิจ VIP ยังคงซบเซา", "title_hi": "S&P ने NagaCorp की क्रेडिट रेटिंग बढ़ाई: ऋण का दबाव कम, लेकिन VIP कारोबार में मंदी जारी", "link": "https://asgam.com/2026/05/18/sp-upgrades-nagacorp-on-absence-of-debt-but-collapse-of-junket-sector-to-weigh-on-business-strength/", "sentiment": "中立", "impact": 65.0, "urgency": 40.0}, {"title": "標普評估：NagaCorp獲利難以在短期內重返2019年水準", "title_en": "S&P: NagaCorp Profit Unlikely to Return to 2019 Levels in the Short Term", "title_th": "S&P ประเมิน: กำไรของ NagaCorp ยากที่จะกลับสู่ระดับปี 2019 ในระยะสั้น", "title_hi": "S&P का मूल्यांकन: NagaCorp का मुनाफा अल्पावधि में 2019 के स्तर पर लौटने की संभावना नहीं", "link": "https://agbrief.com/news/cambodia/18/05/2026/sp-says-nagacorp-unlikely-to-return-to-2019-earnings-levels-soon/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "柬埔寨監管機構突擊檢查Koh Kong地區遭查封賭場", "title_en": "Cambodian Regulators Inspect Sealed Casinos in Koh Kong", "title_th": "หน่วยงานกำกับดูแลของกัมพูชาตรวจค้นคาสิโนที่ถูกปิดในจังหวัดเกาะกง", "title_hi": "कंबोडियाई नियामकों ने कोह कोंग में सील किए गए कैसीनो का निरीक्षण किया", "link": "https://agbrief.com/news/cambodia/18/05/2026/cambodias-gambling-regulator-inspects-sealed-koh-kong-casinos-to-verify-closures/", "sentiment": "中立", "impact": 55.0, "urgency": 70.0}]}, {"region": "澳門", "count": 2, "coords": [22.376025806571445, 113.28922402052441], "sentiment": "利空", "news_full": [{"title": "澳門榮膺2026年「亞洲最佳奢華目的地」", "title_en": "Macau Named 'Best Luxury Destination in Asia' for 2026", "title_th": "มาเก๊าได้รับเลือกให้เป็น 'จุดหมายปลายทางหรูหราที่ดีที่สุดในเอเชีย' ประจำปี 2026", "title_hi": "मकाऊ को 2026 के लिए 'एशिया का सर्वश्रेष्ठ लक्जरी गंतव्य' चुना गया", "link": "https://asgam.com/2026/05/18/macau-named-asias-best-luxury-destination-at-luxe-asia-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "澳門 2026 年首季會展參與者人數下降 8.7%", "title_en": "Macau Q1 2026 MICE Participant Numbers Drop by 8.7%", "title_th": "ผู้เข้าร่วมงานไมซ์ (MICE) ในมาเก๊าไตรมาสแรกปี 2026 ลดลง 8.7%", "title_hi": "मकाऊ में 2026 की पहली तिमाही में MICE प्रतिभागियों की संख्या में 8.7% की गिरावट", "link": "https://agbrief.com/news/macau/17/05/2026/macau-1q26-mice-attendees-fall-8-7-to-181000-despite-stable-event-count/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 1, "coords": [37.46728517449046, -95.31680122277659], "sentiment": "利空", "news_full": [{"title": "Aristocrat Gaming於奧克拉荷馬州賭場推出Class 2 Crown機台", "title_en": "Aristocrat Gaming Launches Class 2 Crown Machines in Oklahoma Casinos", "title_th": "Aristocrat Gaming เปิดตัวเครื่องเกม Class 2 Crown ในคาสิโนที่รัฐโอคลาโฮมา", "title_hi": "Aristocrat Gaming ने ओक्लाहोमा कैसीनो में Class 2 Crown मशीनें लॉन्च कीं", "link": "https://agbrief.com/news/usa/18/05/2026/aristocrat-gaming-debuts-class-2-crown-bartop-across-oklahoma-casino-floors/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.301746912515533, 121.04251498566238], "sentiment": "利空", "news_full": [{"title": "電子遊戲疲軟致菲律賓Q1遊戲總營收下跌16%", "title_en": "Electronic Gaming Weakness Causes 16% Decline in Philippines Q1 GGR", "title_th": "ความอ่อนแอของเกมอิเล็กทรอนิกส์ส่งผลให้รายได้รวมของฟิลิปปินส์ในไตรมาสที่ 1 ลดลง 16%", "title_hi": "ई-गेमिंग में कमजोरी के कारण फिलीपींस का Q1 गेमिंग राजस्व 16% गिरा", "link": "https://agbrief.com/intel/18/05/2026/philippine-gaming-ggr-falls-16-in-1q26-on-weaker-e-games-performance/", "sentiment": "利空", "impact": 95.0, "urgency": 95.0}]}, {"region": "新加坡", "count": 1, "coords": [1.4503428693250597, 104.22575215581435], "sentiment": "利空", "news_full": [{"title": "雲頂新加坡回應市佔率下滑，股東施壓董事會", "title_en": "Genting Singapore Faces Shareholder Pressure Over Market Share Loss", "title_th": "Genting Singapore เผชิญแรงกดดันจากผู้ถือหุ้นหลังส่วนแบ่งการตลาดลดลง", "title_hi": "Genting Singapore बाजार हिस्सेदारी में गिरावट के कारण शेयरधारकों के दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/singapore/17/05/2026/genting-singapore-acknowledges-rws-market-share-slide-as-shareholders-press-board/", "sentiment": "利空", "impact": 30.0, "urgency": 65.0}]}, {"region": "全球", "count": 4, "coords": [20.094388388712147, 10.085463551410797], "sentiment": "利多", "news_full": [{"title": "《Terraria》承諾將推出更多更新內容", "title_en": "Terraria Promises Further Content Updates", "title_th": "Terraria สัญญาว่าจะปล่อยเนื้อหาอัปเดตเพิ่มเติม", "title_hi": "Terraria ने और अधिक अपडेट देने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95-1-4-6-%e0%b8%82%e0%b8%ad%e0%b8%87-terraria-%e0%b8%88%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%83%e0%b8%8a%e0%b9%88%e0%b8%84%e0%b8%a3%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Phasmophobia》開發商認錯並承諾挽回玩家信任", "title_en": "Phasmophobia Developer Admits Fault and Promises to Restore Trust", "title_th": "นักพัฒนาเกม Phasmophobia ยอมรับผิดและสัญญาว่าจะกู้คืนความเชื่อมั่นจากผู้เล่น", "title_hi": "Phasmophobia के डेवलपर ने गलती स्वीकार की और खिलाड़ियों का भरोसा जीतने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-phasmophobia-%e0%b8%a2%e0%b8%ad%e0%b8%a1%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%9c%e0%b8%b4%e0%b8%94%e0%b8%97%e0%b8%b5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《Forza Horizon 6》尚未正式發售即突破百萬玩家", "title_en": "Forza Horizon 6 Surpasses One Million Players Before Official Launch", "title_th": "Forza Horizon 6 มียอดผู้เล่นทะลุหนึ่งล้านคนก่อนเปิดตัวอย่างเป็นทางการ", "title_hi": "Forza Horizon 6 आधिकारिक लॉन्च से पहले ही 10 लाख खिलाड़ियों तक पहुँचा", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b2%e0%b8%a2%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9c%e0%b8%a2-forza-horzion-6-%e0%b8%a1%e0%b8%b5%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88/", "sentiment": "利多", "impact": 35.0, "urgency": 15.0}, {"title": "ELA Games 新作獲最佳遊戲發布提名", "title_en": "ELA Games' New Title Nominated for Best Game Launch", "title_th": "เกมใหม่จาก ELA Games ได้รับการเสนอชื่อเข้าชิงรางวัล Best Game Launch", "title_hi": "ELA Games का नया गेम 'बेस्ट गेम लॉन्च' पुरस्कार के लिए नामांकित", "link": "https://agbrief.com/news/europe/17/05/2026/ela-games-king-and-flame-nominated-for-best-new-game-release-2026/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "柬埔寨", "count": 3, "coords": [11.611072241775714, 104.60147244368709], "sentiment": "利空", "news_full": [{"title": "標普調升NagaCorp信用評級：債務壓力緩解但貴賓廳衰退陰霾未散", "title_en": "S&P Upgrades NagaCorp Rating: Debt Pressure Eased but VIP Downturn Remains", "title_th": "S&P ปรับเพิ่มอันดับความน่าเชื่อถือ NagaCorp: แรงกดดันหนี้ลดลงแต่ธุรกิจ VIP ยังคงซบเซา", "title_hi": "S&P ने NagaCorp की क्रेडिट रेटिंग बढ़ाई: ऋण का दबाव कम, लेकिन VIP कारोबार में मंदी जारी", "link": "https://asgam.com/2026/05/18/sp-upgrades-nagacorp-on-absence-of-debt-but-collapse-of-junket-sector-to-weigh-on-business-strength/", "sentiment": "中立", "impact": 65.0, "urgency": 40.0}, {"title": "標普評估：NagaCorp獲利難以在短期內重返2019年水準", "title_en": "S&P: NagaCorp Profit Unlikely to Return to 2019 Levels in the Short Term", "title_th": "S&P ประเมิน: กำไรของ NagaCorp ยากที่จะกลับสู่ระดับปี 2019 ในระยะสั้น", "title_hi": "S&P का मूल्यांकन: NagaCorp का मुनाफा अल्पावधि में 2019 के स्तर पर लौटने की संभावना नहीं", "link": "https://agbrief.com/news/cambodia/18/05/2026/sp-says-nagacorp-unlikely-to-return-to-2019-earnings-levels-soon/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "柬埔寨監管機構突擊檢查Koh Kong地區遭查封賭場", "title_en": "Cambodian Regulators Inspect Sealed Casinos in Koh Kong", "title_th": "หน่วยงานกำกับดูแลของกัมพูชาตรวจค้นคาสิโนที่ถูกปิดในจังหวัดเกาะกง", "title_hi": "कंबोडियाई नियामकों ने कोह कोंग में सील किए गए कैसीनो का निरीक्षण किया", "link": "https://agbrief.com/news/cambodia/18/05/2026/cambodias-gambling-regulator-inspects-sealed-koh-kong-casinos-to-verify-closures/", "sentiment": "中立", "impact": 55.0, "urgency": 70.0}]}, {"region": "澳門", "count": 2, "coords": [21.89688593909127, 113.47560285375117], "sentiment": "利空", "news_full": [{"title": "澳門榮膺2026年「亞洲最佳奢華目的地」", "title_en": "Macau Named 'Best Luxury Destination in Asia' for 2026", "title_th": "มาเก๊าได้รับเลือกให้เป็น 'จุดหมายปลายทางหรูหราที่ดีที่สุดในเอเชีย' ประจำปี 2026", "title_hi": "मकाऊ को 2026 के लिए 'एशिया का सर्वश्रेष्ठ लक्जरी गंतव्य' चुना गया", "link": "https://asgam.com/2026/05/18/macau-named-asias-best-luxury-destination-at-luxe-asia-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "澳門 2026 年首季會展參與者人數下降 8.7%", "title_en": "Macau Q1 2026 MICE Participant Numbers Drop by 8.7%", "title_th": "ผู้เข้าร่วมงานไมซ์ (MICE) ในมาเก๊าไตรมาสแรกปี 2026 ลดลง 8.7%", "title_hi": "मकाऊ में 2026 की पहली तिमाही में MICE प्रतिभागियों की संख्या में 8.7% की गिरावट", "link": "https://agbrief.com/news/macau/17/05/2026/macau-1q26-mice-attendees-fall-8-7-to-181000-despite-stable-event-count/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 1, "coords": [36.83820784101394, -96.19462195390004], "sentiment": "利空", "news_full": [{"title": "Aristocrat Gaming於奧克拉荷馬州賭場推出Class 2 Crown機台", "title_en": "Aristocrat Gaming Launches Class 2 Crown Machines in Oklahoma Casinos", "title_th": "Aristocrat Gaming เปิดตัวเครื่องเกม Class 2 Crown ในคาสิโนที่รัฐโอคลาโฮมา", "title_hi": "Aristocrat Gaming ने ओक्लाहोमा कैसीनो में Class 2 Crown मशीनें लॉन्च कीं", "link": "https://agbrief.com/news/usa/18/05/2026/aristocrat-gaming-debuts-class-2-crown-bartop-across-oklahoma-casino-floors/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.399898778321305, 121.33802555368797], "sentiment": "利空", "news_full": [{"title": "電子遊戲疲軟致菲律賓Q1遊戲總營收下跌16%", "title_en": "Electronic Gaming Weakness Causes 16% Decline in Philippines Q1 GGR", "title_th": "ความอ่อนแอของเกมอิเล็กทรอนิกส์ส่งผลให้รายได้รวมของฟิลิปปินส์ในไตรมาสที่ 1 ลดลง 16%", "title_hi": "ई-गेमिंग में कमजोरी के कारण फिलीपींस का Q1 गेमिंग राजस्व 16% गिरा", "link": "https://agbrief.com/intel/18/05/2026/philippine-gaming-ggr-falls-16-in-1q26-on-weaker-e-games-performance/", "sentiment": "利空", "impact": 95.0, "urgency": 95.0}]}, {"region": "新加坡", "count": 1, "coords": [1.8469642632677001, 103.44839512153507], "sentiment": "利空", "news_full": [{"title": "雲頂新加坡回應市佔率下滑，股東施壓董事會", "title_en": "Genting Singapore Faces Shareholder Pressure Over Market Share Loss", "title_th": "Genting Singapore เผชิญแรงกดดันจากผู้ถือหุ้นหลังส่วนแบ่งการตลาดลดลง", "title_hi": "Genting Singapore बाजार हिस्सेदारी में गिरावट के कारण शेयरधारकों के दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/singapore/17/05/2026/genting-singapore-acknowledges-rws-market-share-slide-as-shareholders-press-board/", "sentiment": "利空", "impact": 30.0, "urgency": 65.0}]}, {"region": "全球", "count": 4, "coords": [19.811257217031994, 9.707640550763676], "sentiment": "利多", "news_full": [{"title": "《Terraria》承諾將推出更多更新內容", "title_en": "Terraria Promises Further Content Updates", "title_th": "Terraria สัญญาว่าจะปล่อยเนื้อหาอัปเดตเพิ่มเติม", "title_hi": "Terraria ने और अधिक अपडेट देने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95-1-4-6-%e0%b8%82%e0%b8%ad%e0%b8%87-terraria-%e0%b8%88%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%83%e0%b8%8a%e0%b9%88%e0%b8%84%e0%b8%a3%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Phasmophobia》開發商認錯並承諾挽回玩家信任", "title_en": "Phasmophobia Developer Admits Fault and Promises to Restore Trust", "title_th": "นักพัฒนาเกม Phasmophobia ยอมรับผิดและสัญญาว่าจะกู้คืนความเชื่อมั่นจากผู้เล่น", "title_hi": "Phasmophobia के डेवलपर ने गलती स्वीकार की और खिलाड़ियों का भरोसा जीतने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-phasmophobia-%e0%b8%a2%e0%b8%ad%e0%b8%a1%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%9c%e0%b8%b4%e0%b8%94%e0%b8%97%e0%b8%b5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《Forza Horizon 6》尚未正式發售即突破百萬玩家", "title_en": "Forza Horizon 6 Surpasses One Million Players Before Official Launch", "title_th": "Forza Horizon 6 มียอดผู้เล่นทะลุหนึ่งล้านคนก่อนเปิดตัวอย่างเป็นทางการ", "title_hi": "Forza Horizon 6 आधिकारिक लॉन्च से पहले ही 10 लाख खिलाड़ियों तक पहुँचा", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b2%e0%b8%a2%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9c%e0%b8%a2-forza-horzion-6-%e0%b8%a1%e0%b8%b5%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88/", "sentiment": "利多", "impact": 35.0, "urgency": 15.0}, {"title": "ELA Games 新作獲最佳遊戲發布提名", "title_en": "ELA Games' New Title Nominated for Best Game Launch", "title_th": "เกมใหม่จาก ELA Games ได้รับการเสนอชื่อเข้าชิงรางวัล Best Game Launch", "title_hi": "ELA Games का नया गेम 'बेस्ट गेम लॉन्च' पुरस्कार के लिए नामांकित", "link": "https://agbrief.com/news/europe/17/05/2026/ela-games-king-and-flame-nominated-for-best-new-game-release-2026/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -3119,6 +3198,13 @@
 
 
 
+        function dismissMapOverlay() {
+            const ov = document.getElementById('mapTouchOverlay');
+            if (ov) ov.classList.add('dismissed');
+            // Re-enable dragging after user taps to interact
+            if (window.map) window.map.dragging.enable();
+        }
+
         function toggleTheme() {
 
             document.body.classList.toggle('dark');
@@ -3141,7 +3227,13 @@
 
             setTimeout(() => {
 
-                map = L.map('strategicMap', { center: [20, 100], zoom: 4, minZoom: 2, maxZoom: 8, scrollWheelZoom: false, attributionControl: false, worldCopyJump: true, zoomSnap: 1, markerZoomAnimation: false });
+                const isMobileDevice = () => window.innerWidth <= 768;
+                map = L.map('strategicMap', { center: [20, 100], zoom: 4, minZoom: 2, maxZoom: 8, scrollWheelZoom: false, dragging: !isMobileDevice(), attributionControl: false, worldCopyJump: true, zoomSnap: 1, markerZoomAnimation: false });
+                // Show touch overlay on mobile
+                if (isMobileDevice()) {
+                    const ov = document.getElementById('mapTouchOverlay');
+                    if (ov) ov.style.display = 'flex';
+                }
 
                 
 
@@ -4231,13 +4323,13 @@ const regionMap = {
 
         const i18n = {
 
-            cn: { 'tactical-terminal':'戰略指揮終端','label-news-count':'則','label-items':'則','btn-guide-title':'使用指南','guide-title':'JILI 戰略情報站 — 使用指南','guide-close':'我知道了，不再顯示','guide-step1-title':'市場情緒指標釋義','guide-step1-desc':'點擊「市場情緒分佈」標題右側的「 ? 」按鈕，即可開啟懸浮說明視窗，查閱系統對「利多 / 中立 / 利空」情報的分類與判定標準。','guide-step2-title':'互動情報雷達地圖','guide-step2-desc':'地圖上的圓點代表各國情報熱度，點擊即可彈出新聞快訊視窗，直接掌握焦點；按住 Ctrl 鍵可使用滑鼠滾輪進行地圖縮放。','guide-step3-title':'各地區市場情緒明細','guide-step3-desc':'卡片內可切換市場範圍，逐區顯示利空、利多、中立數量，並列出各情緒最重要新聞。','guide-step4-title':'進階資料流過濾器','guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。','sentiment-metrics':'情緒解析','top-news-by-region-title':'本日各地市場情緒明細','desc-bullish':'有利擴展與合規鬆綁','desc-neutral':'無明確影響或純資訊','desc-bearish':'監管打擊與合規收緊','dashboard-title':'分析總覽','strategic-hub':'戰略情報站','map-title':'全球雷達','map-ctrl-zoom':'[按住 CTRL 縮放]','empty-no-signals':'無訊號偵測','search-placeholder':'搜尋關鍵字... ( / )','sentiment-title':'市場情緒分佈 (24H)','matrix-title':'戰略重要性與急迫性矩陣','matrix-expand':'點擊放大','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空','filter-region':'區域','filter-sentiment':'情緒','filter-source':'來源','filter-keyword':'關鍵字','score-filter':'得分篩選','impact-min':'影響力 ≥','urgency-min':'急迫性 ≥','card-impact':'影響:','card-urgency':'急迫:','card-link':'新聞連結','card-copy':'複製連結','axis-x':'急迫性','axis-y':'影響力','fab-search':'回到搜尋欄','fab-top':'回到頂部','exec-title':'戰略內參','sort-impact':'影響力','sort-urgency':'急迫性','toggle-view':'切換緊湊/格狀檢視','news-feed-label':'情報快訊','empty-hint':'請調整篩選條件以查看更多新聞','quad-tr':'立即處理','quad-tl':'計劃處理','quad-br':'快速應對','quad-bl':'觀察追蹤','date-history':'歷史紀錄','date-latest':'最新','date-viewing-history':'查看歷史報告','date-prev':'前一天','date-next':'後一天','highlight-locked':'目標鎖定','reset':'重置()' },
+            cn: { 'tactical-terminal':'戰略指揮終端','label-news-count':'則','label-items':'則','btn-guide-title':'使用指南','guide-title':'JILI 戰略情報站 — 使用指南','guide-close':'我知道了，不再顯示','guide-step1-title':'市場情緒指標釋義','guide-step1-desc':'點擊「市場情緒分佈」標題右側的「 ? 」按鈕，即可開啟懸浮說明視窗，查閱系統對「利多 / 中立 / 利空」情報的分類與判定標準。','guide-step2-title':'互動情報雷達地圖','guide-step2-desc':'地圖上的圓點代表各國情報熱度，點擊即可彈出新聞快訊視窗，直接掌握焦點；按住 Ctrl 鍵可使用滑鼠滾輪進行地圖縮放。','guide-step3-title':'各地區市場情緒明細','guide-step3-desc':'卡片內可切換市場範圍，逐區顯示利空、利多、中立數量，並列出各情緒最重要新聞。','guide-step4-title':'進階資料流過濾器','guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。','sentiment-metrics':'情緒解析','top-news-by-region-title':'本日各地市場情緒明細','desc-bullish':'有利擴展與合規鬆綁','desc-neutral':'無明確影響或純資訊','desc-bearish':'監管打擊與合規收緊','dashboard-title':'分析總覽','strategic-hub':'戰略情報站','map-title':'全球雷達','map-ctrl-zoom':'[按住 CTRL 縮放]','map-touch-hint':'點擊啟用地圖<br>雙指縮放','empty-no-signals':'無訊號偵測','search-placeholder':'搜尋關鍵字... ( / )','sentiment-title':'市場情緒分佈 (24H)','matrix-title':'戰略重要性與急迫性矩陣','matrix-expand':'點擊放大','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空','filter-region':'區域','filter-sentiment':'情緒','filter-source':'來源','filter-keyword':'關鍵字','score-filter':'得分篩選','impact-min':'影響力 ≥','urgency-min':'急迫性 ≥','card-impact':'影響:','card-urgency':'急迫:','card-link':'新聞連結','card-copy':'複製連結','axis-x':'急迫性','axis-y':'影響力','fab-search':'回到搜尋欄','fab-top':'回到頂部','exec-title':'戰略內參','sort-impact':'影響力','sort-urgency':'急迫性','toggle-view':'切換緊湊/格狀檢視','news-feed-label':'情報快訊','empty-hint':'請調整篩選條件以查看更多新聞','quad-tr':'立即處理','quad-tl':'計劃處理','quad-br':'快速應對','quad-bl':'觀察追蹤','date-history':'歷史紀錄','date-latest':'最新','date-viewing-history':'查看歷史報告','date-prev':'前一天','date-next':'後一天','highlight-locked':'目標鎖定','reset':'重置()' },
 
-            en: { 'tactical-terminal':'Tactical Command Terminal','label-news-count':'NEWS','label-items':'items','btn-guide-title':'User Guide','guide-title':'JILI Strategic Hub — User Guide','guide-close':'Got it, do not show again','guide-step1-title':'Market Sentiment Definition','guide-step1-desc':'Click the "?" button next to "Market Sentiment" to open a popover explaining the classification and criteria for Bullish/Neutral/Bearish news.','guide-step2-title':'Interactive Radar Map','guide-step2-desc':'Dots on the map represent regional hot intel. Click to pop up a brief, or hold Ctrl and use your mouse wheel to zoom the map.','guide-step3-title':'Regional Sentiment Details','guide-step3-desc':"Switch markets inside the card to see each region's Bearish/Bullish/Neutral counts and the most important story for each sentiment.",'guide-step4-title':'Advanced Intel Filter Console','guide-step4-desc':'Click region, source, or sentiment buttons, or adjust impact/urgency sliders to filter data. Switch grid or compact views at the top right.','sentiment-metrics':'Sentiment Metrics','top-news-by-region-title':"REGIONAL SENTIMENT DETAILS",'desc-bullish':'Favorable for expansion & compliance easing','desc-neutral':'No clear impact or purely informational','desc-bearish':'Regulatory crackdowns & tighter compliance','dashboard-title':'Analytics Overview','strategic-hub':'Strategic Intel Hub','map-title':'Global Radar','map-ctrl-zoom':'[HOLD CTRL TO ZOOM]','empty-no-signals':'NO SIGNALS DETECTED','search-placeholder':'Search keywords... ( / )','sentiment-title':'Market Sentiment (24H)','matrix-title':'Impact vs Urgency Matrix','matrix-expand':'Click to expand','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish','filter-region':'Region','filter-sentiment':'Sentiment','filter-source':'Source','filter-keyword':'Keywords','score-filter':'Score Filter','impact-min':'Impact ≥','urgency-min':'Urgency ≥','card-impact':'Impact:','card-urgency':'Urgency:','card-link':'Read More','card-copy':'Copy Link','axis-x':'Urgency','axis-y':'Impact','fab-search':'Back to Search','fab-top':'Back to Top','exec-title':'Strategic Brief','sort-impact':'Impact','sort-urgency':'Urgency','toggle-view':'Toggle Compact/Grid View','news-feed-label':'Intel Feed','empty-hint':'Adjust filters to see more results','quad-tr':'Act Now','quad-tl':'Plan Ahead','quad-br':'Quick Response','quad-bl':'Monitor','date-history':'History','date-latest':'Latest','date-viewing-history':'Viewing Historical Report','date-prev':'Previous','date-next':'Next','highlight-locked':'TARGET LOCKED','reset':'RESET()' },
+            en: { 'tactical-terminal':'Tactical Command Terminal','label-news-count':'NEWS','label-items':'items','btn-guide-title':'User Guide','guide-title':'JILI Strategic Hub — User Guide','guide-close':'Got it, do not show again','guide-step1-title':'Market Sentiment Definition','guide-step1-desc':'Click the "?" button next to "Market Sentiment" to open a popover explaining the classification and criteria for Bullish/Neutral/Bearish news.','guide-step2-title':'Interactive Radar Map','guide-step2-desc':'Dots on the map represent regional hot intel. Click to pop up a brief, or hold Ctrl and use your mouse wheel to zoom the map.','guide-step3-title':'Regional Sentiment Details','guide-step3-desc':"Switch markets inside the card to see each region's Bearish/Bullish/Neutral counts and the most important story for each sentiment.",'guide-step4-title':'Advanced Intel Filter Console','guide-step4-desc':'Click region, source, or sentiment buttons, or adjust impact/urgency sliders to filter data. Switch grid or compact views at the top right.','sentiment-metrics':'Sentiment Metrics','top-news-by-region-title':"REGIONAL SENTIMENT DETAILS",'desc-bullish':'Favorable for expansion & compliance easing','desc-neutral':'No clear impact or purely informational','desc-bearish':'Regulatory crackdowns & tighter compliance','dashboard-title':'Analytics Overview','strategic-hub':'Strategic Intel Hub','map-title':'Global Radar','map-ctrl-zoom':'[HOLD CTRL TO ZOOM]','map-touch-hint':'Tap to enable map<br>Pinch to zoom','empty-no-signals':'NO SIGNALS DETECTED','search-placeholder':'Search keywords... ( / )','sentiment-title':'Market Sentiment (24H)','matrix-title':'Impact vs Urgency Matrix','matrix-expand':'Click to expand','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish','filter-region':'Region','filter-sentiment':'Sentiment','filter-source':'Source','filter-keyword':'Keywords','score-filter':'Score Filter','impact-min':'Impact ≥','urgency-min':'Urgency ≥','card-impact':'Impact:','card-urgency':'Urgency:','card-link':'Read More','card-copy':'Copy Link','axis-x':'Urgency','axis-y':'Impact','fab-search':'Back to Search','fab-top':'Back to Top','exec-title':'Strategic Brief','sort-impact':'Impact','sort-urgency':'Urgency','toggle-view':'Toggle Compact/Grid View','news-feed-label':'Intel Feed','empty-hint':'Adjust filters to see more results','quad-tr':'Act Now','quad-tl':'Plan Ahead','quad-br':'Quick Response','quad-bl':'Monitor','date-history':'History','date-latest':'Latest','date-viewing-history':'Viewing Historical Report','date-prev':'Previous','date-next':'Next','highlight-locked':'TARGET LOCKED','reset':'RESET()' },
 
-            th: { 'tactical-terminal':'ศูนย์บัญชาการยุทธวิธี','label-news-count':'ข่าว','label-items':'รายการ','btn-guide-title':'คู่มือการใช้งาน','guide-title':'ศูนย์ข่าวกรองยุทธศาสตร์ JILI — คู่มือการใช้งาน','guide-close':'ฉันรับทราบแล้ว ไม่ต้องแสดงอีก','guide-step1-title':'1. คำอธิบายความเชื่อมั่นตลาด Popover','guide-step1-desc':'ปุ่มคำถาม ? ข้างชื่อการ์ดความเชื่อมั่นตลาดคือปุ่มอธิบายคำจำกัดความ คลิกเพื่อดูคำจำกัดความของกระทิง/กลาง/หมี','guide-step2-title':'2. แผนที่เรดาร์ข่าวกรองแบบโต้ตอบ','guide-step2-desc':'จุดบนแผนที่แสดงระดับความร้อนของข่าวกรอง คลิกเพื่อแสดงหน้าต่างข่าวกรองสั้นทันที และกดปุ่ม Ctrl ค้างไว้เพื่อซูมแผนที่','guide-step3-title':'3. กระดานข่าวกรองภูมิภาคเด่น Reels','guide-step3-desc':'ด้านซ้ายเป็นเมนูเลื่อนประเทศ (กดปุ่มขึ้นลงเพื่อสลับ) ด้านขวาจะแสดงข่าวกรองหลัก 3 อันดับแรกประจำวันของประเทศที่เลือก','guide-step4-title':'4. คอนโซลตัวกรองข้อมูลขั้นสูง','guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนผลกระทบ/ความเร่งด่วนเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา','sentiment-metrics':'เกณฑ์ความรู้สึก','top-news-by-region-title':'รายละเอียดความรู้สึกตามภูมิภาควันนี้','desc-bullish':'เป็นประโยชน์ต่อการขยายตัวและผ่อนปรน','desc-neutral':'ไม่มีผลกระทบที่ชัดเจนหรือข้อมูลทั่วไป','desc-bearish':'การปราบปรามและการควบคุมที่เข้มงวดขึ้น','dashboard-title':'ภาพรวมการวิเคราะห์','strategic-hub':'ศูนย์ข่าวกรองยุทธศาสตร์','map-title':'เรดาร์ทั่วโลก','map-ctrl-zoom':'[กด CTRL เพื่อซูม]','empty-no-signals':'ไม่พบสัญญาณ','search-placeholder':'ค้นหาคำสำคัญ... ( / )','sentiment-title':'ความเชื่อมั่นตลาด (24H)','matrix-title':'เมทริกซ์ผลกระทบและความเร่งด่วน','matrix-expand':'คลิกเพื่อขยาย','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี','filter-region':'ภูมิภาค','filter-sentiment':'ความรู้สึก','filter-source':'แหล่งข่าว','filter-keyword':'คำสำคัญ','score-filter':'กรองคะแนน','impact-min':'ผลกระทบ ≥','urgency-min':'ความเร่งด่วน ≥','card-impact':'ผลกระทบ:','card-urgency':'ความเร่งด่วน:','card-link':'อ่านข่าว','card-copy':'คัดลอกลิงก์','axis-x':'ความเร่งด่วน','axis-y':'ผลกระทบ','fab-search':'กลับไปค้นหา','fab-top':'กลับขึ้นด้านบน','exec-title':'สรุปกลยุทธ์','sort-impact':'ผลกระทบ','sort-urgency':'ความเร่งด่วน','toggle-view':'สลับมุมมอง','news-feed-label':'ฟีดข่าวกรอง','empty-hint':'ปรับตัวกรองเพื่อดูข้อมูลเพิ่มเติม','quad-tr':'ดำเนินการทันที','quad-tl':'วางแผนล่วงหน้า','quad-br':'ตอบสนองเร็ว','quad-bl':'ติดตาม','date-history':'ประวัติ','date-latest':'ล่าสุด','date-viewing-history':'กำลังดูรายงานเก่า','date-prev':'ก่อนหน้า','date-next':'ถัดไป','highlight-locked':'ล็อคเป้าหมาย','reset':'รีเซ็ต()' },
+            th: { 'tactical-terminal':'ศูนย์บัญชาการยุทธวิธี','label-news-count':'ข่าว','label-items':'รายการ','btn-guide-title':'คู่มือการใช้งาน','guide-title':'ศูนย์ข่าวกรองยุทธศาสตร์ JILI — คู่มือการใช้งาน','guide-close':'ฉันรับทราบแล้ว ไม่ต้องแสดงอีก','guide-step1-title':'1. คำอธิบายความเชื่อมั่นตลาด Popover','guide-step1-desc':'ปุ่มคำถาม ? ข้างชื่อการ์ดความเชื่อมั่นตลาดคือปุ่มอธิบายคำจำกัดความ คลิกเพื่อดูคำจำกัดความของกระทิง/กลาง/หมี','guide-step2-title':'2. แผนที่เรดาร์ข่าวกรองแบบโต้ตอบ','guide-step2-desc':'จุดบนแผนที่แสดงระดับความร้อนของข่าวกรอง คลิกเพื่อแสดงหน้าต่างข่าวกรองสั้นทันที และกดปุ่ม Ctrl ค้างไว้เพื่อซูมแผนที่','guide-step3-title':'3. กระดานข่าวกรองภูมิภาคเด่น Reels','guide-step3-desc':'ด้านซ้ายเป็นเมนูเลื่อนประเทศ (กดปุ่มขึ้นลงเพื่อสลับ) ด้านขวาจะแสดงข่าวกรองหลัก 3 อันดับแรกประจำวันของประเทศที่เลือก','guide-step4-title':'4. คอนโซลตัวกรองข้อมูลขั้นสูง','guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนผลกระทบ/ความเร่งด่วนเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา','sentiment-metrics':'เกณฑ์ความรู้สึก','top-news-by-region-title':'รายละเอียดความรู้สึกตามภูมิภาควันนี้','desc-bullish':'เป็นประโยชน์ต่อการขยายตัวและผ่อนปรน','desc-neutral':'ไม่มีผลกระทบที่ชัดเจนหรือข้อมูลทั่วไป','desc-bearish':'การปราบปรามและการควบคุมที่เข้มงวดขึ้น','dashboard-title':'ภาพรวมการวิเคราะห์','strategic-hub':'ศูนย์ข่าวกรองยุทธศาสตร์','map-title':'เรดาร์ทั่วโลก','map-ctrl-zoom':'[กด CTRL เพื่อซูม]','map-touch-hint':'แตะเพื่อเปิดใช้แผนที่<br>บีบเพื่อซูม','empty-no-signals':'ไม่พบสัญญาณ','search-placeholder':'ค้นหาคำสำคัญ... ( / )','sentiment-title':'ความเชื่อมั่นตลาด (24H)','matrix-title':'เมทริกซ์ผลกระทบและความเร่งด่วน','matrix-expand':'คลิกเพื่อขยาย','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี','filter-region':'ภูมิภาค','filter-sentiment':'ความรู้สึก','filter-source':'แหล่งข่าว','filter-keyword':'คำสำคัญ','score-filter':'กรองคะแนน','impact-min':'ผลกระทบ ≥','urgency-min':'ความเร่งด่วน ≥','card-impact':'ผลกระทบ:','card-urgency':'ความเร่งด่วน:','card-link':'อ่านข่าว','card-copy':'คัดลอกลิงก์','axis-x':'ความเร่งด่วน','axis-y':'ผลกระทบ','fab-search':'กลับไปค้นหา','fab-top':'กลับขึ้นด้านบน','exec-title':'สรุปกลยุทธ์','sort-impact':'ผลกระทบ','sort-urgency':'ความเร่งด่วน','toggle-view':'สลับมุมมอง','news-feed-label':'ฟีดข่าวกรอง','empty-hint':'ปรับตัวกรองเพื่อดูข้อมูลเพิ่มเติม','quad-tr':'ดำเนินการทันที','quad-tl':'วางแผนล่วงหน้า','quad-br':'ตอบสนองเร็ว','quad-bl':'ติดตาม','date-history':'ประวัติ','date-latest':'ล่าสุด','date-viewing-history':'กำลังดูรายงานเก่า','date-prev':'ก่อนหน้า','date-next':'ถัดไป','highlight-locked':'ล็อคเป้าหมาย','reset':'รีเซ็ต()' },
 
-            hi: { 'tactical-terminal':'सामरिक कमांड टर्मिनल','label-news-count':'समाचार','label-items':'आइटम','btn-guide-title':'उपयोगकर्ता मार्गदर्शिका','guide-title':'JILI रणनीतिक इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका','guide-close':'समझ गया, फिर न दिखाएं','guide-step1-title':'1. बाजार भावना पॉपओवर स्पष्टीकरण','guide-step1-desc':'बाजार भावना कार्ड शीर्षक के बगल में प्रश्न चिह्न बटन ? स्पष्टीकरण बटन है, तेजड़िया/तटस्थ/मंदड़िया की परिभाषा देखने के लिए क्लिक करें।','guide-step2-title':'2. इंटरैक्टिव इंटेलिजेंस रडार मानचित्र','guide-step2-desc':'मानचित्र पर बिंदु क्षेत्रीय खुफिया हॉटस्पॉट का प्रतिनिधित्व करते हैं, समाचार फ्लैश देखने के लिए क्लिक करें; ज़ूम करने के लिए Ctrl दबाएं और माउस व्हील घुमाएं।','guide-step3-title':'3. क्षेत्रीय मुख्य समाचार (शीर्ष 3) रील्स','guide-step3-desc':'कार्ड के बाईं ओर देश रोटेशन menu है (ऊपर और नीचे बटन दबाएं), दाईं ओर चयनित देश की शीर्ष 3 मुख्य समाचार दिखाई देंगे।','guide-step4-title':'4. उन्नत डेटा फ़िल्टर कंसोल','guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रभाव/तात्कालिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू स्विच करें。','sentiment-metrics':'भावना मीट्रिक','top-news-by-region-title':'आज का क्षेत्रीय भावना विवरण','desc-bullish':'विस्तार और ढील के लिए अनुकूल','desc-neutral':'कोई स्पष्ट प्रभाव नहीं या सूचनात्मक','desc-bearish':'नियामक कार्रवाई और कड़ा अनुपालन','dashboard-title':'विश्लेषण अवलोकन','strategic-hub':'रणनीतिक इंटेलिजेंस हब','map-title':'वैश्विक रडาร','map-ctrl-zoom':'[ज़ूम के लिए CTRL दबाएं]','empty-no-signals':'कोई संकेत नहीं मिला','search-placeholder':'कीवर्ड खोजें... ( / )','sentiment-title':'बाजार भावना (24H)','matrix-title':'प्रभाव बनाम तात्कालिकता मैट्रिक्स','matrix-expand':'बड़ा करने के लिए क्लिक करें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया','filter-region':'क्षेत्र','filter-sentiment':'भावना','filter-source':'स्रोत','filter-keyword':'कीवर्ड','score-filter':'स्कोर फ़िल्टर','impact-min':'प्रभाव ≥','urgency-min':'तात्कालिकता ≥','card-impact':'प्रभाव:','card-urgency':'तात्कालिकता:','card-link':'खबर पढ़ें','card-copy':'लिंक कॉपी करें','axis-x':'तात्कालिकता','axis-y':'प्रभाव','fab-search':'खोज पर वापस जाएं','fab-top':'शीर्ष पर वापस जाएं','exec-title':'रणनीतिक संक्षेप','sort-impact':'प्रभाव','sort-urgency':'तात्कालिकता','toggle-view':'व्यू बदलें','news-feed-label':'इंटेल फ़ीड','empty-hint':'अधिक समाचार देखने के लिए फ़िल्टर समायोजित करें','quad-tr':'तुरंत कार्य करें','quad-tl':'योजना बनाएं','quad-br':'त्वरित प्रतिक्रिया','quad-bl':'निगरानी करें','date-history':'इतिहास','date-latest':'नवीनतम','date-viewing-history':'ऐतिहासिक रिपोर्ट देख रहे हैं','date-prev':'पिछला','date-next':'अगला','highlight-locked':'लक्षय लॉक','reset':'रीसेट()' }
+            hi: { 'tactical-terminal':'सामरिक कमांड टर्मिनल','label-news-count':'समाचार','label-items':'आइटम','btn-guide-title':'उपयोगकर्ता मार्गदर्शिका','guide-title':'JILI रणनीतिक इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका','guide-close':'समझ गया, फिर न दिखाएं','guide-step1-title':'1. बाजार भावना पॉपओवर स्पष्टीकरण','guide-step1-desc':'बाजार भावना कार्ड शीर्षक के बगल में प्रश्न चिह्न बटन ? स्पष्टीकरण बटन है, तेजड़िया/तटस्थ/मंदड़िया की परिभाषा देखने के लिए क्लिक करें।','guide-step2-title':'2. इंटरैक्टिव इंटेलिजेंस रडार मानचित्र','guide-step2-desc':'मानचित्र पर बिंदु क्षेत्रीय खुफिया हॉटस्पॉट का प्रतिनिधित्व करते हैं, समाचार फ्लैश देखने के लिए क्लिक करें; ज़ूम करने के लिए Ctrl दबाएं और माउस व्हील घुमाएं।','guide-step3-title':'3. क्षेत्रीय मुख्य समाचार (शीर्ष 3) रील्स','guide-step3-desc':'कार्ड के बाईं ओर देश रोटेशन menu है (ऊपर और नीचे बटन दबाएं), दाईं ओर चयनित देश की शीर्ष 3 मुख्य समाचार दिखाई देंगे।','guide-step4-title':'4. उन्नत डेटा फ़िल्टर कंसोल','guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रभाव/तात्कालिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू स्विच करें。','sentiment-metrics':'भावना मीट्रिक','top-news-by-region-title':'आज का क्षेत्रीय भावना विवरण','desc-bullish':'विस्तार और ढील के लिए अनुकूल','desc-neutral':'कोई स्पष्ट प्रभाव नहीं या सूचनात्मक','desc-bearish':'नियामक कार्रवाई और कड़ा अनुपालन','dashboard-title':'विश्लेषण अवलोकन','strategic-hub':'रणनीतिक इंटेलिजेंस हब','map-title':'वैश्विक रडาร','map-ctrl-zoom':'[ज़ूम के लिए CTRL दबाएं]','map-touch-hint':'मानचित्र सक्षम करने के लिए टैप करें<br>ज़ूम के लिए पिंच करें','empty-no-signals':'कोई संकेत नहीं मिला','search-placeholder':'कीवर्ड खोजें... ( / )','sentiment-title':'बाजार भावना (24H)','matrix-title':'प्रभाव बनाम तात्कालिकता मैट्रिक्स','matrix-expand':'बड़ा करने के लिए क्लिक करें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया','filter-region':'क्षेत्र','filter-sentiment':'भावना','filter-source':'स्रोत','filter-keyword':'कीवर्ड','score-filter':'स्कोर फ़िल्टर','impact-min':'प्रभाव ≥','urgency-min':'तात्कालिकता ≥','card-impact':'प्रभाव:','card-urgency':'तात्कालिकता:','card-link':'खबर पढ़ें','card-copy':'लिंक कॉपी करें','axis-x':'तात्कालिकता','axis-y':'प्रभाव','fab-search':'खोज पर वापस जाएं','fab-top':'शीर्ष पर वापस जाएं','exec-title':'रणनीतिक संक्षेप','sort-impact':'प्रभाव','sort-urgency':'तात्कालिकता','toggle-view':'व्यू बदलें','news-feed-label':'इंटेल फ़ीड','empty-hint':'अधिक समाचार देखने के लिए फ़िल्टर समायोजित करें','quad-tr':'तुरंत कार्य करें','quad-tl':'योजना बनाएं','quad-br':'त्वरित प्रतिक्रिया','quad-bl':'निगरानी करें','date-history':'इतिहास','date-latest':'नवीनतम','date-viewing-history':'ऐतिहासिक रिपोर्ट देख रहे हैं','date-prev':'पिछला','date-next':'अगला','highlight-locked':'लक्षय लॉक','reset':'रीसेट()' }
 
         };
 
