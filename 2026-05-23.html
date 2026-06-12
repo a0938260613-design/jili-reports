@@ -1078,14 +1078,18 @@
             /* News card link row: wrap instead of overflow */
             .news-card a[href] { word-break: break-all; }
 
-            /* === FAB: compact === */
+            /* === FAB: compact + show guide btn on mobile === */
             .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
             .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
+            .fab-guide-btn { display: flex !important; }
 
-            /* === SPLASH SCREEN === */
-            /* Stack dark top / light bottom */
-            #darkHalf  { width: 100% !important; height: 50% !important; top: 0 !important; left: 0 !important; right: auto !important; justify-content: flex-end !important; padding-bottom: 1.5rem !important; }
-            #lightHalf { width: 100% !important; height: 50% !important; top: 50% !important; left: 0 !important; right: auto !important; justify-content: flex-start !important; padding-top: 1.5rem !important; }
+            /* === SPLASH SCREEN (mobile-first redesign) === */
+            /* Stack dark top / light bottom, both centered */
+            #darkHalf  { width: 100% !important; height: 50% !important; top: 0 !important; left: 0 !important; right: auto !important; justify-content: center !important; padding: 0 !important; }
+            #lightHalf { width: 100% !important; height: 50% !important; top: 50% !important; left: 0 !important; right: auto !important; justify-content: center !important; padding: 0 !important; }
+            /* Hide the floating brand overlay — it blocks the icons */
+            #splashBrand { display: none !important; }
+            /* Horizontal divider */
             #splitDivider {
                 top: 50% !important; left: 0 !important; right: 0 !important; bottom: auto !important;
                 width: 100% !important; height: 3px !important;
@@ -1093,20 +1097,28 @@
                 background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.92) 50%, transparent 100%) !important;
             }
             #splitDivider > div { display: none !important; }
-
-            /* Splash brand: smaller text */
-            #themeSplash { font-size: 14px; }
-
-            /* Splash step 2: tighter */
-            #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
-            .splash-lang-btn { padding: 16px 10px !important; }
-            /* Splash: hide thumbnail, show big icon on mobile */
+            /* Hide desktop thumbnails, show big emoji icons */
             .splash-preview-thumb { display: none !important; }
             .splash-mobile-icon { display: block !important; }
-            /* Guide panel: hide close text, keep X icon */
+            /* Splash step 2: tighter */
+            #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
+            .splash-lang-btn { padding: 20px 12px !important; }
+
+            /* === HEADER (mobile single-row redesign) === */
+            /* Prevent flex wrap — keep title + controls on one row */
+            .header-main-row { flex-wrap: nowrap !important; align-items: center !important; gap: 0.5rem !important; }
+            /* Hide tagline and date under title on mobile */
+            .header-tagline { display: none !important; }
+            .header-date { display: none !important; }
+            /* Shrink h1 to fit single row */
+            .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
+            /* Hide guide button from header — moved to FAB area */
+            .header-guide-btn { display: none !important; }
+            /* Controls: auto width, no longer full-width */
+            .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
+
+            /* === GUIDE PANEL === */
             .guide-close-text { display: none !important; }
-            /* Header controls: full-width row, right-aligned on mobile */
-            .header-controls { width: 100% !important; justify-content: flex-end !important; }
 
             /* === MISC SPACING === */
             /* Dashboard section: tighter gap */
@@ -1313,7 +1325,7 @@
 
         <!-- ── BRAND (floating top, dark gradient behind it) ── -->
 
-        <div style="position:absolute;top:0;left:0;right:0;z-index:30;pointer-events:none;background:linear-gradient(to bottom,rgba(3,5,7,0.92) 0%,rgba(3,5,7,0.55) 60%,transparent 100%);">
+        <div id="splashBrand" style="position:absolute;top:0;left:0;right:0;z-index:30;pointer-events:none;background:linear-gradient(to bottom,rgba(3,5,7,0.92) 0%,rgba(3,5,7,0.55) 60%,transparent 100%);">
 
             <div style="text-align:center;padding:clamp(1.4rem,4vh,2.4rem) 1rem 1.4rem;animation:splashFadeIn 0.65s ease forwards;opacity:0;">
 
@@ -1401,21 +1413,21 @@
 
         <!-- Header -->
 
-        <div class="flex flex-wrap justify-between items-start sm:items-center gap-4 mb-6 animate-boot">
+        <div class="header-main-row flex flex-wrap justify-between items-start sm:items-center gap-4 mb-6 animate-boot">
 
             <div class="flex flex-col">
 
-                <span class="text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
+                <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
 
-                <span class="text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-05-23</span>
+                <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-05-23</span>
 
             </div>
 
             <div class="header-controls flex items-center gap-2 sm:gap-4">
 
-                <button onclick="showUserGuide()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
+                <button onclick="showUserGuide()" class="header-guide-btn w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
 
                     <i class="fa-solid fa-compass text-blue-500 dark:text-neon-cyan group-hover:rotate-45 transition-transform duration-300"></i>
 
@@ -2804,6 +2816,13 @@
 
     <div class="fab-container" id="fabContainer">
 
+        <!-- Guide button: only visible on mobile (header guide btn is hidden) -->
+        <button class="fab-btn fab-guide-btn" onclick="showUserGuide()" title="使用指南" data-title-i18n="btn-guide-title" style="display:none;">
+
+            <i class="fa-solid fa-compass"></i>
+
+        </button>
+
         <button class="fab-btn" onclick="document.getElementById('searchInput').scrollIntoView({behavior: 'smooth', block: 'center'}); setTimeout(() => document.getElementById('searchInput').focus(), 500);" title="回到搜尋欄" data-title-i18n="fab-search">
 
             <i class="fa-solid fa-search"></i>
@@ -3120,7 +3139,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [37.588554225528455, -95.40169337229682], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [45.47447747810985, -99.6279959460521], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [20.459760220480504, 9.712617620247784], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [36.91826373505998, -96.03910785744533], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [45.49220344828901, -100.36570859810693], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [20.245914210327108, 10.246874081639909], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
