@@ -976,6 +976,71 @@
 
 
 
+        /* ===== MOBILE RESPONSIVE (≤768px) ===== */
+
+        @media (max-width: 768px) {
+
+            html { font-size: 15px; }
+
+            /* Outer container: tighter padding */
+            .max-w-7xl { padding-left: 0.75rem; padding-right: 0.75rem; padding-top: 1rem !important; padding-bottom: 2rem !important; }
+
+            /* Strategic map: shorter on mobile */
+            #strategicMap { height: 300px; }
+
+            /* Map custom popup: center + pin to bottom */
+            #mapCustomPopup {
+                width: calc(100vw - 2rem) !important;
+                max-width: 340px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                position: fixed !important;
+                top: auto !important;
+                bottom: 5rem !important;
+            }
+            #mapCustomPopup::after, #mapCustomPopup.flipped::after { display: none !important; }
+
+            /* Leaflet popup: shrink */
+            .leaflet-popup-content { min-width: 220px !important; max-width: 85vw !important; }
+
+            /* News cards: less padding, no hover lift */
+            .news-card { padding: 1rem !important; }
+            .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
+            .dark .news-card:hover { transform: none !important; }
+
+            /* FAB: compact */
+            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
+            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
+
+            /* Date picker: tighter */
+            #datePicker { width: 6.5rem !important; font-size: 0.75rem !important; }
+
+            /* Filter bar: tighter buttons */
+            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
+            .menu-trigger { padding-left: 0.65rem !important; padding-right: 0.65rem !important; }
+
+            /* Splash screen: stack dark top / light bottom */
+            #darkHalf  { width: 100% !important; height: 50% !important; top: 0 !important; left: 0 !important; right: auto !important; justify-content: flex-end !important; padding-bottom: 1.5rem !important; }
+            #lightHalf { width: 100% !important; height: 50% !important; top: 50% !important; left: 0 !important; right: auto !important; justify-content: flex-start !important; padding-top: 1.5rem !important; }
+            #splitDivider {
+                top: 50% !important; left: 0 !important; right: 0 !important; bottom: auto !important;
+                width: 100% !important; height: 3px !important;
+                transform: translateY(-50%) !important;
+                background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.92) 50%, transparent 100%) !important;
+            }
+            #splitDivider > div { display: none !important; }
+
+            /* Splash brand: smaller text */
+            #themeSplash { font-size: 14px; }
+
+            /* Splash step 2: tighter */
+            #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
+            .splash-lang-btn { padding: 16px 10px !important; }
+
+        }
+
+
+
     </style>
 
 </head>
@@ -1248,7 +1313,7 @@
 
         <!-- Header -->
 
-        <div class="flex justify-between items-center mb-10 animate-boot">
+        <div class="flex flex-wrap justify-between items-start sm:items-center gap-4 mb-6 animate-boot">
 
             <div class="flex flex-col">
 
@@ -1260,15 +1325,15 @@
 
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 sm:gap-4">
 
-                <button onclick="showUserGuide()" class="w-14 h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
+                <button onclick="showUserGuide()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
 
                     <i class="fa-solid fa-compass text-blue-500 dark:text-neon-cyan group-hover:rotate-45 transition-transform duration-300"></i>
 
                 </button>
 
-                <div class="relative h-14 rounded-xl card-base border-2 dark:border-obsidian-600 flex items-center px-4 hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all">
+                <div class="relative h-10 sm:h-14 rounded-xl card-base border-2 dark:border-obsidian-600 flex items-center px-3 sm:px-4 hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all">
 
                     <select id="langSelect" onchange="setLanguage(this.value)" class="font-mono font-black text-sm text-blue-600 dark:text-neon-cyan bg-transparent cursor-pointer outline-none appearance-none pr-6">
 
@@ -1286,7 +1351,7 @@
 
                 </div>
 
-                <button onclick="toggleTheme()" class="w-14 h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-2xl group border-2 dark:border-obsidian-600">
+                <button onclick="toggleTheme()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl sm:text-2xl group border-2 dark:border-obsidian-600">
 
                     <i id="themeIcon" class="fa-solid fa-sun text-yellow-500 dark:text-neon-gold group-hover:rotate-12 transition-transform"></i>
 
@@ -1300,7 +1365,7 @@
 
         <!-- Date Navigation Bar -->
 
-        <div id="dateNavBar" class="flex items-center justify-between mb-6 card-base px-5 py-3 animate-boot" style="animation-delay:80ms">
+        <div id="dateNavBar" class="flex flex-wrap items-center justify-between gap-2 mb-6 card-base px-3 sm:px-5 py-2 sm:py-3 animate-boot" style="animation-delay:80ms">
 
             <span class="text-[10px] font-mono font-black uppercase tracking-widest text-mid-contrast dark:text-slate-100 flex items-center gap-2">
 
@@ -2961,7 +3026,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [37.27824770383764, -96.10775645752666], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [44.89976553460249, -99.8618659102124], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [19.897816831600498, 9.975458991917991], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [37.42223200599163, -96.0621850586556], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [44.72257995945836, -99.95760858881037], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [19.57390911393561, 10.307656991482851], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -5127,7 +5192,7 @@ const regionMap = {
 
         window.onload = () => {
 
-            // Split-screen hover expand
+            // Split-screen hover expand (desktop only)
 
             const darkHalf  = document.getElementById('darkHalf');
 
@@ -5135,7 +5200,11 @@ const regionMap = {
 
             const divider   = document.getElementById('splitDivider');
 
+            const isMobile = () => window.innerWidth <= 768;
+
             const resetSplit = () => {
+
+                if (isMobile()) return;
 
                 if (darkHalf)  darkHalf.style.width  = '50%';
 
@@ -5147,7 +5216,7 @@ const regionMap = {
 
             if (darkHalf) {
 
-                darkHalf.addEventListener('mouseenter', () => { darkHalf.style.width='58%'; lightHalf.style.width='42%'; divider.style.left='58%'; });
+                darkHalf.addEventListener('mouseenter', () => { if (isMobile()) return; darkHalf.style.width='58%'; lightHalf.style.width='42%'; divider.style.left='58%'; });
 
                 darkHalf.addEventListener('mouseleave', resetSplit);
 
@@ -5155,7 +5224,7 @@ const regionMap = {
 
             if (lightHalf) {
 
-                lightHalf.addEventListener('mouseenter', () => { lightHalf.style.width='58%'; darkHalf.style.width='42%'; divider.style.left='42%'; });
+                lightHalf.addEventListener('mouseenter', () => { if (isMobile()) return; lightHalf.style.width='58%'; darkHalf.style.width='42%'; divider.style.left='42%'; });
 
                 lightHalf.addEventListener('mouseleave', resetSplit);
 
