@@ -976,6 +976,71 @@
 
 
 
+        /* ===== MOBILE RESPONSIVE (≤768px) ===== */
+
+        @media (max-width: 768px) {
+
+            html { font-size: 15px; }
+
+            /* Outer container: tighter padding */
+            .max-w-7xl { padding-left: 0.75rem; padding-right: 0.75rem; padding-top: 1rem !important; padding-bottom: 2rem !important; }
+
+            /* Strategic map: shorter on mobile */
+            #strategicMap { height: 300px; }
+
+            /* Map custom popup: center + pin to bottom */
+            #mapCustomPopup {
+                width: calc(100vw - 2rem) !important;
+                max-width: 340px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                position: fixed !important;
+                top: auto !important;
+                bottom: 5rem !important;
+            }
+            #mapCustomPopup::after, #mapCustomPopup.flipped::after { display: none !important; }
+
+            /* Leaflet popup: shrink */
+            .leaflet-popup-content { min-width: 220px !important; max-width: 85vw !important; }
+
+            /* News cards: less padding, no hover lift */
+            .news-card { padding: 1rem !important; }
+            .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
+            .dark .news-card:hover { transform: none !important; }
+
+            /* FAB: compact */
+            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
+            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
+
+            /* Date picker: tighter */
+            #datePicker { width: 6.5rem !important; font-size: 0.75rem !important; }
+
+            /* Filter bar: tighter buttons */
+            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
+            .menu-trigger { padding-left: 0.65rem !important; padding-right: 0.65rem !important; }
+
+            /* Splash screen: stack dark top / light bottom */
+            #darkHalf  { width: 100% !important; height: 50% !important; top: 0 !important; left: 0 !important; right: auto !important; justify-content: flex-end !important; padding-bottom: 1.5rem !important; }
+            #lightHalf { width: 100% !important; height: 50% !important; top: 50% !important; left: 0 !important; right: auto !important; justify-content: flex-start !important; padding-top: 1.5rem !important; }
+            #splitDivider {
+                top: 50% !important; left: 0 !important; right: 0 !important; bottom: auto !important;
+                width: 100% !important; height: 3px !important;
+                transform: translateY(-50%) !important;
+                background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.92) 50%, transparent 100%) !important;
+            }
+            #splitDivider > div { display: none !important; }
+
+            /* Splash brand: smaller text */
+            #themeSplash { font-size: 14px; }
+
+            /* Splash step 2: tighter */
+            #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
+            .splash-lang-btn { padding: 16px 10px !important; }
+
+        }
+
+
+
     </style>
 
 </head>
@@ -1248,7 +1313,7 @@
 
         <!-- Header -->
 
-        <div class="flex justify-between items-center mb-10 animate-boot">
+        <div class="flex flex-wrap justify-between items-start sm:items-center gap-4 mb-6 animate-boot">
 
             <div class="flex flex-col">
 
@@ -1260,15 +1325,15 @@
 
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 sm:gap-4">
 
-                <button onclick="showUserGuide()" class="w-14 h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
+                <button onclick="showUserGuide()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
 
                     <i class="fa-solid fa-compass text-blue-500 dark:text-neon-cyan group-hover:rotate-45 transition-transform duration-300"></i>
 
                 </button>
 
-                <div class="relative h-14 rounded-xl card-base border-2 dark:border-obsidian-600 flex items-center px-4 hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all">
+                <div class="relative h-10 sm:h-14 rounded-xl card-base border-2 dark:border-obsidian-600 flex items-center px-3 sm:px-4 hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all">
 
                     <select id="langSelect" onchange="setLanguage(this.value)" class="font-mono font-black text-sm text-blue-600 dark:text-neon-cyan bg-transparent cursor-pointer outline-none appearance-none pr-6">
 
@@ -1286,7 +1351,7 @@
 
                 </div>
 
-                <button onclick="toggleTheme()" class="w-14 h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-2xl group border-2 dark:border-obsidian-600">
+                <button onclick="toggleTheme()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl sm:text-2xl group border-2 dark:border-obsidian-600">
 
                     <i id="themeIcon" class="fa-solid fa-sun text-yellow-500 dark:text-neon-gold group-hover:rotate-12 transition-transform"></i>
 
@@ -1300,7 +1365,7 @@
 
         <!-- Date Navigation Bar -->
 
-        <div id="dateNavBar" class="flex items-center justify-between mb-6 card-base px-5 py-3 animate-boot" style="animation-delay:80ms">
+        <div id="dateNavBar" class="flex flex-wrap items-center justify-between gap-2 mb-6 card-base px-3 sm:px-5 py-2 sm:py-3 animate-boot" style="animation-delay:80ms">
 
             <span class="text-[10px] font-mono font-black uppercase tracking-widest text-mid-contrast dark:text-slate-100 flex items-center gap-2">
 
@@ -3026,7 +3091,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "柬埔寨", "count": 3, "coords": [11.536928628060386, 105.39656489981954], "sentiment": "利空", "news_full": [{"title": "標普調升NagaCorp信用評級：債務壓力緩解但貴賓廳衰退陰霾未散", "title_en": "S&P Upgrades NagaCorp Rating: Debt Pressure Eased but VIP Downturn Remains", "title_th": "S&P ปรับเพิ่มอันดับความน่าเชื่อถือ NagaCorp: แรงกดดันหนี้ลดลงแต่ธุรกิจ VIP ยังคงซบเซา", "title_hi": "S&P ने NagaCorp की क्रेडिट रेटिंग बढ़ाई: ऋण का दबाव कम, लेकिन VIP कारोबार में मंदी जारी", "link": "https://asgam.com/2026/05/18/sp-upgrades-nagacorp-on-absence-of-debt-but-collapse-of-junket-sector-to-weigh-on-business-strength/", "sentiment": "中立", "impact": 65.0, "urgency": 40.0}, {"title": "標普評估：NagaCorp獲利難以在短期內重返2019年水準", "title_en": "S&P: NagaCorp Profit Unlikely to Return to 2019 Levels in the Short Term", "title_th": "S&P ประเมิน: กำไรของ NagaCorp ยากที่จะกลับสู่ระดับปี 2019 ในระยะสั้น", "title_hi": "S&P का मूल्यांकन: NagaCorp का मुनाफा अल्पावधि में 2019 के स्तर पर लौटने की संभावना नहीं", "link": "https://agbrief.com/news/cambodia/18/05/2026/sp-says-nagacorp-unlikely-to-return-to-2019-earnings-levels-soon/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "柬埔寨監管機構突擊檢查Koh Kong地區遭查封賭場", "title_en": "Cambodian Regulators Inspect Sealed Casinos in Koh Kong", "title_th": "หน่วยงานกำกับดูแลของกัมพูชาตรวจค้นคาสิโนที่ถูกปิดในจังหวัดเกาะกง", "title_hi": "कंबोडियाई नियामकों ने कोह कोंग में सील किए गए कैसीनो का निरीक्षण किया", "link": "https://agbrief.com/news/cambodia/18/05/2026/cambodias-gambling-regulator-inspects-sealed-koh-kong-casinos-to-verify-closures/", "sentiment": "中立", "impact": 55.0, "urgency": 70.0}]}, {"region": "澳門", "count": 2, "coords": [22.235742395679107, 113.98975970438346], "sentiment": "利空", "news_full": [{"title": "澳門榮膺2026年「亞洲最佳奢華目的地」", "title_en": "Macau Named 'Best Luxury Destination in Asia' for 2026", "title_th": "มาเก๊าได้รับเลือกให้เป็น 'จุดหมายปลายทางหรูหราที่ดีที่สุดในเอเชีย' ประจำปี 2026", "title_hi": "मकाऊ को 2026 के लिए 'एशिया का सर्वश्रेष्ठ लक्जरी गंतव्य' चुना गया", "link": "https://asgam.com/2026/05/18/macau-named-asias-best-luxury-destination-at-luxe-asia-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "澳門 2026 年首季會展參與者人數下降 8.7%", "title_en": "Macau Q1 2026 MICE Participant Numbers Drop by 8.7%", "title_th": "ผู้เข้าร่วมงานไมซ์ (MICE) ในมาเก๊าไตรมาสแรกปี 2026 ลดลง 8.7%", "title_hi": "मकाऊ में 2026 की पहली तिमाही में MICE प्रतिभागियों की संख्या में 8.7% की गिरावट", "link": "https://agbrief.com/news/macau/17/05/2026/macau-1q26-mice-attendees-fall-8-7-to-181000-despite-stable-event-count/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 1, "coords": [37.43480251879962, -96.01090896739929], "sentiment": "利空", "news_full": [{"title": "Aristocrat Gaming於奧克拉荷馬州賭場推出Class 2 Crown機台", "title_en": "Aristocrat Gaming Launches Class 2 Crown Machines in Oklahoma Casinos", "title_th": "Aristocrat Gaming เปิดตัวเครื่องเกม Class 2 Crown ในคาสิโนที่รัฐโอคลาโฮมา", "title_hi": "Aristocrat Gaming ने ओक्लाहोमा कैसीनो में Class 2 Crown मशीनें लॉन्च कीं", "link": "https://agbrief.com/news/usa/18/05/2026/aristocrat-gaming-debuts-class-2-crown-bartop-across-oklahoma-casino-floors/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}]}, {"region": "菲律賓", "count": 1, "coords": [15.036748773245568, 120.98298328845006], "sentiment": "利空", "news_full": [{"title": "電子遊戲疲軟致菲律賓Q1遊戲總營收下跌16%", "title_en": "Electronic Gaming Weakness Causes 16% Decline in Philippines Q1 GGR", "title_th": "ความอ่อนแอของเกมอิเล็กทรอนิกส์ส่งผลให้รายได้รวมของฟิลิปปินส์ในไตรมาสที่ 1 ลดลง 16%", "title_hi": "ई-गेमिंग में कमजोरी के कारण फिलीपींस का Q1 गेमिंग राजस्व 16% गिरा", "link": "https://agbrief.com/intel/18/05/2026/philippine-gaming-ggr-falls-16-in-1q26-on-weaker-e-games-performance/", "sentiment": "利空", "impact": 95.0, "urgency": 95.0}]}, {"region": "新加坡", "count": 1, "coords": [1.8401600101589972, 103.99987462963706], "sentiment": "利空", "news_full": [{"title": "雲頂新加坡回應市佔率下滑，股東施壓董事會", "title_en": "Genting Singapore Faces Shareholder Pressure Over Market Share Loss", "title_th": "Genting Singapore เผชิญแรงกดดันจากผู้ถือหุ้นหลังส่วนแบ่งการตลาดลดลง", "title_hi": "Genting Singapore बाजार हिस्सेदारी में गिरावट के कारण शेयरधारकों के दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/singapore/17/05/2026/genting-singapore-acknowledges-rws-market-share-slide-as-shareholders-press-board/", "sentiment": "利空", "impact": 30.0, "urgency": 65.0}]}, {"region": "全球", "count": 4, "coords": [19.896685872997967, 9.799862060906479], "sentiment": "利多", "news_full": [{"title": "《Terraria》承諾將推出更多更新內容", "title_en": "Terraria Promises Further Content Updates", "title_th": "Terraria สัญญาว่าจะปล่อยเนื้อหาอัปเดตเพิ่มเติม", "title_hi": "Terraria ने और अधिक अपडेट देने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95-1-4-6-%e0%b8%82%e0%b8%ad%e0%b8%87-terraria-%e0%b8%88%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%83%e0%b8%8a%e0%b9%88%e0%b8%84%e0%b8%a3%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Phasmophobia》開發商認錯並承諾挽回玩家信任", "title_en": "Phasmophobia Developer Admits Fault and Promises to Restore Trust", "title_th": "นักพัฒนาเกม Phasmophobia ยอมรับผิดและสัญญาว่าจะกู้คืนความเชื่อมั่นจากผู้เล่น", "title_hi": "Phasmophobia के डेवलपर ने गलती स्वीकार की और खिलाड़ियों का भरोसा जीतने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-phasmophobia-%e0%b8%a2%e0%b8%ad%e0%b8%a1%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%9c%e0%b8%b4%e0%b8%94%e0%b8%97%e0%b8%b5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《Forza Horizon 6》尚未正式發售即突破百萬玩家", "title_en": "Forza Horizon 6 Surpasses One Million Players Before Official Launch", "title_th": "Forza Horizon 6 มียอดผู้เล่นทะลุหนึ่งล้านคนก่อนเปิดตัวอย่างเป็นทางการ", "title_hi": "Forza Horizon 6 आधिकारिक लॉन्च से पहले ही 10 लाख खिलाड़ियों तक पहुँचा", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b2%e0%b8%a2%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9c%e0%b8%a2-forza-horzion-6-%e0%b8%a1%e0%b8%b5%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88/", "sentiment": "利多", "impact": 35.0, "urgency": 15.0}, {"title": "ELA Games 新作獲最佳遊戲發布提名", "title_en": "ELA Games' New Title Nominated for Best Game Launch", "title_th": "เกมใหม่จาก ELA Games ได้รับการเสนอชื่อเข้าชิงรางวัล Best Game Launch", "title_hi": "ELA Games का नया गेम 'बेस्ट गेम लॉन्च' पुरस्कार के लिए नामांकित", "link": "https://agbrief.com/news/europe/17/05/2026/ela-games-king-and-flame-nominated-for-best-new-game-release-2026/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "柬埔寨", "count": 3, "coords": [11.275420305008977, 104.47746497770567], "sentiment": "利空", "news_full": [{"title": "標普調升NagaCorp信用評級：債務壓力緩解但貴賓廳衰退陰霾未散", "title_en": "S&P Upgrades NagaCorp Rating: Debt Pressure Eased but VIP Downturn Remains", "title_th": "S&P ปรับเพิ่มอันดับความน่าเชื่อถือ NagaCorp: แรงกดดันหนี้ลดลงแต่ธุรกิจ VIP ยังคงซบเซา", "title_hi": "S&P ने NagaCorp की क्रेडिट रेटिंग बढ़ाई: ऋण का दबाव कम, लेकिन VIP कारोबार में मंदी जारी", "link": "https://asgam.com/2026/05/18/sp-upgrades-nagacorp-on-absence-of-debt-but-collapse-of-junket-sector-to-weigh-on-business-strength/", "sentiment": "中立", "impact": 65.0, "urgency": 40.0}, {"title": "標普評估：NagaCorp獲利難以在短期內重返2019年水準", "title_en": "S&P: NagaCorp Profit Unlikely to Return to 2019 Levels in the Short Term", "title_th": "S&P ประเมิน: กำไรของ NagaCorp ยากที่จะกลับสู่ระดับปี 2019 ในระยะสั้น", "title_hi": "S&P का मूल्यांकन: NagaCorp का मुनाफा अल्पावधि में 2019 के स्तर पर लौटने की संभावना नहीं", "link": "https://agbrief.com/news/cambodia/18/05/2026/sp-says-nagacorp-unlikely-to-return-to-2019-earnings-levels-soon/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "柬埔寨監管機構突擊檢查Koh Kong地區遭查封賭場", "title_en": "Cambodian Regulators Inspect Sealed Casinos in Koh Kong", "title_th": "หน่วยงานกำกับดูแลของกัมพูชาตรวจค้นคาสิโนที่ถูกปิดในจังหวัดเกาะกง", "title_hi": "कंबोडियाई नियामकों ने कोह कोंग में सील किए गए कैसीनो का निरीक्षण किया", "link": "https://agbrief.com/news/cambodia/18/05/2026/cambodias-gambling-regulator-inspects-sealed-koh-kong-casinos-to-verify-closures/", "sentiment": "中立", "impact": 55.0, "urgency": 70.0}]}, {"region": "澳門", "count": 2, "coords": [22.61069829646036, 113.58181422765917], "sentiment": "利空", "news_full": [{"title": "澳門榮膺2026年「亞洲最佳奢華目的地」", "title_en": "Macau Named 'Best Luxury Destination in Asia' for 2026", "title_th": "มาเก๊าได้รับเลือกให้เป็น 'จุดหมายปลายทางหรูหราที่ดีที่สุดในเอเชีย' ประจำปี 2026", "title_hi": "मकाऊ को 2026 के लिए 'एशिया का सर्वश्रेष्ठ लक्जरी गंतव्य' चुना गया", "link": "https://asgam.com/2026/05/18/macau-named-asias-best-luxury-destination-at-luxe-asia-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "澳門 2026 年首季會展參與者人數下降 8.7%", "title_en": "Macau Q1 2026 MICE Participant Numbers Drop by 8.7%", "title_th": "ผู้เข้าร่วมงานไมซ์ (MICE) ในมาเก๊าไตรมาสแรกปี 2026 ลดลง 8.7%", "title_hi": "मकाऊ में 2026 की पहली तिमाही में MICE प्रतिभागियों की संख्या में 8.7% की गिरावट", "link": "https://agbrief.com/news/macau/17/05/2026/macau-1q26-mice-attendees-fall-8-7-to-181000-despite-stable-event-count/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 1, "coords": [36.8604684117583, -95.53711138865465], "sentiment": "利空", "news_full": [{"title": "Aristocrat Gaming於奧克拉荷馬州賭場推出Class 2 Crown機台", "title_en": "Aristocrat Gaming Launches Class 2 Crown Machines in Oklahoma Casinos", "title_th": "Aristocrat Gaming เปิดตัวเครื่องเกม Class 2 Crown ในคาสิโนที่รัฐโอคลาโฮมา", "title_hi": "Aristocrat Gaming ने ओक्लाहोमा कैसीनो में Class 2 Crown मशीनें लॉन्च कीं", "link": "https://agbrief.com/news/usa/18/05/2026/aristocrat-gaming-debuts-class-2-crown-bartop-across-oklahoma-casino-floors/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.326069828694303, 120.82752265336363], "sentiment": "利空", "news_full": [{"title": "電子遊戲疲軟致菲律賓Q1遊戲總營收下跌16%", "title_en": "Electronic Gaming Weakness Causes 16% Decline in Philippines Q1 GGR", "title_th": "ความอ่อนแอของเกมอิเล็กทรอนิกส์ส่งผลให้รายได้รวมของฟิลิปปินส์ในไตรมาสที่ 1 ลดลง 16%", "title_hi": "ई-गेमिंग में कमजोरी के कारण फिलीपींस का Q1 गेमिंग राजस्व 16% गिरा", "link": "https://agbrief.com/intel/18/05/2026/philippine-gaming-ggr-falls-16-in-1q26-on-weaker-e-games-performance/", "sentiment": "利空", "impact": 95.0, "urgency": 95.0}]}, {"region": "新加坡", "count": 1, "coords": [1.3643838989017434, 104.14240017305833], "sentiment": "利空", "news_full": [{"title": "雲頂新加坡回應市佔率下滑，股東施壓董事會", "title_en": "Genting Singapore Faces Shareholder Pressure Over Market Share Loss", "title_th": "Genting Singapore เผชิญแรงกดดันจากผู้ถือหุ้นหลังส่วนแบ่งการตลาดลดลง", "title_hi": "Genting Singapore बाजार हिस्सेदारी में गिरावट के कारण शेयरधारकों के दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/singapore/17/05/2026/genting-singapore-acknowledges-rws-market-share-slide-as-shareholders-press-board/", "sentiment": "利空", "impact": 30.0, "urgency": 65.0}]}, {"region": "全球", "count": 4, "coords": [20.26152133086391, 10.29935066827589], "sentiment": "利多", "news_full": [{"title": "《Terraria》承諾將推出更多更新內容", "title_en": "Terraria Promises Further Content Updates", "title_th": "Terraria สัญญาว่าจะปล่อยเนื้อหาอัปเดตเพิ่มเติม", "title_hi": "Terraria ने और अधिक अपडेट देने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95-1-4-6-%e0%b8%82%e0%b8%ad%e0%b8%87-terraria-%e0%b8%88%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%83%e0%b8%8a%e0%b9%88%e0%b8%84%e0%b8%a3%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Phasmophobia》開發商認錯並承諾挽回玩家信任", "title_en": "Phasmophobia Developer Admits Fault and Promises to Restore Trust", "title_th": "นักพัฒนาเกม Phasmophobia ยอมรับผิดและสัญญาว่าจะกู้คืนความเชื่อมั่นจากผู้เล่น", "title_hi": "Phasmophobia के डेवलपर ने गलती स्वीकार की और खिलाड़ियों का भरोसा जीतने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-phasmophobia-%e0%b8%a2%e0%b8%ad%e0%b8%a1%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%9c%e0%b8%b4%e0%b8%94%e0%b8%97%e0%b8%b5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《Forza Horizon 6》尚未正式發售即突破百萬玩家", "title_en": "Forza Horizon 6 Surpasses One Million Players Before Official Launch", "title_th": "Forza Horizon 6 มียอดผู้เล่นทะลุหนึ่งล้านคนก่อนเปิดตัวอย่างเป็นทางการ", "title_hi": "Forza Horizon 6 आधिकारिक लॉन्च से पहले ही 10 लाख खिलाड़ियों तक पहुँचा", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b2%e0%b8%a2%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9c%e0%b8%a2-forza-horzion-6-%e0%b8%a1%e0%b8%b5%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88/", "sentiment": "利多", "impact": 35.0, "urgency": 15.0}, {"title": "ELA Games 新作獲最佳遊戲發布提名", "title_en": "ELA Games' New Title Nominated for Best Game Launch", "title_th": "เกมใหม่จาก ELA Games ได้รับการเสนอชื่อเข้าชิงรางวัล Best Game Launch", "title_hi": "ELA Games का नया गेम 'बेस्ट गेम लॉन्च' पुरस्कार के लिए नामांकित", "link": "https://agbrief.com/news/europe/17/05/2026/ela-games-king-and-flame-nominated-for-best-new-game-release-2026/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -5192,7 +5257,7 @@ const regionMap = {
 
         window.onload = () => {
 
-            // Split-screen hover expand
+            // Split-screen hover expand (desktop only)
 
             const darkHalf  = document.getElementById('darkHalf');
 
@@ -5200,7 +5265,11 @@ const regionMap = {
 
             const divider   = document.getElementById('splitDivider');
 
+            const isMobile = () => window.innerWidth <= 768;
+
             const resetSplit = () => {
+
+                if (isMobile()) return;
 
                 if (darkHalf)  darkHalf.style.width  = '50%';
 
@@ -5212,7 +5281,7 @@ const regionMap = {
 
             if (darkHalf) {
 
-                darkHalf.addEventListener('mouseenter', () => { darkHalf.style.width='58%'; lightHalf.style.width='42%'; divider.style.left='58%'; });
+                darkHalf.addEventListener('mouseenter', () => { if (isMobile()) return; darkHalf.style.width='58%'; lightHalf.style.width='42%'; divider.style.left='58%'; });
 
                 darkHalf.addEventListener('mouseleave', resetSplit);
 
@@ -5220,7 +5289,7 @@ const regionMap = {
 
             if (lightHalf) {
 
-                lightHalf.addEventListener('mouseenter', () => { lightHalf.style.width='58%'; darkHalf.style.width='42%'; divider.style.left='42%'; });
+                lightHalf.addEventListener('mouseenter', () => { if (isMobile()) return; lightHalf.style.width='58%'; darkHalf.style.width='42%'; divider.style.left='42%'; });
 
                 lightHalf.addEventListener('mouseleave', resetSplit);
 
