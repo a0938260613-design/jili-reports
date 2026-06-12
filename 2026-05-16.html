@@ -1100,6 +1100,11 @@
             /* Splash step 2: tighter */
             #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
             .splash-lang-btn { padding: 16px 10px !important; }
+            /* Splash: hide thumbnail, show big icon on mobile */
+            .splash-preview-thumb { display: none !important; }
+            .splash-mobile-icon { display: block !important; }
+            /* Header controls: full-width row, right-aligned on mobile */
+            .header-controls { width: 100% !important; justify-content: flex-end !important; }
 
             /* === MISC SPACING === */
             /* Dashboard section: tighter gap */
@@ -1140,7 +1145,8 @@
 
             <div style="position:relative;z-index:2;text-align:center;padding:1.5rem;animation:splashFadeIn 0.7s 0.25s ease forwards;opacity:0;pointer-events:none;">
 
-                <div style="width:210px;margin:0 auto 1.6rem;background:#0a0a0f;border-radius:14px;border:1.5px solid rgba(0,240,255,0.22);padding:16px;box-shadow:0 0 30px rgba(0,240,255,0.09);">
+                <!-- Desktop preview thumbnail (hidden on mobile) -->
+                <div class="splash-preview-thumb" style="width:210px;margin:0 auto 1.6rem;background:#0a0a0f;border-radius:14px;border:1.5px solid rgba(0,240,255,0.22);padding:16px;box-shadow:0 0 30px rgba(0,240,255,0.09);">
 
                     <div style="background:#050505;border-radius:6px;height:21px;display:flex;align-items:center;padding:0 8px;gap:5px;margin-bottom:8px;border:1px solid rgba(0,240,255,0.1);">
 
@@ -1190,6 +1196,9 @@
 
                 </div>
 
+                <!-- Mobile icon (hidden on desktop) -->
+                <div class="splash-mobile-icon" style="display:none;font-size:4rem;margin-bottom:0.75rem;filter:drop-shadow(0 0 18px rgba(0,240,255,0.6));">🌙</div>
+
                 <p style="font-family:'JetBrains Mono',monospace;font-weight:900;font-size:26px;color:#00f0ff;letter-spacing:0.28em;text-shadow:0 0 22px rgba(0,240,255,0.65);">DARK</p>
 
                 <p style="font-family:'Noto Sans TC',sans-serif;font-size:13px;color:rgba(0,240,255,0.55);margin-top:5px;letter-spacing:0.1em;">賽博暗黑</p>
@@ -1218,7 +1227,8 @@
 
             <div style="position:relative;z-index:2;text-align:center;padding:1.5rem;animation:splashFadeIn 0.7s 0.38s ease forwards;opacity:0;pointer-events:none;">
 
-                <div style="width:210px;margin:0 auto 1.6rem;background:#fff;border-radius:14px;border:1.5px solid rgba(148,163,184,0.35);padding:16px;box-shadow:0 8px 30px rgba(0,0,0,0.14);">
+                <!-- Desktop preview thumbnail (hidden on mobile) -->
+                <div class="splash-preview-thumb" style="width:210px;margin:0 auto 1.6rem;background:#fff;border-radius:14px;border:1.5px solid rgba(148,163,184,0.35);padding:16px;box-shadow:0 8px 30px rgba(0,0,0,0.14);">
 
                     <div style="background:#f8fafc;border-radius:6px;height:21px;display:flex;align-items:center;padding:0 8px;gap:5px;margin-bottom:8px;border:1px solid rgba(203,213,225,0.7);">
 
@@ -1267,6 +1277,9 @@
                     </div>
 
                 </div>
+
+                <!-- Mobile icon (hidden on desktop) -->
+                <div class="splash-mobile-icon" style="display:none;font-size:4rem;margin-bottom:0.75rem;">☀️</div>
 
                 <p style="font-family:'JetBrains Mono',monospace;font-weight:900;font-size:26px;color:#3b82f6;letter-spacing:0.28em;">LIGHT</p>
 
@@ -1398,7 +1411,7 @@
 
             </div>
 
-            <div class="flex items-center gap-2 sm:gap-4">
+            <div class="header-controls flex items-center gap-2 sm:gap-4">
 
                 <button onclick="showUserGuide()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
 
@@ -2420,7 +2433,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [19.745969349455407, 10.109959656448536], "sentiment": "利多", "news_full": [{"title": "《Subnautica 2》上市 12 小時狂銷 200 萬套", "title_en": "Subnautica 2 Sells 2 Million Copies in Just 12 Hours", "title_th": "Subnautica 2 ทำยอดขายทะลุ 2 ล้านชุดในเวลาเพียง 12 ชั่วโมงหลังวางจำหน่าย", "title_hi": "Subnautica 2 ने लॉन्च के 12 घंटों के भीतर 20 लाख कॉपियाँ बेचीं", "link": "https://www.gamingdose.com/news/subnautica-2-%e0%b8%97%e0%b8%b3%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%81%e0%b8%b4%e0%b8%99-2-%e0%b8%a5%e0%b9%89%e0%b8%b2%e0%b8%99%e0%b8%8a%e0%b8%b8%e0%b8%94%e0%b9%81/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [19.787579677374097, 10.468452052879844], "sentiment": "利多", "news_full": [{"title": "《Subnautica 2》上市 12 小時狂銷 200 萬套", "title_en": "Subnautica 2 Sells 2 Million Copies in Just 12 Hours", "title_th": "Subnautica 2 ทำยอดขายทะลุ 2 ล้านชุดในเวลาเพียง 12 ชั่วโมงหลังวางจำหน่าย", "title_hi": "Subnautica 2 ने लॉन्च के 12 घंटों के भीतर 20 लाख कॉपियाँ बेचीं", "link": "https://www.gamingdose.com/news/subnautica-2-%e0%b8%97%e0%b8%b3%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%81%e0%b8%b4%e0%b8%99-2-%e0%b8%a5%e0%b9%89%e0%b8%b2%e0%b8%99%e0%b8%8a%e0%b8%b8%e0%b8%94%e0%b9%81/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
