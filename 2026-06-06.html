@@ -1078,14 +1078,18 @@
             /* News card link row: wrap instead of overflow */
             .news-card a[href] { word-break: break-all; }
 
-            /* === FAB: compact === */
+            /* === FAB: compact + show guide btn on mobile === */
             .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
             .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
+            .fab-guide-btn { display: flex !important; }
 
-            /* === SPLASH SCREEN === */
-            /* Stack dark top / light bottom */
-            #darkHalf  { width: 100% !important; height: 50% !important; top: 0 !important; left: 0 !important; right: auto !important; justify-content: flex-end !important; padding-bottom: 1.5rem !important; }
-            #lightHalf { width: 100% !important; height: 50% !important; top: 50% !important; left: 0 !important; right: auto !important; justify-content: flex-start !important; padding-top: 1.5rem !important; }
+            /* === SPLASH SCREEN (mobile-first redesign) === */
+            /* Stack dark top / light bottom, both centered */
+            #darkHalf  { width: 100% !important; height: 50% !important; top: 0 !important; left: 0 !important; right: auto !important; justify-content: center !important; padding: 0 !important; }
+            #lightHalf { width: 100% !important; height: 50% !important; top: 50% !important; left: 0 !important; right: auto !important; justify-content: center !important; padding: 0 !important; }
+            /* Hide the floating brand overlay — it blocks the icons */
+            #splashBrand { display: none !important; }
+            /* Horizontal divider */
             #splitDivider {
                 top: 50% !important; left: 0 !important; right: 0 !important; bottom: auto !important;
                 width: 100% !important; height: 3px !important;
@@ -1093,20 +1097,28 @@
                 background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.92) 50%, transparent 100%) !important;
             }
             #splitDivider > div { display: none !important; }
-
-            /* Splash brand: smaller text */
-            #themeSplash { font-size: 14px; }
-
-            /* Splash step 2: tighter */
-            #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
-            .splash-lang-btn { padding: 16px 10px !important; }
-            /* Splash: hide thumbnail, show big icon on mobile */
+            /* Hide desktop thumbnails, show big emoji icons */
             .splash-preview-thumb { display: none !important; }
             .splash-mobile-icon { display: block !important; }
-            /* Guide panel: hide close text, keep X icon */
+            /* Splash step 2: tighter */
+            #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
+            .splash-lang-btn { padding: 20px 12px !important; }
+
+            /* === HEADER (mobile single-row redesign) === */
+            /* Prevent flex wrap — keep title + controls on one row */
+            .header-main-row { flex-wrap: nowrap !important; align-items: center !important; gap: 0.5rem !important; }
+            /* Hide tagline and date under title on mobile */
+            .header-tagline { display: none !important; }
+            .header-date { display: none !important; }
+            /* Shrink h1 to fit single row */
+            .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
+            /* Hide guide button from header — moved to FAB area */
+            .header-guide-btn { display: none !important; }
+            /* Controls: auto width, no longer full-width */
+            .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
+
+            /* === GUIDE PANEL === */
             .guide-close-text { display: none !important; }
-            /* Header controls: full-width row, right-aligned on mobile */
-            .header-controls { width: 100% !important; justify-content: flex-end !important; }
 
             /* === MISC SPACING === */
             /* Dashboard section: tighter gap */
@@ -1313,7 +1325,7 @@
 
         <!-- ── BRAND (floating top, dark gradient behind it) ── -->
 
-        <div style="position:absolute;top:0;left:0;right:0;z-index:30;pointer-events:none;background:linear-gradient(to bottom,rgba(3,5,7,0.92) 0%,rgba(3,5,7,0.55) 60%,transparent 100%);">
+        <div id="splashBrand" style="position:absolute;top:0;left:0;right:0;z-index:30;pointer-events:none;background:linear-gradient(to bottom,rgba(3,5,7,0.92) 0%,rgba(3,5,7,0.55) 60%,transparent 100%);">
 
             <div style="text-align:center;padding:clamp(1.4rem,4vh,2.4rem) 1rem 1.4rem;animation:splashFadeIn 0.65s ease forwards;opacity:0;">
 
@@ -1401,21 +1413,21 @@
 
         <!-- Header -->
 
-        <div class="flex flex-wrap justify-between items-start sm:items-center gap-4 mb-6 animate-boot">
+        <div class="header-main-row flex flex-wrap justify-between items-start sm:items-center gap-4 mb-6 animate-boot">
 
             <div class="flex flex-col">
 
-                <span class="text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
+                <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
 
-                <span class="text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-06-06</span>
+                <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-06-06</span>
 
             </div>
 
             <div class="header-controls flex items-center gap-2 sm:gap-4">
 
-                <button onclick="showUserGuide()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
+                <button onclick="showUserGuide()" class="header-guide-btn w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
 
                     <i class="fa-solid fa-compass text-blue-500 dark:text-neon-cyan group-hover:rotate-45 transition-transform duration-300"></i>
 
@@ -2323,6 +2335,13 @@
 
     <div class="fab-container" id="fabContainer">
 
+        <!-- Guide button: only visible on mobile (header guide btn is hidden) -->
+        <button class="fab-btn fab-guide-btn" onclick="showUserGuide()" title="使用指南" data-title-i18n="btn-guide-title" style="display:none;">
+
+            <i class="fa-solid fa-compass"></i>
+
+        </button>
+
         <button class="fab-btn" onclick="document.getElementById('searchInput').scrollIntoView({behavior: 'smooth', block: 'center'}); setTimeout(() => document.getElementById('searchInput').focus(), 500);" title="回到搜尋欄" data-title-i18n="fab-search">
 
             <i class="fa-solid fa-search"></i>
@@ -2639,7 +2658,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "中國", "count": 1, "coords": [35.77610529538207, 104.0140606238806], "sentiment": "中立", "news_full": [{"title": "永利度假村CEO與王毅會晤，探討中美商務合作前景", "title_en": "Wynn Resorts CEO meets with Wang Yi to discuss the outlook for US-China business cooperation", "title_th": "ซีอีโอ Wynn Resorts เข้าพบหวังอี้ เพื่อหารือเกี่ยวกับแนวโน้มความร่วมมือทางธุรกิจระหว่างสหรัฐฯ-จีน", "title_hi": "Wynn Resorts के CEO ने वांग यी के साथ मुलाकात की, अमेरिका-चीन व्यापार सहयोग की संभावनाओं पर चर्चा की", "link": "https://asgam.com/2026/06/07/wynn-resorts-ceo-craig-billings-at-us-business-leaders-meeting-with-chinese-foreign-minister-wang-yi/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "斯里蘭卡", "count": 1, "coords": [7.326621232993092, 80.27610836136265], "sentiment": "利空", "news_full": [{"title": "中國與斯里蘭卡深化跨境網路賭博與電信詐騙執法合作", "title_en": "China and Sri Lanka deepen enforcement cooperation against cross-border online gambling and telecom fraud", "title_th": "จีนและศรีลังกากระชับความร่วมมือด้านการบังคับใช้กฎหมายเพื่อต่อต้านการพนันออนไลน์ข้ามชาติและการฉ้อโกงทางโทรคมนาคม", "title_hi": "चीन और श्रीलंका ने सीमा पार ऑनलाइन जुआ और दूरसंचार धोखाधड़ी के खिलाफ प्रवर्तन सहयोग को गहरा किया", "link": "https://asgam.com/2026/06/07/chinese-embassy-china-and-sri-lanka-have-stepped-up-joint-efforts-to-combat-online-gambling-telecom-fraud-and-related-crimes/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "阿聯酋", "count": 1, "coords": [25.572490623557815, 55.31207670983271], "sentiment": "利多", "news_full": [{"title": "阿聯酋唯一合法體育博彩營運商啟動世界盃促銷活動", "title_en": "UAE's first legal sports betting operator launches World Cup promotion", "title_th": "ผู้ประกอบการพนันกีฬาที่ได้รับอนุญาตแห่งแรกของ UAE เปิดตัวแคมเปญโปรโมชั่นฟุตบอลโลก", "title_hi": "यूएई के पहले कानूनी स्पोर्ट्स बेटिंग ऑपरेटर ने विश्व कप प्रचार अभियान शुरू किया", "link": "https://asgam.com/2026/06/07/uaes-only-sports-betting-operator-launches-first-ever-world-cup-promotions/", "sentiment": "利多", "impact": 85.0, "urgency": 70.0}]}, {"region": "泰國", "count": 1, "coords": [13.81526225837205, 100.61716650538729], "sentiment": "利多", "news_full": [{"title": "Yulgang PC 大規模更新，強化內容運營與宣傳", "title_en": "Yulgang PC Receives Massive Update", "title_th": "เกม PC 'Yulgang' อัปเดตครั้งใหญ่ เน้นเนื้อหาและการโปรโมต", "title_hi": "युलगैंग PC का बड़ा अपडेट, कंटेंट ऑपरेशन्स और प्रचार पर जोर", "link": "https://www.gamingdose.com/news/yulgang-pc-%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%83%e0%b8%ab%e0%b8%8d%e0%b9%88-%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95%e0%b8%ad%e0%b8%b2%e0%b8%8a%e0%b8%b5%e0%b8%9e%e0%b9%83/", "sentiment": "利多", "impact": 45.0, "urgency": 30.0}]}];
+        const mapMarkersData = [{"region": "中國", "count": 1, "coords": [36.17601391407701, 104.09588826837938], "sentiment": "中立", "news_full": [{"title": "永利度假村CEO與王毅會晤，探討中美商務合作前景", "title_en": "Wynn Resorts CEO meets with Wang Yi to discuss the outlook for US-China business cooperation", "title_th": "ซีอีโอ Wynn Resorts เข้าพบหวังอี้ เพื่อหารือเกี่ยวกับแนวโน้มความร่วมมือทางธุรกิจระหว่างสหรัฐฯ-จีน", "title_hi": "Wynn Resorts के CEO ने वांग यी के साथ मुलाकात की, अमेरिका-चीन व्यापार सहयोग की संभावनाओं पर चर्चा की", "link": "https://asgam.com/2026/06/07/wynn-resorts-ceo-craig-billings-at-us-business-leaders-meeting-with-chinese-foreign-minister-wang-yi/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "斯里蘭卡", "count": 1, "coords": [7.403165746534604, 80.25404336880756], "sentiment": "利空", "news_full": [{"title": "中國與斯里蘭卡深化跨境網路賭博與電信詐騙執法合作", "title_en": "China and Sri Lanka deepen enforcement cooperation against cross-border online gambling and telecom fraud", "title_th": "จีนและศรีลังกากระชับความร่วมมือด้านการบังคับใช้กฎหมายเพื่อต่อต้านการพนันออนไลน์ข้ามชาติและการฉ้อโกงทางโทรคมนาคม", "title_hi": "चीन और श्रीलंका ने सीमा पार ऑनलाइन जुआ और दूरसंचार धोखाधड़ी के खिलाफ प्रवर्तन सहयोग को गहरा किया", "link": "https://asgam.com/2026/06/07/chinese-embassy-china-and-sri-lanka-have-stepped-up-joint-efforts-to-combat-online-gambling-telecom-fraud-and-related-crimes/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "阿聯酋", "count": 1, "coords": [25.42147147579837, 55.40676157188584], "sentiment": "利多", "news_full": [{"title": "阿聯酋唯一合法體育博彩營運商啟動世界盃促銷活動", "title_en": "UAE's first legal sports betting operator launches World Cup promotion", "title_th": "ผู้ประกอบการพนันกีฬาที่ได้รับอนุญาตแห่งแรกของ UAE เปิดตัวแคมเปญโปรโมชั่นฟุตบอลโลก", "title_hi": "यूएई के पहले कानूनी स्पोर्ट्स बेटिंग ऑपरेटर ने विश्व कप प्रचार अभियान शुरू किया", "link": "https://asgam.com/2026/06/07/uaes-only-sports-betting-operator-launches-first-ever-world-cup-promotions/", "sentiment": "利多", "impact": 85.0, "urgency": 70.0}]}, {"region": "泰國", "count": 1, "coords": [13.833528954834682, 100.47429604205459], "sentiment": "利多", "news_full": [{"title": "Yulgang PC 大規模更新，強化內容運營與宣傳", "title_en": "Yulgang PC Receives Massive Update", "title_th": "เกม PC 'Yulgang' อัปเดตครั้งใหญ่ เน้นเนื้อหาและการโปรโมต", "title_hi": "युलगैंग PC का बड़ा अपडेट, कंटेंट ऑपरेशन्स और प्रचार पर जोर", "link": "https://www.gamingdose.com/news/yulgang-pc-%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%83%e0%b8%ab%e0%b8%8d%e0%b9%88-%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95%e0%b8%ad%e0%b8%b2%e0%b8%8a%e0%b8%b5%e0%b8%9e%e0%b9%83/", "sentiment": "利多", "impact": 45.0, "urgency": 30.0}]}];
 
         const regionMarkers = {};
 
