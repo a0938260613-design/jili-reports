@@ -1100,6 +1100,11 @@
             /* Splash step 2: tighter */
             #s2BackBtn { padding: 10px 16px !important; font-size: 13px !important; }
             .splash-lang-btn { padding: 16px 10px !important; }
+            /* Splash: hide thumbnail, show big icon on mobile */
+            .splash-preview-thumb { display: none !important; }
+            .splash-mobile-icon { display: block !important; }
+            /* Header controls: full-width row, right-aligned on mobile */
+            .header-controls { width: 100% !important; justify-content: flex-end !important; }
 
             /* === MISC SPACING === */
             /* Dashboard section: tighter gap */
@@ -1140,7 +1145,8 @@
 
             <div style="position:relative;z-index:2;text-align:center;padding:1.5rem;animation:splashFadeIn 0.7s 0.25s ease forwards;opacity:0;pointer-events:none;">
 
-                <div style="width:210px;margin:0 auto 1.6rem;background:#0a0a0f;border-radius:14px;border:1.5px solid rgba(0,240,255,0.22);padding:16px;box-shadow:0 0 30px rgba(0,240,255,0.09);">
+                <!-- Desktop preview thumbnail (hidden on mobile) -->
+                <div class="splash-preview-thumb" style="width:210px;margin:0 auto 1.6rem;background:#0a0a0f;border-radius:14px;border:1.5px solid rgba(0,240,255,0.22);padding:16px;box-shadow:0 0 30px rgba(0,240,255,0.09);">
 
                     <div style="background:#050505;border-radius:6px;height:21px;display:flex;align-items:center;padding:0 8px;gap:5px;margin-bottom:8px;border:1px solid rgba(0,240,255,0.1);">
 
@@ -1190,6 +1196,9 @@
 
                 </div>
 
+                <!-- Mobile icon (hidden on desktop) -->
+                <div class="splash-mobile-icon" style="display:none;font-size:4rem;margin-bottom:0.75rem;filter:drop-shadow(0 0 18px rgba(0,240,255,0.6));">🌙</div>
+
                 <p style="font-family:'JetBrains Mono',monospace;font-weight:900;font-size:26px;color:#00f0ff;letter-spacing:0.28em;text-shadow:0 0 22px rgba(0,240,255,0.65);">DARK</p>
 
                 <p style="font-family:'Noto Sans TC',sans-serif;font-size:13px;color:rgba(0,240,255,0.55);margin-top:5px;letter-spacing:0.1em;">賽博暗黑</p>
@@ -1218,7 +1227,8 @@
 
             <div style="position:relative;z-index:2;text-align:center;padding:1.5rem;animation:splashFadeIn 0.7s 0.38s ease forwards;opacity:0;pointer-events:none;">
 
-                <div style="width:210px;margin:0 auto 1.6rem;background:#fff;border-radius:14px;border:1.5px solid rgba(148,163,184,0.35);padding:16px;box-shadow:0 8px 30px rgba(0,0,0,0.14);">
+                <!-- Desktop preview thumbnail (hidden on mobile) -->
+                <div class="splash-preview-thumb" style="width:210px;margin:0 auto 1.6rem;background:#fff;border-radius:14px;border:1.5px solid rgba(148,163,184,0.35);padding:16px;box-shadow:0 8px 30px rgba(0,0,0,0.14);">
 
                     <div style="background:#f8fafc;border-radius:6px;height:21px;display:flex;align-items:center;padding:0 8px;gap:5px;margin-bottom:8px;border:1px solid rgba(203,213,225,0.7);">
 
@@ -1267,6 +1277,9 @@
                     </div>
 
                 </div>
+
+                <!-- Mobile icon (hidden on desktop) -->
+                <div class="splash-mobile-icon" style="display:none;font-size:4rem;margin-bottom:0.75rem;">☀️</div>
 
                 <p style="font-family:'JetBrains Mono',monospace;font-weight:900;font-size:26px;color:#3b82f6;letter-spacing:0.28em;">LIGHT</p>
 
@@ -1398,7 +1411,7 @@
 
             </div>
 
-            <div class="flex items-center gap-2 sm:gap-4">
+            <div class="header-controls flex items-center gap-2 sm:gap-4">
 
                 <button onclick="showUserGuide()" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all text-xl group border-2 dark:border-obsidian-600" title="使用指南" data-title-i18n="btn-guide-title">
 
@@ -2553,7 +2566,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [20.030915519063214, 9.964559587938776], "sentiment": "利空", "news_full": [{"title": "Ainsworth高層因個人支付醜聞辭職", "title_en": "Ainsworth executives resign over personal payment scandal", "title_th": "ผู้บริหาร Ainsworth ลาออกเนื่องจากคดีอื้อฉาวเกี่ยวกับการจ่ายเงินส่วนตัว", "title_hi": "व्यक्तिगत भुगतान घोटाले के चलते Ainsworth के अधिकारियों ने इस्तीफा दिया", "link": "https://asgam.com/2026/06/05/ainsworth-chair-danny-gladstone-company-secretary-mark-ludski-step-down-over-reports-of-personal-payments/", "sentiment": "利空", "impact": 55.0, "urgency": 40.0}]}, {"region": "澳門", "count": 1, "coords": [22.381147202502778, 113.88562206327961], "sentiment": "中立", "news_full": [{"title": "Emperor E預測2026年虧損收窄，轉型應對市場變化", "title_en": "Emperor E predicts narrowing losses by 2026, pivoting to address market changes", "title_th": "Emperor E คาดการณ์การขาดทุนลดลงในปี 2026 พร้อมปรับตัวรับการเปลี่ยนแปลงของตลาด", "title_hi": "Emperor E ने 2026 तक घाटा कम होने का अनुमान लगाया, बाजार में बदलाव के लिए रुख बदला", "link": "https://asgam.com/2026/06/05/emperor-e-forecasting-us3-8-million-loss-in-2026-narrowed-from-last-year-despite-end-of-satellite-casino-ops/", "sentiment": "中立", "impact": 30.0, "urgency": 25.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.35038238020789, 120.56465572975523], "sentiment": "利空", "news_full": [{"title": "菲律賓PAGCOR主席示警：受中東衝突影響，GGR恐下挫19%", "title_en": "PAGCOR Chairman warns: GGR could fall by 19% due to Middle East conflict", "title_th": "ประธาน PAGCOR เตือน: GGR อาจลดลง 19% จากความขัดแย้งในตะวันออกกลาง", "title_hi": "PAGCOR अध्यक्ष ने चेतावनी दी: मध्य पूर्व संघर्ष के कारण GGR में 19% की गिरावट आ सकती है", "link": "https://asgam.com/2026/06/05/pagcor-chair-tengco-warns-philippines-ggr-could-fall-by-up-to-19-this-year-due-to-cost-pressures-from-middle-east-conflict/", "sentiment": "利空", "impact": 90.0, "urgency": 85.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [20.100023395975455, 10.005049817112438], "sentiment": "利空", "news_full": [{"title": "Ainsworth高層因個人支付醜聞辭職", "title_en": "Ainsworth executives resign over personal payment scandal", "title_th": "ผู้บริหาร Ainsworth ลาออกเนื่องจากคดีอื้อฉาวเกี่ยวกับการจ่ายเงินส่วนตัว", "title_hi": "व्यक्तिगत भुगतान घोटाले के चलते Ainsworth के अधिकारियों ने इस्तीफा दिया", "link": "https://asgam.com/2026/06/05/ainsworth-chair-danny-gladstone-company-secretary-mark-ludski-step-down-over-reports-of-personal-payments/", "sentiment": "利空", "impact": 55.0, "urgency": 40.0}]}, {"region": "澳門", "count": 1, "coords": [21.96152108657273, 113.90847890594243], "sentiment": "中立", "news_full": [{"title": "Emperor E預測2026年虧損收窄，轉型應對市場變化", "title_en": "Emperor E predicts narrowing losses by 2026, pivoting to address market changes", "title_th": "Emperor E คาดการณ์การขาดทุนลดลงในปี 2026 พร้อมปรับตัวรับการเปลี่ยนแปลงของตลาด", "title_hi": "Emperor E ने 2026 तक घाटा कम होने का अनुमान लगाया, बाजार में बदलाव के लिए रुख बदला", "link": "https://asgam.com/2026/06/05/emperor-e-forecasting-us3-8-million-loss-in-2026-narrowed-from-last-year-despite-end-of-satellite-casino-ops/", "sentiment": "中立", "impact": 30.0, "urgency": 25.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.707517915380736, 120.93396769249449], "sentiment": "利空", "news_full": [{"title": "菲律賓PAGCOR主席示警：受中東衝突影響，GGR恐下挫19%", "title_en": "PAGCOR Chairman warns: GGR could fall by 19% due to Middle East conflict", "title_th": "ประธาน PAGCOR เตือน: GGR อาจลดลง 19% จากความขัดแย้งในตะวันออกกลาง", "title_hi": "PAGCOR अध्यक्ष ने चेतावनी दी: मध्य पूर्व संघर्ष के कारण GGR में 19% की गिरावट आ सकती है", "link": "https://asgam.com/2026/06/05/pagcor-chair-tengco-warns-philippines-ggr-could-fall-by-up-to-19-this-year-due-to-cost-pressures-from-middle-east-conflict/", "sentiment": "利空", "impact": 90.0, "urgency": 85.0}]}];
 
         const regionMarkers = {};
 
