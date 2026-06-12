@@ -1103,6 +1103,8 @@
             /* Splash: hide thumbnail, show big icon on mobile */
             .splash-preview-thumb { display: none !important; }
             .splash-mobile-icon { display: block !important; }
+            /* Guide panel: hide close text, keep X icon */
+            .guide-close-text { display: none !important; }
             /* Header controls: full-width row, right-aligned on mobile */
             .header-controls { width: 100% !important; justify-content: flex-end !important; }
 
@@ -1523,9 +1525,9 @@
 
                 </div>
 
-                <button onclick="dismissUserGuide()" class="text-xs font-mono font-bold text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-neon-rose flex items-center gap-1.5 transition-colors px-2.5 py-1 rounded hover:bg-slate-100 dark:hover:bg-obsidian-700">
+                <button onclick="dismissUserGuide()" class="guide-close-btn shrink-0 text-xs font-mono font-bold text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-neon-rose flex items-center gap-1.5 transition-colors px-2.5 py-1 rounded hover:bg-slate-100 dark:hover:bg-obsidian-700">
 
-                    <span data-i18n="guide-close">我知道了，不再顯示</span> <i class="fa-solid fa-xmark"></i>
+                    <span class="guide-close-text" data-i18n="guide-close">我知道了，不再顯示</span> <i class="fa-solid fa-xmark"></i>
 
                 </button>
 
