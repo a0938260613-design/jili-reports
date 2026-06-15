@@ -1129,9 +1129,6 @@
             /* Section titles: slightly smaller */
             h2.text-xl { font-size: 1rem !important; }
 
-            /* === DASHBOARD SECTION (remove height cap so content scrolls via page) === */
-            #dashboardSection { max-height: none !important; overflow: visible !important; }
-
             /* === REGIONAL SENTIMENT (mobile-first redesign) === */
             /* Region filter tabs: larger tap targets, horizontal scroll row */
             #regionMarketTabs { gap: 0.5rem !important; padding-bottom: 0.5rem !important; }
@@ -1163,10 +1160,15 @@
             }
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
-            /* Card: remove fixed height so content flows naturally into page scroll */
-            #regionalSentimentCard { height: auto !important; min-height: 0 !important; }
-            /* Board: let it grow with content instead of scrolling in a tiny box */
-            #regionalSentimentBoard { overflow-y: visible !important; max-height: none !important; flex: none !important; }
+            /* Card: give mobile a tall-enough height for comfortable scrolling */
+            #regionalSentimentCard { height: 72vh !important; max-height: none !important; }
+            /* Board: internal scroll with iOS momentum touch */
+            #regionalSentimentBoard {
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                max-height: none !important;
+                flex: 1 !important;
+            }
 
         }
 
@@ -2493,7 +2495,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [19.73340797896332, 9.887193382127705], "sentiment": "利多", "news_full": [{"title": "《Subnautica 2》上市 12 小時狂銷 200 萬套", "title_en": "Subnautica 2 Sells 2 Million Copies in Just 12 Hours", "title_th": "Subnautica 2 ทำยอดขายทะลุ 2 ล้านชุดในเวลาเพียง 12 ชั่วโมงหลังวางจำหน่าย", "title_hi": "Subnautica 2 ने लॉन्च के 12 घंटों के भीतर 20 लाख कॉपियाँ बेचीं", "link": "https://www.gamingdose.com/news/subnautica-2-%e0%b8%97%e0%b8%b3%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%81%e0%b8%b4%e0%b8%99-2-%e0%b8%a5%e0%b9%89%e0%b8%b2%e0%b8%99%e0%b8%8a%e0%b8%b8%e0%b8%94%e0%b9%81/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [19.59972096480399, 10.227065983809272], "sentiment": "利多", "news_full": [{"title": "《Subnautica 2》上市 12 小時狂銷 200 萬套", "title_en": "Subnautica 2 Sells 2 Million Copies in Just 12 Hours", "title_th": "Subnautica 2 ทำยอดขายทะลุ 2 ล้านชุดในเวลาเพียง 12 ชั่วโมงหลังวางจำหน่าย", "title_hi": "Subnautica 2 ने लॉन्च के 12 घंटों के भीतर 20 लाख कॉपियाँ बेचीं", "link": "https://www.gamingdose.com/news/subnautica-2-%e0%b8%97%e0%b8%b3%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%81%e0%b8%b4%e0%b8%99-2-%e0%b8%a5%e0%b9%89%e0%b8%b2%e0%b8%99%e0%b8%8a%e0%b8%b8%e0%b8%94%e0%b9%81/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
