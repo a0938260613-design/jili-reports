@@ -1160,8 +1160,10 @@
             }
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
-            /* Board: let it grow taller on mobile instead of scrolling in a tiny box */
-            #regionalSentimentBoard { overflow-y: visible !important; max-height: none !important; }
+            /* Card: remove fixed height so content flows naturally into page scroll */
+            #regionalSentimentCard { height: auto !important; min-height: 0 !important; }
+            /* Board: let it grow with content instead of scrolling in a tiny box */
+            #regionalSentimentBoard { overflow-y: visible !important; max-height: none !important; flex: none !important; }
 
         }
 
@@ -1813,7 +1815,7 @@
 
             <!-- 本日各地區核心情報：區域情緒明細 -->
 
-            <div class="card-base p-6 md:col-span-2 flex flex-col" style="height: 23.5rem;">
+            <div id="regionalSentimentCard" class="card-base p-6 md:col-span-2 flex flex-col" style="height: 23.5rem;">
 
                 <h3 class="text-sm font-mono font-black uppercase mb-3 tracking-widest border-b border-slate-200 dark:border-obsidian-600 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="top-news-by-region-title">本日各地市場情緒明細</h3>
 
@@ -2488,7 +2490,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [20.196329556146804, 9.930682005408125], "sentiment": "利多", "news_full": [{"title": "《Subnautica 2》上市 12 小時狂銷 200 萬套", "title_en": "Subnautica 2 Sells 2 Million Copies in Just 12 Hours", "title_th": "Subnautica 2 ทำยอดขายทะลุ 2 ล้านชุดในเวลาเพียง 12 ชั่วโมงหลังวางจำหน่าย", "title_hi": "Subnautica 2 ने लॉन्च के 12 घंटों के भीतर 20 लाख कॉपियाँ बेचीं", "link": "https://www.gamingdose.com/news/subnautica-2-%e0%b8%97%e0%b8%b3%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%81%e0%b8%b4%e0%b8%99-2-%e0%b8%a5%e0%b9%89%e0%b8%b2%e0%b8%99%e0%b8%8a%e0%b8%b8%e0%b8%94%e0%b9%81/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [20.40029921855799, 10.099238066651786], "sentiment": "利多", "news_full": [{"title": "《Subnautica 2》上市 12 小時狂銷 200 萬套", "title_en": "Subnautica 2 Sells 2 Million Copies in Just 12 Hours", "title_th": "Subnautica 2 ทำยอดขายทะลุ 2 ล้านชุดในเวลาเพียง 12 ชั่วโมงหลังวางจำหน่าย", "title_hi": "Subnautica 2 ने लॉन्च के 12 घंटों के भीतर 20 लाख कॉपियाँ बेचीं", "link": "https://www.gamingdose.com/news/subnautica-2-%e0%b8%97%e0%b8%b3%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b9%80%e0%b8%81%e0%b8%b4%e0%b8%99-2-%e0%b8%a5%e0%b9%89%e0%b8%b2%e0%b8%99%e0%b8%8a%e0%b8%b8%e0%b8%94%e0%b9%81/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
