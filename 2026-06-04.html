@@ -1160,8 +1160,10 @@
             }
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
-            /* Board: let it grow taller on mobile instead of scrolling in a tiny box */
-            #regionalSentimentBoard { overflow-y: visible !important; max-height: none !important; }
+            /* Card: remove fixed height so content flows naturally into page scroll */
+            #regionalSentimentCard { height: auto !important; min-height: 0 !important; }
+            /* Board: let it grow with content instead of scrolling in a tiny box */
+            #regionalSentimentBoard { overflow-y: visible !important; max-height: none !important; flex: none !important; }
 
         }
 
@@ -1813,7 +1815,7 @@
 
             <!-- 本日各地區核心情報：區域情緒明細 -->
 
-            <div class="card-base p-6 md:col-span-2 flex flex-col" style="height: 23.5rem;">
+            <div id="regionalSentimentCard" class="card-base p-6 md:col-span-2 flex flex-col" style="height: 23.5rem;">
 
                 <h3 class="text-sm font-mono font-black uppercase mb-3 tracking-widest border-b border-slate-200 dark:border-obsidian-600 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="top-news-by-region-title">本日各地市場情緒明細</h3>
 
@@ -2621,7 +2623,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [20.260566713662897, 9.956877048769746], "sentiment": "利空", "news_full": [{"title": "Ainsworth高層因個人支付醜聞辭職", "title_en": "Ainsworth executives resign over personal payment scandal", "title_th": "ผู้บริหาร Ainsworth ลาออกเนื่องจากคดีอื้อฉาวเกี่ยวกับการจ่ายเงินส่วนตัว", "title_hi": "व्यक्तिगत भुगतान घोटाले के चलते Ainsworth के अधिकारियों ने इस्तीफा दिया", "link": "https://asgam.com/2026/06/05/ainsworth-chair-danny-gladstone-company-secretary-mark-ludski-step-down-over-reports-of-personal-payments/", "sentiment": "利空", "impact": 55.0, "urgency": 40.0}]}, {"region": "澳門", "count": 1, "coords": [21.825764758707646, 113.8891099026841], "sentiment": "中立", "news_full": [{"title": "Emperor E預測2026年虧損收窄，轉型應對市場變化", "title_en": "Emperor E predicts narrowing losses by 2026, pivoting to address market changes", "title_th": "Emperor E คาดการณ์การขาดทุนลดลงในปี 2026 พร้อมปรับตัวรับการเปลี่ยนแปลงของตลาด", "title_hi": "Emperor E ने 2026 तक घाटा कम होने का अनुमान लगाया, बाजार में बदलाव के लिए रुख बदला", "link": "https://asgam.com/2026/06/05/emperor-e-forecasting-us3-8-million-loss-in-2026-narrowed-from-last-year-despite-end-of-satellite-casino-ops/", "sentiment": "中立", "impact": 30.0, "urgency": 25.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.684614084604085, 121.42697300101989], "sentiment": "利空", "news_full": [{"title": "菲律賓PAGCOR主席示警：受中東衝突影響，GGR恐下挫19%", "title_en": "PAGCOR Chairman warns: GGR could fall by 19% due to Middle East conflict", "title_th": "ประธาน PAGCOR เตือน: GGR อาจลดลง 19% จากความขัดแย้งในตะวันออกกลาง", "title_hi": "PAGCOR अध्यक्ष ने चेतावनी दी: मध्य पूर्व संघर्ष के कारण GGR में 19% की गिरावट आ सकती है", "link": "https://asgam.com/2026/06/05/pagcor-chair-tengco-warns-philippines-ggr-could-fall-by-up-to-19-this-year-due-to-cost-pressures-from-middle-east-conflict/", "sentiment": "利空", "impact": 90.0, "urgency": 85.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 1, "coords": [20.04096262751195, 9.675828509566616], "sentiment": "利空", "news_full": [{"title": "Ainsworth高層因個人支付醜聞辭職", "title_en": "Ainsworth executives resign over personal payment scandal", "title_th": "ผู้บริหาร Ainsworth ลาออกเนื่องจากคดีอื้อฉาวเกี่ยวกับการจ่ายเงินส่วนตัว", "title_hi": "व्यक्तिगत भुगतान घोटाले के चलते Ainsworth के अधिकारियों ने इस्तीफा दिया", "link": "https://asgam.com/2026/06/05/ainsworth-chair-danny-gladstone-company-secretary-mark-ludski-step-down-over-reports-of-personal-payments/", "sentiment": "利空", "impact": 55.0, "urgency": 40.0}]}, {"region": "澳門", "count": 1, "coords": [22.364311951156584, 113.16362395807774], "sentiment": "中立", "news_full": [{"title": "Emperor E預測2026年虧損收窄，轉型應對市場變化", "title_en": "Emperor E predicts narrowing losses by 2026, pivoting to address market changes", "title_th": "Emperor E คาดการณ์การขาดทุนลดลงในปี 2026 พร้อมปรับตัวรับการเปลี่ยนแปลงของตลาด", "title_hi": "Emperor E ने 2026 तक घाटा कम होने का अनुमान लगाया, बाजार में बदलाव के लिए रुख बदला", "link": "https://asgam.com/2026/06/05/emperor-e-forecasting-us3-8-million-loss-in-2026-narrowed-from-last-year-despite-end-of-satellite-casino-ops/", "sentiment": "中立", "impact": 30.0, "urgency": 25.0}]}, {"region": "菲律賓", "count": 1, "coords": [15.082373723553973, 120.956824191747], "sentiment": "利空", "news_full": [{"title": "菲律賓PAGCOR主席示警：受中東衝突影響，GGR恐下挫19%", "title_en": "PAGCOR Chairman warns: GGR could fall by 19% due to Middle East conflict", "title_th": "ประธาน PAGCOR เตือน: GGR อาจลดลง 19% จากความขัดแย้งในตะวันออกกลาง", "title_hi": "PAGCOR अध्यक्ष ने चेतावनी दी: मध्य पूर्व संघर्ष के कारण GGR में 19% की गिरावट आ सकती है", "link": "https://asgam.com/2026/06/05/pagcor-chair-tengco-warns-philippines-ggr-could-fall-by-up-to-19-this-year-due-to-cost-pressures-from-middle-east-conflict/", "sentiment": "利空", "impact": 90.0, "urgency": 85.0}]}];
 
         const regionMarkers = {};
 
