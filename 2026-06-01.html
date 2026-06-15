@@ -1129,9 +1129,6 @@
             /* Section titles: slightly smaller */
             h2.text-xl { font-size: 1rem !important; }
 
-            /* === DASHBOARD SECTION (remove height cap so content scrolls via page) === */
-            #dashboardSection { max-height: none !important; overflow: visible !important; }
-
             /* === REGIONAL SENTIMENT (mobile-first redesign) === */
             /* Region filter tabs: larger tap targets, horizontal scroll row */
             #regionMarketTabs { gap: 0.5rem !important; padding-bottom: 0.5rem !important; }
@@ -1163,10 +1160,15 @@
             }
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
-            /* Card: remove fixed height so content flows naturally into page scroll */
-            #regionalSentimentCard { height: auto !important; min-height: 0 !important; }
-            /* Board: let it grow with content instead of scrolling in a tiny box */
-            #regionalSentimentBoard { overflow-y: visible !important; max-height: none !important; flex: none !important; }
+            /* Card: give mobile a tall-enough height for comfortable scrolling */
+            #regionalSentimentCard { height: 72vh !important; max-height: none !important; }
+            /* Board: internal scroll with iOS momentum touch */
+            #regionalSentimentBoard {
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                max-height: none !important;
+                flex: 1 !important;
+            }
 
         }
 
