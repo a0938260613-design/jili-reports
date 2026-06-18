@@ -1055,15 +1055,26 @@
 
             /* === FILTER BAR === */
             .filter-console-wrap {
-                position: static !important;
-                top: auto !important;
-                z-index: auto !important;
+                position: sticky !important;
+                top: calc(0.5rem + env(safe-area-inset-top)) !important;
+                z-index: 850 !important;
+                margin-bottom: 1.25rem !important;
+                transition: transform 0.18s ease, opacity 0.18s ease;
             }
             .filter-console-bar {
                 gap: 0.5rem !important;
                 padding: 0.65rem !important;
                 border-radius: 1rem !important;
                 overflow: visible !important;
+            }
+            .filter-console-wrap.mobile-stuck .filter-console-bar {
+                gap: 0.4rem !important;
+                padding: 0.5rem !important;
+                border-radius: 0.9rem !important;
+                box-shadow: 0 12px 28px rgba(0,0,0,0.2) !important;
+            }
+            .dark .filter-console-wrap.mobile-stuck .filter-console-bar {
+                box-shadow: 0 0 0 1px rgba(0,240,255,0.18), 0 14px 32px rgba(0,0,0,0.65) !important;
             }
             .filter-console-bar > div.flex-1 {
                 flex: 0 0 100% !important;
@@ -1073,6 +1084,9 @@
             #searchInput {
                 min-height: 44px !important;
                 font-size: 16px !important;
+            }
+            .filter-console-wrap.mobile-stuck #searchInput {
+                min-height: 40px !important;
             }
             .filter-console-bar > div.flex.gap-2 {
                 flex: 0 0 100% !important;
@@ -1089,6 +1103,11 @@
                 padding-left: 0.75rem !important;
                 padding-right: 0.75rem !important;
                 white-space: nowrap !important;
+            }
+            .filter-console-wrap.mobile-stuck .menu-trigger {
+                min-height: 40px !important;
+                padding-left: 0.65rem !important;
+                padding-right: 0.65rem !important;
             }
             .filter-console-bar > div.flex.gap-1 {
                 flex: 1 1 calc(100% - 7.25rem) !important;
@@ -1129,6 +1148,12 @@
             }
             #keywordsRow::-webkit-scrollbar,
             #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .filter-console-wrap.mobile-stuck #keywordsRow,
+            .filter-console-wrap.mobile-stuck .filter-console-bar > div.flex.gap-1,
+            .filter-console-wrap.mobile-stuck #viewToggle,
+            .filter-console-wrap.mobile-stuck .filter-console-bar > button[onclick="resetAllFilters()"] {
+                display: none !important;
+            }
             .keyword-chip,
             .filter-chip {
                 flex: 0 0 auto !important;
@@ -3038,7 +3063,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "澳洲", "count": 1, "coords": [-25.139094701687224, 133.85507849560096], "sentiment": "利空", "news_full": [{"title": "澳洲星億集團前 CEO 遭罰款 49.5 萬美元並禁業六年", "title_en": "Former CEO of Australia's Star Entertainment Fined $495,000 and Banned for Six Years", "title_th": "อดีต CEO ของ Star Entertainment ในออสเตรเลียถูกปรับ 495,000 ดอลลาร์และสั่งแบนจากอุตสาหกรรมเป็นเวลา 6 ปี", "title_hi": "ऑस्ट्रेलिया के स्टार एंटरटेनमेंट के पूर्व सीईओ पर $495,000 का जुर्माना और छह साल के लिए प्रतिबंध", "link": "https://agbrief.com/news/18/06/2026/former-star-ceo-hit-with-495k-fine-and-six-year-ban/", "sentiment": "利空", "impact": 55.0, "urgency": 50.0}]}, {"region": "全球", "count": 2, "coords": [20.01175235834827, 10.137047683954613], "sentiment": "利多", "news_full": [{"title": "法院駁回 Evolution 將 Playtech 列入誹謗訴訟案的請求", "title_en": "Court Rejects Evolution’s Request to Include Playtech in Defamation Lawsuit", "title_th": "ศาลยกคำร้องของ Evolution ที่ต้องการให้รวม Playtech เข้าเป็นจำเลยในคดีหมิ่นประมาท", "title_hi": "अदालत ने एवोल्यूशन (Evolution) की प्लेटेक (Playtech) को मानहानि मामले में शामिल करने की याचिका खारिज की", "link": "https://www.gamblinginsider.com/news/167315/evolution-denied-bid-add-playtech-defamation-lawsuit", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "梅西代言助力 Kalshi 創下世界盃行銷高峰", "title_en": "Messi’s Endorsement Helps Kalshi Reach World Cup Marketing Peak", "title_th": "การเป็นพรีเซนเตอร์ของเมสซี่ช่วยให้ Kalshi สร้างจุดสูงสุดทางการตลาดในช่วงฟุตบอลโลก", "title_hi": "मेसी का विज्ञापन Kalshi को विश्व कप मार्केटिंग के शिखर पर ले गया", "link": "https://www.gamblinginsider.com/news/167193/lionel-messi-kalshi-argentina-world-cup-partnership", "sentiment": "利多", "impact": 50.0, "urgency": 25.0}]}, {"region": "美國", "count": 3, "coords": [37.00628389471025, -95.78478854684997], "sentiment": "利空", "news_full": [{"title": "賓州最高法院裁定：技能遊戲機台視同老虎機", "title_en": "Pennsylvania Supreme Court Rules Skill Games are Slot Machines", "title_th": "ศาลสูงสุดรัฐเพนซิลเวเนียตัดสินให้ 'เกมทักษะ' (Skill Games) มีสถานะเป็นตู้สล็อตแมชชีน", "title_hi": "पेंसिल्वेनिया सुप्रीम कोर्ट का फैसला: 'स्किल गेम्स' को स्लॉट मशीनों के समान माना जाएगा", "link": "https://www.gamblinginsider.com/news/167291/pennsylvania-supreme-court-skill-games", "sentiment": "利多", "impact": 85.0, "urgency": 75.0}, {"title": "Brendan Sorsby 勝訴後放棄最後一個大學賽季", "title_en": "Brendan Sorsby Forgoes Final College Season After Legal Victory", "title_th": "Brendan Sorsby ตัดสินใจสละสิทธิ์ฤดูกาลสุดท้ายในมหาวิทยาลัย หลังชนะคดีความ", "title_hi": "कानूनी जीत के बाद ब्रेंडन सोर्सबी ने अंतिम कॉलेज सीज़न छोड़ने का फैसला किया", "link": "https://www.gamblinginsider.com/news/167248/even-after-court-victory-brendan-sorsby-opts-against-final-college-football-season", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}, {"title": "Novig 獲 CFTC 批准，預測市場競爭激化", "title_en": "Novig Approved by CFTC, Prediction Market Competition Intensifies", "title_th": "Novig ได้รับอนุมัติจาก CFTC การแข่งขันในตลาดคาดการณ์ทวีความรุนแรงขึ้น", "title_hi": "Novig को CFTC की मंजूरी, प्रेडिक्शन मार्केट में प्रतिस्पर्धा तेज", "link": "https://www.gamblinginsider.com/news/167223/novig-ctfc-approval-prediction-market-competition", "sentiment": "利空", "impact": 65.0, "urgency": 40.0}]}];
+        const mapMarkersData = [{"region": "澳洲", "count": 1, "coords": [-24.934126856960646, 133.95453233493976], "sentiment": "利空", "news_full": [{"title": "澳洲星億集團前 CEO 遭罰款 49.5 萬美元並禁業六年", "title_en": "Former CEO of Australia's Star Entertainment Fined $495,000 and Banned for Six Years", "title_th": "อดีต CEO ของ Star Entertainment ในออสเตรเลียถูกปรับ 495,000 ดอลลาร์และสั่งแบนจากอุตสาหกรรมเป็นเวลา 6 ปี", "title_hi": "ऑस्ट्रेलिया के स्टार एंटरटेनमेंट के पूर्व सीईओ पर $495,000 का जुर्माना और छह साल के लिए प्रतिबंध", "link": "https://agbrief.com/news/18/06/2026/former-star-ceo-hit-with-495k-fine-and-six-year-ban/", "sentiment": "利空", "impact": 55.0, "urgency": 50.0}]}, {"region": "全球", "count": 2, "coords": [20.130863412123137, 10.363343757731162], "sentiment": "利多", "news_full": [{"title": "法院駁回 Evolution 將 Playtech 列入誹謗訴訟案的請求", "title_en": "Court Rejects Evolution’s Request to Include Playtech in Defamation Lawsuit", "title_th": "ศาลยกคำร้องของ Evolution ที่ต้องการให้รวม Playtech เข้าเป็นจำเลยในคดีหมิ่นประมาท", "title_hi": "अदालत ने एवोल्यूशन (Evolution) की प्लेटेक (Playtech) को मानहानि मामले में शामिल करने की याचिका खारिज की", "link": "https://www.gamblinginsider.com/news/167315/evolution-denied-bid-add-playtech-defamation-lawsuit", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "梅西代言助力 Kalshi 創下世界盃行銷高峰", "title_en": "Messi’s Endorsement Helps Kalshi Reach World Cup Marketing Peak", "title_th": "การเป็นพรีเซนเตอร์ของเมสซี่ช่วยให้ Kalshi สร้างจุดสูงสุดทางการตลาดในช่วงฟุตบอลโลก", "title_hi": "मेसी का विज्ञापन Kalshi को विश्व कप मार्केटिंग के शिखर पर ले गया", "link": "https://www.gamblinginsider.com/news/167193/lionel-messi-kalshi-argentina-world-cup-partnership", "sentiment": "利多", "impact": 50.0, "urgency": 25.0}]}, {"region": "美國", "count": 3, "coords": [37.56937673673917, -95.64962287021383], "sentiment": "利空", "news_full": [{"title": "賓州最高法院裁定：技能遊戲機台視同老虎機", "title_en": "Pennsylvania Supreme Court Rules Skill Games are Slot Machines", "title_th": "ศาลสูงสุดรัฐเพนซิลเวเนียตัดสินให้ 'เกมทักษะ' (Skill Games) มีสถานะเป็นตู้สล็อตแมชชีน", "title_hi": "पेंसिल्वेनिया सुप्रीम कोर्ट का फैसला: 'स्किल गेम्स' को स्लॉट मशीनों के समान माना जाएगा", "link": "https://www.gamblinginsider.com/news/167291/pennsylvania-supreme-court-skill-games", "sentiment": "利多", "impact": 85.0, "urgency": 75.0}, {"title": "Brendan Sorsby 勝訴後放棄最後一個大學賽季", "title_en": "Brendan Sorsby Forgoes Final College Season After Legal Victory", "title_th": "Brendan Sorsby ตัดสินใจสละสิทธิ์ฤดูกาลสุดท้ายในมหาวิทยาลัย หลังชนะคดีความ", "title_hi": "कानूनी जीत के बाद ब्रेंडन सोर्सबी ने अंतिम कॉलेज सीज़न छोड़ने का फैसला किया", "link": "https://www.gamblinginsider.com/news/167248/even-after-court-victory-brendan-sorsby-opts-against-final-college-football-season", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}, {"title": "Novig 獲 CFTC 批准，預測市場競爭激化", "title_en": "Novig Approved by CFTC, Prediction Market Competition Intensifies", "title_th": "Novig ได้รับอนุมัติจาก CFTC การแข่งขันในตลาดคาดการณ์ทวีความรุนแรงขึ้น", "title_hi": "Novig को CFTC की मंजूरी, प्रेडिक्शन मार्केट में प्रतिस्पर्धा तेज", "link": "https://www.gamblinginsider.com/news/167223/novig-ctfc-approval-prediction-market-competition", "sentiment": "利空", "impact": 65.0, "urgency": 40.0}]}];
 
         const regionMarkers = {};
 
@@ -4414,6 +4439,24 @@ const regionMap = {
             });
             document.body.classList.remove('mobile-filter-open');
         }
+
+        const mobileFilterWrap = document.querySelector('.filter-console-wrap');
+
+        function updateMobileFilterStickiness() {
+            if (!mobileFilterWrap) return;
+            const shouldCondense = mobileFilterQuery.matches && window.scrollY > 260;
+            mobileFilterWrap.classList.toggle('mobile-stuck', shouldCondense);
+            if (!mobileFilterQuery.matches) {
+                mobileFilterWrap.classList.remove('mobile-stuck');
+            }
+        }
+
+        window.addEventListener('scroll', updateMobileFilterStickiness, { passive: true });
+        window.addEventListener('resize', updateMobileFilterStickiness);
+        if (mobileFilterQuery.addEventListener) {
+            mobileFilterQuery.addEventListener('change', updateMobileFilterStickiness);
+        }
+        updateMobileFilterStickiness();
 
         // 點擊切換導航選單顯示狀態
 
