@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -4181,7 +4425,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 13, "coords": [20.315014719691842, 9.573963125891552], "sentiment": "利多", "news_full": [{"title": "電子競技產業擴張與蒙古戰隊的崛起：市場影響力觀察", "title_en": "Esports Industry Expansion and the Rise of The Mongolz: Market Influence", "title_th": "การขยายตัวของอุตสาหกรรมอีสปอร์ตและการผงาดของทีม The Mongolz: มุมมองอิทธิพลต่อตลาด", "title_hi": "ईस्पोर्ट्स उद्योग का विस्तार और द मोंगोल्ज़ का उदय: बाजार प्रभाव का अवलोकन", "link": "https://asgam.com/2026/05/26/an-interview-with-pgl-esports-and-the-mongolz/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Fast Track 推動 AI 代理工作流，升級新一代客戶關係管理", "title_en": "Fast Track Drives AI Agent Workflow to Upgrade Next-Generation CRM", "title_th": "Fast Track ขับเคลื่อน AI Agent Workflow ยกระดับ CRM ยุคใหม่", "title_hi": "Fast Track ने नई पीढ़ी के CRM को अपग्रेड करने के लिए AI एजेंट वर्कफ़्लो को बढ़ावा दिया", "link": "https://agbrief.com/news/europe/26/05/2026/fast-track-ai-powers-next-generation-crm-with-agentic-workflows/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}, {"title": "Agreegain 與 18Peaches 攜手提供優質老虎機內容", "title_en": "Agreegain and 18Peaches partner to provide premium slot content", "title_th": "Agreegain และ 18Peaches ผนึกกำลังส่งมอบเนื้อหาสล็อตคุณภาพระดับพรีเมียม", "title_hi": "Agreegain और 18Peaches ने प्रीमियम स्लॉट सामग्री प्रदान करने के लिए हाथ मिलाया", "link": "https://agbrief.com/news/world/25/05/2026/agreegain-and-18peaches-unite-to-deliver-premium-slot-content/", "sentiment": "中立", "impact": 45.0, "urgency": 25.0}, {"title": "QTech Games 透過 UU Slots 增強其頂級遊戲產品陣容", "title_en": "QTech Games enhances game portfolio with UU Slots", "title_th": "QTech Games เสริมทัพด้วยเนื้อหาเกมระดับท็อปจาก UU Slots", "title_hi": "QTech Games ने UU Slots के साथ अपना टॉप गेम पोर्टफोलियो बढ़ाया", "link": "https://agbrief.com/news/world/25/05/2026/qtech-games-enhances-its-premium-offering-with-uu-slots/", "sentiment": "利多", "impact": 50.0, "urgency": 25.0}, {"title": "DragonGaming 推出世足賽主題遊戲搶佔玩家熱度", "title_en": "DragonGaming launches World Cup themed game to capture player interest", "title_th": "DragonGaming เปิดตัวเกมธีมฟุตบอลโลกเพื่อแย่งชิงความสนใจของผู้เล่น", "title_hi": "DragonGaming ने खिलाड़ियों की रुचि पकड़ने के लिए वर्ल्ड कप थीम वाला गेम लॉन्च किया", "link": "https://www.gamblingnews.com/news/dragongaming-stokes-the-world-cup-fans-with-ultimate-soccer-shootout/", "sentiment": "利多", "impact": 40.0, "urgency": 35.0}, {"title": "Playnetic 將內容整合至 Stake 平台", "title_en": "Playnetic integrates content onto Stake platform", "title_th": "Playnetic นำเนื้อหาเข้าสู่แพลตฟอร์ม Stake", "title_hi": "Playnetic ने Stake प्लेटफॉर्म पर कंटेंट को एकीकृत किया", "link": "https://www.gamblingnews.com/news/playnetic-adds-content-to-stakes-library/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "網紅 Khaby Lame 跨界加盟遊戲《007 First Light》", "title_en": "Influencer Khaby Lame Joins the Game '007 First Light'", "title_th": "อินฟลูเอนเซอร์ชื่อดัง Khaby Lame เข้าร่วมโปรเจกต์เกม '007 First Light'", "title_hi": "इन्फ्लुएंसर खाबी लाम गेम '007 फर्स्ट लाइट' के साथ जुड़े", "link": "https://www.gamingdose.com/news/khaby-lame-influencer-%e0%b8%95%e0%b8%a5%e0%b8%81%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%95%e0%b8%b2%e0%b8%a2-%e0%b8%a3%e0%b9%88%e0%b8%a7%e0%b8%a1%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%aa/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "PewDiePie 為保護家人隱私宣布停止製作 Vlog 內容", "title_en": "PewDiePie Announces End to Vlog Content to Protect Family Privacy", "title_th": "PewDiePie ประกาศเลิกทำ Vlog เพื่อปกป้องความเป็นส่วนตัวของครอบครัว", "title_hi": "PewDiePie ने परिवार की निजता की सुरक्षा के लिए व्लॉगिंग बंद करने की घोषणा की", "link": "https://www.gamingdose.com/news/pewdiepie-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%ab%e0%b8%a2%e0%b8%b8%e0%b8%94%e0%b8%97%e0%b8%b3%e0%b8%84%e0%b8%a5%e0%b8%b4%e0%b8%9b-vlog-%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%9a/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "《動物園之星 2》正式公布開發消息", "title_en": "'Planet Zoo 2' Officially Announced", "title_th": "ประกาศการพัฒนาเกม 'Planet Zoo 2' อย่างเป็นทางการ", "title_hi": "'Planet Zoo 2' के विकास की आधिकारिक घोषणा", "link": "https://www.gamingdose.com/news/planet-zoo-2-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%81/", "sentiment": "利多", "impact": 40.0, "urgency": 10.0}, {"title": "《鳴潮》確認於 5 月 29 日直播揭露 3.4 版本細節", "title_en": "'Wuthering Waves' Confirms Livestream for Version 3.4 Details on May 29", "title_th": "'Wuthering Waves' ยืนยันไลฟ์สตรีมเผยรายละเอียดเวอร์ชัน 3.4 ในวันที่ 29 พฤษภาคมนี้", "title_hi": "'Wuthering Waves' 29 मई को वर्जन 3.4 की जानकारी के लिए लाइवस्ट्रीम करेगा", "link": "https://www.gamingdose.com/news/wuthering-waves-%e0%b9%80%e0%b8%95%e0%b8%a3%e0%b8%b5%e0%b8%a2%e0%b8%a1%e0%b8%88%e0%b8%b1%e0%b8%94%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%81%e0%b8%81%e0%b8%a3%e0%b8%a1%e0%b8%9e%e0%b8%b4%e0%b9%80%e0%b8%a8/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "小島秀夫高度評價《曼達洛人與格羅古》", "title_en": "Hideo Kojima Highly Praises 'The Mandalorian and Grogu'", "title_th": "Hideo Kojima ชื่นชม 'The Mandalorian and Grogu' เป็นอย่างสูง", "title_hi": "हिदेओ कोजिमा ने 'द मंडलोरियन एंड ग्रोगु' की अत्यधिक प्रशंसा की", "link": "https://www.gamingdose.com/news/hideo-kojima-%e0%b8%a3%e0%b9%88%e0%b8%b2%e0%b8%a2%e0%b8%a2%e0%b8%b2%e0%b8%a7%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%94%e0%b8%b5%e0%b8%87%e0%b8%b2%e0%b8%a1-%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "配音員 Elias Toufexis 呼籲大眾停止看衰遊戲產業", "title_en": "Voice Actor Elias Toufexis Calls to Stop Negativity Against Gaming Industry", "title_th": "นักพากย์ Elias Toufexis เรียกร้องให้ยุติการโจมตีอุตสาหกรรมเกม", "title_hi": "वॉयस एक्टर एलियास टौफेक्सिस ने गेमिंग उद्योग के प्रति नकारात्मकता रोकने का आह्वान किया", "link": "https://www.gamingdose.com/news/elias-toufexis-%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b9%81%e0%b8%aa%e0%b8%94%e0%b8%87%e0%b8%88%e0%b8%b2%e0%b8%81-deus-ex-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%80/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "Acer 推崇 AI 技術，發布 Swift Go 與 Edge 系列筆電", "title_en": "Acer Embraces AI, Launches Swift Go and Edge Laptop Series", "title_th": "Acer ผลักดันเทคโนโลยี AI เปิดตัวแล็ปท็อปตระกูล Swift Go และ Edge", "title_hi": "Acer ने AI तकनीक अपनाई, स्विफ्ट गो और एज लैपटॉप सीरीज लॉन्च की", "link": "https://www.gamingdose.com/news/acer-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b9%82%e0%b8%99%e0%b9%89%e0%b8%95%e0%b8%9a%e0%b8%b8%e0%b9%8a%e0%b8%81%e0%b8%9e%e0%b8%a3%e0%b8%b5%e0%b9%80%e0%b8%a1%e0%b8%b5/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}]}, {"region": "澳洲", "count": 2, "coords": [-25.158317802668822, 133.56293361932086], "sentiment": "利空", "news_full": [{"title": "澳洲新南威爾斯州研擬：十年內削減半數老虎機數量", "title_en": "New South Wales, Australia, Plans to Cut Slot Machine Count by Half in a Decade", "title_th": "รัฐนิวเซาท์เวลส์ ออสเตรเลีย วางแผนลดจำนวนสล็อตแมชชีนลงครึ่งหนึ่งใน 10 ปี", "title_hi": "ऑस्ट्रेलिया के न्यू साउथ वेल्स की योजना: एक दशक में स्लॉट मशीनों की संख्या आधी करना", "link": "https://asgam.com/2026/05/26/nsw-government-set-to-discuss-proposal-to-halve-states-poker-machine-number-over-next-decade/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "澳洲執政黨審議削減 8.7 萬台老虎機計畫", "title_en": "Australia's Ruling Party Considers Plan to Cut 87,000 Slot Machines", "title_th": "พรรครัฐบาลออสเตรเลียพิจารณาแผนลดจำนวนสล็อตแมชชีน 87,000 ตู้", "title_hi": "ऑस्ट्रेलिया की सत्ताधारी पार्टी 87,000 स्लॉट मशीनों को काटने की योजना पर विचार कर रही है", "link": "https://agbrief.com/news/australia/26/05/2026/nsw-ruling-party-weighs-plan-to-halve-87000-poker-machines/", "sentiment": "利空", "impact": 80.0, "urgency": 75.0}]}, {"region": "孟加拉", "count": 1, "coords": [24.022473874102495, 90.02652636710421], "sentiment": "利空", "news_full": [{"title": "孟加拉擬修法：全面加強線上博彩禁令", "title_en": "Bangladesh Proposes Legislative Amendment: Comprehensive Ban on Online Gambling", "title_th": "บังกลาเทศเตรียมแก้ไขกฎหมาย: ยกระดับการห้ามพนันออนไลน์อย่างเต็มรูปแบบ", "title_hi": "बांग्लादेश प्रस्तावित कानून: ऑनलाइन सट्टेबाजी पर व्यापक प्रतिबंध", "link": "https://asgam.com/2026/05/26/bangladesh-to-update-gambling-law-to-tighten-ban-on-betting-and-online-gambling/", "sentiment": "利空", "impact": 60.0, "urgency": 80.0}]}, {"region": "新加坡", "count": 2, "coords": [1.8428057711045853, 103.86101471471056], "sentiment": "利空", "news_full": [{"title": "新加坡監管機構向聖淘沙名勝世界發出譴責函", "title_en": "Singapore Regulator Issues Censure Letter to Resorts World Sentosa", "title_th": "หน่วยงานกำกับดูแลของสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa", "title_hi": "सिंगापुर नियामक ने रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://asgam.com/2026/05/26/resorts-world-sentosa-issued-letter-of-censure-by-singapore-regulator/", "sentiment": "利空", "impact": 30.0, "urgency": 75.0}, {"title": "新加坡賭場監管局因內部控制失效向聖淘沙名勝世界發出譴責信", "title_en": "Singapore's GRA issues censure to Resorts World Sentosa for internal control failures", "title_th": "หน่วยงานกำกับดูแลคาสิโนสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa เหตุความล้มเหลวในการควบคุมภายใน", "title_hi": "सिंगापुर के कैसीनो नियामक ने आंतरिक नियंत्रण विफलताओं के लिए रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://agbrief.com/news/singapore/25/05/2026/singapore-gra-issues-letter-of-censure-to-rws-over-internal-control-failure/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "菲律賓", "count": 2, "coords": [14.899397454616661, 121.46565382095952], "sentiment": "利空", "news_full": [{"title": "NUSTAR 於宿霧推動植樹活動，深耕社會責任", "title_en": "NUSTAR Promotes Tree Planting in Cebu to Deepen Corporate Social Responsibility", "title_th": "NUSTAR ในเซบูส่งเสริมกิจกรรมปลูกป่า ตอกย้ำความรับผิดชอบต่อสังคม", "title_hi": "NUSTAR ने सेबू में वृक्षारोपण को बढ़ावा दिया, कॉर्पोरेट सामाजिक जिम्मेदारी को गहरा किया", "link": "https://www.ggrasia.com/nustar-advances-reforestation-push-with-community-tree-planting-in-cebu?utm_source=rss&utm_medium=rss&utm_campaign=nustar-advances-reforestation-push-with-community-tree-planting-in-cebu", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "菲律賓政壇變動，Sherwin Gatchalian 被點名角逐參議院議長", "title_en": "Philippine political shift: Sherwin Gatchalian tipped for Senate Presidency", "title_th": "การเมืองฟิลิปปินส์เปลี่ยนทิศ: Sherwin Gatchalian ถูกจับตามองชิงตำแหน่งประธานวุฒิสภา", "title_hi": "फिलीपींस में राजनीतिक बदलाव: शेरविन गचालीयन सीनेट अध्यक्ष पद की दौड़ में आगे", "link": "https://agbrief.com/news/philippines/26/05/2026/senator-sherwin-gatchalian-floated-as-senate-president-amid-coalition-talks/", "sentiment": "利空", "impact": 85.0, "urgency": 75.0}]}, {"region": "越南", "count": 1, "coords": [20.825145375101407, 105.75325028139329], "sentiment": "中立", "news_full": [{"title": "會安南岸度假村推動永續發展與員工關懷專案", "title_en": "Hoiana Resort Launches Sustainable Development and Employee Care Program", "title_th": "Hoiana Resort เปิดตัวโครงการพัฒนาที่ยั่งยืนและดูแลพนักงาน", "title_hi": "होइयाना रिज़ॉर्ट ने सतत विकास और कर्मचारी देखभाल कार्यक्रम शुरू किया", "link": "https://www.ggrasia.com/hoiana-launches-sustainability-campaign-involving-employees-community?utm_source=rss&utm_medium=rss&utm_campaign=hoiana-launches-sustainability-campaign-involving-employees-community", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}]}, {"region": "亞太", "count": 1, "coords": [24.955300108704144, 137.99994715502845], "sentiment": "利多", "news_full": [{"title": "Weike 發布新電子輪盤與連線老虎機，積極爭取年輕受眾", "title_en": "Weike Launches New Electronic Roulette and Linked Slot Machines to Target Younger Audiences", "title_th": "Weike เปิดตัวรูเล็ตอิเล็กทรอนิกส์และสล็อตแมชชีนเชื่อมต่อรุ่นใหม่ หวังดึงกลุ่มคนรุ่นใหม่", "title_hi": "Weike ने युवा दर्शकों को आकर्षित करने के लिए नई इलेक्ट्रॉनिक रूलेट और लिंक्ड स्लॉट मशीनें जारी कीं", "link": "https://www.ggrasia.com/weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette?utm_source=rss&utm_medium=rss&utm_campaign=weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette", "sentiment": "利多", "impact": 55.0, "urgency": 45.0}]}, {"region": "柬埔寨", "count": 1, "coords": [12.027592633254189, 104.80702042442267], "sentiment": "利空", "news_full": [{"title": "柬埔寨總理下令徹查庇護網投犯罪的官員", "title_en": "Cambodian Prime Minister orders crackdown on officials shielding cybercrime", "title_th": "นายกฯ กัมพูชาสั่งกวาดล้างเจ้าหน้าที่รัฐที่ให้การสนับสนุนอาชญากรรมไซเบอร์", "title_hi": "कंबोडिया के प्रधानमंत्री ने साइबर अपराध को संरक्षण देने वाले अधिकारियों के खिलाफ सख्त कार्रवाई का आदेश दिया", "link": "https://agbrief.com/news/cambodia/26/05/2026/cambodian-pm-orders-crackdown-on-officials-shielding-cyber-scam-networks/", "sentiment": "利空", "impact": 80.0, "urgency": 90.0}]}, {"region": "德國", "count": 1, "coords": [50.97682455510315, 10.582710917066812], "sentiment": "利多", "news_full": [{"title": "PopOK Gaming 與德國 Tipico 達成戰略合作夥伴關係", "title_en": "PopOK Gaming enters strategic partnership with Germany's Tipico", "title_th": "PopOK Gaming จับมือ Tipico เยอรมนี สร้างพันธมิตรเชิงกลยุทธ์", "title_hi": "PopOK Gaming ने जर्मनी के Tipico के साथ रणनीतिक साझेदारी की", "link": "https://agbrief.com/news/europe/25/05/2026/popok-gaming-announces-strategic-partnership-with-tipico-in-germany/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}, {"region": "歐洲", "count": 2, "coords": [50.15376124051211, 15.488423932653866], "sentiment": "利多", "news_full": [{"title": "Bally's Intralot 與希臘 Hellenic Lotteries 簽訂新彩票合約", "title_en": "Bally's Intralot signs new lottery contract with Hellenic Lotteries in Greece", "title_th": "Bally's Intralot เซ็นสัญญาหวยใหม่กับ Hellenic Lotteries ในกรีซ", "title_hi": "Bally's Intralot ने ग्रीस में हेलेनिक लॉटरीज के साथ नए लॉटरी अनुबंध पर हस्ताक्षर किए", "link": "https://agbrief.com/news/europe/25/05/2026/ballys-intralot-secures-new-lottery-contract-with-hellenic-lotteries-in-greece/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "都柏林線上彩票玩家贏得 431 萬美元大獎", "title_en": "Dublin online lottery player wins $4.31 million jackpot", "title_th": "ผู้เล่นลอตเตอรีออนไลน์ในดับลินถูกรางวัลแจ็กพอต 4.31 ล้านดอลลาร์", "title_hi": "डबलिन के ऑनलाइन लॉटरी खिलाड़ी ने $4.31 मिलियन का जैकपॉट जीता", "link": "https://www.gamblingnews.com/news/dublin-online-lottery-player-wins-4-31m-lotto-jackpot/", "sentiment": "中立", "impact": 30.0, "urgency": 10.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 13, "coords": [20.443388174707906, 10.053871128734025], "sentiment": "利多", "news_full": [{"title": "電子競技產業擴張與蒙古戰隊的崛起：市場影響力觀察", "title_en": "Esports Industry Expansion and the Rise of The Mongolz: Market Influence", "title_th": "การขยายตัวของอุตสาหกรรมอีสปอร์ตและการผงาดของทีม The Mongolz: มุมมองอิทธิพลต่อตลาด", "title_hi": "ईस्पोर्ट्स उद्योग का विस्तार और द मोंगोल्ज़ का उदय: बाजार प्रभाव का अवलोकन", "link": "https://asgam.com/2026/05/26/an-interview-with-pgl-esports-and-the-mongolz/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Fast Track 推動 AI 代理工作流，升級新一代客戶關係管理", "title_en": "Fast Track Drives AI Agent Workflow to Upgrade Next-Generation CRM", "title_th": "Fast Track ขับเคลื่อน AI Agent Workflow ยกระดับ CRM ยุคใหม่", "title_hi": "Fast Track ने नई पीढ़ी के CRM को अपग्रेड करने के लिए AI एजेंट वर्कफ़्लो को बढ़ावा दिया", "link": "https://agbrief.com/news/europe/26/05/2026/fast-track-ai-powers-next-generation-crm-with-agentic-workflows/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}, {"title": "Agreegain 與 18Peaches 攜手提供優質老虎機內容", "title_en": "Agreegain and 18Peaches partner to provide premium slot content", "title_th": "Agreegain และ 18Peaches ผนึกกำลังส่งมอบเนื้อหาสล็อตคุณภาพระดับพรีเมียม", "title_hi": "Agreegain और 18Peaches ने प्रीमियम स्लॉट सामग्री प्रदान करने के लिए हाथ मिलाया", "link": "https://agbrief.com/news/world/25/05/2026/agreegain-and-18peaches-unite-to-deliver-premium-slot-content/", "sentiment": "中立", "impact": 45.0, "urgency": 25.0}, {"title": "QTech Games 透過 UU Slots 增強其頂級遊戲產品陣容", "title_en": "QTech Games enhances game portfolio with UU Slots", "title_th": "QTech Games เสริมทัพด้วยเนื้อหาเกมระดับท็อปจาก UU Slots", "title_hi": "QTech Games ने UU Slots के साथ अपना टॉप गेम पोर्टफोलियो बढ़ाया", "link": "https://agbrief.com/news/world/25/05/2026/qtech-games-enhances-its-premium-offering-with-uu-slots/", "sentiment": "利多", "impact": 50.0, "urgency": 25.0}, {"title": "DragonGaming 推出世足賽主題遊戲搶佔玩家熱度", "title_en": "DragonGaming launches World Cup themed game to capture player interest", "title_th": "DragonGaming เปิดตัวเกมธีมฟุตบอลโลกเพื่อแย่งชิงความสนใจของผู้เล่น", "title_hi": "DragonGaming ने खिलाड़ियों की रुचि पकड़ने के लिए वर्ल्ड कप थीम वाला गेम लॉन्च किया", "link": "https://www.gamblingnews.com/news/dragongaming-stokes-the-world-cup-fans-with-ultimate-soccer-shootout/", "sentiment": "利多", "impact": 40.0, "urgency": 35.0}, {"title": "Playnetic 將內容整合至 Stake 平台", "title_en": "Playnetic integrates content onto Stake platform", "title_th": "Playnetic นำเนื้อหาเข้าสู่แพลตฟอร์ม Stake", "title_hi": "Playnetic ने Stake प्लेटफॉर्म पर कंटेंट को एकीकृत किया", "link": "https://www.gamblingnews.com/news/playnetic-adds-content-to-stakes-library/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "網紅 Khaby Lame 跨界加盟遊戲《007 First Light》", "title_en": "Influencer Khaby Lame Joins the Game '007 First Light'", "title_th": "อินฟลูเอนเซอร์ชื่อดัง Khaby Lame เข้าร่วมโปรเจกต์เกม '007 First Light'", "title_hi": "इन्फ्लुएंसर खाबी लाम गेम '007 फर्स्ट लाइट' के साथ जुड़े", "link": "https://www.gamingdose.com/news/khaby-lame-influencer-%e0%b8%95%e0%b8%a5%e0%b8%81%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%95%e0%b8%b2%e0%b8%a2-%e0%b8%a3%e0%b9%88%e0%b8%a7%e0%b8%a1%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%aa/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "PewDiePie 為保護家人隱私宣布停止製作 Vlog 內容", "title_en": "PewDiePie Announces End to Vlog Content to Protect Family Privacy", "title_th": "PewDiePie ประกาศเลิกทำ Vlog เพื่อปกป้องความเป็นส่วนตัวของครอบครัว", "title_hi": "PewDiePie ने परिवार की निजता की सुरक्षा के लिए व्लॉगिंग बंद करने की घोषणा की", "link": "https://www.gamingdose.com/news/pewdiepie-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%ab%e0%b8%a2%e0%b8%b8%e0%b8%94%e0%b8%97%e0%b8%b3%e0%b8%84%e0%b8%a5%e0%b8%b4%e0%b8%9b-vlog-%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%9a/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "《動物園之星 2》正式公布開發消息", "title_en": "'Planet Zoo 2' Officially Announced", "title_th": "ประกาศการพัฒนาเกม 'Planet Zoo 2' อย่างเป็นทางการ", "title_hi": "'Planet Zoo 2' के विकास की आधिकारिक घोषणा", "link": "https://www.gamingdose.com/news/planet-zoo-2-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%81/", "sentiment": "利多", "impact": 40.0, "urgency": 10.0}, {"title": "《鳴潮》確認於 5 月 29 日直播揭露 3.4 版本細節", "title_en": "'Wuthering Waves' Confirms Livestream for Version 3.4 Details on May 29", "title_th": "'Wuthering Waves' ยืนยันไลฟ์สตรีมเผยรายละเอียดเวอร์ชัน 3.4 ในวันที่ 29 พฤษภาคมนี้", "title_hi": "'Wuthering Waves' 29 मई को वर्जन 3.4 की जानकारी के लिए लाइवस्ट्रीम करेगा", "link": "https://www.gamingdose.com/news/wuthering-waves-%e0%b9%80%e0%b8%95%e0%b8%a3%e0%b8%b5%e0%b8%a2%e0%b8%a1%e0%b8%88%e0%b8%b1%e0%b8%94%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%81%e0%b8%81%e0%b8%a3%e0%b8%a1%e0%b8%9e%e0%b8%b4%e0%b9%80%e0%b8%a8/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "小島秀夫高度評價《曼達洛人與格羅古》", "title_en": "Hideo Kojima Highly Praises 'The Mandalorian and Grogu'", "title_th": "Hideo Kojima ชื่นชม 'The Mandalorian and Grogu' เป็นอย่างสูง", "title_hi": "हिदेओ कोजिमा ने 'द मंडलोरियन एंड ग्रोगु' की अत्यधिक प्रशंसा की", "link": "https://www.gamingdose.com/news/hideo-kojima-%e0%b8%a3%e0%b9%88%e0%b8%b2%e0%b8%a2%e0%b8%a2%e0%b8%b2%e0%b8%a7%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%94%e0%b8%b5%e0%b8%87%e0%b8%b2%e0%b8%a1-%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "配音員 Elias Toufexis 呼籲大眾停止看衰遊戲產業", "title_en": "Voice Actor Elias Toufexis Calls to Stop Negativity Against Gaming Industry", "title_th": "นักพากย์ Elias Toufexis เรียกร้องให้ยุติการโจมตีอุตสาหกรรมเกม", "title_hi": "वॉयस एक्टर एलियास टौफेक्सिस ने गेमिंग उद्योग के प्रति नकारात्मकता रोकने का आह्वान किया", "link": "https://www.gamingdose.com/news/elias-toufexis-%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b9%81%e0%b8%aa%e0%b8%94%e0%b8%87%e0%b8%88%e0%b8%b2%e0%b8%81-deus-ex-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%80/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "Acer 推崇 AI 技術，發布 Swift Go 與 Edge 系列筆電", "title_en": "Acer Embraces AI, Launches Swift Go and Edge Laptop Series", "title_th": "Acer ผลักดันเทคโนโลยี AI เปิดตัวแล็ปท็อปตระกูล Swift Go และ Edge", "title_hi": "Acer ने AI तकनीक अपनाई, स्विफ्ट गो और एज लैपटॉप सीरीज लॉन्च की", "link": "https://www.gamingdose.com/news/acer-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b9%82%e0%b8%99%e0%b9%89%e0%b8%95%e0%b8%9a%e0%b8%b8%e0%b9%8a%e0%b8%81%e0%b8%9e%e0%b8%a3%e0%b8%b5%e0%b9%80%e0%b8%a1%e0%b8%b5/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}]}, {"region": "澳洲", "count": 2, "coords": [-25.621445692859627, 133.96524614671776], "sentiment": "利空", "news_full": [{"title": "澳洲新南威爾斯州研擬：十年內削減半數老虎機數量", "title_en": "New South Wales, Australia, Plans to Cut Slot Machine Count by Half in a Decade", "title_th": "รัฐนิวเซาท์เวลส์ ออสเตรเลีย วางแผนลดจำนวนสล็อตแมชชีนลงครึ่งหนึ่งใน 10 ปี", "title_hi": "ऑस्ट्रेलिया के न्यू साउथ वेल्स की योजना: एक दशक में स्लॉट मशीनों की संख्या आधी करना", "link": "https://asgam.com/2026/05/26/nsw-government-set-to-discuss-proposal-to-halve-states-poker-machine-number-over-next-decade/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "澳洲執政黨審議削減 8.7 萬台老虎機計畫", "title_en": "Australia's Ruling Party Considers Plan to Cut 87,000 Slot Machines", "title_th": "พรรครัฐบาลออสเตรเลียพิจารณาแผนลดจำนวนสล็อตแมชชีน 87,000 ตู้", "title_hi": "ऑस्ट्रेलिया की सत्ताधारी पार्टी 87,000 स्लॉट मशीनों को काटने की योजना पर विचार कर रही है", "link": "https://agbrief.com/news/australia/26/05/2026/nsw-ruling-party-weighs-plan-to-halve-87000-poker-machines/", "sentiment": "利空", "impact": 80.0, "urgency": 75.0}]}, {"region": "孟加拉", "count": 1, "coords": [23.920510766881335, 90.00946181680477], "sentiment": "利空", "news_full": [{"title": "孟加拉擬修法：全面加強線上博彩禁令", "title_en": "Bangladesh Proposes Legislative Amendment: Comprehensive Ban on Online Gambling", "title_th": "บังกลาเทศเตรียมแก้ไขกฎหมาย: ยกระดับการห้ามพนันออนไลน์อย่างเต็มรูปแบบ", "title_hi": "बांग्लादेश प्रस्तावित कानून: ऑनलाइन सट्टेबाजी पर व्यापक प्रतिबंध", "link": "https://asgam.com/2026/05/26/bangladesh-to-update-gambling-law-to-tighten-ban-on-betting-and-online-gambling/", "sentiment": "利空", "impact": 60.0, "urgency": 80.0}]}, {"region": "新加坡", "count": 2, "coords": [1.5018441919375323, 104.09022735401838], "sentiment": "利空", "news_full": [{"title": "新加坡監管機構向聖淘沙名勝世界發出譴責函", "title_en": "Singapore Regulator Issues Censure Letter to Resorts World Sentosa", "title_th": "หน่วยงานกำกับดูแลของสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa", "title_hi": "सिंगापुर नियामक ने रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://asgam.com/2026/05/26/resorts-world-sentosa-issued-letter-of-censure-by-singapore-regulator/", "sentiment": "利空", "impact": 30.0, "urgency": 75.0}, {"title": "新加坡賭場監管局因內部控制失效向聖淘沙名勝世界發出譴責信", "title_en": "Singapore's GRA issues censure to Resorts World Sentosa for internal control failures", "title_th": "หน่วยงานกำกับดูแลคาสิโนสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa เหตุความล้มเหลวในการควบคุมภายใน", "title_hi": "सिंगापुर के कैसीनो नियामक ने आंतरिक नियंत्रण विफलताओं के लिए रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://agbrief.com/news/singapore/25/05/2026/singapore-gra-issues-letter-of-censure-to-rws-over-internal-control-failure/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "菲律賓", "count": 2, "coords": [14.160375087882406, 121.46678428893038], "sentiment": "利空", "news_full": [{"title": "NUSTAR 於宿霧推動植樹活動，深耕社會責任", "title_en": "NUSTAR Promotes Tree Planting in Cebu to Deepen Corporate Social Responsibility", "title_th": "NUSTAR ในเซบูส่งเสริมกิจกรรมปลูกป่า ตอกย้ำความรับผิดชอบต่อสังคม", "title_hi": "NUSTAR ने सेबू में वृक्षारोपण को बढ़ावा दिया, कॉर्पोरेट सामाजिक जिम्मेदारी को गहरा किया", "link": "https://www.ggrasia.com/nustar-advances-reforestation-push-with-community-tree-planting-in-cebu?utm_source=rss&utm_medium=rss&utm_campaign=nustar-advances-reforestation-push-with-community-tree-planting-in-cebu", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "菲律賓政壇變動，Sherwin Gatchalian 被點名角逐參議院議長", "title_en": "Philippine political shift: Sherwin Gatchalian tipped for Senate Presidency", "title_th": "การเมืองฟิลิปปินส์เปลี่ยนทิศ: Sherwin Gatchalian ถูกจับตามองชิงตำแหน่งประธานวุฒิสภา", "title_hi": "फिलीपींस में राजनीतिक बदलाव: शेरविन गचालीयन सीनेट अध्यक्ष पद की दौड़ में आगे", "link": "https://agbrief.com/news/philippines/26/05/2026/senator-sherwin-gatchalian-floated-as-senate-president-amid-coalition-talks/", "sentiment": "利空", "impact": 85.0, "urgency": 75.0}]}, {"region": "越南", "count": 1, "coords": [20.769554368776706, 105.98103833865622], "sentiment": "中立", "news_full": [{"title": "會安南岸度假村推動永續發展與員工關懷專案", "title_en": "Hoiana Resort Launches Sustainable Development and Employee Care Program", "title_th": "Hoiana Resort เปิดตัวโครงการพัฒนาที่ยั่งยืนและดูแลพนักงาน", "title_hi": "होइयाना रिज़ॉर्ट ने सतत विकास और कर्मचारी देखभाल कार्यक्रम शुरू किया", "link": "https://www.ggrasia.com/hoiana-launches-sustainability-campaign-involving-employees-community?utm_source=rss&utm_medium=rss&utm_campaign=hoiana-launches-sustainability-campaign-involving-employees-community", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}]}, {"region": "亞太", "count": 1, "coords": [24.584667522520725, 138.10301531268092], "sentiment": "利多", "news_full": [{"title": "Weike 發布新電子輪盤與連線老虎機，積極爭取年輕受眾", "title_en": "Weike Launches New Electronic Roulette and Linked Slot Machines to Target Younger Audiences", "title_th": "Weike เปิดตัวรูเล็ตอิเล็กทรอนิกส์และสล็อตแมชชีนเชื่อมต่อรุ่นใหม่ หวังดึงกลุ่มคนรุ่นใหม่", "title_hi": "Weike ने युवा दर्शकों को आकर्षित करने के लिए नई इलेक्ट्रॉनिक रूलेट और लिंक्ड स्लॉट मशीनें जारी कीं", "link": "https://www.ggrasia.com/weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette?utm_source=rss&utm_medium=rss&utm_campaign=weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette", "sentiment": "利多", "impact": 55.0, "urgency": 45.0}]}, {"region": "柬埔寨", "count": 1, "coords": [11.97659888279824, 104.5197600298536], "sentiment": "利空", "news_full": [{"title": "柬埔寨總理下令徹查庇護網投犯罪的官員", "title_en": "Cambodian Prime Minister orders crackdown on officials shielding cybercrime", "title_th": "นายกฯ กัมพูชาสั่งกวาดล้างเจ้าหน้าที่รัฐที่ให้การสนับสนุนอาชญากรรมไซเบอร์", "title_hi": "कंबोडिया के प्रधानमंत्री ने साइबर अपराध को संरक्षण देने वाले अधिकारियों के खिलाफ सख्त कार्रवाई का आदेश दिया", "link": "https://agbrief.com/news/cambodia/26/05/2026/cambodian-pm-orders-crackdown-on-officials-shielding-cyber-scam-networks/", "sentiment": "利空", "impact": 80.0, "urgency": 90.0}]}, {"region": "德國", "count": 1, "coords": [51.180574779847284, 9.985083738288179], "sentiment": "利多", "news_full": [{"title": "PopOK Gaming 與德國 Tipico 達成戰略合作夥伴關係", "title_en": "PopOK Gaming enters strategic partnership with Germany's Tipico", "title_th": "PopOK Gaming จับมือ Tipico เยอรมนี สร้างพันธมิตรเชิงกลยุทธ์", "title_hi": "PopOK Gaming ने जर्मनी के Tipico के साथ रणनीतिक साझेदारी की", "link": "https://agbrief.com/news/europe/25/05/2026/popok-gaming-announces-strategic-partnership-with-tipico-in-germany/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}, {"region": "歐洲", "count": 2, "coords": [49.81121057526017, 15.288183822198656], "sentiment": "利多", "news_full": [{"title": "Bally's Intralot 與希臘 Hellenic Lotteries 簽訂新彩票合約", "title_en": "Bally's Intralot signs new lottery contract with Hellenic Lotteries in Greece", "title_th": "Bally's Intralot เซ็นสัญญาหวยใหม่กับ Hellenic Lotteries ในกรีซ", "title_hi": "Bally's Intralot ने ग्रीस में हेलेनिक लॉटरीज के साथ नए लॉटरी अनुबंध पर हस्ताक्षर किए", "link": "https://agbrief.com/news/europe/25/05/2026/ballys-intralot-secures-new-lottery-contract-with-hellenic-lotteries-in-greece/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "都柏林線上彩票玩家贏得 431 萬美元大獎", "title_en": "Dublin online lottery player wins $4.31 million jackpot", "title_th": "ผู้เล่นลอตเตอรีออนไลน์ในดับลินถูกรางวัลแจ็กพอต 4.31 ล้านดอลลาร์", "title_hi": "डबलिन के ऑनलाइन लॉटरी खिलाड़ी ने $4.31 मिलियन का जैकपॉट जीता", "link": "https://www.gamblingnews.com/news/dublin-online-lottery-player-wins-4-31m-lotto-jackpot/", "sentiment": "中立", "impact": 30.0, "urgency": 10.0}]}];
 
         const regionMarkers = {};
 
@@ -5526,6 +5770,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -5548,11 +5862,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -5564,7 +5874,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -5590,15 +5904,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
