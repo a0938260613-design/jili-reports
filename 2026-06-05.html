@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -3309,7 +3553,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "阿聯酋", "count": 1, "coords": [24.781435115153243, 55.0744755210769], "sentiment": "利多", "news_full": [{"title": "Cammegh獲阿聯酋供應商許可，視為全球業務成長新動能", "title_en": "Cammegh receives UAE supplier license, seen as a new driver for global growth", "title_th": "Cammegh ได้รับใบอนุญาตซัพพลายเออร์ใน UAE มองว่าเป็นพลังขับเคลื่อนใหม่สำหรับการเติบโตระดับโลก", "title_hi": "Cammegh को यूएई आपूर्तिकर्ता लाइसेंस मिला, इसे वैश्विक विकास के लिए नई प्रेरणा माना गया", "link": "https://asgam.com/2026/06/06/cammegh-sees-uae-vendor-license-as-key-step-in-growth-trajectory/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}]}, {"region": "全球", "count": 2, "coords": [19.637011777962748, 10.220642910416299], "sentiment": "利多", "news_full": [{"title": "2026世界盃中場表演引發行銷趨勢關注", "title_en": "2026 World Cup halftime show draws attention to marketing trends", "title_th": "โชว์ช่วงพักครึ่งฟุตบอลโลก 2026 ดึงดูดความสนใจต่อแนวโน้มการตลาด", "title_hi": "2026 विश्व कप हाफटाइम शो ने मार्केटिंग रुझानों की ओर ध्यान आकर्षित किया", "link": "https://asgam.com/2026/06/06/halftime-show-at-world-cup-2026-why-it-matters-beyond-football/", "sentiment": "利多", "impact": 60.0, "urgency": 45.0}, {"title": "Beazt Casino預計2026年正式上線", "title_en": "Beazt Casino Expected to Launch in 2026", "title_th": "Beazt Casino คาดว่าจะเปิดตัวอย่างเป็นทางการในปี 2026", "title_hi": "Beazt Casino के 2026 में आधिकारिक रूप से लॉन्च होने की उम्मीद", "link": "https://www.gamblingnews.com/news/beazt-casino-set-for-2026-launch-as-anticipation-grows/", "sentiment": "利多", "impact": 40.0, "urgency": 50.0}]}, {"region": "澳門", "count": 2, "coords": [22.61607410227573, 113.24373860391572], "sentiment": "利空", "news_full": [{"title": "澳門警方搗毀掛名桑拿的賣淫集團，涉案者含現任警員", "title_en": "Macau police dismantle prostitution ring disguised as sauna, including serving police officers", "title_th": "ตำรวจมาเก๊าทลายแก๊งค้าประเวณีที่แฝงตัวในซาวน่า รวมถึงมีเจ้าหน้าที่ตำรวจที่ปฏิบัติหน้าที่อยู่ด้วย", "title_hi": "मकाऊ पुलिस ने सौना के रूप में छिपे वेश्यावृत्ति गिरोह का भंडाफोड़ किया, जिसमें सेवारत पुलिस अधिकारी भी शामिल", "link": "https://asgam.com/2026/06/05/macaus-judiciary-police-bust-prostitution-ring-operating-under-guise-of-saunas-with-26-arrested-including-three-active-police/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}, {"title": "中國外投新規對澳門博彩股情緒影響大於GGR實際營收", "title_en": "Impact of China's New Overseas Investment Rules on Macau Gaming Stocks is More About Sentiment Than GGR", "title_th": "ผลกระทบของกฎระเบียบการลงทุนต่างประเทศใหม่ของจีนต่อหุ้นคาสิโนมาเก๊าเน้นที่อารมณ์ตลาดมากกว่ารายได้จริง", "title_hi": "चीन के नए विदेशी निवेश नियमों का मकाऊ गेमिंग शेयरों पर प्रभाव", "link": "https://www.ggrasia.com/new-china-outbound-investment-rules-may-weigh-more-on-macau-stock-sentiment-than-on-ggr-clsa?utm_source=rss&utm_medium=rss&utm_campaign=new-china-outbound-investment-rules-may-weigh-more-on-macau-stock-sentiment-than-on-ggr-clsa", "sentiment": "中立", "impact": 30.0, "urgency": 40.0}]}, {"region": "菲律賓", "count": 3, "coords": [14.139884302145239, 121.19571612105443], "sentiment": "利多", "news_full": [{"title": "Okada基金會資助偏遠地區數位教學項目", "title_en": "Okada Foundation funds digital learning program for remote areas", "title_th": "มูลนิธิ Okada สนับสนุนโครงการการเรียนรู้ดิจิทัลสำหรับพื้นที่ห่างไกล", "title_hi": "ओकाडा फाउंडेशन ने दूरस्थ क्षेत्रों के लिए डिजिटल लर्निंग कार्यक्रम को वित्तपोषित किया", "link": "https://www.ggrasia.com/okada-foundation-aboitiz-back-digital-learning-project-for-remote-location-school?utm_source=rss&utm_medium=rss&utm_campaign=okada-foundation-aboitiz-back-digital-learning-project-for-remote-location-school", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "岡田馬尼拉擬擴大吸引日本客源", "title_en": "Okada Manila Plans to Attract More Japanese Visitors", "title_th": "Okada Manila เตรียมขยายฐานลูกค้าชาวญี่ปุ่น", "title_hi": "ओकाडा मनीला का जापानी पर्यटकों को आकर्षित करने का लक्ष्य", "link": "https://www.ggrasia.com/okada-manila-vows-to-step-up-focus-on-japanese-visitor-market?utm_source=rss&utm_medium=rss&utm_campaign=okada-manila-vows-to-step-up-focus-on-japanese-visitor-market", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "菲律賓首季數據顯示本地在線博彩份額穩健增長", "title_en": "Q1 Data Shows Steady Growth in Philippines Online Gambling Market Share", "title_th": "ข้อมูลไตรมาสแรกเผยส่วนแบ่งตลาดการพนันออนไลน์ในฟิลิปปินส์เติบโตอย่างมั่นคง", "title_hi": "फिलीपींस में पहली तिमाही के आंकड़ों ने ऑनलाइन जुआ बाजार में स्थिर वृद्धि दिखाई", "link": "https://www.ggrasia.com/philippines-1q-data-shows-onshore-licensed-online-gaming-revenue-gaining-share-blask?utm_source=rss&utm_medium=rss&utm_campaign=philippines-1q-data-shows-onshore-licensed-online-gaming-revenue-gaining-share-blask", "sentiment": "利多", "impact": 80.0, "urgency": 60.0}]}, {"region": "亞太", "count": 1, "coords": [25.259760992132147, 138.36685635944534], "sentiment": "利多", "news_full": [{"title": "Zitro FANTASY機台在亞洲市場展現初期強勁成長", "title_en": "Zitro FANTASY Machines Show Strong Initial Growth in Asian Market", "title_th": "ตู้เกม Zitro FANTASY เผยการเติบโตเริ่มต้นที่แข็งแกร่งในตลาดเอเชีย", "title_hi": "एशियाई बाजार में Zitro FANTASY मशीनों का मजबूत शुरुआती प्रदर्शन", "link": "https://www.ggrasia.com/zitro-sees-strong-early-momentum-in-asia-for-fantasy-cabinet-bill-stefanakis?utm_source=rss&utm_medium=rss&utm_campaign=zitro-sees-strong-early-momentum-in-asia-for-fantasy-cabinet-bill-stefanakis", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "美國", "count": 4, "coords": [37.45191837048932, -96.06660289568303], "sentiment": "利多", "news_full": [{"title": "美國密西根州女子贏得10萬美元獎金", "title_en": "Michigan Woman Wins $100,000 Lottery Prize", "title_th": "หญิงชาวมิชิแกนถูกรางวัลลอตเตอรี่ 100,000 ดอลลาร์", "title_hi": "मिशिगन की महिला ने 100,000 डॉलर का लॉटरी पुरस्कार जीता", "link": "https://www.gamblingnews.com/news/michigan-woman-wins-100k-packs-bags-for-florida/", "sentiment": "中立", "impact": 10.0, "urgency": 0.0}, {"title": "Rush Street 跨足預測市場，拓展博弈業務邊界", "title_en": "Rush Street Expands into Prediction Markets", "title_th": "Rush Street รุกตลาดคาดการณ์ (Prediction Markets) ขยายขอบเขตธุรกิจเกม", "title_hi": "Rush Street ने प्रेडिक्शन मार्केट्स में प्रवेश किया, गेमिंग व्यवसाय का विस्तार", "link": "https://www.gamblingnews.com/news/rush-street-takes-first-step-into-prediction-markets/", "sentiment": "利多", "impact": 65.0, "urgency": 45.0}, {"title": "拉斯維加斯 Aria 賭場誕生 235 萬美元鉅額大獎", "title_en": "Aria Casino Las Vegas Awards $2.35 Million Jackpot", "title_th": "คาสิโน Aria ในลาสเวกัสแจกรางวัลใหญ่ 2.35 ล้านดอลลาร์", "title_hi": "लास वेगास के एरिया कैसीनो में 2.35 मिलियन डॉलर का बड़ा जैकपॉट", "link": "https://www.gamblingnews.com/news/lucky-player-at-aria-las-vegas-walks-away-with-2-35m-jackpot/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "路易斯安那州玩家中獎 12 萬美元", "title_en": "Louisiana Player Wins $120,000 Lottery Prize", "title_th": "ผู้เล่นในรัฐลุยเซียนาคว้ารางวัลลอตเตอรี 1.2 แสนดอลลาร์", "title_hi": "लुइसियाना के खिलाड़ी ने जीते 120,000 डॉलर", "link": "https://www.gamblingnews.com/news/louisiana-woman-claims-120000-jackpot/", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}]}];
+        const mapMarkersData = [{"region": "阿聯酋", "count": 1, "coords": [25.159618258705102, 55.72876160524471], "sentiment": "利多", "news_full": [{"title": "Cammegh獲阿聯酋供應商許可，視為全球業務成長新動能", "title_en": "Cammegh receives UAE supplier license, seen as a new driver for global growth", "title_th": "Cammegh ได้รับใบอนุญาตซัพพลายเออร์ใน UAE มองว่าเป็นพลังขับเคลื่อนใหม่สำหรับการเติบโตระดับโลก", "title_hi": "Cammegh को यूएई आपूर्तिकर्ता लाइसेंस मिला, इसे वैश्विक विकास के लिए नई प्रेरणा माना गया", "link": "https://asgam.com/2026/06/06/cammegh-sees-uae-vendor-license-as-key-step-in-growth-trajectory/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}]}, {"region": "全球", "count": 2, "coords": [19.635449191028968, 9.73086274305629], "sentiment": "利多", "news_full": [{"title": "2026世界盃中場表演引發行銷趨勢關注", "title_en": "2026 World Cup halftime show draws attention to marketing trends", "title_th": "โชว์ช่วงพักครึ่งฟุตบอลโลก 2026 ดึงดูดความสนใจต่อแนวโน้มการตลาด", "title_hi": "2026 विश्व कप हाफटाइम शो ने मार्केटिंग रुझानों की ओर ध्यान आकर्षित किया", "link": "https://asgam.com/2026/06/06/halftime-show-at-world-cup-2026-why-it-matters-beyond-football/", "sentiment": "利多", "impact": 60.0, "urgency": 45.0}, {"title": "Beazt Casino預計2026年正式上線", "title_en": "Beazt Casino Expected to Launch in 2026", "title_th": "Beazt Casino คาดว่าจะเปิดตัวอย่างเป็นทางการในปี 2026", "title_hi": "Beazt Casino के 2026 में आधिकारिक रूप से लॉन्च होने की उम्मीद", "link": "https://www.gamblingnews.com/news/beazt-casino-set-for-2026-launch-as-anticipation-grows/", "sentiment": "利多", "impact": 40.0, "urgency": 50.0}]}, {"region": "澳門", "count": 2, "coords": [22.419471586411227, 113.77721072246223], "sentiment": "利空", "news_full": [{"title": "澳門警方搗毀掛名桑拿的賣淫集團，涉案者含現任警員", "title_en": "Macau police dismantle prostitution ring disguised as sauna, including serving police officers", "title_th": "ตำรวจมาเก๊าทลายแก๊งค้าประเวณีที่แฝงตัวในซาวน่า รวมถึงมีเจ้าหน้าที่ตำรวจที่ปฏิบัติหน้าที่อยู่ด้วย", "title_hi": "मकाऊ पुलिस ने सौना के रूप में छिपे वेश्यावृत्ति गिरोह का भंडाफोड़ किया, जिसमें सेवारत पुलिस अधिकारी भी शामिल", "link": "https://asgam.com/2026/06/05/macaus-judiciary-police-bust-prostitution-ring-operating-under-guise-of-saunas-with-26-arrested-including-three-active-police/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}, {"title": "中國外投新規對澳門博彩股情緒影響大於GGR實際營收", "title_en": "Impact of China's New Overseas Investment Rules on Macau Gaming Stocks is More About Sentiment Than GGR", "title_th": "ผลกระทบของกฎระเบียบการลงทุนต่างประเทศใหม่ของจีนต่อหุ้นคาสิโนมาเก๊าเน้นที่อารมณ์ตลาดมากกว่ารายได้จริง", "title_hi": "चीन के नए विदेशी निवेश नियमों का मकाऊ गेमिंग शेयरों पर प्रभाव", "link": "https://www.ggrasia.com/new-china-outbound-investment-rules-may-weigh-more-on-macau-stock-sentiment-than-on-ggr-clsa?utm_source=rss&utm_medium=rss&utm_campaign=new-china-outbound-investment-rules-may-weigh-more-on-macau-stock-sentiment-than-on-ggr-clsa", "sentiment": "中立", "impact": 30.0, "urgency": 40.0}]}, {"region": "菲律賓", "count": 3, "coords": [15.081036063597152, 120.890571403025], "sentiment": "利多", "news_full": [{"title": "Okada基金會資助偏遠地區數位教學項目", "title_en": "Okada Foundation funds digital learning program for remote areas", "title_th": "มูลนิธิ Okada สนับสนุนโครงการการเรียนรู้ดิจิทัลสำหรับพื้นที่ห่างไกล", "title_hi": "ओकाडा फाउंडेशन ने दूरस्थ क्षेत्रों के लिए डिजिटल लर्निंग कार्यक्रम को वित्तपोषित किया", "link": "https://www.ggrasia.com/okada-foundation-aboitiz-back-digital-learning-project-for-remote-location-school?utm_source=rss&utm_medium=rss&utm_campaign=okada-foundation-aboitiz-back-digital-learning-project-for-remote-location-school", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "岡田馬尼拉擬擴大吸引日本客源", "title_en": "Okada Manila Plans to Attract More Japanese Visitors", "title_th": "Okada Manila เตรียมขยายฐานลูกค้าชาวญี่ปุ่น", "title_hi": "ओकाडा मनीला का जापानी पर्यटकों को आकर्षित करने का लक्ष्य", "link": "https://www.ggrasia.com/okada-manila-vows-to-step-up-focus-on-japanese-visitor-market?utm_source=rss&utm_medium=rss&utm_campaign=okada-manila-vows-to-step-up-focus-on-japanese-visitor-market", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "菲律賓首季數據顯示本地在線博彩份額穩健增長", "title_en": "Q1 Data Shows Steady Growth in Philippines Online Gambling Market Share", "title_th": "ข้อมูลไตรมาสแรกเผยส่วนแบ่งตลาดการพนันออนไลน์ในฟิลิปปินส์เติบโตอย่างมั่นคง", "title_hi": "फिलीपींस में पहली तिमाही के आंकड़ों ने ऑनलाइन जुआ बाजार में स्थिर वृद्धि दिखाई", "link": "https://www.ggrasia.com/philippines-1q-data-shows-onshore-licensed-online-gaming-revenue-gaining-share-blask?utm_source=rss&utm_medium=rss&utm_campaign=philippines-1q-data-shows-onshore-licensed-online-gaming-revenue-gaining-share-blask", "sentiment": "利多", "impact": 80.0, "urgency": 60.0}]}, {"region": "亞太", "count": 1, "coords": [25.210332861327174, 138.3679154039429], "sentiment": "利多", "news_full": [{"title": "Zitro FANTASY機台在亞洲市場展現初期強勁成長", "title_en": "Zitro FANTASY Machines Show Strong Initial Growth in Asian Market", "title_th": "ตู้เกม Zitro FANTASY เผยการเติบโตเริ่มต้นที่แข็งแกร่งในตลาดเอเชีย", "title_hi": "एशियाई बाजार में Zitro FANTASY मशीनों का मजबूत शुरुआती प्रदर्शन", "link": "https://www.ggrasia.com/zitro-sees-strong-early-momentum-in-asia-for-fantasy-cabinet-bill-stefanakis?utm_source=rss&utm_medium=rss&utm_campaign=zitro-sees-strong-early-momentum-in-asia-for-fantasy-cabinet-bill-stefanakis", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "美國", "count": 4, "coords": [36.617270553070355, -95.61863171623314], "sentiment": "利多", "news_full": [{"title": "美國密西根州女子贏得10萬美元獎金", "title_en": "Michigan Woman Wins $100,000 Lottery Prize", "title_th": "หญิงชาวมิชิแกนถูกรางวัลลอตเตอรี่ 100,000 ดอลลาร์", "title_hi": "मिशिगन की महिला ने 100,000 डॉलर का लॉटरी पुरस्कार जीता", "link": "https://www.gamblingnews.com/news/michigan-woman-wins-100k-packs-bags-for-florida/", "sentiment": "中立", "impact": 10.0, "urgency": 0.0}, {"title": "Rush Street 跨足預測市場，拓展博弈業務邊界", "title_en": "Rush Street Expands into Prediction Markets", "title_th": "Rush Street รุกตลาดคาดการณ์ (Prediction Markets) ขยายขอบเขตธุรกิจเกม", "title_hi": "Rush Street ने प्रेडिक्शन मार्केट्स में प्रवेश किया, गेमिंग व्यवसाय का विस्तार", "link": "https://www.gamblingnews.com/news/rush-street-takes-first-step-into-prediction-markets/", "sentiment": "利多", "impact": 65.0, "urgency": 45.0}, {"title": "拉斯維加斯 Aria 賭場誕生 235 萬美元鉅額大獎", "title_en": "Aria Casino Las Vegas Awards $2.35 Million Jackpot", "title_th": "คาสิโน Aria ในลาสเวกัสแจกรางวัลใหญ่ 2.35 ล้านดอลลาร์", "title_hi": "लास वेगास के एरिया कैसीनो में 2.35 मिलियन डॉलर का बड़ा जैकपॉट", "link": "https://www.gamblingnews.com/news/lucky-player-at-aria-las-vegas-walks-away-with-2-35m-jackpot/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "路易斯安那州玩家中獎 12 萬美元", "title_en": "Louisiana Player Wins $120,000 Lottery Prize", "title_th": "ผู้เล่นในรัฐลุยเซียนาคว้ารางวัลลอตเตอรี 1.2 แสนดอลลาร์", "title_hi": "लुइसियाना के खिलाड़ी ने जीते 120,000 डॉलर", "link": "https://www.gamblingnews.com/news/louisiana-woman-claims-120000-jackpot/", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}]}];
 
         const regionMarkers = {};
 
@@ -4654,6 +4898,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -4676,11 +4990,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -4692,7 +5002,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -4718,15 +5032,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
