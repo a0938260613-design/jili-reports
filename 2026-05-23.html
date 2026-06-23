@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -3180,7 +3424,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [37.12978132378361, -95.24128979841107], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [44.946954129518275, -100.41282426895998], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [19.5178299160815, 10.175607829247776], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [36.596062220793996, -96.16075259203922], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [44.76877595382839, -99.758178210928], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [20.075402079003336, 9.570740757236443], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -4525,6 +4769,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -4547,11 +4861,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -4563,7 +4873,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -4589,15 +4903,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
