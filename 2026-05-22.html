@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -3644,7 +3888,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 7, "coords": [20.140393037772924, 10.22894000662004], "sentiment": "利空", "news_full": [{"title": "愛爾蘭與印度案例凸顯全球對預測市場誠信的監管擔憂", "title_en": "Ireland and India Cases Highlight Global Regulatory Concerns Over Prediction Market Integrity", "title_th": "กรณีในไอร์แลนด์และอินเดียตอกย้ำความกังวลด้านกฎระเบียบระดับโลกเกี่ยวกับความโปร่งใสของตลาดการคาดการณ์", "title_hi": "आयरलैंड और भारत के मामले प्रेडिक्शन मार्केट की अखंडता पर वैश्विक नियामक चिंताओं को उजागर करते हैं", "link": "https://www.gamblinginsider.com/news/162093/ireland-india-prediction-market-scrutiny-polymarket-kalshi", "sentiment": "利空", "impact": 75.0, "urgency": 65.0}, {"title": "BGaming 推出 Lucky Pack: 2026 Cup 足球收藏卡行銷活動", "title_en": "BGaming Launches 'Lucky Pack: 2026 Cup' Football Trading Card Campaign", "title_th": "BGaming เปิดตัวแคมเปญ 'Lucky Pack: 2026 Cup' การ์ดสะสมฟุตบอล", "title_hi": "BGaming ने 'Lucky Pack: 2026 Cup' फुटबॉल ट्रेडिंग कार्ड अभियान शुरू किया", "link": "https://www.gamblingnews.com/news/win-rare-soccer-cards-in-bgamings-lucky-pack-2026-cup/", "sentiment": "中立", "impact": 45.0, "urgency": 40.0}, {"title": "Play’n GO 發布新款老虎機遊戲《Treats or Terror II》", "title_en": "Play’n GO Releases New Slot Game 'Treats or Terror II'", "title_th": "Play’n GO เปิดตัวเกมสล็อตใหม่ 'Treats or Terror II'", "title_hi": "Play’n GO ने नया स्लॉट गेम 'Treats or Terror II' लॉन्च किया", "link": "https://www.gamblingnews.com/news/playn-go-invites-you-to-treats-or-terror-ii-slot-machine/", "sentiment": "中立", "impact": 50.0, "urgency": 40.0}, {"title": "前 Splinter Cell 設計師：現代遊戲光影過於逼真，提升潛行遊戲設計難度", "title_en": "Former Splinter Cell Designer: Modern Lighting Makes Stealth Games Harder", "title_th": "อดีตดีไซเนอร์ Splinter Cell เผย: แสงเงาในเกมยุคใหม่สมจริงเกินไปจนทำเกมแนวลอบเร้นยากขึ้น", "title_hi": "पूर्व स्प्लिन्टर सेल डिजाइनर: आधुनिक गेम की लाइटिंग ने स्टेल्थ गेम को और कठिन बना दिया है", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b8%ad%e0%b8%ad%e0%b8%81%e0%b9%81%e0%b8%9a%e0%b8%9a-splinter-cell-%e0%b8%a1%e0%b8%ad%e0%b8%87%e0%b8%a7%e0%b9%88%e0%b8%b2%e0%b8%a3/", "sentiment": "中立", "impact": 35.0, "urgency": 25.0}, {"title": "《赤色沙漠》更新增加新內容與槍械元素", "title_en": "Crimson Desert Update Adds New Content and Firearms", "title_th": "Crimson Desert อัปเดตเนื้อหาใหม่และเพิ่มองค์ประกอบปืน", "title_hi": "क्रिमसन डेजर्ट अपडेट में नई सामग्री और आग्नेयास्त्र (firearms) जोड़े गए", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-crimson-desert-%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b9%83%e0%b8%ab/", "sentiment": "中立", "impact": 20.0, "urgency": 15.0}, {"title": "《Dune: Awakening》開發確認不再屬於 MMO 類型", "title_en": "Dune: Awakening Confirmed No Longer an MMO", "title_th": "Dune: Awakening ยืนยันไม่ใช่เกมประเภท MMO แล้ว", "title_hi": "ड्यून: अवेकनिंग अब MMO प्रकार का गेम नहीं रहेगा", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%81%e0%b8%b3%e0%b8%81%e0%b8%b1%e0%b8%9a-dune-awakening-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b9%80%e0%b8%81%e0%b8%a1%e0%b8%95/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "《Dying Light》前開發主管：需重視並接納所有玩家反饋", "title_en": "Former Dying Light Lead: Must Value and Accept All Player Feedback", "title_th": "อดีตหัวหน้าทีมพัฒนา Dying Light: ต้องให้ความสำคัญและยอมรับคำติชมของผู้เล่นทุกคน", "title_hi": "डाइंग लाइट के पूर्व प्रमुख: सभी खिलाड़ियों की प्रतिक्रिया को महत्व देना और स्वीकार करना आवश्यक", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%ab%e0%b8%b1%e0%b8%a7%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%97%e0%b8%b5%e0%b8%a1%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-dying-light-%e0%b8%81/", "sentiment": "利多", "impact": 50.0, "urgency": 40.0}]}, {"region": "馬來西亞", "count": 1, "coords": [2.9554532291350597, 101.34209955432202], "sentiment": "利多", "news_full": [{"title": "馬來西亞雲頂營收利好：紐約市場減稅與設施擴張效益顯現", "title_en": "Genting Malaysia Revenue Boost: Benefits of New York Market Tax Cuts and Facility Expansion Emerge", "title_th": "รายได้ Genting Malaysia เพิ่มขึ้น: รับอานิสงส์ลดภาษีและการขยายสิ่งอำนวยความสะดวกในตลาดนิวยอร์ก", "title_hi": "Genting Malaysia का राजस्व बढ़ा: न्यूयॉर्क बाजार में कर कटौती और सुविधा विस्तार का मिला लाभ", "link": "https://asgam.com/2026/05/23/maybank-impact-of-gaming-tables-and-lower-slot-machine-tax-in-new-york-to-boost-genting-malaysia-earnings-from-q2/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "北美", "count": 2, "coords": [44.62546079800099, -99.86427954867618], "sentiment": "利空", "news_full": [{"title": "Ainsworth 北美業務疲軟，預期上半年營收利潤大幅下滑", "title_en": "Ainsworth North American Business Slump: Significant Revenue and Profit Decline Expected in H1", "title_th": "ธุรกิจ Ainsworth ในอเมริกาเหนือซบเซา: คาดรายได้และกำไรครึ่งปีแรกดิ่งหนัก", "title_hi": "Ainsworth का उत्तरी अमेरिकी व्यवसाय सुस्त: पहली छमाही में राजस्व और लाभ में भारी गिरावट की आशंका", "link": "https://asgam.com/2026/05/23/weakness-in-north-america-has-ainsworth-anticipating-big-decline-in-revenue-profit-in-six-months-to-30-june/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "Betr 收購 NFA 經紀商，全力進軍預測市場", "title_en": "Betr Acquires NFA Broker to Aggressively Enter Prediction Market", "title_th": "Betr เข้าซื้อกิจการโบรกเกอร์ NFA รุกตลาด Prediction Markets เต็มรูปแบบ", "title_hi": "Betr ने NFA ब्रोकर का अधिग्रहण किया, प्रेडिक्शन मार्केट में आक्रामक रूप से प्रवेश", "link": "https://www.gamblingnews.com/news/betr-buys-nfa-broker-to-facilitate-entry-into-prediction-markets/", "sentiment": "利多", "impact": 60.0, "urgency": 50.0}]}, {"region": "美國", "count": 4, "coords": [37.219135902971054, -96.15269385216428], "sentiment": "利多", "news_full": [{"title": "拉斯維加斯獲評北美第二大最佳會議城市", "title_en": "Las Vegas Rated Second Best Convention City in North America", "title_th": "ลาสเวกัสคว้าอันดับ 2 เมืองแห่งการจัดประชุมที่ดีที่สุดในอเมริกาเหนือ", "title_hi": "लास वेगास उत्तरी अमेरिका का दूसरा सबसे अच्छा कन्वेंशन शहर बना", "link": "https://www.gamblingnews.com/news/las-vegas-ranks-as-the-second-best-city-for-conventions-in-north-america/", "sentiment": "中立", "impact": 40.0, "urgency": 25.0}, {"title": "南卡羅來納州男子購物途中幸運贏得 50 萬美元大獎", "title_en": "South Carolina Man Wins $500,000 Prize While Shopping", "title_th": "ชายในเซาท์แคโรไลนาโชคดีถูกรางวัลใหญ่ 5 แสนดอลลาร์ระหว่างไปซื้อของ", "title_hi": "साउथ कैरोलिना के व्यक्ति ने खरीदारी के दौरान जीते 5 लाख डॉलर का इनाम", "link": "https://www.gamblingnews.com/news/south-carolina-man-turns-grocery-trip-into-500k-payday/", "sentiment": "中立", "impact": 10.0, "urgency": 0.0}, {"title": "Mohegan Sun 宣布啟動夏季撲克錦標賽", "title_en": "Mohegan Sun Announces Launch of Summer Poker Tournament Series", "title_th": "Mohegan Sun ประกาศจัดทัวร์นาเมนต์โป๊กเกอร์ฤดูร้อน", "title_hi": "Mohegan Sun ने ग्रीष्मकालीन पोकर टूर्नामेंट श्रृंखला शुरू करने की घोषणा की", "link": "https://www.gamblingnews.com/news/mohegan-sun-unveils-summer-kickoff-poker-tournament/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}, {"title": "美國伊利諾州彩券玩家贏得百萬美元頭獎", "title_en": "Illinois Lottery Player Wins $1 Million Jackpot", "title_th": "ผู้เล่นลอตเตอรีในรัฐอิลลินอยส์ สหรัฐอเมริกา ถูกรางวัลแจ็กพอต 1 ล้านดอลลาร์", "title_hi": "इलिनोय, अमेरिका में लॉटरी खिलाड़ी ने 1 मिलियन डॉलर का जैकपॉट जीता", "link": "https://www.gamblingnews.com/news/woman-in-western-illinois-clinches-1m-powerball-jackpot/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}]}, {"region": "歐洲", "count": 1, "coords": [49.82306675869212, 14.747335131308503], "sentiment": "利空", "news_full": [{"title": "歐盟法院裁定可參考馬爾他博弈保護法進行資產凍結", "title_en": "EU Court Rules Malta Gaming Protection Laws Can Be Used in Asset Freezing Cases", "title_th": "ศาลยุโรปชี้กฎหมายคุ้มครองการพนันของมอลตาสามารถใช้ในคดีอายัดทรัพย์สินได้", "title_hi": "यूरोपीय अदालत का फैसला: माल्टा के गेमिंग संरक्षण कानूनों का उपयोग संपत्ति फ्रीज मामलों में किया जा सकता है", "link": "https://www.gamblingnews.com/news/eu-allows-courts-to-consider-maltas-gaming-protection-law-when-freezing-assets/", "sentiment": "利空", "impact": 85.0, "urgency": 85.0}]}, {"region": "韓國", "count": 2, "coords": [37.512870529607575, 127.35832382950274], "sentiment": "利空", "news_full": [{"title": "南韓監管機構著手審查 Polymarket 在當地服務的合法性", "title_en": "South Korean Regulators Investigate Legality of Polymarket Services", "title_th": "หน่วยงานกำกับดูแลเกาหลีใต้สอบสวนความชอบด้วยกฎหมายของบริการ Polymarket ในประเทศ", "title_hi": "दक्षिण कोरियाई नियामक ने स्थानीय सेवाओं में Polymarket की वैधता की जांच शुरू की", "link": "https://www.gamblingnews.com/news/south-korea-to-determine-whether-polymarkets-offering-is-legal/", "sentiment": "利空", "impact": 80.0, "urgency": 85.0}, {"title": "韓國政府評估將 Polymarket 等預測平台納入博彩類別監管", "title_en": "South Korean Government Evaluates Classifying Prediction Platforms like Polymarket as Gambling", "title_th": "รัฐบาลเกาหลีใต้เตรียมจัดหมวดหมู่แพลตฟอร์มคาดการณ์ เช่น Polymarket ให้เป็นการพนัน", "title_hi": "दक्षिण कोरियाई सरकार Polymarket जैसे प्रेडिक्शन प्लेटफॉर्म को जुए की श्रेणी में रखने का मूल्यांकन कर रही है", "link": "https://agbrief.com/news/south-korea/22/05/2026/south-korea-opens-gambling-review-of-polymarket/", "sentiment": "利空", "impact": 65.0, "urgency": 80.0}]}, {"region": "加拿大", "count": 1, "coords": [55.8730755358509, -106.68630287910678], "sentiment": "利多", "news_full": [{"title": "安大略省博弈市場渠道化程度突破90%", "title_en": "Ontario's Gambling Market Channelization Rate Exceeds 90%", "title_th": "อัตราการเข้าสู่ตลาดการพนันที่มีการควบคุมในออนแทรีโอทะลุ 90%", "title_hi": "ओंटारियो के जुआ बाजार में चैनेलाइजेशन दर 90% के पार", "link": "https://www.gamblingnews.com/news/ontario-surpasses-90-channelization-as-regulated-operators-gain-ground/", "sentiment": "利多", "impact": 80.0, "urgency": 75.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 7, "coords": [19.711521402068694, 10.322417599858092], "sentiment": "利空", "news_full": [{"title": "愛爾蘭與印度案例凸顯全球對預測市場誠信的監管擔憂", "title_en": "Ireland and India Cases Highlight Global Regulatory Concerns Over Prediction Market Integrity", "title_th": "กรณีในไอร์แลนด์และอินเดียตอกย้ำความกังวลด้านกฎระเบียบระดับโลกเกี่ยวกับความโปร่งใสของตลาดการคาดการณ์", "title_hi": "आयरलैंड और भारत के मामले प्रेडिक्शन मार्केट की अखंडता पर वैश्विक नियामक चिंताओं को उजागर करते हैं", "link": "https://www.gamblinginsider.com/news/162093/ireland-india-prediction-market-scrutiny-polymarket-kalshi", "sentiment": "利空", "impact": 75.0, "urgency": 65.0}, {"title": "BGaming 推出 Lucky Pack: 2026 Cup 足球收藏卡行銷活動", "title_en": "BGaming Launches 'Lucky Pack: 2026 Cup' Football Trading Card Campaign", "title_th": "BGaming เปิดตัวแคมเปญ 'Lucky Pack: 2026 Cup' การ์ดสะสมฟุตบอล", "title_hi": "BGaming ने 'Lucky Pack: 2026 Cup' फुटबॉल ट्रेडिंग कार्ड अभियान शुरू किया", "link": "https://www.gamblingnews.com/news/win-rare-soccer-cards-in-bgamings-lucky-pack-2026-cup/", "sentiment": "中立", "impact": 45.0, "urgency": 40.0}, {"title": "Play’n GO 發布新款老虎機遊戲《Treats or Terror II》", "title_en": "Play’n GO Releases New Slot Game 'Treats or Terror II'", "title_th": "Play’n GO เปิดตัวเกมสล็อตใหม่ 'Treats or Terror II'", "title_hi": "Play’n GO ने नया स्लॉट गेम 'Treats or Terror II' लॉन्च किया", "link": "https://www.gamblingnews.com/news/playn-go-invites-you-to-treats-or-terror-ii-slot-machine/", "sentiment": "中立", "impact": 50.0, "urgency": 40.0}, {"title": "前 Splinter Cell 設計師：現代遊戲光影過於逼真，提升潛行遊戲設計難度", "title_en": "Former Splinter Cell Designer: Modern Lighting Makes Stealth Games Harder", "title_th": "อดีตดีไซเนอร์ Splinter Cell เผย: แสงเงาในเกมยุคใหม่สมจริงเกินไปจนทำเกมแนวลอบเร้นยากขึ้น", "title_hi": "पूर्व स्प्लिन्टर सेल डिजाइनर: आधुनिक गेम की लाइटिंग ने स्टेल्थ गेम को और कठिन बना दिया है", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b8%ad%e0%b8%ad%e0%b8%81%e0%b9%81%e0%b8%9a%e0%b8%9a-splinter-cell-%e0%b8%a1%e0%b8%ad%e0%b8%87%e0%b8%a7%e0%b9%88%e0%b8%b2%e0%b8%a3/", "sentiment": "中立", "impact": 35.0, "urgency": 25.0}, {"title": "《赤色沙漠》更新增加新內容與槍械元素", "title_en": "Crimson Desert Update Adds New Content and Firearms", "title_th": "Crimson Desert อัปเดตเนื้อหาใหม่และเพิ่มองค์ประกอบปืน", "title_hi": "क्रिमसन डेजर्ट अपडेट में नई सामग्री और आग्नेयास्त्र (firearms) जोड़े गए", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-crimson-desert-%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b9%83%e0%b8%ab/", "sentiment": "中立", "impact": 20.0, "urgency": 15.0}, {"title": "《Dune: Awakening》開發確認不再屬於 MMO 類型", "title_en": "Dune: Awakening Confirmed No Longer an MMO", "title_th": "Dune: Awakening ยืนยันไม่ใช่เกมประเภท MMO แล้ว", "title_hi": "ड्यून: अवेकनिंग अब MMO प्रकार का गेम नहीं रहेगा", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%81%e0%b8%b3%e0%b8%81%e0%b8%b1%e0%b8%9a-dune-awakening-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b9%80%e0%b8%81%e0%b8%a1%e0%b8%95/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "《Dying Light》前開發主管：需重視並接納所有玩家反饋", "title_en": "Former Dying Light Lead: Must Value and Accept All Player Feedback", "title_th": "อดีตหัวหน้าทีมพัฒนา Dying Light: ต้องให้ความสำคัญและยอมรับคำติชมของผู้เล่นทุกคน", "title_hi": "डाइंग लाइट के पूर्व प्रमुख: सभी खिलाड़ियों की प्रतिक्रिया को महत्व देना और स्वीकार करना आवश्यक", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%ab%e0%b8%b1%e0%b8%a7%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%97%e0%b8%b5%e0%b8%a1%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-dying-light-%e0%b8%81/", "sentiment": "利多", "impact": 50.0, "urgency": 40.0}]}, {"region": "馬來西亞", "count": 1, "coords": [3.071295756709519, 101.98130813192357], "sentiment": "利多", "news_full": [{"title": "馬來西亞雲頂營收利好：紐約市場減稅與設施擴張效益顯現", "title_en": "Genting Malaysia Revenue Boost: Benefits of New York Market Tax Cuts and Facility Expansion Emerge", "title_th": "รายได้ Genting Malaysia เพิ่มขึ้น: รับอานิสงส์ลดภาษีและการขยายสิ่งอำนวยความสะดวกในตลาดนิวยอร์ก", "title_hi": "Genting Malaysia का राजस्व बढ़ा: न्यूयॉर्क बाजार में कर कटौती और सुविधा विस्तार का मिला लाभ", "link": "https://asgam.com/2026/05/23/maybank-impact-of-gaming-tables-and-lower-slot-machine-tax-in-new-york-to-boost-genting-malaysia-earnings-from-q2/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "北美", "count": 2, "coords": [45.100873341855085, -99.5670019508724], "sentiment": "利空", "news_full": [{"title": "Ainsworth 北美業務疲軟，預期上半年營收利潤大幅下滑", "title_en": "Ainsworth North American Business Slump: Significant Revenue and Profit Decline Expected in H1", "title_th": "ธุรกิจ Ainsworth ในอเมริกาเหนือซบเซา: คาดรายได้และกำไรครึ่งปีแรกดิ่งหนัก", "title_hi": "Ainsworth का उत्तरी अमेरिकी व्यवसाय सुस्त: पहली छमाही में राजस्व और लाभ में भारी गिरावट की आशंका", "link": "https://asgam.com/2026/05/23/weakness-in-north-america-has-ainsworth-anticipating-big-decline-in-revenue-profit-in-six-months-to-30-june/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "Betr 收購 NFA 經紀商，全力進軍預測市場", "title_en": "Betr Acquires NFA Broker to Aggressively Enter Prediction Market", "title_th": "Betr เข้าซื้อกิจการโบรกเกอร์ NFA รุกตลาด Prediction Markets เต็มรูปแบบ", "title_hi": "Betr ने NFA ब्रोकर का अधिग्रहण किया, प्रेडिक्शन मार्केट में आक्रामक रूप से प्रवेश", "link": "https://www.gamblingnews.com/news/betr-buys-nfa-broker-to-facilitate-entry-into-prediction-markets/", "sentiment": "利多", "impact": 60.0, "urgency": 50.0}]}, {"region": "美國", "count": 4, "coords": [37.43757000202007, -95.45987596676257], "sentiment": "利多", "news_full": [{"title": "拉斯維加斯獲評北美第二大最佳會議城市", "title_en": "Las Vegas Rated Second Best Convention City in North America", "title_th": "ลาสเวกัสคว้าอันดับ 2 เมืองแห่งการจัดประชุมที่ดีที่สุดในอเมริกาเหนือ", "title_hi": "लास वेगास उत्तरी अमेरिका का दूसरा सबसे अच्छा कन्वेंशन शहर बना", "link": "https://www.gamblingnews.com/news/las-vegas-ranks-as-the-second-best-city-for-conventions-in-north-america/", "sentiment": "中立", "impact": 40.0, "urgency": 25.0}, {"title": "南卡羅來納州男子購物途中幸運贏得 50 萬美元大獎", "title_en": "South Carolina Man Wins $500,000 Prize While Shopping", "title_th": "ชายในเซาท์แคโรไลนาโชคดีถูกรางวัลใหญ่ 5 แสนดอลลาร์ระหว่างไปซื้อของ", "title_hi": "साउथ कैरोलिना के व्यक्ति ने खरीदारी के दौरान जीते 5 लाख डॉलर का इनाम", "link": "https://www.gamblingnews.com/news/south-carolina-man-turns-grocery-trip-into-500k-payday/", "sentiment": "中立", "impact": 10.0, "urgency": 0.0}, {"title": "Mohegan Sun 宣布啟動夏季撲克錦標賽", "title_en": "Mohegan Sun Announces Launch of Summer Poker Tournament Series", "title_th": "Mohegan Sun ประกาศจัดทัวร์นาเมนต์โป๊กเกอร์ฤดูร้อน", "title_hi": "Mohegan Sun ने ग्रीष्मकालीन पोकर टूर्नामेंट श्रृंखला शुरू करने की घोषणा की", "link": "https://www.gamblingnews.com/news/mohegan-sun-unveils-summer-kickoff-poker-tournament/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}, {"title": "美國伊利諾州彩券玩家贏得百萬美元頭獎", "title_en": "Illinois Lottery Player Wins $1 Million Jackpot", "title_th": "ผู้เล่นลอตเตอรีในรัฐอิลลินอยส์ สหรัฐอเมริกา ถูกรางวัลแจ็กพอต 1 ล้านดอลลาร์", "title_hi": "इलिनोय, अमेरिका में लॉटरी खिलाड़ी ने 1 मिलियन डॉलर का जैकपॉट जीता", "link": "https://www.gamblingnews.com/news/woman-in-western-illinois-clinches-1m-powerball-jackpot/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}]}, {"region": "歐洲", "count": 1, "coords": [50.160952241874895, 15.389548053856522], "sentiment": "利空", "news_full": [{"title": "歐盟法院裁定可參考馬爾他博弈保護法進行資產凍結", "title_en": "EU Court Rules Malta Gaming Protection Laws Can Be Used in Asset Freezing Cases", "title_th": "ศาลยุโรปชี้กฎหมายคุ้มครองการพนันของมอลตาสามารถใช้ในคดีอายัดทรัพย์สินได้", "title_hi": "यूरोपीय अदालत का फैसला: माल्टा के गेमिंग संरक्षण कानूनों का उपयोग संपत्ति फ्रीज मामलों में किया जा सकता है", "link": "https://www.gamblingnews.com/news/eu-allows-courts-to-consider-maltas-gaming-protection-law-when-freezing-assets/", "sentiment": "利空", "impact": 85.0, "urgency": 85.0}]}, {"region": "韓國", "count": 2, "coords": [37.944232172730295, 126.7149024771449], "sentiment": "利空", "news_full": [{"title": "南韓監管機構著手審查 Polymarket 在當地服務的合法性", "title_en": "South Korean Regulators Investigate Legality of Polymarket Services", "title_th": "หน่วยงานกำกับดูแลเกาหลีใต้สอบสวนความชอบด้วยกฎหมายของบริการ Polymarket ในประเทศ", "title_hi": "दक्षिण कोरियाई नियामक ने स्थानीय सेवाओं में Polymarket की वैधता की जांच शुरू की", "link": "https://www.gamblingnews.com/news/south-korea-to-determine-whether-polymarkets-offering-is-legal/", "sentiment": "利空", "impact": 80.0, "urgency": 85.0}, {"title": "韓國政府評估將 Polymarket 等預測平台納入博彩類別監管", "title_en": "South Korean Government Evaluates Classifying Prediction Platforms like Polymarket as Gambling", "title_th": "รัฐบาลเกาหลีใต้เตรียมจัดหมวดหมู่แพลตฟอร์มคาดการณ์ เช่น Polymarket ให้เป็นการพนัน", "title_hi": "दक्षिण कोरियाई सरकार Polymarket जैसे प्रेडिक्शन प्लेटफॉर्म को जुए की श्रेणी में रखने का मूल्यांकन कर रही है", "link": "https://agbrief.com/news/south-korea/22/05/2026/south-korea-opens-gambling-review-of-polymarket/", "sentiment": "利空", "impact": 65.0, "urgency": 80.0}]}, {"region": "加拿大", "count": 1, "coords": [55.94225611822309, -106.20763773745394], "sentiment": "利多", "news_full": [{"title": "安大略省博弈市場渠道化程度突破90%", "title_en": "Ontario's Gambling Market Channelization Rate Exceeds 90%", "title_th": "อัตราการเข้าสู่ตลาดการพนันที่มีการควบคุมในออนแทรีโอทะลุ 90%", "title_hi": "ओंटारियो के जुआ बाजार में चैनेलाइजेशन दर 90% के पार", "link": "https://www.gamblingnews.com/news/ontario-surpasses-90-channelization-as-regulated-operators-gain-ground/", "sentiment": "利多", "impact": 80.0, "urgency": 75.0}]}];
 
         const regionMarkers = {};
 
@@ -4989,6 +5233,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -5011,11 +5325,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -5027,7 +5337,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -5053,15 +5367,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
