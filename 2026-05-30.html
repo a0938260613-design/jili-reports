@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -1955,7 +2199,7 @@
                 
                 <button data-kw="體育博彩" onclick="toggleKeyword('體育博彩', this)" data-cn="體育博彩" data-en="Sports Betting" data-th="การพนันกีฬา" data-hi="खेल सट्टेबाजी" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">體育博彩</button>
                 
-                <button data-kw="州博弈監管" onclick="toggleKeyword('州博弈監管', this)" data-cn="州博弈監管" data-en="State Gaming Regulation" data-th="การกำกับดูแลการพนัน" data-hi="राज्य जुआ विनियमन" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">州博弈監管</button>
+                <button data-kw="州博弈監管" onclick="toggleKeyword('州博弈監管', this)" data-cn="州博弈監管" data-en="State Gaming Regulation" data-th="การกำกับดูแลเกม" data-hi="राज्य गेमिंग विनियमन" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">州博弈監管</button>
                 
                 
             </div>
@@ -3314,7 +3558,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 4, "coords": [19.519574629924705, 9.917029983977072], "sentiment": "利空", "news_full": [{"title": "產業週報：博弈內線交易與市場波動因素探討", "title_en": "Industry Weekly: Gambling Insider Trading and Market Volatility Factors", "title_th": "รายงานประจำสัปดาห์ของอุตสาหกรรม: การซื้อขายโดยใช้ข้อมูลภายใน (Insider Trading) และปัจจัยความผันผวนของตลาดการพนัน", "title_hi": "उद्योग साप्ताहिक: जुआ इनसाइडर ट्रेडिंग और बाजार में उतार-चढ़ाव के कारक", "link": "https://www.gamblinginsider.com/news/163825/parlays-insider-trading-fertitta-jannik-sinner-gambling-industry-news", "sentiment": "利空", "impact": 55.0, "urgency": 50.0}, {"title": "體育博彩平台轉向預測市場與防禦策略", "title_en": "Sports Betting Platforms Pivot to Prediction Markets and Defensive Strategies", "title_th": "แพลตฟอร์มพนันกีฬาหันสู่ตลาดการทำนายผลและกลยุทธ์ป้องกัน", "title_hi": "स्पोर्ट्स बेटिंग प्लेटफॉर्म का प्रेडिक्शन मार्केट्स और रक्षात्मक रणनीतियों की ओर झुकाव", "link": "https://www.gamblinginsider.com/news/163798/sportsbooks-prediction-markets-political-spending-sports-betting", "sentiment": "利多", "impact": 70.0, "urgency": 60.0}, {"title": "Predictstreet 獲直布羅陀牌照加速全球佈局", "title_en": "Predictstreet Secures Gibraltar License to Accelerate Global Layout", "title_th": "Predictstreet ได้รับใบอนุญาตยิบรอลตาร์เพื่อเร่งการขยายตัวทั่วโลก", "title_hi": "Predictstreet ने वैश्विक स्तर पर विस्तार तेज करने के लिए जिब्राल्टर लाइसेंस प्राप्त किया", "link": "https://www.gamblinginsider.com/news/163636/predictstreet-world-cup-gibraltar-fifa-partnership", "sentiment": "利多", "impact": 75.0, "urgency": 70.0}, {"title": "Blueprint Gaming 與 bet365 深化夥伴關係，推出獨家新遊戲內容", "title_en": "Blueprint Gaming and bet365 Deepen Partnership to Launch Exclusive New Game Content", "title_th": "Blueprint Gaming และ bet365 กระชับความร่วมมือ เปิดตัวเนื้อหาเกมใหม่สุดพิเศษ", "title_hi": "Blueprint Gaming और bet365 ने विशेष नया गेम कंटेंट लॉन्च करने के लिए साझेदारी गहरी की", "link": "https://agbrief.com/news/world/30/05/2026/blueprint-gaming-and-bet365-expand-alliance-with-exclusive-new-offer/", "sentiment": "利空", "impact": 70.0, "urgency": 55.0}]}, {"region": "美國", "count": 4, "coords": [36.821706975297275, -95.60223654568006], "sentiment": "利空", "news_full": [{"title": "俄亥俄州博弈監管委員會官員 Matt Schuler 退休動態", "title_en": "Retirement of Ohio Casino Control Commission Official Matt Schuler", "title_th": "การเกษียณอายุของ Matt Schuler เจ้าหน้าที่คณะกรรมการควบคุมคาสิโนแห่งรัฐโอไฮโอ", "title_hi": "ओहियो कैसीनो कंट्रोल कमीशन के अधिकारी मैट शुलर की सेवानिवृत्ति", "link": "https://www.gamblinginsider.com/news/163756/matt-schuler-retiring-ohio-casino-control-commission", "sentiment": "中立", "impact": 45.0, "urgency": 40.0}, {"title": "運動員賄賂指控升級：體育誠信法律風險加劇", "title_en": "Escalation of Athlete Bribery Allegations: Rising Legal Risks for Sports Integrity", "title_th": "การยกระดับข้อหาติดสินบนนักกีฬา: ความเสี่ยงทางกฎหมายต่อความซื่อสัตย์ในกีฬาที่เพิ่มขึ้น", "title_hi": "एथलीट रिश्वतखोरी के आरोपों में वृद्धि: खेल अखंडता के लिए कानूनी जोखिम बढ़ना", "link": "https://www.gamblinginsider.com/news/163834/sports-bribery-added-terry-rozier-charges-superseding-indictment", "sentiment": "利空", "impact": 65.0, "urgency": 75.0}, {"title": "美多州博弈監管提案與禁令動向分析", "title_en": "Analysis of Gambling Regulatory Proposals and Bans Across U.S. States", "title_th": "บทวิเคราะห์ข้อเสนอกฎระเบียบและแนวทางการห้ามเล่นการพนันในรัฐต่างๆ ของสหรัฐฯ", "title_hi": "अमेरिकी राज्यों में जुआ नियामक प्रस्तावों और प्रतिबंधों का विश्लेषण", "link": "https://www.gamblinginsider.com/news/163687/minnesota-prediction-market-ban-new-york-proposal-gambling-bills-that-mattered-this-week", "sentiment": "利空", "impact": 80.0, "urgency": 65.0}, {"title": "NBA 與 NCAA 比賽操縱案：涉案人認罪認證", "title_en": "NBA and NCAA Match-Fixing Scandal: Suspect Pleads Guilty", "title_th": "คดีล็อกผลการแข่งขัน NBA และ NCAA: ผู้ต้องสงสัยสารภาพผิด", "title_hi": "NBA और NCAA मैच-फिक्सिंग घोटाला: संदिग्ध ने गुनाह कबूल किया", "link": "https://www.gamblinginsider.com/news/163616/marves-fairley-changes-plea-to-guilty-in-nba-ncaa-game-fixing-cases", "sentiment": "利空", "impact": 85.0, "urgency": 80.0}]}, {"region": "澳門", "count": 1, "coords": [22.037997895297668, 113.85884843903872], "sentiment": "利多", "news_full": [{"title": "澳門 4 月酒店入住率飆升至 90.2%，五星級酒店表現領跑", "title_en": "Macau Hotel Occupancy Rate Surges to 90.2% in April, Five-Star Hotels Lead the Performance", "title_th": "อัตราการเข้าพักโรงแรมในมาเก๊าพุ่งแตะ 90.2% ในเดือนเมษายน โดยโรงแรมระดับ 5 ดาวนำโด่ง", "title_hi": "मकाऊ में अप्रैल में होटल ऑक्यूपेंसी दर बढ़कर 90.2% हुई, पांच सितारा होटलों का प्रदर्शन सबसे आगे", "link": "https://agbrief.com/news/macau/31/05/2026/macau-hotel-occupancy-rises-to-90-2-in-april-led-by-5-star-properties/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}]}, {"region": "菲律賓", "count": 2, "coords": [14.923423489745767, 121.48085053521818], "sentiment": "利多", "news_full": [{"title": "DigiPlus 任命企業金融專家 Ping Chen 為總裁", "title_en": "DigiPlus Appoints Corporate Finance Expert Ping Chen as President", "title_th": "DigiPlus แต่งตั้งผู้เชี่ยวชาญด้านการเงินองค์กร Ping Chen เป็นประธานบริษัท", "title_hi": "DigiPlus ने कॉर्पोरेट वित्त विशेषज्ञ पिंग चेन को अध्यक्ष नियुक्त किया", "link": "https://agbrief.com/news/philippines/31/05/2026/digiplus-appoints-corporate-finance-veteran-ping-chen-as-president/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "PAGCOR 提供 7 輛病患運輸車，持續深化對地方政府的支持", "title_en": "PAGCOR Donates 7 Patient Transport Vehicles, Continuing to Deepen Support for Local Governments", "title_th": "PAGCOR บริจาครถขนส่งผู้ป่วย 7 คัน เดินหน้าสนับสนุนรัฐบาลท้องถิ่นอย่างต่อเนื่อง", "title_hi": "PAGCOR ने 7 रोगी परिवहन वाहन दान किए, स्थानीय सरकारों के लिए समर्थन गहरा करना जारी रखा", "link": "https://agbrief.com/news/philippines/30/05/2026/pagcor-extends-support-with-7-more-patient-transport-vehicles-to-lgus/", "sentiment": "利多", "impact": 45.0, "urgency": 20.0}]}, {"region": "歐洲", "count": 2, "coords": [49.90691928979482, 15.125167641162747], "sentiment": "利多", "news_full": [{"title": "2026 年 FIBA 3×3 世界盃：華沙主辦賽季最具規模賽事", "title_en": "FIBA 3×3 World Cup 2026: Warsaw to Host the Season's Largest Event", "title_th": "FIBA 3×3 เวิลด์คัพ 2026: วอร์ซอได้รับเลือกเป็นเจ้าภาพจัดงานที่ใหญ่ที่สุดของฤดูกาล", "title_hi": "FIBA 3×3 वर्ल्ड कप 2026: वारसॉ सीज़न के सबसे बड़े इवेंट की मेज़बानी करेगा", "link": "https://agbrief.com/news/europe/30/05/2026/fiba-3x3-world-cup-2026-warsaw-hosts-the-biggest-event-of-the-season/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "1xBet 獲頒 2026 年 SiGMA 歐洲獎項「年度最佳體育博彩營運商」", "title_en": "1xBet Awarded 'Sportsbook Operator of the Year' at 2026 SiGMA Europe", "title_th": "1xBet คว้ารางวัล 'ผู้ประกอบการพนันกีฬายอดเยี่ยมแห่งปี' ในงาน 2026 SiGMA Europe", "title_hi": "1xBet को 2026 SiGMA यूरोप में 'स्पोर्ट्सबुक ऑपरेटर ऑफ द ईयर' से सम्मानित किया गया", "link": "https://agbrief.com/news/europe/30/05/2026/1xbet-named-best-sports-betting-operator-2026-at-sigma-europe-awards/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 4, "coords": [20.03351598436534, 10.030321446286372], "sentiment": "利空", "news_full": [{"title": "產業週報：博弈內線交易與市場波動因素探討", "title_en": "Industry Weekly: Gambling Insider Trading and Market Volatility Factors", "title_th": "รายงานประจำสัปดาห์ของอุตสาหกรรม: การซื้อขายโดยใช้ข้อมูลภายใน (Insider Trading) และปัจจัยความผันผวนของตลาดการพนัน", "title_hi": "उद्योग साप्ताहिक: जुआ इनसाइडर ट्रेडिंग और बाजार में उतार-चढ़ाव के कारक", "link": "https://www.gamblinginsider.com/news/163825/parlays-insider-trading-fertitta-jannik-sinner-gambling-industry-news", "sentiment": "利空", "impact": 55.0, "urgency": 50.0}, {"title": "體育博彩平台轉向預測市場與防禦策略", "title_en": "Sports Betting Platforms Pivot to Prediction Markets and Defensive Strategies", "title_th": "แพลตฟอร์มพนันกีฬาหันสู่ตลาดการทำนายผลและกลยุทธ์ป้องกัน", "title_hi": "स्पोर्ट्स बेटिंग प्लेटफॉर्म का प्रेडिक्शन मार्केट्स और रक्षात्मक रणनीतियों की ओर झुकाव", "link": "https://www.gamblinginsider.com/news/163798/sportsbooks-prediction-markets-political-spending-sports-betting", "sentiment": "利多", "impact": 70.0, "urgency": 60.0}, {"title": "Predictstreet 獲直布羅陀牌照加速全球佈局", "title_en": "Predictstreet Secures Gibraltar License to Accelerate Global Layout", "title_th": "Predictstreet ได้รับใบอนุญาตยิบรอลตาร์เพื่อเร่งการขยายตัวทั่วโลก", "title_hi": "Predictstreet ने वैश्विक स्तर पर विस्तार तेज करने के लिए जिब्राल्टर लाइसेंस प्राप्त किया", "link": "https://www.gamblinginsider.com/news/163636/predictstreet-world-cup-gibraltar-fifa-partnership", "sentiment": "利多", "impact": 75.0, "urgency": 70.0}, {"title": "Blueprint Gaming 與 bet365 深化夥伴關係，推出獨家新遊戲內容", "title_en": "Blueprint Gaming and bet365 Deepen Partnership to Launch Exclusive New Game Content", "title_th": "Blueprint Gaming และ bet365 กระชับความร่วมมือ เปิดตัวเนื้อหาเกมใหม่สุดพิเศษ", "title_hi": "Blueprint Gaming और bet365 ने विशेष नया गेम कंटेंट लॉन्च करने के लिए साझेदारी गहरी की", "link": "https://agbrief.com/news/world/30/05/2026/blueprint-gaming-and-bet365-expand-alliance-with-exclusive-new-offer/", "sentiment": "利空", "impact": 70.0, "urgency": 55.0}]}, {"region": "美國", "count": 4, "coords": [37.03385712414785, -95.61922333236495], "sentiment": "利空", "news_full": [{"title": "俄亥俄州博弈監管委員會官員 Matt Schuler 退休動態", "title_en": "Retirement of Ohio Casino Control Commission Official Matt Schuler", "title_th": "การเกษียณอายุของ Matt Schuler เจ้าหน้าที่คณะกรรมการควบคุมคาสิโนแห่งรัฐโอไฮโอ", "title_hi": "ओहियो कैसीनो कंट्रोल कमीशन के अधिकारी मैट शुलर की सेवानिवृत्ति", "link": "https://www.gamblinginsider.com/news/163756/matt-schuler-retiring-ohio-casino-control-commission", "sentiment": "中立", "impact": 45.0, "urgency": 40.0}, {"title": "運動員賄賂指控升級：體育誠信法律風險加劇", "title_en": "Escalation of Athlete Bribery Allegations: Rising Legal Risks for Sports Integrity", "title_th": "การยกระดับข้อหาติดสินบนนักกีฬา: ความเสี่ยงทางกฎหมายต่อความซื่อสัตย์ในกีฬาที่เพิ่มขึ้น", "title_hi": "एथलीट रिश्वतखोरी के आरोपों में वृद्धि: खेल अखंडता के लिए कानूनी जोखिम बढ़ना", "link": "https://www.gamblinginsider.com/news/163834/sports-bribery-added-terry-rozier-charges-superseding-indictment", "sentiment": "利空", "impact": 65.0, "urgency": 75.0}, {"title": "美多州博弈監管提案與禁令動向分析", "title_en": "Analysis of Gambling Regulatory Proposals and Bans Across U.S. States", "title_th": "บทวิเคราะห์ข้อเสนอกฎระเบียบและแนวทางการห้ามเล่นการพนันในรัฐต่างๆ ของสหรัฐฯ", "title_hi": "अमेरिकी राज्यों में जुआ नियामक प्रस्तावों और प्रतिबंधों का विश्लेषण", "link": "https://www.gamblinginsider.com/news/163687/minnesota-prediction-market-ban-new-york-proposal-gambling-bills-that-mattered-this-week", "sentiment": "利空", "impact": 80.0, "urgency": 65.0}, {"title": "NBA 與 NCAA 比賽操縱案：涉案人認罪認證", "title_en": "NBA and NCAA Match-Fixing Scandal: Suspect Pleads Guilty", "title_th": "คดีล็อกผลการแข่งขัน NBA และ NCAA: ผู้ต้องสงสัยสารภาพผิด", "title_hi": "NBA और NCAA मैच-फिक्सिंग घोटाला: संदिग्ध ने गुनाह कबूल किया", "link": "https://www.gamblinginsider.com/news/163616/marves-fairley-changes-plea-to-guilty-in-nba-ncaa-game-fixing-cases", "sentiment": "利空", "impact": 85.0, "urgency": 80.0}]}, {"region": "澳門", "count": 1, "coords": [21.792244745544277, 113.04880589711028], "sentiment": "利多", "news_full": [{"title": "澳門 4 月酒店入住率飆升至 90.2%，五星級酒店表現領跑", "title_en": "Macau Hotel Occupancy Rate Surges to 90.2% in April, Five-Star Hotels Lead the Performance", "title_th": "อัตราการเข้าพักโรงแรมในมาเก๊าพุ่งแตะ 90.2% ในเดือนเมษายน โดยโรงแรมระดับ 5 ดาวนำโด่ง", "title_hi": "मकाऊ में अप्रैल में होटल ऑक्यूपेंसी दर बढ़कर 90.2% हुई, पांच सितारा होटलों का प्रदर्शन सबसे आगे", "link": "https://agbrief.com/news/macau/31/05/2026/macau-hotel-occupancy-rises-to-90-2-in-april-led-by-5-star-properties/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}]}, {"region": "菲律賓", "count": 2, "coords": [15.098211315283276, 121.29878027346078], "sentiment": "利多", "news_full": [{"title": "DigiPlus 任命企業金融專家 Ping Chen 為總裁", "title_en": "DigiPlus Appoints Corporate Finance Expert Ping Chen as President", "title_th": "DigiPlus แต่งตั้งผู้เชี่ยวชาญด้านการเงินองค์กร Ping Chen เป็นประธานบริษัท", "title_hi": "DigiPlus ने कॉर्पोरेट वित्त विशेषज्ञ पिंग चेन को अध्यक्ष नियुक्त किया", "link": "https://agbrief.com/news/philippines/31/05/2026/digiplus-appoints-corporate-finance-veteran-ping-chen-as-president/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "PAGCOR 提供 7 輛病患運輸車，持續深化對地方政府的支持", "title_en": "PAGCOR Donates 7 Patient Transport Vehicles, Continuing to Deepen Support for Local Governments", "title_th": "PAGCOR บริจาครถขนส่งผู้ป่วย 7 คัน เดินหน้าสนับสนุนรัฐบาลท้องถิ่นอย่างต่อเนื่อง", "title_hi": "PAGCOR ने 7 रोगी परिवहन वाहन दान किए, स्थानीय सरकारों के लिए समर्थन गहरा करना जारी रखा", "link": "https://agbrief.com/news/philippines/30/05/2026/pagcor-extends-support-with-7-more-patient-transport-vehicles-to-lgus/", "sentiment": "利多", "impact": 45.0, "urgency": 20.0}]}, {"region": "歐洲", "count": 2, "coords": [49.61924354059066, 15.293282033636721], "sentiment": "利多", "news_full": [{"title": "2026 年 FIBA 3×3 世界盃：華沙主辦賽季最具規模賽事", "title_en": "FIBA 3×3 World Cup 2026: Warsaw to Host the Season's Largest Event", "title_th": "FIBA 3×3 เวิลด์คัพ 2026: วอร์ซอได้รับเลือกเป็นเจ้าภาพจัดงานที่ใหญ่ที่สุดของฤดูกาล", "title_hi": "FIBA 3×3 वर्ल्ड कप 2026: वारसॉ सीज़न के सबसे बड़े इवेंट की मेज़बानी करेगा", "link": "https://agbrief.com/news/europe/30/05/2026/fiba-3x3-world-cup-2026-warsaw-hosts-the-biggest-event-of-the-season/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "1xBet 獲頒 2026 年 SiGMA 歐洲獎項「年度最佳體育博彩營運商」", "title_en": "1xBet Awarded 'Sportsbook Operator of the Year' at 2026 SiGMA Europe", "title_th": "1xBet คว้ารางวัล 'ผู้ประกอบการพนันกีฬายอดเยี่ยมแห่งปี' ในงาน 2026 SiGMA Europe", "title_hi": "1xBet को 2026 SiGMA यूरोप में 'स्पोर्ट्सबुक ऑपरेटर ऑफ द ईयर' से सम्मानित किया गया", "link": "https://agbrief.com/news/europe/30/05/2026/1xbet-named-best-sports-betting-operator-2026-at-sigma-europe-awards/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}];
 
         const regionMarkers = {};
 
@@ -4659,6 +4903,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -4681,11 +4995,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -4697,7 +5007,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -4723,15 +5037,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
