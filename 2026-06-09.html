@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -4181,7 +4425,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "加拿大", "count": 2, "coords": [56.16478159849487, -106.55722860559789], "sentiment": "利多", "news_full": [{"title": "專家評論：OLG 25歲以下存款限制政策仍有改善空間", "title_en": "Expert Review: OLG's Deposit Limit Policy for Under-25s Needs Improvement", "title_th": "บทวิจารณ์จากผู้เชี่ยวชาญ: นโยบายจำกัดการฝากเงินของ OLG สำหรับผู้เล่นอายุต่ำกว่า 25 ปี ยังคงมีพื้นที่ให้ปรับปรุง", "title_hi": "विशेषज्ञ समीक्षा: 25 वर्ष से कम आयु के लोगों के लिए OLG की जमा सीमा नीति में सुधार की गुंजाइश है", "link": "https://www.gamblinginsider.com/news/165523/olg-under-25-deposit-limit-good-pr-but-has-way-to-go", "sentiment": "中立", "impact": 55.0, "urgency": 40.0}, {"title": "St8 與 RubyPlay 建立合作，強化安大略市場內容競爭力", "title_en": "St8 Partners with RubyPlay to Boost Content Competitiveness in Ontario Market", "title_th": "St8 จับมือ RubyPlay เสริมความแข็งแกร่งด้านเนื้อหาในตลาดออนแทรีโอ", "title_hi": "St8 ने ओंटारियो बाजार में सामग्री प्रतिस्पर्धात्मकता को बढ़ावा देने के लिए RubyPlay के साथ साझेदारी की", "link": "https://agbrief.com/news/north-america/10/06/2026/st8-reinforces-ontario-content-offering-via-rubyplay-partnership/", "sentiment": "利多", "impact": 60.0, "urgency": 30.0}]}, {"region": "全球", "count": 10, "coords": [19.53831095832015, 9.631073195649828], "sentiment": "利空", "news_full": [{"title": "Konami 完成嘉年華郵輪全艦隊 SYNKROS 系統部署", "title_en": "Konami Completes SYNKROS System Deployment Across Carnival Cruise Fleet", "title_th": "Konami ติดตั้งระบบ SYNKROS ครบถ้วนทั่วกองเรือ Carnival Cruise", "title_hi": "Konami ने कार्निवल क्रूज़ बेड़े में SYNKROS सिस्टम की तैनाती पूरी की", "link": "https://asgam.com/2026/06/10/all-29-carnival-cruise-lines-ships-deploy-konamis-synkros-casino-management-system/", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}, {"title": "Konami 擴展郵輪遊戲產品線，全艦隊部署 SYNKROS", "title_en": "Konami Expands Cruise Gaming Product Line, Deploys SYNKROS Fleet-wide", "title_th": "Konami ขยายกลุ่มผลิตภัณฑ์เกมบนเรือสำราญ พร้อมติดตั้ง SYNKROS ทั่วกองเรือ", "title_hi": "Konami ने क्रूज़ गेमिंग उत्पाद लाइन का विस्तार किया, पूरे बेड़े में SYNKROS तैनात किया", "link": "https://agbrief.com/news/world/10/06/2026/konami-powers-carnival-cruise-line-gaming-with-fleetwide-synkros-deployment/", "sentiment": "中立", "impact": 40.0, "urgency": 25.0}, {"title": "Zitro 在 Bingo Moreno 推出全新 FANTASY 機櫃", "title_en": "Zitro Launches New FANTASY Cabinet at Bingo Moreno", "title_th": "Zitro เปิดตัวตู้เกม FANTASY รุ่นใหม่ที่ Bingo Moreno", "title_hi": "Zitro ने Bingo Moreno में नया FANTASY कैबिनेट लॉन्च किया", "link": "https://agbrief.com/news/world/10/06/2026/zitro-launches-fantasy-cabinet-at-bingo-moreno/", "sentiment": "中立", "impact": 35.0, "urgency": 20.0}, {"title": "ACT 推動行為監控與地理定位整合平台，強化博弈誠信", "title_en": "ACT Launches Integrated Platform for Behavioral Monitoring and Geolocation to Strengthen Integrity", "title_th": "ACT เปิดตัวแพลตฟอร์มบูรณาการการตรวจสอบพฤติกรรมและตำแหน่งที่ตั้ง เพื่อเสริมความโปร่งใสในอุตสาหกรรมพนัน", "title_hi": "ACT ने व्यवहार निगरानी और जियोलोकेशन के लिए एकीकृत प्लेटफॉर्म लॉन्च किया, गेमिंग अखंडता को मजबूत किया", "link": "https://agbrief.com/news/world/10/06/2026/act-launches-unified-behavioural-monitoring-geolocation-and-sports-integrity-platform/", "sentiment": "利多", "impact": 75.0, "urgency": 55.0}, {"title": "Vivid Gaming 正式進駐 BetFounders 聚合平台", "title_en": "Vivid Gaming Joins BetFounders Aggregation Platform", "title_th": "Vivid Gaming เข้าสู่แพลตฟอร์มรวบรวมเกมของ BetFounders อย่างเป็นทางการ", "title_hi": "Vivid Gaming ने BetFounders एग्रीगेशन प्लेटफॉर्म में प्रवेश किया", "link": "https://agbrief.com/news/world/10/06/2026/vivid-gaming-debuts-on-betfounders-aggregation-platform/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "Pragmatic Play 發布《Joker’s Revenge》，提供萬倍獎金誘因", "title_en": "Pragmatic Play Releases 'Joker’s Revenge' with 10,000x Payout Potential", "title_th": "Pragmatic Play ปล่อย 'Joker’s Revenge' พร้อมตัวคูณรางวัลสูงสุด 10,000 เท่า", "title_hi": "Pragmatic Play ने 'Joker’s Revenge' जारी किया, 10,000 गुना इनाम क्षमता के साथ", "link": "https://www.gamblingnews.com/news/pragmatic-play-releases-jokers-revenge-offers-players-prizes-of-up-to-10000x/", "sentiment": "利多", "impact": 70.0, "urgency": 30.0}, {"title": "BGaming 與 Júlio César 合作推出足球主題 Penalty Duel 遊戲", "title_en": "BGaming Partners with Júlio César to Launch Football-Themed 'Penalty Duel'", "title_th": "BGaming ร่วมมือกับ Júlio César เปิดตัวเกมธีมฟุตบอล 'Penalty Duel'", "title_hi": "BGaming ने फुटबॉल-थीम वाले 'Penalty Duel' गेम को लॉन्च करने के लिए जूलियो सीज़र के साथ साझेदारी की", "link": "https://www.gamblingnews.com/news/challenge-a-legendary-goalkeeper-in-bgamings-penalty-duel-with-julio-cesar/", "sentiment": "利多", "impact": 60.0, "urgency": 35.0}, {"title": "EDGE Markets 完成 2,920 萬美元融資，深耕預測市場", "title_en": "EDGE Markets Secures $29.2 Million to Expand Prediction Markets", "title_th": "EDGE Markets ระดมทุน 29.2 ล้านดอลลาร์ ขยายตลาดการพยากรณ์", "title_hi": "EDGE Markets ने प्रेडिक्शन मार्केट का विस्तार करने के लिए $29.2 मिलियन जुटाए", "link": "https://www.gamblingnews.com/news/edge-markets-raises-29-2m-to-engage-with-prediction-markets/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}, {"title": "GamCare 警告世界盃期間恐加劇博弈成癮風險", "title_en": "GamCare Warns of Rising Gambling Addiction Risks During World Cup", "title_th": "GamCare เตือนความเสี่ยงการติดพนันพุ่งสูงช่วงฟุตบอลโลก", "title_hi": "GamCare ने विश्व कप के दौरान जुए की लत के जोखिम की चेतावनी दी", "link": "https://www.gamblingnews.com/news/gamcare-highlights-world-cup-as-a-perilous-time-for-vulnerable-players/", "sentiment": "中立", "impact": 50.0, "urgency": 55.0}, {"title": "Xbox 分析師指出漲價導致 Game Pass 用戶流失", "title_en": "Xbox Analyst: Price Hikes Lead to Game Pass Subscriber Churn", "title_th": "นักวิเคราะห์ชี้การขึ้นราคา Xbox Game Pass ทำยอดผู้ใช้ลดลง", "title_hi": "Xbox विश्लेषक: मूल्य वृद्धि से गेम पास सब्सक्राइबर्स में कमी", "link": "https://www.gamingdose.com/news/%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b8%a7%e0%b8%b4%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%b2%e0%b8%b0%e0%b8%ab%e0%b9%8c%e0%b8%88%e0%b8%b2%e0%b8%81-xbox-%e0%b9%80%e0%b8%9c%e0%b8%a2-%e0%b8%81%e0%b8%b2%e0%b8%a3/", "sentiment": "利空", "impact": 45.0, "urgency": 40.0}]}, {"region": "澳門", "count": 1, "coords": [22.06584146866502, 113.79230857344832], "sentiment": "利多", "news_full": [{"title": "新濠博亞完成 19.4 億美元信貸展期並新增 8.21 億融資", "title_en": "Melco Resorts Refinances $1.94 Billion and Secures $821 Million in New Credit", "title_th": "Melco Resorts รีไฟแนนซ์วงเงิน 1.94 พันล้านดอลลาร์ และได้รับสินเชื่อใหม่ 821 ล้านดอลลาร์", "title_hi": "Melco Resorts ने $1.94 बिलियन का पुनर्वित्त किया और $821 मिलियन का नया क्रेडिट प्राप्त किया", "link": "https://asgam.com/2026/06/10/melco-extends-maturity-date-of-us1-94-billion-revolving-credit-facilities-by-four-years-adds-additional-us821-million/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}]}, {"region": "馬來西亞", "count": 1, "coords": [3.2596059576028873, 102.17741856276567], "sentiment": "利空", "news_full": [{"title": "雲頂集團發布詐騙警告：偽造高層身份非法招募", "title_en": "Genting Group Issues Scam Warning: Fake Executive Identity Used for Illegal Recruitment", "title_th": "Genting Group ออกคำเตือนภัยจากการหลอกลวง: การปลอมแปลงตัวตนผู้บริหารเพื่อสรรหาบุคลากรอย่างผิดกฎหมาย", "title_hi": "Genting Group ने धोखाधड़ी की चेतावनी जारी की: अवैध भर्ती के लिए नकली कार्यकारी पहचान का उपयोग", "link": "https://asgam.com/2026/06/09/genting-issues-fraud-alert-after-cherry-cui-profile-claims-to-hold-executive-position-in-the-group/", "sentiment": "利空", "impact": 40.0, "urgency": 50.0}]}, {"region": "韓國", "count": 3, "coords": [38.00773163497532, 126.87137566284503], "sentiment": "利空", "news_full": [{"title": "韓國 2026 年首季經濟表現超預期，帶動消費情緒回升", "title_en": "South Korea Q1 2026 Economic Performance Exceeds Expectations, Boosting Consumer Sentiment", "title_th": "ผลการดำเนินงานทางเศรษฐกิจเกาหลีใต้ไตรมาส 1 ปี 2026 เกินคาด หนุนอารมณ์ผู้บริโภคฟื้นตัว", "title_hi": "दक्षिण कोरिया का 2026 की पहली तिमाही का आर्थिक प्रदर्शन उम्मीदों से बेहतर, उपभोक्ता भावना में तेजी", "link": "https://asgam.com/2026/06/09/south-koreas-economy-outperforms-estimates-in-1q26-boosting-consumer-sentiment/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "韓國啟動公民獎勵計畫，世界盃前夕全力掃蕩非法博彩", "title_en": "South Korea Launches Citizen Reward Program to Crack Down on Illegal Gambling Ahead of World Cup", "title_th": "เกาหลีใต้เปิดโครงการรางวัลพลเมือง กวาดล้างการพนันผิดกฎหมายก่อนฟุตบอลโลก", "title_hi": "दक्षिण कोरिया ने विश्व कप से पहले अवैध जुए पर नकेल कसने के लिए नागरिक पुरस्कार कार्यक्रम शुरू किया", "link": "https://agbrief.com/news/10/06/2026/south-korea-launches-citizen-reward-scheme-to-root-out-illegal-betting-sites-ahead-of-world-cup/", "sentiment": "利空", "impact": 75.0, "urgency": 85.0}, {"title": "韓國祭出現金獎勵，鼓勵民眾舉報非法博弈活動", "title_en": "South Korea Introduces Cash Rewards for Reporting Illegal Gambling", "title_th": "เกาหลีใต้ประกาศมอบรางวัลเงินสดแก่ผู้แจ้งเบาะแสการพนันผิดกฎหมาย", "title_hi": "दक्षिण कोरिया ने अवैध जुए की रिपोर्ट करने के लिए नकद पुरस्कार की घोषणा की", "link": "https://www.gamblingnews.com/news/south-korea-offers-cash-rewards-to-expose-illegal-gambling/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "香港", "count": 1, "coords": [21.99532168306371, 114.36227718435008], "sentiment": "利空", "news_full": [{"title": "香港警方對世界盃非法博彩平台發布警告", "title_en": "Hong Kong Police Issue Warning Against Illegal World Cup Gambling Platforms", "title_th": "ตำรวจฮ่องกงออกคำเตือนเรื่องแพลตฟอร์มการพนันผิดกฎหมายในช่วงฟุตบอลโลก", "title_hi": "हांगकांग पुलिस ने अवैध विश्व कप जुआ प्लेटफॉर्मों के खिलाफ चेतावनी जारी की", "link": "https://agbrief.com/news/hong-kong/10/06/2026/hong-kong-police-warn-world-cup-fans-over-illegal-overseas-betting-platforms/", "sentiment": "利空", "impact": 30.0, "urgency": 80.0}]}, {"region": "新加坡", "count": 1, "coords": [1.1543674461562632, 103.84173157109683], "sentiment": "利空", "news_full": [{"title": "新加坡加強世界盃期間非法博彩執法與防範宣傳", "title_en": "Singapore Strengthens Enforcement and Awareness Campaigns Against Illegal Gambling During World Cup", "title_th": "สิงคโปร์ยกระดับการบังคับใช้กฎหมายและการรณรงค์ป้องกันการพนันผิดกฎหมายช่วงฟุตบอลโลก", "title_hi": "सिंगापुर ने विश्व कप के दौरान अवैध जुए के खिलाफ प्रवर्तन और जागरूकता अभियान तेज किया", "link": "https://agbrief.com/news/singapore/10/06/2026/singapore-steps-up-illegal-gambling-enforcement-for-world-cup-launches-twin-awareness-campaigns/", "sentiment": "利空", "impact": 30.0, "urgency": 80.0}]}, {"region": "北美", "count": 1, "coords": [44.984324692280914, -100.03932381049019], "sentiment": "利多", "news_full": [{"title": "Groove 進軍 SBC Summit Americas 2026，加速全球市場擴張", "title_en": "Groove Enters SBC Summit Americas 2026 to Accelerate Global Expansion", "title_th": "Groove รุกตลาด SBC Summit Americas 2026 เร่งขยายตัวสู่ตลาดโลก", "title_hi": "Groove ने SBC Summit Americas 2026 में प्रवेश किया, वैश्विक विस्तार में तेजी", "link": "https://agbrief.com/news/usa/10/06/2026/groove-brings-its-global-momentum-to-sbc-summit-americas-2026/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "美國", "count": 2, "coords": [36.92659220901309, -95.34141451306486], "sentiment": "利空", "news_full": [{"title": "紐約博弈市場五月收入顯著下滑", "title_en": "New York Gaming Market Revenue Declines Significantly in May", "title_th": "รายได้ตลาดพนันในนิวยอร์กเดือนพฤษภาคมลดลงอย่างเห็นได้ชัด", "title_hi": "मई में न्यूयॉर्क गेमिंग बाजार के राजस्व में भारी गिरावट", "link": "https://www.gamblingnews.com/news/new-york-betting-operators-record-significant-revenue-drop-in-may/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}, {"title": "華盛頓特區玩家贏得馬里蘭州彩券 100 萬美元獎金", "title_en": "Washington D.C. Resident Wins $1 Million Maryland Lottery Prize", "title_th": "ผู้เล่นในวอชิงตัน ดี.ซี. ถูกรางวัลลอตเตอรีแมริแลนด์มูลค่า 1 ล้านดอลลาร์", "title_hi": "वॉशिंगटन डी.सी. के निवासी ने मैरीलैंड लॉटरी में 1 मिलियन डॉलर का पुरस्कार जीता", "link": "https://www.gamblingnews.com/news/washington-dc-player-wins-1m-prize-from-maryland-lottery/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}]}, {"region": "歐洲", "count": 1, "coords": [49.793201967728365, 14.58465208796364], "sentiment": "利多", "news_full": [{"title": "芬蘭受監管博弈市場啟動前已獲 50 件許可申請", "title_en": "Finland Receives 50 License Applications Ahead of Regulated Gaming Market Launch", "title_th": "ตลาดการพนันที่มีการกำกับดูแลของฟินแลนด์ได้รับคำขอใบอนุญาตแล้ว 50 รายก่อนเริ่มดำเนินการ", "title_hi": "फिनलैंड के विनियमित गेमिंग बाजार के शुभारंभ से पहले 50 लाइसेंस आवेदन प्राप्त हुए", "link": "https://www.gamblingnews.com/news/finland-receives-50-applications-for-igaming-license-before-the-sectors-launch/", "sentiment": "利多", "impact": 80.0, "urgency": 70.0}]}, {"region": "英國", "count": 1, "coords": [51.699068568959795, 0.3109598373634037], "sentiment": "利空", "news_full": [{"title": "英國博弈委員會 (BGC) 擬定五點計畫以打擊非法博弈", "title_en": "BGC Proposes Five-Point Plan to Combat Illegal Gambling in the UK", "title_th": "BGC เสนอแผน 5 จุด เพื่อจัดการการพนันผิดกฎหมายในสหราชอาณาจักร", "title_hi": "BGC ने यूके में अवैध जुए से निपटने के लिए पांच-सूत्रीय योजना प्रस्तावित की", "link": "https://www.gamblingnews.com/news/bgc-outlines-5-point-plan-to-tackle-unlicensed-gambling/", "sentiment": "利空", "impact": 85.0, "urgency": 60.0}]}, {"region": "中東", "count": 1, "coords": [24.79187654887983, 45.45414162253465], "sentiment": "利多", "news_full": [{"title": "阿聯酋 GCGRA 任命 Ciarán Carruthers 為新任首席執行官", "title_en": "UAE’s GCGRA Appoints Ciarán Carruthers as New CEO", "title_th": "GCGRA แห่ง UAE แต่งตั้ง Ciarán Carruthers เป็น CEO คนใหม่", "title_hi": "UAE के GCGRA ने Ciarán Carruthers को नया CEO नियुक्त किया", "link": "https://www.gamblingnews.com/news/uaes-gcgra-appoints-ciaran-carruthers-as-its-new-ceo/", "sentiment": "利多", "impact": 90.0, "urgency": 65.0}]}, {"region": "日本", "count": 1, "coords": [35.68965512856971, 139.39519416810592], "sentiment": "中立", "news_full": [{"title": "日本殺蟲劑公司推出獵奇蟑螂戀愛遊戲", "title_en": "Japanese Insecticide Company Launches Quirky Cockroach Dating Game", "title_th": "บริษัทกำจัดแมลงในญี่ปุ่นเปิดตัวเกมจีบหนุ่มค็อกโรช", "title_hi": "जापानी कीटनाशक कंपनी ने कॉकरोच डेटिंग गेम लॉन्च किया", "link": "https://www.gamingdose.com/news/gokigen-lovely-day-%e0%b9%80%e0%b8%81%e0%b8%a1%e0%b8%88%e0%b8%b5%e0%b8%9a%e0%b8%ab%e0%b8%99%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b9%81%e0%b8%a1%e0%b8%a5%e0%b8%87%e0%b8%aa%e0%b8%b2%e0%b8%9a-%e0%b8%9c%e0%b8%a5/", "sentiment": "中立", "impact": 10.0, "urgency": 10.0}]}];
+        const mapMarkersData = [{"region": "加拿大", "count": 2, "coords": [56.55510571622531, -106.26546352536857], "sentiment": "利多", "news_full": [{"title": "專家評論：OLG 25歲以下存款限制政策仍有改善空間", "title_en": "Expert Review: OLG's Deposit Limit Policy for Under-25s Needs Improvement", "title_th": "บทวิจารณ์จากผู้เชี่ยวชาญ: นโยบายจำกัดการฝากเงินของ OLG สำหรับผู้เล่นอายุต่ำกว่า 25 ปี ยังคงมีพื้นที่ให้ปรับปรุง", "title_hi": "विशेषज्ञ समीक्षा: 25 वर्ष से कम आयु के लोगों के लिए OLG की जमा सीमा नीति में सुधार की गुंजाइश है", "link": "https://www.gamblinginsider.com/news/165523/olg-under-25-deposit-limit-good-pr-but-has-way-to-go", "sentiment": "中立", "impact": 55.0, "urgency": 40.0}, {"title": "St8 與 RubyPlay 建立合作，強化安大略市場內容競爭力", "title_en": "St8 Partners with RubyPlay to Boost Content Competitiveness in Ontario Market", "title_th": "St8 จับมือ RubyPlay เสริมความแข็งแกร่งด้านเนื้อหาในตลาดออนแทรีโอ", "title_hi": "St8 ने ओंटारियो बाजार में सामग्री प्रतिस्पर्धात्मकता को बढ़ावा देने के लिए RubyPlay के साथ साझेदारी की", "link": "https://agbrief.com/news/north-america/10/06/2026/st8-reinforces-ontario-content-offering-via-rubyplay-partnership/", "sentiment": "利多", "impact": 60.0, "urgency": 30.0}]}, {"region": "全球", "count": 10, "coords": [19.781129859700165, 9.922862878317744], "sentiment": "利空", "news_full": [{"title": "Konami 完成嘉年華郵輪全艦隊 SYNKROS 系統部署", "title_en": "Konami Completes SYNKROS System Deployment Across Carnival Cruise Fleet", "title_th": "Konami ติดตั้งระบบ SYNKROS ครบถ้วนทั่วกองเรือ Carnival Cruise", "title_hi": "Konami ने कार्निवल क्रूज़ बेड़े में SYNKROS सिस्टम की तैनाती पूरी की", "link": "https://asgam.com/2026/06/10/all-29-carnival-cruise-lines-ships-deploy-konamis-synkros-casino-management-system/", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}, {"title": "Konami 擴展郵輪遊戲產品線，全艦隊部署 SYNKROS", "title_en": "Konami Expands Cruise Gaming Product Line, Deploys SYNKROS Fleet-wide", "title_th": "Konami ขยายกลุ่มผลิตภัณฑ์เกมบนเรือสำราญ พร้อมติดตั้ง SYNKROS ทั่วกองเรือ", "title_hi": "Konami ने क्रूज़ गेमिंग उत्पाद लाइन का विस्तार किया, पूरे बेड़े में SYNKROS तैनात किया", "link": "https://agbrief.com/news/world/10/06/2026/konami-powers-carnival-cruise-line-gaming-with-fleetwide-synkros-deployment/", "sentiment": "中立", "impact": 40.0, "urgency": 25.0}, {"title": "Zitro 在 Bingo Moreno 推出全新 FANTASY 機櫃", "title_en": "Zitro Launches New FANTASY Cabinet at Bingo Moreno", "title_th": "Zitro เปิดตัวตู้เกม FANTASY รุ่นใหม่ที่ Bingo Moreno", "title_hi": "Zitro ने Bingo Moreno में नया FANTASY कैबिनेट लॉन्च किया", "link": "https://agbrief.com/news/world/10/06/2026/zitro-launches-fantasy-cabinet-at-bingo-moreno/", "sentiment": "中立", "impact": 35.0, "urgency": 20.0}, {"title": "ACT 推動行為監控與地理定位整合平台，強化博弈誠信", "title_en": "ACT Launches Integrated Platform for Behavioral Monitoring and Geolocation to Strengthen Integrity", "title_th": "ACT เปิดตัวแพลตฟอร์มบูรณาการการตรวจสอบพฤติกรรมและตำแหน่งที่ตั้ง เพื่อเสริมความโปร่งใสในอุตสาหกรรมพนัน", "title_hi": "ACT ने व्यवहार निगरानी और जियोलोकेशन के लिए एकीकृत प्लेटफॉर्म लॉन्च किया, गेमिंग अखंडता को मजबूत किया", "link": "https://agbrief.com/news/world/10/06/2026/act-launches-unified-behavioural-monitoring-geolocation-and-sports-integrity-platform/", "sentiment": "利多", "impact": 75.0, "urgency": 55.0}, {"title": "Vivid Gaming 正式進駐 BetFounders 聚合平台", "title_en": "Vivid Gaming Joins BetFounders Aggregation Platform", "title_th": "Vivid Gaming เข้าสู่แพลตฟอร์มรวบรวมเกมของ BetFounders อย่างเป็นทางการ", "title_hi": "Vivid Gaming ने BetFounders एग्रीगेशन प्लेटफॉर्म में प्रवेश किया", "link": "https://agbrief.com/news/world/10/06/2026/vivid-gaming-debuts-on-betfounders-aggregation-platform/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "Pragmatic Play 發布《Joker’s Revenge》，提供萬倍獎金誘因", "title_en": "Pragmatic Play Releases 'Joker’s Revenge' with 10,000x Payout Potential", "title_th": "Pragmatic Play ปล่อย 'Joker’s Revenge' พร้อมตัวคูณรางวัลสูงสุด 10,000 เท่า", "title_hi": "Pragmatic Play ने 'Joker’s Revenge' जारी किया, 10,000 गुना इनाम क्षमता के साथ", "link": "https://www.gamblingnews.com/news/pragmatic-play-releases-jokers-revenge-offers-players-prizes-of-up-to-10000x/", "sentiment": "利多", "impact": 70.0, "urgency": 30.0}, {"title": "BGaming 與 Júlio César 合作推出足球主題 Penalty Duel 遊戲", "title_en": "BGaming Partners with Júlio César to Launch Football-Themed 'Penalty Duel'", "title_th": "BGaming ร่วมมือกับ Júlio César เปิดตัวเกมธีมฟุตบอล 'Penalty Duel'", "title_hi": "BGaming ने फुटबॉल-थीम वाले 'Penalty Duel' गेम को लॉन्च करने के लिए जूलियो सीज़र के साथ साझेदारी की", "link": "https://www.gamblingnews.com/news/challenge-a-legendary-goalkeeper-in-bgamings-penalty-duel-with-julio-cesar/", "sentiment": "利多", "impact": 60.0, "urgency": 35.0}, {"title": "EDGE Markets 完成 2,920 萬美元融資，深耕預測市場", "title_en": "EDGE Markets Secures $29.2 Million to Expand Prediction Markets", "title_th": "EDGE Markets ระดมทุน 29.2 ล้านดอลลาร์ ขยายตลาดการพยากรณ์", "title_hi": "EDGE Markets ने प्रेडिक्शन मार्केट का विस्तार करने के लिए $29.2 मिलियन जुटाए", "link": "https://www.gamblingnews.com/news/edge-markets-raises-29-2m-to-engage-with-prediction-markets/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}, {"title": "GamCare 警告世界盃期間恐加劇博弈成癮風險", "title_en": "GamCare Warns of Rising Gambling Addiction Risks During World Cup", "title_th": "GamCare เตือนความเสี่ยงการติดพนันพุ่งสูงช่วงฟุตบอลโลก", "title_hi": "GamCare ने विश्व कप के दौरान जुए की लत के जोखिम की चेतावनी दी", "link": "https://www.gamblingnews.com/news/gamcare-highlights-world-cup-as-a-perilous-time-for-vulnerable-players/", "sentiment": "中立", "impact": 50.0, "urgency": 55.0}, {"title": "Xbox 分析師指出漲價導致 Game Pass 用戶流失", "title_en": "Xbox Analyst: Price Hikes Lead to Game Pass Subscriber Churn", "title_th": "นักวิเคราะห์ชี้การขึ้นราคา Xbox Game Pass ทำยอดผู้ใช้ลดลง", "title_hi": "Xbox विश्लेषक: मूल्य वृद्धि से गेम पास सब्सक्राइबर्स में कमी", "link": "https://www.gamingdose.com/news/%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b8%a7%e0%b8%b4%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%b2%e0%b8%b0%e0%b8%ab%e0%b9%8c%e0%b8%88%e0%b8%b2%e0%b8%81-xbox-%e0%b9%80%e0%b8%9c%e0%b8%a2-%e0%b8%81%e0%b8%b2%e0%b8%a3/", "sentiment": "利空", "impact": 45.0, "urgency": 40.0}]}, {"region": "澳門", "count": 1, "coords": [22.582277139949483, 113.18486155923267], "sentiment": "利多", "news_full": [{"title": "新濠博亞完成 19.4 億美元信貸展期並新增 8.21 億融資", "title_en": "Melco Resorts Refinances $1.94 Billion and Secures $821 Million in New Credit", "title_th": "Melco Resorts รีไฟแนนซ์วงเงิน 1.94 พันล้านดอลลาร์ และได้รับสินเชื่อใหม่ 821 ล้านดอลลาร์", "title_hi": "Melco Resorts ने $1.94 बिलियन का पुनर्वित्त किया और $821 मिलियन का नया क्रेडिट प्राप्त किया", "link": "https://asgam.com/2026/06/10/melco-extends-maturity-date-of-us1-94-billion-revolving-credit-facilities-by-four-years-adds-additional-us821-million/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}]}, {"region": "馬來西亞", "count": 1, "coords": [2.868745998708323, 101.90441599719593], "sentiment": "利空", "news_full": [{"title": "雲頂集團發布詐騙警告：偽造高層身份非法招募", "title_en": "Genting Group Issues Scam Warning: Fake Executive Identity Used for Illegal Recruitment", "title_th": "Genting Group ออกคำเตือนภัยจากการหลอกลวง: การปลอมแปลงตัวตนผู้บริหารเพื่อสรรหาบุคลากรอย่างผิดกฎหมาย", "title_hi": "Genting Group ने धोखाधड़ी की चेतावनी जारी की: अवैध भर्ती के लिए नकली कार्यकारी पहचान का उपयोग", "link": "https://asgam.com/2026/06/09/genting-issues-fraud-alert-after-cherry-cui-profile-claims-to-hold-executive-position-in-the-group/", "sentiment": "利空", "impact": 40.0, "urgency": 50.0}]}, {"region": "韓國", "count": 3, "coords": [37.40500045283923, 127.14710511157455], "sentiment": "利空", "news_full": [{"title": "韓國 2026 年首季經濟表現超預期，帶動消費情緒回升", "title_en": "South Korea Q1 2026 Economic Performance Exceeds Expectations, Boosting Consumer Sentiment", "title_th": "ผลการดำเนินงานทางเศรษฐกิจเกาหลีใต้ไตรมาส 1 ปี 2026 เกินคาด หนุนอารมณ์ผู้บริโภคฟื้นตัว", "title_hi": "दक्षिण कोरिया का 2026 की पहली तिमाही का आर्थिक प्रदर्शन उम्मीदों से बेहतर, उपभोक्ता भावना में तेजी", "link": "https://asgam.com/2026/06/09/south-koreas-economy-outperforms-estimates-in-1q26-boosting-consumer-sentiment/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "韓國啟動公民獎勵計畫，世界盃前夕全力掃蕩非法博彩", "title_en": "South Korea Launches Citizen Reward Program to Crack Down on Illegal Gambling Ahead of World Cup", "title_th": "เกาหลีใต้เปิดโครงการรางวัลพลเมือง กวาดล้างการพนันผิดกฎหมายก่อนฟุตบอลโลก", "title_hi": "दक्षिण कोरिया ने विश्व कप से पहले अवैध जुए पर नकेल कसने के लिए नागरिक पुरस्कार कार्यक्रम शुरू किया", "link": "https://agbrief.com/news/10/06/2026/south-korea-launches-citizen-reward-scheme-to-root-out-illegal-betting-sites-ahead-of-world-cup/", "sentiment": "利空", "impact": 75.0, "urgency": 85.0}, {"title": "韓國祭出現金獎勵，鼓勵民眾舉報非法博弈活動", "title_en": "South Korea Introduces Cash Rewards for Reporting Illegal Gambling", "title_th": "เกาหลีใต้ประกาศมอบรางวัลเงินสดแก่ผู้แจ้งเบาะแสการพนันผิดกฎหมาย", "title_hi": "दक्षिण कोरिया ने अवैध जुए की रिपोर्ट करने के लिए नकद पुरस्कार की घोषणा की", "link": "https://www.gamblingnews.com/news/south-korea-offers-cash-rewards-to-expose-illegal-gambling/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "香港", "count": 1, "coords": [21.937483353548537, 114.42149690432355], "sentiment": "利空", "news_full": [{"title": "香港警方對世界盃非法博彩平台發布警告", "title_en": "Hong Kong Police Issue Warning Against Illegal World Cup Gambling Platforms", "title_th": "ตำรวจฮ่องกงออกคำเตือนเรื่องแพลตฟอร์มการพนันผิดกฎหมายในช่วงฟุตบอลโลก", "title_hi": "हांगकांग पुलिस ने अवैध विश्व कप जुआ प्लेटफॉर्मों के खिलाफ चेतावनी जारी की", "link": "https://agbrief.com/news/hong-kong/10/06/2026/hong-kong-police-warn-world-cup-fans-over-illegal-overseas-betting-platforms/", "sentiment": "利空", "impact": 30.0, "urgency": 80.0}]}, {"region": "新加坡", "count": 1, "coords": [0.9502359216679186, 103.65599903023667], "sentiment": "利空", "news_full": [{"title": "新加坡加強世界盃期間非法博彩執法與防範宣傳", "title_en": "Singapore Strengthens Enforcement and Awareness Campaigns Against Illegal Gambling During World Cup", "title_th": "สิงคโปร์ยกระดับการบังคับใช้กฎหมายและการรณรงค์ป้องกันการพนันผิดกฎหมายช่วงฟุตบอลโลก", "title_hi": "सिंगापुर ने विश्व कप के दौरान अवैध जुए के खिलाफ प्रवर्तन और जागरूकता अभियान तेज किया", "link": "https://agbrief.com/news/singapore/10/06/2026/singapore-steps-up-illegal-gambling-enforcement-for-world-cup-launches-twin-awareness-campaigns/", "sentiment": "利空", "impact": 30.0, "urgency": 80.0}]}, {"region": "北美", "count": 1, "coords": [45.161259388156026, -99.71186325933462], "sentiment": "利多", "news_full": [{"title": "Groove 進軍 SBC Summit Americas 2026，加速全球市場擴張", "title_en": "Groove Enters SBC Summit Americas 2026 to Accelerate Global Expansion", "title_th": "Groove รุกตลาด SBC Summit Americas 2026 เร่งขยายตัวสู่ตลาดโลก", "title_hi": "Groove ने SBC Summit Americas 2026 में प्रवेश किया, वैश्विक विस्तार में तेजी", "link": "https://agbrief.com/news/usa/10/06/2026/groove-brings-its-global-momentum-to-sbc-summit-americas-2026/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "美國", "count": 2, "coords": [37.06480972615498, -95.92452197816651], "sentiment": "利空", "news_full": [{"title": "紐約博弈市場五月收入顯著下滑", "title_en": "New York Gaming Market Revenue Declines Significantly in May", "title_th": "รายได้ตลาดพนันในนิวยอร์กเดือนพฤษภาคมลดลงอย่างเห็นได้ชัด", "title_hi": "मई में न्यूयॉर्क गेमिंग बाजार के राजस्व में भारी गिरावट", "link": "https://www.gamblingnews.com/news/new-york-betting-operators-record-significant-revenue-drop-in-may/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}, {"title": "華盛頓特區玩家贏得馬里蘭州彩券 100 萬美元獎金", "title_en": "Washington D.C. Resident Wins $1 Million Maryland Lottery Prize", "title_th": "ผู้เล่นในวอชิงตัน ดี.ซี. ถูกรางวัลลอตเตอรีแมริแลนด์มูลค่า 1 ล้านดอลลาร์", "title_hi": "वॉशिंगटन डी.सी. के निवासी ने मैरीलैंड लॉटरी में 1 मिलियन डॉलर का पुरस्कार जीता", "link": "https://www.gamblingnews.com/news/washington-dc-player-wins-1m-prize-from-maryland-lottery/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}]}, {"region": "歐洲", "count": 1, "coords": [49.9902488001347, 14.543821131105998], "sentiment": "利多", "news_full": [{"title": "芬蘭受監管博弈市場啟動前已獲 50 件許可申請", "title_en": "Finland Receives 50 License Applications Ahead of Regulated Gaming Market Launch", "title_th": "ตลาดการพนันที่มีการกำกับดูแลของฟินแลนด์ได้รับคำขอใบอนุญาตแล้ว 50 รายก่อนเริ่มดำเนินการ", "title_hi": "फिनलैंड के विनियमित गेमिंग बाजार के शुभारंभ से पहले 50 लाइसेंस आवेदन प्राप्त हुए", "link": "https://www.gamblingnews.com/news/finland-receives-50-applications-for-igaming-license-before-the-sectors-launch/", "sentiment": "利多", "impact": 80.0, "urgency": 70.0}]}, {"region": "英國", "count": 1, "coords": [51.61374125229616, -0.2690026538009431], "sentiment": "利空", "news_full": [{"title": "英國博弈委員會 (BGC) 擬定五點計畫以打擊非法博弈", "title_en": "BGC Proposes Five-Point Plan to Combat Illegal Gambling in the UK", "title_th": "BGC เสนอแผน 5 จุด เพื่อจัดการการพนันผิดกฎหมายในสหราชอาณาจักร", "title_hi": "BGC ने यूके में अवैध जुए से निपटने के लिए पांच-सूत्रीय योजना प्रस्तावित की", "link": "https://www.gamblingnews.com/news/bgc-outlines-5-point-plan-to-tackle-unlicensed-gambling/", "sentiment": "利空", "impact": 85.0, "urgency": 60.0}]}, {"region": "中東", "count": 1, "coords": [24.968382195614915, 45.26171781176208], "sentiment": "利多", "news_full": [{"title": "阿聯酋 GCGRA 任命 Ciarán Carruthers 為新任首席執行官", "title_en": "UAE’s GCGRA Appoints Ciarán Carruthers as New CEO", "title_th": "GCGRA แห่ง UAE แต่งตั้ง Ciarán Carruthers เป็น CEO คนใหม่", "title_hi": "UAE के GCGRA ने Ciarán Carruthers को नया CEO नियुक्त किया", "link": "https://www.gamblingnews.com/news/uaes-gcgra-appoints-ciaran-carruthers-as-its-new-ceo/", "sentiment": "利多", "impact": 90.0, "urgency": 65.0}]}, {"region": "日本", "count": 1, "coords": [35.68896847845812, 140.0945472491834], "sentiment": "中立", "news_full": [{"title": "日本殺蟲劑公司推出獵奇蟑螂戀愛遊戲", "title_en": "Japanese Insecticide Company Launches Quirky Cockroach Dating Game", "title_th": "บริษัทกำจัดแมลงในญี่ปุ่นเปิดตัวเกมจีบหนุ่มค็อกโรช", "title_hi": "जापानी कीटनाशक कंपनी ने कॉकरोच डेटिंग गेम लॉन्च किया", "link": "https://www.gamingdose.com/news/gokigen-lovely-day-%e0%b9%80%e0%b8%81%e0%b8%a1%e0%b8%88%e0%b8%b5%e0%b8%9a%e0%b8%ab%e0%b8%99%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b9%81%e0%b8%a1%e0%b8%a5%e0%b8%87%e0%b8%aa%e0%b8%b2%e0%b8%9a-%e0%b8%9c%e0%b8%a5/", "sentiment": "中立", "impact": 10.0, "urgency": 10.0}]}];
 
         const regionMarkers = {};
 
@@ -5526,6 +5770,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -5548,11 +5862,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -5564,7 +5874,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -5590,15 +5904,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
