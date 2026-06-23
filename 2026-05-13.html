@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -3438,7 +3682,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "澳門", "count": 1, "coords": [22.179687863802176, 113.55892087189196], "sentiment": "中立", "news_full": [{"title": "銀河娛樂集團董事會高層異動，資深顧問退休與職位調整", "title_en": "Galaxy Entertainment Group Board Reshuffle: Senior Advisor Retirement and Role Adjustments", "title_th": "การปรับเปลี่ยนระดับบริหารของ Galaxy Entertainment Group: การเกษียณอายุของที่ปรึกษาอาวุโสและการปรับตำแหน่ง", "title_hi": "Galaxy Entertainment Group के बोर्ड में बदलाव: वरिष्ठ सलाहकार की सेवानिवृत्ति और पद समायोजन", "link": "https://asgam.com/2026/05/14/mike-mecca-william-yip-retire-from-galaxy-entertainment-group-board-bob-drake-now-non-executive-director/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "全球", "count": 7, "coords": [20.47356970094258, 9.88163766464739], "sentiment": "利空", "news_full": [{"title": "拉斯維加斯金沙集團完成 10 億美元優先票據發行", "title_en": "Las Vegas Sands Corp. Completes $1 Billion Senior Notes Offering", "title_th": "Las Vegas Sands Corp. ออกหุ้นกู้ด้อยสิทธิมูลค่า 1 พันล้านดอลลาร์สำเร็จ", "title_hi": "Las Vegas Sands Corp. ने $1 बिलियन के सीनियर नोट्स जारी करने की प्रक्रिया पूरी की", "link": "https://asgam.com/2026/05/14/las-vegas-sands-completes-issue-of-us1-billion-in-senior-notes/", "sentiment": "利多", "impact": 75.0, "urgency": 40.0}, {"title": "晨星公司：Aristocrat 估值遭低估，市占率成長動能強勁", "title_en": "Morningstar: Aristocrat Undervalued with Strong Market Share Momentum", "title_th": "Morningstar: Aristocrat มีมูลค่าต่ำกว่าความเป็นจริง และมีแรงขับเคลื่อนในการเติบโตของส่วนแบ่งการตลาดที่แข็งแกร่ง", "title_hi": "Morningstar: Aristocrat का मूल्यांकन कम, बाजार हिस्सेदारी में मजबूत गति", "link": "https://asgam.com/2026/05/14/morningstar-aristocrat-shares-undervalued-with-company-poised-to-further-grow-egm-market-share/", "sentiment": "利空", "impact": 65.0, "urgency": 45.0}, {"title": "併購整合挑戰衝擊，世嘉颯美 2026 財年虧損 3500 萬美元", "title_en": "Integration Challenges Impact Sega Sammy: $35 Million Loss in FY 2026", "title_th": "ความท้าทายจากการควบรวมกิจการส่งผลกระทบ: Sega Sammy ขาดทุน 35 ล้านดอลลาร์ในปีงบประมาณ 2026", "title_hi": "एकीकरण की चुनौतियों का असर: Sega Sammy को वित्त वर्ष 2026 में $35 मिलियन का नुकसान", "link": "https://asgam.com/2026/05/14/challenges-linked-to-new-acquisitions-drive-sega-sammy-to-us35-million-fy26-loss/", "sentiment": "利空", "impact": 60.0, "urgency": 35.0}, {"title": "專家觀點：數據解讀能力決定賭場表現", "title_en": "Expert Perspective: Data Interpretation Capability Determines Casino Performance", "title_th": "มุมมองผู้เชี่ยวชาญ: ความสามารถในการตีความข้อมูลเป็นตัวกำหนดผลประกอบการคาสิโน", "title_hi": "विशेषज्ञ दृष्टिकोण: डेटा व्याख्या क्षमता कैसीनो के प्रदर्शन को निर्धारित करती है", "link": "https://asgam.com/2026/05/14/data-interpretation-driving-casino-floor-success-experts/", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}, {"title": "Brightstar Lottery 獲 Lottotech 合約，升級 RetailerPro S2", "title_en": "Brightstar Lottery Wins Lottotech Contract to Upgrade RetailerPro S2", "title_th": "Brightstar Lottery คว้าสัญญา Lottotech อัปเกรดระบบ RetailerPro S2", "title_hi": "Brightstar Lottery ने RetailerPro S2 को अपग्रेड करने के लिए Lottotech अनुबंध जीता", "link": "https://agbrief.com/news/world/14/05/2026/brightstar-lottery-upgrades-lottotech-with-retailerpro-s2-in-mauritius/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Steam 控制器新增趣味機制：摔落即觸發威廉尖叫", "title_en": "Steam Controller adds fun feature: 'Wilhelm Scream' triggers on drop", "title_th": "Steam Controller เพิ่มฟีเจอร์สนุก: เสียง 'Wilhelm Scream' จะดังขึ้นเมื่อทำตก", "title_hi": "Steam Controller ने मजेदार फीचर जोड़ा: गिरने पर 'विल्हेम स्क्रीम' बजेगा", "link": "https://www.gamingdose.com/news/steam-controller-%e0%b8%a1%e0%b8%b2%e0%b8%9e%e0%b8%a3%e0%b9%89%e0%b8%ad%e0%b8%a1%e0%b8%a5%e0%b8%b9%e0%b8%81%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%9e%e0%b8%b4%e0%b9%80%e0%b8%a8%e0%b8%a9-%e0%b8%96/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《007 First Light》進入生產階段，預計 5 月 27 日發售", "title_en": "'007 First Light' enters production phase, expected release on May 27", "title_th": "'007 First Light' เข้าสู่ขั้นตอนการผลิต พร้อมวางจำหน่าย 27 พฤษภาคมนี้", "title_hi": "'007 First Light' उत्पादन चरण में प्रवेश, 27 मई को रिलीज होने की उम्मीद", "link": "https://www.gamingdose.com/news/007-first-light-%e0%b9%80%e0%b8%82%e0%b9%89%e0%b8%b2%e0%b8%aa%e0%b8%b9%e0%b9%88%e0%b8%82%e0%b8%b1%e0%b9%89%e0%b8%99%e0%b8%95%e0%b8%ad%e0%b8%99%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%9c%e0%b8%a5%e0%b8%b4/", "sentiment": "利多", "impact": 40.0, "urgency": 50.0}]}, {"region": "亞太", "count": 2, "coords": [25.272075044836107, 137.94269152704646], "sentiment": "利空", "news_full": [{"title": "業界頂尖交流盛會 The Industry Party 圓滿落幕", "title_en": "Industry Leading Event 'The Industry Party' Concludes Successfully", "title_th": "งานสังสรรค์ชั้นนำระดับอุตสาหกรรม 'The Industry Party' ปิดฉากลงอย่างงดงาม", "title_hi": "उद्योग का प्रमुख कार्यक्रम 'The Industry Party' सफलतापूर्वक संपन्न", "link": "https://asgam.com/2026/05/14/best-ever-the-industry-party-sees-400-celebrate-together-in-memorable-night-of-networking/", "sentiment": "中立", "impact": 20.0, "urgency": 20.0}, {"title": "監管壁壘限制亞太博彩產業技術革新", "title_en": "Regulatory Barriers Limit Technical Innovation in Asia-Pacific Gaming Industry", "title_th": "อุปสรรคด้านกฎระเบียบจำกัดการปฏิวัตินวัตกรรมเทคโนโลยีในอุตสาหกรรมเกมเอเชียแปซิฟิก", "title_hi": "नियामक बाधाएं एशिया-प्रशांत गेमिंग उद्योग में तकनीकी नवाचार को सीमित कर रही हैं", "link": "https://asgam.com/2026/05/14/regulatory-hurdles-holding-back-tech-advancements-across-apac-gaming-industry/", "sentiment": "利空", "impact": 85.0, "urgency": 60.0}]}, {"region": "印度", "count": 1, "coords": [29.012261122385496, 76.77221218300451], "sentiment": "利空", "news_full": [{"title": "印度果阿邦法院禁止巨型賭博船駛入曼多維河", "title_en": "Goa High Court Bans Mega Gambling Ships from Mandovi River", "title_th": "ศาลสูงกัวห้ามเรือคาสิโนขนาดใหญ่จอดเทียบท่าในแม่น้ำ Mandovi", "title_hi": "गोवा उच्च न्यायालय ने मांडवी नदी में मेगा जुआ जहाजों पर प्रतिबंध लगाया", "link": "https://agbrief.com/news/india/14/05/2026/goa-high-court-blocks-giant-casino-vessel-from-mandovi-river/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "歐洲", "count": 2, "coords": [49.78108471701846, 15.098552519839073], "sentiment": "利空", "news_full": [{"title": "儘管投資人擔憂，Allwyn 仍堅持擴張計畫", "title_en": "Despite Investor Concerns, Allwyn Sticks to Expansion Plan", "title_th": "แม้จะมีความกังวลจากนักลงทุน แต่ Allwyn ยังคงเดินหน้าแผนการขยายธุรกิจ", "title_hi": "निवेशकों की चिंताओं के बावजूद, Allwyn विस्तार योजना पर कायम", "link": "https://www.gamblingnews.com/news/allwyn-doubles-down-on-expansion-plans-despite-investor-apprehension/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "bet-at-home 公布第一季營收下滑", "title_en": "bet-at-home announces Q1 revenue decline", "title_th": "bet-at-home ประกาศรายได้ไตรมาส 1 ลดลง", "title_hi": "bet-at-home ने पहली तिमाही के राजस्व में गिरावट की घोषणा की", "link": "https://focusgn.com/bet-at-home-sees-drop-in-gambling-revenue", "sentiment": "利空", "impact": 60.0, "urgency": 70.0}]}, {"region": "美國", "count": 1, "coords": [36.95222530026544, -95.9673078024112], "sentiment": "利多", "news_full": [{"title": "全球最大老虎機錦標賽 Slotapalooza 回歸 Circa Casino", "title_en": "Global Slot Tournament 'Slotapalooza' Returns to Circa Casino", "title_th": "Slotapalooza ทัวร์นาเมนต์สล็อตที่ใหญ่ที่สุดในโลกหวนคืนสู่ Circa Casino", "title_hi": "दुनिया का सबसे बड़ा स्लॉट टूर्नामेंट 'Slotapalooza' Circa Casino में लौटा", "link": "https://www.gamblingnews.com/news/slotapalooza-the-worlds-largest-slot-tournament-to-return-to-the-circa-casino/", "sentiment": "利多", "impact": 70.0, "urgency": 30.0}]}, {"region": "英國", "count": 1, "coords": [51.82602715077522, -0.05570422094904767], "sentiment": "利空", "news_full": [{"title": "英國政府確認非法賭博專責小組目標與成員", "title_en": "UK government confirms goals and members of Illegal Gambling Taskforce", "title_th": "รัฐบาลอังกฤษยืนยันเป้าหมายและสมาชิกของคณะทำงานปราบปรามการพนันผิดกฎหมาย", "title_hi": "यूके सरकार ने अवैध जुआ टास्क फोर्स के लक्ष्यों और सदस्यों की पुष्टि की", "link": "https://focusgn.com/uk-government-confirms-illegal-gambling-taskforce-goals-and-membership", "sentiment": "利空", "impact": 80.0, "urgency": 85.0}]}];
+        const mapMarkersData = [{"region": "澳門", "count": 1, "coords": [21.85432443284614, 113.81982024327198], "sentiment": "中立", "news_full": [{"title": "銀河娛樂集團董事會高層異動，資深顧問退休與職位調整", "title_en": "Galaxy Entertainment Group Board Reshuffle: Senior Advisor Retirement and Role Adjustments", "title_th": "การปรับเปลี่ยนระดับบริหารของ Galaxy Entertainment Group: การเกษียณอายุของที่ปรึกษาอาวุโสและการปรับตำแหน่ง", "title_hi": "Galaxy Entertainment Group के बोर्ड में बदलाव: वरिष्ठ सलाहकार की सेवानिवृत्ति और पद समायोजन", "link": "https://asgam.com/2026/05/14/mike-mecca-william-yip-retire-from-galaxy-entertainment-group-board-bob-drake-now-non-executive-director/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "全球", "count": 7, "coords": [20.484088963180703, 10.148821905349527], "sentiment": "利空", "news_full": [{"title": "拉斯維加斯金沙集團完成 10 億美元優先票據發行", "title_en": "Las Vegas Sands Corp. Completes $1 Billion Senior Notes Offering", "title_th": "Las Vegas Sands Corp. ออกหุ้นกู้ด้อยสิทธิมูลค่า 1 พันล้านดอลลาร์สำเร็จ", "title_hi": "Las Vegas Sands Corp. ने $1 बिलियन के सीनियर नोट्स जारी करने की प्रक्रिया पूरी की", "link": "https://asgam.com/2026/05/14/las-vegas-sands-completes-issue-of-us1-billion-in-senior-notes/", "sentiment": "利多", "impact": 75.0, "urgency": 40.0}, {"title": "晨星公司：Aristocrat 估值遭低估，市占率成長動能強勁", "title_en": "Morningstar: Aristocrat Undervalued with Strong Market Share Momentum", "title_th": "Morningstar: Aristocrat มีมูลค่าต่ำกว่าความเป็นจริง และมีแรงขับเคลื่อนในการเติบโตของส่วนแบ่งการตลาดที่แข็งแกร่ง", "title_hi": "Morningstar: Aristocrat का मूल्यांकन कम, बाजार हिस्सेदारी में मजबूत गति", "link": "https://asgam.com/2026/05/14/morningstar-aristocrat-shares-undervalued-with-company-poised-to-further-grow-egm-market-share/", "sentiment": "利空", "impact": 65.0, "urgency": 45.0}, {"title": "併購整合挑戰衝擊，世嘉颯美 2026 財年虧損 3500 萬美元", "title_en": "Integration Challenges Impact Sega Sammy: $35 Million Loss in FY 2026", "title_th": "ความท้าทายจากการควบรวมกิจการส่งผลกระทบ: Sega Sammy ขาดทุน 35 ล้านดอลลาร์ในปีงบประมาณ 2026", "title_hi": "एकीकरण की चुनौतियों का असर: Sega Sammy को वित्त वर्ष 2026 में $35 मिलियन का नुकसान", "link": "https://asgam.com/2026/05/14/challenges-linked-to-new-acquisitions-drive-sega-sammy-to-us35-million-fy26-loss/", "sentiment": "利空", "impact": 60.0, "urgency": 35.0}, {"title": "專家觀點：數據解讀能力決定賭場表現", "title_en": "Expert Perspective: Data Interpretation Capability Determines Casino Performance", "title_th": "มุมมองผู้เชี่ยวชาญ: ความสามารถในการตีความข้อมูลเป็นตัวกำหนดผลประกอบการคาสิโน", "title_hi": "विशेषज्ञ दृष्टिकोण: डेटा व्याख्या क्षमता कैसीनो के प्रदर्शन को निर्धारित करती है", "link": "https://asgam.com/2026/05/14/data-interpretation-driving-casino-floor-success-experts/", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}, {"title": "Brightstar Lottery 獲 Lottotech 合約，升級 RetailerPro S2", "title_en": "Brightstar Lottery Wins Lottotech Contract to Upgrade RetailerPro S2", "title_th": "Brightstar Lottery คว้าสัญญา Lottotech อัปเกรดระบบ RetailerPro S2", "title_hi": "Brightstar Lottery ने RetailerPro S2 को अपग्रेड करने के लिए Lottotech अनुबंध जीता", "link": "https://agbrief.com/news/world/14/05/2026/brightstar-lottery-upgrades-lottotech-with-retailerpro-s2-in-mauritius/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Steam 控制器新增趣味機制：摔落即觸發威廉尖叫", "title_en": "Steam Controller adds fun feature: 'Wilhelm Scream' triggers on drop", "title_th": "Steam Controller เพิ่มฟีเจอร์สนุก: เสียง 'Wilhelm Scream' จะดังขึ้นเมื่อทำตก", "title_hi": "Steam Controller ने मजेदार फीचर जोड़ा: गिरने पर 'विल्हेम स्क्रीम' बजेगा", "link": "https://www.gamingdose.com/news/steam-controller-%e0%b8%a1%e0%b8%b2%e0%b8%9e%e0%b8%a3%e0%b9%89%e0%b8%ad%e0%b8%a1%e0%b8%a5%e0%b8%b9%e0%b8%81%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%9e%e0%b8%b4%e0%b9%80%e0%b8%a8%e0%b8%a9-%e0%b8%96/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《007 First Light》進入生產階段，預計 5 月 27 日發售", "title_en": "'007 First Light' enters production phase, expected release on May 27", "title_th": "'007 First Light' เข้าสู่ขั้นตอนการผลิต พร้อมวางจำหน่าย 27 พฤษภาคมนี้", "title_hi": "'007 First Light' उत्पादन चरण में प्रवेश, 27 मई को रिलीज होने की उम्मीद", "link": "https://www.gamingdose.com/news/007-first-light-%e0%b9%80%e0%b8%82%e0%b9%89%e0%b8%b2%e0%b8%aa%e0%b8%b9%e0%b9%88%e0%b8%82%e0%b8%b1%e0%b9%89%e0%b8%99%e0%b8%95%e0%b8%ad%e0%b8%99%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%9c%e0%b8%a5%e0%b8%b4/", "sentiment": "利多", "impact": 40.0, "urgency": 50.0}]}, {"region": "亞太", "count": 2, "coords": [25.4782297447551, 138.35099723157686], "sentiment": "利空", "news_full": [{"title": "業界頂尖交流盛會 The Industry Party 圓滿落幕", "title_en": "Industry Leading Event 'The Industry Party' Concludes Successfully", "title_th": "งานสังสรรค์ชั้นนำระดับอุตสาหกรรม 'The Industry Party' ปิดฉากลงอย่างงดงาม", "title_hi": "उद्योग का प्रमुख कार्यक्रम 'The Industry Party' सफलतापूर्वक संपन्न", "link": "https://asgam.com/2026/05/14/best-ever-the-industry-party-sees-400-celebrate-together-in-memorable-night-of-networking/", "sentiment": "中立", "impact": 20.0, "urgency": 20.0}, {"title": "監管壁壘限制亞太博彩產業技術革新", "title_en": "Regulatory Barriers Limit Technical Innovation in Asia-Pacific Gaming Industry", "title_th": "อุปสรรคด้านกฎระเบียบจำกัดการปฏิวัตินวัตกรรมเทคโนโลยีในอุตสาหกรรมเกมเอเชียแปซิฟิก", "title_hi": "नियामक बाधाएं एशिया-प्रशांत गेमिंग उद्योग में तकनीकी नवाचार को सीमित कर रही हैं", "link": "https://asgam.com/2026/05/14/regulatory-hurdles-holding-back-tech-advancements-across-apac-gaming-industry/", "sentiment": "利空", "impact": 85.0, "urgency": 60.0}]}, {"region": "印度", "count": 1, "coords": [28.621516701539676, 77.39103060169631], "sentiment": "利空", "news_full": [{"title": "印度果阿邦法院禁止巨型賭博船駛入曼多維河", "title_en": "Goa High Court Bans Mega Gambling Ships from Mandovi River", "title_th": "ศาลสูงกัวห้ามเรือคาสิโนขนาดใหญ่จอดเทียบท่าในแม่น้ำ Mandovi", "title_hi": "गोवा उच्च न्यायालय ने मांडवी नदी में मेगा जुआ जहाजों पर प्रतिबंध लगाया", "link": "https://agbrief.com/news/india/14/05/2026/goa-high-court-blocks-giant-casino-vessel-from-mandovi-river/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "歐洲", "count": 2, "coords": [49.86011876763741, 14.862069657481223], "sentiment": "利空", "news_full": [{"title": "儘管投資人擔憂，Allwyn 仍堅持擴張計畫", "title_en": "Despite Investor Concerns, Allwyn Sticks to Expansion Plan", "title_th": "แม้จะมีความกังวลจากนักลงทุน แต่ Allwyn ยังคงเดินหน้าแผนการขยายธุรกิจ", "title_hi": "निवेशकों की चिंताओं के बावजूद, Allwyn विस्तार योजना पर कायम", "link": "https://www.gamblingnews.com/news/allwyn-doubles-down-on-expansion-plans-despite-investor-apprehension/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "bet-at-home 公布第一季營收下滑", "title_en": "bet-at-home announces Q1 revenue decline", "title_th": "bet-at-home ประกาศรายได้ไตรมาส 1 ลดลง", "title_hi": "bet-at-home ने पहली तिमाही के राजस्व में गिरावट की घोषणा की", "link": "https://focusgn.com/bet-at-home-sees-drop-in-gambling-revenue", "sentiment": "利空", "impact": 60.0, "urgency": 70.0}]}, {"region": "美國", "count": 1, "coords": [37.171494746386685, -95.68409089411696], "sentiment": "利多", "news_full": [{"title": "全球最大老虎機錦標賽 Slotapalooza 回歸 Circa Casino", "title_en": "Global Slot Tournament 'Slotapalooza' Returns to Circa Casino", "title_th": "Slotapalooza ทัวร์นาเมนต์สล็อตที่ใหญ่ที่สุดในโลกหวนคืนสู่ Circa Casino", "title_hi": "दुनिया का सबसे बड़ा स्लॉट टूर्नामेंट 'Slotapalooza' Circa Casino में लौटा", "link": "https://www.gamblingnews.com/news/slotapalooza-the-worlds-largest-slot-tournament-to-return-to-the-circa-casino/", "sentiment": "利多", "impact": 70.0, "urgency": 30.0}]}, {"region": "英國", "count": 1, "coords": [51.54522752512577, -0.6012517932525085], "sentiment": "利空", "news_full": [{"title": "英國政府確認非法賭博專責小組目標與成員", "title_en": "UK government confirms goals and members of Illegal Gambling Taskforce", "title_th": "รัฐบาลอังกฤษยืนยันเป้าหมายและสมาชิกของคณะทำงานปราบปรามการพนันผิดกฎหมาย", "title_hi": "यूके सरकार ने अवैध जुआ टास्क फोर्स के लक्ष्यों और सदस्यों की पुष्टि की", "link": "https://focusgn.com/uk-government-confirms-illegal-gambling-taskforce-goals-and-membership", "sentiment": "利空", "impact": 80.0, "urgency": 85.0}]}];
 
         const regionMarkers = {};
 
@@ -4783,6 +5027,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -4805,11 +5119,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -4821,7 +5131,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -4847,15 +5161,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
