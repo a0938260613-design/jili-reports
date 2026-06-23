@@ -957,6 +957,8 @@
         .dark .fab-btn:hover { border-color: #00ff88; color: #00ff88; box-shadow: 0 0 25px rgba(0,255,136,0.4); }
 
 
+        .mobile-filter-panel-header { display: none; }
+
 
         @keyframes fadeInUp {
 
@@ -1054,34 +1056,276 @@
             #userGuidePanel .pb-3\.5 { padding-bottom: 0.75rem !important; }
 
             /* === FILTER BAR === */
-            /* Stick to absolute top on mobile */
-            .sticky { top: 0 !important; }
-            /* Tighter spacing */
-            .filter-console-bar { gap: 0.35rem !important; padding: 0.5rem 0.6rem !important; }
-            /* Filter buttons: ensure min 40px touch height */
-            .menu-trigger {
-                padding-left: 0.6rem !important;
-                padding-right: 0.6rem !important;
-                min-height: 40px !important;
+            .filter-console-wrap {
+                position: relative !important;
+                top: auto !important;
+                z-index: 200 !important;
+                margin-bottom: 1.25rem !important;
             }
-            .sort-btn { min-height: 40px !important; }
-            /* Search input: full width on its own row */
-            .filter-console-bar > div.flex-1 { min-width: 100% !important; order: -1; }
+            .filter-console-bar {
+                gap: 0.5rem !important;
+                padding: 0.65rem !important;
+                border-radius: 1rem !important;
+                overflow: visible !important;
+            }
+            .filter-console-bar > div.flex-1 {
+                flex: 0 0 100% !important;
+                min-width: 0 !important;
+                order: -1;
+            }
+            #searchInput {
+                min-height: 44px !important;
+                font-size: 16px !important;
+            }
+            .filter-console-bar > div.flex.gap-2 {
+                flex: 0 0 100% !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                overscroll-behavior-inline: contain;
+                padding-bottom: 0.15rem;
+                scrollbar-width: none;
+            }
+            .filter-console-bar > div.flex.gap-2::-webkit-scrollbar { display: none; }
+            .menu-trigger {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+            .filter-console-bar > div.flex.gap-1 {
+                flex: 1 1 calc(100% - 7.25rem) !important;
+                border-left: 0 !important;
+                padding-left: 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.4rem !important;
+            }
+            .sort-btn {
+                min-height: 44px !important;
+                justify-content: center !important;
+                padding-left: 0.45rem !important;
+                padding-right: 0.45rem !important;
+                white-space: nowrap !important;
+            }
+            #viewToggle {
+                flex: 0 0 44px !important;
+                width: 44px !important;
+                min-height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .filter-console-bar > button[onclick="resetAllFilters()"] {
+                flex: 0 0 auto !important;
+                min-height: 44px !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            #keywordsRow,
+            #activeFiltersRow {
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-left: 0.1rem !important;
+                padding-right: 0.1rem !important;
+                scrollbar-width: none;
+            }
+            #keywordsRow::-webkit-scrollbar,
+            #activeFiltersRow::-webkit-scrollbar { display: none; }
+            .keyword-chip,
+            .filter-chip {
+                flex: 0 0 auto !important;
+                max-width: 76vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .filter-panel {
+                position: fixed !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
+                bottom: auto !important;
+                z-index: 10000 !important;
+                width: auto !important;
+                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
+                margin-top: 0 !important;
+                padding: 1rem !important;
+                border-radius: 1rem !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-panel > .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+            #sentimentMenu > .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            #scoreMenu {
+                min-width: 0 !important;
+            }
+            .filter-panel label {
+                min-height: 44px !important;
+            }
+            .mobile-filter-panel-header {
+                position: sticky;
+                top: -1rem;
+                z-index: 2;
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin: -1rem -1rem 0.75rem;
+                padding: 0.75rem 0.85rem;
+                background: #ffffff;
+                border-bottom: 1px solid rgba(59,130,246,0.18);
+            }
+            .dark .mobile-filter-panel-header {
+                background: #0d0d1c;
+                border-bottom-color: rgba(0,240,255,0.16);
+            }
+            .mobile-filter-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 0.85rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 900;
+                color: var(--text-main);
+            }
+            .mobile-filter-panel-close {
+                min-width: 4.5rem;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                border-radius: 0.7rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                font-family: 'JetBrains Mono', monospace;
+                color: #1d4ed8;
+                background: rgba(59,130,246,0.1);
+                border: 1px solid rgba(59,130,246,0.32);
+            }
+            .dark .mobile-filter-panel-close {
+                color: #00f0ff;
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.34);
+            }
+            body.mobile-filter-open .fab-container {
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
 
             /* === NEWS CARDS === */
-            /* Less padding, no hover lift */
-            .news-card { padding: 1rem !important; }
+            .news-card {
+                padding: 0.95rem !important;
+                border-radius: 1rem !important;
+                overflow: hidden !important;
+            }
             .news-card:hover { transform: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; }
             .dark .news-card:hover { transform: none !important; }
-            /* News container: less gap */
-            #newsContainer { gap: 0.75rem !important; }
-            /* News card link row: wrap instead of overflow */
-            .news-card a[href] { word-break: break-all; }
+            #newsContainer { gap: 0.8rem !important; }
+            .news-card > div:first-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .news-card > div:first-child > div:first-child {
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                padding-bottom: 0.1rem;
+                scrollbar-width: none;
+            }
+            .news-card > div:first-child > div:first-child::-webkit-scrollbar { display: none; }
+            .news-card > div:first-child > div:first-child span {
+                flex: 0 0 auto !important;
+                white-space: nowrap !important;
+            }
+            .news-card h3 {
+                font-size: 1.08rem !important;
+                line-height: 1.35 !important;
+                overflow-wrap: anywhere;
+            }
+            .news-card .card-body {
+                padding: 0.9rem !important;
+                margin-top: 0.8rem !important;
+            }
+            .news-card .card-body p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+            }
+            .news-card .card-body .text-\[11px\] {
+                font-size: 0.95rem !important;
+                line-height: 1.65 !important;
+            }
+            .news-card > div:last-child {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0.65rem !important;
+            }
+            .news-card > div:last-child > div:first-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem !important;
+            }
+            .news-card > div:last-child > div:first-child span {
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: nowrap !important;
+            }
+            .news-card > div:last-child > div:last-child {
+                width: 100% !important;
+                display: grid !important;
+                grid-template-columns: 44px minmax(0, 1fr);
+                gap: 0.55rem !important;
+            }
+            .news-card > div:last-child > div:last-child button {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .news-card > div:last-child > div:last-child a[href] {
+                min-height: 44px !important;
+                width: 100% !important;
+                justify-content: center !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+            }
+            .news-card a[href] {
+                word-break: normal !important;
+                overflow-wrap: anywhere;
+            }
 
-            /* === FAB: compact + show guide btn on mobile === */
-            .fab-container { bottom: 0.75rem; right: 0.75rem; gap: 0.6rem; }
-            .fab-btn { width: 2.75rem; height: 2.75rem; font-size: 1rem; }
-            .fab-guide-btn { display: flex !important; }
+            /* === FAB: keep one low-priority action so cards and CTAs stay clear === */
+            .header-guide-btn {
+                display: flex !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1rem !important;
+            }
+            .fab-container {
+                bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+                right: 0.65rem !important;
+                gap: 0.5rem !important;
+                z-index: 700 !important;
+            }
+            .fab-btn {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+                font-size: 0.95rem !important;
+            }
+            .fab-guide-btn,
+            .fab-container .fab-btn:nth-child(2) {
+                display: none !important;
+            }
 
             /* === SPLASH SCREEN (mobile-first redesign) === */
             /* Stack dark top / light bottom, both centered */
@@ -1112,8 +1356,8 @@
             .header-date { display: none !important; }
             /* Shrink h1 to fit single row */
             .header-h1 { font-size: 1.35rem !important; white-space: nowrap; }
-            /* Hide guide button from header — moved to FAB area */
-            .header-guide-btn { display: none !important; }
+            /* Guide stays in header so the floating rail can stay minimal. */
+            .header-guide-btn { display: flex !important; }
             /* Controls: auto width, no longer full-width */
             .header-controls { width: auto !important; justify-content: flex-end !important; flex-shrink: 0; }
 
@@ -1886,7 +2130,7 @@
 
         <!-- Filter Console -->
 
-        <div class="sticky top-6 z-[200] mb-12 animate-boot delay-400">
+        <div class="filter-console-wrap sticky top-6 z-[200] mb-12 animate-boot delay-400">
 
             <div class="filter-console-bar card-base p-3 bg-opacity-95 dark:bg-opacity-90 backdrop-blur-xl shadow-xl flex flex-wrap items-center gap-3">
 
@@ -6775,7 +7019,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "菲律賓", "count": 3, "coords": [14.555921736022635, 121.24339546537958], "sentiment": "利空", "news_full": [{"title": "菲律賓監管新規：DigiPlus 擬限制線上現金回饋以平抑市場競爭", "title_en": "New Philippine Regulatory Guidelines: DigiPlus Plans to Limit Online Cashback to Curb Market Competition", "title_th": "ฟิลิปปินส์ออกกฎระเบียบใหม่: DigiPlus เตรียมจำกัดการคืนเงินสดออนไลน์เพื่อสร้างสมดุลการแข่งขัน", "title_hi": "फिलीपींस के नए नियामक दिशानिर्देश: DigiPlus ने बाजार प्रतिस्पर्धा को नियंत्रित करने के लिए ऑनलाइन कैशबैक सीमित करने की योजना बनाई", "link": "https://www.ggrasia.com/digiplus-says-limits-on-online-cash-rebates-to-level-the-playing-field-in-the-philippines?utm_source=rss&utm_medium=rss&utm_campaign=digiplus-says-limits-on-online-cash-rebates-to-level-the-playing-field-in-the-philippines", "sentiment": "中立", "impact": 75.0, "urgency": 80.0}, {"title": "岡田馬尼拉母公司 UEC 指出馬尼拉博弈市場競爭加劇", "title_en": "Okada Manila Parent UEC Points to Intensifying Competition in Manila Gaming Market", "title_th": "UEC บริษัทแม่ของ Okada Manila ชี้ตลาดเกมในมะนิลามีการแข่งขันที่รุนแรงขึ้น", "title_hi": "ओकाडा मनीला की मूल कंपनी UEC ने मनीला गेमिंग बाजार में बढ़ती प्रतिस्पर्धा की ओर इशारा किया", "link": "https://asgam.com/2026/05/15/okada-manila-parent-uec-says-competition-between-manila-gaming-operators-now-more-intense-as-ir-revenue-profit-declines-in-1q26/", "sentiment": "利空", "impact": 80.0, "urgency": 75.0}, {"title": "Okada Manila 啟動 Okada Play 平台，擴大線上佈局", "title_en": "Okada Manila Launches Okada Play Platform, Expanding Online Presence", "title_th": "Okada Manila เปิดตัวแพลตฟอร์ม Okada Play ขยายฐานสู่ตลาดออนไลน์", "title_hi": "Okada Manila ने Okada Play प्लेटफॉर्म लॉन्च किया, ऑनलाइन उपस्थिति का विस्तार", "link": "https://agbrief.com/news/philippines/14/05/2026/okada-manila-expands-online-push-with-okada-play-launch/", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}]}, {"region": "全球", "count": 27, "coords": [19.762562542238722, 9.583653074289048], "sentiment": "利空", "news_full": [{"title": "JCM 財報揭露：年度淨利增長 23% 但營收下滑 16.6%", "title_en": "JCM Financial Report: Annual Net Profit Up 23%, Revenue Down 16.6%", "title_th": "รายงานผลประกอบการ JCM: กำไรสุทธิประจำปีเพิ่มขึ้น 23% แต่รายได้ลดลง 16.6%", "title_hi": "JCM वित्तीय रिपोर्ट: वार्षिक शुद्ध लाभ में 23% की वृद्धि, लेकिन राजस्व में 16.6% की गिरावट", "link": "https://www.ggrasia.com/jcms-annual-net-profit-up-23pct-flags-16-6pct-decline-in-net-sales?utm_source=rss&utm_medium=rss&utm_campaign=jcms-annual-net-profit-up-23pct-flags-16-6pct-decline-in-net-sales", "sentiment": "利空", "impact": 60.0, "urgency": 30.0}, {"title": "AGS 強化領導團隊：博弈技術商宣告三位高管人事任命", "title_en": "AGS Strengthens Leadership Team: Gaming Tech Firm Announces Three Executive Appointments", "title_th": "AGS เสริมทัพผู้นำ: บริษัทเทคโนโลยีเกมประกาศแต่งตั้งผู้บริหารระดับสูง 3 ตำแหน่ง", "title_hi": "AGS ने नेतृत्व टीम को मजबूत किया: गेमिंग टेक फर्म ने तीन कार्यकारी नियुक्तियों की घोषणा की", "link": "https://www.ggrasia.com/gaming-tech-firm-ags-announces-three-senior-appointments-to-drive-business-growth?utm_source=rss&utm_medium=rss&utm_campaign=gaming-tech-firm-ags-announces-three-senior-appointments-to-drive-business-growth", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "DATA.BET 公布 2026 年第一季財報：電競博弈成長強勁", "title_en": "DATA.BET Q1 2026 Earnings: Strong Growth in Esports Betting", "title_th": "รายงานผลประกอบการ Q1 2026 ของ DATA.BET: การเดิมพันอีสปอร์ตเติบโตอย่างแข็งแกร่ง", "title_hi": "DATA.BET Q1 2026 की कमाई: ईस्पोर्ट्स बेटिंग में मजबूत विकास", "link": "https://agbrief.com/news/world/14/05/2026/data-bet-reports-stronger-esports-betting-performance-in-q1-2026/", "sentiment": "利多", "impact": 80.0, "urgency": 70.0}, {"title": "Mixtape 遊戲回顧：甜美青春歲月的音樂整合冒險", "title_en": "Mixtape Review: A Musical Adventure of Sweet Youth", "title_th": "รีวิวเกม Mixtape: การผจญภัยทางดนตรีในช่วงเวลาแห่งความทรงจำวัยเยาว์", "title_hi": "Mixtape समीक्षा: मीठी जवानी का एक संगीतमय रोमांच", "link": "https://www.gamingdose.com/feature/review/review-mixtape/", "sentiment": "中立", "impact": 30.0, "urgency": 10.0}, {"title": "Forza Horizon 6 初體驗：競速遊戲完整版搶先看", "title_en": "Forza Horizon 6 First Impressions: A Full Look at the Racing Game", "title_th": "สัมผัสแรก Forza Horizon 6: เจาะลึกเกมแข่งรถฉบับเต็ม", "title_hi": "Forza Horizon 6 का पहला अनुभव: रेसिंग गेम पर एक पूरी नजर", "link": "https://www.gamingdose.com/news/first-impression-forza-horizon-6/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Forza Horizon 6 首玩印象：極致視覺與駕駛感的震撼", "title_en": "Forza Horizon 6 First Impressions: Stunning Visuals and Driving Feel", "title_th": "สัมผัสแรก Forza Horizon 6: ความน่าตื่นตาตื่นใจของภาพและการขับขี่ขั้นสุดยอด", "title_hi": "Forza Horizon 6 का पहला अनुभव: शानदार दृश्य और ड्राइविंग का अहसास", "link": "https://www.gamingdose.com/feature/%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%97%e0%b8%b1%e0%b8%9a%e0%b9%83%e0%b8%88%e0%b9%81%e0%b8%a3%e0%b8%81-%e0%b8%ab%e0%b8%a5%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Two Point Museum》DLC：全新藝術主題內容正式發布", "title_en": "'Two Point Museum' DLC: New Art-Themed Content Released", "title_th": "Two Point Museum DLC: เปิดตัวเนื้อหาธีมศิลปะใหม่ล่าสุด", "title_hi": "'Two Point Museum' DLC: नई कला-थीम वाली सामग्री जारी", "link": "https://www.gamingdose.com/feature/recommend-two-point-museum-arty-facts/", "sentiment": "中立", "impact": 25.0, "urgency": 15.0}, {"title": "Remedy 重申《Control》系列始終定位為 RPG 核心架構", "title_en": "Remedy Reaffirms Control Series as Core RPG Framework", "title_th": "Remedy ยืนยันซีรีส์ Control ถูกวางตำแหน่งให้เป็น RPG ตั้งแต่ต้น", "title_hi": "Remedy ने 'Control' श्रृंखला को मूल RPG ढांचे के रूप में फिर से दोहराया", "link": "https://www.gamingdose.com/news/remedy-%e0%b8%a2%e0%b9%89%e0%b8%b3%e0%b8%8a%e0%b8%b1%e0%b8%94-control-%e0%b8%84%e0%b8%b7%e0%b8%ad%e0%b9%81%e0%b8%9f%e0%b8%a3%e0%b8%99%e0%b9%84%e0%b8%8a%e0%b8%aa%e0%b9%8c%e0%b9%80%e0%b8%81%e0%b8%a1-rpg/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "《赤色沙漠》(Crimson Desert) 在 Steam 獲逾十萬好評，市場潛力受關注", "title_en": "Crimson Desert Gains Over 100,000 Positive Reviews on Steam, High Market Potential", "title_th": "Crimson Desert คว้ากว่าแสนรีวิวเชิงบวกบน Steam เผยศักยภาพตลาดที่แข็งแกร่ง", "title_hi": "Crimson Desert को Steam पर 1 लाख से अधिक सकारात्मक समीक्षाएं मिलीं, बाजार की क्षमता पर ध्यान", "link": "https://www.gamingdose.com/news/crimson-desert-%e0%b8%a1%e0%b8%b5%e0%b8%a3%e0%b8%b5%e0%b8%a7%e0%b8%b4%e0%b8%a7%e0%b9%81%e0%b8%87%e0%b9%88%e0%b8%9a%e0%b8%a7%e0%b8%81%e0%b9%83%e0%b8%99-steam-%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%9c/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}, {"title": "《薩爾達傳說》改編電影全球上映日期提前至 2027 年 4 月", "title_en": "The Legend of Zelda Live-Action Movie Global Release Moved Up to April 2027", "title_th": "ภาพยนตร์ไลฟ์แอ็กชัน The Legend of Zelda เลื่อนฉายทั่วโลกให้เร็วขึ้นเป็นเมษายน 2027", "title_hi": "The Legend of Zelda लाइव-एक्शन फिल्म की वैश्विक रिलीज तिथि अप्रैल 2027 तक आगे बढ़ी", "link": "https://www.gamingdose.com/news/the-legend-of-zelda-%e0%b8%89%e0%b8%9a%e0%b8%b1%e0%b8%9a%e0%b8%ab%e0%b8%99%e0%b8%b1%e0%b8%87%e0%b9%82%e0%b8%a3%e0%b8%87-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%9b%e0%b8%a3/", "sentiment": "利多", "impact": 70.0, "urgency": 30.0}, {"title": "Bragg Gaming 宣布收購 Drayton International", "title_en": "Bragg Gaming Announces Acquisition of Drayton International", "title_th": "Bragg Gaming ประกาศเข้าซื้อกิจการ Drayton International", "title_hi": "Bragg Gaming ने Drayton International के अधिग्रहण की घोषणा की", "link": "https://www.gamblingnews.com/news/bragg-gaming-to-acquire-drayton-international/", "sentiment": "中立", "impact": 75.0, "urgency": 60.0}, {"title": "Super Group 內部提拔 Kristy Ross 出任營運總監 (COO)", "title_en": "Super Group Promotes Kristy Ross to Chief Operating Officer (COO)", "title_th": "Super Group แต่งตั้ง Kristy Ross ขึ้นดำรงตำแหน่งประธานเจ้าหน้าที่ฝ่ายปฏิบัติการ (COO)", "title_hi": "Super Group ने Kristy Ross को मुख्य परिचालन अधिकारी (COO) नियुक्त किया", "link": "https://www.gamblingnews.com/news/super-group-promotes-from-within-names-kristy-ross-coo/", "sentiment": "中立", "impact": 50.0, "urgency": 20.0}, {"title": "NetEnt 發布全新魔法冒險風格老虎機「What’s Up Witches」", "title_en": "NetEnt Releases New Magic-Adventure Themed Slot 'What’s Up Witches'", "title_th": "NetEnt เปิดตัวเกมสล็อตแนวผจญภัยเวทมนตร์ใหม่ 'What’s Up Witches'", "title_hi": "NetEnt ने नया मैजिक-एडवेंचर थीम्ड स्लॉट 'What’s Up Witches' लॉन्च किया", "link": "https://www.gamblingnews.com/news/netent-sends-players-on-a-magical-adventure-in-whats-up-witches/", "sentiment": "利多", "impact": 70.0, "urgency": 45.0}, {"title": "DATA.BET 報告 2026 年第一季電競投注表現顯著提升", "title_en": "DATA.BET Reports Significant Growth in Esports Betting for Q1 2026", "title_th": "DATA.BET รายงานการเติบโตอย่างมีนัยสำคัญของการพนันอีสปอร์ตในไตรมาสที่ 1 ปี 2026", "title_hi": "DATA.BET ने Q1 2026 में ईस्पोर्ट्स बेटिंग में उल्लेखनीय वृद्धि की रिपोर्ट दी", "link": "https://asgam.com/2026/05/15/data-bet-reports-significantly-improved-esports-betting-performance-1q26/", "sentiment": "利多", "impact": 85.0, "urgency": 70.0}, {"title": "分析師看好 Playtech 的多元化轉型策略", "title_en": "Analysts Bullish on Playtech's Diversification Strategy", "title_th": "นักวิเคราะห์มองบวกต่อกลยุทธ์การปรับเปลี่ยนธุรกิจของ Playtech", "title_hi": "Playtech की विविधीकरण रणनीति पर विश्लेषकों का भरोसा", "link": "https://www.gamblingnews.com/news/analysts-stay-bullish-on-playtech-amid-diversification-efforts/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "Onlyplay 發布最新老虎機遊戲 Pepper Coins", "title_en": "Onlyplay Releases New Slot Game: Pepper Coins", "title_th": "Onlyplay เปิดตัวเกมสล็อตใหม่ Pepper Coins", "title_hi": "Onlyplay ने नया स्लॉट गेम Pepper Coins लॉन्च किया", "link": "https://focusgn.com/onlyplay-presents-its-latest-video-slot-pepper-coins", "sentiment": "中立", "impact": 60.0, "urgency": 30.0}, {"title": "Bragg Gaming Group 公布 2026 年第一季財報", "title_en": "Bragg Gaming Group Announces Q1 2026 Financial Results", "title_th": "Bragg Gaming Group ประกาศผลประกอบการไตรมาสที่ 1 ปี 2026", "title_hi": "Bragg Gaming Group ने 2026 की पहली तिमाही के वित्तीय परिणाम घोषित किए", "link": "https://focusgn.com/bragg-gaming-group-reports-first-quarter-2026-financial-results", "sentiment": "中立", "impact": 75.0, "urgency": 50.0}, {"title": "ReferOn：執行力是推動分銷技術創新的關鍵", "title_en": "ReferOn: Execution is Key to Driving Affiliate Technology Innovation", "title_th": "ReferOn: การดำเนินการที่มีประสิทธิภาพคือกุญแจสำคัญสู่การขับเคลื่อนนวัตกรรมเทคโนโลยีพันธมิตร", "title_hi": "ReferOn: निष्पादन ही एफिलिएट तकनीकी नवाचार को चलाने की कुंजी है", "link": "https://focusgn.com/why-execution-is-the-key-in-innovation-to-affiliate-tech-alex-bukin-referon", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "DATA.BET：2026 年第一季電競博彩表現強勁", "title_en": "DATA.BET: Strong Performance in Esports Betting for Q1 2026", "title_th": "DATA.BET: ผลประกอบการพนันอีสปอร์ตแข็งแกร่งในไตรมาสที่ 1 ปี 2026", "title_hi": "DATA.BET: Q1 2026 में ईस्पोर्ट्स बेटिंग का प्रदर्शन मजबूत", "link": "https://focusgn.com/data-bet-reports-boosted-esports-betting-performance-in-q1-2026", "sentiment": "利多", "impact": 80.0, "urgency": 70.0}, {"title": "Booming Games 發布新作 Diamond Forge: Link & Loot", "title_en": "Booming Games Releases New Title: Diamond Forge: Link & Loot", "title_th": "Booming Games เปิดตัวผลงานใหม่ Diamond Forge: Link & Loot", "title_hi": "Booming Games ने नया टाइटल Diamond Forge: Link & Loot जारी किया", "link": "https://focusgn.com/booming-games-releases-diamond-forge-link-loot", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "全球監管機構面臨科技衝擊，非法博弈與界線模糊成為焦點", "title_en": "Global Regulators Face Tech Disruption; Illegal Gambling and Blurred Lines Take Center Stage", "title_th": "หน่วยงานกำกับดูแลทั่วโลกเผชิญความท้าทายจากเทคโนโลยี การพนันผิดกฎหมายและเส้นแบ่งตลาดที่เลือนลางกลายเป็นจุดสนใจ", "title_hi": "वैश्विक नियामक तकनीकी व्यवधान का सामना कर रहे हैं; अवैध जुआ और धुंधली सीमाएं केंद्र बिंदु बनीं", "link": "https://agbrief.com/news/world/14/05/2026/global-regulators-grapple-with-technology-illegal-gambling-and-blurred-market-boundaries-panel/", "sentiment": "利空", "impact": 85.0, "urgency": 70.0}, {"title": "Sega Sammy 對 Stakelogic 減記商譽，收購策略面臨調整", "title_en": "Sega Sammy Writes Down Goodwill for Stakelogic; Acquisition Strategy Faces Adjustment", "title_th": "Sega Sammy ตัดจำหน่ายค่าความนิยมของ Stakelogic กลยุทธ์การเข้าซื้อกิจการต้องมีการปรับเปลี่ยน", "title_hi": "Sega Sammy ने Stakelogic के गुडविल को राइट-डाउन किया; अधिग्रहण रणनीति में बदलाव", "link": "https://agbrief.com/news/japan/14/05/2026/sega-sammy-writes-off-stakelogic-less-than-a-year-after-146m-deal-closed/", "sentiment": "利空", "impact": 70.0, "urgency": 20.0}, {"title": "誠實拾獲彩券兌獎，幸運中得 58.6 萬美元", "title_en": "Honest Finder Redeems Lost Lottery Ticket, Wins $586,000", "title_th": "ชายผู้ซื่อสัตย์นำลอตเตอรีที่เก็บได้ไปคืน สุดท้ายถูกรางวัลใหญ่ 586,000 ดอลลาร์", "title_hi": "ईमानदार व्यक्ति ने खोया हुआ लॉटरी टिकट लौटाया, 586,000 डॉलर जीते", "link": "https://www.gamblingnews.com/news/instant-karma-man-returns-500-lottery-ticket-wins-586k/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Allegiant 航空完成併購案，聚焦精簡營運紀律", "title_en": "Allegiant Air Completes Merger, Focuses on Operational Discipline", "title_th": "สายการบิน Allegiant ปิดดีลการควบรวมกิจการ เน้นวินัยในการดำเนินงาน", "title_hi": "Allegiant Air ने विलय पूरा किया, परिचालन अनुशासन पर ध्यान केंद्रित", "link": "https://www.gamblingnews.com/news/allegiant-bets-on-discipline-after-sun-country-deal-closes/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "《碧藍幻想：Relink》釋出全新預告，導入兩位新角色", "title_en": "Granblue Fantasy: Relink releases new trailer, introducing two new characters", "title_th": "Granblue Fantasy: Relink ปล่อยตัวอย่างใหม่ พร้อมแนะนำ 2 ตัวละครใหม่", "title_hi": "Granblue Fantasy: Relink ने नया ट्रेलर जारी किया, दो नए पात्रों का परिचय", "link": "https://www.gamingdose.com/news/%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-granblue-fantasy-relink-endless-ragnarok-%e0%b8%81%e0%b8%b1%e0%b8%9a%e0%b8%aa%e0%b8%ad/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "1spin4win 推紀念新作慶祝成立五週年", "title_en": "1spin4win launches new anniversary game to celebrate 5th anniversary", "title_th": "1spin4win เปิดตัวเกมใหม่ฉลองครบรอบ 5 ปี", "title_hi": "1spin4win ने अपनी 5वीं वर्षगांठ मनाने के लिए नया गेम लॉन्च किया", "link": "https://focusgn.com/1spin4win-presents-lucky-1spin4win-hold-and-win-to-mark-its-5th-anniversary", "sentiment": "利多", "impact": 45.0, "urgency": 60.0}, {"title": "Relax Gaming：遊戲的核心在於帶給玩家沉浸體驗", "title_en": "Relax Gaming: The core of gaming lies in delivering immersive experiences", "title_th": "Relax Gaming: หัวใจสำคัญของเกมคือการมอบประสบการณ์ที่สมจริง", "title_hi": "Relax Gaming: गेमिंग का मूल खिलाड़ियों को इमर्सिव अनुभव देने में है", "link": "https://focusgn.com/tony-omahony-relax-gaming-we-want-games-to-feel-like-they-take-players-somewhere-rather-than-just-cycling-through-spins", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}]}, {"region": "新加坡", "count": 2, "coords": [1.016538098226932, 103.97776000658783], "sentiment": "利空", "news_full": [{"title": "VIP 業務萎縮：野村證券調降雲頂新加坡評級", "title_en": "VIP Business Shrinks: Nomura Downgrades Genting Singapore", "title_th": "ธุรกิจ VIP หดตัว: Nomura ปรับลดอันดับเครดิต Genting Singapore", "title_hi": "VIP व्यवसाय में गिरावट: नोमुरा ने जेंटिंग सिंगापुर की रेटिंग घटाई", "link": "https://www.ggrasia.com/genting-singapore-downgraded-by-nomura-as-rws-vip-rolling-share-at-all-time-low?utm_source=rss&utm_medium=rss&utm_campaign=genting-singapore-downgraded-by-nomura-as-rws-vip-rolling-share-at-all-time-low", "sentiment": "利空", "impact": 30.0, "urgency": 50.0}, {"title": "新加坡雲頂集團 2026 年首季利潤腰斬", "title_en": "Genting Singapore Q1 2026 Profit Halved", "title_th": "Genting Singapore เผยกำไรไตรมาสแรกปี 2026 ลดลงครึ่งหนึ่ง", "title_hi": "Genting Singapore का 2026 की पहली तिमाही का मुनाफा आधा हुआ", "link": "https://agbrief.com/news/14/05/2026/genting-singapore-1q26-profit-halves/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "韓國", "count": 2, "coords": [37.84524671904402, 126.79797710611939], "sentiment": "利多", "news_full": [{"title": "韓國 Paradise Co 擬收購濟州島 Maison Glad 酒店", "title_en": "Korea's Paradise Co Plans to Acquire Maison Glad Jeju Hotel", "title_th": "Paradise Co ของเกาหลี เตรียมเข้าซื้อโรงแรม Maison Glad ในเกาะเชจู", "title_hi": "कोरिया की पैराडाइज कंपनी ने जेजू द्वीप में मेसन ग्लैड होटल का अधिग्रहण करने की योजना बनाई", "link": "https://www.ggrasia.com/paradise-co-mulling-purchase-of-maison-glad-jeju-hotel-brokerage?utm_source=rss&utm_medium=rss&utm_campaign=paradise-co-mulling-purchase-of-maison-glad-jeju-hotel-brokerage", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "韓國 Paradise Co 擬擴張飯店收購版圖", "title_en": "South Korea's Paradise Co Plans Hotel Acquisition Expansion", "title_th": "Paradise Co ของเกาหลีใต้เตรียมขยายพอร์ตโฟลิโอการเข้าซื้อกิจการโรงแรม", "title_hi": "दक्षिण कोरिया की पैराडाइज कंपनी होटल अधिग्रहण विस्तार की योजना बना रही है", "link": "https://asgam.com/2026/05/15/koreas-paradise-co-said-to-be-eying-more-hotel-acquisitions/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}]}, {"region": "日本", "count": 1, "coords": [35.58972558747188, 139.41216201098834], "sentiment": "利空", "news_full": [{"title": "日本最高法院尋求免職涉及線上賭場醜聞之法官", "title_en": "Japan's Supreme Court seeks to remove judge involved in online gambling scandal", "title_th": "ศาลฎีกาญี่ปุ่นพยายามถอดถอนผู้พิพากษาที่มีส่วนเกี่ยวข้องกับเรื่องอื้อฉาวการพนันออนไลน์", "title_hi": "जापान के सुप्रीम कोर्ट ने ऑनलाइन जुआ घोटाले में शामिल जज को हटाने की मांग की", "link": "https://agbrief.com/news/japan/15/05/2026/japan-supreme-court-seeks-dismissal-of-judge-over-online-casino-allegations/", "sentiment": "利空", "impact": 80.0, "urgency": 90.0}]}, {"region": "香港", "count": 1, "coords": [21.882941230590536, 113.94390850863522], "sentiment": "利多", "news_full": [{"title": "香港賽馬會與法國多維爾馬場簽署馬匹發展戰略合作協議", "title_en": "HKJC Signs Strategic Partnership with Deauville Racecourse for Horse Racing Development", "title_th": "ฮ่องกงจ็อกกี้คลับลงนามความร่วมมือเชิงกลยุทธ์กับสนามแข่งม้าโดวิลล์ ประเทศฝรั่งเศส", "title_hi": "हांगकांग जॉकी क्लब ने हॉर्स रेसिंग विकास के लिए फ्रांस के डोविले रेसकोर्स के साथ रणनीतिक समझौता किया", "link": "https://agbrief.com/news/hong-kong/15/05/2026/hong-kong-jockey-club-and-deauville-sign-equine-development-partnership/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}, {"region": "印尼", "count": 1, "coords": [-6.503110952482171, 107.00764936058579], "sentiment": "利空", "news_full": [{"title": "印尼官方統計：近20萬未成年人深陷線上賭博風險", "title_en": "Indonesian Official Statistics: Nearly 200,000 Minors at Risk of Online Gambling", "title_th": "สถิติทางการอินโดนีเซียเผย: เยาวชนเกือบ 2 แสนคนเสี่ยงติดพนันออนไลน์", "title_hi": "इंडोनेशियाई आधिकारिक आँकड़े: लगभग 2 लाख नाबालिग ऑनलाइन जुए के जोखिम में", "link": "https://agbrief.com/news/indonesia/15/05/2026/indonesia-says-nearly-200000-children-exposed-to-online-gambling/", "sentiment": "利空", "impact": 85.0, "urgency": 90.0}]}, {"region": "澳門", "count": 6, "coords": [21.892398855655358, 113.48288991286634], "sentiment": "利多", "news_full": [{"title": "澳門體育旅遊產業成長面臨資金、人才及物流挑戰", "title_en": "Macau Sports Tourism Industry Faces Challenges in Funding, Talent, and Logistics", "title_th": "อุตสาหกรรมท่องเที่ยวเชิงกีฬาของมาเก๊าเผชิญความท้าทายด้านเงินทุน บุคลากร และโลจิสติกส์", "title_hi": "मकाऊ का स्पोर्ट्स टूरिज्म उद्योग फंडिंग, प्रतिभा और लॉजिस्टिक्स की चुनौतियों का सामना कर रहा है", "link": "https://agbrief.com/news/macau/15/05/2026/sports-tourism-growth-in-macau-faces-funding-talent-and-logistics-challenges-panel/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}, {"title": "何猷君：電子競技與體育賽事是促進澳門多元化的關鍵", "title_en": "Mario Ho: Esports and Sports Events are Key to Macau's Diversification", "title_th": "Mario Ho: อีสปอร์ตและกิจกรรมกีฬาคือกุญแจสำคัญสู่ความหลากหลายของมาเก๊า", "title_hi": "मारियो हो: ई-स्पोर्ट्स और खेल आयोजन मकाऊ की विविधता के लिए महत्वपूर्ण हैं", "link": "https://agbrief.com/news/macau/15/05/2026/mario-ho-says-esports-and-sports-can-drive-macau-diversification/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}, {"title": "美高梅中國完成 7.5 億美元 2033 年到期優先票據發行", "title_en": "MGM China Completes $750 Million Senior Notes Offering Due 2033", "title_th": "MGM China ปิดการขายหุ้นกู้ด้อยสิทธิมูลค่า 750 ล้านดอลลาร์ ครบกำหนดไถ่ถอนปี 2033", "title_hi": "एमजीएम चाइना ने 2033 में देय 750 मिलियन डॉलर के सीनियर नोट्स जारी किए", "link": "https://asgam.com/2026/05/15/mgm-china-completes-issue-of-us750-million-in-senior-notes-due-2033/", "sentiment": "中立", "impact": 30.0, "urgency": 40.0}, {"title": "何猷君提出「體育+」願景，推動澳門轉型為亞太娛樂中心", "title_en": "Ho Iok Fai Proposes 'Sports+' Vision to Drive Macau's Transformation into an Asia-Pacific Entertainment Hub", "title_th": "Mario Ho เสนอวิสัยทัศน์ 'Sports+' เพื่อผลักดันให้มาเก๊ากลายเป็นศูนย์กลางความบันเทิงแห่งเอเชียแปซิฟิก", "title_hi": "हो इओक फाई (मारियो हो) ने मकाऊ को एशिया-प्रशांत मनोरंजन केंद्र में बदलने के लिए 'स्पोर्ट्स+' विजन प्रस्तावित किया", "link": "https://asgam.com/2026/05/15/mario-ho-outlines-sports-plus-vision-to-transform-macau-into-asia-pacifics-entertainment-capital/", "sentiment": "利多", "impact": 30.0, "urgency": 60.0}, {"title": "新濠影匯完成 1.96 億美元 2027 年到期優先票據贖回", "title_en": "Studio City Completes Redemption of $196 Million Senior Notes Due 2027", "title_th": "Studio City ปิดการไถ่ถอนหุ้นกู้ด้อยสิทธิมูลค่า 196 ล้านดอลลาร์ ครบกำหนดปี 2027", "title_hi": "स्टूडियो सिटी ने 2027 में देय 196 मिलियन डॉलर के सीनियर नोट्स का मोचन पूरा किया", "link": "https://asgam.com/2026/05/15/studio-city-to-redeem-us196-million-in-senior-notes-due-2027-following-tender-offer/", "sentiment": "中立", "impact": 30.0, "urgency": 40.0}, {"title": "拉斯維加斯金沙集團與金沙中國宣布 Sustaincia 加入加速器計劃", "title_en": "Las Vegas Sands and Sands China Announce Sustaincia Joins Accelerator Program", "title_th": "Las Vegas Sands และ Sands China ประกาศให้ Sustaincia เข้าร่วมโครงการ Accelerator", "title_hi": "लास वेगास सैंड्स और सैंड्स चाइना ने सस्टेनसिया के एक्सेलेरेटर प्रोग्राम में शामिल होने की घोषणा की", "link": "https://agbrief.com/news/macau/14/05/2026/lvs-and-sands-china-welcome-sustaincia-to-sands-cares-accelerator-programme/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 9, "coords": [37.32392514356867, -95.34651427162282], "sentiment": "利空", "news_full": [{"title": "加州彩民斬獲 Powerball 大獎，頭獎累積至 8,600 萬美元", "title_en": "California Lottery Player Hits Powerball Win, Jackpot Climbs to $86 Million", "title_th": "ผู้เล่นลอตเตอรี่ในแคลิฟอร์เนียถูกรางวัล Powerball แจ็กพอตสะสมพุ่งถึง 86 ล้านดอลลาร์", "title_hi": "कैलिफोर्निया के लॉटरी खिलाड़ी ने जीता पावरबॉल पुरस्कार, जैकपॉट बढ़कर 86 मिलियन डॉलर हुआ", "link": "https://www.gamblingnews.com/news/california-player-wins-match-5-prize-as-powerball-jackpot-reaches-86m/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "奧克拉荷馬州長否決線上博弈擴張法案", "title_en": "Oklahoma Governor Vetoes Online Gaming Expansion Bill", "title_th": "ผู้ว่าการรัฐโอคลาโฮมาวีโต้ร่างกฎหมายขยายการพนันออนไลน์", "title_hi": "ओक्लाहोमा के गवर्नर ने ऑनलाइन गेमिंग विस्तार विधेयक को वीटो किया", "link": "https://www.gamblingnews.com/news/oklahoma-governor-kevin-stitt-vetoes-bill-expanding-online-gambling/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "FanDuel 成癮訴訟被裁定進入仲裁程序", "title_en": "FanDuel Addiction Lawsuit Sent to Arbitration", "title_th": "คดีฟ้องร้องเรื่องการติดพนันของ FanDuel ถูกตัดสินให้เข้าสู่กระบวนการอนุญาโตตุลาการ", "title_hi": "FanDuel के लत संबंधी मुकदमे को मध्यस्थता के लिए भेजा गया", "link": "https://www.gamblingnews.com/news/fanduel-addiction-lawsuit-sent-to-arbitration/", "sentiment": "中立", "impact": 55.0, "urgency": 60.0}, {"title": "前德州樂透委員會負責人因職務濫用遭起訴", "title_en": "Former Texas Lottery Commission Head Indicted for Misconduct", "title_th": "อดีตหัวหน้าคณะกรรมาธิการลอตเตอรี่เท็กซัสถูกฟ้องในข้อหาประพฤติมิชอบ", "title_hi": "टेक्सास लॉटरी आयोग के पूर्व प्रमुख पर कदाचार के लिए आरोप", "link": "https://www.gamblingnews.com/news/former-texas-lottery-commission-director-was-briefly-indicted-for-abuse-of-office/", "sentiment": "利空", "impact": 40.0, "urgency": 20.0}, {"title": "美國維吉尼亞州四月博弈營收年增率上揚", "title_en": "Virginia, USA Gaming Revenue Sees Year-on-Year Growth in April", "title_th": "รายได้จากธุรกิจเกมในรัฐเวอร์จิเนีย สหรัฐอเมริกา ปรับตัวสูงขึ้นเมื่อเทียบเป็นรายปีในเดือนเมษายน", "title_hi": "अमेरिकी राज्य वर्जीनिया में अप्रैल में गेमिंग राजस्व में साल-दर-साल वृद्धि", "link": "https://focusgn.com/virginia-casino-revenue-rises-in-april", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "亞利桑那州三月運動博弈投注量年比下滑", "title_en": "Arizona Sports Betting Handle Declines Year-on-Year in March", "title_th": "ยอดเดิมพันกีฬาในรัฐแอริโซนาลดลงเมื่อเทียบเป็นรายปีในเดือนมีนาคม", "title_hi": "मार्च में एरिज़ोना में स्पोर्ट्स बेटिंग हैंडल में साल-दर-साल गिरावट", "link": "https://focusgn.com/arizona-sports-betting-handle-declines-year-over-year-in-march", "sentiment": "利空", "impact": 55.0, "urgency": 40.0}, {"title": "Polymarket 正式在美推出 iOS App，預測市場版圖擴張", "title_en": "Polymarket Launches iOS App in the U.S., Expanding Prediction Market Footprint", "title_th": "Polymarket เปิดตัวแอป iOS ในสหรัฐฯ อย่างเป็นทางการ ขยายฐานตลาดการทำนายผล", "title_hi": "Polymarket ने अमेरिका में अपना iOS ऐप लॉन्च किया, प्रेडिक्शन मार्केट का विस्तार", "link": "https://www.gamblingnews.com/news/polymarket-rolls-out-us-ios-app-after-months-long-wait/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "UFC 執行長 Dana White 爭取稅務減免，推動博弈政策對話", "title_en": "UFC CEO Dana White Seeks Tax Relief, Pushing for Betting Policy Dialogue", "title_th": "ซีอีโอ UFC Dana White เรียกร้องการลดหย่อนภาษี ผลักดันการเจรจานโยบายการพนัน", "title_hi": "UFC के CEO Dana White ने टैक्स में राहत और सट्टेबाजी नीति पर बातचीत की मांग की", "link": "https://www.gamblingnews.com/news/ufc-ceo-dana-white-appeals-to-trump-on-gambling-tax-rule/", "sentiment": "利多", "impact": 70.0, "urgency": 50.0}, {"title": "美監管機構擴大與體育聯盟談判，加強預測市場監控", "title_en": "U.S. Regulators Expand Negotiations with Sports Leagues to Strengthen Prediction Market Oversight", "title_th": "หน่วยงานกำกับดูแลสหรัฐฯ ขยายการเจรจากับลีกกีฬาเพื่อเพิ่มความเข้มงวดในการตรวจสอบตลาดการทำนายผล", "title_hi": "अमेरिकी नियामक प्रेडिक्शन मार्केट की निगरानी बढ़ाने के लिए स्पोर्ट्स लीगों के साथ बातचीत कर रहे हैं", "link": "https://www.gamblingnews.com/news/us-regulator-expands-talks-with-sports-leagues-over-prediction-markets/", "sentiment": "中立", "impact": 80.0, "urgency": 70.0}]}, {"region": "亞太", "count": 2, "coords": [24.691096416854702, 138.40109545710018], "sentiment": "利多", "news_full": [{"title": "Groove 在 SiGMA 亞洲展會聚焦監管洞察", "title_en": "Groove Focuses on Regulatory Insights at SiGMA Asia", "title_th": "Groove มุ่งเน้นไปที่ข้อมูลเชิงลึกด้านกฎระเบียบในงาน SiGMA Asia", "title_hi": "ग्रूव (Groove) ने SiGMA एशिया प्रदर्शनी में नियामक अंतर्दृष्टि पर ध्यान केंद्रित किया", "link": "https://agbrief.com/news/philippines/14/05/2026/groove-brings-regulatory-insight-to-the-spotlight-at-sigma-asia-2026/", "sentiment": "中立", "impact": 60.0, "urgency": 55.0}, {"title": "SOFTSWISS 進軍 SiGMA Asia，布局亞洲擴張計畫", "title_en": "SOFTSWISS Enters SiGMA Asia, Mapping Out Asian Expansion Plans", "title_th": "SOFTSWISS รุกเข้าสู่งาน SiGMA Asia เดินหน้าแผนขยายธุรกิจในเอเชีย", "title_hi": "SOFTSWISS ने SiGMA Asia में प्रवेश किया, एशियाई विस्तार योजनाओं को तैयार किया", "link": "https://agbrief.com/news/philippines/14/05/2026/softswiss-heads-to-sigma-asia-2026-to-help-operators-scale-across-asian-markets/", "sentiment": "利多", "impact": 75.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [45.222035011800266, -100.11678143941369], "sentiment": "利多", "news_full": [{"title": "麥格理分析師看好 DraftKings 未來高速增長", "title_en": "Macquarie Analyst Bullish on DraftKings' Future Growth", "title_th": "นักวิเคราะห์จาก Macquarie มองบวกต่อการเติบโตอย่างรวดเร็วของ DraftKings", "title_hi": "Macquarie के विश्लेषक ने DraftKings की भविष्य की तेजी पर भरोसा जताया", "link": "https://www.gamblingnews.com/news/macquarie-analyst-chad-beynon-says-draftkings-will-continue-growing-fast/", "sentiment": "利多", "impact": 75.0, "urgency": 50.0}, {"title": "Mohegan 集團第二財季淨營收表現成長", "title_en": "Mohegan Group Reports Growth in Q2 Net Revenue", "title_th": "Mohegan Group รายงานการเติบโตของรายได้สุทธิในไตรมาสที่ 2", "title_hi": "Mohegan Group ने Q2 में शुद्ध राजस्व में वृद्धि की रिपोर्ट दी", "link": "https://focusgn.com/mohegan-net-revenue-increases-in-second-fiscal-quarter", "sentiment": "利多", "impact": 60.0, "urgency": 30.0}]}, {"region": "英國", "count": 2, "coords": [51.911875616516454, -0.5156327143069275], "sentiment": "中立", "news_full": [{"title": "英國啟動全英最大的博弈危害研究中心", "title_en": "UK Launches Largest Gambling Harm Research Center", "title_th": "สหราชอาณาจักรเปิดศูนย์วิจัยอันตรายจากการพนันที่ใหญ่ที่สุดในประเทศ", "title_hi": "यूके ने देश का सबसे बड़ा जुआ हानि अनुसंधान केंद्र शुरू किया", "link": "https://www.gamblingnews.com/news/uk-opens-its-largest-independent-gambling-harms-research-center/", "sentiment": "中立", "impact": 50.0, "urgency": 40.0}, {"title": "英國成立首個大型獨立博弈傷害研究中心", "title_en": "UK Establishes First Large Independent Gaming Harm Research Center", "title_th": "สหราชอาณาจักรก่อตั้งศูนย์วิจัยความเสียหายจากการเล่นเกมอิสระขนาดใหญ่แห่งแรก", "title_hi": "यूके ने पहला बड़ा स्वतंत्र गेमिंग नुकसान अनुसंधान केंद्र स्थापित किया", "link": "https://focusgn.com/uk-launches-largest-independent-gambling-harms-research-centre", "sentiment": "中立", "impact": 65.0, "urgency": 60.0}]}, {"region": "法國", "count": 2, "coords": [46.565912599734546, 1.9843281315318895], "sentiment": "利空", "news_full": [{"title": "法國監管機構警示新博弈風險演算法發現潛在隱患", "title_en": "French Regulators Identify Potential Risks in New Gaming Risk Algorithm", "title_th": "หน่วยงานกำกับดูแลของฝรั่งเศสพบความเสี่ยงที่น่ากังวลในอัลกอริทึมประเมินความเสี่ยงด้านเกมใหม่", "title_hi": "फ्रांसीसी नियामक ने नई गेमिंग रिस्क एल्गोरिदम में संभावित खतरों की पहचान की", "link": "https://focusgn.com/french-gambling-regulators-new-algorithm-sparks-concerns", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}, {"title": "巴黎聖日耳曼達成法甲五連霸紀錄", "title_en": "Paris Saint-Germain Achieves Record Five-Consecutive Ligue 1 Titles", "title_th": "Paris Saint-Germain สร้างสถิติคว้าแชมป์ลีกเอิง 5 สมัยติดต่อกัน", "title_hi": "पेरिस सेंट-जर्मेन ने लगातार पांचवीं बार लीग 1 खिताब जीतने का रिकॉर्ड बनाया", "link": "https://focusgn.com/ici-cest-paris-paris-saint-germain-are-ligue-1-champions-for-the-fifth-year-in-a-row", "sentiment": "利多", "impact": 40.0, "urgency": 10.0}]}, {"region": "歐洲", "count": 4, "coords": [49.77484241937032, 14.766681829585067], "sentiment": "利多", "news_full": [{"title": "烏克蘭啟動全新國家博弈線上監控系統 (DSOM)", "title_en": "Ukraine Launches New National Online Gaming Monitoring System (DSOM)", "title_th": "ยูเครนเปิดตัวระบบตรวจสอบการเล่นเกมออนไลน์แห่งชาติ (DSOM) ใหม่", "title_hi": "यूक्रेन ने नई राष्ट्रीय ऑनलाइन गेमिंग मॉनिटरिंग प्रणाली (DSOM) शुरू की", "link": "https://focusgn.com/playcity-launches-dsom-ukraines-new-state-online-monitoring-system-for-gambling", "sentiment": "中立", "impact": 70.0, "urgency": 85.0}, {"title": "SOFTSWISS 高層將於 NEXT Valletta 探討品牌與體育博彩成長", "title_en": "SOFTSWISS Executives to Discuss Brand and Sportsbook Growth at NEXT Valletta", "title_th": "ผู้บริหาร SOFTSWISS เตรียมหารือเกี่ยวกับการเติบโตของแบรนด์และการพนันกีฬาที่งาน NEXT Valletta", "title_hi": "SOFTSWISS के कार्यकारी NEXT Valletta में ब्रांड और स्पोर्ट्सबुक विकास पर चर्चा करेंगे", "link": "https://focusgn.com/softswiss-executives-to-lead-brand-and-sportsbook-growth-discussions-at-next-valletta", "sentiment": "利多", "impact": 70.0, "urgency": 60.0}, {"title": "1X2 Network 進駐丹麥 Stake.dk，擴大歐洲內容供應", "title_en": "1X2 Network Enters Danish Stake.dk, Expanding European Content Supply", "title_th": "1X2 Network จับมือ Stake.dk ในเดนมาร์ก ขยายการจัดหาเนื้อหาในยุโรป", "title_hi": "1X2 Network ने डेनमार्क के Stake.dk में प्रवेश किया, यूरोपीय कंटेंट आपूर्ति का विस्तार", "link": "https://www.gamblingnews.com/news/1x2-network-joins-stake-dk-in-denmark-to-support-casino-content/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "GLI 持續贊助 EEGS 監管圓桌會議", "title_en": "GLI continues to sponsor EEGS regulatory roundtable", "title_th": "GLI ยังคงสนับสนุนงานเสวนาหน่วยงานกำกับดูแล EEGS อย่างต่อเนื่อง", "title_hi": "GLI ने EEGS नियामक गोलमेज सम्मेलन को प्रायोजित करना जारी रखा", "link": "https://focusgn.com/eegs-welcomes-gli-as-regulators-round-table-sponsor-for-another-consecutive-year", "sentiment": "中立", "impact": 50.0, "urgency": 40.0}]}, {"region": "泰國", "count": 1, "coords": [13.835818406766467, 100.45686931540226], "sentiment": "利多", "news_full": [{"title": "Cabal Fest 2026：True Champions 賽事圓滿落幕", "title_en": "Cabal Fest 2026: True Champions Concludes Successfully", "title_th": "ปิดฉากลงอย่างสวยงามสำหรับงานแข่ง Cabal Fest 2026: True Champions", "title_hi": "Cabal Fest 2026: True Champions सफलतापूर्वक संपन्न", "link": "https://www.gamingdose.com/news/cabal-fest-2026-true-champions-%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%89%e0%b8%b2%e0%b8%81%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b8%a2%e0%b8%b4%e0%b9%88%e0%b8%87%e0%b9%83%e0%b8%ab%e0%b8%8d/", "sentiment": "利多", "impact": 60.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "菲律賓", "count": 3, "coords": [14.80044045735986, 120.71782371580555], "sentiment": "利空", "news_full": [{"title": "菲律賓監管新規：DigiPlus 擬限制線上現金回饋以平抑市場競爭", "title_en": "New Philippine Regulatory Guidelines: DigiPlus Plans to Limit Online Cashback to Curb Market Competition", "title_th": "ฟิลิปปินส์ออกกฎระเบียบใหม่: DigiPlus เตรียมจำกัดการคืนเงินสดออนไลน์เพื่อสร้างสมดุลการแข่งขัน", "title_hi": "फिलीपींस के नए नियामक दिशानिर्देश: DigiPlus ने बाजार प्रतिस्पर्धा को नियंत्रित करने के लिए ऑनलाइन कैशबैक सीमित करने की योजना बनाई", "link": "https://www.ggrasia.com/digiplus-says-limits-on-online-cash-rebates-to-level-the-playing-field-in-the-philippines?utm_source=rss&utm_medium=rss&utm_campaign=digiplus-says-limits-on-online-cash-rebates-to-level-the-playing-field-in-the-philippines", "sentiment": "中立", "impact": 75.0, "urgency": 80.0}, {"title": "岡田馬尼拉母公司 UEC 指出馬尼拉博弈市場競爭加劇", "title_en": "Okada Manila Parent UEC Points to Intensifying Competition in Manila Gaming Market", "title_th": "UEC บริษัทแม่ของ Okada Manila ชี้ตลาดเกมในมะนิลามีการแข่งขันที่รุนแรงขึ้น", "title_hi": "ओकाडा मनीला की मूल कंपनी UEC ने मनीला गेमिंग बाजार में बढ़ती प्रतिस्पर्धा की ओर इशारा किया", "link": "https://asgam.com/2026/05/15/okada-manila-parent-uec-says-competition-between-manila-gaming-operators-now-more-intense-as-ir-revenue-profit-declines-in-1q26/", "sentiment": "利空", "impact": 80.0, "urgency": 75.0}, {"title": "Okada Manila 啟動 Okada Play 平台，擴大線上佈局", "title_en": "Okada Manila Launches Okada Play Platform, Expanding Online Presence", "title_th": "Okada Manila เปิดตัวแพลตฟอร์ม Okada Play ขยายฐานสู่ตลาดออนไลน์", "title_hi": "Okada Manila ने Okada Play प्लेटफॉर्म लॉन्च किया, ऑनलाइन उपस्थिति का विस्तार", "link": "https://agbrief.com/news/philippines/14/05/2026/okada-manila-expands-online-push-with-okada-play-launch/", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}]}, {"region": "全球", "count": 27, "coords": [20.339136275752765, 9.78095808351703], "sentiment": "利空", "news_full": [{"title": "JCM 財報揭露：年度淨利增長 23% 但營收下滑 16.6%", "title_en": "JCM Financial Report: Annual Net Profit Up 23%, Revenue Down 16.6%", "title_th": "รายงานผลประกอบการ JCM: กำไรสุทธิประจำปีเพิ่มขึ้น 23% แต่รายได้ลดลง 16.6%", "title_hi": "JCM वित्तीय रिपोर्ट: वार्षिक शुद्ध लाभ में 23% की वृद्धि, लेकिन राजस्व में 16.6% की गिरावट", "link": "https://www.ggrasia.com/jcms-annual-net-profit-up-23pct-flags-16-6pct-decline-in-net-sales?utm_source=rss&utm_medium=rss&utm_campaign=jcms-annual-net-profit-up-23pct-flags-16-6pct-decline-in-net-sales", "sentiment": "利空", "impact": 60.0, "urgency": 30.0}, {"title": "AGS 強化領導團隊：博弈技術商宣告三位高管人事任命", "title_en": "AGS Strengthens Leadership Team: Gaming Tech Firm Announces Three Executive Appointments", "title_th": "AGS เสริมทัพผู้นำ: บริษัทเทคโนโลยีเกมประกาศแต่งตั้งผู้บริหารระดับสูง 3 ตำแหน่ง", "title_hi": "AGS ने नेतृत्व टीम को मजबूत किया: गेमिंग टेक फर्म ने तीन कार्यकारी नियुक्तियों की घोषणा की", "link": "https://www.ggrasia.com/gaming-tech-firm-ags-announces-three-senior-appointments-to-drive-business-growth?utm_source=rss&utm_medium=rss&utm_campaign=gaming-tech-firm-ags-announces-three-senior-appointments-to-drive-business-growth", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "DATA.BET 公布 2026 年第一季財報：電競博弈成長強勁", "title_en": "DATA.BET Q1 2026 Earnings: Strong Growth in Esports Betting", "title_th": "รายงานผลประกอบการ Q1 2026 ของ DATA.BET: การเดิมพันอีสปอร์ตเติบโตอย่างแข็งแกร่ง", "title_hi": "DATA.BET Q1 2026 की कमाई: ईस्पोर्ट्स बेटिंग में मजबूत विकास", "link": "https://agbrief.com/news/world/14/05/2026/data-bet-reports-stronger-esports-betting-performance-in-q1-2026/", "sentiment": "利多", "impact": 80.0, "urgency": 70.0}, {"title": "Mixtape 遊戲回顧：甜美青春歲月的音樂整合冒險", "title_en": "Mixtape Review: A Musical Adventure of Sweet Youth", "title_th": "รีวิวเกม Mixtape: การผจญภัยทางดนตรีในช่วงเวลาแห่งความทรงจำวัยเยาว์", "title_hi": "Mixtape समीक्षा: मीठी जवानी का एक संगीतमय रोमांच", "link": "https://www.gamingdose.com/feature/review/review-mixtape/", "sentiment": "中立", "impact": 30.0, "urgency": 10.0}, {"title": "Forza Horizon 6 初體驗：競速遊戲完整版搶先看", "title_en": "Forza Horizon 6 First Impressions: A Full Look at the Racing Game", "title_th": "สัมผัสแรก Forza Horizon 6: เจาะลึกเกมแข่งรถฉบับเต็ม", "title_hi": "Forza Horizon 6 का पहला अनुभव: रेसिंग गेम पर एक पूरी नजर", "link": "https://www.gamingdose.com/news/first-impression-forza-horizon-6/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Forza Horizon 6 首玩印象：極致視覺與駕駛感的震撼", "title_en": "Forza Horizon 6 First Impressions: Stunning Visuals and Driving Feel", "title_th": "สัมผัสแรก Forza Horizon 6: ความน่าตื่นตาตื่นใจของภาพและการขับขี่ขั้นสุดยอด", "title_hi": "Forza Horizon 6 का पहला अनुभव: शानदार दृश्य और ड्राइविंग का अहसास", "link": "https://www.gamingdose.com/feature/%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%97%e0%b8%b1%e0%b8%9a%e0%b9%83%e0%b8%88%e0%b9%81%e0%b8%a3%e0%b8%81-%e0%b8%ab%e0%b8%a5%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Two Point Museum》DLC：全新藝術主題內容正式發布", "title_en": "'Two Point Museum' DLC: New Art-Themed Content Released", "title_th": "Two Point Museum DLC: เปิดตัวเนื้อหาธีมศิลปะใหม่ล่าสุด", "title_hi": "'Two Point Museum' DLC: नई कला-थीम वाली सामग्री जारी", "link": "https://www.gamingdose.com/feature/recommend-two-point-museum-arty-facts/", "sentiment": "中立", "impact": 25.0, "urgency": 15.0}, {"title": "Remedy 重申《Control》系列始終定位為 RPG 核心架構", "title_en": "Remedy Reaffirms Control Series as Core RPG Framework", "title_th": "Remedy ยืนยันซีรีส์ Control ถูกวางตำแหน่งให้เป็น RPG ตั้งแต่ต้น", "title_hi": "Remedy ने 'Control' श्रृंखला को मूल RPG ढांचे के रूप में फिर से दोहराया", "link": "https://www.gamingdose.com/news/remedy-%e0%b8%a2%e0%b9%89%e0%b8%b3%e0%b8%8a%e0%b8%b1%e0%b8%94-control-%e0%b8%84%e0%b8%b7%e0%b8%ad%e0%b9%81%e0%b8%9f%e0%b8%a3%e0%b8%99%e0%b9%84%e0%b8%8a%e0%b8%aa%e0%b9%8c%e0%b9%80%e0%b8%81%e0%b8%a1-rpg/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "《赤色沙漠》(Crimson Desert) 在 Steam 獲逾十萬好評，市場潛力受關注", "title_en": "Crimson Desert Gains Over 100,000 Positive Reviews on Steam, High Market Potential", "title_th": "Crimson Desert คว้ากว่าแสนรีวิวเชิงบวกบน Steam เผยศักยภาพตลาดที่แข็งแกร่ง", "title_hi": "Crimson Desert को Steam पर 1 लाख से अधिक सकारात्मक समीक्षाएं मिलीं, बाजार की क्षमता पर ध्यान", "link": "https://www.gamingdose.com/news/crimson-desert-%e0%b8%a1%e0%b8%b5%e0%b8%a3%e0%b8%b5%e0%b8%a7%e0%b8%b4%e0%b8%a7%e0%b9%81%e0%b8%87%e0%b9%88%e0%b8%9a%e0%b8%a7%e0%b8%81%e0%b9%83%e0%b8%99-steam-%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%9c/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}, {"title": "《薩爾達傳說》改編電影全球上映日期提前至 2027 年 4 月", "title_en": "The Legend of Zelda Live-Action Movie Global Release Moved Up to April 2027", "title_th": "ภาพยนตร์ไลฟ์แอ็กชัน The Legend of Zelda เลื่อนฉายทั่วโลกให้เร็วขึ้นเป็นเมษายน 2027", "title_hi": "The Legend of Zelda लाइव-एक्शन फिल्म की वैश्विक रिलीज तिथि अप्रैल 2027 तक आगे बढ़ी", "link": "https://www.gamingdose.com/news/the-legend-of-zelda-%e0%b8%89%e0%b8%9a%e0%b8%b1%e0%b8%9a%e0%b8%ab%e0%b8%99%e0%b8%b1%e0%b8%87%e0%b9%82%e0%b8%a3%e0%b8%87-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%9b%e0%b8%a3/", "sentiment": "利多", "impact": 70.0, "urgency": 30.0}, {"title": "Bragg Gaming 宣布收購 Drayton International", "title_en": "Bragg Gaming Announces Acquisition of Drayton International", "title_th": "Bragg Gaming ประกาศเข้าซื้อกิจการ Drayton International", "title_hi": "Bragg Gaming ने Drayton International के अधिग्रहण की घोषणा की", "link": "https://www.gamblingnews.com/news/bragg-gaming-to-acquire-drayton-international/", "sentiment": "中立", "impact": 75.0, "urgency": 60.0}, {"title": "Super Group 內部提拔 Kristy Ross 出任營運總監 (COO)", "title_en": "Super Group Promotes Kristy Ross to Chief Operating Officer (COO)", "title_th": "Super Group แต่งตั้ง Kristy Ross ขึ้นดำรงตำแหน่งประธานเจ้าหน้าที่ฝ่ายปฏิบัติการ (COO)", "title_hi": "Super Group ने Kristy Ross को मुख्य परिचालन अधिकारी (COO) नियुक्त किया", "link": "https://www.gamblingnews.com/news/super-group-promotes-from-within-names-kristy-ross-coo/", "sentiment": "中立", "impact": 50.0, "urgency": 20.0}, {"title": "NetEnt 發布全新魔法冒險風格老虎機「What’s Up Witches」", "title_en": "NetEnt Releases New Magic-Adventure Themed Slot 'What’s Up Witches'", "title_th": "NetEnt เปิดตัวเกมสล็อตแนวผจญภัยเวทมนตร์ใหม่ 'What’s Up Witches'", "title_hi": "NetEnt ने नया मैजिक-एडवेंचर थीम्ड स्लॉट 'What’s Up Witches' लॉन्च किया", "link": "https://www.gamblingnews.com/news/netent-sends-players-on-a-magical-adventure-in-whats-up-witches/", "sentiment": "利多", "impact": 70.0, "urgency": 45.0}, {"title": "DATA.BET 報告 2026 年第一季電競投注表現顯著提升", "title_en": "DATA.BET Reports Significant Growth in Esports Betting for Q1 2026", "title_th": "DATA.BET รายงานการเติบโตอย่างมีนัยสำคัญของการพนันอีสปอร์ตในไตรมาสที่ 1 ปี 2026", "title_hi": "DATA.BET ने Q1 2026 में ईस्पोर्ट्स बेटिंग में उल्लेखनीय वृद्धि की रिपोर्ट दी", "link": "https://asgam.com/2026/05/15/data-bet-reports-significantly-improved-esports-betting-performance-1q26/", "sentiment": "利多", "impact": 85.0, "urgency": 70.0}, {"title": "分析師看好 Playtech 的多元化轉型策略", "title_en": "Analysts Bullish on Playtech's Diversification Strategy", "title_th": "นักวิเคราะห์มองบวกต่อกลยุทธ์การปรับเปลี่ยนธุรกิจของ Playtech", "title_hi": "Playtech की विविधीकरण रणनीति पर विश्लेषकों का भरोसा", "link": "https://www.gamblingnews.com/news/analysts-stay-bullish-on-playtech-amid-diversification-efforts/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "Onlyplay 發布最新老虎機遊戲 Pepper Coins", "title_en": "Onlyplay Releases New Slot Game: Pepper Coins", "title_th": "Onlyplay เปิดตัวเกมสล็อตใหม่ Pepper Coins", "title_hi": "Onlyplay ने नया स्लॉट गेम Pepper Coins लॉन्च किया", "link": "https://focusgn.com/onlyplay-presents-its-latest-video-slot-pepper-coins", "sentiment": "中立", "impact": 60.0, "urgency": 30.0}, {"title": "Bragg Gaming Group 公布 2026 年第一季財報", "title_en": "Bragg Gaming Group Announces Q1 2026 Financial Results", "title_th": "Bragg Gaming Group ประกาศผลประกอบการไตรมาสที่ 1 ปี 2026", "title_hi": "Bragg Gaming Group ने 2026 की पहली तिमाही के वित्तीय परिणाम घोषित किए", "link": "https://focusgn.com/bragg-gaming-group-reports-first-quarter-2026-financial-results", "sentiment": "中立", "impact": 75.0, "urgency": 50.0}, {"title": "ReferOn：執行力是推動分銷技術創新的關鍵", "title_en": "ReferOn: Execution is Key to Driving Affiliate Technology Innovation", "title_th": "ReferOn: การดำเนินการที่มีประสิทธิภาพคือกุญแจสำคัญสู่การขับเคลื่อนนวัตกรรมเทคโนโลยีพันธมิตร", "title_hi": "ReferOn: निष्पादन ही एफिलिएट तकनीकी नवाचार को चलाने की कुंजी है", "link": "https://focusgn.com/why-execution-is-the-key-in-innovation-to-affiliate-tech-alex-bukin-referon", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "DATA.BET：2026 年第一季電競博彩表現強勁", "title_en": "DATA.BET: Strong Performance in Esports Betting for Q1 2026", "title_th": "DATA.BET: ผลประกอบการพนันอีสปอร์ตแข็งแกร่งในไตรมาสที่ 1 ปี 2026", "title_hi": "DATA.BET: Q1 2026 में ईस्पोर्ट्स बेटिंग का प्रदर्शन मजबूत", "link": "https://focusgn.com/data-bet-reports-boosted-esports-betting-performance-in-q1-2026", "sentiment": "利多", "impact": 80.0, "urgency": 70.0}, {"title": "Booming Games 發布新作 Diamond Forge: Link & Loot", "title_en": "Booming Games Releases New Title: Diamond Forge: Link & Loot", "title_th": "Booming Games เปิดตัวผลงานใหม่ Diamond Forge: Link & Loot", "title_hi": "Booming Games ने नया टाइटल Diamond Forge: Link & Loot जारी किया", "link": "https://focusgn.com/booming-games-releases-diamond-forge-link-loot", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "全球監管機構面臨科技衝擊，非法博弈與界線模糊成為焦點", "title_en": "Global Regulators Face Tech Disruption; Illegal Gambling and Blurred Lines Take Center Stage", "title_th": "หน่วยงานกำกับดูแลทั่วโลกเผชิญความท้าทายจากเทคโนโลยี การพนันผิดกฎหมายและเส้นแบ่งตลาดที่เลือนลางกลายเป็นจุดสนใจ", "title_hi": "वैश्विक नियामक तकनीकी व्यवधान का सामना कर रहे हैं; अवैध जुआ और धुंधली सीमाएं केंद्र बिंदु बनीं", "link": "https://agbrief.com/news/world/14/05/2026/global-regulators-grapple-with-technology-illegal-gambling-and-blurred-market-boundaries-panel/", "sentiment": "利空", "impact": 85.0, "urgency": 70.0}, {"title": "Sega Sammy 對 Stakelogic 減記商譽，收購策略面臨調整", "title_en": "Sega Sammy Writes Down Goodwill for Stakelogic; Acquisition Strategy Faces Adjustment", "title_th": "Sega Sammy ตัดจำหน่ายค่าความนิยมของ Stakelogic กลยุทธ์การเข้าซื้อกิจการต้องมีการปรับเปลี่ยน", "title_hi": "Sega Sammy ने Stakelogic के गुडविल को राइट-डाउन किया; अधिग्रहण रणनीति में बदलाव", "link": "https://agbrief.com/news/japan/14/05/2026/sega-sammy-writes-off-stakelogic-less-than-a-year-after-146m-deal-closed/", "sentiment": "利空", "impact": 70.0, "urgency": 20.0}, {"title": "誠實拾獲彩券兌獎，幸運中得 58.6 萬美元", "title_en": "Honest Finder Redeems Lost Lottery Ticket, Wins $586,000", "title_th": "ชายผู้ซื่อสัตย์นำลอตเตอรีที่เก็บได้ไปคืน สุดท้ายถูกรางวัลใหญ่ 586,000 ดอลลาร์", "title_hi": "ईमानदार व्यक्ति ने खोया हुआ लॉटरी टिकट लौटाया, 586,000 डॉलर जीते", "link": "https://www.gamblingnews.com/news/instant-karma-man-returns-500-lottery-ticket-wins-586k/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Allegiant 航空完成併購案，聚焦精簡營運紀律", "title_en": "Allegiant Air Completes Merger, Focuses on Operational Discipline", "title_th": "สายการบิน Allegiant ปิดดีลการควบรวมกิจการ เน้นวินัยในการดำเนินงาน", "title_hi": "Allegiant Air ने विलय पूरा किया, परिचालन अनुशासन पर ध्यान केंद्रित", "link": "https://www.gamblingnews.com/news/allegiant-bets-on-discipline-after-sun-country-deal-closes/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "《碧藍幻想：Relink》釋出全新預告，導入兩位新角色", "title_en": "Granblue Fantasy: Relink releases new trailer, introducing two new characters", "title_th": "Granblue Fantasy: Relink ปล่อยตัวอย่างใหม่ พร้อมแนะนำ 2 ตัวละครใหม่", "title_hi": "Granblue Fantasy: Relink ने नया ट्रेलर जारी किया, दो नए पात्रों का परिचय", "link": "https://www.gamingdose.com/news/%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-granblue-fantasy-relink-endless-ragnarok-%e0%b8%81%e0%b8%b1%e0%b8%9a%e0%b8%aa%e0%b8%ad/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "1spin4win 推紀念新作慶祝成立五週年", "title_en": "1spin4win launches new anniversary game to celebrate 5th anniversary", "title_th": "1spin4win เปิดตัวเกมใหม่ฉลองครบรอบ 5 ปี", "title_hi": "1spin4win ने अपनी 5वीं वर्षगांठ मनाने के लिए नया गेम लॉन्च किया", "link": "https://focusgn.com/1spin4win-presents-lucky-1spin4win-hold-and-win-to-mark-its-5th-anniversary", "sentiment": "利多", "impact": 45.0, "urgency": 60.0}, {"title": "Relax Gaming：遊戲的核心在於帶給玩家沉浸體驗", "title_en": "Relax Gaming: The core of gaming lies in delivering immersive experiences", "title_th": "Relax Gaming: หัวใจสำคัญของเกมคือการมอบประสบการณ์ที่สมจริง", "title_hi": "Relax Gaming: गेमिंग का मूल खिलाड़ियों को इमर्सिव अनुभव देने में है", "link": "https://focusgn.com/tony-omahony-relax-gaming-we-want-games-to-feel-like-they-take-players-somewhere-rather-than-just-cycling-through-spins", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}]}, {"region": "新加坡", "count": 2, "coords": [1.350745800825095, 103.4624918957707], "sentiment": "利空", "news_full": [{"title": "VIP 業務萎縮：野村證券調降雲頂新加坡評級", "title_en": "VIP Business Shrinks: Nomura Downgrades Genting Singapore", "title_th": "ธุรกิจ VIP หดตัว: Nomura ปรับลดอันดับเครดิต Genting Singapore", "title_hi": "VIP व्यवसाय में गिरावट: नोमुरा ने जेंटिंग सिंगापुर की रेटिंग घटाई", "link": "https://www.ggrasia.com/genting-singapore-downgraded-by-nomura-as-rws-vip-rolling-share-at-all-time-low?utm_source=rss&utm_medium=rss&utm_campaign=genting-singapore-downgraded-by-nomura-as-rws-vip-rolling-share-at-all-time-low", "sentiment": "利空", "impact": 30.0, "urgency": 50.0}, {"title": "新加坡雲頂集團 2026 年首季利潤腰斬", "title_en": "Genting Singapore Q1 2026 Profit Halved", "title_th": "Genting Singapore เผยกำไรไตรมาสแรกปี 2026 ลดลงครึ่งหนึ่ง", "title_hi": "Genting Singapore का 2026 की पहली तिमाही का मुनाफा आधा हुआ", "link": "https://agbrief.com/news/14/05/2026/genting-singapore-1q26-profit-halves/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "韓國", "count": 2, "coords": [37.48558882369648, 126.95997020459401], "sentiment": "利多", "news_full": [{"title": "韓國 Paradise Co 擬收購濟州島 Maison Glad 酒店", "title_en": "Korea's Paradise Co Plans to Acquire Maison Glad Jeju Hotel", "title_th": "Paradise Co ของเกาหลี เตรียมเข้าซื้อโรงแรม Maison Glad ในเกาะเชจู", "title_hi": "कोरिया की पैराडाइज कंपनी ने जेजू द्वीप में मेसन ग्लैड होटल का अधिग्रहण करने की योजना बनाई", "link": "https://www.ggrasia.com/paradise-co-mulling-purchase-of-maison-glad-jeju-hotel-brokerage?utm_source=rss&utm_medium=rss&utm_campaign=paradise-co-mulling-purchase-of-maison-glad-jeju-hotel-brokerage", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "韓國 Paradise Co 擬擴張飯店收購版圖", "title_en": "South Korea's Paradise Co Plans Hotel Acquisition Expansion", "title_th": "Paradise Co ของเกาหลีใต้เตรียมขยายพอร์ตโฟลิโอการเข้าซื้อกิจการโรงแรม", "title_hi": "दक्षिण कोरिया की पैराडाइज कंपनी होटल अधिग्रहण विस्तार की योजना बना रही है", "link": "https://asgam.com/2026/05/15/koreas-paradise-co-said-to-be-eying-more-hotel-acquisitions/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}]}, {"region": "日本", "count": 1, "coords": [35.249756608963544, 139.19889530492418], "sentiment": "利空", "news_full": [{"title": "日本最高法院尋求免職涉及線上賭場醜聞之法官", "title_en": "Japan's Supreme Court seeks to remove judge involved in online gambling scandal", "title_th": "ศาลฎีกาญี่ปุ่นพยายามถอดถอนผู้พิพากษาที่มีส่วนเกี่ยวข้องกับเรื่องอื้อฉาวการพนันออนไลน์", "title_hi": "जापान के सुप्रीम कोर्ट ने ऑनलाइन जुआ घोटाले में शामिल जज को हटाने की मांग की", "link": "https://agbrief.com/news/japan/15/05/2026/japan-supreme-court-seeks-dismissal-of-judge-over-online-casino-allegations/", "sentiment": "利空", "impact": 80.0, "urgency": 90.0}]}, {"region": "香港", "count": 1, "coords": [22.152507991491575, 114.55225374848351], "sentiment": "利多", "news_full": [{"title": "香港賽馬會與法國多維爾馬場簽署馬匹發展戰略合作協議", "title_en": "HKJC Signs Strategic Partnership with Deauville Racecourse for Horse Racing Development", "title_th": "ฮ่องกงจ็อกกี้คลับลงนามความร่วมมือเชิงกลยุทธ์กับสนามแข่งม้าโดวิลล์ ประเทศฝรั่งเศส", "title_hi": "हांगकांग जॉकी क्लब ने हॉर्स रेसिंग विकास के लिए फ्रांस के डोविले रेसकोर्स के साथ रणनीतिक समझौता किया", "link": "https://agbrief.com/news/hong-kong/15/05/2026/hong-kong-jockey-club-and-deauville-sign-equine-development-partnership/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}, {"region": "印尼", "count": 1, "coords": [-5.9179220985665575, 106.46160240397076], "sentiment": "利空", "news_full": [{"title": "印尼官方統計：近20萬未成年人深陷線上賭博風險", "title_en": "Indonesian Official Statistics: Nearly 200,000 Minors at Risk of Online Gambling", "title_th": "สถิติทางการอินโดนีเซียเผย: เยาวชนเกือบ 2 แสนคนเสี่ยงติดพนันออนไลน์", "title_hi": "इंडोनेशियाई आधिकारिक आँकड़े: लगभग 2 लाख नाबालिग ऑनलाइन जुए के जोखिम में", "link": "https://agbrief.com/news/indonesia/15/05/2026/indonesia-says-nearly-200000-children-exposed-to-online-gambling/", "sentiment": "利空", "impact": 85.0, "urgency": 90.0}]}, {"region": "澳門", "count": 6, "coords": [22.30705291156439, 113.65532573142345], "sentiment": "利多", "news_full": [{"title": "澳門體育旅遊產業成長面臨資金、人才及物流挑戰", "title_en": "Macau Sports Tourism Industry Faces Challenges in Funding, Talent, and Logistics", "title_th": "อุตสาหกรรมท่องเที่ยวเชิงกีฬาของมาเก๊าเผชิญความท้าทายด้านเงินทุน บุคลากร และโลจิสติกส์", "title_hi": "मकाऊ का स्पोर्ट्स टूरिज्म उद्योग फंडिंग, प्रतिभा और लॉजिस्टिक्स की चुनौतियों का सामना कर रहा है", "link": "https://agbrief.com/news/macau/15/05/2026/sports-tourism-growth-in-macau-faces-funding-talent-and-logistics-challenges-panel/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}, {"title": "何猷君：電子競技與體育賽事是促進澳門多元化的關鍵", "title_en": "Mario Ho: Esports and Sports Events are Key to Macau's Diversification", "title_th": "Mario Ho: อีสปอร์ตและกิจกรรมกีฬาคือกุญแจสำคัญสู่ความหลากหลายของมาเก๊า", "title_hi": "मारियो हो: ई-स्पोर्ट्स और खेल आयोजन मकाऊ की विविधता के लिए महत्वपूर्ण हैं", "link": "https://agbrief.com/news/macau/15/05/2026/mario-ho-says-esports-and-sports-can-drive-macau-diversification/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}, {"title": "美高梅中國完成 7.5 億美元 2033 年到期優先票據發行", "title_en": "MGM China Completes $750 Million Senior Notes Offering Due 2033", "title_th": "MGM China ปิดการขายหุ้นกู้ด้อยสิทธิมูลค่า 750 ล้านดอลลาร์ ครบกำหนดไถ่ถอนปี 2033", "title_hi": "एमजीएम चाइना ने 2033 में देय 750 मिलियन डॉलर के सीनियर नोट्स जारी किए", "link": "https://asgam.com/2026/05/15/mgm-china-completes-issue-of-us750-million-in-senior-notes-due-2033/", "sentiment": "中立", "impact": 30.0, "urgency": 40.0}, {"title": "何猷君提出「體育+」願景，推動澳門轉型為亞太娛樂中心", "title_en": "Ho Iok Fai Proposes 'Sports+' Vision to Drive Macau's Transformation into an Asia-Pacific Entertainment Hub", "title_th": "Mario Ho เสนอวิสัยทัศน์ 'Sports+' เพื่อผลักดันให้มาเก๊ากลายเป็นศูนย์กลางความบันเทิงแห่งเอเชียแปซิฟิก", "title_hi": "हो इओक फाई (मारियो हो) ने मकाऊ को एशिया-प्रशांत मनोरंजन केंद्र में बदलने के लिए 'स्पोर्ट्स+' विजन प्रस्तावित किया", "link": "https://asgam.com/2026/05/15/mario-ho-outlines-sports-plus-vision-to-transform-macau-into-asia-pacifics-entertainment-capital/", "sentiment": "利多", "impact": 30.0, "urgency": 60.0}, {"title": "新濠影匯完成 1.96 億美元 2027 年到期優先票據贖回", "title_en": "Studio City Completes Redemption of $196 Million Senior Notes Due 2027", "title_th": "Studio City ปิดการไถ่ถอนหุ้นกู้ด้อยสิทธิมูลค่า 196 ล้านดอลลาร์ ครบกำหนดปี 2027", "title_hi": "स्टूडियो सिटी ने 2027 में देय 196 मिलियन डॉलर के सीनियर नोट्स का मोचन पूरा किया", "link": "https://asgam.com/2026/05/15/studio-city-to-redeem-us196-million-in-senior-notes-due-2027-following-tender-offer/", "sentiment": "中立", "impact": 30.0, "urgency": 40.0}, {"title": "拉斯維加斯金沙集團與金沙中國宣布 Sustaincia 加入加速器計劃", "title_en": "Las Vegas Sands and Sands China Announce Sustaincia Joins Accelerator Program", "title_th": "Las Vegas Sands และ Sands China ประกาศให้ Sustaincia เข้าร่วมโครงการ Accelerator", "title_hi": "लास वेगास सैंड्स और सैंड्स चाइना ने सस्टेनसिया के एक्सेलेरेटर प्रोग्राम में शामिल होने की घोषणा की", "link": "https://agbrief.com/news/macau/14/05/2026/lvs-and-sands-china-welcome-sustaincia-to-sands-cares-accelerator-programme/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 9, "coords": [36.71086718002972, -95.69682871129932], "sentiment": "利空", "news_full": [{"title": "加州彩民斬獲 Powerball 大獎，頭獎累積至 8,600 萬美元", "title_en": "California Lottery Player Hits Powerball Win, Jackpot Climbs to $86 Million", "title_th": "ผู้เล่นลอตเตอรี่ในแคลิฟอร์เนียถูกรางวัล Powerball แจ็กพอตสะสมพุ่งถึง 86 ล้านดอลลาร์", "title_hi": "कैलिफोर्निया के लॉटरी खिलाड़ी ने जीता पावरबॉल पुरस्कार, जैकपॉट बढ़कर 86 मिलियन डॉलर हुआ", "link": "https://www.gamblingnews.com/news/california-player-wins-match-5-prize-as-powerball-jackpot-reaches-86m/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "奧克拉荷馬州長否決線上博弈擴張法案", "title_en": "Oklahoma Governor Vetoes Online Gaming Expansion Bill", "title_th": "ผู้ว่าการรัฐโอคลาโฮมาวีโต้ร่างกฎหมายขยายการพนันออนไลน์", "title_hi": "ओक्लाहोमा के गवर्नर ने ऑनलाइन गेमिंग विस्तार विधेयक को वीटो किया", "link": "https://www.gamblingnews.com/news/oklahoma-governor-kevin-stitt-vetoes-bill-expanding-online-gambling/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "FanDuel 成癮訴訟被裁定進入仲裁程序", "title_en": "FanDuel Addiction Lawsuit Sent to Arbitration", "title_th": "คดีฟ้องร้องเรื่องการติดพนันของ FanDuel ถูกตัดสินให้เข้าสู่กระบวนการอนุญาโตตุลาการ", "title_hi": "FanDuel के लत संबंधी मुकदमे को मध्यस्थता के लिए भेजा गया", "link": "https://www.gamblingnews.com/news/fanduel-addiction-lawsuit-sent-to-arbitration/", "sentiment": "中立", "impact": 55.0, "urgency": 60.0}, {"title": "前德州樂透委員會負責人因職務濫用遭起訴", "title_en": "Former Texas Lottery Commission Head Indicted for Misconduct", "title_th": "อดีตหัวหน้าคณะกรรมาธิการลอตเตอรี่เท็กซัสถูกฟ้องในข้อหาประพฤติมิชอบ", "title_hi": "टेक्सास लॉटरी आयोग के पूर्व प्रमुख पर कदाचार के लिए आरोप", "link": "https://www.gamblingnews.com/news/former-texas-lottery-commission-director-was-briefly-indicted-for-abuse-of-office/", "sentiment": "利空", "impact": 40.0, "urgency": 20.0}, {"title": "美國維吉尼亞州四月博弈營收年增率上揚", "title_en": "Virginia, USA Gaming Revenue Sees Year-on-Year Growth in April", "title_th": "รายได้จากธุรกิจเกมในรัฐเวอร์จิเนีย สหรัฐอเมริกา ปรับตัวสูงขึ้นเมื่อเทียบเป็นรายปีในเดือนเมษายน", "title_hi": "अमेरिकी राज्य वर्जीनिया में अप्रैल में गेमिंग राजस्व में साल-दर-साल वृद्धि", "link": "https://focusgn.com/virginia-casino-revenue-rises-in-april", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "亞利桑那州三月運動博弈投注量年比下滑", "title_en": "Arizona Sports Betting Handle Declines Year-on-Year in March", "title_th": "ยอดเดิมพันกีฬาในรัฐแอริโซนาลดลงเมื่อเทียบเป็นรายปีในเดือนมีนาคม", "title_hi": "मार्च में एरिज़ोना में स्पोर्ट्स बेटिंग हैंडल में साल-दर-साल गिरावट", "link": "https://focusgn.com/arizona-sports-betting-handle-declines-year-over-year-in-march", "sentiment": "利空", "impact": 55.0, "urgency": 40.0}, {"title": "Polymarket 正式在美推出 iOS App，預測市場版圖擴張", "title_en": "Polymarket Launches iOS App in the U.S., Expanding Prediction Market Footprint", "title_th": "Polymarket เปิดตัวแอป iOS ในสหรัฐฯ อย่างเป็นทางการ ขยายฐานตลาดการทำนายผล", "title_hi": "Polymarket ने अमेरिका में अपना iOS ऐप लॉन्च किया, प्रेडिक्शन मार्केट का विस्तार", "link": "https://www.gamblingnews.com/news/polymarket-rolls-out-us-ios-app-after-months-long-wait/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "UFC 執行長 Dana White 爭取稅務減免，推動博弈政策對話", "title_en": "UFC CEO Dana White Seeks Tax Relief, Pushing for Betting Policy Dialogue", "title_th": "ซีอีโอ UFC Dana White เรียกร้องการลดหย่อนภาษี ผลักดันการเจรจานโยบายการพนัน", "title_hi": "UFC के CEO Dana White ने टैक्स में राहत और सट्टेबाजी नीति पर बातचीत की मांग की", "link": "https://www.gamblingnews.com/news/ufc-ceo-dana-white-appeals-to-trump-on-gambling-tax-rule/", "sentiment": "利多", "impact": 70.0, "urgency": 50.0}, {"title": "美監管機構擴大與體育聯盟談判，加強預測市場監控", "title_en": "U.S. Regulators Expand Negotiations with Sports Leagues to Strengthen Prediction Market Oversight", "title_th": "หน่วยงานกำกับดูแลสหรัฐฯ ขยายการเจรจากับลีกกีฬาเพื่อเพิ่มความเข้มงวดในการตรวจสอบตลาดการทำนายผล", "title_hi": "अमेरिकी नियामक प्रेडिक्शन मार्केट की निगरानी बढ़ाने के लिए स्पोर्ट्स लीगों के साथ बातचीत कर रहे हैं", "link": "https://www.gamblingnews.com/news/us-regulator-expands-talks-with-sports-leagues-over-prediction-markets/", "sentiment": "中立", "impact": 80.0, "urgency": 70.0}]}, {"region": "亞太", "count": 2, "coords": [25.0735590081826, 138.3141837439572], "sentiment": "利多", "news_full": [{"title": "Groove 在 SiGMA 亞洲展會聚焦監管洞察", "title_en": "Groove Focuses on Regulatory Insights at SiGMA Asia", "title_th": "Groove มุ่งเน้นไปที่ข้อมูลเชิงลึกด้านกฎระเบียบในงาน SiGMA Asia", "title_hi": "ग्रूव (Groove) ने SiGMA एशिया प्रदर्शनी में नियामक अंतर्दृष्टि पर ध्यान केंद्रित किया", "link": "https://agbrief.com/news/philippines/14/05/2026/groove-brings-regulatory-insight-to-the-spotlight-at-sigma-asia-2026/", "sentiment": "中立", "impact": 60.0, "urgency": 55.0}, {"title": "SOFTSWISS 進軍 SiGMA Asia，布局亞洲擴張計畫", "title_en": "SOFTSWISS Enters SiGMA Asia, Mapping Out Asian Expansion Plans", "title_th": "SOFTSWISS รุกเข้าสู่งาน SiGMA Asia เดินหน้าแผนขยายธุรกิจในเอเชีย", "title_hi": "SOFTSWISS ने SiGMA Asia में प्रवेश किया, एशियाई विस्तार योजनाओं को तैयार किया", "link": "https://agbrief.com/news/philippines/14/05/2026/softswiss-heads-to-sigma-asia-2026-to-help-operators-scale-across-asian-markets/", "sentiment": "利多", "impact": 75.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [44.810171856901185, -100.19876194284205], "sentiment": "利多", "news_full": [{"title": "麥格理分析師看好 DraftKings 未來高速增長", "title_en": "Macquarie Analyst Bullish on DraftKings' Future Growth", "title_th": "นักวิเคราะห์จาก Macquarie มองบวกต่อการเติบโตอย่างรวดเร็วของ DraftKings", "title_hi": "Macquarie के विश्लेषक ने DraftKings की भविष्य की तेजी पर भरोसा जताया", "link": "https://www.gamblingnews.com/news/macquarie-analyst-chad-beynon-says-draftkings-will-continue-growing-fast/", "sentiment": "利多", "impact": 75.0, "urgency": 50.0}, {"title": "Mohegan 集團第二財季淨營收表現成長", "title_en": "Mohegan Group Reports Growth in Q2 Net Revenue", "title_th": "Mohegan Group รายงานการเติบโตของรายได้สุทธิในไตรมาสที่ 2", "title_hi": "Mohegan Group ने Q2 में शुद्ध राजस्व में वृद्धि की रिपोर्ट दी", "link": "https://focusgn.com/mohegan-net-revenue-increases-in-second-fiscal-quarter", "sentiment": "利多", "impact": 60.0, "urgency": 30.0}]}, {"region": "英國", "count": 2, "coords": [51.28504525988772, -0.5674743356745283], "sentiment": "中立", "news_full": [{"title": "英國啟動全英最大的博弈危害研究中心", "title_en": "UK Launches Largest Gambling Harm Research Center", "title_th": "สหราชอาณาจักรเปิดศูนย์วิจัยอันตรายจากการพนันที่ใหญ่ที่สุดในประเทศ", "title_hi": "यूके ने देश का सबसे बड़ा जुआ हानि अनुसंधान केंद्र शुरू किया", "link": "https://www.gamblingnews.com/news/uk-opens-its-largest-independent-gambling-harms-research-center/", "sentiment": "中立", "impact": 50.0, "urgency": 40.0}, {"title": "英國成立首個大型獨立博弈傷害研究中心", "title_en": "UK Establishes First Large Independent Gaming Harm Research Center", "title_th": "สหราชอาณาจักรก่อตั้งศูนย์วิจัยความเสียหายจากการเล่นเกมอิสระขนาดใหญ่แห่งแรก", "title_hi": "यूके ने पहला बड़ा स्वतंत्र गेमिंग नुकसान अनुसंधान केंद्र स्थापित किया", "link": "https://focusgn.com/uk-launches-largest-independent-gambling-harms-research-centre", "sentiment": "中立", "impact": 65.0, "urgency": 60.0}]}, {"region": "法國", "count": 2, "coords": [46.39220416241965, 1.9171949292321], "sentiment": "利空", "news_full": [{"title": "法國監管機構警示新博弈風險演算法發現潛在隱患", "title_en": "French Regulators Identify Potential Risks in New Gaming Risk Algorithm", "title_th": "หน่วยงานกำกับดูแลของฝรั่งเศสพบความเสี่ยงที่น่ากังวลในอัลกอริทึมประเมินความเสี่ยงด้านเกมใหม่", "title_hi": "फ्रांसीसी नियामक ने नई गेमिंग रिस्क एल्गोरिदम में संभावित खतरों की पहचान की", "link": "https://focusgn.com/french-gambling-regulators-new-algorithm-sparks-concerns", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}, {"title": "巴黎聖日耳曼達成法甲五連霸紀錄", "title_en": "Paris Saint-Germain Achieves Record Five-Consecutive Ligue 1 Titles", "title_th": "Paris Saint-Germain สร้างสถิติคว้าแชมป์ลีกเอิง 5 สมัยติดต่อกัน", "title_hi": "पेरिस सेंट-जर्मेन ने लगातार पांचवीं बार लीग 1 खिताब जीतने का रिकॉर्ड बनाया", "link": "https://focusgn.com/ici-cest-paris-paris-saint-germain-are-ligue-1-champions-for-the-fifth-year-in-a-row", "sentiment": "利多", "impact": 40.0, "urgency": 10.0}]}, {"region": "歐洲", "count": 4, "coords": [50.40058140333365, 15.214073242491908], "sentiment": "利多", "news_full": [{"title": "烏克蘭啟動全新國家博弈線上監控系統 (DSOM)", "title_en": "Ukraine Launches New National Online Gaming Monitoring System (DSOM)", "title_th": "ยูเครนเปิดตัวระบบตรวจสอบการเล่นเกมออนไลน์แห่งชาติ (DSOM) ใหม่", "title_hi": "यूक्रेन ने नई राष्ट्रीय ऑनलाइन गेमिंग मॉनिटरिंग प्रणाली (DSOM) शुरू की", "link": "https://focusgn.com/playcity-launches-dsom-ukraines-new-state-online-monitoring-system-for-gambling", "sentiment": "中立", "impact": 70.0, "urgency": 85.0}, {"title": "SOFTSWISS 高層將於 NEXT Valletta 探討品牌與體育博彩成長", "title_en": "SOFTSWISS Executives to Discuss Brand and Sportsbook Growth at NEXT Valletta", "title_th": "ผู้บริหาร SOFTSWISS เตรียมหารือเกี่ยวกับการเติบโตของแบรนด์และการพนันกีฬาที่งาน NEXT Valletta", "title_hi": "SOFTSWISS के कार्यकारी NEXT Valletta में ब्रांड और स्पोर्ट्सबुक विकास पर चर्चा करेंगे", "link": "https://focusgn.com/softswiss-executives-to-lead-brand-and-sportsbook-growth-discussions-at-next-valletta", "sentiment": "利多", "impact": 70.0, "urgency": 60.0}, {"title": "1X2 Network 進駐丹麥 Stake.dk，擴大歐洲內容供應", "title_en": "1X2 Network Enters Danish Stake.dk, Expanding European Content Supply", "title_th": "1X2 Network จับมือ Stake.dk ในเดนมาร์ก ขยายการจัดหาเนื้อหาในยุโรป", "title_hi": "1X2 Network ने डेनमार्क के Stake.dk में प्रवेश किया, यूरोपीय कंटेंट आपूर्ति का विस्तार", "link": "https://www.gamblingnews.com/news/1x2-network-joins-stake-dk-in-denmark-to-support-casino-content/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "GLI 持續贊助 EEGS 監管圓桌會議", "title_en": "GLI continues to sponsor EEGS regulatory roundtable", "title_th": "GLI ยังคงสนับสนุนงานเสวนาหน่วยงานกำกับดูแล EEGS อย่างต่อเนื่อง", "title_hi": "GLI ने EEGS नियामक गोलमेज सम्मेलन को प्रायोजित करना जारी रखा", "link": "https://focusgn.com/eegs-welcomes-gli-as-regulators-round-table-sponsor-for-another-consecutive-year", "sentiment": "中立", "impact": 50.0, "urgency": 40.0}]}, {"region": "泰國", "count": 1, "coords": [13.807035943416064, 100.36281238332637], "sentiment": "利多", "news_full": [{"title": "Cabal Fest 2026：True Champions 賽事圓滿落幕", "title_en": "Cabal Fest 2026: True Champions Concludes Successfully", "title_th": "ปิดฉากลงอย่างสวยงามสำหรับงานแข่ง Cabal Fest 2026: True Champions", "title_hi": "Cabal Fest 2026: True Champions सफलतापूर्वक संपन्न", "link": "https://www.gamingdose.com/news/cabal-fest-2026-true-champions-%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%89%e0%b8%b2%e0%b8%81%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b8%a2%e0%b8%b4%e0%b9%88%e0%b8%87%e0%b9%83%e0%b8%ab%e0%b8%8d/", "sentiment": "利多", "impact": 60.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -8120,6 +8364,76 @@ const regionMap = {
 
 
 
+        const mobileFilterQuery = window.matchMedia('(max-width: 768px)');
+        const filterPanelOrigins = new Map();
+
+        document.querySelectorAll('.filter-panel').forEach(panel => {
+            filterPanelOrigins.set(panel, {
+                parent: panel.parentNode,
+                nextSibling: panel.nextSibling
+            });
+        });
+
+        function restoreFilterPanel(panel) {
+            const origin = filterPanelOrigins.get(panel);
+            panel.style.removeProperty('--mobile-filter-panel-top');
+            panel.style.removeProperty('--mobile-filter-panel-max');
+            if (!origin || panel.parentNode === origin.parent) return;
+            origin.parent.insertBefore(panel, origin.nextSibling);
+        }
+
+        function getFilterPanelTitle(panel) {
+            const trigger = document.querySelector(`.menu-trigger[data-target="${panel.id}"]`);
+            const label = trigger?.querySelector('[data-i18n], span');
+            return label?.textContent?.trim() || '';
+        }
+
+        function ensureMobileFilterHeader(panel) {
+            let header = panel.querySelector(':scope > .mobile-filter-panel-header');
+            if (!header) {
+                header = document.createElement('div');
+                header.className = 'mobile-filter-panel-header';
+                header.innerHTML = `
+                    <span class="mobile-filter-panel-title"></span>
+                    <button type="button" class="mobile-filter-panel-close" aria-label="Close filter panel">
+                        <span>完成</span><i class="fa-solid fa-xmark"></i>
+                    </button>
+                `;
+                panel.insertBefore(header, panel.firstChild);
+                header.querySelector('button').addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    closeFilterPanels();
+                });
+            }
+            const title = header.querySelector('.mobile-filter-panel-title');
+            if (title) title.textContent = getFilterPanelTitle(panel);
+        }
+
+        function prepareFilterPanel(panel) {
+            if (mobileFilterQuery.matches) {
+                const anchor = document.querySelector('.filter-console-wrap');
+                if (anchor) {
+                    const rect = anchor.getBoundingClientRect();
+                    const top = Math.max(8, Math.ceil(rect.bottom + 8));
+                    const maxHeight = Math.max(180, Math.floor(window.innerHeight - top - 12));
+                    panel.style.setProperty('--mobile-filter-panel-top', `${top}px`);
+                    panel.style.setProperty('--mobile-filter-panel-max', `${Math.min(maxHeight, 384)}px`);
+                }
+                ensureMobileFilterHeader(panel);
+                document.body.appendChild(panel);
+            } else {
+                restoreFilterPanel(panel);
+            }
+        }
+
+        function closeFilterPanels() {
+            document.querySelectorAll('.filter-panel').forEach(p => {
+                p.classList.add('hidden');
+                restoreFilterPanel(p);
+            });
+            document.body.classList.remove('mobile-filter-open');
+        }
+
         // 點擊切換導航選單顯示狀態
 
         document.querySelectorAll('.menu-trigger[data-target]').forEach(btn => {
@@ -8142,11 +8456,7 @@ const regionMap = {
 
                 // 關閉所有選單
 
-                document.querySelectorAll('.filter-panel').forEach(p => {
-
-                    p.classList.add('hidden');
-
-                });
+                closeFilterPanels();
 
                 
 
@@ -8158,7 +8468,11 @@ const regionMap = {
 
                 } else {
 
+                    prepareFilterPanel(panel);
                     panel.classList.remove('hidden');
+                    if (mobileFilterQuery.matches) {
+                        document.body.classList.add('mobile-filter-open');
+                    }
 
                 }
 
@@ -8184,15 +8498,7 @@ const regionMap = {
 
         // 點擊外部關閉所有選單
 
-        document.addEventListener('click', () => {
-
-            document.querySelectorAll('.filter-panel').forEach(p => {
-
-                p.classList.add('hidden');
-
-            });
-
-        });
+        document.addEventListener('click', closeFilterPanels);
 
         document.querySelectorAll('.filter-checkbox').forEach(cb => cb.addEventListener('change', applyFilters));
 
