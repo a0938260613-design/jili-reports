@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-06-12</title>
+    <title>JILI 市場情報指揮中心 - 2026-06-12</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-06-12</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2250,27 +2266,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2346,21 +2348,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="德州檢察總長辦公室發布最新法律意見，明確指出若所謂「技能遊戲機」（Skill-based gaming machines）的結果涉及機率成分，即被視為非法賭博設備。此項聲明旨在強化對德州境內非法博弈設施的監管力道，要求執法單位對該類設備採取更嚴格的取締行動，意在釐清技能與運氣在博弈法律定義上的模糊界線。" data-en="The Texas Attorney General&#39;s Office issued a legal opinion stating that &#39;skill-based gaming machines&#39; are considered illegal gambling devices if their outcomes involve elements of chance. This move aims to strengthen regulation over illegal gambling facilities in Texas, urging law enforcement to take stricter action and clarifying the blurred lines between skill and luck in gambling laws." data-th="สำนักงานอัยการสูงสุดรัฐเท็กซัสได้ออกความเห็นทางกฎหมายใหม่ โดยระบุชัดเจนว่า &#39;ตู้เกมทักษะ&#39; (Skill-based gaming machines) หากผลลัพธ์มีองค์ประกอบของโอกาส จะถือเป็นอุปกรณ์การพนันที่ผิดกฎหมาย ประกาศนี้มุ่งเน้นการเพิ่มความเข้มงวดในการกำกับดูแลสถานประกอบการพนันผิดกฎหมายในเท็กซัส โดยเรียกร้องให้หน่วยงานบังคับใช้กฎหมายดำเนินการปราบปรามอุปกรณ์ดังกล่าวอย่างเคร่งครัด เพื่อชี้แจงเส้นแบ่งระหว่างทักษะและโชคในการตีความทางกฎหมายการพนัน" data-hi="टेक्सास के अटॉर्नी जनरल कार्यालय ने एक कानूनी राय जारी की है जिसमें स्पष्ट किया गया है कि यदि &#39;कौशल-आधारित गेमिंग मशीनों&#39; (Skill-based gaming machines) के परिणाम में संयोग का कोई तत्व शामिल है, तो उन्हें अवैध जुआ उपकरण माना जाएगा। यह बयान टेक्सास में अवैध जुआ सुविधाओं पर निगरानी को मजबूत करने के लिए है, जिसमें कानून प्रवर्तन को इन उपकरणों के खिलाफ सख्त कार्रवाई करने का निर्देश दिया गया है ताकि जुआ कानूनों में कौशल और भाग्य के बीच की धुंधली रेखा को स्पष्ट किया जा सके।">德州檢察總長辦公室發布最新法律意見，明確指出若所謂「技能遊戲機」（Skill-based gaming machines）的結果涉及機率成分，即被視為非法賭博設備。此項聲明旨在強化對德州境內非法博弈設施的監管力道，要求執法單位對該類設備採取更嚴格的取締行動，意在釐清技能與運氣在博弈法律定義上的模糊界線。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="德州立場明確，將壓縮類博弈設備市場空間。作為純線上供應商，JILI 需審視北美業務合規邊界。短期內應避開技能型產品在該區的行銷投放，加強技術防禦，確保產品邏輯符合各地區博弈法規定義，避免受法律反彈波及。" data-en="Texas&#39;s clear stance will compress the market for quasi-gambling equipment. As a pure online provider, JILI needs to review its compliance boundaries in North America. In the short term, the company should avoid marketing skill-based products in the region and strengthen technical defenses to ensure product logic aligns with regional gambling regulations to avoid legal repercussions." data-th="จุดยืนที่ชัดเจนของเท็กซัสจะส่งผลกระทบต่อตลาดอุปกรณ์กึ่งพนัน ในฐานะผู้ให้บริการออนไลน์ JILI จำเป็นต้องทบทวนขอบเขตการปฏิบัติตามกฎระเบียบในอเมริกาเหนือ ในระยะสั้นควรหลีกเลี่ยงการทำตลาดผลิตภัณฑ์ประเภททักษะในพื้นที่ดังกล่าว และเสริมความแข็งแกร่งทางเทคนิคเพื่อให้มั่นใจว่าตรรกะของผลิตภัณฑ์สอดคล้องกับกฎระเบียบการพนันในแต่ละภูมิภาค เพื่อหลีกเลี่ยงผลกระทบทางกฎหมาย" data-hi="टेक्सास का स्पष्ट रुख अर्ध-जुए वाले उपकरणों के बाजार को सीमित कर देगा। एक शुद्ध ऑनलाइन प्रदाता के रूप में, JILI को उत्तरी अमेरिका में अपनी अनुपालन सीमाओं की समीक्षा करने की आवश्यकता है। अल्पावधि में, कंपनी को इस क्षेत्र में कौशल-आधारित उत्पादों की मार्केटिंग से बचना चाहिए और तकनीकी सुरक्षा को मजबूत करना चाहिए ताकि यह सुनिश्चित हो सके कि उत्पाद का तर्क क्षेत्रीय जुआ नियमों के अनुरूप है और किसी भी कानूनी कार्रवाई से बचा जा सके।">德州立場明確，將壓縮類博弈設備市場空間。作為純線上供應商，JILI 需審視北美業務合規邊界。短期內應避開技能型產品在該區的行銷投放，加強技術防禦，確保產品邏輯符合各地區博弈法規定義，避免受法律反彈波及。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2413,21 +2407,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="英國博彩慈善機構 GamCare 近期發出預警，指出隨著世界盃等大型賽事接近，針對線上博彩產品的促銷力度將大增，可能導致成癮性博彩行為與社會危害隨之上升。該機構呼籲營運商採取更嚴格的保護機制，並要求監管部門密切監控市場動態。" data-en="UK gambling charity GamCare issued a warning that as major events like the World Cup approach, promotional intensity for online gambling products will surge, potentially leading to increased addictive behaviors and social harm. They urge operators to adopt stricter protection mechanisms and call for closer regulatory monitoring." data-th="GamCare องค์กรการกุศลด้านการพนันในสหราชอาณาจักรได้ออกคำเตือนว่า เมื่อการแข่งขันใหญ่ๆ เช่น ฟุตบอลโลกใกล้เข้ามา โปรโมชั่นสำหรับผลิตภัณฑ์พนันออนไลน์จะเข้มข้นขึ้น ซึ่งอาจนำไปสู่พฤติกรรมการติดพนันและปัญหาสังคมที่เพิ่มขึ้น พวกเขาเรียกร้องให้ผู้ให้บริการใช้กลไกการคุ้มครองที่เข้มงวดขึ้น และเรียกร้องให้หน่วยงานกำกับดูแลเฝ้าติดตามสถานการณ์อย่างใกล้ชิด" data-hi="यूके की जुआ धर्मार्थ संस्था GamCare ने चेतावनी दी है कि विश्व कप जैसे बड़े आयोजनों के करीब आने के साथ ऑनलाइन जुआ उत्पादों के प्रचार में वृद्धि होगी, जिससे जुए की लत और सामाजिक नुकसान बढ़ सकता है। उन्होंने ऑपरेटरों से सख्त सुरक्षा तंत्र अपनाने और नियामकों से कड़ी निगरानी करने का आग्रह किया है।">英國博彩慈善機構 GamCare 近期發出預警，指出隨著世界盃等大型賽事接近，針對線上博彩產品的促銷力度將大增，可能導致成癮性博彩行為與社會危害隨之上升。該機構呼籲營運商採取更嚴格的保護機制，並要求監管部門密切監控市場動態。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此類預警通常預示著監管收緊。JILI 應優先開發具備「自動預算控制」與「冷靜期」功能的遊戲框架，作為產品賣點，協助合作運營商應對未來更嚴苛的監管報告要求。" data-en="Such warnings often precede regulatory tightening. JILI should prioritize the development of &#39;auto-budget control&#39; and &#39;cool-down period&#39; features in games as a USP, assisting partner operators in meeting future stringent reporting requirements." data-th="คำเตือนเหล่านี้มักจะเป็นสัญญาณล่วงหน้าของการเข้มงวดกฎระเบียบ JILI ควรให้ความสำคัญกับการพัฒนาฟีเจอร์ &#39;การควบคุมงบประมาณอัตโนมัติ&#39; และ &#39;ระยะเวลาพักเบรก&#39; ในเกมเพื่อเป็นจุดขาย และช่วยผู้ให้บริการพันธมิตรในการปฏิบัติตามข้อกำหนดการรายงานที่เข้มงวดในอนาคต" data-hi="इस तरह की चेतावनी अक्सर नियामक सख्ती से पहले आती है। JILI को गेम में &#39;ऑटो-बजट नियंत्रण&#39; और &#39;कूल-डाउन अवधि&#39; जैसी विशेषताओं को एक मुख्य विक्रय बिंदु के रूप में विकसित करने पर प्राथमिकता देनी चाहिए, ताकि भागीदार ऑपरेटरों को भविष्य की कठिन रिपोर्टिंग आवश्यकताओं को पूरा करने में मदद मिल सके।">此類預警通常預示著監管收緊。JILI 應優先開發具備「自動預算控制」與「冷靜期」功能的遊戲框架，作為產品賣點，協助合作運營商應對未來更嚴苛的監管報告要求。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 60</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
 
                     </div>
 
@@ -2480,21 +2466,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="美國威斯康辛州、羅德島州、伊利諾州及新墨西哥州針對預測市場（Prediction Market）平台的法律訴訟程序取得進展。各州監管機構與司法部門正檢視該類平台是否規避了現行博弈法規，並針對其營運模式是否符合金融衍生品或非法投注定義進行司法審查。此波訴訟可能成為未來預測市場營運合規性的關鍵判例。" data-en="Legal proceedings against prediction market platforms have progressed in Wisconsin, Rhode Island, Illinois, and New Mexico. Regulators and judicial departments are examining whether these platforms circumvent existing gambling laws and are conducting judicial reviews to determine if their operational models fit the definition of financial derivatives or illegal betting." data-th="กระบวนการทางกฎหมายต่อแพลตฟอร์มตลาดคาดการณ์ (Prediction Market) ในรัฐวิสคอนซิน โรดไอแลนด์ อิลลินอยส์ และนิวเม็กซิโก กำลังมีความคืบหน้า หน่วยงานกำกับดูแลและฝ่ายตุลาการกำลังตรวจสอบว่าแพลตฟอร์มเหล่านี้หลีกเลี่ยงกฎระเบียบการพนันที่มีอยู่หรือไม่ และตรวจสอบว่าโมเดลธุรกิจของตนเข้าข่ายอนุพันธ์ทางการเงินหรือการเดิมพันผิดกฎหมายหรือไม่" data-hi="विस्कॉन्सिन, रोड आइलैंड, इलिनोइस और न्यू मैक्सिको में प्रेडिक्शन मार्केट प्लेटफॉर्म के खिलाफ कानूनी कार्यवाही आगे बढ़ी है। नियामक और न्यायिक विभाग यह जांच कर रहे हैं कि क्या ये प्लेटफॉर्म मौजूदा जुआ नियमों से बच रहे हैं और इस बात की न्यायिक समीक्षा की जा रही है कि क्या उनके संचालन के मॉडल वित्तीय डेरिवेटिव या अवैध सट्टेबाजी की परिभाषा के अंतर्गत आते हैं।">美國威斯康辛州、羅德島州、伊利諾州及新墨西哥州針對預測市場（Prediction Market）平台的法律訴訟程序取得進展。各州監管機構與司法部門正檢視該類平台是否規避了現行博弈法規，並針對其營運模式是否符合金融衍生品或非法投注定義進行司法審查。此波訴訟可能成為未來預測市場營運合規性的關鍵判例。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="戰略點位待確認。" data-en="Strategic positioning is pending confirmation." data-th="อยู่ระหว่างรอการยืนยันตำแหน่งเชิงกลยุทธ์" data-hi="रणनीतिक स्थिति की पुष्टि होनी बाकी है।">戰略點位待確認。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2546,21 +2524,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="美國商品期貨交易委員會（CFTC）發布擬議規則，旨在釐清哪些類型的預測市場合約屬於監管範疇。此舉是針對近期預測市場平台急速擴張後，監管部門為強化金融市場誠信及防範賭博性質交易溢出而採取的行動，明確化交易平台在提供政治、娛樂等事件預測合約時的法律義務與合規框架。" data-en="The U.S. Commodity Futures Trading Commission (CFTC) has issued proposed rules aimed at clarifying which types of prediction market contracts fall under regulatory oversight. This action follows the rapid expansion of prediction platforms, with regulators seeking to strengthen financial market integrity and prevent the spillover of gambling-like transactions by defining the legal obligations and compliance frameworks for platforms offering event prediction contracts." data-th="คณะกรรมาธิการการซื้อขายสัญญาซื้อขายล่วงหน้าสินค้าโภคภัณฑ์ของสหรัฐฯ (CFTC) ได้ออกร่างกฎระเบียบเพื่อชี้แจงว่าสัญญาตลาดคาดการณ์ประเภทใดบ้างที่อยู่ภายใต้การกำกับดูแล การดำเนินการนี้เกิดขึ้นหลังจากการขยายตัวอย่างรวดเร็วของแพลตฟอร์มตลาดคาดการณ์ โดยหน่วยงานกำกับดูแลต้องการเสริมสร้างความซื่อสัตย์ของตลาดการเงินและป้องกันไม่ให้เกิดธุรกรรมที่มีลักษณะเหมือนการพนัน โดยกำหนดภาระผูกพันทางกฎหมายและกรอบการปฏิบัติตามกฎระเบียบสำหรับแพลตฟอร์มที่เสนอสัญญาการคาดการณ์เหตุการณ์" data-hi="अमेरिकी कमोडिटी फ्यूचर्स ट्रेडिंग कमीशन (CFTC) ने नए नियम प्रस्तावित किए हैं जिनका उद्देश्य यह स्पष्ट करना है कि किस प्रकार के प्रेडिक्शन मार्केट अनुबंध नियामक निगरानी के अंतर्गत आते हैं। यह कदम प्रेडिक्शन प्लेटफॉर्म के तेजी से विस्तार के बाद उठाया गया है, जिसमें नियामक वित्तीय बाजार की अखंडता को मजबूत करना चाहते हैं और घटना भविष्यवाणी अनुबंध प्रदान करने वाले प्लेटफॉर्म के लिए कानूनी दायित्वों और अनुपालन ढांचे को परिभाषित करके जुए जैसी गतिविधियों के प्रसार को रोकना चाहते हैं।">美國商品期貨交易委員會（CFTC）發布擬議規則，旨在釐清哪些類型的預測市場合約屬於監管範疇。此舉是針對近期預測市場平台急速擴張後，監管部門為強化金融市場誠信及防範賭博性質交易溢出而採取的行動，明確化交易平台在提供政治、娛樂等事件預測合約時的法律義務與合規框架。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="戰略點位待確認。" data-en="Strategic positioning is pending confirmation." data-th="อยู่ระหว่างรอการยืนยันตำแหน่งเชิงกลยุทธ์" data-hi="रणनीतिक स्थिति की पुष्टि होनी बाकी है।">戰略點位待確認。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -2613,21 +2583,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="隨著 2026 年世界盃臨近，監管機構與博彩營運商正探討如何藉此大型賽事強化「負責任博彩」(RG) 政策。業界人士認為，大型體育賽事帶來的流量激增是推動行業規範、增強品牌合規透明度以及建立永續經營環境的最佳時機。" data-en="As the 2026 World Cup approaches, regulators and operators are exploring how to leverage the mega-event to strengthen Responsible Gambling (RG) policies. Industry stakeholders believe that the surge in traffic during major sports events is the best time to promote industry standards, enhance brand compliance transparency, and build a sustainable environment." data-th="เมื่อฟุตบอลโลก 2026 ใกล้เข้ามา หน่วยงานกำกับดูแลและผู้ให้บริการพนันกำลังหาแนวทางใช้โอกาสจากมหกรรมกีฬานี้เพื่อยกระดับนโยบาย &#39;การพนันอย่างรับผิดชอบ&#39; (Responsible Gambling) ผู้เชี่ยวชาญในอุตสาหกรรมเชื่อว่าทราฟฟิกที่พุ่งสูงขึ้นในช่วงกิจกรรมกีฬาใหญ่เป็นเวลาที่เหมาะสมที่สุดในการผลักดันมาตรฐานอุตสาหกรรม เพิ่มความโปร่งใสในการปฏิบัติตามกฎ และสร้างสภาพแวดล้อมที่ยั่งยืน" data-hi="2026 विश्व कप के नजदीक आने के साथ, नियामक और ऑपरेटर इस मेगा-इवेंट का उपयोग &#39;जिम्मेदार जुआ&#39; (RG) नीतियों को मजबूत करने के लिए कर रहे हैं। उद्योग के विशेषज्ञों का मानना है कि प्रमुख खेल आयोजनों के दौरान ट्रैफिक में वृद्धि उद्योग मानकों को बढ़ावा देने, ब्रांड अनुपालन पारदर्शिता बढ़ाने और एक टिकाऊ वातावरण बनाने का सबसे अच्छा समय है।">隨著 2026 年世界盃臨近，監管機構與博彩營運商正探討如何藉此大型賽事強化「負責任博彩」(RG) 政策。業界人士認為，大型體育賽事帶來的流量激增是推動行業規範、增強品牌合規透明度以及建立永續經營環境的最佳時機。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="隨著賽事臨近，各國針對博彩廣告的規範將更加嚴格。JILI 需提早審視遊戲內的功能提示設計，確保符合國際級別的負責任博彩標準，以利於進入嚴格監管的歐洲或北美市場。" data-en="With the tournament approaching, regulations on gambling ads will tighten. JILI must review in-game function prompts early to meet international RG standards, facilitating market entry into strictly regulated regions like Europe or North America." data-th="เมื่อการแข่งขันใกล้เข้ามา กฎระเบียบเกี่ยวกับโฆษณาการพนันจะเข้มงวดขึ้น JILI ต้องตรวจสอบฟีเจอร์การแจ้งเตือนในเกมเพื่อเตรียมพร้อมให้ได้ตามมาตรฐานสากลด้านการพนันอย่างรับผิดชอบ เพื่อเตรียมเข้าสู่ตลาดที่มีการกำกับดูแลเข้มงวดอย่างยุโรปหรืออเมริกาเหนือ" data-hi="जैसे-जैसे टूर्नामेंट नजदीक आ रहा है, जुआ विज्ञापनों पर नियम सख्त होंगे। JILI को अंतरराष्ट्रीय स्तर पर जिम्मेदार जुआ मानकों को पूरा करने के लिए गेम-इन फंक्शन प्रॉम्प्ट्स की जल्दी समीक्षा करनी चाहिए, ताकि यूरोप या उत्तरी अमेरिका जैसे सख्त विनियमित बाजारों में प्रवेश आसान हो सके।">隨著賽事臨近，各國針對博彩廣告的規範將更加嚴格。JILI 需提早審視遊戲內的功能提示設計，確保符合國際級別的負責任博彩標準，以利於進入嚴格監管的歐洲或北美市場。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -2679,21 +2641,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="在涉及運動員職業生涯的法律案件中，法官近期要求 NBA 就球員 Terry Rozier 的聯盟未來發展提供意見。此案件涉及運動員的合約義務與職業發展，在體育產業引發廣泛關注，並可能對未來涉及運動員合約與投注產品之間的關聯性規範產生深遠影響。" data-en="In a legal case involving an athlete&#39;s career, a judge recently requested the NBA to provide its stance on player Terry Rozier&#39;s future. The case concerns contractual obligations and professional development, garnering wide attention in the sports industry, and may impact the relationship between athlete contracts and betting product regulations." data-th="ในคดีความทางกฎหมายที่เกี่ยวข้องกับอาชีพนักกีฬา ผู้พิพากษาได้ขอให้ NBA แสดงความคิดเห็นเกี่ยวกับอนาคตของ Terry Rozier ในลีก คดีนี้เกี่ยวข้องกับภาระผูกพันตามสัญญาและการพัฒนาวิชาชีพ ซึ่งได้รับความสนใจอย่างกว้างขวางในอุตสาหกรรมกีฬา และอาจส่งผลต่อกฎระเบียบความเชื่อมโยงระหว่างสัญญานักกีฬาและผลิตภัณฑ์การพนันในอนาคต" data-hi="एक खिलाड़ी के करियर से जुड़े कानूनी मामले में, एक न्यायाधीश ने हाल ही में NBA से खिलाड़ी टेरी रोजियर के भविष्य पर अपनी स्थिति स्पष्ट करने के लिए कहा है। यह मामला संविदात्मक दायित्वों और पेशेवर विकास से संबंधित है, जिसने खेल उद्योग में व्यापक ध्यान आकर्षित किया है और यह एथलीट अनुबंधों व सट्टेबाजी उत्पाद नियमों के बीच के संबंधों को प्रभावित कर सकता है।">在涉及運動員職業生涯的法律案件中，法官近期要求 NBA 就球員 Terry Rozier 的聯盟未來發展提供意見。此案件涉及運動員的合約義務與職業發展，在體育產業引發廣泛關注，並可能對未來涉及運動員合約與投注產品之間的關聯性規範產生深遠影響。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="體育明星與博彩合規之間的界線日益模糊。JILI 在使用任何運動明星作為遊戲視覺素材時，需加強合約審查，避免因運動員的法律訴訟而影響產品的授權與運營穩定性。" data-en="The boundary between sports stars and gambling compliance is increasingly blurred. When using any sports stars as visual materials, JILI must enhance contract review to avoid product licensing and operational stability risks resulting from athlete litigation." data-th="เส้นแบ่งระหว่างดาราในวงการกีฬาและการปฏิบัติตามกฎการพนันมีความพร่ามัวมากขึ้น JILI ต้องเข้มงวดในการตรวจสอบสัญญาเมื่อใช้ดาราในวงการกีฬาเป็นสื่อประกอบภาพในเกม เพื่อหลีกเลี่ยงความเสี่ยงในการถูกระงับสิทธิ์การใช้งานและผลกระทบต่อความมั่นคงในการดำเนินงานอันเนื่องมาจากการฟ้องร้องของนักกีฬา" data-hi="खेल सितारों और जुआ अनुपालन के बीच की रेखा तेजी से धुंधली होती जा रही है। किसी भी खेल सितारे को दृश्य सामग्री के रूप में उपयोग करते समय, JILI को अनुबंध की समीक्षा को मजबूत करना चाहिए ताकि एथलीट मुकदमेबाजी के कारण उत्पाद लाइसेंसिंग और परिचालन स्थिरता को होने वाले जोखिमों से बचा जा सके।">體育明星與博彩合規之間的界線日益模糊。JILI 在使用任何運動明星作為遊戲視覺素材時，需加強合約審查，避免因運動員的法律訴訟而影響產品的授權與運營穩定性。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -3082,7 +3036,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "美國", "count": 4, "coords": [36.88717868309866, -95.92998804704564], "sentiment": "利空", "news_full": [{"title": "美國德州檢察總長重申：含機率成分之技能遊戲機屬非法", "title_en": "Texas Attorney General Reaffirms: Skill-based Gaming Machines with Chance Elements are Illegal", "title_th": "อัยการสูงสุดรัฐเท็กซัสย้ำ: ตู้เกมทักษะที่มีองค์ประกอบของโอกาสถือเป็นสิ่งผิดกฎหมาย", "title_hi": "टेक्सास के अटॉर्नी जनरल ने दोहराया: कौशल-आधारित गेमिंग मशीनें जिनमें संयोग का तत्व हो, अवैध हैं", "link": "https://www.gamblinginsider.com/news/166444/texas-ag-skill-machines-illegal", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "預測市場平台在美多州面臨法律訴訟挑戰", "title_en": "Prediction Market Platforms Face Legal Challenges in Multiple U.S. States", "title_th": "แพลตฟอร์มตลาดคาดการณ์เผชิญความท้าทายทางกฎหมายในหลายรัฐของสหรัฐฯ", "title_hi": "अमेरिका के कई राज्यों में प्रेडिक्शन मार्केट प्लेटफॉर्म कानूनी चुनौतियों का सामना कर रहे हैं", "link": "https://www.gamblinginsider.com/news/166391/prediction-market-lawsuits-wisconsin-rhode-island-illinois-new-mexico", "sentiment": "利空", "impact": 75.0, "urgency": 60.0}, {"title": "美國 CFTC 擬定新規則，釐清預測市場合約監管範圍", "title_en": "U.S. CFTC Proposes New Rules to Clarify Regulatory Scope of Prediction Market Contracts", "title_th": "CFTC ของสหรัฐฯ เสนอกฎระเบียบใหม่เพื่อชี้แจงขอบเขตการกำกับดูแลสัญญาตลาดคาดการณ์", "title_hi": "अमेरिकी CFTC ने प्रेडिक्शन मार्केट अनुबंधों के नियामक दायरे को स्पष्ट करने के लिए नए नियम प्रस्तावित किए", "link": "https://www.gamblinginsider.com/news/166266/cftc-proposed-rules-prediction-market-contracts-exchanges", "sentiment": "中立", "impact": 70.0, "urgency": 55.0}, {"title": "法官要求 NBA 對 Terry Rozier 的聯盟未來提供意見", "title_en": "Judge Requests NBA's Opinion on Terry Rozier's League Future", "title_th": "ผู้พิพากษาขอความเห็นจาก NBA เกี่ยวกับอนาคตในลีกของ Terry Rozier", "title_hi": "न्यायाधीश ने टेरी रोजियर के लीग भविष्य पर NBA से राय मांगी", "link": "https://www.gamblinginsider.com/news/166482/judge-nba-input-terry-rozier-future", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}]}, {"region": "歐洲", "count": 1, "coords": [50.27135228361509, 15.316626038179843], "sentiment": "利空", "news_full": [{"title": "GamCare 警告世界盃恐引發線上博彩成癮與危害", "title_en": "GamCare Warns World Cup Could Trigger Online Gambling Addiction", "title_th": "GamCare เตือนฟุตบอลโลกอาจกระตุ้นการติดพนันออนไลน์", "title_hi": "GamCare की चेतावनी: विश्व कप ऑनलाइन जुए की लत को बढ़ावा दे सकता है", "link": "https://www.gamblinginsider.com/news/166532/gamcare-world-cup-online-gambling-harm-warning", "sentiment": "利空", "impact": 60.0, "urgency": 55.0}]}, {"region": "全球", "count": 1, "coords": [20.36808801724154, 10.214581234653394], "sentiment": "利多", "news_full": [{"title": "2026 世界盃成為推動負責任博彩的契機", "title_en": "2026 World Cup Becomes a Catalyst for Responsible Gambling", "title_th": "ฟุตบอลโลก 2026 กลายเป็นโอกาสในการส่งเสริมการพนันอย่างรับผิดชอบ", "title_hi": "2026 विश्व कप जिम्मेदार जुआ को बढ़ावा देने का अवसर", "link": "https://www.gamblinginsider.com/news/166520/world-cup-2026-responsible-gambling", "sentiment": "利多", "impact": 70.0, "urgency": 50.0}]}];
+        const mapMarkersData = [{"region": "美國", "count": 4, "coords": [37.20561588164693, -95.33000335512446], "sentiment": "利空", "news_full": [{"title": "美國德州檢察總長重申：含機率成分之技能遊戲機屬非法", "title_en": "Texas Attorney General Reaffirms: Skill-based Gaming Machines with Chance Elements are Illegal", "title_th": "อัยการสูงสุดรัฐเท็กซัสย้ำ: ตู้เกมทักษะที่มีองค์ประกอบของโอกาสถือเป็นสิ่งผิดกฎหมาย", "title_hi": "टेक्सास के अटॉर्नी जनरल ने दोहराया: कौशल-आधारित गेमिंग मशीनें जिनमें संयोग का तत्व हो, अवैध हैं", "link": "https://www.gamblinginsider.com/news/166444/texas-ag-skill-machines-illegal", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "預測市場平台在美多州面臨法律訴訟挑戰", "title_en": "Prediction Market Platforms Face Legal Challenges in Multiple U.S. States", "title_th": "แพลตฟอร์มตลาดคาดการณ์เผชิญความท้าทายทางกฎหมายในหลายรัฐของสหรัฐฯ", "title_hi": "अमेरिका के कई राज्यों में प्रेडिक्शन मार्केट प्लेटफॉर्म कानूनी चुनौतियों का सामना कर रहे हैं", "link": "https://www.gamblinginsider.com/news/166391/prediction-market-lawsuits-wisconsin-rhode-island-illinois-new-mexico", "sentiment": "利空", "impact": 75.0, "urgency": 60.0}, {"title": "美國 CFTC 擬定新規則，釐清預測市場合約監管範圍", "title_en": "U.S. CFTC Proposes New Rules to Clarify Regulatory Scope of Prediction Market Contracts", "title_th": "CFTC ของสหรัฐฯ เสนอกฎระเบียบใหม่เพื่อชี้แจงขอบเขตการกำกับดูแลสัญญาตลาดคาดการณ์", "title_hi": "अमेरिकी CFTC ने प्रेडिक्शन मार्केट अनुबंधों के नियामक दायरे को स्पष्ट करने के लिए नए नियम प्रस्तावित किए", "link": "https://www.gamblinginsider.com/news/166266/cftc-proposed-rules-prediction-market-contracts-exchanges", "sentiment": "中立", "impact": 70.0, "urgency": 55.0}, {"title": "法官要求 NBA 對 Terry Rozier 的聯盟未來提供意見", "title_en": "Judge Requests NBA's Opinion on Terry Rozier's League Future", "title_th": "ผู้พิพากษาขอความเห็นจาก NBA เกี่ยวกับอนาคตในลีกของ Terry Rozier", "title_hi": "न्यायाधीश ने टेरी रोजियर के लीग भविष्य पर NBA से राय मांगी", "link": "https://www.gamblinginsider.com/news/166482/judge-nba-input-terry-rozier-future", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}]}, {"region": "歐洲", "count": 1, "coords": [50.345741005226, 15.373310768698596], "sentiment": "利空", "news_full": [{"title": "GamCare 警告世界盃恐引發線上博彩成癮與危害", "title_en": "GamCare Warns World Cup Could Trigger Online Gambling Addiction", "title_th": "GamCare เตือนฟุตบอลโลกอาจกระตุ้นการติดพนันออนไลน์", "title_hi": "GamCare की चेतावनी: विश्व कप ऑनलाइन जुए की लत को बढ़ावा दे सकता है", "link": "https://www.gamblinginsider.com/news/166532/gamcare-world-cup-online-gambling-harm-warning", "sentiment": "利空", "impact": 60.0, "urgency": 55.0}]}, {"region": "全球", "count": 1, "coords": [20.019805639820483, 10.02838417836904], "sentiment": "利多", "news_full": [{"title": "2026 世界盃成為推動負責任博彩的契機", "title_en": "2026 World Cup Becomes a Catalyst for Responsible Gambling", "title_th": "ฟุตบอลโลก 2026 กลายเป็นโอกาสในการส่งเสริมการพนันอย่างรับผิดชอบ", "title_hi": "2026 विश्व कप जिम्मेदार जुआ को बढ़ावा देने का अवसर", "link": "https://www.gamblinginsider.com/news/166520/world-cup-2026-responsible-gambling", "sentiment": "利多", "impact": 70.0, "urgency": 50.0}]}];
 
         const regionMarkers = {};
 
@@ -3523,14 +3477,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -3547,7 +3493,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -4245,7 +4191,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
