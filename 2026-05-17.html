@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-05-17</title>
+    <title>JILI 市場情報指揮中心 - 2026-05-17</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-05-17</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2258,27 +2274,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2353,21 +2355,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="標準普爾（S&amp;P）因NagaCorp目前無債務壓力，將其評級調升。儘管財務槓桿有所改善，但報告指出柬埔寨貴賓博弈業務的結構性衰退，將持續對公司整體商業實力及未來獲利復甦構成重大挑戰。" data-en="S&amp;P upgraded NagaCorp&#39;s rating due to reduced debt pressure. Despite improved leverage, the report highlights a structural decline in Cambodia&#39;s VIP gaming business, posing significant challenges to the company&#39;s business strength and future profit recovery." data-th="S&amp;P ปรับเพิ่มอันดับความน่าเชื่อถือของ NagaCorp เนื่องจากไม่มีแรงกดดันด้านหนี้สิน แม้สถานะทางการเงินจะดีขึ้น แต่รายงานระบุว่าธุรกิจกาสิโนระดับ VIP ในกัมพูชาเผชิญกับการถดถอยเชิงโครงสร้าง ซึ่งยังคงเป็นความท้าทายต่อความแข็งแกร่งของธุรกิจและการฟื้นตัวของกำไร" data-hi="S&amp;P ने ऋण का दबाव कम होने के कारण NagaCorp की रेटिंग बढ़ा दी है। वित्तीय लीवरेज में सुधार के बावजूद, रिपोर्ट कंबोडिया के VIP गेमिंग व्यवसाय में संरचनात्मक गिरावट की ओर इशारा करती है, जो कंपनी की व्यावसायिक ताकत और भविष्य के लाभ की वसूली के लिए एक बड़ी चुनौती बनी हुई है।">標準普爾（S&amp;P）因NagaCorp目前無債務壓力，將其評級調升。儘管財務槓桿有所改善，但報告指出柬埔寨貴賓博弈業務的結構性衰退，將持續對公司整體商業實力及未來獲利復甦構成重大挑戰。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="NagaCorp的營運調整顯示線下貴賓業務已非成長引擎。對Jili而言，需持續監測該市場的數位轉型潛力，防禦因實體博弈客群流失而導致的區域市場份額震盪，並審慎評估與該類運營商的內容交付路徑。" data-en="NagaCorp&#39;s operational adjustments indicate that offline VIP business is no longer a growth engine. Jili must monitor the digital transformation potential in this market, defend against regional market share volatility caused by the loss of physical gaming traffic, and prudently evaluate content delivery paths with such operators." data-th="การปรับตัวของ NagaCorp บ่งชี้ว่าธุรกิจ VIP แบบออฟไลน์ไม่ใช่แรงขับเคลื่อนการเติบโตอีกต่อไป สำหรับ Jili จำเป็นต้องติดตามศักยภาพในการเปลี่ยนแปลงทางดิจิทัลของตลาดนี้ เพื่อป้องกันความผันผวนของส่วนแบ่งตลาดจากการสูญเสียผู้เล่นในพื้นที่ และประเมินช่องทางการส่งมอบเนื้อหาเกมกับผู้ให้บริการกลุ่มนี้อย่างรอบคอบ" data-hi="NagaCorp के परिचालन समायोजन से पता चलता है कि ऑफलाइन VIP व्यवसाय अब विकास का इंजन नहीं है। Jili को इस बाजार में डिजिटल परिवर्तन की क्षमता की निगरानी करनी चाहिए, ताकि भौतिक गेमिंग ग्राहकों की कमी से होने वाले बाजार हिस्सेदारी के नुकसान से बचा जा सके और ऐसे ऑपरेटरों के साथ कंटेंट डिलीवरी पाथ का सावधानीपूर्वक मूल्यांकन किया जा सके।">NagaCorp的營運調整顯示線下貴賓業務已非成長引擎。對Jili而言，需持續監測該市場的數位轉型潛力，防禦因實體博弈客群流失而導致的區域市場份額震盪，並審慎評估與該類運營商的內容交付路徑。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2420,21 +2414,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="在LUXE Asia 2026評選中，澳門憑藉其豪華度假村設施與旅遊服務，獲評為「亞洲最佳奢華目的地」。此榮譽反映澳門在全球旅遊市場中的頂級定位，亦進一步鞏固其作為亞洲博弈與娛樂樞紐的品牌影響力。" data-en="In the LUXE Asia 2026 awards, Macau was named &#39;Best Luxury Destination in Asia&#39; for its world-class resort facilities and travel services, reinforcing its status as a top gaming and entertainment hub." data-th="จากการจัดอันดับ LUXE Asia 2026 มาเก๊าได้รับรางวัล &#39;จุดหมายปลายทางหรูหราที่ดีที่สุดในเอเชีย&#39; จากสิ่งอำนวยความสะดวกในรีสอร์ทระดับหรูและบริการด้านการท่องเที่ยว ซึ่งตอกย้ำความเป็นผู้นำในฐานะศูนย์กลางด้านการพนันและความบันเทิงของเอเชีย" data-hi="LUXE एशिया 2026 पुरस्कारों में, मकाऊ को उसके लक्जरी रिसॉर्ट सुविधाओं और यात्रा सेवाओं के लिए &#39;एशिया का सर्वश्रेष्ठ लक्जरी गंतव्य&#39; नामित किया गया है। यह सम्मान वैश्विक पर्यटन बाजार में मकाऊ की शीर्ष स्थिति को दर्शाता है और एशिया के गेमिंग और मनोरंजन केंद्र के रूप में इसकी ब्रांड प्रतिष्ठा को मजबूत करता है।">在LUXE Asia 2026評選中，澳門憑藉其豪華度假村設施與旅遊服務，獲評為「亞洲最佳奢華目的地」。此榮譽反映澳門在全球旅遊市場中的頂級定位，亦進一步鞏固其作為亞洲博弈與娛樂樞紐的品牌影響力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="澳門高端市場的持續強勢對B2B供應商雖非直接關聯，但高端旅遊帶動的客群流動為電子遊戲市場創造了穩定的背景環境。Jili將藉此高端品牌效應，優化遊戲內容的沉浸式體驗，以對接高端玩家的需求。" data-en="While the strength of Macau&#39;s high-end market is not directly related to B2B suppliers, the traffic driven by luxury tourism creates a stable environment for the electronic gaming market. Jili will leverage this brand effect to optimize immersive game experiences for premium players." data-th="แม้ตลาดระดับพรีเมียมของมาเก๊าอาจไม่ได้เชื่อมโยงโดยตรงกับซัพพลายเออร์ B2B แต่การไหลเวียนของผู้คนที่เกิดจากการท่องเที่ยวระดับหรูช่วยสร้างสภาพแวดล้อมที่มั่นคงให้กับตลาดเกมอิเล็กทรอนิกส์ Jili จะใช้ประโยชน์จากอิทธิพลของแบรนด์ระดับสูงนี้เพื่อปรับปรุงประสบการณ์การเล่นเกมให้มีความดื่มด่ำยิ่งขึ้น เพื่อตอบโจทย์ความต้องการของผู้เล่นระดับพรีเมียม" data-hi="हालांकि मकाऊ के हाई-एंड बाजार की मजबूती का B2B आपूर्तिकर्ताओं से सीधा संबंध नहीं है, लेकिन लक्जरी पर्यटन द्वारा संचालित ग्राहकों का प्रवाह इलेक्ट्रॉनिक गेमिंग बाजार के लिए एक स्थिर पृष्ठभूमि बनाता है। Jili इस लक्जरी ब्रांड प्रभाव का लाभ उठाकर प्रीमियम खिलाड़ियों की जरूरतों को पूरा करने के लिए गेम कंटेंट के इमर्सिव अनुभव को अनुकूलित करेगा।">澳門高端市場的持續強勢對B2B供應商雖非直接關聯，但高端旅遊帶動的客群流動為電子遊戲市場創造了穩定的背景環境。Jili將藉此高端品牌效應，優化遊戲內容的沉浸式體驗，以對接高端玩家的需求。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2487,21 +2473,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Aristocrat Gaming在奧克拉荷馬州賭場全面部署其最新的 Class 2 Crown Bartop 遊戲機台。此次擴張旨在提升當地賭場的娛樂機台效能，強化其在美國區域性博弈市場的市佔率。" data-en="Aristocrat Gaming has fully deployed its latest Class 2 Crown Bartop gaming machines in Oklahoma casinos, aiming to improve machine performance and strengthen its market share in the US regional gaming market." data-th="Aristocrat Gaming ได้ติดตั้งเครื่องเล่นเกมรุ่นล่าสุด &#39;Class 2 Crown Bartop&#39; ในคาสิโนต่างๆ ทั่วรัฐโอคลาโฮมา การขยายตัวนี้มีเป้าหมายเพื่อเพิ่มประสิทธิภาพของตู้เกมในท้องถิ่นและเสริมสร้างส่วนแบ่งการตลาดในตลาดการพนันระดับภูมิภาคของสหรัฐอเมริกา" data-hi="Aristocrat Gaming ने ओक्लाहोमा कैसीनो में अपनी नवीनतम &#39;Class 2 Crown Bartop&#39; गेमिंग मशीनों को पूरी तरह से तैनात कर दिया है। इस विस्तार का उद्देश्य स्थानीय कैसीनो में गेमिंग मशीनों के प्रदर्शन को बेहतर बनाना और अमेरिकी क्षेत्रीय गेमिंग बाजार में अपनी बाजार हिस्सेदारी को मजबूत करना है।">Aristocrat Gaming在奧克拉荷馬州賭場全面部署其最新的 Class 2 Crown Bartop 遊戲機台。此次擴張旨在提升當地賭場的娛樂機台效能，強化其在美國區域性博弈市場的市佔率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="Aristocrat在實體機台的強勢布局對線上供應商構成間接競爭壓力。Jili需加速線上遊戲與線下體驗的互補與銜接，並透過雲端技術優化行動端遊戲效能，以防禦實體機台對玩家時間的佔據。" data-en="Aristocrat&#39;s strong layout in physical machines puts indirect competitive pressure on online suppliers. Jili needs to accelerate the integration of online games with offline experiences and optimize mobile game performance via cloud technology." data-th="ความแข็งแกร่งของ Aristocrat ในตลาดเครื่องเล่นเกมแบบฟิสิคัลสร้างแรงกดดันในการแข่งขันทางอ้อมต่อผู้จัดหาออนไลน์ Jili จำเป็นต้องเร่งการเชื่อมต่อระหว่างประสบการณ์ออนไลน์และออฟไลน์ และปรับปรุงประสิทธิภาพของเกมมือถือผ่านเทคโนโลยีคลาวด์ เพื่อป้องกันการแย่งเวลาของผู้เล่นจากการถูกเครื่องเล่นเกมแบบฟิสิคัลครอบครอง" data-hi="भौतिक मशीनों में Aristocrat की मजबूत उपस्थिति ऑनलाइन आपूर्तिकर्ताओं पर अप्रत्यक्ष प्रतिस्पर्धी दबाव डालती है। Jili को ऑनलाइन गेम और ऑफलाइन अनुभव के बीच पूरकता और कनेक्शन को तेज करने की आवश्यकता है, और क्लाउड तकनीक के माध्यम से मोबाइल गेम के प्रदर्शन को अनुकूलित करना होगा, ताकि खिलाड़ी के समय पर भौतिक मशीनों के कब्जे को रोका जा सके।">Aristocrat在實體機台的強勢布局對線上供應商構成間接競爭壓力。Jili需加速線上遊戲與線下體驗的互補與銜接，並透過雲端技術優化行動端遊戲效能，以防禦實體機台對玩家時間的佔據。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2554,21 +2532,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="最新數據顯示，菲律賓2026年第一季總體遊戲營收表現不佳，錄得16%的跌幅。市場分析直指電子遊戲板塊的低迷表現為核心導火索，反映出該領域正面臨玩家黏性下降或產品競爭力不足的挑戰。" data-en="Latest data shows Philippines Q1 2026 total gaming revenue performed poorly, recording a 16% decline. Market analysis identifies the downturn in the e-gaming sector as the primary cause, reflecting challenges in player stickiness or product competitiveness." data-th="ข้อมูลล่าสุดเผยให้เห็นว่ารายได้รวมจากการพนันของฟิลิปปินส์ในไตรมาสที่ 1 ปี 2026 ทำผลงานได้ไม่ดีนัก โดยลดลง 16% การวิเคราะห์ตลาดชี้ว่าความซบเซาของภาคส่วนเกมอิเล็กทรอนิกส์เป็นสาเหตุหลัก ซึ่งสะท้อนถึงความท้าทายในด้านความเหนียวแน่นของผู้เล่นหรือความสามารถในการแข่งขันของผลิตภัณฑ์" data-hi="नवीनतम डेटा से पता चलता है कि फिलीपींस का कुल गेमिंग राजस्व 2026 की पहली तिमाही में खराब प्रदर्शन कर रहा है और इसमें 16% की गिरावट दर्ज की गई है। बाजार विश्लेषण में ई-गेमिंग क्षेत्र की सुस्ती को मुख्य कारण माना गया है, जो खिलाड़ी प्रतिधारण (player stickiness) या उत्पाद प्रतिस्पर्धात्मकता की कमी को दर्शाता है।">最新數據顯示，菲律賓2026年第一季總體遊戲營收表現不佳，錄得16%的跌幅。市場分析直指電子遊戲板塊的低迷表現為核心導火索，反映出該領域正面臨玩家黏性下降或產品競爭力不足的挑戰。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="該數據證實了電子遊戲市場正面臨結構性危機，若不採取防禦策略，將嚴重影響供應鏈價值。Jili需針對性地升級產品體驗，分析當地市場的玩家流失原因，並快速調整產品研發優先級，以挽回市場流失。" data-en="The data confirms a structural crisis in the e-gaming market. Jili must upgrade product experiences, analyze the reasons for local player attrition, and quickly adjust R&amp;D priorities to recover lost market ground." data-th="ข้อมูลนี้ยืนยันว่าตลาดเกมอิเล็กทรอนิกส์กำลังเผชิญกับวิกฤตเชิงโครงสร้าง หากไม่มีกลยุทธ์เชิงรุก จะส่งผลกระทบรุนแรงต่อมูลค่าห่วงโซ่อุปทาน Jili จำเป็นต้องยกระดับประสบการณ์ผลิตภัณฑ์ วิเคราะห์สาเหตุที่ผู้เล่นในตลาดท้องถิ่นลดลง และปรับลำดับความสำคัญในการวิจัยและพัฒนาอย่างเร่งด่วนเพื่อกู้คืนส่วนแบ่งตลาด" data-hi="यह डेटा पुष्टि करता है कि ई-गेमिंग बाजार एक संरचनात्मक संकट का सामना कर रहा है। यदि रक्षात्मक रणनीति नहीं अपनाई गई, तो यह आपूर्ति श्रृंखला के मूल्य को गंभीर रूप से प्रभावित करेगा। Jili को उत्पाद अनुभव को लक्षित तरीके से अपग्रेड करने, स्थानीय बाजार में खिलाड़ियों के नुकसान के कारणों का विश्लेषण करने और बाजार में खोई हुई पकड़ को वापस पाने के लिए उत्पाद आरएंडडी प्राथमिकता को तेजी से समायोजित करने की आवश्यकता है।">該數據證實了電子遊戲市場正面臨結構性危機，若不採取防禦策略，將嚴重影響供應鏈價值。Jili需針對性地升級產品體驗，分析當地市場的玩家流失原因，並快速調整產品研發優先級，以挽回市場流失。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 95</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 95</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 95</span>
 
                     </div>
 
@@ -2621,21 +2591,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="標準普爾最新報告分析指出，儘管NagaCorp在債務管理上有所進展，但預計其獲利能力短期內難以恢復至2019年疫情前的峰值水準，暗示該企業業務基礎與市場環境發生了永久性改變。" data-en="S&amp;P&#39;s latest report indicates that despite progress in debt management, NagaCorp&#39;s profitability is unlikely to return to 2019 pre-pandemic peak levels in the short term, implying permanent changes in its business foundation and market environment." data-th="รายงานล่าสุดของ S&amp;P ระบุว่าแม้ NagaCorp จะมีความก้าวหน้าในการจัดการหนี้สิน แต่คาดว่ากำไรของบริษัทจะไม่สามารถฟื้นตัวกลับสู่จุดสูงสุดก่อนโควิดในปี 2019 ได้ในระยะสั้น ซึ่งบ่งชี้ว่ารากฐานทางธุรกิจและสภาพแวดล้อมของตลาดมีการเปลี่ยนแปลงอย่างถาวร" data-hi="S&amp;P की नवीनतम रिपोर्ट बताती है कि ऋण प्रबंधन में प्रगति के बावजूद, NagaCorp की लाभप्रदता अल्पावधि में 2019 के महामारी-पूर्व स्तर तक लौटने की संभावना नहीं है। यह संकेत देता है कि उद्यम के व्यावसायिक आधार और बाजार के माहौल में स्थायी बदलाव आया है।">標準普爾最新報告分析指出，儘管NagaCorp在債務管理上有所進展，但預計其獲利能力短期內難以恢復至2019年疫情前的峰值水準，暗示該企業業務基礎與市場環境發生了永久性改變。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="主要合作夥伴的成長瓶頸預示了市場風險。Jili需評估風險暴露，降低對單一區域老牌運營商的依賴，並加快全球化佈局，將產品技術交付重心向成長型新興市場傾斜，以規避地緣性市場下滑風險。" data-en="Growth bottlenecks for key partners signal market risks. Jili must assess risk exposure, reduce reliance on single-region legacy operators, and accelerate global layout, shifting focus toward emerging markets to avoid regional market decline risks." data-th="คอขวดของการเติบโตของพันธมิตรหลักเป็นสัญญาณเตือนถึงความเสี่ยงของตลาด สำหรับ Jili ต้องประเมินความเสี่ยงและลดการพึ่งพาผู้ให้บริการรายเดิมในภูมิภาคเดียว พร้อมทั้งเร่งขยายธุรกิจสู่ตลาดโลก โดยปรับเปลี่ยนทิศทางการส่งมอบเทคโนโลยีผลิตภัณฑ์ไปยังตลาดเกิดใหม่เพื่อหลีกเลี่ยงความเสี่ยงจากการถดถอยของตลาดในพื้นที่" data-hi="प्रमुख भागीदारों के लिए विकास की बाधाएं बाजार के जोखिमों का संकेत देती हैं। Jili को जोखिम का आकलन करना चाहिए, एकल-क्षेत्र के पुराने ऑपरेटरों पर निर्भरता कम करनी चाहिए, और अपने वैश्विक लेआउट को गति देनी चाहिए। हमें क्षेत्रीय बाजार गिरावट के जोखिमों से बचने के लिए उत्पाद प्रौद्योगिकी वितरण का केंद्र विकासशील उभरते बाजारों की ओर झुकाना चाहिए।">主要合作夥伴的成長瓶頸預示了市場風險。Jili需評估風險暴露，降低對單一區域老牌運營商的依賴，並加快全球化佈局，將產品技術交付重心向成長型新興市場傾斜，以規避地緣性市場下滑風險。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -2687,21 +2649,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="柬埔寨博弈監管機構近期針對國公省（Koh Kong）已被查封的賭場進行了現場檢查，以核實其永久關閉狀態，並確保當地博弈活動符合國家法律規範，杜絕非法營運復燃。" data-en="The Cambodian gambling regulator recently conducted on-site inspections of closed casinos in Koh Kong province to verify their permanent closure and ensure local gambling activities comply with national laws, preventing illegal operations from resurfacing." data-th="หน่วยงานกำกับดูแลการพนันของกัมพูชาได้ดำเนินการตรวจสอบคาสิโนที่ถูกสั่งปิดในจังหวัดเกาะกง เพื่อยืนยันสถานะการปิดถาวรและให้แน่ใจว่ากิจกรรมการพนันในพื้นที่เป็นไปตามกฎหมายระดับชาติ เพื่อป้องกันไม่ให้การดำเนินงานผิดกฎหมายกลับมาเกิดขึ้นอีก" data-hi="कंबोडियाई गेमिंग नियामक ने हाल ही में कोह कोंग प्रांत में सील किए गए कैसीनो का ऑन-साइट निरीक्षण किया है ताकि उनकी स्थायी रूप से बंद स्थिति को सत्यापित किया जा सके और यह सुनिश्चित किया जा सके कि स्थानीय गेमिंग गतिविधियां राष्ट्रीय कानूनों का अनुपालन करती हैं, ताकि अवैध संचालन को फिर से पनपने से रोका जा सके।">柬埔寨博弈監管機構近期針對國公省（Koh Kong）已被查封的賭場進行了現場檢查，以核實其永久關閉狀態，並確保當地博弈活動符合國家法律規範，杜絕非法營運復燃。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="當地的強監管態勢是市場重組的信號。對Jili而言，需嚴格篩選合作運營商，避開高合規風險的邊緣市場，確保技術交付符合當地最新的監管與牌照要求，維護公司在全球營運的合規信譽。" data-en="The local strict regulatory stance is a signal of market restructuring. For Jili, we must rigorously screen partner operators, avoid fringe markets with high compliance risks, and ensure technology delivery meets the latest regulatory and licensing requirements to maintain our corporate reputation." data-th="ท่าทีการกำกับดูแลที่เข้มงวดในพื้นที่เป็นสัญญาณของการปรับโครงสร้างตลาด สำหรับ Jili จำเป็นต้องคัดกรองผู้ให้บริการอย่างเข้มงวด หลีกเลี่ยงตลาดที่มีความเสี่ยงด้านการปฏิบัติตามกฎระเบียบสูง เพื่อให้มั่นใจว่าการส่งมอบเทคโนโลยีเป็นไปตามข้อกำหนดล่าสุดของหน่วยงานกำกับดูแลและใบอนุญาต เพื่อรักษาชื่อเสียงด้านความน่าเชื่อถือของบริษัทในระดับสากล" data-hi="स्थानीय सख्त नियामक रुख बाजार के पुनर्गठन का संकेत है। Jili के लिए, हमें भागीदार ऑपरेटरों की सख्ती से जांच करनी चाहिए, उच्च अनुपालन जोखिम वाले सीमांत बाजारों से बचना चाहिए, और यह सुनिश्चित करना चाहिए कि तकनीकी वितरण स्थानीय नियमों और लाइसेंसिंग आवश्यकताओं के अनुरूप हो, ताकि वैश्विक परिचालन में कंपनी की अनुपालन प्रतिष्ठा बनी रहे।">當地的強監管態勢是市場重組的信號。對Jili而言，需嚴格篩選合作運營商，避開高合規風險的邊緣市場，確保技術交付符合當地最新的監管與牌照要求，維護公司在全球營運的合規信譽。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -2754,21 +2708,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳門統計暨普查局數據顯示，儘管 2026 年第一季舉辦的活動數量保持穩定，但會展參與者總數同比減少 8.7%，降至 18.1 萬人次。此數據反映了澳門在非博彩業務（如 MICE 行業）增長面臨的挑戰，儘管相關活動頻率未減，但單次活動的吸引力與人流規模出現萎縮跡象，可能對整體旅遊與博彩客流帶來間接影響。" data-en="Macau&#39;s Statistics and Census Service data shows that while the number of events in Q1 2026 remained stable, total MICE participants fell 8.7% YoY to 181,000. This reflects challenges in non-gaming business growth, suggesting a decline in individual event appeal and foot traffic, which may indirectly impact overall tourism and gaming flow." data-th="ข้อมูลจากสำนักงานสถิติและสำมะโนประชากรมาเก๊าเผยว่า แม้จำนวนกิจกรรมที่จัดในไตรมาสแรกปี 2026 จะคงที่ แต่จำนวนผู้เข้าร่วมงานรวมลดลง 8.7% เมื่อเทียบเป็นรายปี เหลือ 1.81 แสนคน ซึ่งสะท้อนถึงความท้าทายในการเติบโตของธุรกิจที่ไม่ใช่การพนัน แม้ความถี่ของกิจกรรมจะไม่ลดลง แต่ดึงดูดใจต่อผู้เข้าร่วมงานลดลง อาจส่งผลทางอ้อมต่อการท่องเที่ยวและการไหลเวียนของนักพนัน" data-hi="मकाऊ के सांख्यिकी और जनगणना सेवा के आंकड़ों से पता चलता है कि 2026 की पहली तिमाही में आयोजित कार्यक्रमों की संख्या स्थिर रहने के बावजूद, कुल MICE प्रतिभागियों में 8.7% की गिरावट आई है, जो 1.81 लाख हो गई है। यह गैर-जुए वाले व्यवसायों के विकास में चुनौतियों को दर्शाता है, जहाँ व्यक्तिगत कार्यक्रमों का आकर्षण कम हो गया है, जो अप्रत्यक्ष रूप से पर्यटन और गेमिंग प्रवाह को प्रभावित कर सकता है।">澳門統計暨普查局數據顯示，儘管 2026 年第一季舉辦的活動數量保持穩定，但會展參與者總數同比減少 8.7%，降至 18.1 萬人次。此數據反映了澳門在非博彩業務（如 MICE 行業）增長面臨的挑戰，儘管相關活動頻率未減，但單次活動的吸引力與人流規模出現萎縮跡象，可能對整體旅遊與博彩客流帶來間接影響。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="會展人流下滑顯示澳門非博彩吸引力放緩，可能導致中場博彩客流疲軟。建議技術團隊優化輕量化休閒博彩產品，提升與當地活動參與者的碎片化互動，以抵銷實體客流減少帶來的營收壓力。" data-en="The decline in MICE traffic indicates slowing non-gaming appeal, potentially weakening mass-market gaming volume. We recommend the tech team optimize lightweight casual gaming products to boost fragmented interaction with local event attendees, offsetting revenue pressure from reduced physical traffic." data-th="ยอดผู้เข้าร่วมงานที่ลดลงบ่งชี้ถึงความน่าสนใจของธุรกิจที่ไม่ใช่การพนันที่ชะลอตัว ซึ่งอาจทำให้รายได้จากกลุ่มลูกค้าทั่วไปลดลง ทีมเทคนิคควรเพิ่มประสิทธิภาพผลิตภัณฑ์เกมแนวแคชชวลน้ำหนักเบาเพื่อดึงดูดผู้เข้าร่วมงานในท้องถิ่นผ่านปฏิสัมพันธ์ระยะสั้น เพื่อชดเชยแรงกดดันด้านรายได้จากการลดลงของลูกค้าหน้าร้าน" data-hi="MICE ट्रैफ़िक में गिरावट गैर-गेमिंग आकर्षण में सुस्ती को दर्शाती है, जिससे मास-मार्केट गेमिंग पर असर पड़ सकता है। तकनीकी टीम को सुझाव दिया जाता है कि वे हल्के और कैज़ुअल गेमिंग उत्पादों को ऑप्टिमाइज़ करें ताकि स्थानीय कार्यक्रम प्रतिभागियों के साथ जुड़ाव बढ़ाया जा सके और भौतिक ग्राहकों की कमी से होने वाले राजस्व दबाव को कम किया जा सके।">會展人流下滑顯示澳門非博彩吸引力放緩，可能導致中場博彩客流疲軟。建議技術團隊優化輕量化休閒博彩產品，提升與當地活動參與者的碎片化互動，以抵銷實體客流減少帶來的營收壓力。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2821,21 +2767,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="雲頂新加坡（Genting Singapore）旗下聖淘沙名勝世界（RWS）近期市佔率顯著下滑，引發股東對公司治理與競爭力的高度關注。股東在會議中對董事會施壓，要求對市場份額流失提出明確對策，以應對區域內競爭對手日益激烈的博彩市場份額爭奪戰，尤其是針對高端及大眾市場的營運策略調整。" data-en="Genting Singapore&#39;s Resorts World Sentosa (RWS) has seen a significant market share decline, sparking shareholder concern over corporate governance and competitiveness. Shareholders are pressing the board for clear countermeasures to combat intense regional competition in both premium and mass-market segments." data-th="Resorts World Sentosa (RWS) ของ Genting Singapore ประสบปัญหาการสูญเสียส่วนแบ่งการตลาดอย่างมีนัยสำคัญ ส่งผลให้ผู้ถือหุ้นกังวลเกี่ยวกับธรรมาภิบาลและความสามารถในการแข่งขัน ผู้ถือหุ้นกดดันคณะกรรมการให้มีกลยุทธ์ที่ชัดเจนในการรับมือกับการแข่งขันที่ดุเดือดในตลาดระดับภูมิภาค ทั้งกลุ่มตลาดระดับบนและตลาดทั่วไป" data-hi="Genting Singapore के Resorts World Sentosa (RWS) ने बाजार हिस्सेदारी में महत्वपूर्ण गिरावट देखी है, जिससे कॉर्पोरेट प्रशासन और प्रतिस्पर्धात्मकता को लेकर शेयरधारकों की चिंता बढ़ गई है। शेयरधारक बोर्ड पर स्पष्ट रणनीतियों के लिए दबाव डाल रहे हैं ताकि प्रीमियम और मास-मार्केट सेगमेंट में क्षेत्रीय प्रतिस्पर्धा का मुकाबला किया जा सके।">雲頂新加坡（Genting Singapore）旗下聖淘沙名勝世界（RWS）近期市佔率顯著下滑，引發股東對公司治理與競爭力的高度關注。股東在會議中對董事會施壓，要求對市場份額流失提出明確對策，以應對區域內競爭對手日益激烈的博彩市場份額爭奪戰，尤其是針對高端及大眾市場的營運策略調整。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="主要營運商市佔受挫通常會引發採購策略的激進變革。Jili 應主動提供具高留存率與差異化的 API 解決方案，趁機爭取作為其線上延伸業務的供應商，協助客戶在競爭中重建營運優勢。" data-en="Market share loss often triggers aggressive changes in procurement. Jili should proactively offer high-retention, differentiated API solutions to become an online extension provider, helping clients rebuild their operational edge amid intense competition." data-th="การสูญเสียส่วนแบ่งการตลาดมักนำไปสู่การเปลี่ยนแปลงเชิงรุกในการจัดซื้อ Jili ควรเสนอโซลูชัน API ที่มีอัตราการคงอยู่สูงและแตกต่าง เพื่อเป็นซัพพลายเออร์เสริมสำหรับธุรกิจออนไลน์ ช่วยให้ลูกค้าฟื้นความได้เปรียบในการแข่งขัน" data-hi="बाजार हिस्सेदारी का नुकसान अक्सर खरीद रणनीतियों में आक्रामक बदलाव लाता है। Jili को सक्रिय रूप से उच्च रिटेंशन और विभेदित API समाधान प्रदान करना चाहिए ताकि वे ऑनलाइन विस्तार प्रदाता के रूप में काम कर सकें और ग्राहकों को प्रतिस्पर्धा के बीच अपनी परिचालन बढ़त को फिर से हासिल करने में मदद कर सकें।">主要營運商市佔受挫通常會引發採購策略的激進變革。Jili 應主動提供具高留存率與差異化的 API 解決方案，趁機爭取作為其線上延伸業務的供應商，協助客戶在競爭中重建營運優勢。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 65</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2887,21 +2825,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="知名遊戲《Terraria》開發團隊確認 1.4.6 版本更新並非該遊戲的最終版本，未來將持續開發並推出更多新內容。此舉展示了開發者透過長期維護遊戲生命週期來維持社群活躍度的策略。該訊息對於電玩與遊戲開發產業具備參考意義，特別是在如何透過持續交付內容來累積玩家黏著度與市場口碑。" data-en="The developers of &#39;Terraria&#39; confirmed that version 1.4.6 is not the final update, with more content planned. This demonstrates a long-term life-cycle maintenance strategy to keep the community active, offering valuable insights for the gaming industry on player retention." data-th="ทีมพัฒนาเกม &#39;Terraria&#39; ยืนยันว่าเวอร์ชัน 1.4.6 ไม่ใช่เวอร์ชันสุดท้าย และมีแผนจะพัฒนาเนื้อหาใหม่ๆ ต่อไป สิ่งนี้แสดงให้เห็นกลยุทธ์การรักษาวัฏจักรชีวิตของเกมในระยะยาวเพื่อรักษาความกระตือรือร้นของชุมชน ซึ่งเป็นบทเรียนสำคัญสำหรับอุตสาหกรรมเกมในการสร้างความภักดีของผู้เล่น" data-hi="&#39;Terraria&#39; के डेवलपर्स ने पुष्टि की है कि वर्शन 1.4.6 अंतिम अपडेट नहीं है, और भविष्य में और अधिक कंटेंट लाने की योजना है। यह गेम के जीवनचक्र को बनाए रखने और समुदाय को सक्रिय रखने की एक रणनीति है, जो गेमिंग उद्योग के लिए खिलाड़ी प्रतिधारण (retention) के महत्व को दर्शाती है।">知名遊戲《Terraria》開發團隊確認 1.4.6 版本更新並非該遊戲的最終版本，未來將持續開發並推出更多新內容。此舉展示了開發者透過長期維護遊戲生命週期來維持社群活躍度的策略。該訊息對於電玩與遊戲開發產業具備參考意義，特別是在如何透過持續交付內容來累積玩家黏著度與市場口碑。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="遊戲長期營運模式不僅適用於主機端，線上博彩遊戲亦應效仿。Jili 應考慮建立更靈活的內容更新藍圖，透過週期性的遊戲版本優化而非單次發布，來強化玩家的長期留存與生命週期價值。" data-en="The long-term operation model applies to online gambling too. Jili should develop a flexible content update roadmap, utilizing periodic optimizations rather than single releases to boost long-term retention and customer lifetime value." data-th="โมเดลการดำเนินงานระยะยาวใช้ได้กับเกมคาสิโนออนไลน์เช่นกัน Jili ควรสร้างแผนการอัปเดตเนื้อหาที่ยืดหยุ่น โดยใช้การเพิ่มประสิทธิภาพเป็นระยะๆ แทนการปล่อยอัปเดตครั้งเดียว เพื่อเพิ่มการคงอยู่ของผู้เล่นและมูลค่าตลอดอายุการใช้งาน" data-hi="दीर्घकालिक संचालन मॉडल ऑनलाइन जुआ उद्योग के लिए भी प्रासंगिक है। Jili को एक लचीला कंटेंट अपडेट रोडमैप बनाना चाहिए, जिसमें एकल रिलीज़ के बजाय समय-समय पर ऑप्टिमाइज़ेशन का उपयोग किया जाए, ताकि खिलाड़ियों का लंबे समय तक जुड़ाव और जीवनकाल मूल्य (LTV) बढ़ाया जा सके।">遊戲長期營運模式不僅適用於主機端，線上博彩遊戲亦應效仿。Jili 應考慮建立更靈活的內容更新藍圖，透過週期性的遊戲版本優化而非單次發布，來強化玩家的長期留存與生命週期價值。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
 
                     </div>
 
@@ -2953,21 +2883,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="遊戲《Phasmophobia》開發商因未履行對玩家的承諾引發廣泛批評，官方近期發表聲明承認錯誤並制定復興計畫，試圖重新贏回玩家群體的信任。此事件反映出在遊戲發行過程中，透明度與兌現承諾對維繫品牌價值至關重要，若處理不當可能導致長期社群口碑受損，影響後續營收。" data-en="The developer of &#39;Phasmophobia&#39; faced criticism for failing to meet promises and has issued a statement acknowledging their mistakes and outlining a revival plan. This highlights how transparency and commitment are critical to maintaining brand value and community trust." data-th="นักพัฒนาเกม &#39;Phasmophobia&#39; เผชิญเสียงวิพากษ์วิจารณ์อย่างหนักจากการไม่ทำตามสัญญา ทางการได้ออกแถลงการณ์ยอมรับผิดและวางแผนฟื้นฟูเพื่อดึงความเชื่อมั่นกลับมา สิ่งนี้สะท้อนว่าความโปร่งใสและการทำตามสัญญามีความสำคัญต่อมูลค่าของแบรนด์และการรักษาความสัมพันธ์กับชุมชน" data-hi="&#39;Phasmophobia&#39; के डेवलपर ने वादे पूरे न करने के कारण व्यापक आलोचना का सामना करने के बाद एक बयान जारी किया, जिसमें उन्होंने अपनी गलतियों को स्वीकार किया और एक पुनरुद्धार योजना की घोषणा की। यह घटना दर्शाती है कि ब्रांड वैल्यू और समुदाय के भरोसे को बनाए रखने के लिए पारदर्शिता और किए गए वादों का पालन करना कितना महत्वपूर्ण है।">遊戲《Phasmophobia》開發商因未履行對玩家的承諾引發廣泛批評，官方近期發表聲明承認錯誤並制定復興計畫，試圖重新贏回玩家群體的信任。此事件反映出在遊戲發行過程中，透明度與兌現承諾對維繫品牌價值至關重要，若處理不當可能導致長期社群口碑受損，影響後續營收。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="產品承諾的透明度是 B2B 供應商信譽的核心。Jili 應確保產品交付時程與規格的高度透明，特別是在面對關鍵合作夥伴時，務必嚴格執行交付標準，以規避潛在的商譽損害與合作危機。" data-en="Transparency in product promises is central to B2B supplier credibility. Jili must ensure strict transparency regarding delivery schedules and specifications, especially with key partners, to avoid reputation damage and partnership crises." data-th="ความโปร่งใสในคำมั่นสัญญาของผลิตภัณฑ์คือหัวใจสำคัญของความน่าเชื่อถือของซัพพลายเออร์ B2B Jili ต้องรับประกันความโปร่งใสในกำหนดการส่งมอบและรายละเอียดทางเทคนิคอย่างเข้มงวด โดยเฉพาะกับพันธมิตรหลัก เพื่อหลีกเลี่ยงความเสียหายต่อชื่อเสียงและวิกฤตความร่วมมือ" data-hi="उत्पाद वादों में पारदर्शिता B2B आपूर्तिकर्ताओं की विश्वसनीयता के लिए महत्वपूर्ण है। Jili को डिलीवरी शेड्यूल और विनिर्देशों के बारे में उच्च स्तर की पारदर्शिता सुनिश्चित करनी चाहिए, विशेष रूप से प्रमुख भागीदारों के साथ, ताकि संभावित प्रतिष्ठा की क्षति और साझेदारी संकट से बचा जा सके।">產品承諾的透明度是 B2B 供應商信譽的核心。Jili 應確保產品交付時程與規格的高度透明，特別是在面對關鍵合作夥伴時，務必嚴格執行交付標準，以規避潛在的商譽損害與合作危機。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -3020,21 +2942,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="儘管遊戲尚未正式發售，據報《Forza Horizon 6》的參與玩家人數已突破百萬大關。這顯示出強大的品牌吸引力與預購/搶先體驗機制對市場預期的推動效應。該現象突顯了現代遊戲產業在發行前即能有效捕捉目標客群，利用市場預熱與預先註冊機制極大化產品發布時的聲量。" data-en="&#39;Forza Horizon 6&#39; has reportedly surpassed one million players before its official release. This underscores the power of brand attraction and pre-order/early-access mechanisms in driving market anticipation and maximizing buzz before a product launch." data-th="แม้เกมจะยังไม่เปิดตัวอย่างเป็นทางการ แต่ &#39;Forza Horizon 6&#39; มีรายงานว่ามีผู้เล่นเข้าร่วมมากกว่าหนึ่งล้านคน สิ่งนี้เน้นย้ำถึงพลังของแบรนด์และกลไกการสั่งจองล่วงหน้า/การเข้าถึงก่อนใคร ซึ่งช่วยขับเคลื่อนความคาดหวังของตลาดและสร้างกระแสก่อนการเปิดตัวผลิตภัณฑ์" data-hi="आधिकारिक लॉन्च से पहले ही &#39;Forza Horizon 6&#39; ने 10 लाख से अधिक खिलाड़ियों का आंकड़ा पार कर लिया है। यह ब्रांड के आकर्षण और प्री-ऑर्डर/अर्ली-एक्सेस तंत्र की शक्ति को दर्शाता है, जो बाजार की प्रत्याशा को बढ़ाने और उत्पाद लॉन्च के समय अधिकतम चर्चा (buzz) सुनिश्चित करने में प्रभावी है।">儘管遊戲尚未正式發售，據報《Forza Horizon 6》的參與玩家人數已突破百萬大關。這顯示出強大的品牌吸引力與預購/搶先體驗機制對市場預期的推動效應。該現象突顯了現代遊戲產業在發行前即能有效捕捉目標客群，利用市場預熱與預先註冊機制極大化產品發布時的聲量。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="預熱機制對爆款產品至關重要。Jili 在規劃新遊戲發布時，應強化社群預熱與種子用戶參與，在正式接入市場前即累積數據與熱度，從而協助代理商客戶在發布初期獲得最大化的流量轉化。" data-en="Pre-launch mechanics are vital for hit products. Jili should strengthen community pre-warming and seed user engagement during new game planning to gather data and build hype, helping agent clients maximize traffic conversion at launch." data-th="กลไกการสร้างกระแสก่อนเปิดตัวมีความสำคัญอย่างยิ่งต่อผลิตภัณฑ์ที่ประสบความสำเร็จ Jili ควรเสริมสร้างการมีส่วนร่วมของชุมชนและผู้ใช้กลุ่มแรกในระหว่างการวางแผนเกมใหม่ เพื่อรวบรวมข้อมูลและสร้างกระแส ช่วยให้ตัวแทนได้รับ Conversion สูงสุดในช่วงเริ่มต้น" data-hi="हिट उत्पादों के लिए प्री-लॉन्च तंत्र महत्वपूर्ण है। Jili को नई गेम योजना के दौरान सामुदायिक जुड़ाव को मजबूत करना चाहिए ताकि डेटा इकट्ठा किया जा सके और हाइप बनाया जा सके, जिससे एजेंट ग्राहकों को लॉन्च के शुरुआती चरण में अधिकतम ट्रैफिक कन्वर्जन प्राप्त करने में मदद मिल सके।">預熱機制對爆款產品至關重要。Jili 在規劃新遊戲發布時，應強化社群預熱與種子用戶參與，在正式接入市場前即累積數據與熱度，從而協助代理商客戶在發布初期獲得最大化的流量轉化。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 15</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 35</span>
 
                     </div>
 
@@ -3086,21 +3000,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="ELA Games 旗下產品《King and Flame》入圍 2026 年最佳新遊戲發布獎項提名。該事件顯示市場對具備高品質視覺效果及創新機制之線上遊戲內容的需求持續增長。入圍獎項不僅提升了競爭對手的市場聲量，也反映了目前產業在開發標準上的競爭已聚焦於遊戲美學與玩家體驗的深度優化。" data-en="ELA Games&#39; &#39;King and Flame&#39; has been nominated for Best New Game Launch 2026. This reflects growing market demand for high-quality visuals and innovative mechanics, signaling that competitive standards are now focused on aesthetic depth and user experience." data-th="เกม &#39;King and Flame&#39; ของ ELA Games ได้รับการเสนอชื่อเข้าชิงรางวัลเปิดตัวเกมใหม่ยอดเยี่ยมแห่งปี 2026 สิ่งนี้แสดงให้เห็นถึงความต้องการที่เพิ่มขึ้นสำหรับเนื้อหาเกมออนไลน์ที่มีภาพคุณภาพสูงและกลไกที่สร้างสรรค์ โดยมุ่งเน้นไปที่การยกระดับประสบการณ์ผู้เล่น" data-hi="ELA Games का गेम &#39;King and Flame&#39; 2026 के सर्वश्रेष्ठ नए गेम लॉन्च पुरस्कार के लिए नामांकित हुआ है। यह उच्च-गुणवत्ता वाले दृश्यों और अभिनव यांत्रिकी वाले ऑनलाइन गेमिंग सामग्री की बढ़ती बाजार मांग को दर्शाता है, जहाँ प्रतिस्पर्धा का केंद्र अब गेम एस्थेटिक्स और उपयोगकर्ता अनुभव पर है।">ELA Games 旗下產品《King and Flame》入圍 2026 年最佳新遊戲發布獎項提名。該事件顯示市場對具備高品質視覺效果及創新機制之線上遊戲內容的需求持續增長。入圍獎項不僅提升了競爭對手的市場聲量，也反映了目前產業在開發標準上的競爭已聚焦於遊戲美學與玩家體驗的深度優化。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="競爭對手產品獲獎反映市場對高品質內容的認可。我們應審視現有產品線在同類競賽中的產品力差距，並加強「爆款」產品的研發力度，確保我們的產品在技術穩定性外，能持續保持市場領先的感官體驗。" data-en="Competitor recognition highlights the market&#39;s appreciation for high-quality content. We must evaluate our product gap, strengthen R&amp;D for &#39;hit&#39; titles, and ensure our products lead in sensory experience beyond technical stability." data-th="ความสำเร็จของคู่แข่งสะท้อนถึงการยอมรับในเนื้อหาคุณภาพสูง เราควรประเมินช่องว่างของผลิตภัณฑ์เดิมและเพิ่มความพยายามในการพัฒนาเกม &#39;ฮิต&#39; เพื่อให้มั่นใจว่าผลิตภัณฑ์ของเรามีความโดดเด่นทั้งในด้านเทคนิคและประสบการณ์ทางประสาทสัมผัส" data-hi="प्रतिद्वंद्वी की सफलता उच्च गुणवत्ता वाली सामग्री के लिए बाजार की प्रशंसा को उजागर करती है। हमें अपने मौजूदा उत्पादों के बीच की खाई का मूल्यांकन करना चाहिए, &#39;हिट&#39; उत्पादों के अनुसंधान और विकास पर ध्यान केंद्रित करना चाहिए, और सुनिश्चित करना चाहिए कि हमारे उत्पाद तकनीकी स्थिरता के अलावा संवेदी अनुभव में भी अग्रणी रहें।">競爭對手產品獲獎反映市場對高品質內容的認可。我們應審視現有產品線在同類競賽中的產品力差距，並加強「爆款」產品的研發力度，確保我們的產品在技術穩定性外，能持續保持市場領先的感官體驗。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -3489,7 +3395,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "柬埔寨", "count": 3, "coords": [11.392400940843558, 104.87782000330475], "sentiment": "利空", "news_full": [{"title": "標普調升NagaCorp信用評級：債務壓力緩解但貴賓廳衰退陰霾未散", "title_en": "S&P Upgrades NagaCorp Rating: Debt Pressure Eased but VIP Downturn Remains", "title_th": "S&P ปรับเพิ่มอันดับความน่าเชื่อถือ NagaCorp: แรงกดดันหนี้ลดลงแต่ธุรกิจ VIP ยังคงซบเซา", "title_hi": "S&P ने NagaCorp की क्रेडिट रेटिंग बढ़ाई: ऋण का दबाव कम, लेकिन VIP कारोबार में मंदी जारी", "link": "https://asgam.com/2026/05/18/sp-upgrades-nagacorp-on-absence-of-debt-but-collapse-of-junket-sector-to-weigh-on-business-strength/", "sentiment": "中立", "impact": 65.0, "urgency": 40.0}, {"title": "標普評估：NagaCorp獲利難以在短期內重返2019年水準", "title_en": "S&P: NagaCorp Profit Unlikely to Return to 2019 Levels in the Short Term", "title_th": "S&P ประเมิน: กำไรของ NagaCorp ยากที่จะกลับสู่ระดับปี 2019 ในระยะสั้น", "title_hi": "S&P का मूल्यांकन: NagaCorp का मुनाफा अल्पावधि में 2019 के स्तर पर लौटने की संभावना नहीं", "link": "https://agbrief.com/news/cambodia/18/05/2026/sp-says-nagacorp-unlikely-to-return-to-2019-earnings-levels-soon/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "柬埔寨監管機構突擊檢查Koh Kong地區遭查封賭場", "title_en": "Cambodian Regulators Inspect Sealed Casinos in Koh Kong", "title_th": "หน่วยงานกำกับดูแลของกัมพูชาตรวจค้นคาสิโนที่ถูกปิดในจังหวัดเกาะกง", "title_hi": "कंबोडियाई नियामकों ने कोह कोंग में सील किए गए कैसीनो का निरीक्षण किया", "link": "https://agbrief.com/news/cambodia/18/05/2026/cambodias-gambling-regulator-inspects-sealed-koh-kong-casinos-to-verify-closures/", "sentiment": "中立", "impact": 55.0, "urgency": 70.0}]}, {"region": "澳門", "count": 2, "coords": [22.16081334242245, 113.98858695683454], "sentiment": "利空", "news_full": [{"title": "澳門榮膺2026年「亞洲最佳奢華目的地」", "title_en": "Macau Named 'Best Luxury Destination in Asia' for 2026", "title_th": "มาเก๊าได้รับเลือกให้เป็น 'จุดหมายปลายทางหรูหราที่ดีที่สุดในเอเชีย' ประจำปี 2026", "title_hi": "मकाऊ को 2026 के लिए 'एशिया का सर्वश्रेष्ठ लक्जरी गंतव्य' चुना गया", "link": "https://asgam.com/2026/05/18/macau-named-asias-best-luxury-destination-at-luxe-asia-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "澳門 2026 年首季會展參與者人數下降 8.7%", "title_en": "Macau Q1 2026 MICE Participant Numbers Drop by 8.7%", "title_th": "ผู้เข้าร่วมงานไมซ์ (MICE) ในมาเก๊าไตรมาสแรกปี 2026 ลดลง 8.7%", "title_hi": "मकाऊ में 2026 की पहली तिमाही में MICE प्रतिभागियों की संख्या में 8.7% की गिरावट", "link": "https://agbrief.com/news/macau/17/05/2026/macau-1q26-mice-attendees-fall-8-7-to-181000-despite-stable-event-count/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 1, "coords": [37.50905956892916, -95.29687382307203], "sentiment": "利空", "news_full": [{"title": "Aristocrat Gaming於奧克拉荷馬州賭場推出Class 2 Crown機台", "title_en": "Aristocrat Gaming Launches Class 2 Crown Machines in Oklahoma Casinos", "title_th": "Aristocrat Gaming เปิดตัวเครื่องเกม Class 2 Crown ในคาสิโนที่รัฐโอคลาโฮมา", "title_hi": "Aristocrat Gaming ने ओक्लाहोमा कैसीनो में Class 2 Crown मशीनें लॉन्च कीं", "link": "https://agbrief.com/news/usa/18/05/2026/aristocrat-gaming-debuts-class-2-crown-bartop-across-oklahoma-casino-floors/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.835805125967777, 120.79171288614799], "sentiment": "利空", "news_full": [{"title": "電子遊戲疲軟致菲律賓Q1遊戲總營收下跌16%", "title_en": "Electronic Gaming Weakness Causes 16% Decline in Philippines Q1 GGR", "title_th": "ความอ่อนแอของเกมอิเล็กทรอนิกส์ส่งผลให้รายได้รวมของฟิลิปปินส์ในไตรมาสที่ 1 ลดลง 16%", "title_hi": "ई-गेमिंग में कमजोरी के कारण फिलीपींस का Q1 गेमिंग राजस्व 16% गिरा", "link": "https://agbrief.com/intel/18/05/2026/philippine-gaming-ggr-falls-16-in-1q26-on-weaker-e-games-performance/", "sentiment": "利空", "impact": 95.0, "urgency": 95.0}]}, {"region": "新加坡", "count": 1, "coords": [1.794377953808063, 103.7281480863809], "sentiment": "利空", "news_full": [{"title": "雲頂新加坡回應市佔率下滑，股東施壓董事會", "title_en": "Genting Singapore Faces Shareholder Pressure Over Market Share Loss", "title_th": "Genting Singapore เผชิญแรงกดดันจากผู้ถือหุ้นหลังส่วนแบ่งการตลาดลดลง", "title_hi": "Genting Singapore बाजार हिस्सेदारी में गिरावट के कारण शेयरधारकों के दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/singapore/17/05/2026/genting-singapore-acknowledges-rws-market-share-slide-as-shareholders-press-board/", "sentiment": "利空", "impact": 30.0, "urgency": 65.0}]}, {"region": "全球", "count": 4, "coords": [19.656598656778346, 9.65650528084755], "sentiment": "利多", "news_full": [{"title": "《Terraria》承諾將推出更多更新內容", "title_en": "Terraria Promises Further Content Updates", "title_th": "Terraria สัญญาว่าจะปล่อยเนื้อหาอัปเดตเพิ่มเติม", "title_hi": "Terraria ने और अधिक अपडेट देने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95-1-4-6-%e0%b8%82%e0%b8%ad%e0%b8%87-terraria-%e0%b8%88%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%83%e0%b8%8a%e0%b9%88%e0%b8%84%e0%b8%a3%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Phasmophobia》開發商認錯並承諾挽回玩家信任", "title_en": "Phasmophobia Developer Admits Fault and Promises to Restore Trust", "title_th": "นักพัฒนาเกม Phasmophobia ยอมรับผิดและสัญญาว่าจะกู้คืนความเชื่อมั่นจากผู้เล่น", "title_hi": "Phasmophobia के डेवलपर ने गलती स्वीकार की और खिलाड़ियों का भरोसा जीतने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-phasmophobia-%e0%b8%a2%e0%b8%ad%e0%b8%a1%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%9c%e0%b8%b4%e0%b8%94%e0%b8%97%e0%b8%b5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《Forza Horizon 6》尚未正式發售即突破百萬玩家", "title_en": "Forza Horizon 6 Surpasses One Million Players Before Official Launch", "title_th": "Forza Horizon 6 มียอดผู้เล่นทะลุหนึ่งล้านคนก่อนเปิดตัวอย่างเป็นทางการ", "title_hi": "Forza Horizon 6 आधिकारिक लॉन्च से पहले ही 10 लाख खिलाड़ियों तक पहुँचा", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b2%e0%b8%a2%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9c%e0%b8%a2-forza-horzion-6-%e0%b8%a1%e0%b8%b5%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88/", "sentiment": "利多", "impact": 35.0, "urgency": 15.0}, {"title": "ELA Games 新作獲最佳遊戲發布提名", "title_en": "ELA Games' New Title Nominated for Best Game Launch", "title_th": "เกมใหม่จาก ELA Games ได้รับการเสนอชื่อเข้าชิงรางวัล Best Game Launch", "title_hi": "ELA Games का नया गेम 'बेस्ट गेम लॉन्च' पुरस्कार के लिए नामांकित", "link": "https://agbrief.com/news/europe/17/05/2026/ela-games-king-and-flame-nominated-for-best-new-game-release-2026/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "柬埔寨", "count": 3, "coords": [11.765330742981421, 104.8698720467344], "sentiment": "利空", "news_full": [{"title": "標普調升NagaCorp信用評級：債務壓力緩解但貴賓廳衰退陰霾未散", "title_en": "S&P Upgrades NagaCorp Rating: Debt Pressure Eased but VIP Downturn Remains", "title_th": "S&P ปรับเพิ่มอันดับความน่าเชื่อถือ NagaCorp: แรงกดดันหนี้ลดลงแต่ธุรกิจ VIP ยังคงซบเซา", "title_hi": "S&P ने NagaCorp की क्रेडिट रेटिंग बढ़ाई: ऋण का दबाव कम, लेकिन VIP कारोबार में मंदी जारी", "link": "https://asgam.com/2026/05/18/sp-upgrades-nagacorp-on-absence-of-debt-but-collapse-of-junket-sector-to-weigh-on-business-strength/", "sentiment": "中立", "impact": 65.0, "urgency": 40.0}, {"title": "標普評估：NagaCorp獲利難以在短期內重返2019年水準", "title_en": "S&P: NagaCorp Profit Unlikely to Return to 2019 Levels in the Short Term", "title_th": "S&P ประเมิน: กำไรของ NagaCorp ยากที่จะกลับสู่ระดับปี 2019 ในระยะสั้น", "title_hi": "S&P का मूल्यांकन: NagaCorp का मुनाफा अल्पावधि में 2019 के स्तर पर लौटने की संभावना नहीं", "link": "https://agbrief.com/news/cambodia/18/05/2026/sp-says-nagacorp-unlikely-to-return-to-2019-earnings-levels-soon/", "sentiment": "利空", "impact": 70.0, "urgency": 40.0}, {"title": "柬埔寨監管機構突擊檢查Koh Kong地區遭查封賭場", "title_en": "Cambodian Regulators Inspect Sealed Casinos in Koh Kong", "title_th": "หน่วยงานกำกับดูแลของกัมพูชาตรวจค้นคาสิโนที่ถูกปิดในจังหวัดเกาะกง", "title_hi": "कंबोडियाई नियामकों ने कोह कोंग में सील किए गए कैसीनो का निरीक्षण किया", "link": "https://agbrief.com/news/cambodia/18/05/2026/cambodias-gambling-regulator-inspects-sealed-koh-kong-casinos-to-verify-closures/", "sentiment": "中立", "impact": 55.0, "urgency": 70.0}]}, {"region": "澳門", "count": 2, "coords": [21.90785104503155, 114.02750943322484], "sentiment": "利空", "news_full": [{"title": "澳門榮膺2026年「亞洲最佳奢華目的地」", "title_en": "Macau Named 'Best Luxury Destination in Asia' for 2026", "title_th": "มาเก๊าได้รับเลือกให้เป็น 'จุดหมายปลายทางหรูหราที่ดีที่สุดในเอเชีย' ประจำปี 2026", "title_hi": "मकाऊ को 2026 के लिए 'एशिया का सर्वश्रेष्ठ लक्जरी गंतव्य' चुना गया", "link": "https://asgam.com/2026/05/18/macau-named-asias-best-luxury-destination-at-luxe-asia-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "澳門 2026 年首季會展參與者人數下降 8.7%", "title_en": "Macau Q1 2026 MICE Participant Numbers Drop by 8.7%", "title_th": "ผู้เข้าร่วมงานไมซ์ (MICE) ในมาเก๊าไตรมาสแรกปี 2026 ลดลง 8.7%", "title_hi": "मकाऊ में 2026 की पहली तिमाही में MICE प्रतिभागियों की संख्या में 8.7% की गिरावट", "link": "https://agbrief.com/news/macau/17/05/2026/macau-1q26-mice-attendees-fall-8-7-to-181000-despite-stable-event-count/", "sentiment": "利空", "impact": 30.0, "urgency": 30.0}]}, {"region": "美國", "count": 1, "coords": [37.49312945890482, -96.18659583314101], "sentiment": "利空", "news_full": [{"title": "Aristocrat Gaming於奧克拉荷馬州賭場推出Class 2 Crown機台", "title_en": "Aristocrat Gaming Launches Class 2 Crown Machines in Oklahoma Casinos", "title_th": "Aristocrat Gaming เปิดตัวเครื่องเกม Class 2 Crown ในคาสิโนที่รัฐโอคลาโฮมา", "title_hi": "Aristocrat Gaming ने ओक्लाहोमा कैसीनो में Class 2 Crown मशीनें लॉन्च कीं", "link": "https://agbrief.com/news/usa/18/05/2026/aristocrat-gaming-debuts-class-2-crown-bartop-across-oklahoma-casino-floors/", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}]}, {"region": "菲律賓", "count": 1, "coords": [14.544972976637776, 121.30128033803848], "sentiment": "利空", "news_full": [{"title": "電子遊戲疲軟致菲律賓Q1遊戲總營收下跌16%", "title_en": "Electronic Gaming Weakness Causes 16% Decline in Philippines Q1 GGR", "title_th": "ความอ่อนแอของเกมอิเล็กทรอนิกส์ส่งผลให้รายได้รวมของฟิลิปปินส์ในไตรมาสที่ 1 ลดลง 16%", "title_hi": "ई-गेमिंग में कमजोरी के कारण फिलीपींस का Q1 गेमिंग राजस्व 16% गिरा", "link": "https://agbrief.com/intel/18/05/2026/philippine-gaming-ggr-falls-16-in-1q26-on-weaker-e-games-performance/", "sentiment": "利空", "impact": 95.0, "urgency": 95.0}]}, {"region": "新加坡", "count": 1, "coords": [1.4800346332036318, 103.38280540374375], "sentiment": "利空", "news_full": [{"title": "雲頂新加坡回應市佔率下滑，股東施壓董事會", "title_en": "Genting Singapore Faces Shareholder Pressure Over Market Share Loss", "title_th": "Genting Singapore เผชิญแรงกดดันจากผู้ถือหุ้นหลังส่วนแบ่งการตลาดลดลง", "title_hi": "Genting Singapore बाजार हिस्सेदारी में गिरावट के कारण शेयरधारकों के दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/singapore/17/05/2026/genting-singapore-acknowledges-rws-market-share-slide-as-shareholders-press-board/", "sentiment": "利空", "impact": 30.0, "urgency": 65.0}]}, {"region": "全球", "count": 4, "coords": [19.78847141673228, 9.556049504249005], "sentiment": "利多", "news_full": [{"title": "《Terraria》承諾將推出更多更新內容", "title_en": "Terraria Promises Further Content Updates", "title_th": "Terraria สัญญาว่าจะปล่อยเนื้อหาอัปเดตเพิ่มเติม", "title_hi": "Terraria ने और अधिक अपडेट देने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95-1-4-6-%e0%b8%82%e0%b8%ad%e0%b8%87-terraria-%e0%b8%88%e0%b8%b0%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%83%e0%b8%8a%e0%b9%88%e0%b8%84%e0%b8%a3%e0%b8%b1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《Phasmophobia》開發商認錯並承諾挽回玩家信任", "title_en": "Phasmophobia Developer Admits Fault and Promises to Restore Trust", "title_th": "นักพัฒนาเกม Phasmophobia ยอมรับผิดและสัญญาว่าจะกู้คืนความเชื่อมั่นจากผู้เล่น", "title_hi": "Phasmophobia के डेवलपर ने गलती स्वीकार की और खिलाड़ियों का भरोसा जीतने का वादा किया", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-phasmophobia-%e0%b8%a2%e0%b8%ad%e0%b8%a1%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%9c%e0%b8%b4%e0%b8%94%e0%b8%97%e0%b8%b5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《Forza Horizon 6》尚未正式發售即突破百萬玩家", "title_en": "Forza Horizon 6 Surpasses One Million Players Before Official Launch", "title_th": "Forza Horizon 6 มียอดผู้เล่นทะลุหนึ่งล้านคนก่อนเปิดตัวอย่างเป็นทางการ", "title_hi": "Forza Horizon 6 आधिकारिक लॉन्च से पहले ही 10 लाख खिलाड़ियों तक पहुँचा", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b2%e0%b8%a2%e0%b8%87%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%9c%e0%b8%a2-forza-horzion-6-%e0%b8%a1%e0%b8%b5%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88/", "sentiment": "利多", "impact": 35.0, "urgency": 15.0}, {"title": "ELA Games 新作獲最佳遊戲發布提名", "title_en": "ELA Games' New Title Nominated for Best Game Launch", "title_th": "เกมใหม่จาก ELA Games ได้รับการเสนอชื่อเข้าชิงรางวัล Best Game Launch", "title_hi": "ELA Games का नया गेम 'बेस्ट गेम लॉन्च' पुरस्कार के लिए नामांकित", "link": "https://agbrief.com/news/europe/17/05/2026/ela-games-king-and-flame-nominated-for-best-new-game-release-2026/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -3930,14 +3836,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -3954,7 +3852,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -4652,7 +4550,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
