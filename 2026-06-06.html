@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-06-06</title>
+    <title>JILI 市場情報指揮中心 - 2026-06-06</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-06-06</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2244,27 +2260,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2339,21 +2341,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="永利度假村CEO Craig Billings參與美國企業領袖與中國外交部長王毅的會談。此次會晤旨在加強中美經貿溝通，儘管未直接提及博弈業政策，但在複雜的地緣政治背景下，高端旅遊與服務業的互動備受關注，被視為兩國商務交流持續進行的重要信號。" data-en="Wynn Resorts CEO Craig Billings participated in a meeting between US business leaders and Chinese Foreign Minister Wang Yi. The meeting aimed to strengthen economic communication, and while gaming policies were not directly mentioned, the interaction within the complex geopolitical landscape highlights the importance of ongoing high-end tourism and service sector engagement." data-th="Craig Billings ซีอีโอของ Wynn Resorts ได้เข้าร่วมการหารือระหว่างผู้นำธุรกิจสหรัฐฯ กับรัฐมนตรีต่างประเทศจีน หวังอี้ การพบปะครั้งนี้มีจุดมุ่งหมายเพื่อกระชับการสื่อสารด้านเศรษฐกิจและการค้า แม้จะไม่มีการกล่าวถึงนโยบายอุตสาหกรรมพนันโดยตรง แต่ปฏิสัมพันธ์ในบริบททางภูมิรัฐศาสตร์ที่ซับซ้อนนี้ได้รับความสนใจอย่างมาก และถูกมองว่าเป็นสัญญาณสำคัญของการแลกเปลี่ยนทางธุรกิจที่ยังคงดำเนินต่อไป" data-hi="Wynn Resorts के CEO क्रेग बिलिंग्स ने अमेरिकी व्यापारिक नेताओं और चीनी विदेश मंत्री वांग यी के बीच हुई बातचीत में भाग लिया। इस बैठक का उद्देश्य अमेरिका-चीन आर्थिक और व्यापारिक संचार को मजबूत करना था। हालांकि इसमें गेमिंग उद्योग की नीतियों का सीधे उल्लेख नहीं किया गया, लेकिन जटिल भू-राजनीतिक पृष्ठभूमि के बीच उच्च-स्तरीय पर्यटन और सेवा क्षेत्र की यह बातचीत महत्वपूर्ण है, जिसे दोनों देशों के बीच निरंतर व्यापारिक आदान-प्रदान के संकेत के रूप में देखा जा रहा है।">永利度假村CEO Craig Billings參與美國企業領袖與中國外交部長王毅的會談。此次會晤旨在加強中美經貿溝通，儘管未直接提及博弈業政策，但在複雜的地緣政治背景下，高端旅遊與服務業的互動備受關注，被視為兩國商務交流持續進行的重要信號。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="雖屬外交層級，但顯示澳門特許經營商與北京間的高層溝通鏈依然穩固。JILI應持續監測中國對境內非法博弈的打擊力度是否會波及合法營運商的數位轉型合作，並強化對高端客戶的合規風險防禦。" data-en="While diplomatic in nature, this signals that high-level communication channels between Macau concessionaires and Beijing remain robust. JILI should continue to monitor whether China&#39;s crackdown on illegal domestic gambling will affect digital transformation partnerships with legal operators and strengthen compliance risk defenses for high-end clients." data-th="แม้จะเป็นระดับการทูต แต่แสดงให้เห็นว่าช่องทางการสื่อสารระดับสูงระหว่างผู้ได้รับสัมปทานในมาเก๊ากับปักกิ่งยังคงมั่นคง JILI ควรเฝ้าติดตามต่อไปว่าการปราบปรามการพนันผิดกฎหมายในจีนจะส่งผลต่อความร่วมมือด้านการเปลี่ยนผ่านสู่ดิจิทัลของผู้ประกอบการที่ถูกกฎหมายหรือไม่ และเสริมความแข็งแกร่งในการป้องกันความเสี่ยงด้านการปฏิบัติตามกฎระเบียบสำหรับลูกค้าระดับไฮเอนด์" data-hi="हालांकि यह राजनयिक स्तर की वार्ता है, लेकिन यह दर्शाता है कि मकाऊ रियायतधारकों और बीजिंग के बीच उच्च-स्तरीय संचार श्रृंखला अभी भी मजबूत है। JILI को इस पर नजर रखनी चाहिए कि क्या चीन द्वारा घरेलू स्तर पर अवैध जुए पर की जा रही कार्रवाई वैध ऑपरेटरों के साथ डिजिटल परिवर्तन साझेदारी को प्रभावित करेगी, और उच्च-नेटवर्थ वाले ग्राहकों के लिए अनुपालन जोखिम सुरक्षा को मजबूत करना चाहिए।">雖屬外交層級，但顯示澳門特許經營商與北京間的高層溝通鏈依然穩固。JILI應持續監測中國對境內非法博弈的打擊力度是否會波及合法營運商的數位轉型合作，並強化對高端客戶的合規風險防禦。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2406,21 +2400,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="中國駐斯里蘭卡大使館近日發表聲明，兩國將加強聯合執法力度，針對網路賭博、電信詐騙及其相關犯罪進行嚴厲打擊。此舉旨在維護兩國社會治安與經濟秩序，雙方已建立更緊密的情報交流與人員遣返機制。" data-en="The Chinese Embassy in Sri Lanka recently issued a statement that both countries will strengthen joint law enforcement efforts to strictly crack down on online gambling, telecom fraud, and related crimes. The move aims to maintain social stability and economic order in both nations, with closer information exchange and repatriation mechanisms already established." data-th="สถานเอกอัครราชทูตจีนประจำศรีลังกาออกแถลงการณ์ว่าทั้งสองประเทศจะเพิ่มความเข้มงวดในการบังคับใช้กฎหมายร่วมกันเพื่อปราบปรามการพนันออนไลน์ การฉ้อโกงทางโทรคมนาคม และอาชญากรรมที่เกี่ยวข้อง ความเคลื่อนไหวนี้มีจุดมุ่งหมายเพื่อรักษาความสงบเรียบร้อยทางสังคมและเศรษฐกิจของทั้งสองประเทศ โดยทั้งสองฝ่ายได้สร้างกลไกการแลกเปลี่ยนข่าวกรองและการส่งตัวผู้ร้ายข้ามแดนที่แน่นแฟ้นยิ่งขึ้น" data-hi="श्रीलंका में चीनी दूतावास ने हाल ही में एक बयान जारी किया है कि दोनों देश ऑनलाइन जुआ, दूरसंचार धोखाधड़ी और संबंधित अपराधों पर सख्ती से नकेल कसने के लिए संयुक्त प्रवर्तन प्रयासों को मजबूत करेंगे। इस कदम का उद्देश्य दोनों देशों में सामाजिक सुरक्षा और आर्थिक व्यवस्था बनाए रखना है, जिसके लिए दोनों पक्षों ने सूचनाओं के आदान-प्रदान और प्रत्यावर्तन तंत्र को और अधिक मजबूत कर लिया है।">中國駐斯里蘭卡大使館近日發表聲明，兩國將加強聯合執法力度，針對網路賭博、電信詐騙及其相關犯罪進行嚴厲打擊。此舉旨在維護兩國社會治安與經濟秩序，雙方已建立更緊密的情報交流與人員遣返機制。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="斯里蘭卡作為新興線上市場面臨嚴格監管風暴。JILI將暫停該市場的擴張評估，並對接駁該區的代理客戶進行嚴格的合規核查，確保產品交付不觸及當地執法紅線，避免品牌聲譽受損。" data-en="Sri Lanka is facing a strict regulatory storm as an emerging online market. JILI will pause expansion assessments in this market and conduct strict compliance checks on agents connecting to the region to ensure product delivery does not violate local law enforcement red lines, preventing brand reputation damage." data-th="ศรีลังกาในฐานะตลาดออนไลน์เกิดใหม่กำลังเผชิญกับพายุแห่งการกำกับดูแลที่เข้มงวด JILI จะระงับการประเมินการขยายตลาดในพื้นที่นี้ และดำเนินการตรวจสอบการปฏิบัติตามกฎระเบียบอย่างเคร่งครัดต่อตัวแทนที่เชื่อมต่อกับภูมิภาค เพื่อให้มั่นใจว่าการส่งมอบผลิตภัณฑ์จะไม่ละเมิดเส้นตายของการบังคับใช้กฎหมายในท้องถิ่น และหลีกเลี่ยงความเสียหายต่อชื่อเสียงของแบรนด์" data-hi="एक उभरते ऑनलाइन बाजार के रूप में श्रीलंका सख्त विनियामक तूफान का सामना कर रहा है। JILI इस बाजार में विस्तार के मूल्यांकन को रोक देगा और इस क्षेत्र से जुड़े एजेंटों पर सख्त अनुपालन जांच करेगा ताकि यह सुनिश्चित हो सके कि उत्पाद वितरण स्थानीय कानून प्रवर्तन की सीमाओं का उल्लंघन न करे और ब्रांड की प्रतिष्ठा को नुकसान से बचाया जा सके।">斯里蘭卡作為新興線上市場面臨嚴格監管風暴。JILI將暫停該市場的擴張評估，並對接駁該區的代理客戶進行嚴格的合規核查，確保產品交付不觸及當地執法紅線，避免品牌聲譽受損。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 80</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2473,21 +2459,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="阿聯酋首家獲得合法許可的體育博彩營運商，針對即將到來的世界盃賽事正式推出促銷活動。這是該國體育博彩市場規範化後的重要行銷動作，標誌著阿聯酋在博弈市場開放路徑上的重大里程碑。" data-en="The UAE&#39;s first licensed sports betting operator has officially launched a promotional campaign for the upcoming World Cup. This is a significant marketing move following the normalization of the country&#39;s sports betting market and marks a major milestone in the UAE&#39;s path toward opening its gaming market." data-th="ผู้ประกอบการพนันกีฬาแห่งแรกที่ได้รับใบอนุญาตอย่างถูกต้องในสหรัฐอาหรับเอมิเรตส์ได้เปิดตัวแคมเปญส่งเสริมการขายสำหรับทัวร์นาเมนต์ฟุตบอลโลกที่กำลังจะมาถึง นี่คือการดำเนินการด้านการตลาดที่สำคัญหลังจากการทำให้ตลาดพนันกีฬาของประเทศมีความเป็นมาตรฐาน และถือเป็นเหตุการณ์สำคัญบนเส้นทางการเปิดตลาดเกมของสหรัฐอาหรับเอมิเรตส์" data-hi="यूएई के पहले लाइसेंस प्राप्त स्पोर्ट्स बेटिंग ऑपरेटर ने आगामी विश्व कप के लिए आधिकारिक तौर पर प्रचार अभियान शुरू किया है। देश के स्पोर्ट्स बेटिंग बाजार के मानकीकरण के बाद यह एक महत्वपूर्ण मार्केटिंग कदम है और यूएई के गेमिंग बाजार को खोलने की राह में एक बड़ा मील का पत्थर है।">阿聯酋首家獲得合法許可的體育博彩營運商，針對即將到來的世界盃賽事正式推出促銷活動。這是該國體育博彩市場規範化後的重要行銷動作，標誌著阿聯酋在博弈市場開放路徑上的重大里程碑。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="阿聯酋市場正式啟動，意味著中東地區博弈政策正在鬆綁。JILI應積極研發符合在地文化與體育偏好的遊戲產品，並尋求與持牌營運商建立B2B接入管道，先行卡位中東潛力市場。" data-en="The official launch of the UAE market signifies that gambling policies in the Middle East are loosening. JILI should actively develop game products that align with local culture and sports preferences and seek B2B access channels with licensed operators to gain a foothold in this potential Middle Eastern market." data-th="การเปิดตัวตลาด UAE อย่างเป็นทางการหมายความว่านโยบายการพนันในตะวันออกกลางกำลังผ่อนคลายลง JILI ควรพัฒนาผลิตภัณฑ์เกมที่สอดคล้องกับวัฒนธรรมและความชื่นชอบด้านกีฬาในท้องถิ่นอย่างจริงจัง และหาช่องทางเชื่อมต่อแบบ B2B กับผู้ประกอบการที่มีใบอนุญาตเพื่อชิงพื้นที่ในตลาดที่มีศักยภาพแห่งนี้ในตะวันออกกลาง" data-hi="यूएई बाजार के आधिकारिक शुभारंभ का मतलब है कि मध्य पूर्व में जुआ नीतियां ढीली हो रही हैं। JILI को सक्रिय रूप से स्थानीय संस्कृति और खेल प्राथमिकताओं के अनुरूप गेम उत्पादों को विकसित करना चाहिए और मध्य पूर्व के इस संभावित बाजार में जगह बनाने के लिए लाइसेंस प्राप्त ऑपरेटरों के साथ B2B एक्सेस चैनल तलाशने चाहिए।">阿聯酋市場正式啟動，意味著中東地區博弈政策正在鬆綁。JILI應積極研發符合在地文化與體育偏好的遊戲產品，並尋求與持牌營運商建立B2B接入管道，先行卡位中東潛力市場。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 85</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 85</span>
 
                     </div>
 
@@ -2540,21 +2518,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="經典 PC 遊戲《熱血江湖》(Yulgang) 近期進行大規模改版，推出新職業與伺服器，並透過社群行銷策略與知名團隊合作宣傳，成功活化老牌遊戲社群，維持市場熱度與玩家回歸率。" data-en="The classic PC game &#39;Yulgang&#39; has undergone a major update, introducing new classes and servers, and leveraging community marketing to revitalize the veteran game and maintain player retention." data-th="เกม PC สุดคลาสสิกอย่าง &#39;Yulgang&#39; (열혈강호) มีการอัปเดตครั้งใหญ่ ทั้งอาชีพใหม่และเซิร์ฟเวอร์ใหม่ พร้อมใช้กลยุทธ์การตลาดชุมชนเพื่อฟื้นฟูเกมเก่าให้กลับมาคึกคักและรักษาอัตราการกลับมาเล่นของผู้เล่น" data-hi="क्लासिक PC गेम &#39;युलगैंग&#39; (Yulgang) में हाल ही में बड़े बदलाव किए गए हैं। नए क्लास और सर्वर पेश किए गए हैं, साथ ही कम्युनिटी मार्केटिंग के जरिए इस पुराने गेम को नया जीवन दिया गया है ताकि खिलाड़ी जुड़े रहें।">經典 PC 遊戲《熱血江湖》(Yulgang) 近期進行大規模改版，推出新職業與伺服器，並透過社群行銷策略與知名團隊合作宣傳，成功活化老牌遊戲社群，維持市場熱度與玩家回歸率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="對於長青型產品而言，季節性內容更新與創意行銷是留存關鍵。JILI 應以此為鏡，針對旗下的明星產品規劃「周期性更新策略」，結合在地化的節慶或熱門迷因，深化玩家與產品間的情感維繫。" data-en="For legacy products, seasonal updates and creative marketing are key. JILI should mirror this by planning periodic updates for its star products, incorporating localized festivals or trending memes to deepen emotional connection." data-th="สำหรับผลิตภัณฑ์ที่อยู่มานาน การอัปเดตเนื้อหาตามฤดูกาลและการตลาดที่สร้างสรรค์คือหัวใจสำคัญในการรักษาฐานผู้เล่น JILI ควรนำแนวทางนี้มาวางแผน &#39;กลยุทธ์การอัปเดตเป็นรอบ&#39; สำหรับผลิตภัณฑ์เรือธง โดยผสมผสานเทศกาลท้องถิ่นหรือกระแสไวรัลเพื่อกระชับความสัมพันธ์กับผู้เล่น" data-hi="लंबे समय तक चलने वाले उत्पादों के लिए मौसमी अपडेट और रचनात्मक मार्केटिंग महत्वपूर्ण हैं। JILI को अपने प्रमुख उत्पादों के लिए &#39;चक्रीय अपडेट रणनीति&#39; की योजना बनानी चाहिए, जिसमें स्थानीय त्योहारों या लोकप्रिय मीम्स को शामिल किया जाए ताकि खिलाड़ियों के साथ भावनात्मक संबंध गहरा हो सके।">對於長青型產品而言，季節性內容更新與創意行銷是留存關鍵。JILI 應以此為鏡，針對旗下的明星產品規劃「周期性更新策略」，結合在地化的節慶或熱門迷因，深化玩家與產品間的情感維繫。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
 
                     </div>
 
@@ -2943,7 +2913,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "中國", "count": 1, "coords": [35.57911066116285, 104.2178198872824], "sentiment": "中立", "news_full": [{"title": "永利度假村CEO與王毅會晤，探討中美商務合作前景", "title_en": "Wynn Resorts CEO meets with Wang Yi to discuss the outlook for US-China business cooperation", "title_th": "ซีอีโอ Wynn Resorts เข้าพบหวังอี้ เพื่อหารือเกี่ยวกับแนวโน้มความร่วมมือทางธุรกิจระหว่างสหรัฐฯ-จีน", "title_hi": "Wynn Resorts के CEO ने वांग यी के साथ मुलाकात की, अमेरिका-चीन व्यापार सहयोग की संभावनाओं पर चर्चा की", "link": "https://asgam.com/2026/06/07/wynn-resorts-ceo-craig-billings-at-us-business-leaders-meeting-with-chinese-foreign-minister-wang-yi/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "斯里蘭卡", "count": 1, "coords": [7.127120543220023, 80.12320627727313], "sentiment": "利空", "news_full": [{"title": "中國與斯里蘭卡深化跨境網路賭博與電信詐騙執法合作", "title_en": "China and Sri Lanka deepen enforcement cooperation against cross-border online gambling and telecom fraud", "title_th": "จีนและศรีลังกากระชับความร่วมมือด้านการบังคับใช้กฎหมายเพื่อต่อต้านการพนันออนไลน์ข้ามชาติและการฉ้อโกงทางโทรคมนาคม", "title_hi": "चीन और श्रीलंका ने सीमा पार ऑनलाइन जुआ और दूरसंचार धोखाधड़ी के खिलाफ प्रवर्तन सहयोग को गहरा किया", "link": "https://asgam.com/2026/06/07/chinese-embassy-china-and-sri-lanka-have-stepped-up-joint-efforts-to-combat-online-gambling-telecom-fraud-and-related-crimes/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "阿聯酋", "count": 1, "coords": [24.9953977107568, 55.409478028110854], "sentiment": "利多", "news_full": [{"title": "阿聯酋唯一合法體育博彩營運商啟動世界盃促銷活動", "title_en": "UAE's first legal sports betting operator launches World Cup promotion", "title_th": "ผู้ประกอบการพนันกีฬาที่ได้รับอนุญาตแห่งแรกของ UAE เปิดตัวแคมเปญโปรโมชั่นฟุตบอลโลก", "title_hi": "यूएई के पहले कानूनी स्पोर्ट्स बेटिंग ऑपरेटर ने विश्व कप प्रचार अभियान शुरू किया", "link": "https://asgam.com/2026/06/07/uaes-only-sports-betting-operator-launches-first-ever-world-cup-promotions/", "sentiment": "利多", "impact": 85.0, "urgency": 70.0}]}, {"region": "泰國", "count": 1, "coords": [13.560729206970365, 100.99427318016747], "sentiment": "利多", "news_full": [{"title": "Yulgang PC 大規模更新，強化內容運營與宣傳", "title_en": "Yulgang PC Receives Massive Update", "title_th": "เกม PC 'Yulgang' อัปเดตครั้งใหญ่ เน้นเนื้อหาและการโปรโมต", "title_hi": "युलगैंग PC का बड़ा अपडेट, कंटेंट ऑपरेशन्स और प्रचार पर जोर", "link": "https://www.gamingdose.com/news/yulgang-pc-%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%83%e0%b8%ab%e0%b8%8d%e0%b9%88-%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95%e0%b8%ad%e0%b8%b2%e0%b8%8a%e0%b8%b5%e0%b8%9e%e0%b9%83/", "sentiment": "利多", "impact": 45.0, "urgency": 30.0}]}];
+        const mapMarkersData = [{"region": "中國", "count": 1, "coords": [35.75406094883722, 104.22913995152878], "sentiment": "中立", "news_full": [{"title": "永利度假村CEO與王毅會晤，探討中美商務合作前景", "title_en": "Wynn Resorts CEO meets with Wang Yi to discuss the outlook for US-China business cooperation", "title_th": "ซีอีโอ Wynn Resorts เข้าพบหวังอี้ เพื่อหารือเกี่ยวกับแนวโน้มความร่วมมือทางธุรกิจระหว่างสหรัฐฯ-จีน", "title_hi": "Wynn Resorts के CEO ने वांग यी के साथ मुलाकात की, अमेरिका-चीन व्यापार सहयोग की संभावनाओं पर चर्चा की", "link": "https://asgam.com/2026/06/07/wynn-resorts-ceo-craig-billings-at-us-business-leaders-meeting-with-chinese-foreign-minister-wang-yi/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}]}, {"region": "斯里蘭卡", "count": 1, "coords": [6.817303579976076, 80.1174048572066], "sentiment": "利空", "news_full": [{"title": "中國與斯里蘭卡深化跨境網路賭博與電信詐騙執法合作", "title_en": "China and Sri Lanka deepen enforcement cooperation against cross-border online gambling and telecom fraud", "title_th": "จีนและศรีลังกากระชับความร่วมมือด้านการบังคับใช้กฎหมายเพื่อต่อต้านการพนันออนไลน์ข้ามชาติและการฉ้อโกงทางโทรคมนาคม", "title_hi": "चीन और श्रीलंका ने सीमा पार ऑनलाइन जुआ और दूरसंचार धोखाधड़ी के खिलाफ प्रवर्तन सहयोग को गहरा किया", "link": "https://asgam.com/2026/06/07/chinese-embassy-china-and-sri-lanka-have-stepped-up-joint-efforts-to-combat-online-gambling-telecom-fraud-and-related-crimes/", "sentiment": "利空", "impact": 75.0, "urgency": 80.0}]}, {"region": "阿聯酋", "count": 1, "coords": [25.50700634356084, 55.32823081644159], "sentiment": "利多", "news_full": [{"title": "阿聯酋唯一合法體育博彩營運商啟動世界盃促銷活動", "title_en": "UAE's first legal sports betting operator launches World Cup promotion", "title_th": "ผู้ประกอบการพนันกีฬาที่ได้รับอนุญาตแห่งแรกของ UAE เปิดตัวแคมเปญโปรโมชั่นฟุตบอลโลก", "title_hi": "यूएई के पहले कानूनी स्पोर्ट्स बेटिंग ऑपरेटर ने विश्व कप प्रचार अभियान शुरू किया", "link": "https://asgam.com/2026/06/07/uaes-only-sports-betting-operator-launches-first-ever-world-cup-promotions/", "sentiment": "利多", "impact": 85.0, "urgency": 70.0}]}, {"region": "泰國", "count": 1, "coords": [14.03019969661605, 100.13771842085282], "sentiment": "利多", "news_full": [{"title": "Yulgang PC 大規模更新，強化內容運營與宣傳", "title_en": "Yulgang PC Receives Massive Update", "title_th": "เกม PC 'Yulgang' อัปเดตครั้งใหญ่ เน้นเนื้อหาและการโปรโมต", "title_hi": "युलगैंग PC का बड़ा अपडेट, कंटेंट ऑपरेशन्स और प्रचार पर जोर", "link": "https://www.gamingdose.com/news/yulgang-pc-%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%83%e0%b8%ab%e0%b8%8d%e0%b9%88-%e0%b8%ad%e0%b8%b1%e0%b8%9b%e0%b9%80%e0%b8%94%e0%b8%95%e0%b8%ad%e0%b8%b2%e0%b8%8a%e0%b8%b5%e0%b8%9e%e0%b9%83/", "sentiment": "利多", "impact": 45.0, "urgency": 30.0}]}];
 
         const regionMarkers = {};
 
@@ -3384,14 +3354,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -3408,7 +3370,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -4106,7 +4068,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
