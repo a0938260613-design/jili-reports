@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-05-23</title>
+    <title>JILI 市場情報指揮中心 - 2026-05-23</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-05-23</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2258,27 +2274,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2353,21 +2355,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="本週產業動態涵蓋 Twitter 上的熱門評論、預測市場平台 Polymarket 的交易表現，以及加州棋牌室的運營變動。這些事件反映了預測市場在博弈板塊中影響力日益擴大，以及地方監管下的產業細分領域動態。" data-en="This week&#39;s industry trends cover popular commentary on X (formerly Twitter), the trading performance of the prediction market platform Polymarket, and operational changes in California card rooms. These events reflect the growing influence of prediction markets in the gambling sector and industry segment dynamics under local regulations." data-th="ความเคลื่อนไหวของอุตสาหกรรมในสัปดาห์นี้ครอบคลุมถึงความเห็นยอดนิยมบน Twitter, ประสิทธิภาพการซื้อขายของแพลตฟอร์มตลาดคาดการณ์ Polymarket และการเปลี่ยนแปลงการดำเนินงานของห้องไพ่ในแคลิฟอร์เนีย เหตุการณ์เหล่านี้สะท้อนให้เห็นถึงอิทธิพลที่เพิ่มขึ้นของตลาดคาดการณ์ในกลุ่มการพนัน และพลวัตของอุตสาหกรรมภายใต้กฎระเบียบในท้องถิ่น" data-hi="इस सप्ताह के उद्योग रुझान ट्विटर (अब X) पर लोकप्रिय टिप्पणियों, प्रेडिक्शन मार्केट प्लेटफॉर्म &#39;पॉलिमार्केट&#39; के ट्रेडिंग प्रदर्शन और कैलिफोर्निया के कार्ड रूम में परिचालन परिवर्तनों को कवर करते हैं। ये घटनाएं जुआ क्षेत्र में प्रेडिक्शन मार्केट्स के बढ़ते प्रभाव और स्थानीय नियमों के तहत उद्योग के सूक्ष्म क्षेत्रों की गतिशीलता को दर्शाती हैं।">本週產業動態涵蓋 Twitter 上的熱門評論、預測市場平台 Polymarket 的交易表現，以及加州棋牌室的運營變動。這些事件反映了預測市場在博弈板塊中影響力日益擴大，以及地方監管下的產業細分領域動態。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="預測市場的崛起標誌著博弈範疇的擴張。Jili 應密切監控預測類產品的合規路徑與用戶偏好，這可能成為我們未來跨界開發或技術輸出的一種新業務形態與潛在競爭威脅。" data-en="The rise of prediction markets signals the expansion of the gambling landscape. Jili should closely monitor the compliance paths and user preferences for prediction-based products, as this may become a new business form or potential competitive threat for our future cross-industry development or technical output." data-th="การเกิดขึ้นของตลาดคาดการณ์เป็นสัญญาณของการขยายขอบเขตของการพนัน Jili ควรติดตามเส้นทางการปฏิบัติตามกฎระเบียบและความชอบของผู้ใช้สำหรับผลิตภัณฑ์ประเภทคาดการณ์อย่างใกล้ชิด เพราะสิ่งนี้อาจกลายเป็นรูปแบบธุรกิจใหม่หรือภัยคุกคามจากการแข่งขันสำหรับการพัฒนาข้ามอุตสาหกรรมหรือผลผลิตทางเทคนิคของเราในอนาคต" data-hi="प्रेडिक्शन मार्केट्स का उदय जुआ परिदृश्य के विस्तार का संकेत देता है। Jili को प्रेडिक्शन-आधारित उत्पादों के लिए अनुपालन रास्तों और उपयोगकर्ता प्राथमिकताओं पर बारीकी से नज़र रखनी चाहिए, क्योंकि यह हमारे भविष्य के क्रॉस-इंडस्ट्री विकास या तकनीकी आउटपुट के लिए एक नया व्यावसायिक रूप या संभावित प्रतिस्पर्धी खतरा बन सकता है।">預測市場的崛起標誌著博弈範疇的擴張。Jili 應密切監控預測類產品的合規路徑與用戶偏好，這可能成為我們未來跨界開發或技術輸出的一種新業務形態與潛在競爭威脅。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -2420,21 +2414,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="預測市場平台 Kalshi 在羅德島州對當地政府提起訴訟，此前州政府已準備對該公司及 Polymarket 發起訴訟。此次法律衝突顯示各州監管機構對於不受傳統博弈法規規範的「預測市場」正採取強硬的阻斷姿態。" data-en="The prediction market platform Kalshi has filed a lawsuit against the Rhode Island government after the state prepared to initiate litigation against the company and Polymarket. This legal conflict shows that state regulators are taking a tough stance against &#39;prediction markets&#39; that fall outside traditional gambling regulations." data-th="แพลตฟอร์มตลาดคาดการณ์ Kalshi ได้ยื่นฟ้องรัฐบาลโรดไอแลนด์ หลังจากที่รัฐบาลเตรียมดำเนินการทางกฎหมายต่อบริษัทและ Polymarket ความขัดแย้งทางกฎหมายครั้งนี้แสดงให้เห็นว่าหน่วยงานกำกับดูแลของรัฐกำลังใช้ท่าทีที่แข็งกร้าวต่อ &#39;ตลาดคาดการณ์&#39; ที่อยู่นอกเหนือข้อบังคับการพนันแบบดั้งเดิม" data-hi="प्रेडिक्शन मार्केट प्लेटफॉर्म &#39;कलशी&#39; ने रोड आइलैंड सरकार के खिलाफ मुकदमा दायर किया है, क्योंकि राज्य सरकार ने कंपनी और पॉलिमार्केट के खिलाफ मुकदमेबाजी शुरू करने की तैयारी की थी। यह कानूनी संघर्ष दिखाता है कि राज्य नियामक उन &#39;प्रेडिक्शन मार्केट्स&#39; के खिलाफ सख्त रुख अपना रहे हैं जो पारंपरिक जुआ नियमों के दायरे में नहीं आते हैं।">預測市場平台 Kalshi 在羅德島州對當地政府提起訴訟，此前州政府已準備對該公司及 Polymarket 發起訴訟。此次法律衝突顯示各州監管機構對於不受傳統博弈法規規範的「預測市場」正採取強硬的阻斷姿態。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="監管對於創新產品（如預測市場）的阻礙效應明顯。這提醒我們在進入新市場時，若涉及邊緣性博弈產品，必須審慎評估地方政策與法律風險，避免因監管爭議導致技術投資付諸東流。" data-en="Regulatory obstacles to innovative products (like prediction markets) are evident. This reminds us that when entering new markets, especially those involving edge-case gambling products, we must carefully assess local policies and legal risks to avoid wasted technical investment due to regulatory disputes." data-th="อุปสรรคด้านกฎระเบียบต่อผลิตภัณฑ์ที่เป็นนวัตกรรม (เช่น ตลาดคาดการณ์) นั้นเห็นได้ชัดเจน สิ่งนี้เตือนให้เรารู้ว่าเมื่อเข้าสู่ตลาดใหม่ โดยเฉพาะผลิตภัณฑ์การพนันที่อยู่ในขอบเขตสีเทา เราต้องประเมินนโยบายท้องถิ่นและความเสี่ยงทางกฎหมายอย่างรอบคอบ เพื่อหลีกเลี่ยงการสูญเสียการลงทุนทางเทคนิคเนื่องจากข้อพิพาทด้านกฎระเบียบ" data-hi="अभिनव उत्पादों (जैसे प्रेडिक्शन मार्केट्स) के लिए नियामक बाधाएं स्पष्ट हैं। यह हमें याद दिलाता है कि नए बाजारों में प्रवेश करते समय, विशेष रूप से उन मामलों में जिनमें किनारे वाले (edge-case) जुआ उत्पाद शामिल हों, हमें स्थानीय नीतियों और कानूनी जोखिमों का सावधानीपूर्वक आकलन करना चाहिए, ताकि नियामक विवादों के कारण तकनीकी निवेश बर्बाद न हो।">監管對於創新產品（如預測市場）的阻礙效應明顯。這提醒我們在進入新市場時，若涉及邊緣性博弈產品，必須審慎評估地方政策與法律風險，避免因監管爭議導致技術投資付諸東流。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2487,21 +2473,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="博弈營運商 Betr 透過收購一家 NFA（美國期貨協會）註冊的經紀商，加速其進入預測市場的步伐。此併購案顯示產業內資本正透過收購合規資質，以快速布局法規門檻較高的細分金融博弈市場。" data-en="Gambling operator Betr has accelerated its entry into prediction markets by acquiring an NFA (National Futures Association) registered broker. This acquisition shows that capital in the industry is securing compliance credentials through M&amp;A to quickly enter segmented financial gambling markets with high regulatory barriers." data-th="ผู้ให้บริการการพนัน Betr เร่งก้าวเข้าสู่ตลาดคาดการณ์ด้วยการเข้าซื้อกิจการนายหน้าที่จดทะเบียนกับ NFA (สมาคมฟิวเจอร์สแห่งชาติ) การควบรวมกิจการครั้งนี้แสดงให้เห็นว่าเงินทุนในอุตสาหกรรมกำลังจัดหาใบอนุญาตเพื่อความถูกต้องผ่านการควบรวมและซื้อกิจการ เพื่อเข้าสู่ตลาดการพนันทางการเงินที่มีอุปสรรคด้านกฎระเบียบสูงได้อย่างรวดเร็ว" data-hi="जुआ ऑपरेटर &#39;Betr&#39; ने NFA (नेशनल फ्यूचर्स एसोसिएशन) पंजीकृत ब्रोकर का अधिग्रहण करके प्रेडिक्शन मार्केट्स में अपने प्रवेश को तेज कर दिया है। यह अधिग्रहण दिखाता है कि उद्योग में पूंजी M&amp;A के माध्यम से अनुपालन क्रेडेंशियल सुरक्षित कर रही है ताकि उच्च नियामक बाधाओं वाले खंडित वित्तीय जुआ बाजारों में तेजी से प्रवेश किया जा सके।">博弈營運商 Betr 透過收購一家 NFA（美國期貨協會）註冊的經紀商，加速其進入預測市場的步伐。此併購案顯示產業內資本正透過收購合規資質，以快速布局法規門檻較高的細分金融博弈市場。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="併購合規資質是快速占領新市場的高效路徑。Jili 可評估是否透過收購或戰略結盟，取得特定區域的市場准入資格或經紀執照，從而將業務板塊從內容供應擴展至更具黏性的營運領域。" data-en="M&amp;A for compliance credentials is an efficient path to capture new markets. Jili can evaluate whether to obtain market access or brokerage licenses in specific regions through acquisition or strategic alliances, thereby expanding our business from content supply to more sticky operational domains." data-th="การควบรวมกิจการเพื่อสิทธิ์ในการปฏิบัติตามกฎระเบียบเป็นเส้นทางที่มีประสิทธิภาพในการครองตลาดใหม่ Jili สามารถประเมินได้ว่าจะขอสิทธิ์เข้าถึงตลาดหรือใบอนุญาตนายหน้าในภูมิภาคเฉพาะผ่านการควบรวมหรือพันธมิตรเชิงกลยุทธ์หรือไม่ ซึ่งจะเป็นการขยายธุรกิจจากการเป็นผู้จัดหาเนื้อหาไปสู่โดเมนการดำเนินงานที่มีความยึดเหนี่ยวสูงขึ้น" data-hi="अनुपालन क्रेडेंशियल के लिए M&amp;A नए बाजारों पर कब्जा करने का एक कुशल रास्ता है। Jili यह मूल्यांकन कर सकती है कि क्या अधिग्रहण या रणनीतिक गठबंधन के माध्यम से विशिष्ट क्षेत्रों में बाजार पहुंच या ब्रोकरेज लाइसेंस प्राप्त किए जा सकते हैं, जिससे हमारे व्यवसाय को सामग्री आपूर्ति से अधिक आकर्षक परिचालन डोमेन तक विस्तारित किया जा सके।">併購合規資質是快速占領新市場的高效路徑。Jili 可評估是否透過收購或戰略結盟，取得特定區域的市場准入資格或經紀執照，從而將業務板塊從內容供應擴展至更具黏性的營運領域。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2554,21 +2532,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="明尼蘇達州的法律訴訟與路易斯安那州的博弈相關修正法案，成為本週博弈立法領域的焦點。各州對博弈法規的密集修訂與司法介入，反映了美國市場在數位化轉型過程中，各地區政策穩定性仍具高度不確定性。" data-en="The lawsuit in Minnesota and the gambling-related amendment bill in Louisiana have become the focus of the gambling legislation sector this week. Dense revisions of gambling laws and judicial interventions by various states reflect that policy stability remains highly uncertain during the digital transformation of the US market." data-th="คดีความในรัฐมินนิโซตาและร่างกฎหมายแก้ไขเพิ่มเติมที่เกี่ยวข้องกับการพนันในรัฐลุยเซียนาได้กลายเป็นจุดสนใจของภาคกฎหมายการพนันในสัปดาห์นี้ การแก้ไขกฎหมายการพนันและการแทรกแซงทางตุลาการโดยหลายรัฐสะท้อนให้เห็นว่าเสถียรภาพของนโยบายยังคงมีความไม่แน่นอนสูงในระหว่างการเปลี่ยนผ่านสู่ดิจิทัลของตลาดสหรัฐฯ" data-hi="मिनेसोटा में मुकदमा और लुइसियाना में जुआ-संबंधी संशोधन विधेयक इस सप्ताह जुआ कानून क्षेत्र का केंद्र बन गए हैं। विभिन्न राज्यों द्वारा जुआ कानूनों के सघन संशोधन और न्यायिक हस्तक्षेप यह दर्शाते हैं कि अमेरिकी बाजार के डिजिटल परिवर्तन के दौरान नीतिगत स्थिरता अभी भी अत्यधिक अनिश्चित है।">明尼蘇達州的法律訴訟與路易斯安那州的博弈相關修正法案，成為本週博弈立法領域的焦點。各州對博弈法規的密集修訂與司法介入，反映了美國市場在數位化轉型過程中，各地區政策穩定性仍具高度不確定性。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="美國州級政策的高度破碎化是最大的營運挑戰。我們需建立一個針對美國各州的政策監測矩陣，特別是針對路易斯安那與明尼蘇達這類政策多變區，及時調整產品內容以適應當地的合規限制。" data-en="The high fragmentation of state-level policies in the US is the biggest operational challenge. We need to build a policy monitoring matrix for US states, especially for volatile areas like Louisiana and Minnesota, to timely adjust product content to accommodate local compliance restrictions." data-th="ความกระจัดกระจายของนโยบายระดับรัฐในสหรัฐฯ เป็นความท้าทายในการดำเนินงานที่ใหญ่ที่สุด เราจำเป็นต้องสร้างเมทริกซ์ติดตามนโยบายสำหรับรัฐต่างๆ ในสหรัฐฯ โดยเฉพาะพื้นที่ที่มีความผันผวนอย่างลุยเซียนาและมินนิโซตา เพื่อปรับเปลี่ยนเนื้อหาผลิตภัณฑ์ให้เหมาะสมกับข้อจำกัดด้านการปฏิบัติตามกฎระเบียบของท้องถิ่นได้ทันเวลา" data-hi="अमेरिकी राज्यों में नीतियों का अत्यधिक विखंडन (fragmentation) सबसे बड़ी परिचालन चुनौती है। हमें अमेरिकी राज्यों के लिए एक नीति निगरानी मैट्रिक्स बनाने की आवश्यकता है, विशेष रूप से लुइसियाना और मिनेसोटा जैसे अस्थिर क्षेत्रों के लिए, ताकि स्थानीय अनुपालन प्रतिबंधों को समायोजित करने के लिए उत्पाद सामग्री को समय पर बदला जा सके।">美國州級政策的高度破碎化是最大的營運挑戰。我們需建立一個針對美國各州的政策監測矩陣，特別是針對路易斯安那與明尼蘇達這類政策多變區，及時調整產品內容以適應當地的合規限制。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 80</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -2621,21 +2591,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="在近期舉行的參議院小組委員會聽證會上，共和黨議員對預測市場（Prediction Markets）表達了高度質疑。儘管部分倡議者主張其具備信息聚合價值，但議員們擔憂該領域可能引發選舉操縱、缺乏監管及洗錢風險，強烈要求相關機構介入並強化監管力道，針對賭博性質的市場運作提出嚴厲批評。" data-en="At a recent Senate subcommittee hearing, Republican lawmakers expressed deep skepticism regarding prediction markets. While proponents argue for their information-aggregation value, senators raised concerns over election manipulation, lack of oversight, and money laundering risks, calling for regulatory bodies to intervene and criticizing the gambling-like nature of these markets." data-th="ในการไต่สวนของคณะอนุกรรมาธิการวุฒิสภาเมื่อเร็วๆ นี้ สมาชิกสภานิติบัญญัติจากพรรครีพับลิกันได้แสดงความสงสัยอย่างยิ่งต่อตลาดคาดการณ์ (Prediction Markets) แม้ว่าผู้สนับสนุนจะอ้างถึงคุณค่าในการรวบรวมข้อมูล แต่สมาชิกสภากังวลเกี่ยวกับความเสี่ยงของการแทรกแซงการเลือกตั้ง การขาดการกำกับดูแล และการฟอกเงิน โดยเรียกร้องให้หน่วยงานที่เกี่ยวข้องเข้ามาแทรกแซงและเพิ่มความเข้มงวดในการกำกับดูแล พร้อมวิพากษ์วิจารณ์ลักษณะการทำงานที่คล้ายกับการพนัน" data-hi="हाल ही में आयोजित सीनेट उप-समिति की सुनवाई में, रिपब्लिकन सांसदों ने प्रेडिक्शन मार्केट (पूर्वानुमान बाजारों) पर गहरा संदेह व्यक्त किया। हालांकि समर्थकों का तर्क है कि इनमें सूचना एकत्र करने का मूल्य है, लेकिन सांसदों ने चुनाव में हेरफेर, निगरानी की कमी और मनी लॉन्ड्रिंग के जोखिमों पर चिंता जताई है। उन्होंने संबंधित एजेंसियों से हस्तक्षेप करने और नियामक सख्ती बढ़ाने की मांग की है, साथ ही इन बाजारों की जुए जैसी प्रकृति की कड़ी आलोचना की है।">在近期舉行的參議院小組委員會聽證會上，共和黨議員對預測市場（Prediction Markets）表達了高度質疑。儘管部分倡議者主張其具備信息聚合價值，但議員們擔憂該領域可能引發選舉操縱、缺乏監管及洗錢風險，強烈要求相關機構介入並強化監管力道，針對賭博性質的市場運作提出嚴厲批評。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="預測市場面臨的監管高壓，反映出美國在博弈與金融界線上的收緊。作為B2B供應商，此訊號警示我們在開發產品時須避開涉及政治賭博的邊界，強化合規審查與風險防範機制，確保內容供應鏈不受區域性政策動盪的負面波及。" data-en="The high regulatory pressure on prediction markets reflects a tightening of the boundaries between gaming and finance in the U.S. As a B2B provider, this serves as a warning to avoid products involving political betting, strengthen compliance audits, and enhance risk prevention mechanisms to ensure our supply chain remains insulated from regional policy volatility." data-th="แรงกดดันด้านการกำกับดูแลที่สูงขึ้นต่อตลาดคาดการณ์สะท้อนให้เห็นถึงความเข้มงวดของเส้นแบ่งระหว่างการพนันและการเงินในสหรัฐฯ ในฐานะซัพพลายเออร์ B2B สัญญาณนี้เตือนให้เราต้องหลีกเลี่ยงผลิตภัณฑ์ที่เกี่ยวข้องกับการเดิมพันทางการเมือง เพิ่มความเข้มงวดในการตรวจสอบการปฏิบัติตามกฎระเบียบและกลไกป้องกันความเสี่ยง เพื่อให้มั่นใจว่าห่วงโซ่อุปทานเนื้อหาของเราจะไม่ได้รับผลกระทบจากความผันผวนของนโยบายในระดับภูมิภาค" data-hi="प्रेडिक्शन मार्केट पर बढ़ता नियामक दबाव जुए और वित्त के बीच की रेखा को कड़ा करने के अमेरिकी रुख को दर्शाता है। एक B2B प्रदाता के रूप में, यह संकेत हमें चेतावनी देता है कि उत्पाद विकसित करते समय राजनीतिक दांव-पेच से जुड़ी सीमाओं से बचें, अनुपालन ऑडिट और जोखिम निवारण तंत्र को मजबूत करें, ताकि यह सुनिश्चित हो सके कि हमारी कंटेंट सप्लाई चेन क्षेत्रीय नीतिगत अस्थिरता से सुरक्षित रहे।">預測市場面臨的監管高壓，反映出美國在博弈與金融界線上的收緊。作為B2B供應商，此訊號警示我們在開發產品時須避開涉及政治賭博的邊界，強化合規審查與風險防範機制，確保內容供應鏈不受區域性政策動盪的負面波及。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2688,21 +2650,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="SBC Summit Americas即將召開，本次活動重點探討北美博弈市場的支付技術與創新應用。議程聚焦於人工智能（AI）在客戶體驗優化中的角色、加密貨幣支付的普及趨勢，以及博弈產業的數位化轉型方向，旨在解決現有支付基礎設施的瓶頸並提升營運效率。" data-en="SBC Summit Americas is set to convene, focusing on payment technology and innovative applications in the North American gaming market. The agenda highlights the role of AI in optimizing customer experience, the adoption trend of cryptocurrency payments, and the digital transformation of the gaming industry, aiming to resolve bottlenecks in existing payment infrastructure." data-th="SBC Summit Americas กำลังจะจัดขึ้น โดยงานนี้จะมุ่งเน้นไปที่การสำรวจเทคโนโลยีการชำระเงินและการประยุกต์ใช้นวัตกรรมในตลาดเกมในอเมริกาเหนือ วาระการประชุมมุ่งเน้นไปที่บทบาทของปัญญาประดิษฐ์ (AI) ในการเพิ่มประสิทธิภาพประสบการณ์ลูกค้า แนวโน้มความนิยมของการชำระเงินด้วยสกุลเงินดิจิทัล และทิศทางการเปลี่ยนแปลงทางดิจิทัลของอุตสาหกรรมเกม เพื่อแก้ไขปัญหาคอขวดของโครงสร้างพื้นฐานการชำระเงินที่มีอยู่" data-hi="SBC समिट अमेरिका आयोजित होने वाला है, जिसमें उत्तरी अमेरिकी गेमिंग बाजार में भुगतान तकनीक और नवीन अनुप्रयोगों पर चर्चा की जाएगी। एजेंडा में ग्राहकों के अनुभव को बेहतर बनाने में आर्टिफिशियल इंटेलिजेंस (AI) की भूमिका, क्रिप्टोकरेंसी भुगतान के बढ़ते चलन और गेमिंग उद्योग के डिजिटल परिवर्तन पर ध्यान केंद्रित किया गया है, जिसका उद्देश्य मौजूदा भुगतान बुनियादी ढांचे की बाधाओं को दूर करना है।">SBC Summit Americas即將召開，本次活動重點探討北美博弈市場的支付技術與創新應用。議程聚焦於人工智能（AI）在客戶體驗優化中的角色、加密貨幣支付的普及趨勢，以及博弈產業的數位化轉型方向，旨在解決現有支付基礎設施的瓶頸並提升營運效率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="支付技術是提升用戶留存的關鍵。針對北美市場，我們應加速整合加密貨幣結算介面，並利用AI技術進行玩家行為預測與風險分析，優化交付流程，維持在極高競爭強度市場中的產品技術壁壘。" data-en="Payment technology is key to improving user retention. For the North American market, we should accelerate the integration of cryptocurrency settlement interfaces and utilize AI to analyze player behavior and risks. This will optimize delivery processes and maintain our competitive product and technology barriers." data-th="เทคโนโลยีการชำระเงินเป็นกุญแจสำคัญในการรักษาผู้ใช้งาน สำหรับตลาดอเมริกาเหนือ เราควรเร่งบูรณาการอินเทอร์เฟซการชำระเงินด้วยสกุลเงินดิจิทัล และใช้เทคโนโลยี AI เพื่อวิเคราะห์พฤติกรรมผู้เล่นและความเสี่ยง เพื่อปรับปรุงกระบวนการส่งมอบและรักษาความได้เปรียบทางเทคโนโลยีในตลาดที่มีการแข่งขันสูง" data-hi="भुगतान तकनीक उपयोगकर्ता प्रतिधारण (user retention) बढ़ाने की कुंजी है। उत्तरी अमेरिकी बाजार के लिए, हमें क्रिप्टोकरेंसी सेटलमेंट इंटरफेस को एकीकृत करने और खिलाड़ी के व्यवहार और जोखिम विश्लेषण के लिए AI तकनीक का उपयोग करने में तेजी लानी चाहिए, ताकि डिलीवरी प्रक्रियाओं को अनुकूलित किया जा सके और अत्यधिक प्रतिस्पर्धी बाजार में हमारे तकनीकी अवरोधों को बनाए रखा जा सके।">支付技術是提升用戶留存的關鍵。針對北美市場，我們應加速整合加密貨幣結算介面，並利用AI技術進行玩家行為預測與風險分析，優化交付流程，維持在極高競爭強度市場中的產品技術壁壘。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2754,21 +2708,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="SBC Summit Americas 公布了其「First Pitch」初創企業競賽的決賽入圍名單。這些參賽項目涵蓋博弈技術、創新內容開發及數據分析等多個領域，旨在為博弈產業引入新穎的解決方案，並協助這些潛力新創對接潛在的投資者與戰略合作夥伴。" data-en="SBC Summit Americas has announced the finalists for its &#39;First Pitch&#39; startup competition. These entries cover various fields, including gaming technology, innovative content development, and data analytics, aiming to introduce novel solutions to the industry and connect potential startups with investors and strategic partners." data-th="SBC Summit Americas ได้ประกาศรายชื่อผู้เข้ารอบสุดท้ายสำหรับการแข่งขันสตาร์ทอัพ &#39;First Pitch&#39; โครงการเหล่านี้ครอบคลุมหลายสาขา เช่น เทคโนโลยีเกม การพัฒนาเนื้อหาที่เป็นนวัตกรรม และการวิเคราะห์ข้อมูล โดยมีจุดมุ่งหมายเพื่อนำเสนอโซลูชันใหม่ๆ เข้าสู่อุตสาหกรรมเกม และช่วยเชื่อมต่อสตาร์ทอัพที่มีศักยภาพเหล่านี้กับนักลงทุนและพันธมิตรทางยุทธศาสตร์" data-hi="SBC समिट अमेरिका ने अपनी &#39;फर्स्ट पिच&#39; स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा कर दी है। ये प्रविष्टियां गेमिंग तकनीक, अभिनव कंटेंट विकास और डेटा एनालिटिक्स सहित विभिन्न क्षेत्रों को कवर करती हैं। इसका उद्देश्य गेमिंग उद्योग में नए समाधान पेश करना और संभावित स्टार्टअप्स को निवेशकों और रणनीतिक भागीदारों से जोड़ना है।">SBC Summit Americas 公布了其「First Pitch」初創企業競賽的決賽入圍名單。這些參賽項目涵蓋博弈技術、創新內容開發及數據分析等多個領域，旨在為博弈產業引入新穎的解決方案，並協助這些潛力新創對接潛在的投資者與戰略合作夥伴。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="初創競賽是識別顛覆性技術的絕佳視窗。我們應密切關注決賽展示的創新內容與技術應用，評估其潛在的收購或技術合作價值，以維持 Jili Games 在遊戲開發與跨平台整合上的領先地位。" data-en="The startup competition is an excellent window for identifying disruptive technology. We should closely follow the innovations showcased by the finalists and evaluate their potential for acquisition or technical partnership to maintain Jili Games&#39; leading position in game development and cross-platform integration." data-th="การแข่งขันสตาร์ทอัพเป็นช่องทางที่ยอดเยี่ยมในการระบุเทคโนโลยีที่ล้ำสมัย เราควรติดตามนวัตกรรมที่จัดแสดงในรอบสุดท้ายอย่างใกล้ชิด และประเมินโอกาสในการเข้าซื้อกิจการหรือความร่วมมือทางเทคนิค เพื่อรักษาตำแหน่งผู้นำของ Jili Games ในด้านการพัฒนาเกมและการบูรณาการข้ามแพลตฟอร์ม" data-hi="स्टार्टअप प्रतियोगिता विघटनकारी (disruptive) प्रौद्योगिकियों की पहचान करने के लिए एक उत्कृष्ट मंच है। हमें फाइनलिस्ट द्वारा प्रदर्शित नवाचारों पर बारीकी से नजर रखनी चाहिए और गेम विकास और क्रॉस-प्लेटफॉर्म एकीकरण में Jili Games की अग्रणी स्थिति बनाए रखने के लिए उनके अधिग्रहण या तकनीकी साझेदारी की संभावनाओं का मूल्यांकन करना चाहिए।">初創競賽是識別顛覆性技術的絕佳視窗。我們應密切關注決賽展示的創新內容與技術應用，評估其潛在的收購或技術合作價值，以維持 Jili Games 在遊戲開發與跨平台整合上的領先地位。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
 
                     </div>
 
@@ -2821,21 +2767,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="產業報告指出，負責任博弈已從單純的法規遵循轉向更主動的玩家教育。運營商不僅需設置監管工具，更需透過強化玩家對遊戲機制及風險的認知，建立品牌信任與長期可持續的經營環境。此趨勢反映全球監管機構對於預防成癮及保護未成年人的期待，推動產業採取更具預防性的保護策略，以緩解社會壓力並應對日益嚴格的全球監管審查。" data-en="Industry reports indicate that responsible gaming has shifted from mere regulatory compliance to proactive player education. Operators are now required not only to provide regulatory tools but also to strengthen player awareness of game mechanics and risks, fostering brand trust and a sustainable business environment. This trend reflects global regulatory expectations for addiction prevention and minor protection, pushing the industry toward more preventive strategies to alleviate social pressure and address increasing global regulatory scrutiny." data-th="รายงานอุตสาหกรรมระบุว่าการพนันอย่างรับผิดชอบได้เปลี่ยนจากการปฏิบัติตามกฎระเบียบเพียงอย่างเดียวไปสู่การให้ความรู้แก่ผู้เล่นเชิงรุก ผู้ให้บริการไม่เพียงแต่ต้องจัดหาเครื่องมือควบคุมดูแลเท่านั้น แต่ยังต้องเสริมสร้างความเข้าใจของผู้เล่นเกี่ยวกับกลไกของเกมและความเสี่ยง เพื่อสร้างความไว้วางใจในแบรนด์และสภาพแวดล้อมทางธุรกิจที่ยั่งยืน แนวโน้มนี้สะท้อนถึงความคาดหวังของหน่วยงานกำกับดูแลทั่วโลกในการป้องกันการติดพนันและการคุ้มครองผู้เยาว์ ผลักดันให้ภาคอุตสาหกรรมใช้กลยุทธ์การป้องกันเชิงรุกเพื่อลดแรงกดดันทางสังคมและรับมือกับการตรวจสอบที่เข้มงวดขึ้นทั่วโลก" data-hi="उद्योग रिपोर्ट बताती है कि जिम्मेदार गेमिंग अब केवल नियामक अनुपालन से हटकर सक्रिय खिलाड़ी शिक्षा की ओर बढ़ गई है। ऑपरेटरों को न केवल नियामक उपकरण स्थापित करने की आवश्यकता है, बल्कि गेम मैकेनिक्स और जोखिमों के बारे में खिलाड़ियों की समझ को मजबूत करके ब्रांड विश्वास और एक स्थायी व्यावसायिक वातावरण बनाने की भी आवश्यकता है। यह प्रवृत्ति लत की रोकथाम और नाबालिगों की सुरक्षा के लिए वैश्विक नियामक अपेक्षाओं को दर्शाती है, जिससे उद्योग को सामाजिक दबाव को कम करने और बढ़ती नियामक जांच का सामना करने के लिए अधिक निवारक रणनीतियां अपनाने के लिए प्रेरित किया जा रहा है।">產業報告指出，負責任博弈已從單純的法規遵循轉向更主動的玩家教育。運營商不僅需設置監管工具，更需透過強化玩家對遊戲機制及風險的認知，建立品牌信任與長期可持續的經營環境。此趨勢反映全球監管機構對於預防成癮及保護未成年人的期待，推動產業採取更具預防性的保護策略，以緩解社會壓力並應對日益嚴格的全球監管審查。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="玩家教育是緩解監管壓力的最佳緩衝。我們應將此概念植入 API 數據接口，協助運營商導入即時提醒與機制提示。產品設計需在娛樂性與防護性間取得平衡，透過透明化的數據表現降低監管疑慮，確保 Jili 產品在全球合規市場的長效生存空間。" data-en="Player education is the best buffer against regulatory pressure. We should integrate this concept into our API data interfaces to assist operators in implementing real-time alerts and mechanism prompts. Product design must balance entertainment with protection, using transparent data reporting to reduce regulatory concerns and ensure the long-term survival of Jili products in globally compliant markets." data-th="การให้ความรู้แก่ผู้เล่นเป็นเกราะป้องกันที่ดีที่สุดต่อแรงกดดันด้านกฎระเบียบ เราควรฝังแนวคิดนี้ลงในอินเทอร์เฟซข้อมูล API เพื่อช่วยให้ผู้ให้บริการนำการแจ้งเตือนแบบเรียลไทม์มาใช้ การออกแบบผลิตภัณฑ์ต้องสร้างสมดุลระหว่างความบันเทิงและการป้องกัน โดยใช้การนำเสนอข้อมูลที่โปร่งใสเพื่อลดความกังวลด้านกฎระเบียบ และสร้างความมั่นใจในพื้นที่การเติบโตที่ยั่งยืนของผลิตภัณฑ์ Jili ในตลาดที่ปฏิบัติตามกฎระเบียบทั่วโลก" data-hi="खिलाड़ी शिक्षा नियामक दबाव को कम करने के लिए सबसे अच्छा बफर है। हमें इस अवधारणा को API डेटा इंटरफेस में शामिल करना चाहिए ताकि ऑपरेटरों को रीयल-टाइम अलर्ट और मैकेनिज्म प्रॉम्प्ट लागू करने में मदद मिल सके। उत्पाद डिजाइन को मनोरंजन और सुरक्षा के बीच संतुलन बनाना चाहिए, पारदर्शी डेटा रिपोर्टिंग के माध्यम से नियामक चिंताओं को कम करना चाहिए और वैश्विक अनुपालन बाजारों में Jili उत्पादों के दीर्घकालिक अस्तित्व को सुनिश्चित करना चाहिए।">玩家教育是緩解監管壓力的最佳緩衝。我們應將此概念植入 API 數據接口，協助運營商導入即時提醒與機制提示。產品設計需在娛樂性與防護性間取得平衡，透過透明化的數據表現降低監管疑慮，確保 Jili 產品在全球合規市場的長效生存空間。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2887,21 +2825,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="開放世界都市冒險遊戲《Neverness to Everness》宣布將於今年 7 月擴大發行渠道，正式登陸 Steam 及 Epic Games Store 平台。此舉顯示開發商希望透過 PC 端的大流量入口，吸引更廣泛的全球玩家族群，並藉由跨平台同步發行來提升遊戲的市場能見度與長期留存率。" data-en="The open-world urban adventure game &#34;Neverness to Everness&#34; announced it will expand its distribution channels this July, officially launching on Steam and Epic Games Store. This move indicates the developer&#39;s intent to attract a broader global player base through the high-traffic portals of PC platforms and to enhance game visibility and long-term retention through simultaneous cross-platform releases." data-th="เกมผจญภัยในเมืองแบบโอเพ่นเวิลด์ &#34;Neverness to Everness&#34; ประกาศขยายช่องทางการจัดจำหน่ายในเดือนกรกฎาคมนี้ โดยจะเปิดตัวอย่างเป็นทางการบนแพลตฟอร์ม Steam และ Epic Games Store ความเคลื่อนไหวนี้แสดงให้เห็นว่านักพัฒนาต้องการดึงดูดฐานผู้เล่นทั่วโลกที่กว้างขึ้นผ่านช่องทางที่มีปริมาณการใช้งานสูงบนพีซี และเพิ่มความสามารถในการมองเห็นของเกมรวมถึงอัตราการคงอยู่ของผู้เล่นในระยะยาวผ่านการเปิดตัวข้ามแพลตฟอร์มพร้อมกัน" data-hi="ओपन-वर्ल्ड अर्बन एडवेंचर गेम &#34;Neverness to Everness&#34; ने घोषणा की है कि वह इस जुलाई में अपने वितरण चैनलों का विस्तार करेगा, जो आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर प्लेटफॉर्म पर लॉन्च होगा। यह कदम दर्शाता है कि डेवलपर पीसी प्लेटफॉर्म के उच्च-ट्रैफ़िक प्रवेश द्वारों के माध्यम से व्यापक वैश्विक खिलाड़ी आधार को आकर्षित करना चाहता है, और क्रॉस-प्लेटफ़ॉर्म रिलीज के माध्यम से गेम की दृश्यता और दीर्घकालिक प्रतिधारण दर को बढ़ाना चाहता है।">開放世界都市冒險遊戲《Neverness to Everness》宣布將於今年 7 月擴大發行渠道，正式登陸 Steam 及 Epic Games Store 平台。此舉顯示開發商希望透過 PC 端的大流量入口，吸引更廣泛的全球玩家族群，並藉由跨平台同步發行來提升遊戲的市場能見度與長期留存率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此舉揭示了跨平台發行對提升遊戲曝光的重要性。儘管該產品為傳統遊戲，但其渠道擴張策略可供我們參考；Jili 應持續優化 HTML5 產品的流暢度與兼容性，確保在 PC 與手機端均能提供無縫的遊戲體驗，以應對日益競爭的流量分配。" data-en="This move highlights the importance of cross-platform distribution in boosting game exposure. Although this is a traditional game, its channel expansion strategy serves as a reference; Jili should continue to optimize the fluidity and compatibility of HTML5 products, ensuring seamless gaming experiences on both PC and mobile to cope with increasingly competitive traffic distribution." data-th="ความเคลื่อนไหวนี้เผยให้เห็นความสำคัญของการเผยแพร่ข้ามแพลตฟอร์มเพื่อเพิ่มการมองเห็นของเกม แม้ว่าผลิตภัณฑ์นี้จะเป็นเกมแบบดั้งเดิม แต่กลยุทธ์การขยายช่องทางของพวกเขาก็เป็นสิ่งที่เราควรศึกษา Jili ควรเพิ่มประสิทธิภาพความลื่นไหลและความเข้ากันได้ของผลิตภัณฑ์ HTML5 อย่างต่อเนื่อง เพื่อให้มั่นใจว่าจะมอบประสบการณ์การเล่นเกมที่ราบรื่นทั้งบนพีซีและมือถือ เพื่อรับมือกับการแย่งชิงทราฟฟิกที่รุนแรงขึ้น" data-hi="यह कदम गेम एक्सपोज़र बढ़ाने के लिए क्रॉस-प्लेटफ़ॉर्म वितरण के महत्व को उजागर करता है। हालांकि यह एक पारंपरिक गेम है, इसकी चैनल विस्तार रणनीति हमारे लिए एक संदर्भ के रूप में काम कर सकती है; Jili को HTML5 उत्पादों की तरलता और संगतता को अनुकूलित करना जारी रखना चाहिए, ताकि पीसी और मोबाइल दोनों पर एक सहज गेमिंग अनुभव सुनिश्चित किया जा सके, ताकि बढ़ते प्रतिस्पर्धी ट्रैफ़िक वितरण का मुकाबला किया जा सके।">此舉揭示了跨平台發行對提升遊戲曝光的重要性。儘管該產品為傳統遊戲，但其渠道擴張策略可供我們參考；Jili 應持續優化 HTML5 產品的流暢度與兼容性，確保在 PC 與手機端均能提供無縫的遊戲體驗，以應對日益競爭的流量分配。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
 
                     </div>
 
@@ -2954,21 +2884,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Riot Games 近期針對旗下遊戲的 Vanguard 反作弊系統進行強制性更新，該機制深入硬體層級偵測外掛，導致部分玩家認為系統權限過大且侵犯隱私。此爭議引發關於遊戲安全防護與用戶端體驗之間平衡的討論，反映出即使是為了打擊惡意作弊，過度嚴苛的監管手段仍可能對玩家情緒與品牌滿意度造成負面影響。" data-en="Riot Games recently performed a mandatory update to its Vanguard anti-cheat system. The mechanism probes deep into the hardware level to detect cheats, leading some players to believe that the system permissions are overly intrusive and violate privacy. This controversy has ignited discussions about the balance between game security and client-side experience, reflecting that even when aimed at combating malicious cheating, overly strict regulation can negatively impact player sentiment and brand satisfaction." data-th="Riot Games ได้ทำการอัปเดตระบบป้องกันการโกง Vanguard ในเกมของตนอย่างบังคับ กลไกนี้เจาะลึกลงไปถึงระดับฮาร์ดแวร์เพื่อตรวจจับการโกง ทำให้ผู้เล่นบางคนมองว่าการอนุญาตของระบบนั้นก้าวก่ายเกินไปและละเมิดความเป็นส่วนตัว ข้อโต้แย้งนี้ทำให้เกิดการอภิปรายเกี่ยวกับความสมดุลระหว่างความปลอดภัยของเกมและประสบการณ์ของผู้ใช้ สะท้อนให้เห็นว่าแม้จะเป็นไปเพื่อต่อต้านการโกงที่เป็นอันตราย แต่มาตรการกำกับดูแลที่เข้มงวดเกินไปอาจส่งผลเสียต่อความรู้สึกของผู้เล่นและความพึงพอใจต่อแบรนด์ได้" data-hi="Riot Games ने हाल ही में अपने Vanguard एंटी-चीट सिस्टम के लिए अनिवार्य अपडेट जारी किया है। यह तंत्र चीट्स का पता लगाने के लिए हार्डवेयर स्तर तक गहराई से जांच करता है, जिससे कुछ खिलाड़ियों का मानना है कि सिस्टम की अनुमतियां बहुत अधिक दखल देने वाली हैं और गोपनीयता का उल्लंघन करती हैं। इस विवाद ने गेम सुरक्षा और क्लाइंट-साइड अनुभव के बीच संतुलन के बारे में चर्चा शुरू कर दी है, जो यह दर्शाता है कि दुर्भावनापूर्ण धोखाधड़ी से निपटने के लिए भी, अत्यधिक सख्त नियामक उपाय खिलाड़ी की भावना और ब्रांड संतुष्टि पर नकारात्मक प्रभाव डाल सकते हैं।">Riot Games 近期針對旗下遊戲的 Vanguard 反作弊系統進行強制性更新，該機制深入硬體層級偵測外掛，導致部分玩家認為系統權限過大且侵犯隱私。此爭議引發關於遊戲安全防護與用戶端體驗之間平衡的討論，反映出即使是為了打擊惡意作弊，過度嚴苛的監管手段仍可能對玩家情緒與品牌滿意度造成負面影響。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此案例警示了技術防禦的邊界感。對 Jili 而言，防範非法外掛與腳本攻擊是確保 B2B 系統公平性的核心，但我們需在後端風險控制中隱形化作業，避免因過度干預造成客戶端營運上的負擔，務必在技術硬度與玩家體驗間保持精細平衡。" data-en="This case warns of the boundaries of technical defense. For Jili, preventing illegal cheats and script attacks is central to ensuring B2B system fairness, but we must operate invisibly within backend risk control to avoid imposing burdens on client operations due to over-intervention, ensuring a delicate balance between technical robustness and player experience." data-th="กรณีนี้เป็นคำเตือนเกี่ยวกับขอบเขตของการป้องกันทางเทคนิค สำหรับ Jili การป้องกันการโกงและสคริปต์ที่ผิดกฎหมายเป็นหัวใจสำคัญในการรับประกันความยุติธรรมของระบบ B2B แต่เราต้องดำเนินการอย่างแนบเนียนในการควบคุมความเสี่ยงเบื้องหลัง เพื่อหลีกเลี่ยงภาระในการดำเนินงานของลูกค้าที่เกิดจากการแทรกแซงที่มากเกินไป โดยต้องรักษาความสมดุลที่ละเอียดอ่อนระหว่างความแข็งแกร่งทางเทคนิคและประสบการณ์ของผู้เล่น" data-hi="यह मामला तकनीकी रक्षा की सीमाओं के बारे में चेतावनी देता है। Jili के लिए, अवैध चीट्स और स्क्रिप्ट हमलों को रोकना B2B सिस्टम की निष्पक्षता सुनिश्चित करने के लिए केंद्रीय है, लेकिन हमें बैकएंड जोखिम नियंत्रण में अदृश्य रूप से काम करना चाहिए ताकि अत्यधिक हस्तक्षेप के कारण क्लाइंट संचालन पर बोझ न पड़े, तकनीकी मजबूती और खिलाड़ी के अनुभव के बीच एक सूक्ष्म संतुलन सुनिश्चित किया जा सके।">此案例警示了技術防禦的邊界感。對 Jili 而言，防範非法外掛與腳本攻擊是確保 B2B 系統公平性的核心，但我們需在後端風險控制中隱形化作業，避免因過度干預造成客戶端營運上的負擔，務必在技術硬度與玩家體驗間保持精細平衡。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
 
                     </div>
 
@@ -3021,21 +2943,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="在近期舉辦的 Combo Breaker 2026 電競盛會中，發生了玩家在比賽現場進行《Umamusume》（賽馬娘）抽卡（轉蛋）並成功獲得目標角色（Curren Chan）的戲劇性事件。該片段在社群媒體引發熱烈討論，再次凸顯「轉蛋機制」在遊戲文化中的強大渲染力及高互動潛力。" data-en="During the recently held Combo Breaker 2026 esports event, a dramatic incident occurred where a player performed a gacha pull for &#34;Umamusume&#34; and successfully obtained the target character (Curren Chan) on stage. This clip sparked heated discussion on social media, once again highlighting the powerful engagement and high interaction potential of gacha mechanics in gaming culture." data-th="ในงานอีสปอร์ต Combo Breaker 2026 ที่จัดขึ้นเมื่อเร็วๆ นี้ เกิดเหตุการณ์สุดระทึกขวัญเมื่อผู้เล่นทำการเปิดกาชาในเกม &#34;Umamusume&#34; บนเวทีการแข่งขันและได้รับตัวละครเป้าหมาย (Curren Chan) ได้สำเร็จ คลิปดังกล่าวจุดประกายให้เกิดการอภิปรายอย่างเผ็ดร้อนบนโซเชียลมีเดีย ซึ่งตอกย้ำให้เห็นถึงพลังในการดึงดูดและความสามารถในการสร้างการโต้ตอบที่สูงของกลไกกาชาในวัฒนธรรมเกมอีกครั้ง" data-hi="हाल ही में आयोजित Combo Breaker 2026 ईस्पोर्ट्स इवेंट के दौरान, एक नाटकीय घटना हुई जहां एक खिलाड़ी ने मंच पर &#34;Umamusume&#34; के लिए गचा पुल किया और सफलतापूर्वक लक्षित चरित्र (Curren Chan) प्राप्त किया। इस क्लिप ने सोशल मीडिया पर गरमागरम चर्चा छेड़ दी, जो एक बार फिर गेमिंग संस्कृति में गचा मैकेनिज्म की शक्तिशाली जुड़ाव और उच्च इंटरैक्शन क्षमता को उजागर करता है।">在近期舉辦的 Combo Breaker 2026 電競盛會中，發生了玩家在比賽現場進行《Umamusume》（賽馬娘）抽卡（轉蛋）並成功獲得目標角色（Curren Chan）的戲劇性事件。該片段在社群媒體引發熱烈討論，再次凸顯「轉蛋機制」在遊戲文化中的強大渲染力及高互動潛力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="轉蛋機制的隨機性與社交屬性仍是提高用戶黏著度的核心驅動力。我們可以從中汲取經驗，優化遊戲內的「爆機」演出效果，增強產品在直播或社群平台的傳播屬性，藉此提升代理商對我們產品在社群經營上的支持力度。" data-en="The randomness and social nature of the gacha mechanic remain key drivers for increasing user stickiness. We can draw insights from this to optimize in-game &#34;jackpot&#34; visual effects, enhancing the viral potential of products on streaming or social platforms, thereby increasing the support from agents for our products in their social media marketing efforts." data-th="ความเป็นสุ่มและคุณสมบัติทางสังคมของกลไกกาชายังคงเป็นปัจจัยขับเคลื่อนหลักในการเพิ่มความผูกพันของผู้ใช้ เราสามารถเรียนรู้จากสิ่งนี้เพื่อเพิ่มประสิทธิภาพเอฟเฟกต์ภาพ &#34;แจ็คพอต&#34; ในเกม เพื่อเสริมสร้างศักยภาพในการเป็นกระแสของผลิตภัณฑ์บนแพลตฟอร์มสตรีมมิ่งหรือโซเชียลมีเดีย ซึ่งจะช่วยเพิ่มการสนับสนุนจากตัวแทนสำหรับผลิตภัณฑ์ของเราในการทำตลาดบนโซเชียลมีเดีย" data-hi="गचा मैकेनिज्म की यादृच्छिकता और सामाजिक प्रकृति उपयोगकर्ता की चिपचिपाहट (stickiness) बढ़ाने के लिए प्रमुख चालक बनी हुई है। हम गेम के भीतर &#34;जैकपॉट&#34; विजुअल इफेक्ट्स को अनुकूलित करने के लिए इससे सीख ले सकते हैं, स्ट्रीमिंग या सोशल प्लेटफॉर्म पर उत्पादों की वायरल क्षमता को बढ़ा सकते हैं, जिससे सोशल मीडिया मार्केटिंग प्रयासों में हमारे उत्पादों के लिए एजेंटों का समर्थन बढ़ सके।">轉蛋機制的隨機性與社交屬性仍是提高用戶黏著度的核心驅動力。我們可以從中汲取經驗，優化遊戲內的「爆機」演出效果，增強產品在直播或社群平台的傳播屬性，藉此提升代理商對我們產品在社群經營上的支持力度。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -3424,7 +3338,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [37.24592926529451, -95.25554993797881], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [45.351498393893635, -100.3710862701787], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [20.404579864601402, 9.968639513596298], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [36.715890494602846, -95.44520602456518], "sentiment": "利空", "news_full": [{"title": "預測市場與加州棋牌室成近期產業焦點", "title_en": "Prediction Markets and California Card Rooms Become Industry Focus", "title_th": "ตลาดคาดการณ์และห้องไพ่ในแคลิฟอร์เนียกลายเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "प्रेडिक्शन मार्केट्स और कैलिफोर्निया कार्ड रूम उद्योग का केंद्र बन गए हैं", "link": "https://www.gamblinginsider.com/news/162448/matt-kalish-twitter-polymarket-parlays-california-cardrooms", "sentiment": "中立", "impact": 55.0, "urgency": 30.0}, {"title": "Kalshi 在羅德島州提起訴訟，與州政府陷入法律糾紛", "title_en": "Kalshi Sues Rhode Island, Facing Legal Dispute with State Government", "title_th": "Kalshi ฟ้องรัฐโรดไอแลนด์ เผชิญข้อพิพาททางกฎหมายกับรัฐบาลท้องถิ่น", "title_hi": "कलशी ने रोड आइलैंड पर मुकदमा किया, राज्य सरकार के साथ कानूनी विवाद", "link": "https://www.gamblinginsider.com/news/162266/kalshi-rhode-island-lawsuit-polymarket-sports-event-contracts", "sentiment": "利空", "impact": 65.0, "urgency": 70.0}, {"title": "Betr 收購註冊經紀商以加速進入預測市場", "title_en": "Betr Acquires Registered Broker to Accelerate Entry into Prediction Markets", "title_th": "Betr เข้าซื้อกิจการนายหน้าจดทะเบียนเพื่อเร่งเข้าสู่ตลาดคาดการณ์", "title_hi": "Betr ने प्रेडिक्शन मार्केट्स में प्रवेश तेज करने के लिए पंजीकृत ब्रोकर का अधिग्रहण किया", "link": "https://www.gamblinginsider.com/news/162240/betr-acquires-nfa-registered-broker-prediction-markets", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "明尼蘇達州訴訟與路易斯安那州博弈法案成產業關鍵焦點", "title_en": "Minnesota Lawsuit and Louisiana Gambling Bill Become Industry Focal Points", "title_th": "คดีความในมินนิโซตาและร่างกฎหมายการพนันในลุยเซียนาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "मिनेसोटा मुकदमा और लुइसियाना जुआ विधेयक उद्योग के केंद्र बिंदु बन गए", "link": "https://www.gamblinginsider.com/news/162212/minnesota-lawsuit-louisiana-sweeps-bills-gambling-week", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}, {"title": "美國參議院聽證會聚焦預測市場，監管壓力持續升溫", "title_en": "US Senate Hearing Focuses on Prediction Markets, Regulatory Pressure Intensifies", "title_th": "การไต่สวนของวุฒิสภาสหรัฐฯ มุ่งเน้นไปที่ตลาดคาดการณ์ แรงกดดันด้านการกำกับดูแลเพิ่มสูงขึ้น", "title_hi": "अमेरिकी सीनेट की सुनवाई में प्रेडिक्शन मार्केट पर ध्यान, नियामक दबाव बढ़ा", "link": "https://www.gamblinginsider.com/news/162156/republicans-prediction-markets-senate-subcommittee-hearing", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "北美", "count": 2, "coords": [44.89168348341444, -100.09330198011645], "sentiment": "利多", "news_full": [{"title": "SBC北美峰會聚焦AI與加密貨幣，技術革新主導未來支付", "title_en": "SBC Summit Americas Focuses on AI and Cryptocurrency; Tech Innovation Leads Future Payments", "title_th": "SBC Summit Americas มุ่งเน้นไปที่ AI และสกุลเงินดิจิทัล นวัตกรรมทางเทคโนโลยีเป็นผู้นำการชำระเงินในอนาคต", "title_hi": "SBC समिट अमेरिका का ध्यान AI और क्रिप्टोकरेंसी पर, तकनीकी नवाचार भविष्य के भुगतान का नेतृत्व करेगा", "link": "https://focusgn.com/sbc-summit-americas-north-america-payments-tech-track-to-examine-ai-crypto-and-the-future-of-transactions", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC峰會初創競賽決賽名單出爐，博弈生態系注入創新活力", "title_en": "SBC Summit Startup Competition Finalists Announced, Injecting Innovative Vitality into Gaming Ecosystem", "title_th": "ประกาศรายชื่อผู้เข้ารอบสุดท้ายการแข่งขันสตาร์ทอัพของ SBC Summit เติมเต็มพลังแห่งนวัตกรรมให้กับระบบนิเวศเกม", "title_hi": "SBC समिट स्टार्टअप प्रतियोगिता के फाइनलिस्ट की घोषणा, गेमिंग इकोसिस्टम में आएगी नई ऊर्जा", "link": "https://focusgn.com/first-pitch-finalists-revealed-for-sbc-summit-americas-start-up-competition", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "全球", "count": 4, "coords": [19.87134563800671, 9.834152133825862], "sentiment": "利空", "news_full": [{"title": "博弈安全責任升級：玩家教育成為負責任博弈新支柱", "title_en": "Gambling Safety Responsibility Upgraded: Player Education Becomes a New Pillar of Responsible Gaming", "title_th": "ยกระดับความรับผิดชอบด้านความปลอดภัยในการพนัน: การให้ความรู้แก่ผู้เล่นกลายเป็นเสาหลักใหม่ของการพนันอย่างรับผิดชอบ", "title_hi": "जुए की सुरक्षा जिम्मेदारी का उन्नयन: खिलाड़ी शिक्षा जिम्मेदार गेमिंग का नया स्तंभ बनी", "link": "https://agbrief.com/news/world/23/05/2026/player-safety-shared-responsibility-education-pillar-safer-gambling-1xbet/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "《Neverness to Everness》七月正式登陸 Steam 與 Epic Games Store", "title_en": "\"Neverness to Everness\" Officially Launches on Steam and Epic Games Store in July", "title_th": "\"Neverness to Everness\" เปิดตัวอย่างเป็นทางการบน Steam และ Epic Games Store ในเดือนกรกฎาคมนี้", "title_hi": "\"Neverness to Everness\" जुलाई में आधिकारिक तौर पर स्टीम और एपिक गेम्स स्टोर पर लॉन्च होगा", "link": "https://www.gamingdose.com/news/neverness-to-everness-%e0%b8%88%e0%b8%b0%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b9%80%e0%b8%9e%e0%b8%b4%e0%b9%88%e0%b8%a1%e0%b9%80/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "防外掛系統 Riot Vanguard 更新引發爭議，硬體層級監管遭反彈", "title_en": "Riot Vanguard Anti-Cheat Update Sparks Controversy, Hardware-Level Monitoring Faces Backlash", "title_th": "การอัปเดตระบบป้องกันการโกง Riot Vanguard ก่อให้เกิดข้อโต้แย้ง การตรวจสอบระดับฮาร์ดแวร์ถูกต่อต้าน", "title_hi": "Riot Vanguard एंटी-चीट अपडेट ने विवाद छेड़ा, हार्डवेयर-स्तरीय निगरानी का विरोध", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b0%e0%b8%9a%e0%b8%9a-riot-vanguard-%e0%b9%82%e0%b8%94%e0%b8%99%e0%b8%97%e0%b8%b1%e0%b8%a7%e0%b8%a3%e0%b9%8c%e0%b8%a5%e0%b8%87%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9b%e0%b8%a5/", "sentiment": "利空", "impact": 45.0, "urgency": 30.0}, {"title": "Umamusume 轉蛋機制引發話題，電競賽事現場的神奇抽卡瞬間", "title_en": "Umamusume Gacha Mechanic Sparks Discussion, Miraculous Pull Moment at Esports Event", "title_th": "กลไกกาชาของ Umamusume กลายเป็นประเด็นร้อน ช่วงเวลาการเปิดการ์ดสุดมหัศจรรย์ในงานอีสปอร์ต", "title_hi": "Umamusume का गचा मैकेनिज्म चर्चा का विषय बना, ईस्पोर्ट्स इवेंट में जादुई पुल मोमेंट", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-combo-breaker-2026-%e0%b8%aa%e0%b8%b8%e0%b9%88%e0%b8%a1%e0%b8%81%e0%b8%b2%e0%b8%8a%e0%b8%b2%e0%b9%80%e0%b8%81/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -3865,14 +3779,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -3889,7 +3795,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -4587,7 +4493,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
