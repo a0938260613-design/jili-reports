@@ -1086,7 +1086,7 @@
                 gap: 0.5rem !important;
                 padding: 0.65rem !important;
                 border-radius: 1rem !important;
-                overflow: visible !important;
+                overflow-y: auto !important;
                 align-items: stretch !important;
             }
             .filter-console-bar > div.flex-1 {
@@ -1416,12 +1416,12 @@
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
             /* Card: give mobile a tall-enough height for comfortable scrolling */
-            #regionalSentimentCard { height: auto !important; max-height: none !important; }
+            #regionalSentimentCard { height: 32rem !important; max-height: none !important; }
             #regionalSentimentBoard {
-                overflow: visible !important;
-                -webkit-overflow-scrolling: auto !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
                 max-height: none !important;
-                flex: none !important;
+                flex: 1 !important;
             }
 
         }
