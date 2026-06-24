@@ -1293,33 +1293,17 @@
                 align-items: stretch !important;
                 gap: 0.65rem !important;
             }
-            .news-card > div:last-child > div:first-child {
-                width: 100% !important;
-                display: grid !important;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 0.5rem !important;
-            }
-            .news-card > div:last-child > div:first-child span {
-                min-height: 40px !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                white-space: nowrap !important;
-            }
-            .news-card > div:last-child > div:first-child span.hidden {
-                display: none !important;
-            }
-            .news-card > div:last-child > div:last-child {
+            .news-card-actions {
                 width: 100% !important;
                 display: grid !important;
                 grid-template-columns: 44px minmax(0, 1fr);
                 gap: 0.55rem !important;
             }
-            .news-card > div:last-child > div:last-child button {
+            .news-card-actions button {
                 width: 44px !important;
                 height: 44px !important;
             }
-            .news-card > div:last-child > div:last-child a[href] {
+            .news-card-actions a[href] {
                 min-height: 44px !important;
                 width: 100% !important;
                 justify-content: center !important;
@@ -1432,13 +1416,12 @@
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
             /* Card: give mobile a tall-enough height for comfortable scrolling */
-            #regionalSentimentCard { height: 72vh !important; max-height: none !important; }
-            /* Board: internal scroll with iOS momentum touch */
+            #regionalSentimentCard { height: auto !important; max-height: none !important; }
             #regionalSentimentBoard {
-                overflow-y: auto !important;
-                -webkit-overflow-scrolling: touch !important;
+                overflow: visible !important;
+                -webkit-overflow-scrolling: auto !important;
                 max-height: none !important;
-                flex: 1 !important;
+                flex: none !important;
             }
 
         }
@@ -2366,15 +2349,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 25</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/06/24/genting-linked-stardream-cruises-waives-fuel-surcharge-on-sailings-out-of-singapore-and-malaysia/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2424,15 +2400,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/06/24/data-bet-reflects-on-first-year-of-sports-betting-vertical/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2483,15 +2452,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/06/24/hong-kongs-palasino-cites-new-casino-opening-greater-focus-on-gaming-as-reason-for-7-6-revenue-uptick-in-fy26/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2542,15 +2504,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 100</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/06/24/businessman-lance-gokongwei-set-to-make-us32-6-million-investment-into-philippine-gaming-technology-provider-philweb/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2601,15 +2556,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/06/24/mgm-osaka-and-prefectural-government-warn-of-fake-ads-and-individuals-impersonating-employees/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2660,15 +2608,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/06/23/latest-visitation-numbers-show-scam-center-issue-thailand-conflict-severely-impacting-cambodias-tourism-industry/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2718,15 +2659,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.ggrasia.com/macau-5-star-room-rate-average-steady-at-us193-in-may-survey?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=macau-5-star-room-rate-average-steady-at-us193-in-may-survey', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2776,15 +2710,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.ggrasia.com/sands-china-nba-game-experience-packages-set-at-higher-price-level-for-2026-ties-checks?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=sands-china-nba-game-experience-packages-set-at-higher-price-level-for-2026-ties-checks', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2834,15 +2761,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/europe/24/06/2026/isle-of-man-submits-aml-cft-effectiveness-filing-to-moneyval/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2892,15 +2812,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/world/24/06/2026/sport-community-and-1xbet-the-partnership-model-that-goes-beyond-visibility/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2951,15 +2864,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 95</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/philippines/24/06/2026/lance-gokongwei-set-to-invest-32-5m-in-philweb-report/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3010,15 +2916,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/24/06/2026/japan-warns-over-fake-mgm-osaka-casino-websites-targeting-local-players/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3068,15 +2967,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 15</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/world/24/06/2026/decimal-data-brings-in-andrew-ashenden-as-ceo-to-power-next-stage-of-growth/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3126,15 +3018,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/europe/24/06/2026/softswiss-tech-race-summit-2026-unveils-elite-speaker-line-up-from-aws-oracle-and-cloudflare/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3185,15 +3070,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 90</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/philippines/23/06/2026/okada-manila-revenue-per-visitor-drops-despite-higher-footfall-analysts/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3243,15 +3121,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/intel/deep-dive/23/06/2026/uae-hotels-eye-recovery-by-late-2026-wynn-al-marjan-opening-may-stay-on-track/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3301,15 +3172,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 25</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/macau/23/06/2026/sjm-becomes-first-macau-based-member-of-global-sustainable-tourism-council/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3360,15 +3224,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/world/23/06/2026/data-bet-delivers-strong-first-year-results-with-39-7-ggr-growth/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3418,15 +3275,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/digitain-hires-dario-jurcic-to-head-up-strategy-for-europe-africa/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3477,15 +3327,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/illegal-betting-ads-go-unnoticed-by-most-users-in-the-uk/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3536,15 +3379,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/big-sports-betting-tax-changes-proposed-in-north-carolina/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3594,15 +3430,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/bookmaker-in-shohei-ohtanis-ex-translators-betting-case-is-now-free/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3653,15 +3482,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/entain-eyes-expansion-into-central-and-eastern-europe-rumors-say/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3711,15 +3533,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 15</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/japan-vs-sweden-prediction-picks-2026-fifa-world-cup-group-stage/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3769,15 +3584,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 15</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/mexico-vs-czech-republic-prediction-picks-2026-fifa-world-cup-group-stage/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3827,15 +3635,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 15</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/south-korea-vs-south-africa-prediction-picks-2026-fifa-world-cup-group-stage/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3885,15 +3686,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 5</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99-ffxiv-%e0%b8%9e%e0%b8%b1%e0%b8%92%e0%b8%99%e0%b8%b2%e0%b8%9b%e0%b8%a5%e0%b8%b1%e0%b9%8a%e0%b8%81%e0%b8%ad%e0%b8%b4%e0%b8%99-aetherlove/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3943,15 +3737,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 5</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamingdose.com/news/%e0%b9%80%e0%b8%9c%e0%b8%a2%e0%b8%a0%e0%b8%b2%e0%b8%9e%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88%e0%b8%88%e0%b8%b2%e0%b8%81-cyberpunk-edgerunners-2-%e0%b8%97%e0%b8%b5%e0%b9%88%e0%b8%81%e0%b8%b3%e0%b8%a5/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4001,15 +3788,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 5</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamingdose.com/news/%e0%b8%95%e0%b8%a3%e0%b8%a7%e0%b8%88%e0%b8%9e%e0%b8%9a%e0%b9%80%e0%b8%81%e0%b8%a1-congratulations-on-your-purchase-%e0%b8%a7%e0%b8%b2%e0%b8%87%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b8%9a%e0%b8%99-steam/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4059,15 +3839,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 5</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamingdose.com/feature/grand-theft-auto-evolution/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4117,15 +3890,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 5</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamingdose.com/news/hideo-kojima-%e0%b9%80%e0%b8%9c%e0%b8%a2-%e0%b8%99%e0%b8%ad%e0%b8%81%e0%b8%88%e0%b8%b2%e0%b8%81-xbox-%e0%b9%81%e0%b8%a5%e0%b9%89%e0%b8%a7-%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b8%a1%e0%b8%b5%e0%b8%99/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4176,15 +3942,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 50</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/168235/kalshi-india-ban', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4234,15 +3993,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/168226/vnlok-meta-lawsuit-illegal-gambling', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4293,15 +4045,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/168100/citizens-railbird-market-making-draftkings-predictions', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4352,15 +4097,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/168072/americans-oppose-political-prediction-markets-poll', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4411,15 +4149,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/168010/ncaa-bans-former-iona-player-adam-njie-jr-in-alleged-game-fixing-plot', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4469,15 +4200,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 15</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167795/hormones-influence-gambling-urge-uk-woman-new-research', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4528,15 +4252,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167926/indiana-gaming-commission-college-athlete-prop-bet-ban', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4587,15 +4304,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167916/prediction-market-hearings-world-cup-betting-stories-to-watch', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4646,15 +4356,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167877/nba-wants-to-keep-terry-rozier-off-the-basketball-court-as-game-fixing-case-continues', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4704,15 +4407,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167417/q-and-a-adam-bjorn-sees-possibilities-in-prediction-markets', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4763,15 +4459,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167372/bill-requiring-online-sportsbooks-casinos-to-geoblock-schools-introduced-pennsylvania', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4821,15 +4510,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167315/evolution-denied-bid-add-playtech-defamation-lawsuit', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4880,15 +4562,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167291/pennsylvania-supreme-court-skill-games', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4939,15 +4614,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167433/cayuga-nation-sues-caesars-tribal-gaming-dispute', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4998,15 +4666,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="hidden bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/167546/michigan-judge-denies-polymarket-robinhood-injunctions', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
