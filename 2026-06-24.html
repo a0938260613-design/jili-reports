@@ -1416,14 +1416,16 @@
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
             /* Card: give mobile a tall-enough height for comfortable scrolling */
-            #regionalSentimentCard { height: 32rem !important; max-height: none !important; }
+            #regionalSentimentCard { 
+                height: auto !important; 
+                max-height: none !important; 
+                padding-bottom: 1.5rem !important;
+            }
             #regionalSentimentBoard {
-                overflow-y: auto !important;
-                -webkit-overflow-scrolling: touch !important;
+                overflow-y: visible !important;
                 max-height: none !important;
-                flex: 1 !important;
-                min-height: 0 !important;
-                padding-bottom: 1rem !important;
+                flex: none !important;
+                padding-bottom: 0 !important;
             }
 
         }
