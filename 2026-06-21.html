@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-06-21</title>
+    <title>JILI 市場情報指揮中心 - 2026-06-21</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-06-21</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2189,17 +2205,17 @@
                 
                 <button data-kw="澳門" onclick="toggleKeyword('澳門', this)" data-cn="澳門" data-en="Macau" data-th="มาเก๊า" data-hi="मकाऊ" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">澳門</button>
                 
-                <button data-kw="分析" onclick="toggleKeyword('分析', this)" data-cn="分析" data-en="Analysis" data-th="การวิเคราะห์" data-hi="विश्लेषण" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">分析</button>
+                <button data-kw="分析" onclick="toggleKeyword('分析', this)" data-cn="分析" data-en="分析" data-th="分析" data-hi="分析" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">分析</button>
                 
                 <button data-kw="世界盃" onclick="toggleKeyword('世界盃', this)" data-cn="世界盃" data-en="World Cup" data-th="ฟุตบอลโลก" data-hi="विश्व कप" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">世界盃</button>
                 
-                <button data-kw="緬甸" onclick="toggleKeyword('緬甸', this)" data-cn="緬甸" data-en="Myanmar" data-th="เมียนมา" data-hi="म्यांमार" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">緬甸</button>
+                <button data-kw="緬甸" onclick="toggleKeyword('緬甸', this)" data-cn="緬甸" data-en="緬甸" data-th="緬甸" data-hi="緬甸" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">緬甸</button>
                 
-                <button data-kw="雷德" onclick="toggleKeyword('雷德', this)" data-cn="雷德" data-en="Laird" data-th="แลร์ด" data-hi="लेयर्ड" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">雷德</button>
+                <button data-kw="雷德" onclick="toggleKeyword('雷德', this)" data-cn="雷德" data-en="雷德" data-th="雷德" data-hi="雷德" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">雷德</button>
                 
-                <button data-kw="亞太" onclick="toggleKeyword('亞太', this)" data-cn="亞太" data-en="Asia-Pacific" data-th="เอเชียแปซิฟิก" data-hi="एशिया-प्रशांत" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">亞太</button>
+                <button data-kw="亞太" onclick="toggleKeyword('亞太', this)" data-cn="亞太" data-en="亞太" data-th="亞太" data-hi="亞太" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">亞太</button>
                 
-                <button data-kw="論壇" onclick="toggleKeyword('論壇', this)" data-cn="論壇" data-en="Forum" data-th="ฟอรัม" data-hi="मंच" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">論壇</button>
+                <button data-kw="論壇" onclick="toggleKeyword('論壇', this)" data-cn="論壇" data-en="論壇" data-th="論壇" data-hi="論壇" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">論壇</button>
                 
                 <button data-kw="博弈" onclick="toggleKeyword('博弈', this)" data-cn="博弈" data-en="Gambling" data-th="การพนัน" data-hi="जुआ" class="keyword-chip card-base px-3 py-1 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/30 dark:bg-obsidian-800 rounded-full transition-all">博弈</button>
                 
@@ -2258,27 +2274,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2354,21 +2356,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="根據最新數據，澳門 2026 年訪澳旅客人次已正式突破 2,000 萬大關。相比去年同期，本次達成該里程碑的時間點提前了 18 天，顯示澳門旅遊市場復甦勢頭強勁，觀光與相關娛樂消費活動維持高度活躍。" data-en="According to the latest data, Macau&#39;s tourist arrivals for 2026 have officially surpassed the 20 million mark. This milestone was reached 18 days earlier than the same period last year, indicating a strong recovery in Macau&#39;s tourism market and high activity in leisure and entertainment consumption." data-th="ข้อมูลล่าสุดระบุว่าจำนวนนักท่องเที่ยวที่มาเยือนมาเก๊าในปี 2026 ทะลุ 20 ล้านคนอย่างเป็นทางการ เมื่อเทียบกับช่วงเดียวกันของปีที่แล้ว การบรรลุเป้าหมายนี้ทำได้เร็วกว่าถึง 18 วัน สะท้อนถึงการฟื้นตัวที่แข็งแกร่งของตลาดการท่องเที่ยวมาเก๊าและกิจกรรมความบันเทิงที่คึกคัก" data-hi="नवीनतम आंकड़ों के अनुसार, 2026 में मकाऊ आने वाले पर्यटकों की संख्या आधिकारिक तौर पर 2 करोड़ के पार पहुंच गई है। पिछले वर्ष की तुलना में, यह मील का पत्थर 18 दिन पहले ही हासिल कर लिया गया है, जो मकाऊ के पर्यटन बाजार में मजबूत रिकवरी और मनोरंजन गतिविधियों में उच्च सक्रियता को दर्शाता है।">根據最新數據，澳門 2026 年訪澳旅客人次已正式突破 2,000 萬大關。相比去年同期，本次達成該里程碑的時間點提前了 18 天，顯示澳門旅遊市場復甦勢頭強勁，觀光與相關娛樂消費活動維持高度活躍。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="澳門旅遊客流的顯著增長直接反映了高端娛樂需求的回升。JILI 需把握此紅利，優化針對澳門博弈運營商的產品配置，特別是提升高互動性與高端視覺體驗的遊戲內容，以搶佔線下旅客轉化為線上用戶的市場先機。" data-en="The significant growth in Macau&#39;s tourism reflects a rebound in high-end entertainment demand. JILI should capitalize on this by optimizing product offerings for Macau gaming operators, particularly by enhancing high-interactivity and premium visual gaming content to convert offline travelers into online users." data-th="การเติบโตของนักท่องเที่ยวในมาเก๊าสะท้อนถึงความต้องการความบันเทิงระดับไฮเอนด์ที่เพิ่มขึ้น JILI ควรใช้โอกาสนี้ปรับแต่งผลิตภัณฑ์สำหรับผู้ให้บริการในมาเก๊า โดยเน้นเนื้อหาเกมที่มีการโต้ตอบสูงและภาพที่สวยงาม เพื่อเปลี่ยนนักท่องเที่ยวจากออฟไลน์มาเป็นผู้ใช้ออนไลน์" data-hi="मकाऊ में पर्यटकों की बढ़ती संख्या उच्च-स्तरीय मनोरंजन की मांग में उछाल को दर्शाती है। JILI को इस अवसर का लाभ उठाकर मकाऊ के गेमिंग ऑपरेटरों के लिए उत्पाद पोर्टफोलियो को अनुकूलित करना चाहिए, विशेष रूप से उच्च इंटरैक्टिव और प्रीमियम विज़ुअल गेमिंग कंटेंट पर ध्यान देना चाहिए ताकि ऑफलाइन यात्रियों को ऑनलाइन उपयोगकर्ताओं में बदला जा सके।">澳門旅遊客流的顯著增長直接反映了高端娛樂需求的回升。JILI 需把握此紅利，優化針對澳門博弈運營商的產品配置，特別是提升高互動性與高端視覺體驗的遊戲內容，以搶佔線下旅客轉化為線上用戶的市場先機。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2421,21 +2415,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="金融行動特別工作組（FATF）確認緬甸繼續留在「黑名單」中。儘管該國在反洗錢（AML）方面有所進展，但由於持續存在的網路詐騙與非法賭博活動風險未獲有效遏制，國際監管機構對其金融合規性仍持審慎立場。" data-en="The Financial Action Task Force (FATF) has confirmed that Myanmar will remain on its &#39;blacklist.&#39; Despite some progress in anti-money laundering (AML) efforts, international regulators remain cautious regarding the country&#39;s financial compliance due to the persistent risks of cyber scams and illegal gambling." data-th="FATF ยืนยันว่าเมียนมาร์ยังคงอยู่ใน &#39;บัญชีดำ&#39; แม้จะมีความคืบหน้าในการต่อต้านการฟอกเงิน (AML) แต่หน่วยงานกำกับดูแลระหว่างประเทศยังคงระมัดระวังเรื่องการปฏิบัติตามกฎระเบียบทางการเงิน เนื่องจากความเสี่ยงจากการฉ้อโกงทางไซเบอร์และการพนันที่ผิดกฎหมายที่ยังคงมีอยู่" data-hi="फाइनेंशियल एक्शन टास्क फोर्स (FATF) ने पुष्टि की है कि म्यांमार &#39;ब्लैकलिस्ट&#39; में बना रहेगा। मनी लॉन्ड्रिंग विरोधी (AML) प्रयासों में कुछ प्रगति के बावजूद, अंतरराष्ट्रीय नियामक देश की वित्तीय अनुपालन को लेकर सतर्क हैं क्योंकि साइबर घोटाले और अवैध जुए का जोखिम अभी भी बना हुआ है।">金融行動特別工作組（FATF）確認緬甸繼續留在「黑名單」中。儘管該國在反洗錢（AML）方面有所進展，但由於持續存在的網路詐騙與非法賭博活動風險未獲有效遏制，國際監管機構對其金融合規性仍持審慎立場。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="緬甸市場的合規風險過高，與該區運營商合作將嚴重影響 JILI 的國際品牌信譽與支付通道安全。我們應嚴格審核該地區的接入請求，並防範任何非法轉介或合規漏洞，建議優先將資源投注在合規明確的市場。" data-en="Compliance risks in the Myanmar market are too high. Collaborating with operators in this region would severely damage JILI&#39;s international brand reputation and payment channel security. We should strictly screen access requests from this area and prevent any illicit referrals, prioritizing resource allocation to compliant markets." data-th="ความเสี่ยงด้านการปฏิบัติตามกฎระเบียบในตลาดเมียนมาร์สูงเกินไป การร่วมมือกับผู้ให้บริการในภูมิภาคนี้จะส่งผลเสียต่อชื่อเสียงของแบรนด์ JILI และความปลอดภัยของช่องทางการชำระเงิน เราควรตรวจสอบคำขอเข้าถึงจากภูมิภาคนี้อย่างเข้มงวดและป้องกันการส่งต่อที่ไม่ถูกต้อง โดยเน้นการจัดสรรทรัพยากรไปยังตลาดที่ปฏิบัติตามกฎระเบียบอย่างชัดเจน" data-hi="म्यांमार बाजार में अनुपालन जोखिम बहुत अधिक हैं। इस क्षेत्र के ऑपरेटरों के साथ सहयोग करना JILI की अंतरराष्ट्रीय ब्रांड प्रतिष्ठा और भुगतान चैनल सुरक्षा को गंभीर रूप से नुकसान पहुंचाएगा। हमें इस क्षेत्र से आने वाले एक्सेस अनुरोधों की सख्ती से जांच करनी चाहिए और किसी भी अवैध रेफरल को रोकना चाहिए, तथा संसाधनों को अनुपालन वाले बाजारों पर प्राथमिकता देनी चाहिए।">緬甸市場的合規風險過高，與該區運營商合作將嚴重影響 JILI 的國際品牌信譽與支付通道安全。我們應嚴格審核該地區的接入請求，並防範任何非法轉介或合規漏洞，建議優先將資源投注在合規明確的市場。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 85</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 85</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 85</span>
 
                     </div>
 
@@ -2488,21 +2474,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="針對 SkyCity 阿得雷德賭場的獨立評審已獲得關鍵進展，解決了監管合規上的不確定性。雖然分析師認為該公司短期內出售資產的可能性不高，但此次評審結果為其未來的資產處置或結構性調整掃清了法律障礙。" data-en="Key progress has been made in the independent review of the SkyCity Adelaide casino, resolving regulatory compliance uncertainties. Although analysts believe an immediate asset sale is unlikely, the review results have cleared legal obstacles for potential future asset disposal or structural adjustments." data-th="มีความคืบหน้าสำคัญในการทบทวนคาสิโน SkyCity Adelaide อย่างอิสระ ซึ่งช่วยแก้ไขความไม่แน่นอนด้านการปฏิบัติตามกฎระเบียบ แม้นักวิเคราะห์จะมองว่าการขายสินทรัพย์ในระยะสั้นมีโอกาสน้อย แต่ผลการทบทวนนี้ได้ขจัดอุปสรรคทางกฎหมายสำหรับการจัดการสินทรัพย์หรือการปรับโครงสร้างในอนาคต" data-hi="SkyCity एडिलेड कैसीनो की स्वतंत्र समीक्षा में महत्वपूर्ण प्रगति हुई है, जिससे नियामक अनुपालन की अनिश्चितताएं दूर हो गई हैं। हालांकि विश्लेषकों का मानना है कि निकट भविष्य में संपत्ति की बिक्री की संभावना कम है, लेकिन समीक्षा के नतीजों ने भविष्य में संपत्ति निपटान या संरचनात्मक समायोजन के लिए कानूनी बाधाओं को दूर कर दिया है।">針對 SkyCity 阿得雷德賭場的獨立評審已獲得關鍵進展，解決了監管合規上的不確定性。雖然分析師認為該公司短期內出售資產的可能性不高，但此次評審結果為其未來的資產處置或結構性調整掃清了法律障礙。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="SkyCity 的合規進展有利於維持該區域市場的穩定度。JILI 將持續監控其合作機會，若該地賭場出現業務調整或數位化轉型需求，將成為我們深耕大洋洲合規市場的切入點，應同步檢視相關技術對接的合規標準。" data-en="SkyCity&#39;s compliance progress helps maintain regional market stability. JILI will continue to monitor partnership opportunities; if the casino undergoes business adjustments or digital transformation, it could serve as an entry point for us to deepen our presence in the compliant Oceania market." data-th="ความคืบหน้าด้านการปฏิบัติตามกฎระเบียบของ SkyCity ช่วยรักษาเสถียรภาพของตลาดในภูมิภาค JILI จะติดตามโอกาสในการร่วมมือต่อไป หากมีการปรับธุรกิจหรือการเปลี่ยนแปลงทางดิจิทัล นี่จะเป็นจุดเริ่มต้นให้เราขยายธุรกิจในตลาดโอเชียเนียที่ปฏิบัติตามกฎระเบียบ" data-hi="SkyCity की अनुपालन प्रगति क्षेत्रीय बाजार की स्थिरता बनाए रखने में मदद करती है। JILI साझेदारी के अवसरों की निगरानी करना जारी रखेगा; यदि कैसीनो में व्यावसायिक समायोजन या डिजिटल परिवर्तन होता है, तो यह हमारे लिए ओशिनिया के अनुपालन वाले बाजार में अपनी पैठ मजबूत करने का एक प्रवेश द्वार हो सकता है।">SkyCity 的合規進展有利於維持該區域市場的穩定度。JILI 將持續監控其合作機會，若該地賭場出現業務調整或數位化轉型需求，將成為我們深耕大洋洲合規市場的切入點，應同步檢視相關技術對接的合規標準。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 50</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 50</span>
 
                     </div>
 
@@ -2554,21 +2532,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳門於本週承辦亞太經合組織（APEC）系列旅遊會議，聚焦後疫情時代的區域旅遊與經濟合作。此次論壇匯集亞太地區政府代表與業界領袖，共同探討旅遊業數位化轉型與可持續發展政策。" data-en="Macau is hosting a series of APEC tourism meetings this week, focusing on regional tourism and economic cooperation in the post-pandemic era. The forum brings together government representatives and industry leaders from across the Asia-Pacific to discuss tourism digitalization and sustainable development policies." data-th="สัปดาห์นี้มาเก๊าเป็นเจ้าภาพจัดการประชุมการท่องเที่ยวของ APEC โดยเน้นความร่วมมือด้านการท่องเที่ยวและเศรษฐกิจในยุคหลังโควิด งานนี้รวบรวมตัวแทนภาครัฐและผู้นำอุตสาหกรรมจากทั่วภูมิภาคเอเชียแปซิฟิกเพื่อหารือเกี่ยวกับการเปลี่ยนผ่านสู่ดิจิทัลและการพัฒนาการท่องเที่ยวอย่างยั่งยืน" data-hi="मकाऊ इस सप्ताह APEC पर्यटन बैठकों की एक श्रृंखला की मेजबानी कर रहा है, जिसमें महामारी के बाद के दौर में क्षेत्रीय पर्यटन और आर्थिक सहयोग पर ध्यान केंद्रित किया गया है। यह फोरम पर्यटन डिजिटलीकरण और सतत विकास नीतियों पर चर्चा करने के लिए एशिया-प्रशांत क्षेत्र के सरकारी प्रतिनिधियों और उद्योग जगत के नेताओं को एक साथ लाता है।">澳門於本週承辦亞太經合組織（APEC）系列旅遊會議，聚焦後疫情時代的區域旅遊與經濟合作。此次論壇匯集亞太地區政府代表與業界領袖，共同探討旅遊業數位化轉型與可持續發展政策。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="國際會議在澳門召開有利於提升該市作為博弈與旅遊樞紐的地位。JILI 可透過此類國際盛會的曝光，強化與亞太地區大型營運商的戰略對接，並針對數位化旅遊與娛樂整合趨勢，提前調整產品研發方向。" data-en="Hosting international conferences strengthens Macau&#39;s status as a gaming and tourism hub. JILI can leverage such events to enhance strategic alignment with large Asia-Pacific operators and adjust product R&amp;D based on trends in digital tourism and entertainment integration." data-th="การเป็นเจ้าภาพจัดประชุมระดับนานาชาติช่วยยกระดับมาเก๊าในฐานะศูนย์กลางการพนันและการท่องเที่ยว JILI สามารถใช้ประโยชน์จากงานเหล่านี้เพื่อกระชับความสัมพันธ์เชิงกลยุทธ์กับผู้ให้บริการรายใหญ่ในเอเชียแปซิฟิก และปรับทิศทางการวิจัยและพัฒนาผลิตภัณฑ์ตามแนวโน้มการบูรณาการความบันเทิงและการท่องเที่ยวแบบดิจิทัล" data-hi="अंतरराष्ट्रीय सम्मेलनों की मेजबानी मकाऊ की गेमिंग और पर्यटन हब के रूप में स्थिति को मजबूत करती है। JILI ऐसे आयोजनों का लाभ उठाकर एशिया-प्रशांत क्षेत्र के बड़े ऑपरेटरों के साथ रणनीतिक तालमेल बढ़ा सकता है और डिजिटल पर्यटन एवं मनोरंजन एकीकरण के रुझानों के आधार पर अपने उत्पाद अनुसंधान एवं विकास की दिशा को समायोजित कर सकता है।">國際會議在澳門召開有利於提升該市作為博弈與旅遊樞紐的地位。JILI 可透過此類國際盛會的曝光，強化與亞太地區大型營運商的戰略對接，並針對數位化旅遊與娛樂整合趨勢，提前調整產品研發方向。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2621,21 +2591,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="孟加拉政府近期已原則上批准一項博弈法草案。此舉標誌著該國對長年受嚴格禁令限制的博弈產業開始進行法律框架審查，雖細節尚未完全公開，但代表了潛在的市場准入機會。" data-en="The Bangladeshi government has approved a draft gaming bill in principle. This marks the beginning of a legal framework review for an industry long restricted by strict bans. While details are not yet public, this signals a potential future market entry opportunity." data-th="รัฐบาลบังกลาเทศได้อนุมัติร่างกฎหมายการพนันในหลักการ ซึ่งนับเป็นจุดเริ่มต้นของการทบทวนกรอบกฎหมายสำหรับอุตสาหกรรมที่ถูกจำกัดด้วยข้อห้ามอย่างเข้มงวดมานาน แม้รายละเอียดจะยังไม่เปิดเผย แต่สิ่งนี้ถือเป็นสัญญาณของโอกาสในการเข้าสู่ตลาดในอนาคต" data-hi="बांग्लादेश सरकार ने सैद्धांतिक रूप से एक गेमिंग बिल के मसौदे को मंजूरी दे दी है। यह उस उद्योग के लिए कानूनी ढांचे की समीक्षा की शुरुआत का प्रतीक है जो लंबे समय से सख्त प्रतिबंधों से बंधा हुआ था। हालांकि विवरण अभी सार्वजनिक नहीं किए गए हैं, लेकिन यह भविष्य में बाजार में प्रवेश के संभावित अवसर का संकेत देता है।">孟加拉政府近期已原則上批准一項博弈法草案。此舉標誌著該國對長年受嚴格禁令限制的博弈產業開始進行法律框架審查，雖細節尚未完全公開，但代表了潛在的市場准入機會。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="新市場立法初期充滿高度不確定性與政策波動。JILI 將保持高度戰略觀望，重點評估該國未來的發牌制度與技術審核標準，目前不宜過早投入，但需建立情報追蹤機制，以備法案正式落地後的市場開拓。" data-en="Initial legislation in new markets is full of uncertainty and policy volatility. JILI will maintain a strategic watch, focusing on the country&#39;s future licensing systems and technical audit standards. It is currently not appropriate to invest prematurely, but an intelligence tracking mechanism should be established." data-th="การออกกฎหมายใหม่ในตลาดใหม่เต็มไปด้วยความไม่แน่นอนและความผันผวนของนโยบาย JILI จะเฝ้าระวังเชิงกลยุทธ์ โดยเน้นที่ระบบใบอนุญาตและมาตรฐานการตรวจสอบทางเทคนิคของประเทศ ขณะนี้ยังไม่ควรลงทุน แต่ควรจัดตั้งกลไกติดตามข้อมูลเพื่อเตรียมพร้อมสำหรับการขยายตลาดเมื่อกฎหมายมีผลบังคับใช้" data-hi="नए बाजारों में शुरुआती कानून अनिश्चितता और नीतिगत अस्थिरता से भरे होते हैं। JILI रणनीतिक रूप से नजर रखेगा और देश की भविष्य की लाइसेंसिंग प्रणालियों और तकनीकी ऑडिट मानकों पर ध्यान केंद्रित करेगा। फिलहाल समय से पहले निवेश करना उचित नहीं है, लेकिन कानून के लागू होने के बाद बाजार विस्तार की तैयारी के लिए एक सूचना ट्रैकिंग तंत्र स्थापित किया जाना चाहिए।">新市場立法初期充滿高度不確定性與政策波動。JILI 將保持高度戰略觀望，重點評估該國未來的發牌制度與技術審核標準，目前不宜過早投入，但需建立情報追蹤機制，以備法案正式落地後的市場開拓。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2688,21 +2650,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="FATF 最新報告再次將緬甸列入黑名單，主要原因是儘管有反洗錢政策的嘗試，但該國境內的非法網絡詐騙與相關犯罪活動頻繁，嚴重威脅金融體系的安全，導致該國在國際金融舞台上仍面臨嚴格制裁。" data-en="The latest FATF report has once again placed Myanmar on the blacklist, primarily because despite attempts at AML policies, illegal cyber scams and related criminal activities within the country remain frequent, severely threatening financial system security." data-th="รายงานล่าสุดของ FATF ระบุว่าเมียนมาร์ยังคงอยู่ในบัญชีดำ เนื่องจากแม้จะมีความพยายามเรื่องนโยบายต่อต้านการฟอกเงิน แต่การฉ้อโกงทางไซเบอร์ที่ผิดกฎหมายและกิจกรรมทางอาญาที่เกี่ยวข้องภายในประเทศยังคงเกิดขึ้นบ่อยครั้ง ซึ่งคุกคามความปลอดภัยของระบบการเงินอย่างรุนแรง" data-hi="नवीनतम FATF रिपोर्ट ने एक बार फिर म्यांमार को ब्लैकलिस्ट में डाल दिया है, मुख्य रूप से इसलिए क्योंकि मनी लॉन्ड्रिंग विरोधी नीतियों के प्रयासों के बावजूद, देश के भीतर अवैध साइबर घोटाले और संबंधित आपराधिक गतिविधियां लगातार हो रही हैं, जो वित्तीय प्रणाली की सुरक्षा के लिए गंभीर खतरा पैदा कर रही हैं।">FATF 最新報告再次將緬甸列入黑名單，主要原因是儘管有反洗錢政策的嘗試，但該國境內的非法網絡詐騙與相關犯罪活動頻繁，嚴重威脅金融體系的安全，導致該國在國際金融舞台上仍面臨嚴格制裁。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="鑑於緬甸地區的犯罪風險與 FATF 的強硬立場，該地區的商業活動極易觸發洗錢警報。JILI 應對所有涉及該國的潛在客戶採取「零信任」原則，並在結算系統中排除高風險金融渠道，確保全球合規防線無虞。" data-en="Given the criminal risks in Myanmar and the FATF&#39;s firm stance, business activities in this region are prone to triggering money laundering alerts. JILI should adopt a &#39;zero-trust&#39; principle for all potential clients involving the country and exclude high-risk financial channels in the settlement system." data-th="จากความเสี่ยงทางอาญาในเมียนมาร์และท่าทีที่แข็งกร้าวของ FATF กิจกรรมทางธุรกิจในภูมิภาคนี้มีแนวโน้มที่จะกระตุ้นการเตือนเรื่องการฟอกเงิน JILI ควรใช้หลักการ &#39;Zero-Trust&#39; สำหรับลูกค้าทั้งหมดที่เกี่ยวข้องกับประเทศนี้ และคัดแยกช่องทางการเงินที่มีความเสี่ยงสูงออกจากระบบการชำระเงิน" data-hi="म्यांमार में आपराधिक जोखिमों और FATF के सख्त रुख को देखते हुए, इस क्षेत्र की व्यावसायिक गतिविधियां मनी लॉन्ड्रिंग अलर्ट को ट्रिगर कर सकती हैं। JILI को इस देश से जुड़े सभी संभावित ग्राहकों के लिए &#39;जीरो-ट्रस्ट&#39; सिद्धांत अपनाना चाहिए और निपटान प्रणाली (settlement system) में उच्च जोखिम वाले वित्तीय चैनलों को बाहर रखना चाहिए।">鑑於緬甸地區的犯罪風險與 FATF 的強硬立場，該地區的商業活動極易觸發洗錢警報。JILI 應對所有涉及該國的潛在客戶採取「零信任」原則，並在結算系統中排除高風險金融渠道，確保全球合規防線無虞。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 85</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 90</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 85</span>
 
                     </div>
 
@@ -2755,21 +2709,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳門在端午節假期期間表現亮眼，總計接待超過 38 萬名旅客。該數字進一步印證了澳門旅遊需求的強勁復甦，特別是對於綜合度假村與博弈相關的休閒娛樂服務，假期人流為當地市場注入顯著消費活力。" data-en="Macau performed well during the Dragon Boat Festival, welcoming over 380,000 visitors. This figure further confirms the strong recovery of tourism demand in Macau, particularly for integrated resorts and gaming-related leisure services, injecting significant consumption vitality into the local market." data-th="มาเก๊ามีผลงานที่ยอดเยี่ยมในช่วงเทศกาลไหว้บ๊ะจ่าง โดยต้อนรับนักท่องเที่ยวกว่า 380,000 คน ตัวเลขนี้ยืนยันถึงการฟื้นตัวที่แข็งแกร่งของความต้องการท่องเที่ยวในมาเก๊า โดยเฉพาะรีสอร์ทครบวงจรและบริการบันเทิงที่เกี่ยวข้องกับการพนัน ซึ่งช่วยกระตุ้นการใช้จ่ายในตลาดท้องถิ่น" data-hi="ड्रैगन बोट फेस्टिवल के दौरान मकाऊ ने शानदार प्रदर्शन किया और 3.8 लाख से अधिक पर्यटकों का स्वागत किया। यह आंकड़ा मकाऊ में पर्यटन की मांग में मजबूत सुधार की पुष्टि करता है, विशेष रूप से एकीकृत रिसॉर्ट्स और गेमिंग-संबंधित अवकाश सेवाओं के लिए, जिससे स्थानीय बाजार में उपभोग की उल्लेखनीय वृद्धि हुई है।">澳門在端午節假期期間表現亮眼，總計接待超過 38 萬名旅客。該數字進一步印證了澳門旅遊需求的強勁復甦，特別是對於綜合度假村與博弈相關的休閒娛樂服務，假期人流為當地市場注入顯著消費活力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="假期人潮的聚集直接推動了娛樂內容的需求，對於線上遊戲服務商而言，這是擴大品牌市佔率的好時機。建議技術團隊優化假期期間的負載壓力測試，並協助運營商推出促銷型的遊戲行銷方案。" data-en="Holiday crowds drive demand for entertainment content. For online gaming providers, this is an excellent opportunity to expand market share. It is recommended that the technical team optimize load stress testing during holidays and assist operators in launching promotional gaming marketing campaigns." data-th="ฝูงชนในช่วงวันหยุดช่วยขับเคลื่อนความต้องการด้านเนื้อหาความบันเทิง สำหรับผู้ให้บริการเกมออนไลน์ นี่เป็นโอกาสดีในการขยายส่วนแบ่งการตลาด ขอแนะนำให้ทีมเทคนิคเพิ่มประสิทธิภาพการทดสอบภาระงานในช่วงวันหยุดและช่วยผู้ให้บริการเปิดตัวแคมเปญการตลาดสำหรับเกม" data-hi="छुट्टियों के दौरान पर्यटकों की भारी भीड़ मनोरंजन सामग्री की मांग बढ़ाती है। ऑनलाइन गेमिंग प्रदाताओं के लिए, बाजार हिस्सेदारी बढ़ाने का यह एक उत्कृष्ट अवसर है। तकनीकी टीम को सलाह दी जाती है कि वे छुट्टियों के दौरान लोड स्ट्रेस टेस्टिंग को अनुकूलित करें और ऑपरेटरों को प्रचार-प्रसार वाली गेमिंग मार्केटिंग योजनाएं शुरू करने में सहायता करें।">假期人潮的聚集直接推動了娛樂內容的需求，對於線上遊戲服務商而言，這是擴大品牌市佔率的好時機。建議技術團隊優化假期期間的負載壓力測試，並協助運營商推出促銷型的遊戲行銷方案。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2822,21 +2768,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳門銀河（Galaxy Macau）在 2026 年度《Travel + Leisure》亞太地區豪華獎項評選中脫穎而出，斬獲多項大獎。這項殊榮表彰了該度假村在頂級服務體驗與娛樂設施維護上的卓越表現，鞏固了其市場領導地位。" data-en="Galaxy Macau stood out in the 2026 Travel + Leisure Asia Pacific Luxury Awards, winning multiple prizes. This honor recognizes the resort&#39;s excellence in providing top-tier service experiences and maintaining entertainment facilities, consolidating its market leadership." data-th="Galaxy Macau โดดเด่นในงาน Travel + Leisure Asia Pacific Luxury Awards ประจำปี 2026 โดยคว้ารางวัลมาครองมากมาย รางวัลนี้เชิดชูความเป็นเลิศของรีสอร์ทในการมอบประสบการณ์บริการระดับสูงสุดและการบำรุงรักษาสิ่งอำนวยความสะดวกด้านความบันเทิง ช่วยตอกย้ำความเป็นผู้นำตลาด" data-hi="गैलेक्सी मकाऊ ने 2026 &#39;ट्रैवल + लीजर&#39; एशिया पैसिफिक लग्जरी अवार्ड्स में उत्कृष्ट प्रदर्शन किया और कई पुरस्कार जीते। यह सम्मान रिसॉर्ट की शीर्ष-स्तरीय सेवा अनुभव प्रदान करने और मनोरंजन सुविधाओं को बनाए रखने में उत्कृष्टता को मान्यता देता है, जो इसकी बाजार नेतृत्व की स्थिति को मजबूत करता है।">澳門銀河（Galaxy Macau）在 2026 年度《Travel + Leisure》亞太地區豪華獎項評選中脫穎而出，斬獲多項大獎。這項殊榮表彰了該度假村在頂級服務體驗與娛樂設施維護上的卓越表現，鞏固了其市場領導地位。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="高端度假村的成功運營有助於帶動區域內的博弈流量。作為供應商，JILI 應強化與這類高階運營商的內容協作，透過提供具備高度精緻感的視聽內容，協助運營商維持其高端品牌形象與用戶忠誠度。" data-en="The successful operation of high-end resorts helps drive regional gaming traffic. As a supplier, JILI should strengthen content collaboration with such high-end operators, providing highly sophisticated audiovisual content to help them maintain their brand image and user loyalty." data-th="การดำเนินงานที่ประสบความสำเร็จของรีสอร์ทระดับไฮเอนด์ช่วยขับเคลื่อนปริมาณการเข้าใช้งานเกมในภูมิภาค ในฐานะซัพพลายเออร์ JILI ควรเสริมความร่วมมือด้านเนื้อหากับผู้ให้บริการระดับสูงเหล่านี้ โดยนำเสนอเนื้อหาภาพและเสียงที่ประณีตเพื่อช่วยให้พวกเขาคงภาพลักษณ์แบรนด์และความภักดีของผู้ใช้" data-hi="हाई-एंड रिसॉर्ट्स का सफल संचालन क्षेत्रीय गेमिंग ट्रैफिक को बढ़ावा देने में मदद करता है। एक आपूर्तिकर्ता के रूप में, JILI को ऐसे उच्च-स्तरीय ऑपरेटरों के साथ कंटेंट सहयोग को मजबूत करना चाहिए, और परिष्कृत ऑडियो-विजुअल कंटेंट प्रदान करना चाहिए ताकि उन्हें अपनी ब्रांड छवि और उपयोगकर्ता वफादारी बनाए रखने में मदद मिल सके।">高端度假村的成功運營有助於帶動區域內的博弈流量。作為供應商，JILI 應強化與這類高階運營商的內容協作，透過提供具備高度精緻感的視聽內容，協助運營商維持其高端品牌形象與用戶忠誠度。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2889,21 +2827,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="近期產業分析指出，持有正規博弈牌照不僅是市場准入的門檻，更是確保玩家信心、保護合作夥伴權益的核心關鍵。合規化經營能有效提升市場透明度，並促使產業生態向長期可持續發展轉型。" data-en="Recent industry analysis indicates that holding a formal gaming license is not only a barrier to market entry but also a core key to ensuring player confidence and protecting partner interests. Compliant operations effectively increase market transparency and promote the industry&#39;s sustainable development." data-th="การวิเคราะห์อุตสาหกรรมล่าสุดระบุว่าการถือใบอนุญาตการพนันอย่างเป็นทางการไม่เพียงแต่เป็นเกณฑ์สำหรับการเข้าสู่ตลาด แต่ยังเป็นกุญแจสำคัญในการสร้างความมั่นใจให้ผู้เล่นและปกป้องผลประโยชน์ของพันธมิตร การดำเนินงานที่สอดคล้องกับกฎระเบียบจะช่วยเพิ่มความโปร่งใสในตลาดและส่งเสริมการพัฒนาที่ยั่งยืนของอุตสาหกรรม" data-hi="हालिया उद्योग विश्लेषण से संकेत मिलता है कि औपचारिक गेमिंग लाइसेंस होना न केवल बाजार में प्रवेश के लिए एक बाधा है, बल्कि खिलाड़ियों का विश्वास सुनिश्चित करने और भागीदारों के हितों की रक्षा करने की मुख्य कुंजी भी है। अनुपालन संचालन बाजार में पारदर्शिता बढ़ाता है और उद्योग के सतत विकास को बढ़ावा देता है।">近期產業分析指出，持有正規博弈牌照不僅是市場准入的門檻，更是確保玩家信心、保護合作夥伴權益的核心關鍵。合規化經營能有效提升市場透明度，並促使產業生態向長期可持續發展轉型。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="合規是 JILI 擴展全球版圖的基石。我們將持續深耕持有合法執照的市場，並將「合規性」內嵌於產品交付的每一個環節，確保與全球優質運營商的連結，將牌照優勢转化为競爭差異化，降低合規風險帶來的負面影響。" data-en="Compliance is the cornerstone of JILI&#39;s global expansion. We will continue to deepen our presence in markets with legal licenses and embed &#39;compliance&#39; into every step of product delivery, ensuring connectivity with high-quality operators and turning licensing advantages into competitive differentiation." data-th="การปฏิบัติตามกฎระเบียบคือรากฐานสำคัญของการขยายธุรกิจทั่วโลกของ JILI เราจะมุ่งเน้นตลาดที่มีใบอนุญาตที่ถูกต้องตามกฎหมาย และฝัง &#39;การปฏิบัติตามกฎระเบียบ&#39; ไว้ในทุกขั้นตอนของการส่งมอบผลิตภัณฑ์ เพื่อให้มั่นใจในการเชื่อมต่อกับผู้ให้บริการคุณภาพสูงและเปลี่ยนข้อได้เปรียบด้านใบอนุญาตให้เป็นความแตกต่างทางการแข่งขัน" data-hi="अनुपालन JILI के वैश्विक विस्तार की आधारशिला है। हम वैध लाइसेंस वाले बाजारों में अपनी उपस्थिति को गहरा करना जारी रखेंगे और उत्पाद वितरण के हर चरण में &#39;अनुपालन&#39; को शामिल करेंगे, ताकि उच्च-गुणवत्ता वाले ऑपरेटरों के साथ कनेक्टिविटी सुनिश्चित हो सके और लाइसेंसिंग लाभों को प्रतिस्पर्धी अंतर में बदला जा सके।">合規是 JILI 擴展全球版圖的基石。我們將持續深耕持有合法執照的市場，並將「合規性」內嵌於產品交付的每一個環節，確保與全球優質運營商的連結，將牌照優勢转化为競爭差異化，降低合規風險帶來的負面影響。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -2956,21 +2886,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="真人遊戲開發商 CreedRoomz 發布了最新遊戲「Maradona Run」，該遊戲融合世界盃足球賽的熱點元素，透過創新的遊戲展示形式，旨在提升玩家的互動體驗與娛樂參與感。" data-en="Live game developer CreedRoomz has released its latest game, &#39;Maradona Run&#39;. The game integrates hot elements from the World Cup, using innovative presentation formats to enhance player interaction and entertainment participation." data-th="CreedRoomz นักพัฒนาเกมสดได้เปิดตัวเกมล่าสุด &#39;Maradona Run&#39; ซึ่งรวมองค์ประกอบที่ร้อนแรงจากฟุตบอลโลก โดยใช้รูปแบบการนำเสนอที่สร้างสรรค์เพื่อเพิ่มการโต้ตอบของผู้เล่นและการมีส่วนร่วมในความบันเทิง" data-hi="लाइव गेम डेवलपर CreedRoomz ने अपना नवीनतम गेम &#39;Maradona Run&#39; जारी किया है। यह गेम वर्ल्ड कप के लोकप्रिय तत्वों को एकीकृत करता है, और खिलाड़ियों की बातचीत और मनोरंजन में भागीदारी बढ़ाने के लिए अभिनव प्रस्तुति प्रारूपों का उपयोग करता है।">真人遊戲開發商 CreedRoomz 發布了最新遊戲「Maradona Run」，該遊戲融合世界盃足球賽的熱點元素，透過創新的遊戲展示形式，旨在提升玩家的互動體驗與娛樂參與感。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="將體育盛事與真人遊戲結合是目前產業提升黏著度的有效策略。JILI 應引以為鑑，在未來產品規劃中加強熱門運動賽事的跨界整合，並評估此類型內容對我們產品矩陣的補充價值，以提升市場競爭力。" data-en="Combining major sporting events with live games is an effective industry strategy to improve stickiness. JILI should learn from this and strengthen cross-boundary integration of popular sporting events in future product planning, and evaluate the value of such content to our product matrix to enhance competitiveness." data-th="การผสมผสานกิจกรรมกีฬาระดับใหญ่เข้ากับเกมสดเป็นกลยุทธ์ที่มีประสิทธิภาพในการเพิ่มความเหนียวแน่นของผู้เล่น JILI ควรเรียนรู้จากสิ่งนี้และเสริมสร้างการบูรณาการข้ามขอบเขตของกิจกรรมกีฬายอดนิยมในการวางแผนผลิตภัณฑ์ในอนาคต และประเมินคุณค่าของเนื้อหาประเภทนี้ต่อเมทริกซ์ผลิตภัณฑ์เพื่อเพิ่มความสามารถในการแข่งขัน" data-hi="प्रमुख खेल आयोजनों को लाइव गेम के साथ जोड़ना स्टिकनेस बढ़ाने के लिए एक प्रभावी उद्योग रणनीति है। JILI को इससे सीखना चाहिए और भविष्य की उत्पाद योजना में लोकप्रिय खेल आयोजनों के क्रॉस-बाउंड्री एकीकरण को मजबूत करना चाहिए, साथ ही प्रतिस्पर्धात्मकता बढ़ाने के लिए अपने उत्पाद मैट्रिक्स के लिए इस तरह की सामग्री के मूल्य का मूल्यांकन करना चाहिए।">將體育盛事與真人遊戲結合是目前產業提升黏著度的有效策略。JILI 應引以為鑑，在未來產品規劃中加強熱門運動賽事的跨界整合，並評估此類型內容對我們產品矩陣的補充價值，以提升市場競爭力。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -3022,21 +2944,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="美高梅（MGM）在澳門舉辦「永續餐飲論壇」，聚焦於環境保護與負責任的餐飲供應鏈管理。此活動旨在展示其在履行企業社會責任（CSR）方面的努力，並與業界探討如何透過可持續發展模式提升品牌影響力與營運效率，屬產業品牌經營與 ESG 指引的範疇。" data-en="MGM Macau hosted a &#39;Sustainable Dining Forum&#39; focusing on environmental protection and responsible supply chain management. The event showcased their CSR efforts and explored how sustainable models can enhance brand influence and operational efficiency." data-th="MGM มาเก๊าจัดงาน &#39;Sustainable Dining Forum&#39; เน้นการปกป้องสิ่งแวดล้อมและการจัดการห่วงโซ่อุปทานอาหารอย่างรับผิดชอบ เพื่อแสดงความมุ่งมั่นด้าน CSR และหารือเกี่ยวกับการใช้โมเดลความยั่งยืนเพื่อยกระดับแบรนด์" data-hi="MGM मकाऊ ने पर्यावरण संरक्षण और जिम्मेदार खाद्य आपूर्ति श्रृंखला प्रबंधन पर ध्यान केंद्रित करते हुए &#39;सस्टेनेबल डाइनिंग फोरम&#39; आयोजित किया। यह कार्यक्रम सीएसआर प्रयासों को प्रदर्शित करने और ब्रांड प्रभाव बढ़ाने के लिए स्थायी मॉडलों पर चर्चा करने के लिए था।">美高梅（MGM）在澳門舉辦「永續餐飲論壇」，聚焦於環境保護與負責任的餐飲供應鏈管理。此活動旨在展示其在履行企業社會責任（CSR）方面的努力，並與業界探討如何透過可持續發展模式提升品牌影響力與營運效率，屬產業品牌經營與 ESG 指引的範疇。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="雖然此活動與 B2B 線上遊戲核心業務關聯度低，但展現了澳門運營商對 CSR 的高度重視。JILI 在與在地合作夥伴溝通時，應強調遊戲產品在防止未成年參與及責任博弈機制上的技術合規性，以滿足運營商對 CSR 的審核標準。" data-en="While this has low relevance to B2B gaming, it highlights the importance operators place on CSR. JILI should emphasize its technical compliance in responsible gaming and underage protection when communicating with operators to meet their audit standards." data-th="แม้กิจกรรมนี้จะเกี่ยวข้องกับธุรกิจเกม B2B น้อย แต่แสดงให้เห็นว่าผู้ประกอบการให้ความสำคัญกับ CSR สูง JILI ควรเน้นความสอดคล้องทางเทคนิคในเรื่องการพนันอย่างรับผิดชอบและการป้องกันเยาวชนเมื่อสื่อสารกับพันธมิตร เพื่อตอบโจทย์มาตรฐานการตรวจสอบของผู้ประกอบการ" data-hi="हालांकि इसका बी2बी गेमिंग से कम संबंध है, लेकिन यह दर्शाता है कि ऑपरेटर सीएसआर को कितनी अहमियत देते हैं। JILI को ऑपरेटरों के साथ संचार करते समय जिम्मेदारी से जुआ खेलने और नाबालिगों की सुरक्षा में अपनी तकनीकी अनुपालन क्षमता पर जोर देना चाहिए।">雖然此活動與 B2B 線上遊戲核心業務關聯度低，但展現了澳門運營商對 CSR 的高度重視。JILI 在與在地合作夥伴溝通時，應強調遊戲產品在防止未成年參與及責任博弈機制上的技術合規性，以滿足運營商對 CSR 的審核標準。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 15</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 15</span>
 
                     </div>
 
@@ -3089,21 +3003,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳洲 SkyCity 阿德雷德賭場與南澳監管機構達成和解，同意支付 1,470 萬澳元罰款，以解決關於反洗錢（AML）與責任博弈措施的監管調查。此舉象徵該賭場將重整合規架構，並致力於改善其內控機制以符合當地法律規範。" data-en="SkyCity Adelaide reached a settlement with South Australian regulators to pay a $14.7 million fine, resolving investigations into Anti-Money Laundering (AML) and responsible gambling measures." data-th="SkyCity Adelaide บรรลุข้อตกลงกับหน่วยงานกำกับดูแลของออสเตรเลียใต้ โดยตกลงจ่ายค่าปรับ 14.7 ล้านดอลลาร์เพื่อยุติการสอบสวนเรื่องการป้องกันการฟอกเงิน (AML) และมาตรการการพนันอย่างรับผิดชอบ" data-hi="SkyCity Adelaide ने दक्षिण ऑस्ट्रेलियाई नियामकों के साथ एक समझौता किया है, जिसमें एंटी-मनी लॉन्ड्रिंग (AML) और जिम्मेदार जुआ उपायों की जांच को सुलझाने के लिए $14.7 मिलियन का जुर्माना भरने पर सहमति बनी है।">澳洲 SkyCity 阿德雷德賭場與南澳監管機構達成和解，同意支付 1,470 萬澳元罰款，以解決關於反洗錢（AML）與責任博弈措施的監管調查。此舉象徵該賭場將重整合規架構，並致力於改善其內控機制以符合當地法律規範。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="澳洲市場監管持續收緊，對博弈供應鏈的合規審查標準日益嚴苛。JILI 需確保系統底層的數據透明度與反詐騙監控機制具備國際級認證，避免客戶因採購高風險產品而面臨法律牽連，這是穩固合作關係的關鍵。" data-en="Regulatory scrutiny in Australia is tightening. JILI must ensure its underlying system data transparency and anti-fraud mechanisms meet international standards to protect clients from legal risks associated with high-risk product procurement." data-th="กฎระเบียบในตลาดออสเตรเลียเข้มงวดขึ้น JILI ต้องรับรองว่าความโปร่งใสของข้อมูลในระบบและกลไกป้องกันการฉ้อโกงต้องได้มาตรฐานสากล เพื่อป้องกันไม่ให้ลูกค้ามีความเสี่ยงทางกฎหมายจากการจัดซื้อผลิตภัณฑ์ที่มีความเสี่ยงสูง" data-hi="ऑस्ट्रेलियाई बाजार में नियामक सख्त हो रहे हैं। JILI को यह सुनिश्चित करना चाहिए कि उसके सिस्टम डेटा की पारदर्शिता और धोखाधड़ी-रोधी तंत्र अंतरराष्ट्रीय मानकों को पूरा करते हों, ताकि ग्राहकों को उच्च जोखिम वाले उत्पादों से जुड़े कानूनी जोखिमों से बचाया जा सके।">澳洲市場監管持續收緊，對博弈供應鏈的合規審查標準日益嚴苛。JILI 需確保系統底層的數據透明度與反詐騙監控機制具備國際級認證，避免客戶因採購高風險產品而面臨法律牽連，這是穩固合作關係的關鍵。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -3156,21 +3062,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳洲媒體監管機構 ACMA 發現 SBS 在轉播環法自由車賽期間違反了關於播放賭博廣告的時段限制規定。此裁決再次凸顯澳洲政府對大眾媒體中博弈行銷內容的高度警戒，後續可能引發更嚴格的廣告播放指導原則。" data-en="The Australian media regulator ACMA found that SBS violated time-slot restrictions for gambling advertisements during its Tour de France broadcast." data-th="ACMA หน่วยงานกำกับดูแลสื่อของออสเตรเลียพบว่า SBS ละเมิดข้อจำกัดช่วงเวลาในการออกอากาศโฆษณาการพนันระหว่างการถ่ายทอดสดการแข่งขันจักรยาน Tour de France" data-hi="ऑस्ट्रेलियाई मीडिया नियामक ACMA ने पाया कि SBS ने टूर डी फ्रांस के प्रसारण के दौरान जुआ विज्ञापनों के लिए समय-स्लॉट प्रतिबंधों का उल्लंघन किया।">澳洲媒體監管機構 ACMA 發現 SBS 在轉播環法自由車賽期間違反了關於播放賭博廣告的時段限制規定。此裁決再次凸顯澳洲政府對大眾媒體中博弈行銷內容的高度警戒，後續可能引發更嚴格的廣告播放指導原則。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="監管機構對行銷內容的干預將限制博弈品牌的觸及率。JILI 應協助合作夥伴開發更多互動性高、具備「遊戲化」體驗的無廣告式留存工具，降低對外部付費廣告的依賴，藉此分散因廣告監管帶來的市場流量風險。" data-en="Regulatory intervention in marketing content limits reach. JILI should help partners develop ad-free, interactive &#39;gamified&#39; retention tools to reduce reliance on paid ads and mitigate traffic risks." data-th="การแทรกแซงเนื้อหาการตลาดจากหน่วยงานกำกับดูแลจะจำกัดการเข้าถึงแบรนด์ JILI ควรช่วยพันธมิตรพัฒนาเครื่องมือรักษาฐานลูกค้าแบบ &#39;เกมมิฟิเคชัน&#39; ที่ไม่มีโฆษณา เพื่อลดการพึ่งพาโฆษณาแบบเสียเงิน" data-hi="विपणन सामग्री में नियामक हस्तक्षेप ब्रांडों की पहुंच को सीमित करता है। JILI को भागीदारों को विज्ञापन-मुक्त, इंटरैक्टिव &#39;गेमिफाइड&#39; प्रतिधारण उपकरण विकसित करने में मदद करनी चाहिए ताकि भुगतान विज्ञापनों पर निर्भरता कम हो सके।">監管機構對行銷內容的干預將限制博弈品牌的觸及率。JILI 應協助合作夥伴開發更多互動性高、具備「遊戲化」體驗的無廣告式留存工具，降低對外部付費廣告的依賴，藉此分散因廣告監管帶來的市場流量風險。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 50</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 50</span>
 
                     </div>
 
@@ -3223,21 +3121,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳洲新南威爾斯州近期再度針對老虎機（Poker Machines）的危害進行專項研究，該議題在澳洲政界引發關於博弈改革的激烈辯論，包括限制投注金額、強制無現金支付等提案，顯示當地實體與線上博弈產業面臨政策不確定性。" data-en="New South Wales has relaunched research into the harms of poker machines, fueling intense political debate over reforms such as betting limits and mandatory cashless gaming." data-th="รัฐนิวเซาท์เวลส์เริ่มการศึกษาวิจัยเกี่ยวกับอันตรายของตู้สล็อต (Poker Machines) อีกครั้ง ซึ่งจุดชนวนการถกเถียงทางการเมืองเกี่ยวกับการปฏิรูปการพนัน เช่น การจำกัดยอดเดิมพันและการใช้ระบบไร้เงินสด" data-hi="न्यू साउथ वेल्स ने पोकर मशीनों के खतरों पर फिर से शोध शुरू कर दिया है, जिससे जुआ सुधारों जैसे कि सट्टेबाजी की सीमा तय करने और अनिवार्य कैशलेस भुगतान को लेकर राजनीतिक बहस तेज हो गई है।">澳洲新南威爾斯州近期再度針對老虎機（Poker Machines）的危害進行專項研究，該議題在澳洲政界引發關於博弈改革的激烈辯論，包括限制投注金額、強制無現金支付等提案，顯示當地實體與線上博弈產業面臨政策不確定性。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="澳洲老虎機政策的動盪可能加速市場轉向線上。JILI 應持續監測澳洲市場對於「負責任博弈」的技術規格要求，並預先準備符合強制額度控制功能的產品介面，以因應未來潛在的市場轉型需求與監管門檻。" data-en="Policy volatility in Australia may accelerate the shift to online gaming. JILI should monitor technical requirements for &#39;responsible gaming&#39; and prepare product interfaces with mandatory limit-control features." data-th="ความผันผวนของนโยบายในออสเตรเลียอาจเร่งการเปลี่ยนไปสู่เกมออนไลน์ JILI ควรติดตามข้อกำหนดทางเทคนิคเรื่อง &#39;การพนันอย่างรับผิดชอบ&#39; และเตรียมอินเทอร์เฟซผลิตภัณฑ์ที่มีฟังก์ชันควบคุมวงเงินเดิมพัน" data-hi="ऑस्ट्रेलिया में नीतिगत अस्थिरता ऑनलाइन गेमिंग की ओर बदलाव को तेज कर सकती है। JILI को &#39;जिम्मेदार जुआ&#39; के लिए तकनीकी आवश्यकताओं की निगरानी करनी चाहिए और अनिवार्य सीमा-नियंत्रण सुविधाओं वाले उत्पाद इंटरफेस तैयार करने चाहिए।">澳洲老虎機政策的動盪可能加速市場轉向線上。JILI 應持續監測澳洲市場對於「負責任博弈」的技術規格要求，並預先準備符合強制額度控制功能的產品介面，以因應未來潛在的市場轉型需求與監管門檻。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -3290,21 +3180,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="隨著全球博弈監管趨勢，離岸司法管轄區正進一步整合替代性爭議解決（ADR）機制。監管機構要求持牌營運商必須更透明且有效率地處理玩家投訴，否則將面臨牌照處分或市場准入限制，此舉標誌著監管對消費者保護的重視。" data-en="Offshore jurisdictions are integrating Alternative Dispute Resolution (ADR) mechanisms, requiring licensed operators to handle complaints transparently or face sanctions." data-th="เขตอำนาจศาลนอกชายฝั่งกำลังบูรณาการกลไกการระงับข้อพิพาททางเลือก (ADR) โดยกำหนดให้ผู้ประกอบการที่ได้รับใบอนุญาตจัดการข้อร้องเรียนอย่างโปร่งใส ไม่เช่นนั้นอาจเผชิญบทลงโทษ" data-hi="अपतटीय क्षेत्राधिकार वैकल्पिक विवाद समाधान (ADR) तंत्र को एकीकृत कर रहे हैं, जिसके तहत लाइसेंस प्राप्त ऑपरेटरों को शिकायतों को पारदर्शी रूप से संभालने की आवश्यकता है, अन्यथा उन्हें प्रतिबंधों का सामना करना पड़ेगा।">隨著全球博弈監管趨勢，離岸司法管轄區正進一步整合替代性爭議解決（ADR）機制。監管機構要求持牌營運商必須更透明且有效率地處理玩家投訴，否則將面臨牌照處分或市場准入限制，此舉標誌著監管對消費者保護的重視。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="客戶端的投訴處理壓力增加，將促使他們更嚴格審視遊戲供應商的系統穩定性與公平性測試報告。JILI 應強化遊戲紀錄檔（Log）的追蹤功能，確保在發生爭議時能提供即時、精準的數據佐證，提升客戶對系統信任度。" data-en="Increased pressure on complaint handling will lead clients to scrutinize system stability and fairness reports. JILI must strengthen log-tracking features to provide real-time, accurate evidence for dispute resolution." data-th="แรงกดดันในการจัดการข้อร้องเรียนที่เพิ่มขึ้นจะทำให้ลูกค้าตรวจสอบความเสถียรของระบบและความเป็นธรรมมากขึ้น JILI ควรเสริมฟังก์ชันการติดตาม Log เพื่อจัดหาหลักฐานที่แม่นยำและรวดเร็วสำหรับการระงับข้อพิพาท" data-hi="शिकायत प्रबंधन पर बढ़ता दबाव ग्राहकों को सिस्टम स्थिरता और निष्पक्षता रिपोर्ट की जांच करने के लिए प्रेरित करेगा। JILI को विवाद समाधान के लिए वास्तविक समय, सटीक सबूत प्रदान करने के लिए लॉग-ट्रैकिंग सुविधाओं को मजबूत करना चाहिए।">客戶端的投訴處理壓力增加，將促使他們更嚴格審視遊戲供應商的系統穩定性與公平性測試報告。JILI 應強化遊戲紀錄檔（Log）的追蹤功能，確保在發生爭議時能提供即時、精準的數據佐證，提升客戶對系統信任度。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -3357,21 +3239,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="報導分析 2026 年 FIFA 世界盃資格賽哥倫比亞對陣剛果民主共和國的賽事數據、球員狀態及獲勝機率預測。此類內容屬於體育博弈分析範疇，主要為營運商提供吸引用戶投注的賽事資訊與熱點分析。" data-en="Analysis of match data, player fitness, and win probability for the Colombia vs. DR Congo 2026 FIFA World Cup qualifier, providing operators with engagement content." data-th="บทวิเคราะห์ข้อมูลการแข่งขัน สภาพความพร้อมของผู้เล่น และโอกาสชนะสำหรับการแข่งขันฟุตบอลโลก 2026 รอบคัดเลือก ระหว่างโคลอมเบียและดีอาร์คองโก เพื่อเป็นข้อมูลให้ผู้ประกอบการใช้ดึงดูดผู้เล่น" data-hi="कोलंबिया बनाम डीआर कांगो 2026 फीफा विश्व कप क्वालीफायर के लिए मैच डेटा, खिलाड़ियों की स्थिति और जीत की संभावना का विश्लेषण, जो ऑपरेटरों को उपयोगकर्ता आकर्षण सामग्री प्रदान करता है।">報導分析 2026 年 FIFA 世界盃資格賽哥倫比亞對陣剛果民主共和國的賽事數據、球員狀態及獲勝機率預測。此類內容屬於體育博弈分析範疇，主要為營運商提供吸引用戶投注的賽事資訊與熱點分析。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此類賽事預測新聞對線上平台具有引流效益。JILI 應利用此類熱門體育賽事資訊，優化體育主題遊戲的推薦機制，並透過數據分析預判高峰投注流量，確保伺服器容量與 API 回應速度能應對突發性的高併發需求。" data-en="Prediction news drives traffic. JILI should use this data to optimize sports-themed game recommendations and analyze peak traffic to ensure server capacity and API speed." data-th="ข่าววิเคราะห์มีผลต่อการเพิ่มทราฟฟิก JILI ควรใช้ข้อมูลนี้เพื่อปรับปรุงระบบแนะนำเกมธีมกีฬา และวิเคราะห์ทราฟฟิกในช่วงพีคเพื่อให้มั่นใจว่าความจุเซิร์ฟเวอร์และความเร็ว API เพียงพอ" data-hi="भविष्यवाणी समाचार ट्रैफ़िक को आकर्षित करते हैं। JILI को इस डेटा का उपयोग खेल-थीम वाले गेम अनुशंसाओं को अनुकूलित करने और पीक ट्रैफ़िक का विश्लेषण करने के लिए करना चाहिए ताकि सर्वर क्षमता और API गति सुनिश्चित हो सके।">此類賽事預測新聞對線上平台具有引流效益。JILI 應利用此類熱門體育賽事資訊，優化體育主題遊戲的推薦機制，並透過數據分析預判高峰投注流量，確保伺服器容量與 API 回應速度能應對突發性的高併發需求。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 35</span>
 
                     </div>
 
@@ -3424,21 +3298,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="報導針對 2026 年 FIFA 世界盃分組賽葡萄牙對陣烏茲別克的比賽進行技術性預測，涵蓋雙方戰術佈局與潛在投注市場分析，為線上博弈參與者提供賽前決策參考資料。" data-en="Technical analysis of the Portugal vs. Uzbekistan 2026 FIFA World Cup group stage match, including tactical layouts and potential betting market insights." data-th="บทวิเคราะห์เชิงเทคนิคสำหรับการแข่งขันฟุตบอลโลก 2026 ระหว่างโปรตุเกสและอุซเบกิสถาน ครอบคลุมถึงแท็กติกการเล่นและข้อมูลตลาดการเดิมพัน เพื่อเป็นข้อมูลประกอบการตัดสินใจของผู้เล่น" data-hi="पुर्तगाल बनाम उज्बेकिस्तान 2026 फीफा विश्व कप ग्रुप चरण के मैच का तकनीकी विश्लेषण, जिसमें सामरिक लेआउट और संभावित सट्टेबाजी बाजार की जानकारी शामिल है।">報導針對 2026 年 FIFA 世界盃分組賽葡萄牙對陣烏茲別克的比賽進行技術性預測，涵蓋雙方戰術佈局與潛在投注市場分析，為線上博弈參與者提供賽前決策參考資料。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="國際性賽事為博弈流量的催化劑。JILI 應配合全球賽事時間軸，推動體育主題角子機遊戲的聯合促銷計畫。透過與營運商的數據共享，精準投放相關賽事的推廣方案，以提升玩家參與度和平台黏著度。" data-en="International events act as catalysts for gaming traffic. JILI should align with the global schedule to launch joint promotions for sports-themed slots and share data with operators for targeted marketing." data-th="การแข่งขันระดับนานาชาติเป็นตัวเร่งทราฟฟิก JILI ควรดำเนินกิจกรรมร่วมกับพันธมิตรในช่วงเวลาการแข่งขันเพื่อจัดแคมเปญส่งเสริมเกมสล็อตธีมกีฬา และแบ่งปันข้อมูลเพื่อทำการตลาดแบบเจาะจงกลุ่มเป้าหมาย" data-hi="अंतर्राष्ट्रीय कार्यक्रम गेमिंग ट्रैफ़िक के लिए उत्प्रेरक का काम करते हैं। JILI को खेल-थीम वाले स्लॉट के लिए संयुक्त प्रचार शुरू करने के लिए वैश्विक कार्यक्रम के साथ संरेखित करना चाहिए और लक्षित विपणन के लिए ऑपरेटरों के साथ डेटा साझा करना चाहिए।">國際性賽事為博弈流量的催化劑。JILI 應配合全球賽事時間軸，推動體育主題角子機遊戲的聯合促銷計畫。透過與營運商的數據共享，精準投放相關賽事的推廣方案，以提升玩家參與度和平台黏著度。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 35</span>
 
                     </div>
 
@@ -3827,7 +3693,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "澳門", "count": 5, "coords": [22.662431704917086, 113.59821196108601], "sentiment": "利多", "news_full": [{"title": "澳門 2026 年旅客人次突破 2,000 萬，增速較去年提前 18 天", "title_en": "Macau's 2026 Tourist Arrivals Top 20 Million, Reaching the Milestone 18 Days Faster than Last Year", "title_th": "จำนวนนักท่องเที่ยวในมาเก๊าปี 2026 ทะลุ 20 ล้านคน เร็วกว่าปีที่แล้ว 18 วัน", "title_hi": "मकाऊ में 2026 में पर्यटकों की संख्या 2 करोड़ के पार, पिछले साल से 18 दिन पहले हासिल किया लक्ष्य", "link": "https://asgam.com/2026/06/22/macau-visitor-arrivals-pass-20-million-in-2026-faster-than-last-year-by-18-days/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}, {"title": "澳門本週主辦亞太經合組織（APEC）旅遊論壇", "title_en": "Macau Hosts APEC Tourism Forum This Week", "title_th": "มาเก๊าเป็นเจ้าภาพจัดงาน APEC Tourism Forum สัปดาห์นี้", "title_hi": "मकाऊ इस सप्ताह APEC पर्यटन फोरम की मेजबानी कर रहा है", "link": "https://asgam.com/2026/06/22/macau-to-host-key-apec-tourism-meetings-this-week/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}, {"title": "澳門端午節期間吸引逾 38 萬旅客人次", "title_en": "Macau Attracts Over 380,000 Visitors During Dragon Boat Festival", "title_th": "มาเก๊าดึงดูดนักท่องเที่ยวมากกว่า 380,000 คนในช่วงเทศกาลไหว้บ๊ะจ่าง", "title_hi": "मकाऊ ने ड्रैगन बोट फेस्टिवल के दौरान 3.8 लाख से अधिक पर्यटकों को आकर्षित किया", "link": "https://agbrief.com/news/macau/22/06/2026/macau-receives-over-380000-visitors-during-dragon-boat-holiday/", "sentiment": "利多", "impact": 30.0, "urgency": 25.0}, {"title": "銀河娛樂於 Travel + Leisure 亞太豪華獎項中榮獲多項榮譽", "title_en": "Galaxy Entertainment Wins Multiple Honors at Travel + Leisure Asia Pacific Luxury Awards", "title_th": "Galaxy Entertainment คว้ารางวัลมากมายจาก Travel + Leisure Asia Pacific Luxury Awards", "title_hi": "Galaxy Entertainment ने Travel + Leisure एशिया पैसिफिक लग्जरी अवार्ड्स में कई सम्मान जीते", "link": "https://agbrief.com/news/macau/22/06/2026/galaxy-macau-shines-with-multiple-honors-at-travel-leisure-luxury-awards-apac-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "美高梅於澳門舉辦永續餐飲論壇，推動企業社會責任", "title_en": "MGM Hosts Sustainable Dining Forum in Macau to Drive CSR", "title_th": "MGM จัดงานเสวนาอาหารยั่งยืนในมาเก๊า มุ่งผลักดันความรับผิดชอบต่อสังคม", "title_hi": "MGM ने मकाऊ में स्थायी भोजन मंच की मेजबानी की, सीएसआर को बढ़ावा दिया", "link": "https://agbrief.com/news/macau/22/06/2026/mgm-promotes-responsible-dining-with-sustainable-gastronomy-forum/", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}]}, {"region": "緬甸", "count": 2, "coords": [16.813077464049236, 96.30880652987982], "sentiment": "利空", "news_full": [{"title": "緬甸續留 FATF 黑名單，反洗錢進度受限於詐騙風險", "title_en": "Myanmar Remains on FATF Blacklist; AML Progress Hindered by Scam Risks", "title_th": "เมียนมาร์ยังคงติด 'บัญชีดำ' ของ FATF ความคืบหน้าด้าน AML ถูกจำกัดจากความเสี่ยงด้านการฉ้อโกง", "title_hi": "म्यांमार FATF की ब्लैकलिस्ट में बरकरार, घोटाले के जोखिमों के कारण AML प्रगति बाधित", "link": "https://asgam.com/2026/06/22/myanmar-remains-on-the-fatf-black-list-with-aml-progress-offset-by-ongoing-risk-of-fraud-and-cyber-scam-activities/", "sentiment": "利空", "impact": 85.0, "urgency": 85.0}, {"title": "網絡詐騙風險持續，緬甸留名 FATF 黑名單", "title_en": "Cyber Scam Risks Persist; Myanmar Remains on FATF Blacklist", "title_th": "ความเสี่ยงจากมิจฉาชีพไซเบอร์ยังคงอยู่ เมียนมาร์ติดบัญชีดำ FATF ต่อไป", "title_hi": "साइबर घोटाले का जोखिम जारी; म्यांमार FATF की ब्लैकलिस्ट में शामिल", "link": "https://agbrief.com/news/myanmar/22/06/2026/myanmar-remains-on-fatf-black-list-as-cyber-scam-risks-persist/", "sentiment": "利空", "impact": 85.0, "urgency": 90.0}]}, {"region": "澳洲", "count": 4, "coords": [-25.38364383864452, 133.73522813902758], "sentiment": "利空", "news_full": [{"title": "分析師：獨立評審結果或利於 SkyCity 處置阿得雷德賭場資產", "title_en": "Analyst: Independent Review Results May Favor SkyCity's Disposal of Adelaide Casino Assets", "title_th": "นักวิเคราะห์: ผลการทบทวนอิสระอาจเป็นผลดีต่อ SkyCity ในการจัดการสินทรัพย์คาสิโนที่แอดิเลด", "title_hi": "विश्लेषक: स्वतंत्र समीक्षा के परिणाम SkyCity की एडिलेड कैसीनो संपत्ति के निपटान के लिए फायदेमंद हो सकते हैं", "link": "https://asgam.com/2026/06/22/analysts-resolution-of-independent-review-paves-way-for-skycity-to-offload-adelaide-casino-precinct-although-sale-unlikely/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "SkyCity 阿德雷德支付 1,470 萬澳元罰款，結束監管審查", "title_en": "SkyCity Adelaide Pays $14.7M Fine, Ending Regulatory Review", "title_th": "SkyCity Adelaide จ่ายค่าปรับ 14.7 ล้านดอลลาร์ออสเตรเลีย ปิดฉากการตรวจสอบทางกฎหมาย", "title_hi": "SkyCity Adelaide ने $14.7 मिलियन का जुर्माना भरा, नियामक समीक्षा समाप्त", "link": "https://agbrief.com/news/australia/21/06/2026/skycity-adelaide-to-pay-14-7m-fine-to-settle-south-australia-regulatory-review/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "澳洲通訊局裁定 SBS 電視台違反環法自由車賽期間賭博廣告規定", "title_en": "ACMA Rules SBS Violated Gambling Ad Regulations During Tour de France", "title_th": "ACMA ตัดสิน SBS ละเมิดกฎโฆษณาการพนันระหว่างถ่ายทอดสด Tour de France", "title_hi": "ACMA ने फैसला सुनाया कि SBS ने टूर डी फ्रांस के दौरान जुआ विज्ञापनों के नियमों का उल्लंघन किया", "link": "https://agbrief.com/news/australia/21/06/2026/acma-finds-sbs-breached-gambling-advertising-rules-during-tour-de-france/", "sentiment": "利空", "impact": 50.0, "urgency": 55.0}, {"title": "澳洲新南威爾斯州重啟老虎機研究，博弈改革辯論持續升溫", "title_en": "New South Wales Restarts Slot Machine Research Amid Gambling Reform Debate", "title_th": "นิวเซาท์เวลส์รื้อฟื้นงานวิจัยตู้สล็อต ท่ามกลางการถกเถียงเรื่องการปฏิรูปการพนัน", "title_hi": "न्यू साउथ वेल्स ने जुआ सुधार पर बहस के बीच स्लॉट मशीन अनुसंधान को फिर से शुरू किया", "link": "https://agbrief.com/news/australia/21/06/2026/nsw-poker-machine-study-keeps-resurfacing-in-australias-gambling-reform-debate/", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "孟加拉", "count": 1, "coords": [23.52949555870797, 90.1085092867774], "sentiment": "利多", "news_full": [{"title": "孟加拉國原則上批准博弈法草案", "title_en": "Bangladesh Approves Gaming Bill Draft in Principle", "title_th": "บังกลาเทศอนุมัติร่างกฎหมายการพนันในหลักการ", "title_hi": "बांग्लादेश ने सैद्धांतिक रूप से गेमिंग बिल के मसौदे को मंजूरी दी", "link": "https://asgam.com/2026/06/22/bangladesh-gives-in-principle-approval-to-draft-gambling-law/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}]}, {"region": "全球", "count": 5, "coords": [20.43756523022562, 9.622926243175304], "sentiment": "利空", "news_full": [{"title": "論牌照對玩家、合作夥伴及市場的重要性", "title_en": "The Importance of Licenses to Players, Partners, and the Market", "title_th": "ความสำคัญของใบอนุญาตต่อผู้เล่น พันธมิตร และตลาด", "title_hi": "खिलाड़ियों, भागीदारों और बाजार के लिए लाइसेंस का महत्व", "link": "https://agbrief.com/news/world/22/06/2026/how-licensing-makes-a-difference-for-players-partners-and-the-market/", "sentiment": "利多", "impact": 80.0, "urgency": 40.0}, {"title": "CreedRoomz 推出世界盃主題真人遊戲「Maradona Run」", "title_en": "CreedRoomz Launches World Cup Themed Live Game 'Maradona Run'", "title_th": "CreedRoomz เปิดตัวเกมสดธีมฟุตบอลโลก 'Maradona Run'", "title_hi": "CreedRoomz ने वर्ल्ड कप थीम वाला लाइव गेम 'Maradona Run' लॉन्च किया", "link": "https://agbrief.com/news/world/22/06/2026/creedroomz-introduces-maradona-run-a-world-cup-inspired-live-game-show/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "離岸司法管轄區加強對玩家投訴的 ADR 機制監控", "title_en": "Offshore Jurisdictions Strengthen Monitoring of ADR Mechanisms for Player Complaints", "title_th": "เขตอำนาจศาลนอกชายฝั่งเสริมมาตรการกำกับดูแลกลไก ADR สำหรับข้อร้องเรียนของผู้เล่น", "title_hi": "अपतटीय क्षेत्राधिकार खिलाड़ी शिकायतों के लिए ADR तंत्र की निगरानी को मजबूत कर रहे हैं", "link": "https://agbrief.com/intel/deep-dive/21/06/2026/why-adr-is-no-longer-the-fine-print-offshore-jurisdictions-close-ranks-on-player-complaints/", "sentiment": "利空", "impact": 80.0, "urgency": 60.0}, {"title": "哥倫比亞對戰剛果民主共和國：2026 世界盃分組賽預測分析", "title_en": "Colombia vs. DR Congo: 2026 World Cup Qualifier Prediction Analysis", "title_th": "โคลอมเบีย พบ ดีอาร์คองโก: วิเคราะห์คาดการณ์การแข่งขันฟุตบอลโลก 2026 รอบคัดเลือก", "title_hi": "कोलंबिया बनाम डीआर कांगो: 2026 विश्व कप क्वालीफायर भविष्यवाणी विश्लेषण", "link": "https://www.gamblingnews.com/news/colombia-vs-dr-congo-prediction-picks-2026-fifa-world-cup-group-stage/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}, {"title": "葡萄牙對戰烏茲別克：2026 世界盃分組賽預測分析", "title_en": "Portugal vs. Uzbekistan: 2026 World Cup Qualifier Prediction Analysis", "title_th": "โปรตุเกส พบ อุซเบกิสถาน: วิเคราะห์คาดการณ์การแข่งขันฟุตบอลโลก 2026 รอบคัดเลือก", "title_hi": "पुर्तगाल बनाम उज्बेकिस्तान: 2026 विश्व कप क्वालीफायर भविष्यवाणी विश्लेषण", "link": "https://www.gamblingnews.com/news/portugal-vs-uzbekistan-prediction-picks-2026-fifa-world-cup-group-stage/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}]}];
+        const mapMarkersData = [{"region": "澳門", "count": 5, "coords": [22.29768378850793, 113.48638529189613], "sentiment": "利多", "news_full": [{"title": "澳門 2026 年旅客人次突破 2,000 萬，增速較去年提前 18 天", "title_en": "Macau's 2026 Tourist Arrivals Top 20 Million, Reaching the Milestone 18 Days Faster than Last Year", "title_th": "จำนวนนักท่องเที่ยวในมาเก๊าปี 2026 ทะลุ 20 ล้านคน เร็วกว่าปีที่แล้ว 18 วัน", "title_hi": "मकाऊ में 2026 में पर्यटकों की संख्या 2 करोड़ के पार, पिछले साल से 18 दिन पहले हासिल किया लक्ष्य", "link": "https://asgam.com/2026/06/22/macau-visitor-arrivals-pass-20-million-in-2026-faster-than-last-year-by-18-days/", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}, {"title": "澳門本週主辦亞太經合組織（APEC）旅遊論壇", "title_en": "Macau Hosts APEC Tourism Forum This Week", "title_th": "มาเก๊าเป็นเจ้าภาพจัดงาน APEC Tourism Forum สัปดาห์นี้", "title_hi": "मकाऊ इस सप्ताह APEC पर्यटन फोरम की मेजबानी कर रहा है", "link": "https://asgam.com/2026/06/22/macau-to-host-key-apec-tourism-meetings-this-week/", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}, {"title": "澳門端午節期間吸引逾 38 萬旅客人次", "title_en": "Macau Attracts Over 380,000 Visitors During Dragon Boat Festival", "title_th": "มาเก๊าดึงดูดนักท่องเที่ยวมากกว่า 380,000 คนในช่วงเทศกาลไหว้บ๊ะจ่าง", "title_hi": "मकाऊ ने ड्रैगन बोट फेस्टिवल के दौरान 3.8 लाख से अधिक पर्यटकों को आकर्षित किया", "link": "https://agbrief.com/news/macau/22/06/2026/macau-receives-over-380000-visitors-during-dragon-boat-holiday/", "sentiment": "利多", "impact": 30.0, "urgency": 25.0}, {"title": "銀河娛樂於 Travel + Leisure 亞太豪華獎項中榮獲多項榮譽", "title_en": "Galaxy Entertainment Wins Multiple Honors at Travel + Leisure Asia Pacific Luxury Awards", "title_th": "Galaxy Entertainment คว้ารางวัลมากมายจาก Travel + Leisure Asia Pacific Luxury Awards", "title_hi": "Galaxy Entertainment ने Travel + Leisure एशिया पैसिफिक लग्जरी अवार्ड्स में कई सम्मान जीते", "link": "https://agbrief.com/news/macau/22/06/2026/galaxy-macau-shines-with-multiple-honors-at-travel-leisure-luxury-awards-apac-2026/", "sentiment": "利多", "impact": 30.0, "urgency": 20.0}, {"title": "美高梅於澳門舉辦永續餐飲論壇，推動企業社會責任", "title_en": "MGM Hosts Sustainable Dining Forum in Macau to Drive CSR", "title_th": "MGM จัดงานเสวนาอาหารยั่งยืนในมาเก๊า มุ่งผลักดันความรับผิดชอบต่อสังคม", "title_hi": "MGM ने मकाऊ में स्थायी भोजन मंच की मेजबानी की, सीएसआर को बढ़ावा दिया", "link": "https://agbrief.com/news/macau/22/06/2026/mgm-promotes-responsible-dining-with-sustainable-gastronomy-forum/", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}]}, {"region": "緬甸", "count": 2, "coords": [16.692275066738596, 96.27572463895065], "sentiment": "利空", "news_full": [{"title": "緬甸續留 FATF 黑名單，反洗錢進度受限於詐騙風險", "title_en": "Myanmar Remains on FATF Blacklist; AML Progress Hindered by Scam Risks", "title_th": "เมียนมาร์ยังคงติด 'บัญชีดำ' ของ FATF ความคืบหน้าด้าน AML ถูกจำกัดจากความเสี่ยงด้านการฉ้อโกง", "title_hi": "म्यांमार FATF की ब्लैकलिस्ट में बरकरार, घोटाले के जोखिमों के कारण AML प्रगति बाधित", "link": "https://asgam.com/2026/06/22/myanmar-remains-on-the-fatf-black-list-with-aml-progress-offset-by-ongoing-risk-of-fraud-and-cyber-scam-activities/", "sentiment": "利空", "impact": 85.0, "urgency": 85.0}, {"title": "網絡詐騙風險持續，緬甸留名 FATF 黑名單", "title_en": "Cyber Scam Risks Persist; Myanmar Remains on FATF Blacklist", "title_th": "ความเสี่ยงจากมิจฉาชีพไซเบอร์ยังคงอยู่ เมียนมาร์ติดบัญชีดำ FATF ต่อไป", "title_hi": "साइबर घोटाले का जोखिम जारी; म्यांमार FATF की ब्लैकलिस्ट में शामिल", "link": "https://agbrief.com/news/myanmar/22/06/2026/myanmar-remains-on-fatf-black-list-as-cyber-scam-risks-persist/", "sentiment": "利空", "impact": 85.0, "urgency": 90.0}]}, {"region": "澳洲", "count": 4, "coords": [-25.068113697854816, 134.19453512823122], "sentiment": "利空", "news_full": [{"title": "分析師：獨立評審結果或利於 SkyCity 處置阿得雷德賭場資產", "title_en": "Analyst: Independent Review Results May Favor SkyCity's Disposal of Adelaide Casino Assets", "title_th": "นักวิเคราะห์: ผลการทบทวนอิสระอาจเป็นผลดีต่อ SkyCity ในการจัดการสินทรัพย์คาสิโนที่แอดิเลด", "title_hi": "विश्लेषक: स्वतंत्र समीक्षा के परिणाम SkyCity की एडिलेड कैसीनो संपत्ति के निपटान के लिए फायदेमंद हो सकते हैं", "link": "https://asgam.com/2026/06/22/analysts-resolution-of-independent-review-paves-way-for-skycity-to-offload-adelaide-casino-precinct-although-sale-unlikely/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "SkyCity 阿德雷德支付 1,470 萬澳元罰款，結束監管審查", "title_en": "SkyCity Adelaide Pays $14.7M Fine, Ending Regulatory Review", "title_th": "SkyCity Adelaide จ่ายค่าปรับ 14.7 ล้านดอลลาร์ออสเตรเลีย ปิดฉากการตรวจสอบทางกฎหมาย", "title_hi": "SkyCity Adelaide ने $14.7 मिलियन का जुर्माना भरा, नियामक समीक्षा समाप्त", "link": "https://agbrief.com/news/australia/21/06/2026/skycity-adelaide-to-pay-14-7m-fine-to-settle-south-australia-regulatory-review/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "澳洲通訊局裁定 SBS 電視台違反環法自由車賽期間賭博廣告規定", "title_en": "ACMA Rules SBS Violated Gambling Ad Regulations During Tour de France", "title_th": "ACMA ตัดสิน SBS ละเมิดกฎโฆษณาการพนันระหว่างถ่ายทอดสด Tour de France", "title_hi": "ACMA ने फैसला सुनाया कि SBS ने टूर डी फ्रांस के दौरान जुआ विज्ञापनों के नियमों का उल्लंघन किया", "link": "https://agbrief.com/news/australia/21/06/2026/acma-finds-sbs-breached-gambling-advertising-rules-during-tour-de-france/", "sentiment": "利空", "impact": 50.0, "urgency": 55.0}, {"title": "澳洲新南威爾斯州重啟老虎機研究，博弈改革辯論持續升溫", "title_en": "New South Wales Restarts Slot Machine Research Amid Gambling Reform Debate", "title_th": "นิวเซาท์เวลส์รื้อฟื้นงานวิจัยตู้สล็อต ท่ามกลางการถกเถียงเรื่องการปฏิรูปการพนัน", "title_hi": "न्यू साउथ वेल्स ने जुआ सुधार पर बहस के बीच स्लॉट मशीन अनुसंधान को फिर से शुरू किया", "link": "https://agbrief.com/news/australia/21/06/2026/nsw-poker-machine-study-keeps-resurfacing-in-australias-gambling-reform-debate/", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}]}, {"region": "孟加拉", "count": 1, "coords": [24.164616386232016, 90.05937661619278], "sentiment": "利多", "news_full": [{"title": "孟加拉國原則上批准博弈法草案", "title_en": "Bangladesh Approves Gaming Bill Draft in Principle", "title_th": "บังกลาเทศอนุมัติร่างกฎหมายการพนันในหลักการ", "title_hi": "बांग्लादेश ने सैद्धांतिक रूप से गेमिंग बिल के मसौदे को मंजूरी दी", "link": "https://asgam.com/2026/06/22/bangladesh-gives-in-principle-approval-to-draft-gambling-law/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}]}, {"region": "全球", "count": 5, "coords": [20.472012189403966, 9.97264249497473], "sentiment": "利空", "news_full": [{"title": "論牌照對玩家、合作夥伴及市場的重要性", "title_en": "The Importance of Licenses to Players, Partners, and the Market", "title_th": "ความสำคัญของใบอนุญาตต่อผู้เล่น พันธมิตร และตลาด", "title_hi": "खिलाड़ियों, भागीदारों और बाजार के लिए लाइसेंस का महत्व", "link": "https://agbrief.com/news/world/22/06/2026/how-licensing-makes-a-difference-for-players-partners-and-the-market/", "sentiment": "利多", "impact": 80.0, "urgency": 40.0}, {"title": "CreedRoomz 推出世界盃主題真人遊戲「Maradona Run」", "title_en": "CreedRoomz Launches World Cup Themed Live Game 'Maradona Run'", "title_th": "CreedRoomz เปิดตัวเกมสดธีมฟุตบอลโลก 'Maradona Run'", "title_hi": "CreedRoomz ने वर्ल्ड कप थीम वाला लाइव गेम 'Maradona Run' लॉन्च किया", "link": "https://agbrief.com/news/world/22/06/2026/creedroomz-introduces-maradona-run-a-world-cup-inspired-live-game-show/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "離岸司法管轄區加強對玩家投訴的 ADR 機制監控", "title_en": "Offshore Jurisdictions Strengthen Monitoring of ADR Mechanisms for Player Complaints", "title_th": "เขตอำนาจศาลนอกชายฝั่งเสริมมาตรการกำกับดูแลกลไก ADR สำหรับข้อร้องเรียนของผู้เล่น", "title_hi": "अपतटीय क्षेत्राधिकार खिलाड़ी शिकायतों के लिए ADR तंत्र की निगरानी को मजबूत कर रहे हैं", "link": "https://agbrief.com/intel/deep-dive/21/06/2026/why-adr-is-no-longer-the-fine-print-offshore-jurisdictions-close-ranks-on-player-complaints/", "sentiment": "利空", "impact": 80.0, "urgency": 60.0}, {"title": "哥倫比亞對戰剛果民主共和國：2026 世界盃分組賽預測分析", "title_en": "Colombia vs. DR Congo: 2026 World Cup Qualifier Prediction Analysis", "title_th": "โคลอมเบีย พบ ดีอาร์คองโก: วิเคราะห์คาดการณ์การแข่งขันฟุตบอลโลก 2026 รอบคัดเลือก", "title_hi": "कोलंबिया बनाम डीआर कांगो: 2026 विश्व कप क्वालीफायर भविष्यवाणी विश्लेषण", "link": "https://www.gamblingnews.com/news/colombia-vs-dr-congo-prediction-picks-2026-fifa-world-cup-group-stage/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}, {"title": "葡萄牙對戰烏茲別克：2026 世界盃分組賽預測分析", "title_en": "Portugal vs. Uzbekistan: 2026 World Cup Qualifier Prediction Analysis", "title_th": "โปรตุเกส พบ อุซเบกิสถาน: วิเคราะห์คาดการณ์การแข่งขันฟุตบอลโลก 2026 รอบคัดเลือก", "title_hi": "पुर्तगाल बनाम उज्बेकिस्तान: 2026 विश्व कप क्वालीफायर भविष्यवाणी विश्लेषण", "link": "https://www.gamblingnews.com/news/portugal-vs-uzbekistan-prediction-picks-2026-fifa-world-cup-group-stage/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}]}];
 
         const regionMarkers = {};
 
@@ -4268,14 +4134,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -4292,7 +4150,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -4990,7 +4848,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
