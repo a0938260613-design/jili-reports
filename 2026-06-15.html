@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-06-15</title>
+    <title>JILI 市場情報指揮中心 - 2026-06-15</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-06-15</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2258,27 +2274,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2353,21 +2355,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="近期博弈產業主要圍繞世界盃投注商機、美國商品期貨交易委員會（CFTC）的規則制定流程，以及如紐約尼克隊逆轉勝等體育賽事數據展開。行業觀察家指出，監管機構對預測市場與體育博彩的態度日趨明朗，相關監管規則將直接影響運營商的產品投放策略與合規成本。" data-en="The gambling industry is currently focused on World Cup betting opportunities, the CFTC&#39;s rulemaking process, and sports data analytics. Observers note that regulatory attitudes toward prediction markets and sports betting are becoming clearer, impacting operator strategy and compliance costs." data-th="อุตสาหกรรมการพนันกำลังให้ความสนใจไปที่โอกาสในการเดิมพันฟุตบอลโลก กระบวนการออกกฎระเบียบของ CFTC และข้อมูลการแข่งขันกีฬา ข้อมูลชี้ให้เห็นว่ามุมมองของหน่วยงานกำกับดูแลที่มีต่อตลาดการทำนายและพนันกีฬามีความชัดเจนขึ้น ซึ่งส่งผลโดยตรงต่อกลยุทธ์ของโอเปอเรเตอร์" data-hi="जुआ उद्योग वर्तमान में विश्व कप सट्टेबाजी के अवसरों, CFTC की नियम-निर्माण प्रक्रिया और खेल डेटा एनालिटिक्स पर केंद्रित है। पर्यवेक्षकों का कहना है कि भविष्यवाणी बाजारों और स्पोर्ट्स बेटिंग के प्रति नियामक दृष्टिकोण अधिक स्पष्ट होता जा रहा है, जो ऑपरेटरों की रणनीति और अनुपालन लागत को सीधे प्रभावित कर रहा है।">近期博弈產業主要圍繞世界盃投注商機、美國商品期貨交易委員會（CFTC）的規則制定流程，以及如紐約尼克隊逆轉勝等體育賽事數據展開。行業觀察家指出，監管機構對預測市場與體育博彩的態度日趨明朗，相關監管規則將直接影響運營商的產品投放策略與合規成本。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="CFTC 介入預測市場意味著全球博弈與金融衍生品的界線將更具法規透明度。JILI 需密切監測監管規範的細則變動，優化後台數據交付的合規性，確保技術接口能迅速適應未來市場對博彩遊戲「精確性」與「透明度」的嚴格審查需求。" data-en="CFTC intervention in prediction markets means greater regulatory transparency for global gambling and financial derivatives. JILI must closely monitor regulatory shifts, optimize backend data delivery for compliance, and ensure technical interfaces can rapidly adapt to the industry&#39;s strict demands for precision and transparency." data-th="การเข้ามามีบทบาทของ CFTC ในตลาดการทำนายหมายถึงความโปร่งใสทางกฎระเบียบที่มากขึ้นสำหรับเกมเดิมพันและอนุพันธ์ทางการเงิน JILI ต้องติดตามการเปลี่ยนแปลงของกฎระเบียบอย่างใกล้ชิด และปรับปรุงการส่งมอบข้อมูลส่วนหลังเพื่อให้มั่นใจว่าอินเทอร์เฟซทางเทคนิคสามารถตอบสนองความต้องการด้านความแม่นยำและความโปร่งใสของตลาดได้" data-hi="भविष्यवाणी बाजारों में CFTC के हस्तक्षेप का अर्थ है कि वैश्विक जुआ और वित्तीय डेरिवेटिव के लिए नियामक पारदर्शिता अधिक होगी। JILI को नियामक परिवर्तनों पर बारीकी से नज़र रखनी चाहिए, अनुपालन के लिए बैकएंड डेटा डिलीवरी को अनुकूलित करना चाहिए, और यह सुनिश्चित करना चाहिए कि तकनीकी इंटरफेस जुआ खेलों के लिए &#39;सटीकता&#39; और &#39;पारदर्शिता&#39; की कठोर मांगों के अनुकूल तेजी से ढल सकें।">CFTC 介入預測市場意味著全球博弈與金融衍生品的界線將更具法規透明度。JILI 需密切監測監管規範的細則變動，優化後台數據交付的合規性，確保技術接口能迅速適應未來市場對博彩遊戲「精確性」與「透明度」的嚴格審查需求。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 65</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2420,21 +2414,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="根據麥格理（Macquarie）最新研究報告指出，隨著體育博弈合法化與滲透率提升，2026 年世界盃預計將創造超過 500 億美元的全球投注總額。該機構預測，龐大的市場規模將促使運營商加大行銷投放與技術投入，市場競爭將在賽事期間進入白熱化階段。" data-en="According to a Macquarie research report, legal sports betting expansion will drive the 2026 World Cup to generate over $50 billion in global betting volume. Operators are expected to increase marketing and technical investment, leading to fierce competition during the event." data-th="รายงานวิจัยล่าสุดจาก Macquarie ระบุว่าการเดิมพันกีฬาที่ถูกกฎหมายจะผลักดันให้ฟุตบอลโลกปี 2026 มียอดเดิมพันรวมทั่วโลกสูงกว่า 5 หมื่นล้านดอลลาร์ ผู้ประกอบการคาดว่าจะเพิ่มการลงทุนด้านการตลาดและเทคโนโลยี นำไปสู่การแข่งขันที่ดุเดือดในช่วงการแข่งขัน" data-hi="मैक्वेरी (Macquarie) की एक शोध रिपोर्ट के अनुसार, खेल सट्टेबाजी के वैधीकरण के साथ, 2026 का विश्व कप 50 बिलियन डॉलर से अधिक का वैश्विक सट्टेबाजी वॉल्यूम उत्पन्न करेगा। उम्मीद है कि ऑपरेटर मार्केटिंग और तकनीकी निवेश बढ़ाएंगे, जिससे टूर्नामेंट के दौरान प्रतिस्पर्धा चरम पर होगी।">根據麥格理（Macquarie）最新研究報告指出，隨著體育博弈合法化與滲透率提升，2026 年世界盃預計將創造超過 500 億美元的全球投注總額。該機構預測，龐大的市場規模將促使運營商加大行銷投放與技術投入，市場競爭將在賽事期間進入白熱化階段。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="500 億美元的潛力預示了極高的流量高峰。JILI 需立即啟動世界盃專題產品的開發計劃，確保伺服器穩定性與高併發處理能力，並在技術交付上加入賽事即時賠率綁定功能，以搶佔賽前預熱與賽中投注的關鍵份額。" data-en="The $50 billion potential signifies extreme peak traffic. JILI needs to immediately launch a World Cup-specific product development plan, ensuring server stability and high-concurrency processing capability, while integrating real-time odds functionality to capture pre-event and in-play market share." data-th="ศักยภาพ 5 หมื่นล้านดอลลาร์หมายถึงปริมาณการเข้าใช้งานที่พุ่งสูงขึ้น JILI จำเป็นต้องเริ่มแผนพัฒนาผลิตภัณฑ์เฉพาะสำหรับฟุตบอลโลกทันที เพื่อให้มั่นใจในความเสถียรของเซิร์ฟเวอร์และความสามารถในการประมวลผลพร้อมกันจำนวนมาก พร้อมรวมฟังก์ชันราคาต่อรองแบบเรียลไทม์เพื่อชิงส่วนแบ่งตลาด" data-hi="50 बिलियन डॉलर की क्षमता अत्यधिक उच्च ट्रैफिक का संकेत है। JILI को तुरंत विश्व कप-विशिष्ट प्रोडक्ट डेवलपमेंट प्लान शुरू करना चाहिए, सर्वर स्थिरता और उच्च समवर्ती प्रसंस्करण क्षमता सुनिश्चित करनी चाहिए, और प्री-इवेंट और इन-प्ले सट्टेबाजी के महत्वपूर्ण हिस्से पर कब्जा करने के लिए रीयल-टाइम ऑड्स बाइंडिंग फ़ंक्शन को तकनीकी डिलीवरी में जोड़ना चाहिए।">500 億美元的潛力預示了極高的流量高峰。JILI 需立即啟動世界盃專題產品的開發計劃，確保伺服器穩定性與高併發處理能力，並在技術交付上加入賽事即時賠率綁定功能，以搶佔賽前預熱與賽中投注的關鍵份額。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 90</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 45</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 90</span>
 
                     </div>
 
@@ -2487,21 +2473,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="全球博弈巨頭 Flutter Entertainment 宣布將從倫敦證券交易所下市，此舉為該公司全球戰略重組的一部分。此決策反映了跨國博弈企業為優化資本結構、提升在北美等核心市場的融資效率與營運靈活性，進而調整全球佈局，引起投資市場對大型運營商未來併購與區域發展的廣泛討論。" data-en="Global gambling giant Flutter Entertainment will delist from the London Stock Exchange as part of a strategic restructuring. This decision reflects efforts to optimize capital structure and enhance operational flexibility in key markets like North America, sparking discussions on future mergers and regional development." data-th="ยักษ์ใหญ่ด้านการพนันระดับโลก Flutter Entertainment ประกาศถอนตัวจากตลาดหลักทรัพย์ลอนดอนเพื่อปรับโครงสร้างเชิงกลยุทธ์ การตัดสินใจนี้สะท้อนถึงการเพิ่มประสิทธิภาพโครงสร้างเงินทุนและเพิ่มความยืดหยุ่นในการดำเนินงานในตลาดหลักอย่างอเมริกาเหนือ" data-hi="वैश्विक जुआ दिग्गज Flutter Entertainment ने रणनीतिक पुनर्गठन के हिस्से के रूप में लंदन स्टॉक एक्सचेंज से हटने की घोषणा की है। यह निर्णय पूंजी संरचना को अनुकूलित करने और उत्तरी अमेरिका जैसे प्रमुख बाजारों में परिचालन लचीलापन बढ़ाने के प्रयासों को दर्शाता है, जिससे भविष्य के विलय और क्षेत्रीय विकास पर चर्चा शुरू हो गई है।">全球博弈巨頭 Flutter Entertainment 宣布將從倫敦證券交易所下市，此舉為該公司全球戰略重組的一部分。此決策反映了跨國博弈企業為優化資本結構、提升在北美等核心市場的融資效率與營運靈活性，進而調整全球佈局，引起投資市場對大型運營商未來併購與區域發展的廣泛討論。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="Flutter 的戰略重心轉移暗示了大型營運商資源配置的集中化。JILI 必須強化與頂級運營商的 API 對接效率，並針對北美市場開發更具高度客製化的合規遊戲引擎，以因應客戶端架構變動後的營運需求，確保作為供應商的市佔率穩固。" data-en="Flutter&#39;s strategic shift suggests a centralization of resources among major operators. JILI must strengthen API integration efficiency with top-tier operators and develop highly customized, compliant game engines for the North American market to meet evolving client needs and secure market share." data-th="การเปลี่ยนทิศทางเชิงกลยุทธ์ของ Flutter ชี้ให้เห็นถึงการรวมศูนย์ทรัพยากรของผู้ประกอบการรายใหญ่ JILI ต้องเสริมสร้างประสิทธิภาพการเชื่อมต่อ API กับผู้ให้บริการชั้นนำและพัฒนาเอนจินเกมที่ปรับแต่งได้สูงและเป็นไปตามข้อกำหนดสำหรับตลาดอเมริกาเหนือ เพื่อตอบสนองความต้องการที่เปลี่ยนไปของลูกค้า" data-hi="Flutter का रणनीतिक बदलाव बड़े ऑपरेटरों के बीच संसाधनों के केंद्रीकरण का संकेत देता है। JILI को शीर्ष ऑपरेटरों के साथ API एकीकरण दक्षता को मजबूत करना चाहिए और उत्तरी अमेरिकी बाजार के लिए अत्यधिक अनुकूलित, अनुपालन करने वाले गेम इंजन विकसित करने चाहिए, ताकि बदलते क्लाइंट आर्किटेक्चर की जरूरतों को पूरा किया जा सके और बाजार हिस्सेदारी सुरक्षित की जा सके।">Flutter 的戰略重心轉移暗示了大型營運商資源配置的集中化。JILI 必須強化與頂級運營商的 API 對接效率，並針對北美市場開發更具高度客製化的合規遊戲引擎，以因應客戶端架構變動後的營運需求，確保作為供應商的市佔率穩固。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -2554,21 +2532,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="美國麻薩諸塞州在推動公平與永續體育博弈生態系統方面取得顯著進展，成為各州監管模範。然而，該地區官員強調，儘管初步框架已建立，但在確保公平競爭、預防問題博彩及稅收合理化方面仍面臨挑戰，未來法規調整將持續影響該地區運營商的市場准入與經營獲利。" data-en="Massachusetts has made significant progress in promoting a fair and sustainable sports betting ecosystem, serving as a model for other states. However, officials emphasize that challenges remain in preventing problem gambling and rationalizing tax structures, which will continue to affect market entry and profitability." data-th="รัฐแมสซาชูเซตส์มีความก้าวหน้าอย่างมากในการส่งเสริมระบบนิเวศการพนันกีฬาที่เป็นธรรมและยั่งยืน กลายเป็นแบบอย่างให้กับรัฐอื่นๆ อย่างไรก็ตาม ยังคงมีความท้าทายในเรื่องการป้องกันปัญหาการพนันและการจัดการภาษี ซึ่งจะมีผลต่อการเข้าสู่ตลาดของโอเปอเรเตอร์" data-hi="मैसाचुसेट्स राज्य ने एक निष्पक्ष और स्थायी स्पोर्ट्स बेटिंग इकोसिस्टम को बढ़ावा देने में उल्लेखनीय प्रगति की है, जो अन्य राज्यों के लिए एक मॉडल बन गया है। हालांकि, अधिकारियों का कहना है कि समस्याग्रस्त जुए को रोकने और कर संरचनाओं को तर्कसंगत बनाने की चुनौतियां बनी हुई हैं, जो बाजार में प्रवेश और लाभप्रदता को प्रभावित करना जारी रखेंगी।">美國麻薩諸塞州在推動公平與永續體育博弈生態系統方面取得顯著進展，成為各州監管模範。然而，該地區官員強調，儘管初步框架已建立，但在確保公平競爭、預防問題博彩及稅收合理化方面仍面臨挑戰，未來法規調整將持續影響該地區運營商的市場准入與經營獲利。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="麻州的監管路徑預示著成熟市場對「可持續博彩」的強制要求。JILI 應預先在產品底層代碼中植入責任博彩監控模組與靈活的稅收報告接口，協助合作夥伴降低合規風險，藉此提升在受管轄市場的供應商競爭優勢。" data-en="The Massachusetts regulatory path signals that mature markets now mandate &#39;sustainable gambling.&#39; JILI should proactively integrate responsible gambling monitoring modules and flexible tax reporting interfaces into its core product code to assist partners in reducing compliance risks." data-th="เส้นทางการกำกับดูแลของแมสซาชูเซตส์บ่งชี้ว่าตลาดที่เติบโตเต็มที่ต้องการ &#39;การพนันอย่างยั่งยืน&#39; JILI ควรนำโมดูลการตรวจสอบการพนันอย่างรับผิดชอบและอินเทอร์เฟซการรายงานภาษีที่ยืดหยุ่นมาฝังไว้ในรหัสผลิตภัณฑ์พื้นฐานล่วงหน้า เพื่อช่วยให้พันธมิตรลดความเสี่ยงด้านการปฏิบัติตามกฎระเบียบ" data-hi="मैसाचुसेट्स का नियामक मार्ग यह संकेत देता है कि परिपक्व बाजार अब &#39;सतत जुआ&#39; (sustainable gambling) को अनिवार्य बना रहे हैं। JILI को अपने मुख्य प्रोडक्ट कोड में जिम्मेदार जुआ निगरानी मॉड्यूल और लचीले कर रिपोर्टिंग इंटरफेस को पहले से ही शामिल करना चाहिए, ताकि साझेदारों को अनुपालन जोखिम कम करने में मदद मिल सके और विनियमित बाजारों में प्रतिस्पर्धी बढ़त हासिल की जा सके।">麻州的監管路徑預示著成熟市場對「可持續博彩」的強制要求。JILI 應預先在產品底層代碼中植入責任博彩監控模組與靈活的稅收報告接口，協助合作夥伴降低合規風險，藉此提升在受管轄市場的供應商競爭優勢。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2621,21 +2591,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="ProphetX 正式獲得美國商品期貨交易委員會（CFTC）的運營批准，獲准從事預測市場交易。此舉標誌著監管當局對區塊鏈與預測型博弈產品的認可，為預測市場開闢了合規的商業通道，預計將吸引更多資本進入該新興垂直領域。" data-en="ProphetX has received approval from the CFTC to operate in the prediction market. This move marks regulatory recognition of blockchain and prediction-based gambling products, opening a compliant commercial channel for this emerging vertical and attracting more capital." data-th="ProphetX ได้รับอนุมัติอย่างเป็นทางการจาก CFTC ให้ประกอบธุรกิจการทำนาย เหตุการณ์นี้แสดงถึงการยอมรับของหน่วยงานกำกับดูแลต่อผลิตภัณฑ์บล็อกเชนและการพนันเชิงทำนาย ซึ่งจะเปิดช่องทางเชิงพาณิชย์ที่ถูกกฎหมายและดึงดูดเงินทุนเข้าสู่ตลาดใหม่นี้" data-hi="ProphetX को आधिकारिक तौर पर CFTC से प्रेडिक्शन मार्केट (पूर्वानुमान बाजार) के संचालन की मंजूरी मिल गई है। यह कदम ब्लॉकचेन और प्रेडिक्शन-आधारित जुआ उत्पादों के प्रति नियामक मान्यता को दर्शाता है, जिससे इस उभरते हुए क्षेत्र के लिए एक अनुपालन व्यावसायिक चैनल खुल गया है और अधिक पूंजी आने की उम्मीद है।">ProphetX 正式獲得美國商品期貨交易委員會（CFTC）的運營批准，獲准從事預測市場交易。此舉標誌著監管當局對區塊鏈與預測型博弈產品的認可，為預測市場開闢了合規的商業通道，預計將吸引更多資本進入該新興垂直領域。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="預測市場的合規化開闢了博弈的新賽道。JILI 應評估將現有隨機數生成器（RNG）技術延伸至預測類產品的開發，透過提供符合監管標準的底層演算法，吸引尋求轉型或擴張的客戶進行技術對接，擴大市場覆蓋範圍。" data-en="The compliance of prediction markets opens a new track for the gambling industry. JILI should evaluate extending existing RNG technology to prediction-based products, providing regulatory-standard algorithms to attract clients seeking expansion into this field." data-th="ความสอดคล้องทางกฎหมายของตลาดการทำนายเปิดช่องทางใหม่สำหรับอุตสาหกรรมการพนัน JILI ควรประเมินการขยายเทคโนโลยี RNG ที่มีอยู่ไปสู่ผลิตภัณฑ์การทำนาย โดยการจัดหาอัลกอริทึมที่เป็นไปตามมาตรฐานการกำกับดูแลเพื่อดึงดูดลูกค้าที่ต้องการขยายเข้าสู่ธุรกิจนี้" data-hi="भविष्यवाणी बाजारों का अनुपालन जुआ उद्योग के लिए एक नया रास्ता खोलता है। JILI को मौजूदा RNG तकनीक को भविष्यवाणी-आधारित उत्पादों में विस्तारित करने का मूल्यांकन करना चाहिए, ताकि नियामक-मानक एल्गोरिदम प्रदान करके इस क्षेत्र में विस्तार करने वाले ग्राहकों को आकर्षित किया जा सके और बाजार कवरेज का विस्तार किया जा सके।">預測市場的合規化開闢了博弈的新賽道。JILI 應評估將現有隨機數生成器（RNG）技術延伸至預測類產品的開發，透過提供符合監管標準的底層演算法，吸引尋求轉型或擴張的客戶進行技術對接，擴大市場覆蓋範圍。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -2688,21 +2650,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="國際博彩營運商 1xBet 近期積極在全球多個司法管轄區申請並取得合規授權。此舉旨在轉型長期經營模式，透過在地合法化與加強合規透明度，降低經營風險，確保在全球市場內的長期穩定性，以應對日益嚴苛的國際監管環境。" data-en="International operator 1xBet is actively seeking and obtaining compliance licenses in multiple jurisdictions. This move aims to transition to a long-term business model, reducing operational risks through local legalization and enhanced transparency to navigate increasingly stringent international regulations." data-th="1xBet ผู้ให้บริการพนันระหว่างประเทศกำลังดำเนินการขอรับใบอนุญาตในหลายเขตอำนาจศาลอย่างจริงจัง เพื่อเปลี่ยนผ่านสู่รูปแบบธุรกิจระยะยาว ลดความเสี่ยงในการดำเนินงานผ่านการทำให้ถูกต้องตามกฎหมายในท้องถิ่นและเพิ่มความโปร่งใส เพื่อรับมือกับสภาพแวดล้อมด้านกฎระเบียบระหว่างประเทศที่เข้มงวดขึ้น" data-hi="अंतर्राष्ट्रीय ऑपरेटर 1xBet सक्रिय रूप से कई न्यायालयों में अनुपालन लाइसेंस प्राप्त कर रहा है। इसका उद्देश्य स्थानीयकरण और बढ़ी हुई पारदर्शिता के माध्यम से परिचालन जोखिमों को कम करके एक दीर्घकालिक व्यावसायिक मॉडल में बदलना है, ताकि अंतरराष्ट्रीय नियामक वातावरण की चुनौतियों का सामना किया जा सके।">國際博彩營運商 1xBet 近期積極在全球多個司法管轄區申請並取得合規授權。此舉旨在轉型長期經營模式，透過在地合法化與加強合規透明度，降低經營風險，確保在全球市場內的長期穩定性，以應對日益嚴苛的國際監管環境。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="大型平台趨向合規化對我們是利多。作為供應商，我們需同步強化產品的在地認證與數據透明度，優先與這類追求長線經營的夥伴加深合作，鞏固在受監管市場的技術交付地位。" data-en="The trend of large platforms seeking compliance is favorable for us. As a provider, we must strengthen local product certification and data transparency, prioritizing partnerships with firms committed to long-term operations to consolidate our position in regulated markets." data-th="แนวโน้มที่แพลตฟอร์มขนาดใหญ่เข้าสู่การปฏิบัติตามกฎระเบียบถือเป็นข้อดีสำหรับเรา ในฐานะซัพพลายเออร์ เราต้องเสริมสร้างการรับรองผลิตภัณฑ์ในท้องถิ่นและความโปร่งใสของข้อมูล โดยจัดลำดับความสำคัญในการร่วมมือกับพันธมิตรที่มุ่งเน้นการดำเนินงานระยะยาวเพื่อรักษาตำแหน่งทางเทคนิคในตลาดที่มีการควบคุม" data-hi="बड़े प्लेटफार्मों का अनुपालन की ओर बढ़ना हमारे लिए सकारात्मक है। एक प्रदाता के रूप में, हमें स्थानीय उत्पाद प्रमाणन और डेटा पारदर्शिता को मजबूत करना चाहिए, और विनियमित बाजारों में अपनी तकनीकी स्थिति को मजबूत करने के लिए दीर्घकालिक संचालन के लिए प्रतिबद्ध भागीदारों के साथ सहयोग को प्राथमिकता देनी चाहिए।">大型平台趨向合規化對我們是利多。作為供應商，我們需同步強化產品的在地認證與數據透明度，優先與這類追求長線經營的夥伴加深合作，鞏固在受監管市場的技術交付地位。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2755,21 +2709,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="曾長期領導反對 POGO（離岸博彩營運商）行動的菲律賓參議員 Risa Hontiveros 正式宣布投入 2028 年總統大選。基於其過往對博彩產業的強硬監管態度與政治立場，其參選引發業界對未來菲律賓博彩政策走向的高度關注。" data-en="Senator Risa Hontiveros, a long-time critic of POGOs (Philippine Offshore Gaming Operators), has officially announced her bid for the 2028 presidency. Her history of hardline regulatory stances on the gaming industry has raised concerns within the sector regarding future gaming policies in the Philippines." data-th="วุฒิสมาชิก Risa Hontiveros ผู้ที่ต่อต้าน POGO (ผู้ประกอบการพนันออนไลน์ในฟิลิปปินส์) มาอย่างยาวนาน ได้ประกาศลงสมัครชิงตำแหน่งประธานาธิบดีปี 2028 อย่างเป็นทางการ ด้วยจุดยืนที่เข้มงวดต่ออุตสาหกรรมเกม ทำให้เกิดความกังวลในอุตสาหกรรมเกี่ยวกับทิศทางนโยบายเกมของฟิลิปปินส์ในอนาคต" data-hi="पीओजीओ (फिलीपीन ऑफशोर गेमिंग ऑपरेटर्स) की लंबे समय से आलोचक सीनेटर रिसा होंटिवरोस ने आधिकारिक तौर पर 2028 के राष्ट्रपति चुनाव के लिए अपनी उम्मीदवारी की घोषणा की है। गेमिंग उद्योग पर उनके सख्त नियामक रुख के इतिहास ने फिलीपींस की भविष्य की गेमिंग नीतियों को लेकर चिंता बढ़ा दी है।">曾長期領導反對 POGO（離岸博彩營運商）行動的菲律賓參議員 Risa Hontiveros 正式宣布投入 2028 年總統大選。基於其過往對博彩產業的強硬監管態度與政治立場，其參選引發業界對未來菲律賓博彩政策走向的高度關注。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="政壇變動帶來監管不確定性。我們應審慎評估市場曝險，並加速分散產品組合至東南亞其他地區，同時在技術層面加強 compliance 模組，以應對潛在的政策急轉彎。" data-en="Political shifts bring regulatory uncertainty. We should cautiously assess market exposure, accelerate the diversification of our product portfolio to other parts of Southeast Asia, and strengthen compliance modules to handle potential policy pivots." data-th="การเปลี่ยนแปลงทางการเมืองนำมาซึ่งความไม่แน่นอนด้านกฎระเบียบ เราควรประเมินความเสี่ยงในตลาดอย่างรอบคอบ เร่งกระจายพอร์ตโฟลิโอผลิตภัณฑ์ไปยังส่วนอื่นๆ ของเอเชียตะวันออกเฉียงใต้ และเสริมสร้างโมดูลการปฏิบัติตามกฎระเบียบเพื่อรับมือกับการเปลี่ยนนโยบายอย่างกะทันหัน" data-hi="राजनीतिक बदलाव नियामक अनिश्चितता लाते हैं। हमें बाजार जोखिम का सावधानीपूर्वक आकलन करना चाहिए, अपने उत्पाद पोर्टफोलियो को दक्षिण-पूर्व एशिया के अन्य हिस्सों में विविधतापूर्ण बनाना चाहिए, और संभावित नीतिगत बदलावों को संभालने के लिए अनुपालन मॉड्यूल को मजबूत करना चाहिए।">政壇變動帶來監管不確定性。我們應審慎評估市場曝險，並加速分散產品組合至東南亞其他地區，同時在技術層面加強 compliance 模組，以應對潛在的政策急轉彎。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 85</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 85</span>
 
                     </div>
 
@@ -2821,21 +2767,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="菲律賓博彩監管機構 PAGCOR 針對民答那峨島近期受地震影響的災民提供人道主義援助與物資救濟，展現該機構在履行監管職能之外的企業社會責任，並持續與受影響的社區保持聯繫。" data-en="Philippine gaming regulator PAGCOR provided humanitarian aid and relief supplies to victims of the recent earthquake in Mindanao, demonstrating corporate social responsibility beyond its regulatory functions." data-th="หน่วยงานกำกับดูแลเกมของฟิลิปปินส์ (PAGCOR) ได้มอบความช่วยเหลือด้านมนุษยธรรมและสิ่งของบรรเทาทุกข์แก่ผู้ประสบภัยจากเหตุแผ่นดินไหวในมินดาเนา เพื่อแสดงความรับผิดชอบต่อสังคมนอกเหนือจากหน้าที่ด้านการกำกับดูแล" data-hi="फिलीपीन गेमिंग नियामक PAGCOR ने मिंडानाओ में हाल ही में आए भूकंप के पीड़ितों को मानवीय सहायता और राहत सामग्री प्रदान की, जो इसके नियामक कार्यों से परे कॉर्पोरेट सामाजिक जिम्मेदारी को दर्शाता है।">菲律賓博彩監管機構 PAGCOR 針對民答那峨島近期受地震影響的災民提供人道主義援助與物資救濟，展現該機構在履行監管職能之外的企業社會責任，並持續與受影響的社區保持聯繫。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此為常規企業社會責任行動，對整體營運策略影響有限。我們將持續監控當地市場環境，確保與 PAGCOR 的溝通管道暢通，維持常態性業務往來即可。" data-en="This is a routine CSR action with minimal impact on overall strategy. We will continue to monitor the local market environment and maintain open communication channels with PAGCOR." data-th="นี่เป็นเพียงกิจกรรม CSR ตามปกติซึ่งส่งผลกระทบต่อกลยุทธ์โดยรวมน้อยมาก เราจะติดตามสภาพแวดล้อมในตลาดท้องถิ่นต่อไป และรักษาช่องทางการสื่อสารกับ PAGCOR ให้ราบรื่น" data-hi="यह एक नियमित सीएसआर कार्रवाई है जिसका समग्र रणनीति पर न्यूनतम प्रभाव पड़ता है। हम स्थानीय बाजार के माहौल की निगरानी करना जारी रखेंगे और PAGCOR के साथ संचार के रास्ते खुले रखेंगे।">此為常規企業社會責任行動，對整體營運策略影響有限。我們將持續監控當地市場環境，確保與 PAGCOR 的溝通管道暢通，維持常態性業務往來即可。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 10</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 0</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 10</span>
 
                     </div>
 
@@ -2887,21 +2825,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="受世界盃賽事影響，市場資金分配轉移，澳門六月份博彩毛收入（GGR）成長速度較預期放緩。花旗集團分析師維持該月 24 億美元的預測不變，認為整體復甦趨勢仍在可控範圍內。" data-en="Influenced by the World Cup, market funds were diverted, resulting in slower-than-expected growth in Macau&#39;s June Gross Gaming Revenue (GGR). Citigroup analysts maintain their $2.4 billion forecast, viewing the overall recovery trend as manageable." data-th="อิทธิพลจากการแข่งขันฟุตบอลโลกทำให้มีการโยกย้ายเงินทุน ส่งผลให้รายได้รวมจากการพนัน (GGR) ของมาเก๊าในเดือนมิถุนายนเติบโตช้ากว่าที่คาดไว้ นักวิเคราะห์จาก Citigroup ยังคงคาดการณ์ที่ 2.4 พันล้านดอลลาร์ โดยเชื่อว่าแนวโน้มการฟื้นตัวโดยรวมยังคงอยู่ในระดับที่ควบคุมได้" data-hi="विश्व कप के प्रभाव के कारण, बाजार में धन का हस्तांतरण हुआ, जिससे मकाऊ के जून सकल गेमिंग राजस्व (GGR) में उम्मीद से धीमी वृद्धि हुई। सिटीग्रुप के विश्लेषक 2.4 बिलियन डॉलर के अपने पूर्वानुमान को बनाए रखे हुए हैं, और कुल सुधार के रुझान को प्रबंधनीय मानते हैं।">受世界盃賽事影響，市場資金分配轉移，澳門六月份博彩毛收入（GGR）成長速度較預期放緩。花旗集團分析師維持該月 24 億美元的預測不變，認為整體復甦趨勢仍在可控範圍內。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="體育賽事對博彩資金有短期排擠效應，但長遠基本面未變。JILI 需在賽事期間優化休閒遊戲內容，透過輕量化產品吸引碎片化時間，降低大環境波動對營收的直接衝擊。" data-en="Sports events have a short-term crowding-out effect on gaming funds, but the long-term fundamentals remain unchanged. JILI should optimize casual gaming content during events to attract players with fragmented time and reduce the impact of market volatility." data-th="การแข่งขันกีฬามีผลกระทบในระยะสั้นต่อการแบ่งเงินทุนการพนัน แต่ปัจจัยพื้นฐานระยะยาวไม่เปลี่ยนแปลง JILI ควรปรับปรุงเนื้อหาเกมแบบแคชชวลในช่วงที่มีการแข่งขันเพื่อดึงดูดผู้เล่นในช่วงเวลาจำกัด และลดผลกระทบจากความผันผวนของตลาดต่อรายได้" data-hi="खेल आयोजनों का गेमिंग फंड पर अल्पकालिक प्रभाव पड़ता है, लेकिन दीर्घकालिक बुनियादी बातें अपरिवर्तित रहती हैं। JILI को खेल आयोजनों के दौरान कैजुअल गेमिंग सामग्री को अनुकूलित करना चाहिए ताकि कम समय वाले खिलाड़ियों को आकर्षित किया जा सके और राजस्व पर बाजार की अस्थिरता के प्रभाव को कम किया जा सके।">體育賽事對博彩資金有短期排擠效應，但長遠基本面未變。JILI 需在賽事期間優化休閒遊戲內容，透過輕量化產品吸引碎片化時間，降低大環境波動對營收的直接衝擊。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2953,21 +2883,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳門銀河娛樂集團宣布推行一項針對綠化廢棄物的升級回收（upcycling）計劃，旨在減少營運過程中的碳足跡，提升集團在 ESG（環境、社會與公司治理）領域的表現，符合當地企業環境保護趨勢。" data-en="Galaxy Entertainment Group in Macau announced an upcycling program for green waste, aiming to reduce its carbon footprint and enhance its ESG performance, aligning with local corporate environmental trends." data-th="Galaxy Entertainment Group ในมาเก๊าประกาศดำเนินโครงการอัปไซเคิล (upcycling) สำหรับขยะสีเขียว โดยมีเป้าหมายเพื่อลดคาร์บอนฟุตพริ้นท์และเพิ่มประสิทธิภาพด้าน ESG ให้สอดคล้องกับแนวโน้มด้านสิ่งแวดล้อมขององค์กรในท้องถิ่น" data-hi="मकाऊ में गैलेक्सी एंटरटेनमेंट ग्रुप ने हरे कचरे (green waste) के लिए एक अपसाइक्लिंग कार्यक्रम की घोषणा की, जिसका उद्देश्य अपने कार्बन फुटप्रिंट को कम करना और ESG प्रदर्शन को बढ़ाना है, जो स्थानीय कॉर्पोरेट पर्यावरणीय रुझानों के अनुरूप है।">澳門銀河娛樂集團宣布推行一項針對綠化廢棄物的升級回收（upcycling）計劃，旨在減少營運過程中的碳足跡，提升集團在 ESG（環境、社會與公司治理）領域的表現，符合當地企業環境保護趨勢。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此為企業環境保護之常規舉措，屬行業形象建設範疇。對遊戲供應商而言，影響度極低，建議作為背景資訊追蹤，無需調整現有業務策略。" data-en="This is a routine environmental initiative with minimal impact on gaming suppliers. It is recommended to track it as background information without adjusting current business strategies." data-th="นี่เป็นความคิดริเริ่มด้านสิ่งแวดล้อมตามปกติซึ่งส่งผลกระทบต่อซัพพลายเออร์เกมเพียงเล็กน้อย แนะนำให้ติดตามเป็นข้อมูลพื้นฐานโดยไม่ต้องปรับกลยุทธ์ทางธุรกิจในปัจจุบัน" data-hi="यह एक नियमित पर्यावरणीय पहल है जिसका गेमिंग आपूर्तिकर्ताओं पर न्यूनतम प्रभाव पड़ता है। इसे केवल पृष्ठभूमि जानकारी के रूप में ट्रैक करने की सलाह दी जाती है, वर्तमान व्यावसायिक रणनीतियों को बदलने की कोई आवश्यकता नहीं है।">此為企業環境保護之常規舉措，屬行業形象建設範疇。對遊戲供應商而言，影響度極低，建議作為背景資訊追蹤，無需調整現有業務策略。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 5</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 0</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 5</span>
 
                     </div>
 
@@ -3020,21 +2942,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="日本加密貨幣交易所 Bitbank 發布警告，提醒用戶參與 Polymarket 等預測市場可能涉及博彩法規風險。隨著去中心化預測市場的熱度上升，日本監管機構對於非法賭博的界定趨於嚴格。" data-en="Japanese crypto exchange Bitbank issued a warning to users regarding the regulatory risks associated with participating in prediction markets like Polymarket. As decentralized prediction markets rise in popularity, Japanese regulators are tightening the definition of illegal gambling." data-th="Bitbank แพลตฟอร์มแลกเปลี่ยนคริปโตของญี่ปุ่นออกคำเตือนถึงผู้ใช้เกี่ยวกับความเสี่ยงด้านกฎระเบียบที่เกี่ยวข้องกับการมีส่วนร่วมในตลาดการคาดการณ์ (prediction markets) เช่น Polymarket เนื่องด้วยความนิยมที่เพิ่มขึ้นของตลาดคาดการณ์แบบกระจายศูนย์ หน่วยงานกำกับดูแลของญี่ปุ่นจึงเข้มงวดในการกำหนดนิยามของการพนันที่ผิดกฎหมายมากขึ้น" data-hi="जापानी क्रिप्टो एक्सचेंज बिटबैंक ने Polymarket जैसे प्रेडिक्शन मार्केट में भाग लेने से जुड़े नियामक जोखिमों के बारे में यूजर्स को चेतावनी जारी की है। जैसे-जैसे विकेंद्रीकृत प्रेडिक्शन मार्केट की लोकप्रियता बढ़ रही है, जापानी नियामक अवैध जुए की परिभाषा को सख्त कर रहे हैं।">日本加密貨幣交易所 Bitbank 發布警告，提醒用戶參與 Polymarket 等預測市場可能涉及博彩法規風險。隨著去中心化預測市場的熱度上升，日本監管機構對於非法賭博的界定趨於嚴格。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="日本對博彩監管極為敏感，風險溢價極高。我們應避免涉及任何形式的灰色地帶交易，技術防禦上需強化 Geo-blocking 與 KYC 驗證，確保產品符合日本嚴格的法律框架。" data-en="Japan is highly sensitive to gaming regulation, with a very high risk premium. We must avoid any gray area transactions and strengthen technical defenses such as Geo-blocking and KYC verification to ensure compliance with strict legal frameworks." data-th="ญี่ปุ่นมีความละเอียดอ่อนอย่างมากต่อการกำกับดูแลการพนัน และมีเบี้ยประกันความเสี่ยงที่สูงมาก เราควรหลีกเลี่ยงการทำธุรกรรมในพื้นที่สีเทาทุกรูปแบบ และเสริมสร้างการป้องกันทางเทคนิค เช่น Geo-blocking และการยืนยันตัวตน KYC เพื่อให้มั่นใจว่าผลิตภัณฑ์เป็นไปตามกรอบกฎหมายที่เข้มงวดของญี่ปุ่น" data-hi="जापान गेमिंग नियमों के प्रति बहुत संवेदनशील है, जहां जोखिम प्रीमियम बहुत अधिक है। हमें किसी भी ग्रे-एरिया लेनदेन से बचना चाहिए और सख्त कानूनी ढांचे का अनुपालन सुनिश्चित करने के लिए भू-अवरोधन (Geo-blocking) और केवाईसी सत्यापन जैसी तकनीकी सुरक्षा को मजबूत करना चाहिए।">日本對博彩監管極為敏感，風險溢價極高。我們應避免涉及任何形式的灰色地帶交易，技術防禦上需強化 Geo-blocking 與 KYC 驗證，確保產品符合日本嚴格的法律框架。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -3087,21 +3001,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="遊戲供應商 RubyPlay 宣布與 Fanatics Casino 達成策略合作，正式進入美國紐澤西州受監管的線上博彩市場。此次合作將擴大 RubyPlay 在北美的市場佔有率，並加速其在美國受監管環境下的業務佈局。" data-en="Game provider RubyPlay announced a strategic partnership with Fanatics Casino to enter the regulated online gaming market in New Jersey, USA. This expansion aims to grow their North American market share and accelerate business operations in the US." data-th="RubyPlay ผู้ให้บริการเกมประกาศความร่วมมือเชิงกลยุทธ์กับ Fanatics Casino เพื่อเข้าสู่ตลาดเกมออนไลน์ที่มีการกำกับดูแลในรัฐนิวเจอร์ซีย์ สหรัฐอเมริกา การขยายตัวนี้มีเป้าหมายเพื่อเพิ่มส่วนแบ่งการตลาดในอเมริกาเหนือและเร่งการดำเนินธุรกิจในสหรัฐฯ" data-hi="गेम प्रदाता RubyPlay ने अमेरिका के न्यू जर्सी में विनियमित ऑनलाइन गेमिंग बाजार में प्रवेश करने के लिए Fanatics Casino के साथ एक रणनीतिक साझेदारी की घोषणा की है। इस विस्तार का लक्ष्य उनके उत्तरी अमेरिकी बाजार हिस्सेदारी को बढ़ाना और अमेरिका में व्यावसायिक संचालन में तेजी लाना है।">遊戲供應商 RubyPlay 宣布與 Fanatics Casino 達成策略合作，正式進入美國紐澤西州受監管的線上博彩市場。此次合作將擴大 RubyPlay 在北美的市場佔有率，並加速其在美國受監管環境下的業務佈局。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="美國市場壁壘高但利潤誘人。RubyPlay 的擴張模式證明了「優質內容+強力通路」的有效性，JILI 需評估旗下產品在北美市場的適配性，並尋求與在地龍頭平台連結的機會。" data-en="The US market is high-barrier but lucrative. RubyPlay&#39;s model proves the effectiveness of &#39;Quality Content + Strong Channels&#39;. JILI needs to assess product suitability for North America and seek opportunities to partner with leading local platforms." data-th="ตลาดสหรัฐฯ เป็นตลาดที่มีอุปสรรคสูงแต่มีผลกำไรที่น่าดึงดูด รูปแบบการขยายตัวของ RubyPlay พิสูจน์ให้เห็นถึงประสิทธิภาพของ &#39;เนื้อหาคุณภาพ + ช่องทางที่แข็งแกร่ง&#39; JILI จำเป็นต้องประเมินความเหมาะสมของผลิตภัณฑ์สำหรับตลาดอเมริกาเหนือ และมองหาโอกาสในการร่วมมือกับแพลตฟอร์มชั้นนำในท้องถิ่น" data-hi="अमेरिकी बाजार में प्रवेश कठिन है लेकिन यह बहुत लाभदायक है। RubyPlay का मॉडल &#39;गुणवत्तापूर्ण सामग्री + मजबूत चैनल&#39; की प्रभावशीलता को साबित करता है। JILI को उत्तरी अमेरिका के लिए उत्पाद की उपयुक्तता का आकलन करना चाहिए और प्रमुख स्थानीय प्लेटफार्मों के साथ साझेदारी के अवसर तलाशने चाहिए।">美國市場壁壘高但利潤誘人。RubyPlay 的擴張模式證明了「優質內容+強力通路」的有效性，JILI 需評估旗下產品在北美市場的適配性，並尋求與在地龍頭平台連結的機會。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 45</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -3154,21 +3060,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="體育數據與轉播服務商 FeedConstruct 正式獲得厄瓜多 Liga Básquet Pro 的轉播與數據權。此舉旨在擴充其全球運動賽事數據矩陣，透過提供即時賽事內容，進一步加深在拉丁美洲市場的影響力。" data-en="Sports data and broadcasting service provider FeedConstruct has secured the broadcasting and data rights for the Liga Básquet Pro in Ecuador. This move aims to expand their global sports data matrix by providing real-time match content, deepening their influence in the Latin American market." data-th="FeedConstruct ผู้ให้บริการข้อมูลกีฬาและการถ่ายทอดสดได้รับสิทธิ์ในการถ่ายทอดสดและข้อมูลสำหรับการแข่งขัน Liga Básquet Pro ในเอกวาดอร์ การเคลื่อนไหวนี้มีจุดมุ่งหมายเพื่อขยายเมทริกซ์ข้อมูลกีฬาระดับโลกโดยการนำเสนอเนื้อหาการแข่งขันแบบเรียลไทม์ เพื่อเพิ่มอิทธิพลในตลาดละตินอเมริกา" data-hi="खेल डेटा और प्रसारण सेवा प्रदाता FeedConstruct ने इक्वाडोर में Liga Básquet Pro के लिए प्रसारण और डेटा अधिकार हासिल कर लिए हैं। इसका उद्देश्य रीयल-टाइम मैच सामग्री प्रदान करके अपने वैश्विक खेल डेटा मैट्रिक्स का विस्तार करना और लैटिन अमेरिकी बाजार में अपनी पकड़ मजबूत करना है।">體育數據與轉播服務商 FeedConstruct 正式獲得厄瓜多 Liga Básquet Pro 的轉播與數據權。此舉旨在擴充其全球運動賽事數據矩陣，透過提供即時賽事內容，進一步加深在拉丁美洲市場的影響力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="體育與博彩整合是趨勢。JILI 可藉此觀察拉丁美洲用戶對籃球博彩的參與度，評估未來開發與運動賽事掛鉤的互動式遊戲模組，以搶占拉美市場份額。" data-en="Sports and gaming integration is a trend. JILI can observe basketball betting engagement in Latin America through this and evaluate the development of interactive game modules linked to sports events to capture market share." data-th="การบูรณาการกีฬากับการพนันเป็นเทรนด์ที่สำคัญ JILI สามารถใช้โอกาสนี้สังเกตความสนใจในการพนันบาสเกตบอลในละตินอเมริกา และประเมินการพัฒนาโมดูลเกมแบบโต้ตอบที่เชื่อมโยงกับกิจกรรมกีฬาเพื่อแย่งชิงส่วนแบ่งการตลาด" data-hi="खेल और गेमिंग का एकीकरण एक रुझान है। JILI इसके माध्यम से लैटिन अमेरिका में बास्केटबॉल सट्टेबाजी की भागीदारी का निरीक्षण कर सकता है और बाजार हिस्सेदारी हासिल करने के लिए खेल आयोजनों से जुड़े इंटरैक्टिव गेम मॉड्यूल के विकास का मूल्यांकन कर सकता है।">體育與博彩整合是趨勢。JILI 可藉此觀察拉丁美洲用戶對籃球博彩的參與度，評估未來開發與運動賽事掛鉤的互動式遊戲模組，以搶占拉美市場份額。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -3221,21 +3119,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Digitain 在 2026 年 SBC 美洲區頒獎典禮中獲頒「年度最佳平台供應商」獎項。此榮譽肯定了其在平台穩定性、創新解決方案以及北美博彩市場擴張上的傑出貢獻，確立了其在供應商領域的領先地位。" data-en="Digitain was awarded &#39;Platform Provider of the Year&#39; at the 2026 SBC Americas Awards, recognizing its contributions to platform stability, innovative solutions, and its expansion in the North American gaming market, cementing its lead as a provider." data-th="Digitain ได้รับรางวัล &#39;ผู้ให้บริการแพลตฟอร์มแห่งปี&#39; ในงานประกาศรางวัล SBC Americas ประจำปี 2026 เพื่อยกย่องการมีส่วนร่วมในด้านเสถียรภาพของแพลตฟอร์ม โซลูชันที่เป็นนวัตกรรม และการขยายตัวในตลาดเกมอเมริกาเหนือ ตอกย้ำความเป็นผู้นำในฐานะผู้ให้บริการ" data-hi="Digitain को 2026 SBC अमेरिकाज अवार्ड्स में &#39;प्लेटफॉर्म प्रोवाइडर ऑफ द ईयर&#39; पुरस्कार से सम्मानित किया गया, जो प्लेटफॉर्म स्थिरता, अभिनव समाधान और उत्तरी अमेरिकी गेमिंग बाजार में इसके विस्तार में इसके योगदान को मान्यता देता है, जिससे एक प्रदाता के रूप में इसकी अग्रणी स्थिति मजबूत हुई है।">Digitain 在 2026 年 SBC 美洲區頒獎典禮中獲頒「年度最佳平台供應商」獎項。此榮譽肯定了其在平台穩定性、創新解決方案以及北美博彩市場擴張上的傑出貢獻，確立了其在供應商領域的領先地位。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="這是對技術與平台整合能力的最高認可。JILI 應借鏡 Digitain 的模組化架構開發路徑，提升我方 API 對接的穩定性，並透過類似的產業評選機制提升我們的品牌國際影響力。" data-en="This is top-tier recognition of technical and platform integration capabilities. JILI should benchmark Digitain’s modular architectural development, improve API stability, and use similar industry awards to enhance our international brand influence." data-th="นี่เป็นการยอมรับระดับสูงสุดในด้านความสามารถทางเทคนิคและการบูรณาการแพลตฟอร์ม JILI ควรเรียนรู้เส้นทางการพัฒนาโครงสร้างแบบโมดูลาร์ของ Digitain ปรับปรุงเสถียรภาพของการเชื่อมต่อ API และใช้กลไกการรับรางวัลในอุตสาหกรรมที่คล้ายคลึงกันเพื่อยกระดับอิทธิพลของแบรนด์เราในระดับสากล" data-hi="यह तकनीकी और प्लेटफॉर्म एकीकरण क्षमताओं की सर्वोच्च मान्यता है। JILI को Digitain के मॉड्यूलर आर्किटेक्चरल विकास मार्ग से सीखना चाहिए, अपने API कनेक्टिविटी की स्थिरता में सुधार करना चाहिए, और अपने अंतरराष्ट्रीय ब्रांड प्रभाव को बढ़ाने के लिए इसी तरह के उद्योग पुरस्कारों का उपयोग करना चाहिए।">這是對技術與平台整合能力的最高認可。JILI 應借鏡 Digitain 的模組化架構開發路徑，提升我方 API 對接的穩定性，並透過類似的產業評選機制提升我們的品牌國際影響力。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 60</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
 
                     </div>
 
@@ -3287,21 +3177,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="國際博彩製造商協會（AGEM）宣布 David Lucchese 與 Marcus Prater 為 2026 年紀念獎（Memorial Award）得主，以表彰二位在博彩產業技術革新與市場推動方面的長期貢獻與傑出成就。" data-en="The Association of Gaming Equipment Manufacturers (AGEM) announced David Lucchese and Marcus Prater as winners of the 2026 Memorial Award, recognizing their long-term contributions and outstanding achievements in gaming industry technological innovation and market promotion." data-th="สมาคมผู้ผลิตอุปกรณ์การพนัน (AGEM) ประกาศให้ David Lucchese และ Marcus Prater เป็นผู้ชนะรางวัล Memorial Award ประจำปี 2026 เพื่อยกย่องผลงานระยะยาวและความสำเร็จอันโดดเด่นในการสร้างนวัตกรรมทางเทคโนโลยีและการส่งเสริมตลาดในอุตสาหกรรมเกม" data-hi="एसोसिएशन ऑफ गेमिंग इक्विपमेंट मैन्युफैक्चरर्स (AGEM) ने डेविड लुचेस और मार्कस प्रेटर को 2026 मेमोरियल अवार्ड के विजेताओं के रूप में घोषित किया, जो गेमिंग उद्योग के तकनीकी नवाचार और बाजार संवर्धन में उनके दीर्घकालिक योगदान और उत्कृष्ट उपलब्धियों को मान्यता देता है।">國際博彩製造商協會（AGEM）宣布 David Lucchese 與 Marcus Prater 為 2026 年紀念獎（Memorial Award）得主，以表彰二位在博彩產業技術革新與市場推動方面的長期貢獻與傑出成就。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此為產業年度榮譽性質資訊，具備業界社交價值。我們應關注獲獎者帶領的技術趨勢方向，作為公司未來研發路徑的參考，但不需採取即時戰略應對。" data-en="This is industry honorary information with social value. We should monitor the technological directions led by the winners as a reference for our future R&amp;D roadmap, without the need for immediate strategic adjustment." data-th="นี่เป็นข้อมูลเชิงเกียรติยศของอุตสาหกรรมที่มีคุณค่าทางสังคม เราควรติดตามทิศทางเทคโนโลยีที่ผู้นำเหล่านี้ชี้แนะเพื่อเป็นข้อมูลอ้างอิงสำหรับแผนการวิจัยและพัฒนาของเราในอนาคต โดยไม่จำเป็นต้องมีการปรับกลยุทธ์ในทันที" data-hi="यह सामाजिक मूल्य वाली उद्योग संबंधी जानकारी है। हमें विजेताओं द्वारा प्रेरित तकनीकी दिशाओं पर नज़र रखनी चाहिए ताकि इसे हमारे भविष्य के R&amp;D रोडमैप के संदर्भ के रूप में उपयोग किया जा सके, तत्काल रणनीतिक समायोजन की कोई आवश्यकता नहीं है।">此為產業年度榮譽性質資訊，具備業界社交價值。我們應關注獲獎者帶領的技術趨勢方向，作為公司未來研發路徑的參考，但不需採取即時戰略應對。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 15</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 15</span>
 
                     </div>
 
@@ -3353,21 +3235,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="自動化交易技術供應商 JCM Global 宣布完成在 Muscogee (Creek) Nation 轄下 10 個賭場物業的設備部署，這項多年期合約涵蓋了先進支付解決方案與自動化硬體的全面升級，旨在優化賭場營運效率並提升玩家支付體驗，標誌著該供應商在北美部落博彩市場的業務深耕。" data-en="Automation technology provider JCM Global has completed a multi-year deployment across 10 Muscogee (Creek) Nation casinos, upgrading payment solutions and automation hardware to optimize efficiency and player experience, solidifying its presence in the North American tribal gaming market." data-th="ผู้ให้บริการเทคโนโลยีระบบอัตโนมัติ JCM Global ประกาศเสร็จสิ้นการติดตั้งอุปกรณ์ในคาสิโน 10 แห่งภายใต้ Muscogee (Creek) Nation ซึ่งรวมถึงการอัปเกรดระบบชำระเงินและฮาร์ดแวร์ขั้นสูงเพื่อเพิ่มประสิทธิภาพการดำเนินงานและประสบการณ์ผู้เล่น" data-hi="ऑटोमेशन तकनीक प्रदाता JCM Global ने 10 कैसीनो में उन्नत भुगतान समाधान और हार्डवेयर अपग्रेड पूरा किया है, जिसका उद्देश्य परिचालन दक्षता और खिलाड़ी अनुभव में सुधार करना है।">自動化交易技術供應商 JCM Global 宣布完成在 Muscogee (Creek) Nation 轄下 10 個賭場物業的設備部署，這項多年期合約涵蓋了先進支付解決方案與自動化硬體的全面升級，旨在優化賭場營運效率並提升玩家支付體驗，標誌著該供應商在北美部落博彩市場的業務深耕。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="JCM 在北美線下博彩硬體市場的強勢擴張，顯示實體與數位支付整合已成標配。對線上供應商而言，應強化支付介面的穩定性與合規兼容性，以防禦實體大廠未來對數位化轉型的滲透，確保我們的 API 在處理大規模交易時的優勢。" data-en="JCM&#39;s expansion highlights that the integration of physical and digital payments is becoming a standard. Online providers should strengthen payment interface stability and compliance compatibility to defend against traditional giants&#39; digital transformation, ensuring API superiority in handling high-volume transactions." data-th="การขยายตัวของ JCM แสดงให้เห็นว่าการผสานรวมการชำระเงินแบบออฟไลน์และออนไลน์กลายเป็นมาตรฐานใหม่ ผู้ให้บริการออนไลน์ควรเสริมสร้างความเสถียรของอินเทอร์เฟซการชำระเงินเพื่อรับมือกับการรุกคืบของบริษัทรายใหญ่ และสร้างความได้เปรียบของ API ในการประมวลผลธุรกรรมขนาดใหญ่" data-hi="JCM का विस्तार यह दर्शाता है कि भौतिक और डिजिटल भुगतान का एकीकरण मानक बन गया है। ऑनलाइन प्रदाताओं को भुगतान इंटरफेस की स्थिरता मजबूत करनी चाहिए ताकि वे बड़े दिग्गजों के डिजिटल परिवर्तन के खिलाफ अपनी API श्रेष्ठता बनाए रख सकें।">JCM 在北美線下博彩硬體市場的強勢擴張，顯示實體與數位支付整合已成標配。對線上供應商而言，應強化支付介面的穩定性與合規兼容性，以防禦實體大廠未來對數位化轉型的滲透，確保我們的 API 在處理大規模交易時的優勢。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 50</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 50</span>
 
                     </div>
 
@@ -3419,21 +3293,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="針對近期發生的 7.8 級地震，菲律賓博彩監管局 (PAGCOR) 採取行動，投入資源與人力向棉蘭老島災區民眾提供緊急救濟物資與經濟援助，體現該監管機構在履行監管職能之外的企業社會責任，並協助當地社區進行災後重建工作。" data-en="In response to the recent 7.8 magnitude earthquake, the Philippine Amusement and Gaming Corporation (PAGCOR) has mobilized resources and personnel to provide relief goods and financial aid to victims in Mindanao, demonstrating its commitment to corporate social responsibility." data-th="เพื่อตอบสนองต่อเหตุแผ่นดินไหวขนาด 7.8 PAGCOR ได้ส่งทรัพยากรและเจ้าหน้าที่ไปมอบสิ่งของบรรเทาทุกข์และช่วยเหลือทางการเงินแก่ผู้ประสบภัยในมินดาเนา เพื่อแสดงความรับผิดชอบต่อสังคม" data-hi="हालिया 7.8 तीव्रता के भूकंप के जवाब में, PAGCOR ने मिंडानाओ में पीड़ितों को राहत सामग्री और वित्तीय सहायता प्रदान करने के लिए संसाधन जुटाए हैं, जो उनकी कॉर्पोरेट सामाजिक जिम्मेदारी को दर्शाता है।">針對近期發生的 7.8 級地震，菲律賓博彩監管局 (PAGCOR) 採取行動，投入資源與人力向棉蘭老島災區民眾提供緊急救濟物資與經濟援助，體現該監管機構在履行監管職能之外的企業社會責任，並協助當地社區進行災後重建工作。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="作為深耕菲律賓的供應商，此類公益行動展現了 PAGCOR 具備高度的社會影響力與穩定性。建議在當地的產品宣傳中納入在地化與企業責任敘事，以強化品牌形象並與監管機構保持良好的政商公共關係。" data-en="As a supplier in the Philippines, PAGCOR’s humanitarian efforts highlight its social influence and stability. It is recommended to incorporate localization and corporate responsibility narratives into local marketing to strengthen brand image and maintain favorable government relations." data-th="ในฐานะซัพพลายเออร์ในฟิลิปปินส์ การดำเนินการนี้แสดงให้เห็นถึงอิทธิพลและความมั่นคงของ PAGCOR แนะนำให้นำเรื่องราวความรับผิดชอบต่อสังคมไปใช้ในการสร้างแบรนด์ เพื่อเสริมสร้างภาพลักษณ์ที่ดีและรักษาความสัมพันธ์อันดีกับหน่วยงานกำกับดูแล" data-hi="फिलीपींस में एक आपूर्तिकर्ता के रूप में, PAGCOR के ये कार्य उनकी सामाजिक प्रभावशीलता दिखाते हैं। ब्रांड छवि को मजबूत करने और नियामक संबंधों को बेहतर बनाने के लिए स्थानीय मार्केटिंग में इसे शामिल करना फायदेमंद है।">作為深耕菲律賓的供應商，此類公益行動展現了 PAGCOR 具備高度的社會影響力與穩定性。建議在當地的產品宣傳中納入在地化與企業責任敘事，以強化品牌形象並與監管機構保持良好的政商公共關係。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -3486,21 +3352,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="AGTech 公布 2026 財年財務報告，顯示年度營收較上年同期增長 23.7%。主要增長動力源自銀行服務及數位支付領域的業務拓展，顯示公司在深耕博彩周邊技術之外，透過支付金融業務實現了有效的多角化經營，成功帶動整體業績表現。" data-en="AGTech announced its FY 2026 financial report, showing a 23.7% YoY revenue growth. The growth was primarily driven by the expansion into banking and digital payment services, marking successful diversification beyond gaming-related technology." data-th="AGTech รายงานผลประกอบการปี 2026 โดยมีรายได้เพิ่มขึ้น 23.7% ซึ่งได้รับแรงหนุนจากการขยายตัวในธุรกิจบริการธนาคารและการชำระเงินดิจิทัล แสดงให้เห็นถึงการกระจายความเสี่ยงที่ประสบความสำเร็จนอกเหนือจากเทคโนโลยีเกม" data-hi="AGTech ने अपने FY 2026 वित्तीय परिणामों में 23.7% की राजस्व वृद्धि दर्ज की। यह मुख्य रूप से बैंकिंग और डिजिटल भुगतान सेवाओं में विस्तार के कारण है, जो गेमिंग तकनीक से इतर सफल विविधीकरण को दर्शाता है।">AGTech 公布 2026 財年財務報告，顯示年度營收較上年同期增長 23.7%。主要增長動力源自銀行服務及數位支付領域的業務拓展，顯示公司在深耕博彩周邊技術之外，透過支付金融業務實現了有效的多角化經營，成功帶動整體業績表現。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="支付技術的獲利能力已成為博彩供應鏈的關鍵成長引擎。我們需加速開發更具韌性的支付串接技術，以因應數位金融監管變化，並參考其多角化策略，探索支付解決方案作為提升玩家留存率的新路徑。" data-en="Payment technology profitability is a key growth engine for the gaming supply chain. We must accelerate the development of resilient payment integration technology to adapt to regulatory changes and explore diversification strategies to boost player retention." data-th="ความสามารถในการทำกำไรของเทคโนโลยีการชำระเงินเป็นกลไกสำคัญของการเติบโต เราควรเร่งพัฒนาเทคโนโลยีการชำระเงินที่ยืดหยุ่นเพื่อรับมือกับการเปลี่ยนแปลงทางกฎระเบียบ และใช้กลยุทธ์การกระจายธุรกิจเพื่อเพิ่มอัตราการรักษาผู้เล่น" data-hi="भुगतान तकनीक की लाभप्रदता गेमिंग आपूर्ति श्रृंखला के लिए एक प्रमुख विकास इंजन है। हमें नियामक परिवर्तनों के अनुकूल होने के लिए भुगतान एकीकरण तकनीक के विकास में तेजी लानी चाहिए और खिलाड़ी प्रतिधारण बढ़ाने के लिए विविधीकरण रणनीतियों का पता लगाना चाहिए।">支付技術的獲利能力已成為博彩供應鏈的關鍵成長引擎。我們需加速開發更具韌性的支付串接技術，以因應數位金融監管變化，並參考其多角化策略，探索支付解決方案作為提升玩家留存率的新路徑。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -3553,21 +3411,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="受世界盃足球賽開賽影響，澳門博彩毛收入（GGR）在 6 月初出現明顯震盪，數據顯示毛收入環比下降約 20%。市場分析指出，大型體育賽事期間，玩家的投注預算與時間被大幅分流，導致傳統賭場博彩遊戲的參與度與營收出現短期下滑。" data-en="Macau&#39;s Gross Gaming Revenue (GGR) dropped by approximately 20% in early June, attributed to the World Cup diverting players&#39; time and betting budgets away from traditional casino games." data-th="รายได้รวมจากการพนัน (GGR) ของมาเก๊าลดลงประมาณ 20% ในช่วงต้นเดือนมิถุนายน เนื่องจากฟุตบอลโลกดึงความสนใจและงบประมาณการเดิมพันของผู้เล่นไปจากเกมคาสิโนแบบดั้งเดิม" data-hi="जून की शुरुआत में मकाऊ के सकल गेमिंग राजस्व (GGR) में लगभग 20% की गिरावट आई, जिसका कारण विश्व कप था जिसने खिलाड़ियों के समय और बजट को पारंपरिक कैसीनो खेलों से दूर कर दिया।">受世界盃足球賽開賽影響，澳門博彩毛收入（GGR）在 6 月初出現明顯震盪，數據顯示毛收入環比下降約 20%。市場分析指出，大型體育賽事期間，玩家的投注預算與時間被大幅分流，導致傳統賭場博彩遊戲的參與度與營收出現短期下滑。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="大型體育賽事對博彩生態具高度排擠效應。策略上，我們應在賽事期間推出高頻、短平快的輕量化遊戲，以搶佔玩家碎片化時間，或結合體育競猜元素進行跨界聯動，減緩核心遊戲產品在賽事期間的營收流失。" data-en="Major sports events create a crowding-out effect on the gaming ecosystem. Strategically, we should launch lightweight, high-frequency games during such events to capture players&#39; fragmented time or integrate sports betting elements to mitigate revenue loss." data-th="การแข่งขันกีฬารายการใหญ่ส่งผลกระทบต่ออุตสาหกรรมเกมอย่างมาก เราควรเปิดตัวเกมขนาดเล็กที่เน้นความเร็วในช่วงเวลาดังกล่าวเพื่อแย่งชิงเวลาว่างของผู้เล่น หรือนำองค์ประกอบการทายผลกีฬามาใช้เพื่อลดการสูญเสียรายได้" data-hi="बड़े खेल आयोजन गेमिंग पारिस्थितिकी तंत्र पर प्रभाव डालते हैं। रणनीति के रूप में, हमें ऐसे समय में हल्के और तेज़ गेम लॉन्च करने चाहिए ताकि खिलाड़ियों के खंडित समय का लाभ उठाया जा सके या राजस्व नुकसान को कम करने के लिए खेल सट्टेबाजी तत्वों को एकीकृत करना चाहिए।">大型體育賽事對博彩生態具高度排擠效應。策略上，我們應在賽事期間推出高頻、短平快的輕量化遊戲，以搶佔玩家碎片化時間，或結合體育競猜元素進行跨界聯動，減緩核心遊戲產品在賽事期間的營收流失。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -3620,21 +3470,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="根據 NyesteCasino.com 報導，當前全球線上博彩（iGaming）產業正處於監管環境收緊與市場競爭激烈的雙重夾擊中。營運商需在確保用戶獲取成本效益的同時，應對各國政府針對合規、反洗錢及負責任博彩日益嚴格的監管要求，產業進入轉型陣痛期。" data-en="According to NyesteCasino.com, the global iGaming industry is facing tightening regulations and intense competition. Operators must balance user acquisition costs while adhering to increasingly strict requirements for compliance, AML, and responsible gaming." data-th="รายงานจาก NyesteCasino.com ระบุว่าอุตสาหกรรม iGaming ทั่วโลกกำลังเผชิญกับการกำกับดูแลที่เข้มงวดและการแข่งขันที่ดุเดือด ผู้ประกอบการต้องรักษาสมดุลระหว่างต้นทุนการหาลูกค้าและการปฏิบัติตามกฎระเบียบด้าน AML และการพนันอย่างมีความรับผิดชอบ" data-hi="NyesteCasino.com के अनुसार, वैश्विक iGaming उद्योग सख्त विनियमन और तीव्र प्रतिस्पर्धा का सामना कर रहा है। ऑपरेटरों को उपयोगकर्ता अधिग्रहण लागत और अनुपालन, एएमएल और जिम्मेदार गेमिंग के नियमों के बीच संतुलन बनाना होगा।">根據 NyesteCasino.com 報導，當前全球線上博彩（iGaming）產業正處於監管環境收緊與市場競爭激烈的雙重夾擊中。營運商需在確保用戶獲取成本效益的同時，應對各國政府針對合規、反洗錢及負責任博彩日益嚴格的監管要求，產業進入轉型陣痛期。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="合規性將是未來的核心競爭力。JILI 必須優先投入研發自動化合規審計工具，並強化供應端的安全架構，以協助客戶在動盪監管環境下維持營運，將合規能力轉化為我們的市場進入門檻。" data-en="Compliance is the core competitiveness of the future. JILI must prioritize developing automated compliance audit tools and strengthening the supply-side security architecture to help clients maintain operations in a volatile regulatory environment." data-th="การปฏิบัติตามกฎระเบียบจะเป็นหัวใจสำคัญของการแข่งขันในอนาคต JILI ต้องให้ความสำคัญกับการพัฒนาเครื่องมือตรวจสอบการปฏิบัติตามกฎระเบียบอัตโนมัติ เพื่อช่วยให้ลูกค้าสามารถดำเนินงานต่อไปได้ในสภาพแวดล้อมที่กฎระเบียบมีความผันผวน" data-hi="अनुपालन भविष्य की मुख्य प्रतिस्पर्धात्मकता है। JILI को स्वचालित अनुपालन ऑडिट उपकरण विकसित करने और सुरक्षा आर्किटेक्चर को मजबूत करने पर प्राथमिकता देनी चाहिए ताकि अस्थिर नियामक वातावरण में भी ग्राहकों के संचालन को बनाए रखा जा सके।">合規性將是未來的核心競爭力。JILI 必須優先投入研發自動化合規審計工具，並強化供應端的安全架構，以協助客戶在動盪監管環境下維持營運，將合規能力轉化為我們的市場進入門檻。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -3686,21 +3528,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="遊戲開發商 BGaming 近日正式推出名為《Dusty Duel》的最新老虎機遊戲。該款遊戲採用經典的荒野西部主題設計，並結合了高強度的互動機制與視覺特效，旨在透過沉浸式體驗吸引追求高波動性與敘事型玩法的線上博彩玩家。" data-en="Game developer BGaming has officially launched &#39;Dusty Duel&#39;, a new slot game featuring a Wild West theme, high-intensity interactive mechanics, and visual effects to attract players seeking high volatility and narrative-driven gameplay." data-th="ผู้พัฒนาเกม BGaming เปิดตัวเกมสล็อตล่าสุด &#39;Dusty Duel&#39; ซึ่งมีธีม Wild West ผสมผสานกลไกการโต้ตอบที่เข้มข้นและเอฟเฟกต์ภาพ เพื่อดึงดูดผู้เล่นที่มองหาเกมที่มีความผันผวนสูงและมีเนื้อเรื่อง" data-hi="गेम डेवलपर BGaming ने &#39;Dusty Duel&#39; लॉन्च किया है, जो वाइल्ड वेस्ट थीम और उच्च-तीव्रता वाले इंटरैक्टिव मैकेनिक्स के साथ आता है, जिसका उद्देश्य हाई-वोलेटिलिटी चाहने वाले खिलाड़ियों को आकर्षित करना है।">遊戲開發商 BGaming 近日正式推出名為《Dusty Duel》的最新老虎機遊戲。該款遊戲採用經典的荒野西部主題設計，並結合了高強度的互動機制與視覺特效，旨在透過沉浸式體驗吸引追求高波動性與敘事型玩法的線上博彩玩家。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="競爭對手持續強化主題式遊戲的視覺與體驗。我們應持續分析市場流行趨勢，確保自身產品在「高波動」與「主題共鳴」上保持領先，並運用數據分析優化遊戲節奏，以在激烈的內容市場中保持高營收效率。" data-en="Competitors are enhancing visual experiences in themed games. We should continuously analyze market trends to ensure our products remain leaders in &#39;volatility&#39; and &#39;thematic resonance&#39;, and use data analytics to optimize game pacing for high revenue efficiency." data-th="คู่แข่งกำลังยกระดับประสบการณ์ในเกมธีมต่างๆ เราควรวิเคราะห์แนวโน้มตลาดอย่างต่อเนื่องเพื่อให้ผลิตภัณฑ์ของเรายังคงเป็นผู้นำในด้านความผันผวนและธีมที่น่าสนใจ พร้อมใช้การวิเคราะห์ข้อมูลเพื่อเพิ่มประสิทธิภาพของจังหวะเกม" data-hi="प्रतिस्पर्धी थीम्ड खेलों में दृश्य अनुभव बढ़ा रहे हैं। हमें बाजार के रुझानों का विश्लेषण करना चाहिए ताकि यह सुनिश्चित हो सके कि हमारे उत्पाद &#39;वोलेटिलिटी&#39; और &#39;थीमैटिक रेजोनेंस&#39; में अग्रणी रहें, और राजस्व दक्षता बढ़ाने के लिए डेटा एनालिटिक्स का उपयोग करना चाहिए।">競爭對手持續強化主題式遊戲的視覺與體驗。我們應持續分析市場流行趨勢，確保自身產品在「高波動」與「主題共鳴」上保持領先，並運用數據分析優化遊戲節奏，以在激烈的內容市場中保持高營收效率。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -3753,21 +3587,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="美國芝加哥市對於市內電子博彩遊戲的合法性出現嚴重分歧。現任市長正積極遊說推動廢除允許相關電子遊戲運作的法令，理由為社會成本與社區影響。此舉引發當地持牌經營者與監管機構的激烈辯論，該政策若通過將重塑當地博彩市場格局。" data-en="There is severe disagreement in Chicago regarding the legality of electronic gaming. The mayor is actively pushing to repeal laws allowing electronic gaming, citing social costs and community impact, which could reshape the local market." data-th="เมืองชิคาโกมีความขัดแย้งอย่างรุนแรงเกี่ยวกับความถูกต้องตามกฎหมายของเกมอิเล็กทรอนิกส์ นายกเทศมนตรีคนปัจจุบันกำลังผลักดันให้มีการยกเลิกกฎหมายที่อนุญาตให้ดำเนินการเกมดังกล่าว โดยอ้างผลกระทบต่อสังคมและชุมชน" data-hi="शिकागो में इलेक्ट्रॉनिक गेमिंग की वैधता पर गंभीर असहमति है। वर्तमान मेयर सामाजिक लागत और सामुदायिक प्रभाव का हवाला देते हुए उन कानूनों को निरस्त करने के लिए जोर दे रहे हैं जो इलेक्ट्रॉनिक गेमिंग की अनुमति देते हैं।">美國芝加哥市對於市內電子博彩遊戲的合法性出現嚴重分歧。現任市長正積極遊說推動廢除允許相關電子遊戲運作的法令，理由為社會成本與社區影響。此舉引發當地持牌經營者與監管機構的激烈辯論，該政策若通過將重塑當地博彩市場格局。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="地方市場的政策翻盤風險提醒我們，高度依賴單一城市或地區的業務模式極具脆弱性。我們應持續評估區域風險等級，分散業務觸角至政策相對穩定的司法管轄區，避免單一市場變動對總體營收造成衝擊。" data-en="Policy reversals in local markets highlight the vulnerability of relying on a single region. We should continuously assess regional risks and diversify into jurisdictions with more stable policy environments to avoid impacts from sudden market changes." data-th="ความเสี่ยงด้านนโยบายในระดับท้องถิ่นเตือนให้เห็นถึงความเปราะบางของธุรกิจที่พึ่งพาตลาดเดียว เราควรประเมินความเสี่ยงระดับภูมิภาคอย่างต่อเนื่องและกระจายธุรกิจไปยังเขตอำนาจศาลที่มีนโยบายมั่นคงกว่าเพื่อหลีกเลี่ยงผลกระทบต่อรายได้โดยรวม" data-hi="स्थानीय बाजारों में नीतिगत उलटफेर यह याद दिलाते हैं कि एकल बाजार पर निर्भरता जोखिम भरी है। हमें क्षेत्रीय जोखिमों का आकलन करना चाहिए और अधिक स्थिर नीतिगत वातावरण वाले क्षेत्रों में व्यवसाय का विस्तार करना चाहिए ताकि बाजार में अचानक बदलाव से बचा जा सके।">地方市場的政策翻盤風險提醒我們，高度依賴單一城市或地區的業務模式極具脆弱性。我們應持續評估區域風險等級，分散業務觸角至政策相對穩定的司法管轄區，避免單一市場變動對總體營收造成衝擊。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -3820,21 +3646,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="近期一個大型海外博彩網路平台遭遇突發性技術故障，導致服務中斷且大批用戶無法進入遊戲。此次故障引發了關於網路供應鏈韌性與容錯機制的問題，業內專家建議相關供應商需強化備援系統與緊急響應機制，以應對日益頻繁的網絡安全挑戰。" data-en="A large overseas gaming platform recently suffered a sudden technical outage, preventing users from accessing games. Experts suggest that suppliers need to strengthen backup systems and emergency response mechanisms to counter rising cybersecurity challenges." data-th="แพลตฟอร์มเกมขนาดใหญ่ในต่างประเทศเพิ่งประสบปัญหาทางเทคนิคกะทันหัน ส่งผลให้ผู้ใช้ไม่สามารถเข้าถึงเกมได้ ผู้เชี่ยวชาญแนะนำว่าผู้ให้บริการจำเป็นต้องเสริมสร้างระบบสำรองและกลไกการตอบสนองฉุกเฉินเพื่อรับมือกับความท้าทายทางไซเบอร์" data-hi="एक बड़े विदेशी गेमिंग प्लेटफॉर्म ने हाल ही में तकनीकी खराबी का अनुभव किया, जिससे उपयोगकर्ता गेम एक्सेस नहीं कर सके। विशेषज्ञों का सुझाव है कि आपूर्तिकर्ताओं को साइबर सुरक्षा चुनौतियों का सामना करने के लिए बैकअप सिस्टम और आपातकालीन प्रतिक्रिया तंत्र को मजबूत करना चाहिए।">近期一個大型海外博彩網路平台遭遇突發性技術故障，導致服務中斷且大批用戶無法進入遊戲。此次故障引發了關於網路供應鏈韌性與容錯機制的問題，業內專家建議相關供應商需強化備援系統與緊急響應機制，以應對日益頻繁的網絡安全挑戰。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="系統穩定性是供應商的生命線。我們必須優化伺服器備援架構與負載平衡技術，並建立高透明度的故障排除應對機制。良好的災難恢復方案將是我們爭取大型代理合作時，強調服務可靠性的重要籌碼。" data-en="System stability is the lifeline of a supplier. We must optimize server backup architectures and load balancing technologies, and establish transparent troubleshooting mechanisms. Robust disaster recovery will be a key selling point when pitching to large agents." data-th="ความเสถียรของระบบคือเส้นเลือดใหญ่ของซัพพลายเออร์ เราต้องเพิ่มประสิทธิภาพสถาปัตยกรรมสำรองของเซิร์ฟเวอร์และ建立กลไกการแก้ไขปัญหาที่โปร่งใส แผนการกู้คืนจากภัยพิบัติที่ดีจะเป็นเครื่องมือสำคัญในการพิสูจน์ความน่าเชื่อถือให้กับตัวแทนรายใหญ่" data-hi="सिस्टम स्थिरता आपूर्तिकर्ता की जीवनरेखा है। हमें सर्वर बैकअप आर्किटेक्चर और लोड बैलेंसिंग तकनीक को अनुकूलित करना चाहिए और पारदर्शी समस्या निवारण तंत्र स्थापित करना चाहिए। अच्छी आपदा रिकवरी योजना बड़े एजेंटों को आकर्षित करने के लिए एक महत्वपूर्ण संपत्ति होगी।">系統穩定性是供應商的生命線。我們必須優化伺服器備援架構與負載平衡技術，並建立高透明度的故障排除應對機制。良好的災難恢復方案將是我們爭取大型代理合作時，強調服務可靠性的重要籌碼。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 85</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -3887,21 +3705,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="美國大西洋城凱撒宮（Caesars Atlantic City）宣布將於 6 月 19 日正式啟用全新的海濱酒吧。此舉為該賭場提升非博彩類娛樂體驗策略的一部分，意在透過整合餐飲、娛樂設施與博彩活動，提升顧客在物業內的停留時間及消費總額，進一步活絡夏季旅遊市場。" data-en="Caesars Atlantic City announced the launch of a new beachside bar on June 19, part of a strategy to enhance non-gaming entertainment experiences, increase customer dwell time, and boost summer tourism." data-th="Caesars Atlantic City ประกาศเปิดตัวบาร์ริมหาดแห่งใหม่ในวันที่ 19 มิถุนายน เพื่อเป็นส่วนหนึ่งของกลยุทธ์การเพิ่มประสบการณ์ความบันเทิงที่ไม่ใช่การพนัน เพิ่มเวลาการเข้าพักของลูกค้า และกระตุ้นการท่องเที่ยวในฤดูร้อน" data-hi="Caesars Atlantic City ने 19 जून को एक नए बीचसाइड बार के उद्घाटन की घोषणा की है। यह गैर-गेमिंग मनोरंजन अनुभवों को बढ़ाने, ग्राहकों के रहने के समय को बढ़ाने और गर्मियों के पर्यटन को बढ़ावा देने की रणनीति का हिस्सा है।">美國大西洋城凱撒宮（Caesars Atlantic City）宣布將於 6 月 19 日正式啟用全新的海濱酒吧。此舉為該賭場提升非博彩類娛樂體驗策略的一部分，意在透過整合餐飲、娛樂設施與博彩活動，提升顧客在物業內的停留時間及消費總額，進一步活絡夏季旅遊市場。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="線下場館透過餐飲娛樂與博彩的交叉銷售是重要的獲客手段。線上平台可借鏡此模式，透過在遊戲內整合活動獎勵或虛擬體驗，模擬現實中的「度假式消費體驗」，進而提升玩家的忠誠度與留存表現。" data-en="Cross-selling food, entertainment, and gaming is an important customer acquisition tool for offline venues. Online platforms can learn from this by integrating virtual experiences and event rewards into games to simulate &#39;resort-style consumption&#39; and improve loyalty." data-th="การทำ Cross-selling ระหว่างอาหาร ความบันเทิง และการพนันเป็นกลยุทธ์การหาลูกค้าที่สำคัญ แพลตฟอร์มออนไลน์สามารถนำรูปแบบนี้ไปปรับใช้โดยการรวมรางวัลกิจกรรมหรือประสบการณ์เสมือนจริงเข้ากับเกม เพื่อเพิ่มความภักดีของผู้เล่น" data-hi="ऑफलाइन वेन्यू के लिए भोजन, मनोरंजन और गेमिंग का क्रॉस-सेलिंग महत्वपूर्ण है। ऑनलाइन प्लेटफॉर्म इससे सीख सकते हैं और गेम में वर्चुअल अनुभव और रिवॉर्ड्स को शामिल करके &#39;रिसॉर्ट-स्टाइल&#39; अनुभव प्रदान कर सकते हैं, जिससे वफादारी बढ़ेगी।">線下場館透過餐飲娛樂與博彩的交叉銷售是重要的獲客手段。線上平台可借鏡此模式，透過在遊戲內整合活動獎勵或虛擬體驗，模擬現實中的「度假式消費體驗」，進而提升玩家的忠誠度與留存表現。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 25</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 25</span>
 
                     </div>
 
@@ -3954,21 +3764,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="內華達州博彩管理委員會（NGCB）針對預測市場平台 Kalshi 採取法律行動，向法院遞交申請，尋求裁定對方藐視法庭。該爭議核心在於平台是否涉及未經授權的博彩運作，此案被視為美國監管機構針對新興衍生性金融產品是否屬於「博彩」定義的關鍵司法試金石。" data-en="The Nevada Gaming Control Board (NGCB) has filed a motion seeking a contempt of court ruling against prediction market platform Kalshi. The case centers on whether the platform constitutes unauthorized gaming, serving as a litmus test for defining derivative financial products as &#39;gaming&#39;." data-th="NGCB ดำเนินคดีทางกฎหมายกับแพลตฟอร์มตลาดทำนายผล Kalshi โดยยื่นคำร้องให้ศาลวินิจฉัยฐานละเมิดอำนาจศาล ประเด็นหลักคือแพลตฟอร์มนี้ถือเป็นการพนันที่ไม่ได้รับอนุญาตหรือไม่ ซึ่งจะเป็นบรรทัดฐานในการกำหนดนิยามของผลิตภัณฑ์การเงินอนุพันธ์ว่าเป็น &#39;การพนัน&#39;" data-hi="नेवादा गेमिंग कंट्रोल बोर्ड (NGCB) ने भविष्यवाणी बाजार प्लेटफॉर्म Kalshi के खिलाफ कानूनी कार्रवाई की है। यह मामला इस बात पर केंद्रित है कि क्या यह प्लेटफॉर्म अनधिकृत गेमिंग है, जो डेरिवेटिव वित्तीय उत्पादों को &#39;गेमिंग&#39; के रूप में परिभाषित करने के लिए एक परीक्षण होगा।">內華達州博彩管理委員會（NGCB）針對預測市場平台 Kalshi 採取法律行動，向法院遞交申請，尋求裁定對方藐視法庭。該爭議核心在於平台是否涉及未經授權的博彩運作，此案被視為美國監管機構針對新興衍生性金融產品是否屬於「博彩」定義的關鍵司法試金石。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="若監管將預測市場定性為博彩，將對相關產業帶來巨大衝擊，並重新界定博彩的邊界。我們需密切監控此法律判決，這將影響我們未來在北美市場引入創新產品類型的法律空間與策略路徑。" data-en="If prediction markets are defined as gaming, it will have a massive impact on the industry and redefine the boundaries of gaming. We must closely monitor this legal decision, as it will affect the legal space and strategy for introducing innovative products in North America." data-th="หากตลาดทำนายผลถูกจัดให้เป็นการพนัน จะส่งผลกระทบอย่างใหญ่หลวงต่ออุตสาหกรรมและนิยามของการพนัน เราต้องติดตามคำตัดสินนี้อย่างใกล้ชิด เพราะจะส่งผลต่อพื้นที่ทางกฎหมายและกลยุทธ์ในการนำผลิตภัณฑ์นวัตกรรมใหม่ๆ เข้าสู่ตลาดอเมริกาเหนือ" data-hi="यदि भविष्यवाणी बाजारों को गेमिंग के रूप में परिभाषित किया जाता है, तो इसका उद्योग पर बड़ा प्रभाव पड़ेगा। हमें इस कानूनी फैसले की बारीकी से निगरानी करनी चाहिए, क्योंकि यह उत्तरी अमेरिका में नवीन उत्पादों को पेश करने की हमारी कानूनी जगह और रणनीति को प्रभावित करेगा।">若監管將預測市場定性為博彩，將對相關產業帶來巨大衝擊，並重新界定博彩的邊界。我們需密切監控此法律判決，這將影響我們未來在北美市場引入創新產品類型的法律空間與策略路徑。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 60</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
 
                     </div>
 
@@ -4021,21 +3823,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="美國 Powerball 彩券近期開出多名頭獎得主，每人各獲得 20 萬美元獎金。此類大型彩券活動持續帶動美國市場民眾對於博弈類產品的關注度，並維持了彩券在美國消費娛樂產業中的顯著地位與高額流量。" data-en="Recent US Powerball draws resulted in multiple jackpot winners, each receiving $200,000. Such large-scale lottery events continue to drive public interest in gambling products, maintaining the lottery&#39;s prominent position and high traffic in the US entertainment industry." data-th="ผลรางวัล Powerball ล่าสุดในสหรัฐฯ มีผู้ถูกรางวัลแจ็กพอตหลายราย โดยแต่ละคนได้รับเงินรางวัล 200,000 ดอลลาร์ กิจกรรมลอตเตอรี่ขนาดใหญ่เช่นนี้ช่วยกระตุ้นความสนใจในผลิตภัณฑ์การพนันอย่างต่อเนื่อง และรักษาตำแหน่งที่สำคัญรวมถึงยอดผู้เข้าใช้งานที่สูงในอุตสาหกรรมบันเทิงของสหรัฐฯ" data-hi="हाल ही में अमेरिकी पावरबॉल लॉटरी में कई जैकपॉट विजेता सामने आए, जिनमें से प्रत्येक को 200,000 डॉलर का पुरस्कार मिला। इस तरह के बड़े लॉटरी आयोजन जुआ उत्पादों में जनहित को बढ़ावा दे रहे हैं और अमेरिकी उपभोक्ता मनोरंजन उद्योग में लॉटरी की प्रमुख स्थिति और उच्च ट्रैफिक को बनाए हुए हैं।">美國 Powerball 彩券近期開出多名頭獎得主，每人各獲得 20 萬美元獎金。此類大型彩券活動持續帶動美國市場民眾對於博弈類產品的關注度，並維持了彩券在美國消費娛樂產業中的顯著地位與高額流量。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="大型彩券熱度反映了玩家對高波動、高賠率產品的偏好。JILI 應在產品設計中強化「高爆發力」的機制，並結合全球彩票話題營銷，提升品牌在追求刺激性玩家群體中的獲客效率。" data-en="The popularity of major lotteries reflects a player preference for high-volatility, high-odds products. JILI should enhance &#39;high-impact&#39; mechanics in product design and combine them with global lottery marketing trends to improve customer acquisition efficiency among thrill-seeking players." data-th="ความนิยมของลอตเตอรี่ขนาดใหญ่สะท้อนให้เห็นว่าผู้เล่นชื่นชอบผลิตภัณฑ์ที่มีความผันผวนสูงและอัตราต่อรองที่สูง JILI ควรเพิ่มกลไก &#39;ความระทึกใจสูง&#39; ในการออกแบบผลิตภัณฑ์ และผสานเข้ากับการตลาดหัวข้อลอตเตอรี่ระดับโลก เพื่อเพิ่มประสิทธิภาพในการดึงดูดกลุ่มผู้เล่นที่แสวงหาความตื่นเต้น" data-hi="बड़ी लॉटरी की लोकप्रियता उच्च अस्थिरता और उच्च ऑड्स वाले उत्पादों के लिए खिलाड़ियों की प्राथमिकता को दर्शाती है। JILI को उत्पाद डिजाइन में &#39;उच्च विस्फोटकता&#39; (high-impact) तंत्र को मजबूत करना चाहिए और वैश्विक लॉटरी विषयों के साथ मार्केटिंग को जोड़ना चाहिए ताकि रोमांच चाहने वाले खिलाड़ियों के बीच ग्राहक अधिग्रहण क्षमता में सुधार हो सके।">大型彩券熱度反映了玩家對高波動、高賠率產品的偏好。JILI 應在產品設計中強化「高爆發力」的機制，並結合全球彩票話題營銷，提升品牌在追求刺激性玩家群體中的獲客效率。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
 
                     </div>
 
@@ -4088,21 +3882,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="由於近期無人中獎，美國 Mega Millions 彩券頭獎獎金池已累積至近 5 億美元。高額獎金預期將帶動更廣泛的社會話題性，並進一步推升短期內美國博弈與相關娛樂市場的參與熱度與曝光率。" data-en="Due to a recent lack of winners, the US Mega Millions jackpot has accumulated to nearly $500 million. High prize pools are expected to generate widespread social buzz, further boosting participation and visibility in the US gambling and entertainment market in the short term." data-th="เนื่องจากไม่มีผู้ถูกรางวัลในช่วงที่ผ่านมา เงินรางวัลแจ็กพอต Mega Millions ในสหรัฐฯ จึงสะสมเพิ่มขึ้นถึงเกือบ 500 ล้านดอลลาร์ คาดว่าเงินรางวัลที่สูงนี้จะสร้างกระแสทางสังคมในวงกว้าง และช่วยผลักดันความสนใจและการมีส่วนร่วมในตลาดการพนันและบันเทิงของสหรัฐฯ ในระยะสั้นให้เพิ่มขึ้น" data-hi="हाल ही में कोई विजेता न होने के कारण, अमेरिकी मेगा मिलियंस लॉटरी का जैकपॉट पूल लगभग 500 मिलियन डॉलर तक पहुंच गया है। उम्मीद है कि इतनी बड़ी इनामी राशि व्यापक सामाजिक चर्चा पैदा करेगी और अल्पावधि में अमेरिकी जुआ और मनोरंजन बाजार में भागीदारी और एक्सपोजर को और बढ़ाएगी।">由於近期無人中獎，美國 Mega Millions 彩券頭獎獎金池已累積至近 5 億美元。高額獎金預期將帶動更廣泛的社會話題性，並進一步推升短期內美國博弈與相關娛樂市場的參與熱度與曝光率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此類巨額獎池效應是極佳的市場引流窗口。JILI 可透過行銷素材強調旗下高額獎金池（Jackpot）遊戲的視覺吸引力，與當前市場趨勢對接，強化玩家對高額報酬的期待心理。" data-en="The massive jackpot effect serves as an excellent channel for market lead generation. JILI can leverage marketing materials that emphasize the visual appeal of its own Jackpot games, aligning with current market trends to reinforce player anticipation of high returns." data-th="ปรากฏการณ์เงินรางวัลแจ็กพอตมหาศาลเป็นช่องทางที่ดีเยี่ยมในการดึงดูดลูกค้าเข้าสู่ตลาด JILI สามารถใช้สื่อการตลาดที่เน้นความน่าดึงดูดของเกม Jackpot ของตนเองเพื่อให้สอดคล้องกับแนวโน้มตลาดปัจจุบัน และตอกย้ำความคาดหวังของผู้เล่นที่จะได้รับผลตอบแทนสูง" data-hi="इस तरह का विशाल जैकपॉट प्रभाव बाजार में लीड जनरेट करने का एक शानदार अवसर है। JILI को अपने जैकपॉट गेम्स के विजुअल आकर्षण पर जोर देने वाली मार्केटिंग सामग्री का उपयोग करना चाहिए ताकि वर्तमान बाजार रुझानों के साथ तालमेल बिठाकर खिलाड़ियों में उच्च रिटर्न की प्रत्याशा को मजबूत किया जा सके।">此類巨額獎池效應是極佳的市場引流窗口。JILI 可透過行銷素材強調旗下高額獎金池（Jackpot）遊戲的視覺吸引力，與當前市場趨勢對接，強化玩家對高額報酬的期待心理。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -4155,21 +3941,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Mindway AI 發布 Gamalyze Sports 解決方案，旨在世界盃期間透過 AI 技術偵測與分析博弈行為，強化負責任博弈。該技術工具將協助運營商在賽事期間維持合規性，同時提升用戶參與數據的深度。" data-en="Mindway AI has released its Gamalyze Sports solution, designed to monitor and analyze gambling behavior via AI during the World Cup to enhance responsible gaming. This tool will assist operators in maintaining compliance during matches while deepening user participation data." data-th="Mindway AI เปิดตัวโซลูชัน Gamalyze Sports ซึ่งออกแบบมาเพื่อตรวจจับและวิเคราะห์พฤติกรรมการพนันผ่านเทคโนโลยี AI ในช่วงฟุตบอลโลก เพื่อเสริมสร้างการพนันอย่างรับผิดชอบ เครื่องมือนี้จะช่วยให้ผู้ให้บริการรักษาความสอดคล้องตามกฎระเบียบระหว่างการแข่งขัน พร้อมทั้งเพิ่มความลึกซึ้งของข้อมูลการมีส่วนร่วมของผู้ใช้" data-hi="Mindway AI ने Gamalyze Sports समाधान जारी किया है, जिसका उद्देश्य विश्व कप के दौरान AI तकनीक के माध्यम से जुए के व्यवहार का पता लगाना और उसका विश्लेषण करना है, ताकि जिम्मेदारी से जुआ खेलने (responsible gambling) को बढ़ावा दिया जा सके। यह टूल ऑपरेटरों को मैच के दौरान अनुपालन बनाए रखने और उपयोगकर्ता जुड़ाव डेटा की गहराई बढ़ाने में मदद करेगा।">Mindway AI 發布 Gamalyze Sports 解決方案，旨在世界盃期間透過 AI 技術偵測與分析博弈行為，強化負責任博弈。該技術工具將協助運營商在賽事期間維持合規性，同時提升用戶參與數據的深度。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="AI 監控工具已成為國際賽事期間的標準配備。JILI 應持續優化後台數據分析能力，將 AI 風控技術整合至 API，協助 B2B 客戶強化賽事博弈的安全防禦，以確保運營穩定並降低合規風險。" data-en="AI monitoring tools have become standard equipment for international events. JILI should continue to optimize its backend data analysis capabilities and integrate AI risk control into its APIs to help B2B clients strengthen safety defenses for sports betting, ensuring operational stability and reducing compliance risks." data-th="เครื่องมือตรวจสอบ AI ได้กลายเป็นอุปกรณ์มาตรฐานในช่วงการแข่งขันระดับนานาชาติ JILI ควรเพิ่มประสิทธิภาพความสามารถในการวิเคราะห์ข้อมูลส่วนหลัง (Backend) อย่างต่อเนื่อง และรวมเทคโนโลยี AI เข้ากับ API เพื่อช่วยให้ลูกค้า B2B เสริมความแข็งแกร่งในการป้องกันความปลอดภัยของการเดิมพันกีฬา เพื่อให้มั่นใจถึงความเสถียรในการดำเนินงานและลดความเสี่ยงด้านกฎระเบียบ" data-hi="AI मॉनिटरिंग टूल अंतरराष्ट्रीय आयोजनों के दौरान मानक उपकरण बन गए हैं। JILI को अपनी बैकएंड डेटा विश्लेषण क्षमताओं को अनुकूलित करना जारी रखना चाहिए और AI जोखिम नियंत्रण को API में एकीकृत करना चाहिए, ताकि B2B ग्राहकों को स्पोर्ट्स बेटिंग सुरक्षा को मजबूत करने में मदद मिल सके और परिचालन स्थिरता सुनिश्चित हो सके।">AI 監控工具已成為國際賽事期間的標準配備。JILI 應持續優化後台數據分析能力，將 AI 風控技術整合至 API，協助 B2B 客戶強化賽事博弈的安全防禦，以確保運營穩定並降低合規風險。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -4222,21 +4000,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="瑞典法院裁定撤銷監管機構 Spelinspektionen 對營運商 LeoVegas 處以的約 85 萬美元罰款。此判決標誌著市場在監管裁量權邊界上的釐清，有助於營運商在未來應對類似合規爭議時的法律參考。" data-en="A Swedish court has ruled to overturn an approximately $850,000 fine imposed on operator LeoVegas by the regulator Spelinspektionen. This verdict clarifies the boundaries of regulatory discretion, serving as a legal reference for operators facing similar compliance disputes in the future." data-th="ศาลสวีเดนมีคำตัดสินให้ยกเลิกค่าปรับประมาณ 850,000 ดอลลาร์ที่หน่วยงานกำกับดูแล Spelinspektionen เรียกเก็บจากผู้ให้บริการ LeoVegas คำตัดสินนี้ถือเป็นการกำหนดขอบเขตอำนาจดุลยพินิจของหน่วยงานกำกับดูแลให้ชัดเจนขึ้น ซึ่งเป็นประโยชน์ต่อผู้ให้บริการในอนาคตในการรับมือกับข้อพิพาทด้านกฎระเบียบที่คล้ายคลึงกัน" data-hi="स्वीडिश अदालत ने नियामक Spelinspektionen द्वारा ऑपरेटर LeoVegas पर लगाए गए लगभग 850,000 डॉलर के जुर्माने को रद्द करने का फैसला सुनाया है। यह फैसला नियामक विवेक की सीमाओं को स्पष्ट करता है, जो भविष्य में समान अनुपालन विवादों का सामना करने वाले ऑपरेटरों के लिए एक कानूनी संदर्भ के रूप में कार्य करेगा।">瑞典法院裁定撤銷監管機構 Spelinspektionen 對營運商 LeoVegas 處以的約 85 萬美元罰款。此判決標誌著市場在監管裁量權邊界上的釐清，有助於營運商在未來應對類似合規爭議時的法律參考。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="監管環境的司法審查是市場成熟的象徵。對 JILI 而言，這降低了合作運營商在歐洲市場遭濫罰的風險。我們將持續關注歐盟地區的合規解釋，確保遊戲合規性符合各地司法尺度。" data-en="Judicial review of the regulatory environment is a sign of a mature market. For JILI, this reduces the risk of partner operators being excessively penalized in the European market. We will continue to monitor EU compliance interpretations to ensure our game compliance meets local judicial standards." data-th="การตรวจสอบทางตุลาการต่อสภาพแวดล้อมด้านกฎระเบียบเป็นสัญญาณของตลาดที่เติบโตเต็มที่ สำหรับ JILI สิ่งนี้ช่วยลดความเสี่ยงที่ผู้ให้บริการพันธมิตรในตลาดยุโรปจะถูกลงโทษเกินควร เราจะติดตามการตีความด้านกฎระเบียบของสหภาพยุโรปอย่างต่อเนื่องเพื่อให้มั่นใจว่าความสอดคล้องของเกมของเราเป็นไปตามมาตรฐานทางกฎหมายในแต่ละพื้นที่" data-hi="नियामक वातावरण की न्यायिक समीक्षा एक परिपक्व बाजार का संकेत है। JILI के लिए, यह यूरोपीय बाजार में भागीदार ऑपरेटरों के अत्यधिक दंडित होने के जोखिम को कम करता है। हम यह सुनिश्चित करने के लिए यूरोपीय संघ के अनुपालन निर्णयों की निगरानी करना जारी रखेंगे कि हमारे गेम स्थानीय न्यायिक मानकों के अनुरूप हों।">監管環境的司法審查是市場成熟的象徵。對 JILI 而言，這降低了合作運營商在歐洲市場遭濫罰的風險。我們將持續關注歐盟地區的合規解釋，確保遊戲合規性符合各地司法尺度。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 60</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
 
                     </div>
 
@@ -4289,21 +4059,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="荷蘭遊戲監管機構（KSA）對運營商 Betnation 發出正式警告，理由是該平台在執行自願禁入系統（CRUKS）時存在程序違規。監管機構強調負責任博弈機制的嚴格執行是營運執照的核心要件。" data-en="The Netherlands Gaming Authority (KSA) issued a formal warning to operator Betnation for procedural violations in executing the voluntary exclusion system (CRUKS). Regulators emphasized that the strict enforcement of responsible gaming mechanisms is a core requirement for operating licenses." data-th="หน่วยงานกำกับดูแลการพนันของเนเธอร์แลนด์ (KSA) ได้ออกคำเตือนอย่างเป็นทางการต่อผู้ให้บริการ Betnation เนื่องจากมีการละเมิดขั้นตอนในการดำเนินการตามระบบห้ามเข้าใช้บริการโดยสมัครใจ (CRUKS) หน่วยงานกำกับดูแลเน้นย้ำว่าการบังคับใช้กลไกการพนันอย่างรับผิดชอบอย่างเคร่งครัดเป็นข้อกำหนดหลักสำหรับการถือใบอนุญาตประกอบกิจการ" data-hi="नीदरलैंड्स गेमिंग अथॉरिटी (KSA) ने ऑपरेटर Betnation को स्वैच्छिक बहिष्करण प्रणाली (CRUKS) को लागू करने में प्रक्रियात्मक उल्लंघन के लिए औपचारिक चेतावनी जारी की है। नियामकों ने जोर दिया कि जिम्मेदारी से जुआ खेलने (responsible gaming) के तंत्र का सख्त प्रवर्तन ऑपरेटिंग लाइसेंस के लिए एक मुख्य आवश्यकता है।">荷蘭遊戲監管機構（KSA）對運營商 Betnation 發出正式警告，理由是該平台在執行自願禁入系統（CRUKS）時存在程序違規。監管機構強調負責任博弈機制的嚴格執行是營運執照的核心要件。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="荷蘭市場監管趨嚴，合規是 B2B 業務的生命線。JILI 需確保我們的遊戲接口完全支援各國的禁入系統與負責任博弈對接，以保護合作客戶的執照安全，避免因系統缺失導致連帶責任。" data-en="Regulatory scrutiny in the Dutch market is tightening, and compliance is the lifeline for B2B businesses. JILI must ensure our game interfaces fully support national exclusion systems and responsible gaming protocols to protect partner clients&#39; licenses and avoid collateral liability due to system gaps." data-th="การกำกับดูแลในตลาดเนเธอร์แลนด์เข้มงวดขึ้นเรื่อยๆ และการปฏิบัติตามกฎหมายถือเป็นเส้นเลือดใหญ่ของธุรกิจ B2B JILI ต้องตรวจสอบให้แน่ใจว่าอินเทอร์เฟซเกมของเรารองรับระบบการห้ามเข้าใช้บริการของแต่ละประเทศและโปรโตคอลการพนันอย่างรับผิดชอบอย่างเต็มรูปแบบ เพื่อปกป้องใบอนุญาตของลูกค้าพันธมิตร และหลีกเลี่ยงความรับผิดชอบร่วมเนื่องจากข้อผิดพลาดของระบบ" data-hi="डच बाजार में नियामक जांच तेज हो रही है, और B2B व्यवसायों के लिए अनुपालन ही जीवन रेखा है। JILI को यह सुनिश्चित करना होगा कि हमारे गेम इंटरफेस राष्ट्रीय बहिष्करण प्रणालियों और जिम्मेदार गेमिंग प्रोटोकॉल का पूरी तरह से समर्थन करें ताकि भागीदार ग्राहकों के लाइसेंस की रक्षा की जा सके और सिस्टम कमियों के कारण होने वाली देनदारी से बचा जा सके।">荷蘭市場監管趨嚴，合規是 B2B 業務的生命線。JILI 需確保我們的遊戲接口完全支援各國的禁入系統與負責任博弈對接，以保護合作客戶的執照安全，避免因系統缺失導致連帶責任。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -4355,21 +4117,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="知名遊戲製作人原田勝弘於社群平台分享了開放世界動作遊戲《鳴潮》的實機操作影片，引發業界廣泛討論。該動態顯示了目前全球玩家對於高品質動作 RPG 遊戲的高度關注與社群熱度。" data-en="Renowned producer Katsuhiro Harada shared gameplay footage of the open-world action game &#39;Wuthering Waves&#39; on social media, sparking widespread industry discussion. The move highlights the high level of global player attention and community engagement with high-quality action RPGs." data-th="Katsuhiro Harada โปรดิวเซอร์ชื่อดังได้แชร์วิดีโอเกมเพลย์ของเกมแอ็กชันโอเพนเวิลด์ &#39;Wuthering Waves&#39; บนโซเชียลมีเดีย ซึ่งกระตุ้นให้เกิดการอภิปรายในวงกว้างทั่วทั้งอุตสาหกรรม ความเคลื่อนไหวนี้แสดงให้เห็นว่าผู้เล่นทั่วโลกให้ความสนใจอย่างมากต่อเกมแนวแอ็กชัน RPG คุณภาพสูง" data-hi="प्रसिद्ध गेम निर्माता कत्सुहिरो हारादा ने सोशल मीडिया पर ओपन-वर्ल्ड एक्शन गेम &#39;Wuthering Waves&#39; का गेमप्ले फुटेज साझा किया, जिससे उद्योग में व्यापक चर्चा छिड़ गई है। यह कदम उच्च गुणवत्ता वाले एक्शन आरपीजी गेम के प्रति वैश्विक खिलाड़ियों के उच्च स्तर के ध्यान और सामुदायिक जुड़ाव को दर्शाता है।">知名遊戲製作人原田勝弘於社群平台分享了開放世界動作遊戲《鳴潮》的實機操作影片，引發業界廣泛討論。該動態顯示了目前全球玩家對於高品質動作 RPG 遊戲的高度關注與社群熱度。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="遊戲市場的視覺表現力與流暢度要求日益提升。JILI 應將此標準內化至我們的老虎機遊戲視覺設計，透過高品質的動畫與敘事體驗，吸引受高品質二次元與動作遊戲影響的年輕玩家群體。" data-en="Demand for visual expression and fluidity in the gaming market is increasing. JILI should internalize this standard into our slot game visual design, attracting younger players influenced by high-quality ACG and action games through immersive animations and narrative experiences." data-th="ความต้องการด้านการแสดงผลทางภาพและความลื่นไหลในตลาดเกมกำลังเพิ่มสูงขึ้น JILI ควรนำมาตรฐานนี้มาปรับใช้ในการออกแบบภาพของเกมสล็อตของเรา เพื่อดึงดูดผู้เล่นรุ่นใหม่ที่ได้รับอิทธิพลจากเกมแนวอนิเมะและเกมแอ็กชันคุณภาพสูง ผ่านแอนิเมชันที่สมจริงและประสบการณ์การเล่าเรื่องที่น่าสนใจ" data-hi="गेमिंग बाजार में दृश्य अभिव्यक्ति और तरलता की मांग बढ़ रही है। JILI को इस मानक को अपने स्लॉट गेम डिजाइन में शामिल करना चाहिए, ताकि उच्च गुणवत्ता वाले एनीमे और एक्शन गेम्स से प्रभावित युवा खिलाड़ियों को इमर्सिव एनिमेशन और नैरेटिव अनुभव के माध्यम से आकर्षित किया जा सके।">遊戲市場的視覺表現力與流暢度要求日益提升。JILI 應將此標準內化至我們的老虎機遊戲視覺設計，透過高品質的動畫與敘事體驗，吸引受高品質二次元與動作遊戲影響的年輕玩家群體。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
 
                     </div>
 
@@ -4422,21 +4176,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="手遊《女神異聞錄：夜幕魅影》(P5X) 正式宣佈與虛擬歌手初音未來進行聯動，結合知名 IP 與人氣偶像的角色資源。此類跨界聯動旨在透過粉絲重疊效應，最大化遊戲在目標市場的營收潛力與用戶留存。" data-en="The mobile game &#39;Persona 5: The Phantom X&#39; (P5X) has officially announced a collaboration with virtual singer Hatsune Miku, combining a famous IP with popular idol characters. Such cross-boundary collaborations aim to maximize game revenue potential and user retention through audience overlap." data-th="เกมมือถือ &#39;Persona 5: The Phantom X&#39; (P5X) ได้ประกาศความร่วมมืออย่างเป็นทางการกับนักร้องเสมือนจริง Hatsune Miku โดยเป็นการรวม IP ที่มีชื่อเสียงเข้ากับตัวละครไอดอลยอดนิยม ความร่วมมือข้ามสื่อเช่นนี้มีเป้าหมายเพื่อเพิ่มศักยภาพรายได้ของเกมและการรักษาผู้ใช้ให้สูงสุดผ่านการทับซ้อนกันของกลุ่มแฟนคลับ" data-hi="मोबाइल गेम &#39;Persona 5: The Phantom X&#39; (P5X) ने आधिकारिक तौर पर वर्चुअल गायिका हत्सुने मिकु के साथ सहयोग की घोषणा की है, जिसमें एक प्रसिद्ध IP को लोकप्रिय आइडल पात्रों के साथ जोड़ा गया है। इस तरह के क्रॉस-बाउंड्री सहयोग का उद्देश्य दर्शकों के ओवरलैप के माध्यम से गेम के राजस्व और उपयोगकर्ता प्रतिधारण को अधिकतम करना है।">手遊《女神異聞錄：夜幕魅影》(P5X) 正式宣佈與虛擬歌手初音未來進行聯動，結合知名 IP 與人氣偶像的角色資源。此類跨界聯動旨在透過粉絲重疊效應，最大化遊戲在目標市場的營收潛力與用戶留存。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="跨界 IP 聯動是提升長線營運績效的關鍵策略。JILI 可評估開發具有強烈 IP 屬性的遊戲主題或與主流遊戲進行聯名設計，藉此打通不同受眾圈層，強化品牌在目標市場的影響力。" data-en="Cross-IP collaboration is a key strategy for enhancing long-term operational performance. JILI can evaluate developing game themes with strong IP attributes or co-branded designs with mainstream games to connect with different audience segments and strengthen brand influence in target markets." data-th="การร่วมมือระหว่าง IP (Cross-IP) เป็นกลยุทธ์สำคัญในการเพิ่มผลการดำเนินงานระยะยาว JILI สามารถประเมินการพัฒนาธีมเกมที่มีคุณสมบัติของ IP ที่แข็งแกร่ง หรือการออกแบบร่วมกับเกมกระแสหลักเพื่อเข้าถึงกลุ่มผู้ชมที่แตกต่างกัน และเสริมสร้างอิทธิพลของแบรนด์ในตลาดเป้าหมาย" data-hi="क्रॉस-IP सहयोग दीर्घकालिक परिचालन प्रदर्शन को बढ़ाने के लिए एक प्रमुख रणनीति है। JILI मजबूत IP विशेषताओं वाले गेम थीम विकसित करने या मुख्यधारा के खेलों के साथ को-ब्रांडेड डिजाइन बनाने पर विचार कर सकता है ताकि विभिन्न दर्शक वर्गों तक पहुंचा जा सके और लक्षित बाजारों में ब्रांड प्रभाव को मजबूत किया जा सके।">跨界 IP 聯動是提升長線營運績效的關鍵策略。JILI 可評估開發具有強烈 IP 屬性的遊戲主題或與主流遊戲進行聯名設計，藉此打通不同受眾圈層，強化品牌在目標市場的影響力。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 35</span>
 
                     </div>
 
@@ -4489,21 +4235,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="根據最新行業報告，雲頂集團將紐約的賭場開發項目視為集團最重要的投資之一。隨著北美地區賭博合規化進程加速，雲頂計畫透過此標誌性項目擴大其在成熟市場的佔有率，並預計該項目將成為集團未來財報中的核心營收動力與品牌影響力輸出點。" data-en="According to the latest industry reports, Genting Group considers its New York casino development project as one of its most critical investments. With the accelerating legalization of gambling in North America, Genting plans to expand its share in the mature market through this landmark project, expecting it to be a key revenue driver and brand influence amplifier." data-th="ตามรายงานล่าสุดของอุตสาหกรรม Genting Group ถือว่าโครงการพัฒนาคาสิโนในนิวยอร์กเป็นการลงทุนที่สำคัญที่สุดอย่างหนึ่งของกลุ่ม เนื่องจากการพนันในอเมริกาเหนือเริ่มมีความถูกต้องตามกฎหมายมากขึ้น Genting จึงวางแผนที่จะขยายส่วนแบ่งการตลาดในตลาดที่โตเต็มที่นี้ผ่านโครงการเรือธงนี้ โดยคาดว่าโครงการนี้จะเป็นแรงผลักดันรายได้หลักและส่งเสริมอิทธิพลของแบรนด์ในอนาคต" data-hi="नवीनतम उद्योग रिपोर्टों के अनुसार, Genting Group न्यूयॉर्क कैसीनो विकास परियोजना को अपने सबसे महत्वपूर्ण निवेशों में से एक मानता है। उत्तरी अमेरिका में जुए के वैध होने की प्रक्रिया के तेज होने के साथ, Genting इस प्रतिष्ठित परियोजना के माध्यम से परिपक्व बाजार में अपनी हिस्सेदारी बढ़ाने की योजना बना रहा है। उम्मीद है कि यह परियोजना भविष्य में समूह के लिए राजस्व का मुख्य स्रोत और ब्रांड प्रभाव का केंद्र बनेगी।">根據最新行業報告，雲頂集團將紐約的賭場開發項目視為集團最重要的投資之一。隨著北美地區賭博合規化進程加速，雲頂計畫透過此標誌性項目擴大其在成熟市場的佔有率，並預計該項目將成為集團未來財報中的核心營收動力與品牌影響力輸出點。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="雲頂佈局北美核心市場將帶動對高水準線上互動內容的需求。JILI 需加速針對北美合規標準的產品研發，提升技術對接效率，並以優質內容防禦當地競爭對手，搶佔其線上生態鏈的一席之地。" data-en="Genting&#39;s expansion into the North American market will drive demand for high-quality online interactive content. JILI must accelerate product R&amp;D compliant with North American standards, improve technical integration efficiency, and use high-quality content to defend against local competitors." data-th="การขยายตัวเข้าสู่ตลาดหลักในอเมริกาเหนือของ Genting จะกระตุ้นความต้องการเนื้อหาโต้ตอบออนไลน์ที่มีคุณภาพสูง JILI จำเป็นต้องเร่งการวิจัยและพัฒนาผลิตภัณฑ์ตามมาตรฐานของอเมริกาเหนือ เพิ่มประสิทธิภาพการเชื่อมต่อทางเทคนิค และใช้เนื้อหาคุณภาพเยี่ยมเพื่อป้องกันคู่แข่งในท้องถิ่น" data-hi="Genting का उत्तरी अमेरिकी मुख्य बाजार में विस्तार उच्च-स्तरीय ऑनलाइन इंटरैक्टिव सामग्री की मांग को प्रेरित करेगा। JILI को उत्तरी अमेरिकी अनुपालन मानकों के लिए उत्पाद अनुसंधान और विकास में तेजी लानी चाहिए, तकनीकी एकीकरण दक्षता में सुधार करना चाहिए और स्थानीय प्रतिस्पर्धियों के खिलाफ उच्च गुणवत्ता वाली सामग्री के साथ अपनी स्थिति मजबूत करनी चाहिए।">雲頂佈局北美核心市場將帶動對高水準線上互動內容的需求。JILI 需加速針對北美合規標準的產品研發，提升技術對接效率，並以優質內容防禦當地競爭對手，搶佔其線上生態鏈的一席之地。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -4892,7 +4630,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "美國", "count": 10, "coords": [36.59069943571814, -95.92953808817315], "sentiment": "利空", "news_full": [{"title": "CFTC 監管動向與體育投注熱潮成產業焦點", "title_en": "CFTC Regulatory Moves and Sports Betting Boom Take Center Stage", "title_th": "ความเคลื่อนไหวด้านกฎระเบียบของ CFTC และกระแสการพนันกีฬาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "CFTC के नियामक कदम और स्पोर्ट्स बेटिंग बूम उद्योग का मुख्य केंद्र", "link": "https://www.gamblinginsider.com/news/166782/world-cup-wagering-cftc-rulemaking-knicks-comeback-gambling-industry", "sentiment": "中立", "impact": 75.0, "urgency": 65.0}, {"title": "麻州推動體育博弈生態系優化，成美國產業標竿", "title_en": "Massachusetts Promotes Optimization of Sports Betting Ecosystem, Becoming an Industry Benchmark", "title_th": "รัฐแมสซาชูเซตส์ผลักดันการปรับปรุงระบบนิเวศการพนันกีฬาให้เป็นมาตรฐานของสหรัฐฯ", "title_hi": "मैसाचुसेट्स ने स्पोर्ट्स बेटिंग इकोसिस्टम को बढ़ावा दिया, अमेरिकी उद्योग के लिए बेंचमार्क बना", "link": "https://www.gamblinginsider.com/news/166582/massachusetts-leads-way-work-remains-to-create-fair-sustainable-sports-betting-ecosystem", "sentiment": "利多", "impact": 65.0, "urgency": 55.0}, {"title": "ProphetX 獲 CFTC 核准，獲准經營預測市場", "title_en": "ProphetX Receives CFTC Approval to Operate Prediction Markets", "title_th": "ProphetX ได้รับอนุมัติจาก CFTC ให้ดำเนินธุรกิจตลาดการทำนาย", "title_hi": "ProphetX को प्रेडिक्शन मार्केट संचालित करने के लिए CFTC की मंजूरी मिली", "link": "https://www.gamblinginsider.com/news/166600/prophetx-gets-cftc-approval-to-operate-prediction-market", "sentiment": "利多", "impact": 70.0, "urgency": 60.0}, {"title": "RubyPlay 與 Fanatics Casino 合作進軍紐澤西州", "title_en": "RubyPlay Partners with Fanatics Casino to Enter New Jersey", "title_th": "RubyPlay จับมือ Fanatics Casino รุกตลาดนิวเจอร์ซีย์", "title_hi": "RubyPlay ने न्यू जर्सी में प्रवेश करने के लिए Fanatics Casino के साथ साझेदारी की", "link": "https://agbrief.com/news/usa/16/06/2026/rubyplay-expands-reach-with-fanatics-casino-partnership-in-new-jersey/", "sentiment": "利多", "impact": 70.0, "urgency": 45.0}, {"title": "芝加哥市內針對電子博彩出現立場分裂，市長力推廢止相關法令", "title_en": "Chicago Stance on Electronic Gaming Divided; Mayor Pushes for Repeal", "title_th": "ชิคาโกแตกแยกเรื่องการพนันอิเล็กทรอนิกส์ นายกเทศมนตรีผลักดันให้ยกเลิกกฎหมาย", "title_hi": "शिकागो में इलेक्ट्रॉनिक गेमिंग पर रुख विभाजित; मेयर ने निरसन के लिए जोर दिया", "link": "https://www.gamblingnews.com/news/chicago-split-over-video-gaming-as-mayor-pushes-repeal/", "sentiment": "利空", "impact": 55.0, "urgency": 50.0}, {"title": "大西洋城凱撒宮將於 6 月 19 日開設全新海濱酒吧", "title_en": "Caesars Atlantic City to Open New Beachside Bar on June 19", "title_th": "Caesars Atlantic City เตรียมเปิดบาร์ริมหาดแห่งใหม่ 19 มิถุนายนนี้", "title_hi": "Caesars Atlantic City 19 जून को नया बीचसाइड बार खोलेगा", "link": "https://www.gamblingnews.com/news/caesars-atlantic-city-to-open-new-beachfront-bar-on-june-19/", "sentiment": "利多", "impact": 25.0, "urgency": 10.0}, {"title": "內華達州博彩管理委員會 (NGCB) 就 Kalshi 案件尋求法院裁定藐視法庭", "title_en": "Nevada Gaming Control Board (NGCB) Seeks Contempt of Court Ruling in Kalshi Case", "title_th": "คณะกรรมการควบคุมการพนันรัฐเนวาดา (NGCB) ยื่นคำร้องขอให้ศาลวินิจฉัยฐานละเมิดอำนาจศาลในคดี Kalshi", "title_hi": "नेवादा गेमिंग कंट्रोल बोर्ड (NGCB) ने Kalshi मामले में अदालत की अवमानना की मांग की", "link": "https://www.gamblingnews.com/news/ngcb-seeks-contempt-ruling-from-court-against-kalshi/", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "美國強權球彩券開出多名大獎得主", "title_en": "Multiple Jackpot Winners in US Powerball", "title_th": "Powerball สหรัฐฯ มีผู้ถูกรางวัลแจ็กพอตหลายราย", "title_hi": "अमेरिकी पावरबॉल में कई जैकपॉट विजेता", "link": "https://www.gamblingnews.com/news/three-players-win-200k-each-from-powerball/", "sentiment": "利多", "impact": 45.0, "urgency": 25.0}, {"title": "Mega Millions 頭獎累積近五億美元", "title_en": "Mega Millions Jackpot Approaches $500 Million", "title_th": "แจ็กพอต Mega Millions สะสมใกล้แตะ 500 ล้านดอลลาร์", "title_hi": "मेगा मिलियंस का जैकपॉट 500 मिलियन डॉलर के करीब पहुंचा", "link": "https://www.gamblingnews.com/news/mega-millions-jackpot-nears-half-a-billion-dollars-after-remaining-unclaimed/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "紐約賭場項目：雲頂集團未來資本支出的戰略核心", "title_en": "New York Casino Project: Strategic Core of Genting Group's Future Capital Expenditure", "title_th": "โครงการคาสิโนในนิวยอร์ก: หัวใจสำคัญด้านกลยุทธ์การลงทุนของ Genting Group ในอนาคต", "title_hi": "न्यूयॉर्क कैसीनो परियोजना: Genting Group के भविष्य के पूंजी व्यय का रणनीतिक केंद्र", "link": "https://agbrief.com/news/15/06/2026/resorts-world-new-york-city-casino-could-become-genting-top-investment/", "sentiment": "利多", "impact": 80.0, "urgency": 40.0}]}, {"region": "全球", "count": 10, "coords": [20.258628277303885, 9.917914207651727], "sentiment": "利空", "news_full": [{"title": "麥格理預估：2026 世界盃將引爆 500 億美元全球投注額", "title_en": "Macquarie Forecasts: 2026 World Cup to Trigger $50 Billion in Global Betting Volume", "title_th": "Macquarie คาดการณ์: ฟุตบอลโลกปี 2026 จะสร้างยอดเดิมพันทั่วโลกกว่า 5 หมื่นล้านดอลลาร์", "title_hi": "Macquarie का अनुमान: 2026 विश्व कप में 50 बिलियन डॉलर का वैश्विक सट्टेबाजी वॉल्यूम होगा", "link": "https://www.gamblinginsider.com/news/166653/macquarie-2026-world-cup-50-billion-global-wagers", "sentiment": "利多", "impact": 90.0, "urgency": 45.0}, {"title": "1xBet 擴大全球授權版圖以換取長期業務穩定性", "title_en": "1xBet Expands Global Licensing Footprint for Long-term Business Stability", "title_th": "1xBet ขยายฐานใบอนุญาตทั่วโลกเพื่อสร้างเสถียรภาพทางธุรกิจในระยะยาว", "title_hi": "1xBet ने दीर्घकालिक व्यावसायिक स्थिरता के लिए वैश्विक लाइसेंसिंग का विस्तार किया", "link": "https://asgam.com/2026/06/16/why-1xbet-invests-in-global-licensing-and-long-term-stability/", "sentiment": "利多", "impact": 75.0, "urgency": 40.0}, {"title": "AGEM 公佈 2026 年紀念獎獲獎名單", "title_en": "AGEM Announces 2026 Memorial Award Winners", "title_th": "AGEM ประกาศรายชื่อผู้ได้รับรางวัล Memorial Award ประจำปี 2026", "title_hi": "AGEM ने 2026 मेमोरियल अवार्ड विजेताओं की घोषणा की", "link": "https://agbrief.com/news/usa/16/06/2026/agem-names-david-lucchese-and-marcus-prater-as-2026-memorial-award-winners/", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}, {"title": "AGTech 2026 財年營收增長 23.7%，銀行與支付業務表現強勁", "title_en": "AGTech Reports 23.7% Revenue Growth in FY 2026, Driven by Banking and Payment Services", "title_th": "AGTech เผยรายได้ปีงบประมาณ 2026 เติบโต 23.7% จากธุรกิจการธนาคารและการชำระเงิน", "title_hi": "AGTech का FY 2026 राजस्व 23.7% बढ़ा, बैंकिंग और भुगतान सेवाओं ने किया प्रेरित", "link": "https://agbrief.com/news/macau/15/06/2026/agtech-revenue-rises-23-7-in-fy2026-on-banking-and-payments-growth/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "iGaming 產業面臨監管與增長雙重壓力", "title_en": "iGaming Industry Faces Dual Pressure of Regulation and Growth", "title_th": "อุตสาหกรรม iGaming เผชิญแรงกดดันคู่ทั้งจากการกำกับดูแลและการเติบโต", "title_hi": "iGaming उद्योग विनियमन और विकास के दोहरे दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/world/15/06/2026/nyestecasino-com-reports-igaming-industry-navigates-dual-pressures-of-regulation-and-growth/", "sentiment": "利空", "impact": 80.0, "urgency": 70.0}, {"title": "BGaming 發布荒野西部主題老虎機遊戲 Dusty Duel", "title_en": "BGaming Launches Wild West Themed Slot Game 'Dusty Duel'", "title_th": "BGaming เปิดตัวเกมสล็อตธีม Wild West ชื่อ 'Dusty Duel'", "title_hi": "BGaming ने वाइल्ड वेस्ट थीम वाला स्लॉट गेम 'Dusty Duel' लॉन्च किया", "link": "https://www.gamblingnews.com/news/bgaming-releases-dusty-duel-an-intense-wild-west-themed-slot/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "海外博彩網路遭遇突發性技術中斷", "title_en": "Overseas Gaming Network Experiences Sudden Technical Outage", "title_th": "เครือข่ายเกมต่างประเทศประสบเหตุขัดข้องทางเทคนิคกะทันหัน", "title_hi": "विदेशी गेमिंग नेटवर्क में अचानक तकनीकी खराबी", "link": "https://www.gamblingnews.com/news/offshore-gambling-network-faces-sudden-outage/", "sentiment": "利空", "impact": 70.0, "urgency": 85.0}, {"title": "Mindway AI 推出 Gamalyze Sports 應戰世界盃", "title_en": "Mindway AI Launches Gamalyze Sports for the World Cup", "title_th": "Mindway AI เปิดตัว Gamalyze Sports รองรับฟุตบอลโลก", "title_hi": "Mindway AI ने विश्व कप के लिए Gamalyze Sports लॉन्च किया", "link": "https://www.gamblingnews.com/news/mindway-ai-unleashes-gamalyze-sports-in-time-for-world-cup/", "sentiment": "利多", "impact": 65.0, "urgency": 55.0}, {"title": "前 Tekken 製作人釋出鳴潮 (Wuthering Waves) 新實機畫面", "title_en": "Former Tekken Producer Releases New Footage of Wuthering Waves", "title_th": "อดีตโปรดิวเซอร์ Tekken เผยภาพเกมเพลย์ใหม่ของ Wuthering Waves", "title_hi": "पूर्व Tekken निर्माता ने Wuthering Waves का नया फुटेज जारी किया", "link": "https://www.gamingdose.com/news/katsuhiro-harada-%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-tekken-%e0%b9%82%e0%b8%9e%e0%b8%aa%e0%b8%95%e0%b9%8c%e0%b8%84%e0%b8%a5/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Persona 5 X 與初音未來展開聯動合作", "title_en": "Persona 5 X Collaborates with Hatsune Miku", "title_th": "Persona 5 X เปิดตัวแคมเปญร่วมกับ Hatsune Miku", "title_hi": "Persona 5 X ने हत्सुने मिकु के साथ सहयोग किया", "link": "https://www.gamingdose.com/news/%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7-collab-%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-persona-5-x-%e0%b8%81%e0%b8%b1%e0%b8%9a-hatsune-miku-%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}]}, {"region": "英國", "count": 1, "coords": [51.93743222193938, -0.09108727376198553], "sentiment": "利空", "news_full": [{"title": "Flutter 宣布從倫敦證券交易所下市，啟動戰略重組", "title_en": "Flutter Announces Delisting from London Stock Exchange, Initiating Strategic Restructuring", "title_th": "Flutter ประกาศถอนตัวจากตลาดหลักทรัพย์ลอนดอน เริ่มปรับโครงสร้างองค์กรเชิงกลยุทธ์", "title_hi": "Flutter ने लंदन स्टॉक एक्सचेंज से डीलिस्ट होने और रणनीतिक पुनर्गठन शुरू करने की घोषणा की", "link": "https://www.gamblinginsider.com/news/166732/flutter-delist-london-stock-exchange", "sentiment": "利空", "impact": 80.0, "urgency": 50.0}]}, {"region": "菲律賓", "count": 3, "coords": [14.245616373487684, 121.27414832138227], "sentiment": "利空", "news_full": [{"title": "菲律賓參議員 Hontiveros 啟動 2028 總統競選活動", "title_en": "Philippine Senator Hontiveros Launches 2028 Presidential Campaign", "title_th": "วุฒิสมาชิก Hontiveros แห่งฟิลิปปินส์ เริ่มแคมเปญชิงตำแหน่งประธานาธิบดีปี 2028", "title_hi": "फिलीपीन सीनेटर होंटिवरोस ने 2028 राष्ट्रपति अभियान शुरू किया", "link": "https://asgam.com/2026/06/16/philippine-senator-and-anti-pogo-campaigner-risa-hontiveros-launches-2028-presidential-bid/", "sentiment": "利空", "impact": 85.0, "urgency": 70.0}, {"title": "PAGCOR 向民答那峨島地震災民提供救災物資", "title_en": "PAGCOR Provides Relief Goods to Earthquake Victims in Mindanao", "title_th": "PAGCOR มอบสิ่งของบรรเทาทุกข์แก่ผู้ประสบภัยแผ่นดินไหวในมินดาเนา", "title_hi": "PAGCOR ने मिंडानाओ में भूकंप पीड़ितों को राहत सामग्री प्रदान की", "link": "https://www.ggrasia.com/pagcor-sends-relief-aid-to-people-affected-by-mindanao-earthquake?utm_source=rss&utm_medium=rss&utm_campaign=pagcor-sends-relief-aid-to-people-affected-by-mindanao-earthquake", "sentiment": "中立", "impact": 10.0, "urgency": 0.0}, {"title": "菲律賓博彩監管局 (PAGCOR) 為棉蘭老島地震災民提供緊急救援", "title_en": "PAGCOR Provides Emergency Relief to Mindanao Earthquake Victims", "title_th": "PAGCOR มอบความช่วยเหลือฉุกเฉินแก่ผู้ประสบภัยแผ่นดินไหวในมินดาเนา", "title_hi": "PAGCOR ने मिंडानाओ भूकंप पीड़ितों के लिए आपातकालीन राहत प्रदान की", "link": "https://agbrief.com/news/philippines/16/06/2026/pagcor-deploys-emergency-relief-to-victims-of-magnitude-7-8-mindanao-earthquake/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}]}, {"region": "澳門", "count": 3, "coords": [22.22210686791004, 113.41605236303394], "sentiment": "利空", "news_full": [{"title": "澳門六月博彩毛收受世足賽效應影響增速放緩", "title_en": "Macau June GGR Growth Slows Due to World Cup Effect", "title_th": "รายได้รวมจากเกม (GGR) ของมาเก๊าในเดือนมิถุนายนชะลอตัวลงจากผลกระทบของฟุตบอลโลก", "title_hi": "विश्व कप के प्रभाव के कारण मकाऊ का जून GGR विकास धीमा", "link": "https://www.ggrasia.com/macau-june-ggr-pace-slows-amid-world-cup-citi-keeps-forecast-at-us2-4bln?utm_source=rss&utm_medium=rss&utm_campaign=macau-june-ggr-pace-slows-amid-world-cup-citi-keeps-forecast-at-us2-4bln", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}, {"title": "銀河娛樂啟動綠化廢棄物升級回收計劃", "title_en": "Galaxy Entertainment Launches Green Waste Upcycling Program", "title_th": "Galaxy Entertainment เปิดตัวโครงการอัปไซเคิลขยะสีเขียว", "title_hi": "गैलेक्सी एंटरटेनमेंट ने ग्रीन वेस्ट अपसाइक्लिंग प्रोग्राम लॉन्च किया", "link": "https://www.ggrasia.com/galaxy-ent-debuts-upcycling-programme-for-greenery-waste?utm_source=rss&utm_medium=rss&utm_campaign=galaxy-ent-debuts-upcycling-programme-for-greenery-waste", "sentiment": "中立", "impact": 5.0, "urgency": 0.0}, {"title": "世界盃期間澳門博彩毛收入下滑 20%", "title_en": "Macau Gaming Gross Revenue Drops 20% During the World Cup", "title_th": "รายได้รวมจากคาสิโนในมาเก๊าลดลง 20% ในช่วงฟุตบอลโลก", "title_hi": "विश्व कप के दौरान मकाऊ का सकल गेमिंग राजस्व 20% गिरा", "link": "https://agbrief.com/intel/15/06/2026/macau-ggr-run-rate-drops-20-in-early-june-as-world-cup-starts/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "日本", "count": 1, "coords": [35.884881454640826, 139.40848760612147], "sentiment": "利空", "news_full": [{"title": "日本 Bitbank 就博彩監管疑慮警告用戶使用 Polymarket", "title_en": "Japan's Bitbank Warns Users Against Using Polymarket Due to Gaming Concerns", "title_th": "Bitbank ของญี่ปุ่นเตือนผู้ใช้เกี่ยวกับการใช้ Polymarket ท่ามกลางความกังวลด้านกฎระเบียบ", "title_hi": "जापान के बिटबैंक ने गेमिंग चिंताओं के कारण यूजर्स को Polymarket का उपयोग करने के खिलाफ चेतावनी दी", "link": "https://agbrief.com/news/japan/16/06/2026/japans-bitbank-warns-users-over-polymarket-transactions-amid-gambling-concerns/", "sentiment": "利空", "impact": 65.0, "urgency": 60.0}]}, {"region": "拉丁美洲", "count": 1, "coords": [-15.233699495388342, -59.85181058591576], "sentiment": "利多", "news_full": [{"title": "FeedConstruct 獲厄瓜多籃球聯賽轉播權以擴充全球運動版圖", "title_en": "FeedConstruct Secures Ecuadorian Basketball League Broadcasting Rights", "title_th": "FeedConstruct คว้าสิทธิ์ถ่ายทอดสดลีกบาสเกตบอลเอกวาดอร์ เพื่อขยายฐานกีฬาโลก", "title_hi": "FeedConstruct ने इक्वाडोरियन बास्केटबॉल लीग के प्रसारण अधिकार हासिल किए", "link": "https://agbrief.com/news/world/16/06/2026/feedconstruct-secures-ecuadors-liga-basquet-pro-for-growing-global-basketball-portfolio/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}]}, {"region": "北美", "count": 2, "coords": [44.9109626747308, -99.81493726933063], "sentiment": "利多", "news_full": [{"title": "Digitain 榮獲 2026 SBC 美洲區年度最佳平台供應商獎", "title_en": "Digitain Wins 2026 SBC Americas Platform Provider of the Year Award", "title_th": "Digitain คว้ารางวัลผู้ให้บริการแพลตฟอร์มแห่งปีจาก SBC Americas ประจำปี 2026", "title_hi": "Digitain ने 2026 SBC अमेरिकाज प्लेटफॉर्म प्रोवाइडर ऑफ द ईयर पुरस्कार जीता", "link": "https://agbrief.com/news/world/16/06/2026/digitain-wins-platform-provider-of-the-year-at-sbc-awards-americas-2026/", "sentiment": "利多", "impact": 60.0, "urgency": 30.0}, {"title": "JCM Global 完成 Muscogee (Creek) Nation 旗下 10 間賭場的多年期設備部署", "title_en": "JCM Global Completes Multi-Year Equipment Deployment at 10 Muscogee (Creek) Nation Casinos", "title_th": "JCM Global เสร็จสิ้นการติดตั้งอุปกรณ์ระยะเวลาหลายปีในคาสิโน 10 แห่งของ Muscogee (Creek) Nation", "title_hi": "JCM Global ने 10 Muscogee (Creek) Nation कैसीनो में बहु-वर्षीय उपकरण परिनियोजन पूरा किया", "link": "https://agbrief.com/news/usa/16/06/2026/jcm-global-finalizes-multi-year-rollout-at-10-muscogee-creek-nation-casino-properties/", "sentiment": "中立", "impact": 50.0, "urgency": 30.0}]}, {"region": "歐洲", "count": 1, "coords": [50.4670928737644, 15.30138947079443], "sentiment": "利多", "news_full": [{"title": "瑞典法院推翻對 LeoVegas 的 85 萬美元罰款", "title_en": "Swedish Court Overturns $850,000 Fine Against LeoVegas", "title_th": "ศาลสวีเดนยกเลิกค่าปรับ 8.5 แสนดอลลาร์ของ LeoVegas", "title_hi": "स्वीडिश अदालत ने LeoVegas पर लगे 850,000 डॉलर के जुर्माने को खारिज किया", "link": "https://www.gamblingnews.com/news/swedish-court-overturns-spelinspektionens-decision-to-fine-leovegas-854k/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}, {"region": "荷蘭", "count": 1, "coords": [51.920064740084584, 4.991827689867368], "sentiment": "利空", "news_full": [{"title": "荷蘭監管機構對 Betnation 的自願禁入條例違規行為提出警告", "title_en": "Dutch Regulator Warns Betnation on Voluntary Exclusion Violations", "title_th": "หน่วยงานกำกับดูแลเนเธอร์แลนด์เตือน Betnation เรื่องการฝ่าฝืนกฎห้ามเข้าใช้บริการโดยสมัครใจ", "title_hi": "डच नियामक ने Betnation को स्वैच्छिक बहिष्करण नियमों के उल्लंघन पर चेतावनी दी", "link": "https://www.gamblingnews.com/news/dutch-gaming-authority-reprimands-betnation-over-self-exclusion-violations/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}]}];
+        const mapMarkersData = [{"region": "美國", "count": 10, "coords": [37.35304858219647, -95.8185639223152], "sentiment": "利空", "news_full": [{"title": "CFTC 監管動向與體育投注熱潮成產業焦點", "title_en": "CFTC Regulatory Moves and Sports Betting Boom Take Center Stage", "title_th": "ความเคลื่อนไหวด้านกฎระเบียบของ CFTC และกระแสการพนันกีฬาเป็นจุดสนใจของอุตสาหกรรม", "title_hi": "CFTC के नियामक कदम और स्पोर्ट्स बेटिंग बूम उद्योग का मुख्य केंद्र", "link": "https://www.gamblinginsider.com/news/166782/world-cup-wagering-cftc-rulemaking-knicks-comeback-gambling-industry", "sentiment": "中立", "impact": 75.0, "urgency": 65.0}, {"title": "麻州推動體育博弈生態系優化，成美國產業標竿", "title_en": "Massachusetts Promotes Optimization of Sports Betting Ecosystem, Becoming an Industry Benchmark", "title_th": "รัฐแมสซาชูเซตส์ผลักดันการปรับปรุงระบบนิเวศการพนันกีฬาให้เป็นมาตรฐานของสหรัฐฯ", "title_hi": "मैसाचुसेट्स ने स्पोर्ट्स बेटिंग इकोसिस्टम को बढ़ावा दिया, अमेरिकी उद्योग के लिए बेंचमार्क बना", "link": "https://www.gamblinginsider.com/news/166582/massachusetts-leads-way-work-remains-to-create-fair-sustainable-sports-betting-ecosystem", "sentiment": "利多", "impact": 65.0, "urgency": 55.0}, {"title": "ProphetX 獲 CFTC 核准，獲准經營預測市場", "title_en": "ProphetX Receives CFTC Approval to Operate Prediction Markets", "title_th": "ProphetX ได้รับอนุมัติจาก CFTC ให้ดำเนินธุรกิจตลาดการทำนาย", "title_hi": "ProphetX को प्रेडिक्शन मार्केट संचालित करने के लिए CFTC की मंजूरी मिली", "link": "https://www.gamblinginsider.com/news/166600/prophetx-gets-cftc-approval-to-operate-prediction-market", "sentiment": "利多", "impact": 70.0, "urgency": 60.0}, {"title": "RubyPlay 與 Fanatics Casino 合作進軍紐澤西州", "title_en": "RubyPlay Partners with Fanatics Casino to Enter New Jersey", "title_th": "RubyPlay จับมือ Fanatics Casino รุกตลาดนิวเจอร์ซีย์", "title_hi": "RubyPlay ने न्यू जर्सी में प्रवेश करने के लिए Fanatics Casino के साथ साझेदारी की", "link": "https://agbrief.com/news/usa/16/06/2026/rubyplay-expands-reach-with-fanatics-casino-partnership-in-new-jersey/", "sentiment": "利多", "impact": 70.0, "urgency": 45.0}, {"title": "芝加哥市內針對電子博彩出現立場分裂，市長力推廢止相關法令", "title_en": "Chicago Stance on Electronic Gaming Divided; Mayor Pushes for Repeal", "title_th": "ชิคาโกแตกแยกเรื่องการพนันอิเล็กทรอนิกส์ นายกเทศมนตรีผลักดันให้ยกเลิกกฎหมาย", "title_hi": "शिकागो में इलेक्ट्रॉनिक गेमिंग पर रुख विभाजित; मेयर ने निरसन के लिए जोर दिया", "link": "https://www.gamblingnews.com/news/chicago-split-over-video-gaming-as-mayor-pushes-repeal/", "sentiment": "利空", "impact": 55.0, "urgency": 50.0}, {"title": "大西洋城凱撒宮將於 6 月 19 日開設全新海濱酒吧", "title_en": "Caesars Atlantic City to Open New Beachside Bar on June 19", "title_th": "Caesars Atlantic City เตรียมเปิดบาร์ริมหาดแห่งใหม่ 19 มิถุนายนนี้", "title_hi": "Caesars Atlantic City 19 जून को नया बीचसाइड बार खोलेगा", "link": "https://www.gamblingnews.com/news/caesars-atlantic-city-to-open-new-beachfront-bar-on-june-19/", "sentiment": "利多", "impact": 25.0, "urgency": 10.0}, {"title": "內華達州博彩管理委員會 (NGCB) 就 Kalshi 案件尋求法院裁定藐視法庭", "title_en": "Nevada Gaming Control Board (NGCB) Seeks Contempt of Court Ruling in Kalshi Case", "title_th": "คณะกรรมการควบคุมการพนันรัฐเนวาดา (NGCB) ยื่นคำร้องขอให้ศาลวินิจฉัยฐานละเมิดอำนาจศาลในคดี Kalshi", "title_hi": "नेवादा गेमिंग कंट्रोल बोर्ड (NGCB) ने Kalshi मामले में अदालत की अवमानना की मांग की", "link": "https://www.gamblingnews.com/news/ngcb-seeks-contempt-ruling-from-court-against-kalshi/", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "美國強權球彩券開出多名大獎得主", "title_en": "Multiple Jackpot Winners in US Powerball", "title_th": "Powerball สหรัฐฯ มีผู้ถูกรางวัลแจ็กพอตหลายราย", "title_hi": "अमेरिकी पावरबॉल में कई जैकपॉट विजेता", "link": "https://www.gamblingnews.com/news/three-players-win-200k-each-from-powerball/", "sentiment": "利多", "impact": 45.0, "urgency": 25.0}, {"title": "Mega Millions 頭獎累積近五億美元", "title_en": "Mega Millions Jackpot Approaches $500 Million", "title_th": "แจ็กพอต Mega Millions สะสมใกล้แตะ 500 ล้านดอลลาร์", "title_hi": "मेगा मिलियंस का जैकपॉट 500 मिलियन डॉलर के करीब पहुंचा", "link": "https://www.gamblingnews.com/news/mega-millions-jackpot-nears-half-a-billion-dollars-after-remaining-unclaimed/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "紐約賭場項目：雲頂集團未來資本支出的戰略核心", "title_en": "New York Casino Project: Strategic Core of Genting Group's Future Capital Expenditure", "title_th": "โครงการคาสิโนในนิวยอร์ก: หัวใจสำคัญด้านกลยุทธ์การลงทุนของ Genting Group ในอนาคต", "title_hi": "न्यूयॉर्क कैसीनो परियोजना: Genting Group के भविष्य के पूंजी व्यय का रणनीतिक केंद्र", "link": "https://agbrief.com/news/15/06/2026/resorts-world-new-york-city-casino-could-become-genting-top-investment/", "sentiment": "利多", "impact": 80.0, "urgency": 40.0}]}, {"region": "全球", "count": 10, "coords": [20.3040573447763, 9.644901555106305], "sentiment": "利空", "news_full": [{"title": "麥格理預估：2026 世界盃將引爆 500 億美元全球投注額", "title_en": "Macquarie Forecasts: 2026 World Cup to Trigger $50 Billion in Global Betting Volume", "title_th": "Macquarie คาดการณ์: ฟุตบอลโลกปี 2026 จะสร้างยอดเดิมพันทั่วโลกกว่า 5 หมื่นล้านดอลลาร์", "title_hi": "Macquarie का अनुमान: 2026 विश्व कप में 50 बिलियन डॉलर का वैश्विक सट्टेबाजी वॉल्यूम होगा", "link": "https://www.gamblinginsider.com/news/166653/macquarie-2026-world-cup-50-billion-global-wagers", "sentiment": "利多", "impact": 90.0, "urgency": 45.0}, {"title": "1xBet 擴大全球授權版圖以換取長期業務穩定性", "title_en": "1xBet Expands Global Licensing Footprint for Long-term Business Stability", "title_th": "1xBet ขยายฐานใบอนุญาตทั่วโลกเพื่อสร้างเสถียรภาพทางธุรกิจในระยะยาว", "title_hi": "1xBet ने दीर्घकालिक व्यावसायिक स्थिरता के लिए वैश्विक लाइसेंसिंग का विस्तार किया", "link": "https://asgam.com/2026/06/16/why-1xbet-invests-in-global-licensing-and-long-term-stability/", "sentiment": "利多", "impact": 75.0, "urgency": 40.0}, {"title": "AGEM 公佈 2026 年紀念獎獲獎名單", "title_en": "AGEM Announces 2026 Memorial Award Winners", "title_th": "AGEM ประกาศรายชื่อผู้ได้รับรางวัล Memorial Award ประจำปี 2026", "title_hi": "AGEM ने 2026 मेमोरियल अवार्ड विजेताओं की घोषणा की", "link": "https://agbrief.com/news/usa/16/06/2026/agem-names-david-lucchese-and-marcus-prater-as-2026-memorial-award-winners/", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}, {"title": "AGTech 2026 財年營收增長 23.7%，銀行與支付業務表現強勁", "title_en": "AGTech Reports 23.7% Revenue Growth in FY 2026, Driven by Banking and Payment Services", "title_th": "AGTech เผยรายได้ปีงบประมาณ 2026 เติบโต 23.7% จากธุรกิจการธนาคารและการชำระเงิน", "title_hi": "AGTech का FY 2026 राजस्व 23.7% बढ़ा, बैंकिंग और भुगतान सेवाओं ने किया प्रेरित", "link": "https://agbrief.com/news/macau/15/06/2026/agtech-revenue-rises-23-7-in-fy2026-on-banking-and-payments-growth/", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}, {"title": "iGaming 產業面臨監管與增長雙重壓力", "title_en": "iGaming Industry Faces Dual Pressure of Regulation and Growth", "title_th": "อุตสาหกรรม iGaming เผชิญแรงกดดันคู่ทั้งจากการกำกับดูแลและการเติบโต", "title_hi": "iGaming उद्योग विनियमन और विकास के दोहरे दबाव का सामना कर रहा है", "link": "https://agbrief.com/news/world/15/06/2026/nyestecasino-com-reports-igaming-industry-navigates-dual-pressures-of-regulation-and-growth/", "sentiment": "利空", "impact": 80.0, "urgency": 70.0}, {"title": "BGaming 發布荒野西部主題老虎機遊戲 Dusty Duel", "title_en": "BGaming Launches Wild West Themed Slot Game 'Dusty Duel'", "title_th": "BGaming เปิดตัวเกมสล็อตธีม Wild West ชื่อ 'Dusty Duel'", "title_hi": "BGaming ने वाइल्ड वेस्ट थीम वाला स्लॉट गेम 'Dusty Duel' लॉन्च किया", "link": "https://www.gamblingnews.com/news/bgaming-releases-dusty-duel-an-intense-wild-west-themed-slot/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "海外博彩網路遭遇突發性技術中斷", "title_en": "Overseas Gaming Network Experiences Sudden Technical Outage", "title_th": "เครือข่ายเกมต่างประเทศประสบเหตุขัดข้องทางเทคนิคกะทันหัน", "title_hi": "विदेशी गेमिंग नेटवर्क में अचानक तकनीकी खराबी", "link": "https://www.gamblingnews.com/news/offshore-gambling-network-faces-sudden-outage/", "sentiment": "利空", "impact": 70.0, "urgency": 85.0}, {"title": "Mindway AI 推出 Gamalyze Sports 應戰世界盃", "title_en": "Mindway AI Launches Gamalyze Sports for the World Cup", "title_th": "Mindway AI เปิดตัว Gamalyze Sports รองรับฟุตบอลโลก", "title_hi": "Mindway AI ने विश्व कप के लिए Gamalyze Sports लॉन्च किया", "link": "https://www.gamblingnews.com/news/mindway-ai-unleashes-gamalyze-sports-in-time-for-world-cup/", "sentiment": "利多", "impact": 65.0, "urgency": 55.0}, {"title": "前 Tekken 製作人釋出鳴潮 (Wuthering Waves) 新實機畫面", "title_en": "Former Tekken Producer Releases New Footage of Wuthering Waves", "title_th": "อดีตโปรดิวเซอร์ Tekken เผยภาพเกมเพลย์ใหม่ของ Wuthering Waves", "title_hi": "पूर्व Tekken निर्माता ने Wuthering Waves का नया फुटेज जारी किया", "link": "https://www.gamingdose.com/news/katsuhiro-harada-%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-tekken-%e0%b9%82%e0%b8%9e%e0%b8%aa%e0%b8%95%e0%b9%8c%e0%b8%84%e0%b8%a5/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Persona 5 X 與初音未來展開聯動合作", "title_en": "Persona 5 X Collaborates with Hatsune Miku", "title_th": "Persona 5 X เปิดตัวแคมเปญร่วมกับ Hatsune Miku", "title_hi": "Persona 5 X ने हत्सुने मिकु के साथ सहयोग किया", "link": "https://www.gamingdose.com/news/%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7-collab-%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-persona-5-x-%e0%b8%81%e0%b8%b1%e0%b8%9a-hatsune-miku-%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2/", "sentiment": "利多", "impact": 35.0, "urgency": 25.0}]}, {"region": "英國", "count": 1, "coords": [51.37532673675133, -0.044074492929502024], "sentiment": "利空", "news_full": [{"title": "Flutter 宣布從倫敦證券交易所下市，啟動戰略重組", "title_en": "Flutter Announces Delisting from London Stock Exchange, Initiating Strategic Restructuring", "title_th": "Flutter ประกาศถอนตัวจากตลาดหลักทรัพย์ลอนดอน เริ่มปรับโครงสร้างองค์กรเชิงกลยุทธ์", "title_hi": "Flutter ने लंदन स्टॉक एक्सचेंज से डीलिस्ट होने और रणनीतिक पुनर्गठन शुरू करने की घोषणा की", "link": "https://www.gamblinginsider.com/news/166732/flutter-delist-london-stock-exchange", "sentiment": "利空", "impact": 80.0, "urgency": 50.0}]}, {"region": "菲律賓", "count": 3, "coords": [14.537103716899445, 120.77286774857792], "sentiment": "利空", "news_full": [{"title": "菲律賓參議員 Hontiveros 啟動 2028 總統競選活動", "title_en": "Philippine Senator Hontiveros Launches 2028 Presidential Campaign", "title_th": "วุฒิสมาชิก Hontiveros แห่งฟิลิปปินส์ เริ่มแคมเปญชิงตำแหน่งประธานาธิบดีปี 2028", "title_hi": "फिलीपीन सीनेटर होंटिवरोस ने 2028 राष्ट्रपति अभियान शुरू किया", "link": "https://asgam.com/2026/06/16/philippine-senator-and-anti-pogo-campaigner-risa-hontiveros-launches-2028-presidential-bid/", "sentiment": "利空", "impact": 85.0, "urgency": 70.0}, {"title": "PAGCOR 向民答那峨島地震災民提供救災物資", "title_en": "PAGCOR Provides Relief Goods to Earthquake Victims in Mindanao", "title_th": "PAGCOR มอบสิ่งของบรรเทาทุกข์แก่ผู้ประสบภัยแผ่นดินไหวในมินดาเนา", "title_hi": "PAGCOR ने मिंडानाओ में भूकंप पीड़ितों को राहत सामग्री प्रदान की", "link": "https://www.ggrasia.com/pagcor-sends-relief-aid-to-people-affected-by-mindanao-earthquake?utm_source=rss&utm_medium=rss&utm_campaign=pagcor-sends-relief-aid-to-people-affected-by-mindanao-earthquake", "sentiment": "中立", "impact": 10.0, "urgency": 0.0}, {"title": "菲律賓博彩監管局 (PAGCOR) 為棉蘭老島地震災民提供緊急救援", "title_en": "PAGCOR Provides Emergency Relief to Mindanao Earthquake Victims", "title_th": "PAGCOR มอบความช่วยเหลือฉุกเฉินแก่ผู้ประสบภัยแผ่นดินไหวในมินดาเนา", "title_hi": "PAGCOR ने मिंडानाओ भूकंप पीड़ितों के लिए आपातकालीन राहत प्रदान की", "link": "https://agbrief.com/news/philippines/16/06/2026/pagcor-deploys-emergency-relief-to-victims-of-magnitude-7-8-mindanao-earthquake/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}]}, {"region": "澳門", "count": 3, "coords": [22.441115711605555, 114.01753660840673], "sentiment": "利空", "news_full": [{"title": "澳門六月博彩毛收受世足賽效應影響增速放緩", "title_en": "Macau June GGR Growth Slows Due to World Cup Effect", "title_th": "รายได้รวมจากเกม (GGR) ของมาเก๊าในเดือนมิถุนายนชะลอตัวลงจากผลกระทบของฟุตบอลโลก", "title_hi": "विश्व कप के प्रभाव के कारण मकाऊ का जून GGR विकास धीमा", "link": "https://www.ggrasia.com/macau-june-ggr-pace-slows-amid-world-cup-citi-keeps-forecast-at-us2-4bln?utm_source=rss&utm_medium=rss&utm_campaign=macau-june-ggr-pace-slows-amid-world-cup-citi-keeps-forecast-at-us2-4bln", "sentiment": "中立", "impact": 30.0, "urgency": 30.0}, {"title": "銀河娛樂啟動綠化廢棄物升級回收計劃", "title_en": "Galaxy Entertainment Launches Green Waste Upcycling Program", "title_th": "Galaxy Entertainment เปิดตัวโครงการอัปไซเคิลขยะสีเขียว", "title_hi": "गैलेक्सी एंटरटेनमेंट ने ग्रीन वेस्ट अपसाइक्लिंग प्रोग्राम लॉन्च किया", "link": "https://www.ggrasia.com/galaxy-ent-debuts-upcycling-programme-for-greenery-waste?utm_source=rss&utm_medium=rss&utm_campaign=galaxy-ent-debuts-upcycling-programme-for-greenery-waste", "sentiment": "中立", "impact": 5.0, "urgency": 0.0}, {"title": "世界盃期間澳門博彩毛收入下滑 20%", "title_en": "Macau Gaming Gross Revenue Drops 20% During the World Cup", "title_th": "รายได้รวมจากคาสิโนในมาเก๊าลดลง 20% ในช่วงฟุตบอลโลก", "title_hi": "विश्व कप के दौरान मकाऊ का सकल गेमिंग राजस्व 20% गिरा", "link": "https://agbrief.com/intel/15/06/2026/macau-ggr-run-rate-drops-20-in-early-june-as-world-cup-starts/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "日本", "count": 1, "coords": [36.09672612978375, 139.49839497023896], "sentiment": "利空", "news_full": [{"title": "日本 Bitbank 就博彩監管疑慮警告用戶使用 Polymarket", "title_en": "Japan's Bitbank Warns Users Against Using Polymarket Due to Gaming Concerns", "title_th": "Bitbank ของญี่ปุ่นเตือนผู้ใช้เกี่ยวกับการใช้ Polymarket ท่ามกลางความกังวลด้านกฎระเบียบ", "title_hi": "जापान के बिटबैंक ने गेमिंग चिंताओं के कारण यूजर्स को Polymarket का उपयोग करने के खिलाफ चेतावनी दी", "link": "https://agbrief.com/news/japan/16/06/2026/japans-bitbank-warns-users-over-polymarket-transactions-amid-gambling-concerns/", "sentiment": "利空", "impact": 65.0, "urgency": 60.0}]}, {"region": "拉丁美洲", "count": 1, "coords": [-14.508437666145342, -60.34245198454274], "sentiment": "利多", "news_full": [{"title": "FeedConstruct 獲厄瓜多籃球聯賽轉播權以擴充全球運動版圖", "title_en": "FeedConstruct Secures Ecuadorian Basketball League Broadcasting Rights", "title_th": "FeedConstruct คว้าสิทธิ์ถ่ายทอดสดลีกบาสเกตบอลเอกวาดอร์ เพื่อขยายฐานกีฬาโลก", "title_hi": "FeedConstruct ने इक्वाडोरियन बास्केटबॉल लीग के प्रसारण अधिकार हासिल किए", "link": "https://agbrief.com/news/world/16/06/2026/feedconstruct-secures-ecuadors-liga-basquet-pro-for-growing-global-basketball-portfolio/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}]}, {"region": "北美", "count": 2, "coords": [45.048824896434596, -100.14388328291317], "sentiment": "利多", "news_full": [{"title": "Digitain 榮獲 2026 SBC 美洲區年度最佳平台供應商獎", "title_en": "Digitain Wins 2026 SBC Americas Platform Provider of the Year Award", "title_th": "Digitain คว้ารางวัลผู้ให้บริการแพลตฟอร์มแห่งปีจาก SBC Americas ประจำปี 2026", "title_hi": "Digitain ने 2026 SBC अमेरिकाज प्लेटफॉर्म प्रोवाइडर ऑफ द ईयर पुरस्कार जीता", "link": "https://agbrief.com/news/world/16/06/2026/digitain-wins-platform-provider-of-the-year-at-sbc-awards-americas-2026/", "sentiment": "利多", "impact": 60.0, "urgency": 30.0}, {"title": "JCM Global 完成 Muscogee (Creek) Nation 旗下 10 間賭場的多年期設備部署", "title_en": "JCM Global Completes Multi-Year Equipment Deployment at 10 Muscogee (Creek) Nation Casinos", "title_th": "JCM Global เสร็จสิ้นการติดตั้งอุปกรณ์ระยะเวลาหลายปีในคาสิโน 10 แห่งของ Muscogee (Creek) Nation", "title_hi": "JCM Global ने 10 Muscogee (Creek) Nation कैसीनो में बहु-वर्षीय उपकरण परिनियोजन पूरा किया", "link": "https://agbrief.com/news/usa/16/06/2026/jcm-global-finalizes-multi-year-rollout-at-10-muscogee-creek-nation-casino-properties/", "sentiment": "中立", "impact": 50.0, "urgency": 30.0}]}, {"region": "歐洲", "count": 1, "coords": [49.77353229682965, 14.944233544410363], "sentiment": "利多", "news_full": [{"title": "瑞典法院推翻對 LeoVegas 的 85 萬美元罰款", "title_en": "Swedish Court Overturns $850,000 Fine Against LeoVegas", "title_th": "ศาลสวีเดนยกเลิกค่าปรับ 8.5 แสนดอลลาร์ของ LeoVegas", "title_hi": "स्वीडिश अदालत ने LeoVegas पर लगे 850,000 डॉलर के जुर्माने को खारिज किया", "link": "https://www.gamblingnews.com/news/swedish-court-overturns-spelinspektionens-decision-to-fine-leovegas-854k/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}, {"region": "荷蘭", "count": 1, "coords": [52.03749656792395, 4.798119760165666], "sentiment": "利空", "news_full": [{"title": "荷蘭監管機構對 Betnation 的自願禁入條例違規行為提出警告", "title_en": "Dutch Regulator Warns Betnation on Voluntary Exclusion Violations", "title_th": "หน่วยงานกำกับดูแลเนเธอร์แลนด์เตือน Betnation เรื่องการฝ่าฝืนกฎห้ามเข้าใช้บริการโดยสมัครใจ", "title_hi": "डच नियामक ने Betnation को स्वैच्छिक बहिष्करण नियमों के उल्लंघन पर चेतावनी दी", "link": "https://www.gamblingnews.com/news/dutch-gaming-authority-reprimands-betnation-over-self-exclusion-violations/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}]}];
 
         const regionMarkers = {};
 
@@ -5333,14 +5071,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -5357,7 +5087,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -6055,7 +5785,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
