@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-05-24</title>
+    <title>JILI 市場情報指揮中心 - 2026-05-24</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-05-24</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2248,27 +2264,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2344,21 +2346,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Inside Asian Gaming (IAG) 於多倫多舉辦產業活動，匯集全球博弈行業高管與決策者，深入探討北美市場趨勢、跨區域監管挑戰及數位轉型策略，為線上與線下供應商提供重要的國際交流平台與市場觀察窗口。" data-en="Inside Asian Gaming (IAG) hosted an industry event in Toronto, gathering global gaming executives and decision-makers to discuss North American market trends, cross-regional regulatory challenges, and digital transformation strategies, providing a vital platform for international exchange and market insight." data-th="Inside Asian Gaming (IAG) ได้จัดงานอุตสาหกรรมที่โทรอนโต โดยรวบรวมผู้บริหารและผู้ตัดสินใจในอุตสาหกรรมเกมทั่วโลกเพื่อหารือเกี่ยวกับแนวโน้มตลาดอเมริกาเหนือ ความท้าทายด้านกฎระเบียบข้ามภูมิภาค และกลยุทธ์การเปลี่ยนผ่านสู่ดิจิทัล ซึ่งถือเป็นเวทีแลกเปลี่ยนระดับสากลและช่องทางสำคัญในการติดตามสถานการณ์ตลาด" data-hi="Inside Asian Gaming (IAG) ने टोरंटो में एक उद्योग कार्यक्रम आयोजित किया, जिसमें वैश्विक गेमिंग अधिकारियों और निर्णय निर्माताओं ने उत्तरी अमेरिकी बाजार के रुझानों, अंतर-क्षेत्रीय नियामक चुनौतियों और डिजिटल परिवर्तन रणनीतियों पर चर्चा की। यह अंतरराष्ट्रीय आदान-प्रदान और बाजार विश्लेषण के लिए एक महत्वपूर्ण मंच प्रदान करता है।">Inside Asian Gaming (IAG) 於多倫多舉辦產業活動，匯集全球博弈行業高管與決策者，深入探討北美市場趨勢、跨區域監管挑戰及數位轉型策略，為線上與線下供應商提供重要的國際交流平台與市場觀察窗口。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此類峰會是拓展北美市場的關鍵窗口。Jili 應關注數位化轉型趨勢，評估技術架構是否符合北美嚴謹的合規要求，並強化與當地代理商的交流，提前佈局合規技術交付，以應對潛在的北美市場准入機會。" data-en="Such summits are key windows for expanding into the North American market. Jili should focus on digital transformation trends, evaluate whether its technical architecture meets North America&#39;s rigorous compliance requirements, and strengthen relationships with local agents to pre-emptively layout compliant technical delivery for potential market entry." data-th="การประชุมสุดยอดเช่นนี้เป็นช่องทางสำคัญในการขยายตลาดสู่อเมริกาเหนือ Jili ควรให้ความสำคัญกับแนวโน้มการเปลี่ยนผ่านสู่ดิจิทัล ประเมินว่าสถาปัตยกรรมทางเทคนิคเป็นไปตามข้อกำหนดด้านการปฏิบัติตามกฎระเบียบที่เข้มงวดของอเมริกาเหนือหรือไม่ และกระชับความสัมพันธ์กับตัวแทนในพื้นที่ เพื่อเตรียมพร้อมสำหรับการส่งมอบเทคโนโลยีที่สอดคล้องกับกฎระเบียบเพื่อรองรับโอกาสในการเข้าสู่ตลาดอเมริกาเหนือ" data-hi="इस तरह के शिखर सम्मेलन उत्तरी अमेरिकी बाजार में विस्तार के लिए महत्वपूर्ण खिड़की हैं। Jili को डिजिटल परिवर्तन के रुझानों पर ध्यान देना चाहिए, यह मूल्यांकन करना चाहिए कि क्या उसका तकनीकी ढांचा उत्तरी अमेरिका की कठोर अनुपालन आवश्यकताओं को पूरा करता है, और संभावित बाजार प्रवेश के अवसरों का लाभ उठाने के लिए स्थानीय एजेंटों के साथ संचार मजबूत करना चाहिए।">此類峰會是拓展北美市場的關鍵窗口。Jili 應關注數位化轉型趨勢，評估技術架構是否符合北美嚴謹的合規要求，並強化與當地代理商的交流，提前佈局合規技術交付，以應對潛在的北美市場准入機會。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2410,21 +2404,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="前遊戲製作人神谷英樹公開表示，在遊戲開發過程中，若產品品質不達標，與其勉強上市導致口碑崩盤，不如選擇將其取消。此言論引發遊戲產業對於研發週期管理與品質控管的廣泛討論。" data-en="Former game producer Hideki Kamiya publicly stated that if a product does not meet quality standards during development, it is better to cancel it than to launch it and risk a reputation collapse. This has sparked widespread discussion on R&amp;D cycle management and quality control in the gaming industry." data-th="Hideki Kamiya อดีตโปรดิวเซอร์เกมกล่าวว่าในระหว่างการพัฒนาเกม หากผลิตภัณฑ์ไม่ได้คุณภาพ การยกเลิกโปรเจกต์นั้นย่อมดีกว่าการฝืนวางจำหน่ายจนส่งผลเสียต่อชื่อเสียง ความเห็นนี้จุดประเด็นการถกเถียงเรื่องการจัดการวงจรการวิจัยและพัฒนาและการควบคุมคุณภาพในอุตสาหกรรมเกมอย่างกว้างขวาง" data-hi="पूर्व गेम निर्माता हिदेकी कामिया ने सार्वजनिक रूप से कहा कि गेम विकास प्रक्रिया के दौरान, यदि उत्पाद गुणवत्ता मानकों को पूरा नहीं करता है, तो उसे बाजार में उतारने और प्रतिष्ठा खराब करने के बजाय रद्द कर देना बेहतर है। इस बयान ने गेमिंग उद्योग में आरएंडडी प्रबंधन और गुणवत्ता नियंत्रण पर व्यापक चर्चा छेड़ दी है।">前遊戲製作人神谷英樹公開表示，在遊戲開發過程中，若產品品質不達標，與其勉強上市導致口碑崩盤，不如選擇將其取消。此言論引發遊戲產業對於研發週期管理與品質控管的廣泛討論。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="產品穩定性與玩家體驗是 Jili 核心競爭力。此觀點提醒我們在產品開發中，需堅守嚴苛的品質驗收標準，並完善產品防禦機制，避免因追求上線速度而犧牲內容品質，導致品牌信譽受損。" data-en="Product stability and player experience are Jili&#39;s core competencies. This perspective reminds us that we must adhere to rigorous quality acceptance standards during development and perfect product defensive mechanisms, avoiding sacrificing content quality for launch speed, which could damage brand credibility." data-th="ความเสถียรของผลิตภัณฑ์และประสบการณ์ของผู้เล่นคือความสามารถหลักของ Jili มุมมองนี้เตือนใจว่าในการพัฒนาผลิตภัณฑ์ เราต้องยึดมั่นในมาตรฐานการตรวจสอบคุณภาพที่เข้มงวด และสร้างกลไกป้องกันผลิตภัณฑ์ให้สมบูรณ์ เพื่อหลีกเลี่ยงการยอมแลกคุณภาพเนื้อหากับความเร็วในการเปิดตัว ซึ่งอาจทำให้ชื่อเสียงของแบรนด์เสียหายได้" data-hi="उत्पाद की स्थिरता और खिलाड़ी का अनुभव Jili की मुख्य क्षमताएं हैं। यह दृष्टिकोण हमें याद दिलाता है कि विकास के दौरान हमें कड़े गुणवत्ता मानकों का पालन करना चाहिए और उत्पाद सुरक्षा तंत्र को पूर्ण करना चाहिए, ताकि लॉन्च की गति के लिए सामग्री की गुणवत्ता से समझौता न हो, जिससे ब्रांड की विश्वसनीयता को नुकसान न पहुंचे।">產品穩定性與玩家體驗是 Jili 核心競爭力。此觀點提醒我們在產品開發中，需堅守嚴苛的品質驗收標準，並完善產品防禦機制，避免因追求上線速度而犧牲內容品質，導致品牌信譽受損。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2477,21 +2463,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="格鬥遊戲《鐵拳 8》正式揭曉第三年度最後一名 DLC 角色，為動漫《刃牙》中的核心人物「範馬勇次郎」。此 IP 聯動旨在透過高人氣角色陣容，進一步強化遊戲的長線運營與玩家留存率。" data-en="Fighting game &#39;Tekken 8&#39; has officially revealed the final DLC character for Year 3: Yujiro Hanma, a core character from the anime &#39;Baki&#39;. This IP collaboration aims to strengthen long-term game operations and player retention through a high-popularity character lineup." data-th="เกมต่อสู้ &#39;Tekken 8&#39; เปิดตัวละคร DLC ตัวสุดท้ายของปีที่ 3 อย่างเป็นทางการ คือ &#39;Yujiro Hanma&#39; ตัวละครหลักจากอนิเมะเรื่อง &#39;Baki&#39; การร่วมมือข้าม IP ครั้งนี้มีจุดมุ่งหมายเพื่อเสริมความแข็งแกร่งให้กับการดำเนินงานระยะยาวของเกมและการรักษาฐานผู้เล่นผ่านรายชื่อตัวละครยอดนิยม" data-hi="फाइटिंग गेम &#39;Tekken 8&#39; ने तीसरे वर्ष के अंतिम DLC पात्र का आधिकारिक खुलासा किया है: &#39;बकी&#39; (Baki) एनीमे का मुख्य पात्र &#39;युजिरो हनमा&#39;। इस IP सहयोग का उद्देश्य लोकप्रिय पात्रों की लाइनअप के माध्यम से गेम के दीर्घकालिक संचालन और खिलाड़ी प्रतिधारण (retention) को मजबूत करना है।">格鬥遊戲《鐵拳 8》正式揭曉第三年度最後一名 DLC 角色，為動漫《刃牙》中的核心人物「範馬勇次郎」。此 IP 聯動旨在透過高人氣角色陣容，進一步強化遊戲的長線運營與玩家留存率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="跨 IP 聯動是提升遊戲長尾效應的利器。Jili 在遊戲設計中可參考此模式，通過具備高市場認同度的 IP 元素提升產品吸引力，並關注如何在線上博弈架構中融入類似的「角色收集」與成長元素以提升粘性。" data-en="Cross-IP collaboration is a powerful tool for enhancing long-tail game effects. Jili can adopt this model in game design, utilizing high-recognition IP elements to increase product appeal, and explore how to incorporate similar &#39;character collection&#39; and growth elements into online gaming architecture to improve stickiness." data-th="การร่วมมือข้าม IP เป็นเครื่องมือทรงพลังในการเพิ่มผลลัพธ์ระยะยาวของเกม Jili สามารถนำโมเดลนี้ไปใช้ในการออกแบบเกม โดยการใช้องค์ประกอบ IP ที่เป็นที่ยอมรับในตลาดสูงเพื่อเพิ่มความน่าสนใจให้กับผลิตภัณฑ์ และพิจารณาว่าจะผสมผสานองค์ประกอบการ &#39;สะสมตัวละคร&#39; และการเติบโตในรูปแบบที่คล้ายคลึงกันเข้ากับสถาปัตยกรรมเกมออนไลน์เพื่อเพิ่มความเหนียวแน่นได้อย่างไร" data-hi="क्रॉस-IP सहयोग गेम के प्रभाव को बढ़ाने के लिए एक बेहतरीन उपकरण है। Jili गेम डिज़ाइन में इस मॉडल का संदर्भ ले सकता है, उच्च बाजार पहचान वाले IP तत्वों के माध्यम से उत्पाद की अपील बढ़ा सकता है, और स्टिकनेस बढ़ाने के लिए ऑनलाइन गेमिंग आर्किटेक्चर में &#39;चरित्र संग्रह&#39; और विकास तत्वों को शामिल करने पर विचार कर सकता है।">跨 IP 聯動是提升遊戲長尾效應的利器。Jili 在遊戲設計中可參考此模式，通過具備高市場認同度的 IP 元素提升產品吸引力，並關注如何在線上博弈架構中融入類似的「角色收集」與成長元素以提升粘性。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
 
                     </div>
 
@@ -2544,21 +2522,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="《Forza Horizon 6》在 Steam 平台上架後表現搶眼，迅速衝上熱門遊戲排行榜榜首。強大的玩家參與度與遊戲發布後的穩定表現，再次印證了高品質 3A 級遊戲內容在數位通路上的市場號召力。" data-en="After launching on Steam, &#39;Forza Horizon 6&#39; performed impressively, quickly reaching the top of the popular game charts. High player engagement and stable performance post-launch confirm the market appeal of high-quality 3A game content on digital platforms." data-th="&#39;Forza Horizon 6&#39; ทำผลงานได้อย่างโดดเด่นหลังจากเปิดตัวบนแพลตฟอร์ม Steam โดยทะยานขึ้นสู่อันดับต้นๆ ของเกมยอดนิยมอย่างรวดเร็ว การมีส่วนร่วมของผู้เล่นที่สูงและประสิทธิภาพที่เสถียรหลังเปิดตัว เป็นการยืนยันอีกครั้งถึงพลังในการดึงดูดตลาดของเนื้อหาเกมระดับ 3A คุณภาพสูงบนช่องทางดิจิทัล" data-hi="Steam प्लेटफॉर्म पर लॉन्च होने के बाद &#39;Forza Horizon 6&#39; ने शानदार प्रदर्शन किया है और तेजी से शीर्ष लोकप्रिय गेम चार्ट पर पहुंच गया है। उच्च खिलाड़ी जुड़ाव और लॉन्च के बाद स्थिर प्रदर्शन, डिजिटल चैनलों पर उच्च गुणवत्ता वाली 3A गेम सामग्री की बाजार अपील की पुष्टि करता है।">《Forza Horizon 6》在 Steam 平台上架後表現搶眼，迅速衝上熱門遊戲排行榜榜首。強大的玩家參與度與遊戲發布後的穩定表現，再次印證了高品質 3A 級遊戲內容在數位通路上的市場號召力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="熱門遊戲的高留存數據證明了精緻視覺與高互動性內容的成功。Jili 應藉此趨勢，持續優化核心遊戲引擎的流暢度與視聽饗宴，確保產品在競爭激烈的線上市場中能透過卓越體驗贏得高價值玩家。" data-en="Strong retention data for hit games proves the success of exquisite visuals and highly interactive content. Jili should capitalize on this trend by continuously optimizing the fluidity and audiovisual experience of its core game engines, ensuring products win over high-value players through exceptional experiences in a competitive online market." data-th="ข้อมูลการรักษาผู้เล่นที่สูงของเกมยอดนิยมพิสูจน์ให้เห็นถึงความสำเร็จของเนื้อหาที่มีภาพสวยงามและการโต้ตอบที่สูง Jili ควรใช้ประโยชน์จากแนวโน้มนี้ โดยการปรับปรุงความลื่นไหลของเอนจินเกมหลักและประสบการณ์ทางภาพและเสียงอย่างต่อเนื่อง เพื่อให้มั่นใจว่าผลิตภัณฑ์จะได้รับชัยชนะเหนือผู้เล่นระดับสูงผ่านประสบการณ์ที่ยอดเยี่ยมในตลาดออนไลน์ที่มีการแข่งขันสูง" data-hi="लोकप्रिय खेलों का उच्च प्रतिधारण डेटा उत्कृष्ट दृश्यों और अत्यधिक इंटरैक्टिव सामग्री की सफलता साबित करता है। Jili को इस प्रवृत्ति का लाभ उठाकर अपने मुख्य गेम इंजन की तरलता और दृश्य-श्रव्य अनुभव को अनुकूलित करना चाहिए, ताकि यह सुनिश्चित हो सके कि उत्पाद प्रतिस्पर्धी ऑनलाइन बाजार में उत्कृष्ट अनुभव के माध्यम से उच्च-मूल्य वाले खिलाड़ियों को जीत सकें।">熱門遊戲的高留存數據證明了精緻視覺與高互動性內容的成功。Jili 應藉此趨勢，持續優化核心遊戲引擎的流暢度與視聽饗宴，確保產品在競爭激烈的線上市場中能透過卓越體驗贏得高價值玩家。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -2611,21 +2581,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Epic Games 宣布推出最新開發引擎 Unreal Engine 6，並確認將率先應用於《Rocket League》等專案。此引擎預計將大幅提升圖像渲染力與運算效能，為遊戲開發定義全新的技術標準。" data-en="Epic Games has announced the release of its latest development engine, Unreal Engine 6, confirming it will first be applied to projects like &#39;Rocket League&#39;. This engine is expected to significantly boost rendering and computational performance, setting a new technical standard for game development." data-th="Epic Games ประกาศเปิดตัวเอนจินการพัฒนาเกมล่าสุด Unreal Engine 6 และยืนยันว่าจะนำไปประยุกต์ใช้กับโปรเจกต์อย่าง &#39;Rocket League&#39; เป็นอันดับแรก เอนจินนี้คาดว่าจะช่วยเพิ่มประสิทธิภาพการเรนเดอร์ภาพและพลังการประมวลผลอย่างมาก พร้อมกำหนดมาตรฐานทางเทคนิคใหม่สำหรับการพัฒนาเกม" data-hi="Epic Games ने अपने नवीनतम विकास इंजन, Unreal Engine 6 के लॉन्च की घोषणा की है, और पुष्टि की है कि इसे पहले &#39;Rocket League&#39; जैसी परियोजनाओं पर लागू किया जाएगा। उम्मीद है कि यह इंजन रेंडरिंग और कंप्यूटेशनल प्रदर्शन को काफी बढ़ा देगा, जो गेम विकास के लिए एक नया तकनीकी मानक स्थापित करेगा।">Epic Games 宣布推出最新開發引擎 Unreal Engine 6，並確認將率先應用於《Rocket League》等專案。此引擎預計將大幅提升圖像渲染力與運算效能，為遊戲開發定義全新的技術標準。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="UE6 的發布將重塑遊戲視覺規格。作為供應商，Jili 需評估該引擎在 HTML5 與移動端遊戲開發的相容性與輕量化潛力，以保持技術領先，並防禦競爭對手利用新技術帶來的視覺差異化競爭。" data-en="The release of UE6 will reshape visual specifications for games. As a supplier, Jili needs to evaluate the compatibility and lightweight potential of this engine for HTML5 and mobile game development to maintain a technical edge and defend against visual differentiation competition driven by competitors using new technology." data-th="การเปิดตัว UE6 จะเปลี่ยนโฉมข้อกำหนดด้านภาพของเกม ในฐานะผู้ให้บริการ Jili จำเป็นต้องประเมินความเข้ากันได้และศักยภาพในการพัฒนาแบบเบา (lightweight) สำหรับ HTML5 และเกมบนมือถือ เพื่อรักษาความเป็นผู้นำทางเทคนิค และป้องกันการแข่งขันด้านความแตกต่างทางภาพที่คู่แข่งอาจนำเทคโนโลยีใหม่มาใช้" data-hi="UE6 का रिलीज खेलों के लिए दृश्य विनिर्देशों को नया आकार देगा। एक आपूर्तिकर्ता के रूप में, Jili को तकनीकी बढ़त बनाए रखने और नई तकनीक का उपयोग करने वाले प्रतिस्पर्धियों द्वारा लाए गए दृश्य अंतर से बचाव के लिए HTML5 और मोबाइल गेम विकास के लिए इस इंजन की संगतता और हल्के वजन की क्षमता का मूल्यांकन करना चाहिए।">UE6 的發布將重塑遊戲視覺規格。作為供應商，Jili 需評估該引擎在 HTML5 與移動端遊戲開發的相容性與輕量化潛力，以保持技術領先，並防禦競爭對手利用新技術帶來的視覺差異化競爭。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 90</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 90</span>
 
                     </div>
 
@@ -2677,21 +2639,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="《最終幻想 7》重製系列導演證實，最終章將繼續保留 Chadley 角色，並確認其在劇情與遊戲系統中扮演重要角色。此說明確保了系列作在玩法與敘事架構上的延續性，維持玩家對於完整篇章的期待。" data-en="The director of the &#39;Final Fantasy 7&#39; remake series confirmed that the final installment will continue to feature the character Chadley, playing a significant role in the plot and game system. This ensures continuity in gameplay and narrative structure, maintaining player anticipation for the final chapter." data-th="ผู้กำกับซีรีส์ &#39;Final Fantasy 7&#39; Remake ยืนยันว่าในภาคสุดท้ายจะยังคงมีตัวละคร Chadley อยู่ โดยมีบทบาทสำคัญในเนื้อเรื่องและระบบของเกม สิ่งนี้ช่วยรับประกันความต่อเนื่องในแง่ของเกมเพลย์และโครงสร้างการเล่าเรื่อง เพื่อรักษาความคาดหวังของผู้เล่นสำหรับบทสรุปของซีรีส์" data-hi="&#39;Final Fantasy 7&#39; रीमेक श्रृंखला के निर्देशक ने पुष्टि की है कि अंतिम किस्त में &#39;Chadley&#39; पात्र बना रहेगा, जो कथानक और गेम सिस्टम में एक महत्वपूर्ण भूमिका निभाएगा। यह गेमप्ले और कथा संरचना में निरंतरता सुनिश्चित करता है, अंतिम अध्याय के लिए खिलाड़ियों की उत्सुकता को बनाए रखता है।">《最終幻想 7》重製系列導演證實，最終章將繼續保留 Chadley 角色，並確認其在劇情與遊戲系統中扮演重要角色。此說明確保了系列作在玩法與敘事架構上的延續性，維持玩家對於完整篇章的期待。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="長線 IP 的角色連貫性是維持忠誠度的關鍵。Jili 在開發系列產品時，應重視遊戲系統核心要素的一致性與發展性，確保玩家在不同產品間能獲得熟悉的體驗，藉此鞏固產品矩陣的品牌效應。" data-en="Role consistency in long-term IP is crucial for maintaining loyalty. When developing series products, Jili should prioritize consistency and scalability in core game system elements, ensuring players have a familiar experience across different products to solidify the brand effect of the product matrix." data-th="ความต่อเนื่องของตัวละครใน IP ระยะยาวเป็นกุญแจสำคัญในการรักษาความภักดี เมื่อพัฒนาผลิตภัณฑ์ในซีรีส์ Jili ควรให้ความสำคัญกับความสอดคล้องและการพัฒนาขององค์ประกอบหลักของระบบเกม เพื่อให้มั่นใจว่าผู้เล่นจะได้รับประสบการณ์ที่คุ้นเคยในผลิตภัณฑ์ต่างๆ ซึ่งจะช่วยเสริมสร้างผลกระทบต่อแบรนด์ของกลุ่มผลิตภัณฑ์ให้แข็งแกร่งขึ้น" data-hi="दीर्घकालिक IP में चरित्र निरंतरता वफादारी बनाए रखने के लिए महत्वपूर्ण है। श्रृंखला के उत्पादों को विकसित करते समय, Jili को मुख्य गेम सिस्टम तत्वों में स्थिरता और विकास को प्राथमिकता देनी चाहिए, यह सुनिश्चित करते हुए कि खिलाड़ियों को विभिन्न उत्पादों में एक समान अनुभव मिले, जिससे उत्पाद मैट्रिक्स के ब्रांड प्रभाव को मजबूत किया जा सके।">長線 IP 的角色連貫性是維持忠誠度的關鍵。Jili 在開發系列產品時，應重視遊戲系統核心要素的一致性與發展性，確保玩家在不同產品間能獲得熟悉的體驗，藉此鞏固產品矩陣的品牌效應。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
 
                     </div>
 
@@ -2744,21 +2698,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="備受矚目的遊戲《007 First Light》近日釋出了首段開場實機影像，其緊張刺激的節奏與高擬真的場景刻畫成為亮點。展示了開發團隊對於動作遊戲沉浸感的精準掌握，引起市場高度關注。" data-en="The highly anticipated game &#39;007 First Light&#39; recently released its first actual gameplay footage. Its tense pace and highly realistic scene depiction are highlights, showcasing the development team&#39;s precise grasp of action game immersion and drawing significant market attention." data-th="เกมที่น่าจับตามองอย่าง &#39;007 First Light&#39; ได้ปล่อยภาพตัวอย่างการเล่นจริงชุดแรกออกมา โดยจุดเด่นคือจังหวะที่ตึงเครียดและการวาดฉากที่สมจริงอย่างมาก แสดงให้เห็นถึงความเข้าใจที่แม่นยำของทีมพัฒนาในการสร้างความดื่มด่ำของเกมแอคชั่น และดึงดูดความสนใจจากตลาดได้อย่างมหาศาล" data-hi="बहुप्रतीक्षित गेम &#39;007 First Light&#39; ने हाल ही में अपना पहला वास्तविक गेमप्ले फुटेज जारी किया है। इसकी तनावपूर्ण गति और अत्यधिक यथार्थवादी दृश्य चित्रण मुख्य आकर्षण हैं, जो एक्शन गेम में तल्लीनता (immersion) की विकास टीम की सटीक पकड़ को प्रदर्शित करते हैं और बाजार का काफी ध्यान आकर्षित कर रहे हैं।">備受矚目的遊戲《007 First Light》近日釋出了首段開場實機影像，其緊張刺激的節奏與高擬真的場景刻畫成為亮點。展示了開發團隊對於動作遊戲沉浸感的精準掌握，引起市場高度關注。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="極致的沉浸感體驗是提高轉化率的關鍵。Jili 應學習其緊湊的開場節奏設計，將類似的戲劇張力融入遊戲導引與免費試玩機制中，藉此降低玩家流失率並最大化初次進入遊戲的吸引力。" data-en="An ultimate immersive experience is the key to increasing conversion rates. Jili should study its tight opening pace design, integrating similar dramatic tension into game tutorials and free-to-play mechanisms to reduce player churn and maximize the appeal upon first entry." data-th="ประสบการณ์ที่ดื่มด่ำถึงขีดสุดคือกุญแจสำคัญในการเพิ่มอัตราการเปลี่ยนผู้เล่น (conversion rates) Jili ควรศึกษาการออกแบบจังหวะการเปิดเกมที่กระชับ โดยนำความตึงเครียดทางอารมณ์ที่คล้ายคลึงกันไปใช้ในบทเรียนการเล่นและกลไกทดลองเล่นฟรี เพื่อลดอัตราการเลิกเล่นและเพิ่มแรงดึงดูดในการเข้าเกมครั้งแรกให้ถึงขีดสุด" data-hi="एक बेहतरीन इमर्सिव अनुभव रूपांतरण दर बढ़ाने की कुंजी है। Jili को इसके चुस्त शुरुआती गति डिज़ाइन का अध्ययन करना चाहिए, समान नाटकीय तनाव को गेम ट्यूटोरियल और फ्री-टू-प्ले तंत्र में एकीकृत करना चाहिए ताकि खिलाड़ी के छोड़ने की दर को कम किया जा सके और पहली बार प्रवेश करने पर अपील को अधिकतम किया जा सके।">極致的沉浸感體驗是提高轉化率的關鍵。Jili 應學習其緊湊的開場節奏設計，將類似的戲劇張力融入遊戲導引與免費試玩機制中，藉此降低玩家流失率並最大化初次進入遊戲的吸引力。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 35</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 20</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 35</span>
 
                     </div>
 
@@ -3147,7 +3093,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "北美", "count": 1, "coords": [45.13164718297642, -99.77321755815592], "sentiment": "利多", "news_full": [{"title": "IAG 多倫多現場產業論壇：博弈產業趨勢交流", "title_en": "IAG Toronto Industry Forum: Gaming Industry Trends Exchange", "title_th": "งานสัมมนาอุตสาหกรรม IAG ณ โทรอนโต: การแลกเปลี่ยนแนวโน้มอุตสาหกรรมเกม", "title_hi": "IAG टोरंटो उद्योग मंच: गेमिंग उद्योग के रुझानों का आदान-प्रदान", "link": "https://asgam.com/2026/05/24/iag-live-from-toronto/", "sentiment": "利多", "impact": 75.0, "urgency": 40.0}]}, {"region": "全球", "count": 6, "coords": [20.344196533221343, 10.1948526775022], "sentiment": "利多", "news_full": [{"title": "神谷英樹觀點：與其強推劣質產品，不如果斷停損", "title_en": "Hideki Kamiya's View: Better to Cancel Than Push Inferior Products", "title_th": "มุมมองของ Hideki Kamiya: การตัดใจยกเลิกดีกว่าการฝืนปล่อยผลิตภัณฑ์คุณภาพต่ำ", "title_hi": "हिदेकी कामिया का दृष्टिकोण: घटिया उत्पाद लॉन्च करने से बेहतर है उसे रद्द करना", "link": "https://www.gamingdose.com/news/hideki-kamiya-%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-bayonetta-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b8%81%e0%b8%b2/", "sentiment": "中立", "impact": 30.0, "urgency": 25.0}, {"title": "《鐵拳 8》第三年度 DLC 角色公佈：勇次郎強勢加盟", "title_en": "Tekken 8 Year 3 DLC Character Announced: Yujiro Hanma Joins the Fight", "title_th": "ประกาศตัวละคร DLC ปีที่ 3 ของ Tekken 8: Yujiro Hanma เข้าร่วมศึกแล้ว", "title_hi": "Tekken 8 तीसरे वर्ष का DLC पात्र घोषित: युजिरो हनमा की धमाकेदार एंट्री", "link": "https://www.gamingdose.com/news/%e0%b9%80%e0%b8%9c%e0%b8%a2%e0%b9%82%e0%b8%89%e0%b8%a1%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%a5%e0%b8%b0%e0%b8%84%e0%b8%a3-dlc-tekken-8-year-3-%e0%b8%84%e0%b8%99%e0%b8%aa%e0%b8%b8%e0%b8%94%e0%b8%97/", "sentiment": "利多", "impact": 45.0, "urgency": 30.0}, {"title": "《Forza Horizon 6》Steam 數據表現強勁，穩居熱門榜首", "title_en": "Forza Horizon 6 Shows Strong Performance on Steam, Tops Charts", "title_th": "Forza Horizon 6 ทำผลงานได้ดีเยี่ยมบน Steam ครองอันดับสูงสุดในรายการยอดนิยม", "title_hi": "Forza Horizon 6 Steam पर मजबूत प्रदर्शन के साथ शीर्ष चार्ट पर काबिज", "link": "https://www.gamingdose.com/news/%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99-forza-horizon-6-%e0%b8%9a%e0%b8%99-steam-%e0%b8%a2%e0%b8%b1%e0%b8%87%e0%b9%81%e0%b8%a3%e0%b8%87-%e0%b8%95/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "Epic Games 發布 Unreal Engine 6，正式開啟新世代開發週期", "title_en": "Epic Games Releases Unreal Engine 6, Launching New Generation Development Cycle", "title_th": "Epic Games เปิดตัว Unreal Engine 6 เริ่มต้นวงจรการพัฒนาเกมยุคใหม่", "title_hi": "Epic Games ने Unreal Engine 6 जारी किया, नई पीढ़ी के विकास चक्र की शुरुआत", "link": "https://www.gamingdose.com/news/epic-games-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7-unreal-engine-6-%e0%b8%81%e0%b9%89%e0%b8%b2%e0%b8%a7%e0%b8%aa%e0%b8%b9%e0%b9%88%e0%b8%a2%e0%b8%b8%e0%b8%84%e0%b9%83/", "sentiment": "利多", "impact": 90.0, "urgency": 50.0}, {"title": "《FF7》重製系列製作人證實：第三部 Chadley 角色依舊關鍵", "title_en": "FF7 Remake Producer Confirms: Chadley Remains Key in Part 3", "title_th": "โปรดิวเซอร์ FF7 Remake ยืนยัน: Chadley ยังคงเป็นตัวละครสำคัญในภาคที่ 3", "title_hi": "FF7 रीमेक निर्माता ने पुष्टि की: Chadley भाग 3 में भी बना रहेगा महत्वपूर्ण पात्र", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%81%e0%b8%b3%e0%b8%81%e0%b8%b1%e0%b8%9a-ff7-remake-rebirth-%e0%b8%a2%e0%b8%b7%e0%b8%99%e0%b8%a2%e0%b8%b1%e0%b8%99%e0%b8%a7%e0%b9%88%e0%b8%b2%e0%b9%80%e0%b8%81%e0%b8%a1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《007 First Light》開場實機畫面釋出，展現極致張力", "title_en": "007 First Light Gameplay Footage Released, Showcasing Intense Tension", "title_th": "ปล่อยภาพตัวอย่างเกมเพลย์ 007 First Light เผยความตึงเครียดถึงขีดสุด", "title_hi": "007 First Light का गेमप्ले फुटेज जारी, दिखाई दी चरम तनावपूर्ण स्थिति", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%8a%e0%b8%a1-gameplay-%e0%b8%8a%e0%b9%88%e0%b8%a7%e0%b8%87%e0%b9%81%e0%b8%a3%e0%b8%81-007-first-light-%e0%b9%82%e0%b8%8a%e0%b8%a7%e0%b9%8c%e0%b8%84%e0%b8%a7%e0%b8%b2/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
+        const mapMarkersData = [{"region": "北美", "count": 1, "coords": [44.97077284199424, -99.5950073754869], "sentiment": "利多", "news_full": [{"title": "IAG 多倫多現場產業論壇：博弈產業趨勢交流", "title_en": "IAG Toronto Industry Forum: Gaming Industry Trends Exchange", "title_th": "งานสัมมนาอุตสาหกรรม IAG ณ โทรอนโต: การแลกเปลี่ยนแนวโน้มอุตสาหกรรมเกม", "title_hi": "IAG टोरंटो उद्योग मंच: गेमिंग उद्योग के रुझानों का आदान-प्रदान", "link": "https://asgam.com/2026/05/24/iag-live-from-toronto/", "sentiment": "利多", "impact": 75.0, "urgency": 40.0}]}, {"region": "全球", "count": 6, "coords": [19.87829770642616, 9.523627382226211], "sentiment": "利多", "news_full": [{"title": "神谷英樹觀點：與其強推劣質產品，不如果斷停損", "title_en": "Hideki Kamiya's View: Better to Cancel Than Push Inferior Products", "title_th": "มุมมองของ Hideki Kamiya: การตัดใจยกเลิกดีกว่าการฝืนปล่อยผลิตภัณฑ์คุณภาพต่ำ", "title_hi": "हिदेकी कामिया का दृष्टिकोण: घटिया उत्पाद लॉन्च करने से बेहतर है उसे रद्द करना", "link": "https://www.gamingdose.com/news/hideki-kamiya-%e0%b8%ad%e0%b8%94%e0%b8%b5%e0%b8%95%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-bayonetta-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b8%81%e0%b8%b2/", "sentiment": "中立", "impact": 30.0, "urgency": 25.0}, {"title": "《鐵拳 8》第三年度 DLC 角色公佈：勇次郎強勢加盟", "title_en": "Tekken 8 Year 3 DLC Character Announced: Yujiro Hanma Joins the Fight", "title_th": "ประกาศตัวละคร DLC ปีที่ 3 ของ Tekken 8: Yujiro Hanma เข้าร่วมศึกแล้ว", "title_hi": "Tekken 8 तीसरे वर्ष का DLC पात्र घोषित: युजिरो हनमा की धमाकेदार एंट्री", "link": "https://www.gamingdose.com/news/%e0%b9%80%e0%b8%9c%e0%b8%a2%e0%b9%82%e0%b8%89%e0%b8%a1%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%a5%e0%b8%b0%e0%b8%84%e0%b8%a3-dlc-tekken-8-year-3-%e0%b8%84%e0%b8%99%e0%b8%aa%e0%b8%b8%e0%b8%94%e0%b8%97/", "sentiment": "利多", "impact": 45.0, "urgency": 30.0}, {"title": "《Forza Horizon 6》Steam 數據表現強勁，穩居熱門榜首", "title_en": "Forza Horizon 6 Shows Strong Performance on Steam, Tops Charts", "title_th": "Forza Horizon 6 ทำผลงานได้ดีเยี่ยมบน Steam ครองอันดับสูงสุดในรายการยอดนิยม", "title_hi": "Forza Horizon 6 Steam पर मजबूत प्रदर्शन के साथ शीर्ष चार्ट पर काबिज", "link": "https://www.gamingdose.com/news/%e0%b8%a2%e0%b8%ad%e0%b8%94%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b9%80%e0%b8%a5%e0%b9%88%e0%b8%99-forza-horizon-6-%e0%b8%9a%e0%b8%99-steam-%e0%b8%a2%e0%b8%b1%e0%b8%87%e0%b9%81%e0%b8%a3%e0%b8%87-%e0%b8%95/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "Epic Games 發布 Unreal Engine 6，正式開啟新世代開發週期", "title_en": "Epic Games Releases Unreal Engine 6, Launching New Generation Development Cycle", "title_th": "Epic Games เปิดตัว Unreal Engine 6 เริ่มต้นวงจรการพัฒนาเกมยุคใหม่", "title_hi": "Epic Games ने Unreal Engine 6 जारी किया, नई पीढ़ी के विकास चक्र की शुरुआत", "link": "https://www.gamingdose.com/news/epic-games-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7-unreal-engine-6-%e0%b8%81%e0%b9%89%e0%b8%b2%e0%b8%a7%e0%b8%aa%e0%b8%b9%e0%b9%88%e0%b8%a2%e0%b8%b8%e0%b8%84%e0%b9%83/", "sentiment": "利多", "impact": 90.0, "urgency": 50.0}, {"title": "《FF7》重製系列製作人證實：第三部 Chadley 角色依舊關鍵", "title_en": "FF7 Remake Producer Confirms: Chadley Remains Key in Part 3", "title_th": "โปรดิวเซอร์ FF7 Remake ยืนยัน: Chadley ยังคงเป็นตัวละครสำคัญในภาคที่ 3", "title_hi": "FF7 रीमेक निर्माता ने पुष्टि की: Chadley भाग 3 में भी बना रहेगा महत्वपूर्ण पात्र", "link": "https://www.gamingdose.com/news/%e0%b8%9c%e0%b8%b9%e0%b9%89%e0%b8%81%e0%b8%b3%e0%b8%81%e0%b8%b1%e0%b8%9a-ff7-remake-rebirth-%e0%b8%a2%e0%b8%b7%e0%b8%99%e0%b8%a2%e0%b8%b1%e0%b8%99%e0%b8%a7%e0%b9%88%e0%b8%b2%e0%b9%80%e0%b8%81%e0%b8%a1/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "《007 First Light》開場實機畫面釋出，展現極致張力", "title_en": "007 First Light Gameplay Footage Released, Showcasing Intense Tension", "title_th": "ปล่อยภาพตัวอย่างเกมเพลย์ 007 First Light เผยความตึงเครียดถึงขีดสุด", "title_hi": "007 First Light का गेमप्ले फुटेज जारी, दिखाई दी चरम तनावपूर्ण स्थिति", "link": "https://www.gamingdose.com/news/%e0%b8%a3%e0%b8%b1%e0%b8%9a%e0%b8%8a%e0%b8%a1-gameplay-%e0%b8%8a%e0%b9%88%e0%b8%a7%e0%b8%87%e0%b9%81%e0%b8%a3%e0%b8%81-007-first-light-%e0%b9%82%e0%b8%8a%e0%b8%a7%e0%b9%8c%e0%b8%84%e0%b8%a7%e0%b8%b2/", "sentiment": "利多", "impact": 35.0, "urgency": 20.0}]}];
 
         const regionMarkers = {};
 
@@ -3588,14 +3534,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -3612,7 +3550,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -4310,7 +4248,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
