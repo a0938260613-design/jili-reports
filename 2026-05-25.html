@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-05-25</title>
+    <title>JILI 市場情報指揮中心 - 2026-05-25</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-05-25</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2258,27 +2274,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2354,21 +2356,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="電競主辦方 PGL 與蒙古頂級戰隊 The Mongolz 近期接受訪談，討論電子競技在全球市場的商業化進程與影響力提升。隨著電競賽事規模擴大，品牌贊助與觀眾參與度持續成長，顯示出電競作為數位娛樂內容，正吸引更多傳統賭博與博弈運營商將其納入競猜賽道，以爭取年輕族群的注意力。" data-en="Esports organizers PGL and the top Mongolian team, The Mongolz, recently discussed the commercialization and growing influence of esports in the global market. With the expansion of esports events, brand sponsorships and audience engagement continue to grow, attracting gambling operators to integrate esports into their betting markets to capture the younger demographic." data-th="ผู้จัดงานอีสปอร์ต PGL และทีมชั้นนำจากมองโกเลีย The Mongolz ได้หารือเกี่ยวกับการพาณิชย์และอิทธิพลที่เพิ่มขึ้นของอีสปอร์ตในตลาดโลก เนื่องจากการแข่งขันอีสปอร์ตขยายขนาดขึ้น การสนับสนุนจากแบรนด์และการมีส่วนร่วมของผู้ชมที่เพิ่มขึ้น ส่งผลให้ผู้ประกอบการพนันหันมาสนใจนำอีสปอร์ตเข้าสู่แพลตฟอร์มเพื่อดึงดูดกลุ่มคนรุ่นใหม่" data-hi="ईस्पोर्ट्स आयोजकों PGL और शीर्ष मंगोलियाई टीम द मोंगोल्ज़ ने वैश्विक बाजार में ईस्पोर्ट्स के व्यावसायीकरण और बढ़ते प्रभाव पर चर्चा की। ईस्पोर्ट्स इवेंट्स के विस्तार के साथ, ब्रांड प्रायोजन और दर्शकों की भागीदारी बढ़ रही है, जो दर्शाता है कि एक डिजिटल मनोरंजन सामग्री के रूप में ईस्पोर्ट्स पारंपरिक जुआ ऑपरेटरों को युवा वर्ग को आकर्षित करने के लिए अपनी ओर खींच रहा है।">電競主辦方 PGL 與蒙古頂級戰隊 The Mongolz 近期接受訪談，討論電子競技在全球市場的商業化進程與影響力提升。隨著電競賽事規模擴大，品牌贊助與觀眾參與度持續成長，顯示出電競作為數位娛樂內容，正吸引更多傳統賭博與博弈運營商將其納入競猜賽道，以爭取年輕族群的注意力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="電競跨界博弈已成必然趨勢，Jili 將評估導入電競元素的小遊戲，利用年輕受眾的強參與感，透過技術整合將電子競技的熱度轉化為互動遊戲留存率，應對傳統娛樂的年輕化挑戰。" data-en="The integration of esports and betting is an inevitable trend. Jili will evaluate the introduction of mini-games with esports elements, leveraging the high engagement of younger audiences and using technical integration to convert esports popularity into interactive game retention, addressing the challenges of rejuvenating traditional entertainment." data-th="การที่อีสปอร์ตข้ามไปสู่ตลาดพนันเป็นแนวโน้มที่หลีกเลี่ยงไม่ได้ Jili จะประเมินการนำมินิเกมที่มีองค์ประกอบอีสปอร์ตมาใช้ โดยใช้ประโยชน์จากการมีส่วนร่วมที่สูงของผู้ชมรุ่นใหม่ผ่านการรวมเทคโนโลยี เพื่อเปลี่ยนความนิยมของอีสปอร์ตให้เป็นอัตราการรักษาผู้เล่นในเกมเชิงโต้ตอบ เพื่อตอบโจทย์ความท้าทายในการทำให้ความบันเทิงแบบดั้งเดิมทันสมัยขึ้น" data-hi="ईस्पोर्ट्स का सट्टेबाजी के साथ एकीकरण एक अपरिहार्य प्रवृत्ति है। Jili ईस्पोर्ट्स तत्वों वाले मिनी-गेम पेश करने का मूल्यांकन करेगा, युवा दर्शकों की उच्च भागीदारी का लाभ उठाएगा और तकनीकी एकीकरण के माध्यम से ईस्पोर्ट्स की लोकप्रियता को इंटरैक्टिव गेम प्रतिधारण में बदल देगा, ताकि पारंपरिक मनोरंजन के आधुनिकीकरण की चुनौतियों का सामना किया जा सके।">電競跨界博弈已成必然趨勢，Jili 將評估導入電競元素的小遊戲，利用年輕受眾的強參與感，透過技術整合將電子競技的熱度轉化為互動遊戲留存率，應對傳統娛樂的年輕化挑戰。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 50</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 50</span>
 
                     </div>
 
@@ -2421,21 +2415,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳洲新南威爾斯州政府正審議一項提案，目標在未來十年內將州內的老虎機數量削減 50%。此舉旨在解決嚴重的問題賭博風險，並限制實體博弈終端機的普及率。該政策若通過，將對澳洲實體賭場運營商產生重大財務壓力，迫使資金流向轉移。" data-en="The government of New South Wales, Australia, is reviewing a proposal to cut the number of slot machines in the state by 50% over the next decade. The move aims to address serious problem gambling risks and limit the prevalence of physical gambling terminals. If passed, this will place significant financial pressure on physical casino operators in Australia, forcing a shift in capital flow." data-th="รัฐบาลรัฐนิวเซาท์เวลส์ ประเทศออสเตรเลีย กำลังพิจารณาข้อเสนอเพื่อลดจำนวนสล็อตแมชชีนในรัฐลง 50% ภายใน 10 ปีข้างหน้า ความเคลื่อนไหวนี้มีจุดมุ่งหมายเพื่อจัดการกับความเสี่ยงจากการพนันและจำกัดการแพร่หลายของตู้พนันแบบตั้งโต๊ะ หากผ่านร่างนี้จะสร้างแรงกดดันทางการเงินอย่างหนักต่อผู้ประกอบการคาสิโนแบบดั้งเดิมในออสเตรเลีย และบีบให้เงินทุนต้องไหลไปยังช่องทางอื่น" data-hi="ऑस्ट्रेलिया की न्यू साउथ वेल्स सरकार एक प्रस्ताव की समीक्षा कर रही है, जिसका लक्ष्य अगले दस वर्षों में राज्य में स्लॉट मशीनों की संख्या को 50% तक कम करना है। इस कदम का उद्देश्य जुए की गंभीर समस्याओं को संबोधित करना और फिजिकल गेमिंग टर्मिनलों की व्यापकता को सीमित करना है। यदि यह पारित हो जाता है, तो यह ऑस्ट्रेलिया में फिजिकल कैसीनो ऑपरेटरों पर भारी वित्तीय दबाव डालेगा और पूंजी प्रवाह में बदलाव को मजबूर करेगा।">澳洲新南威爾斯州政府正審議一項提案，目標在未來十年內將州內的老虎機數量削減 50%。此舉旨在解決嚴重的問題賭博風險，並限制實體博弈終端機的普及率。該政策若通過，將對澳洲實體賭場運營商產生重大財務壓力，迫使資金流向轉移。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="實體機台受限是線上娛樂的機會點。Jili 應強化在澳洲及周邊地區的線上內容佈局，針對習慣實體機台的客群開發具高還原度的轉軸遊戲，利用實體市場收縮的空窗期搶佔市佔率。" data-en="Restrictions on physical terminals create opportunities for online entertainment. Jili should strengthen its online content layout in Australia and surrounding regions, developing high-fidelity slot games for players accustomed to physical machines, and seizing market share during the contraction of the physical market." data-th="ข้อจำกัดของเครื่องเล่นทางกายภาพเป็นโอกาสของความบันเทิงออนไลน์ Jili ควรเสริมความแข็งแกร่งด้านคอนเทนต์ออนไลน์ในออสเตรเลียและภูมิภาคใกล้เคียง โดยพัฒนาเกมสล็อตที่จำลองความรู้สึกจากตู้จริงมาไว้บนออนไลน์ เพื่อช่วงชิงส่วนแบ่งการตลาดในช่วงที่ตลาดออฟไลน์กำลังหดตัว" data-hi="फिजिकल मशीनों पर प्रतिबंध ऑनलाइन मनोरंजन के लिए एक अवसर है। Jili को ऑस्ट्रेलिया और आसपास के क्षेत्रों में अपनी ऑनलाइन सामग्री की रणनीति को मजबूत करना चाहिए, फिजिकल मशीनों के आदी ग्राहकों के लिए हाई-फिडेलिटी स्लॉट गेम विकसित करना चाहिए और फिजिकल बाजार के संकुचन के दौरान बाजार हिस्सेदारी पर कब्जा करना चाहिए।">實體機台受限是線上娛樂的機會點。Jili 應強化在澳洲及周邊地區的線上內容佈局，針對習慣實體機台的客群開發具高還原度的轉軸遊戲，利用實體市場收縮的空窗期搶佔市佔率。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2488,21 +2474,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="孟加拉政府宣布將更新該國的博彩法規，旨在進一步嚴格限制境內的各類體育博彩及線上博弈活動。該修法行動是政府打擊地下非法交易與相關金融風險的最新舉措，預示該國對數位內容傳播的監控與禁制措施將進一步升級。" data-en="The Bangladesh government announced plans to update the country&#39;s gambling regulations to further restrict various types of sports betting and online gambling activities within the country. This legal amendment is the government&#39;s latest effort to combat underground illegal transactions and related financial risks, signaling a further escalation in the monitoring and prohibition of digital content." data-th="รัฐบาลบังกลาเทศประกาศว่าจะอัปเดตกฎหมายการพนันของประเทศ โดยมีเป้าหมายเพื่อจำกัดการพนันกีฬาและกิจกรรมการพนันออนไลน์ทุกประเภทในประเทศให้เข้มงวดขึ้น ความเคลื่อนไหวนี้เป็นส่วนหนึ่งของการปราบปรามธุรกรรมผิดกฎหมายและลดความเสี่ยงทางการเงิน ซึ่งบ่งชี้ว่ามาตรการกำกับดูแลและการสั่งห้ามเนื้อหาดิจิทัลจะทวีความรุนแรงขึ้น" data-hi="बांग्लादेश सरकार ने देश के जुआ नियमों को अद्यतन करने की घोषणा की है, जिसका उद्देश्य देश के भीतर विभिन्न प्रकार की स्पोर्ट्स बेटिंग और ऑनलाइन जुआ गतिविधियों को सख्ती से प्रतिबंधित करना है। यह विधायी संशोधन अवैध लेनदेन और संबंधित वित्तीय जोखिमों से निपटने के लिए सरकार का नवीनतम प्रयास है, जो डिजिटल सामग्री के प्रसार पर निगरानी और प्रतिबंधों में वृद्धि का संकेत देता है।">孟加拉政府宣布將更新該國的博彩法規，旨在進一步嚴格限制境內的各類體育博彩及線上博弈活動。該修法行動是政府打擊地下非法交易與相關金融風險的最新舉措，預示該國對數位內容傳播的監控與禁制措施將進一步升級。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="孟加拉市場屬高風險監管環境。Jili 將持續採取嚴格的地理圍欄（Geo-fencing）技術，嚴防產品在受限區域營運，確保公司品牌在合規框架下運行，避免遭受法律連帶影響。" data-en="The Bangladesh market is a high-risk regulatory environment. Jili will continue to employ strict geo-fencing technology to prevent products from operating in restricted areas, ensuring the brand operates within a compliant framework to avoid legal ramifications." data-th="ตลาดบังกลาเทศเป็นสภาพแวดล้อมที่มีความเสี่ยงด้านกฎระเบียบสูง Jili จะใช้เทคโนโลยีการกั้นพื้นที่ทางภูมิศาสตร์ (Geo-fencing) อย่างเคร่งครัดต่อไป เพื่อป้องกันไม่ให้ผลิตภัณฑ์ทำงานในพื้นที่จำกัด และสร้างความมั่นใจว่าแบรนด์จะดำเนินงานภายใต้กรอบการปฏิบัติตามกฎหมายเพื่อหลีกเลี่ยงผลกระทบทางกฎหมาย" data-hi="बांग्लादेश का बाजार उच्च-जोखिम वाला नियामक वातावरण है। Jili सख्त भू-बाड़ (Geo-fencing) तकनीक का उपयोग करना जारी रखेगा, ताकि उत्पादों को प्रतिबंधित क्षेत्रों में संचालित होने से रोका जा सके और यह सुनिश्चित किया जा सके कि ब्रांड अनुपालन ढांचे के भीतर संचालित हो, जिससे किसी भी कानूनी परिणाम से बचा जा सके।">孟加拉市場屬高風險監管環境。Jili 將持續採取嚴格的地理圍欄（Geo-fencing）技術，嚴防產品在受限區域營運，確保公司品牌在合規框架下運行，避免遭受法律連帶影響。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 60</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 80</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
 
                     </div>
 
@@ -2555,21 +2533,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="新加坡賭場監管局（CRA）對聖淘沙名勝世界（RWS）發出譴責函，指出該運營商在確保進入賭場的受禁人士紀錄及合規流程上存在漏洞。監管當局要求該賭場加強內部行政控管，並對違規行為進行整改，顯示新加坡對博弈合規標準維持高壓態度。" data-en="The Casino Regulatory Authority (CRA) of Singapore has issued a letter of censure to Resorts World Sentosa (RWS), noting loopholes in the operator&#39;s record-keeping and compliance processes regarding self-excluded individuals entering the casino. The regulator has demanded that the casino strengthen internal administrative controls and rectify compliance failures, highlighting Singapore&#39;s high-pressure stance on gambling compliance standards." data-th="หน่วยงานกำกับดูแลคาสิโน (CRA) ของสิงคโปร์ได้ออกจดหมายตำหนิ Resorts World Sentosa (RWS) โดยระบุว่าผู้ประกอบการมีช่องโหว่ในการดูแลบันทึกข้อมูลของผู้ที่ถูกห้ามเข้าคาสิโนและกระบวนการกำกับดูแลที่ไม่รัดกุม ทางการได้เรียกร้องให้คาสิโนปรับปรุงการควบคุมภายในและแก้ไขการปฏิบัติที่ไม่เป็นไปตามกฎ ซึ่งสะท้อนให้เห็นว่าสิงคโปร์ยังคงรักษามาตรฐานการกำกับดูแลการพนันในระดับสูง" data-hi="सिंगापुर के कैसीनो नियामक प्राधिकरण (CRA) ने रिसॉर्ट्स वर्ल्ड सेंटोसा (RWS) को एक निंदा पत्र जारी किया है, जिसमें ऑपरेटर द्वारा कैसीनो में प्रवेश करने वाले प्रतिबंधित व्यक्तियों के रिकॉर्ड और अनुपालन प्रक्रियाओं में खामियों को उजागर किया गया है। नियामक ने कैसीनो से आंतरिक प्रशासनिक नियंत्रण को मजबूत करने और उल्लंघन को सुधारने की मांग की है, जो जुआ अनुपालन मानकों पर सिंगापुर के कड़े रुख को दर्शाता है।">新加坡賭場監管局（CRA）對聖淘沙名勝世界（RWS）發出譴責函，指出該運營商在確保進入賭場的受禁人士紀錄及合規流程上存在漏洞。監管當局要求該賭場加強內部行政控管，並對違規行為進行整改，顯示新加坡對博弈合規標準維持高壓態度。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="區域監管趨嚴對 B2B 供應商而言，意味著客戶端篩選標準將大幅提升。Jili 將加強內容輸出的合規認證，協助合作夥伴滿足嚴格的區域數據監管要求，確保技術接入符合當地規範。" data-en="Stricter regional regulation means higher client selection standards for B2B suppliers. Jili will strengthen compliance certifications for its output, assisting partners in meeting rigorous regional data regulation requirements to ensure technical integration meets local specifications." data-th="การกำกับดูแลในภูมิภาคที่เข้มงวดขึ้น หมายความว่ามาตรฐานการคัดเลือกลูกค้าสำหรับซัพพลายเออร์ B2B จะสูงขึ้น Jili จะเสริมความแข็งแกร่งด้านใบรับรองการปฏิบัติตามกฎระเบียบของผลิตภัณฑ์ เพื่อช่วยเหลือพาร์ทเนอร์ให้เป็นไปตามข้อกำหนดด้านข้อมูลที่เข้มงวดในภูมิภาค และมั่นใจได้ว่าเทคนิคการเชื่อมต่อจะสอดคล้องกับข้อกำหนดท้องถิ่น" data-hi="क्षेत्रीय नियमन का सख्त होना B2B आपूर्तिकर्ताओं के लिए ग्राहक चयन के मानकों में भारी वृद्धि का अर्थ है। Jili अपने उत्पादों के लिए अनुपालन प्रमाणपत्रों को मजबूत करेगा, ताकि साझेदारों को कठोर क्षेत्रीय डेटा विनियमन आवश्यकताओं को पूरा करने में सहायता मिल सके और यह सुनिश्चित किया जा सके कि तकनीकी एकीकरण स्थानीय मानदंडों के अनुरूप हो।">區域監管趨嚴對 B2B 供應商而言，意味著客戶端篩選標準將大幅提升。Jili 將加強內容輸出的合規認證，協助合作夥伴滿足嚴格的區域數據監管要求，確保技術接入符合當地規範。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 75</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -2621,21 +2591,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="位於菲律賓宿霧的 NUSTAR 度假村近期參與當地社群植樹活動，旨在實踐企業社會責任（CSR）並推動環境永續發展。此舉顯示當地大型綜合度假村正透過ESG指標提升企業形象，以贏取當地政府與社群的支持。" data-en="NUSTAR Resort in Cebu, Philippines, recently participated in a local community tree-planting event, aiming to practice corporate social responsibility (CSR) and promote environmental sustainability. This move shows that large local integrated resorts are using ESG indicators to enhance their corporate image and gain support from the local government and community." data-th="NUSTAR Resort ในเซบู ฟิลิปปินส์ ได้เข้าร่วมกิจกรรมปลูกป่าในชุมชนท้องถิ่น เพื่อส่งเสริมความรับผิดชอบต่อสังคม (CSR) และความยั่งยืนด้านสิ่งแวดล้อม สิ่งนี้แสดงให้เห็นว่ารีสอร์ทแบบครบวงจรขนาดใหญ่ในท้องถิ่นกำลังใช้ตัวชี้วัด ESG เพื่อยกระดับภาพลักษณ์องค์กรและได้รับแรงสนับสนุนจากรัฐบาลและชุมชนในพื้นที่" data-hi="फिलीपींस के सेबू में स्थित NUSTAR रिज़ॉर्ट ने हाल ही में स्थानीय समुदाय के वृक्षारोपण कार्यक्रम में भाग लिया, जिसका उद्देश्य कॉर्पोरेट सामाजिक जिम्मेदारी (CSR) का अभ्यास करना और पर्यावरणीय स्थिरता को बढ़ावा देना है। यह कदम दिखाता है कि स्थानीय बड़े एकीकृत रिज़ॉर्ट अपने कॉर्पोरेट छवि को बढ़ाने और स्थानीय सरकार व समुदाय का समर्थन जीतने के लिए ESG संकेतकों का उपयोग कर रहे हैं।">位於菲律賓宿霧的 NUSTAR 度假村近期參與當地社群植樹活動，旨在實踐企業社會責任（CSR）並推動環境永續發展。此舉顯示當地大型綜合度假村正透過ESG指標提升企業形象，以贏取當地政府與社群的支持。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="作為供應商，Jili 需與注重品牌聲譽的運營商深化合作。透過支持合作夥伴的 CSR 項目，不僅能提升品牌信任度，也能在嚴格的菲律賓監管環境下，增加企業經營的長期穩定性與政策正面緩衝。" data-en="As a supplier, Jili needs to deepen cooperation with operators who value brand reputation. Supporting partners&#39; CSR projects not only improves brand trust but also increases the long-term stability of the business and provides positive policy cushioning within the strictly regulated environment of the Philippines." data-th="ในฐานะซัพพลายเออร์ Jili จำเป็นต้องกระชับความร่วมมือกับผู้ประกอบการที่ให้ความสำคัญกับชื่อเสียงของแบรนด์ การสนับสนุนโครงการ CSR ของพาร์ทเนอร์ไม่เพียงแต่ช่วยเพิ่มความเชื่อมั่นในแบรนด์ แต่ยังช่วยเพิ่มเสถียรภาพทางธุรกิจในระยะยาวและสร้างเกราะป้องกันด้านนโยบายในสภาพแวดล้อมที่กำกับดูแลเข้มงวดของฟิลิปปินส์อีกด้วย" data-hi="एक आपूर्तिकर्ता के रूप में, Jili को उन ऑपरेटरों के साथ सहयोग गहरा करने की आवश्यकता है जो ब्रांड प्रतिष्ठा को महत्व देते हैं। साझेदारों की CSR परियोजनाओं का समर्थन करने से न केवल ब्रांड का भरोसा बढ़ता है, बल्कि यह फिलीपींस के सख्त विनियमित वातावरण में व्यापार की दीर्घकालिक स्थिरता को भी बढ़ाता है और सकारात्मक नीतिगत सुरक्षा प्रदान करता है।">作為供應商，Jili 需與注重品牌聲譽的運營商深化合作。透過支持合作夥伴的 CSR 項目，不僅能提升品牌信任度，也能在嚴格的菲律賓監管環境下，增加企業經營的長期穩定性與政策正面緩衝。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
 
                     </div>
 
@@ -2687,21 +2649,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="位於越南的會安南岸度假村（Hoiana）發起一項整合員工與社區資源的永續發展運動。此舉旨在提升內部治理水平並改善與周邊環境的共生關係，反映出越南博弈領域業者正透過非營利舉措來優化運營許可的社會基礎。" data-en="Hoiana Resort, located in Vietnam, has launched a sustainable development campaign integrating employee and community resources. This initiative aims to improve internal governance and enhance symbiotic relationships with the surrounding environment, reflecting how gaming operators in Vietnam are optimizing the social foundation of their operating licenses through non-profit initiatives." data-th="Hoiana Resort ในเวียดนามได้เปิดตัวแคมเปญการพัฒนาที่ยั่งยืนที่บูรณาการทรัพยากรพนักงานและชุมชนเข้าด้วยกัน เพื่อยกระดับการกำกับดูแลภายในและปรับปรุงความสัมพันธ์กับสภาพแวดล้อมโดยรอบ สะท้อนให้เห็นว่าผู้ประกอบการพนันในเวียดนามกำลังใช้กิจกรรมไม่แสวงหากำไรเพื่อสร้างรากฐานทางสังคมให้กับใบอนุญาตประกอบการของตน" data-hi="वियतनाम में स्थित होइयाना (Hoiana) रिज़ॉर्ट ने एक सतत विकास अभियान शुरू किया है जो कर्मचारियों और सामुदायिक संसाधनों को एकीकृत करता है। इसका उद्देश्य आंतरिक शासन को बेहतर बनाना और आसपास के वातावरण के साथ सहजीवी संबंधों को बढ़ाना है। यह दर्शाता है कि वियतनाम में गेमिंग ऑपरेटर गैर-लाभकारी पहलों के माध्यम से अपने लाइसेंस की सामाजिक नींव को अनुकूलित कर रहे हैं।">位於越南的會安南岸度假村（Hoiana）發起一項整合員工與社區資源的永續發展運動。此舉旨在提升內部治理水平並改善與周邊環境的共生關係，反映出越南博弈領域業者正透過非營利舉措來優化運營許可的社會基礎。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此類永續發展趨勢為 B2B 合作提供良好的背景基礎。Jili 將持續關注越南市場政策動向，並透過穩定且高品質的產品交付，支持這類致力於長期深耕的運營商客戶。" data-en="Such sustainable development trends provide a strong foundation for B2B partnerships. Jili will continue to monitor policy trends in the Vietnam market and support these long-term operators through stable and high-quality product delivery." data-th="แนวโน้มการพัฒนาที่ยั่งยืนดังกล่าวเป็นพื้นฐานที่ดีสำหรับความร่วมมือแบบ B2B Jili จะติดตามความเคลื่อนไหวด้านนโยบายในตลาดเวียดนามอย่างต่อเนื่อง และสนับสนุนลูกค้าผู้ประกอบการที่มุ่งมั่นในระยะยาวเหล่านี้ผ่านการส่งมอบผลิตภัณฑ์ที่เสถียรและมีคุณภาพสูง" data-hi="इस तरह के सतत विकास के रुझान B2B सहयोग के लिए एक अच्छी नींव प्रदान करते हैं। Jili वियतनाम बाजार की नीतिगत गतिविधियों पर नज़र रखना जारी रखेगा और स्थिर व उच्च गुणवत्ता वाले उत्पाद वितरण के माध्यम से दीर्घकालिक प्रतिबद्धता वाले ऑपरेटर ग्राहकों का समर्थन करेगा।">此類永續發展趨勢為 B2B 合作提供良好的背景基礎。Jili 將持續關注越南市場政策動向，並透過穩定且高品質的產品交付，支持這類致力於長期深耕的運營商客戶。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 20</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
 
                     </div>
 
@@ -2754,21 +2708,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="遊戲製造商 Weike 近期推出全新的漸進式連結老虎機以及新型電子輪盤產品。該公司策略旨在通過產品創新與更現代化的介面設計，吸引更多年輕玩家群體，應對傳統博弈機台在市場上的老化挑戰。" data-en="Game manufacturer Weike recently launched new progressive linked slot machines and electronic roulette products. The company&#39;s strategy aims to attract younger players through product innovation and more modern interface design, addressing the challenge of aging traditional gaming machines in the market." data-th="Weike ผู้ผลิตเกมได้เปิดตัวสล็อตแมชชีนแบบโปรเกรสซีฟลิงก์และผลิตภัณฑ์รูเล็ตอิเล็กทรอนิกส์ใหม่ กลยุทธ์ของบริษัทมุ่งเน้นการดึงดูดผู้เล่นรุ่นใหม่ผ่านนวัตกรรมผลิตภัณฑ์และการออกแบบอินเทอร์เฟซที่ทันสมัยยิ่งขึ้น เพื่อรับมือกับความท้าทายจากเครื่องเล่นพนันแบบเดิมที่ล้าสมัยในตลาด" data-hi="गेम निर्माता Weike ने हाल ही में नई प्रोग्रेसिव लिंक्ड स्लॉट मशीनें और इलेक्ट्रॉनिक रूलेट उत्पाद लॉन्च किए हैं। कंपनी की रणनीति उत्पाद नवाचार और अधिक आधुनिक इंटरफ़ेस डिज़ाइन के माध्यम से युवा खिलाड़ियों को आकर्षित करने की है, ताकि बाजार में पारंपरिक गेमिंग मशीनों के पुराने होने की चुनौतियों का सामना किया जा सके।">遊戲製造商 Weike 近期推出全新的漸進式連結老虎機以及新型電子輪盤產品。該公司策略旨在通過產品創新與更現代化的介面設計，吸引更多年輕玩家群體，應對傳統博弈機台在市場上的老化挑戰。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="競品策略轉向年轻化，證明市場對高互動產品需求增加。Jili 需加快開發進度，優化遊戲內的獎勵機制（Progressive Jackpot）與流暢 UI，並透過技術差異化保持供應商的競爭優勢。" data-en="The shift in competitor strategies toward younger audiences proves the increasing market demand for highly interactive products. Jili needs to accelerate development, optimize in-game reward mechanisms (Progressive Jackpot) and smooth UI, and maintain a competitive advantage through technical differentiation." data-th="กลยุทธ์ของคู่แข่งที่หันไปหาคนรุ่นใหม่พิสูจน์ให้เห็นว่าความต้องการสินค้าที่โต้ตอบได้สูงมีเพิ่มขึ้น Jili ต้องเร่งการพัฒนา ปรับปรุงกลไกรางวัลในเกม (Progressive Jackpot) และ UI ให้ลื่นไหล พร้อมรักษาความได้เปรียบทางการแข่งขันผ่านความแตกต่างทางเทคโนโลยี" data-hi="प्रतिस्पर्धियों की युवा-केंद्रित रणनीति यह साबित करती है कि उच्च इंटरैक्टिव उत्पादों की मांग बढ़ रही है। Jili को विकास की गति को तेज करने, इन-गेम रिवॉर्ड तंत्र (प्रोग्रेसिव जैकपॉट) और स्मूथ UI को अनुकूलित करने और तकनीकी अंतर के माध्यम से आपूर्तिकर्ता के रूप में अपनी प्रतिस्पर्धात्मक बढ़त बनाए रखने की आवश्यकता है।">競品策略轉向年轻化，證明市場對高互動產品需求增加。Jili 需加快開發進度，優化遊戲內的獎勵機制（Progressive Jackpot）與流暢 UI，並透過技術差異化保持供應商的競爭優勢。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 45</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -2821,21 +2767,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="CRM 解決方案供應商 Fast Track 正將生成式 AI 與代理工作流引入其平台，旨在為運營商提供自動化程度更高、針對玩家行為進行精準個體行銷的解決方案，進一步提升玩家留存與運營效率。" data-en="CRM solution provider Fast Track is introducing generative AI and agent workflows to its platform. The goal is to provide operators with solutions that have higher automation levels and precise individual marketing based on player behavior, further increasing player retention and operational efficiency." data-th="Fast Track ผู้ให้บริการโซลูชัน CRM กำลังนำ Generative AI และ Agent Workflow เข้าสู่แพลตฟอร์ม เพื่อมอบโซลูชันที่เพิ่มระดับความเป็นอัตโนมัติให้แก่ผู้ประกอบการ และช่วยให้ทำการตลาดเฉพาะบุคคลได้อย่างแม่นยำตามพฤติกรรมของผู้เล่น ซึ่งจะช่วยเพิ่มอัตราการรักษาผู้เล่นและประสิทธิภาพการดำเนินงาน" data-hi="CRM समाधान प्रदाता Fast Track अपने प्लेटफॉर्म में जेनरेटिव AI और एजेंट वर्कफ़्लो पेश कर रहा है, जिसका उद्देश्य ऑपरेटरों को उच्च स्वचालन स्तर और खिलाड़ी के व्यवहार के आधार पर सटीक व्यक्तिगत मार्केटिंग समाधान प्रदान करना है, जिससे खिलाड़ी प्रतिधारण और परिचालन दक्षता को और बढ़ाया जा सके।">CRM 解決方案供應商 Fast Track 正將生成式 AI 與代理工作流引入其平台，旨在為運營商提供自動化程度更高、針對玩家行為進行精準個體行銷的解決方案，進一步提升玩家留存與運營效率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="AI 工具整合是提升運營效率的關鍵。Jili 應對接相關 CRM 數據接口，利用 AI 分析玩家的遊戲行為偏好，精準調整推送策略，實現遊戲內容與 CRM 工具的深度綁定，提升玩家價值。" data-en="AI tool integration is key to improving operational efficiency. Jili should interface with relevant CRM data, use AI to analyze player game preferences, precisely adjust push strategies, and achieve deep integration of game content with CRM tools to enhance player value." data-th="การรวมเครื่องมือ AI เป็นกุญแจสำคัญในการเพิ่มประสิทธิภาพการดำเนินงาน Jili ควรเชื่อมต่อกับอินเทอร์เฟซข้อมูล CRM ที่เกี่ยวข้อง โดยใช้ AI วิเคราะห์ความชอบในการเล่นของผู้เล่น เพื่อปรับกลยุทธ์การแจ้งเตือนให้แม่นยำ และผูกเนื้อหาเกมเข้ากับเครื่องมือ CRM เพื่อเพิ่มมูลค่าของผู้เล่น" data-hi="AI उपकरणों का एकीकरण परिचालन दक्षता में सुधार के लिए महत्वपूर्ण है। Jili को प्रासंगिक CRM डेटा इंटरफ़ेस के साथ जुड़ना चाहिए, खिलाड़ी की गेमिंग प्राथमिकताओं का विश्लेषण करने के लिए AI का उपयोग करना चाहिए, पुश रणनीतियों को सटीक रूप से समायोजित करना चाहिए, और खिलाड़ी मूल्य को बढ़ाने के लिए गेम सामग्री को CRM टूल के साथ गहराई से जोड़ना चाहिए।">AI 工具整合是提升運營效率的關鍵。Jili 應對接相關 CRM 數據接口，利用 AI 分析玩家的遊戲行為偏好，精準調整推送策略，實現遊戲內容與 CRM 工具的深度綁定，提升玩家價值。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 50</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2888,21 +2826,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="澳洲新南威爾斯州執政黨正研議縮減州內約 8.7 萬台老虎機的數量。此議題已進入地方政策辯論核心，反映出澳洲在公眾健康議題與產業利益間的激烈博弈，將直接影響賭場設備供應商的市場規模。" data-en="The ruling party in New South Wales, Australia, is debating a plan to cut approximately 87,000 slot machines in the state. This issue has entered the core of local policy debate, reflecting the intense competition between public health issues and industry interests in Australia, which will directly impact the market scale for casino equipment suppliers." data-th="พรรครัฐบาลในรัฐนิวเซาท์เวลส์ ประเทศออสเตรเลีย กำลังอภิปรายแผนการลดจำนวนสล็อตแมชชีนในรัฐลงประมาณ 87,000 ตู้ ประเด็นนี้ได้เข้าสู่แกนกลางของการถกเถียงด้านนโยบายท้องถิ่น ซึ่งสะท้อนให้เห็นถึงการต่อสู้ที่เข้มข้นระหว่างประเด็นสุขภาพสาธารณะและผลประโยชน์ทางอุตสาหกรรมในออสเตรเลีย ซึ่งจะส่งผลโดยตรงต่อขนาดตลาดของซัพพลายเออร์อุปกรณ์คาสิโน" data-hi="ऑस्ट्रेलिया के न्यू साउथ वेल्स में सत्तारूढ़ पार्टी राज्य में लगभग 87,000 स्लॉट मशीनों को कम करने की योजना पर बहस कर रही है। यह मुद्दा स्थानीय नीति बहस के केंद्र में आ गया है, जो ऑस्ट्रेलिया में सार्वजनिक स्वास्थ्य मुद्दों और उद्योग के हितों के बीच तीव्र प्रतिस्पर्धा को दर्शाता है, जो सीधे तौर पर कैसीनो उपकरण आपूर्तिकर्ताओं के लिए बाजार के आकार को प्रभावित करेगा।">澳洲新南威爾斯州執政黨正研議縮減州內約 8.7 萬台老虎機的數量。此議題已進入地方政策辯論核心，反映出澳洲在公眾健康議題與產業利益間的激烈博弈，將直接影響賭場設備供應商的市場規模。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此法案對現有供應商生態構成挑戰，亦是轉型線上服務的契機。Jili 應即時調整當地產品結構，針對線下轉線上的玩家習性進行優化，確保技術交付能無縫適應澳洲未來市場結構。" data-en="This bill poses challenges for existing suppliers and is also an opportunity to transition to online services. Jili should adjust its local product structure in a timely manner, optimizing for the habits of players transitioning from offline to online, and ensuring technical delivery can seamlessly adapt to Australia&#39;s future market structure." data-th="ร่างกฎหมายนี้เป็นความท้าทายสำหรับซัพพลายเออร์ปัจจุบันและยังเป็นโอกาสในการเปลี่ยนผ่านสู่บริการออนไลน์ Jili ควรปรับโครงสร้างผลิตภัณฑ์ในท้องถิ่นให้เหมาะสมและรวดเร็ว โดยปรับให้เข้ากับพฤติกรรมของผู้เล่นที่ย้ายจากออฟไลน์มาออนไลน์ เพื่อให้มั่นใจว่าการส่งมอบงานทางเทคนิคจะปรับตัวเข้ากับโครงสร้างตลาดในอนาคตของออสเตรเลียได้อย่างราบรื่น" data-hi="यह विधेयक मौजूदा आपूर्तिकर्ताओं के लिए चुनौतियां पेश करता है और ऑनलाइन सेवाओं में परिवर्तन का एक अवसर भी है। Jili को समय पर अपनी स्थानीय उत्पाद संरचना को समायोजित करना चाहिए, ऑफलाइन से ऑनलाइन की ओर जाने वाले खिलाड़ियों की आदतों के लिए अनुकूलन करना चाहिए और यह सुनिश्चित करना चाहिए कि तकनीकी वितरण ऑस्ट्रेलिया की भविष्य की बाजार संरचना के अनुरूप हो सके।">此法案對現有供應商生態構成挑戰，亦是轉型線上服務的契機。Jili 應即時調整當地產品結構，針對線下轉線上的玩家習性進行優化，確保技術交付能無縫適應澳洲未來市場結構。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 75</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -2955,21 +2885,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="柬埔寨新任總理洪馬內公開下令，要求執法部門嚴厲打擊並根除包庇網絡詐騙與非法線上博弈基地的官員。此舉旨在回應近期針對該國頻發的非法跨境網絡犯罪的國際壓力，政府將對涉案人員進行全面清查與懲處，強調國家金融犯罪防治的決心。" data-en="Cambodia&#39;s new PM, Hun Manet, has publicly ordered law enforcement to eradicate officials shielding online scams and illegal gambling sites. This move responds to international pressure regarding cross-border cybercrime, with the government vowing a comprehensive crackdown to demonstrate its resolve against financial crime." data-th="ฮุน มาเนต นายกรัฐมนตรีกัมพูชาคนใหม่ สั่งการให้หน่วยงานบังคับใช้กฎหมายกวาดล้างเจ้าหน้าที่ที่ให้ความคุ้มครองฐานปฏิบัติการฉ้อโกงออนไลน์และการพนันผิดกฎหมาย เพื่อตอบสนองต่อแรงกดดันจากนานาชาติต่อปัญหาอาชญากรรมไซเบอร์ข้ามพรมแดน รัฐบาลมุ่งมั่นที่จะตรวจสอบและลงโทษผู้เกี่ยวข้องอย่างจริงจัง" data-hi="कंबोडिया के नए प्रधानमंत्री हुन मानेट ने कानून प्रवर्तन एजेंसियों को ऑनलाइन धोखाधड़ी और अवैध जुआ अड्डों को संरक्षण देने वाले अधिकारियों के खिलाफ कड़ी कार्रवाई करने का आदेश दिया है। यह कदम देश में बढ़ते सीमा-पार साइबर अपराधों के प्रति अंतरराष्ट्रीय दबाव का परिणाम है, और सरकार वित्तीय अपराधों को जड़ से खत्म करने के लिए प्रतिबद्ध है।">柬埔寨新任總理洪馬內公開下令，要求執法部門嚴厲打擊並根除包庇網絡詐騙與非法線上博弈基地的官員。此舉旨在回應近期針對該國頻發的非法跨境網絡犯罪的國際壓力，政府將對涉案人員進行全面清查與懲處，強調國家金融犯罪防治的決心。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此舉標示柬埔寨將進行大規模清理行動。對於供應商而言，營運合規風險急劇升高。建議立即暫停與當地灰色地帶平台的技術對接，轉而加強與具備正規牌照客戶的黏著度，並強化後台資金流向的風控審查，避免捲入非法洗錢鏈。" data-en="This signals a major cleanup in Cambodia. For suppliers, compliance risks are rising sharply. It is recommended to suspend integration with gray-market platforms immediately, prioritize high-quality licensed clients, and strengthen risk management on fund flows to avoid money laundering associations." data-th="การเคลื่อนไหวนี้บ่งชี้ถึงการจัดระเบียบครั้งใหญ่ในกัมพูชา สำหรับซัพพลายเออร์ความเสี่ยงด้านการปฏิบัติตามกฎระเบียบกำลังสูงขึ้น ขอแนะนำให้ระงับการเชื่อมต่อกับแพลตฟอร์มในตลาดสีเทาทันที หันไปเสริมความร่วมมือกับลูกค้าที่มีใบอนุญาตที่ถูกต้อง และเพิ่มความเข้มงวดในการตรวจสอบการไหลเวียนของเงินทุนเพื่อหลีกเลี่ยงการพัวพันกับการฟอกเงิน" data-hi="यह कंबोडिया में बड़े पैमाने पर सफाई अभियान का संकेत है। आपूर्तिकर्ताओं के लिए, अनुपालन जोखिम बढ़ गया है। ग्रे-मार्केट प्लेटफार्मों के साथ तकनीकी एकीकरण को तुरंत रोकने और लाइसेंस प्राप्त ग्राहकों के साथ संबंध मजबूत करने की सलाह दी जाती है। साथ ही, मनी लॉन्ड्रिंग के जोखिमों से बचने के लिए धन के प्रवाह पर निगरानी कड़ी करनी चाहिए।">此舉標示柬埔寨將進行大規模清理行動。對於供應商而言，營運合規風險急劇升高。建議立即暫停與當地灰色地帶平台的技術對接，轉而加強與具備正規牌照客戶的黏著度，並強化後台資金流向的風控審查，避免捲入非法洗錢鏈。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 90</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -3022,21 +2944,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="隨著菲律賓參議院聯盟內部的談判與重組，參議員 Sherwin Gatchalian 被視為下一任參議院議長的熱門人選。Gatchalian 過去對菲律賓線上博弈產業（POGO）持嚴厲監管立場，其職位的變動預計將深刻影響該國未來對線上博弈產業的政策方向與監管力度。" data-en="Amid Senate coalition restructuring in the Philippines, Senator Sherwin Gatchalian is a top candidate for Senate President. Known for his strict stance on POGOs, his potential appointment could significantly shift the country&#39;s regulatory direction for the online gaming industry." data-th="ท่ามกลางการเจรจาและการปรับโครงสร้างพันธมิตรในวุฒิสภาฟิลิปปินส์ วุฒิสมาชิก Sherwin Gatchalian ถูกมองว่าเป็นตัวเต็งสำหรับตำแหน่งประธานวุฒิสภาคนต่อไป เขามีจุดยืนที่เข้มงวดต่ออุตสาหกรรมเกมออนไลน์ (POGO) ซึ่งการเปลี่ยนตำแหน่งนี้คาดว่าจะส่งผลกระทบอย่างมากต่อทิศทางนโยบายและการกำกับดูแลของประเทศ" data-hi="फिलीपींस की सीनेट गठबंधन में जारी पुनर्गठन के बीच, सीनेटर शेरविन गचालीयन को अगले सीनेट अध्यक्ष के रूप में प्रबल दावेदार माना जा रहा है। गचालीयन पहले भी फिलीपीन ऑनलाइन गेमिंग उद्योग (POGO) के प्रति सख्त नियामक रुख अपना चुके हैं, ऐसे में उनके पद की यह संभावित अदला-बदली गेमिंग नीति पर गहरा प्रभाव डाल सकती है।">隨著菲律賓參議院聯盟內部的談判與重組，參議員 Sherwin Gatchalian 被視為下一任參議院議長的熱門人選。Gatchalian 過去對菲律賓線上博弈產業（POGO）持嚴厲監管立場，其職位的變動預計將深刻影響該國未來對線上博弈產業的政策方向與監管力度。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="戰略點位待確認。" data-en="Strategic position pending confirmation." data-th="รอการยืนยันตำแหน่งเชิงกลยุทธ์" data-hi="रणनीतिक स्थिति की पुष्टि होना बाकी है।">戰略點位待確認。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 85</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 75</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 85</span>
 
                     </div>
 
@@ -3089,21 +3003,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="新加坡賭場監管局（GRA）針對聖淘沙名勝世界（RWS）在內部營運控制方面的疏失，正式發出譴責信。監管機構要求運營商必須加強管理體系，確保符合新加坡嚴格的博弈法規與合規標準，以維護市場秩序與社會責任義務。" data-en="The Casino Regulatory Authority (GRA) of Singapore has issued a letter of censure to Resorts World Sentosa (RWS) over lapses in internal operational controls. The regulator demands stricter management systems to ensure compliance with Singapore&#39;s rigorous gaming laws and social responsibilities." data-th="หน่วยงานกำกับดูแลคาสิโน (GRA) ของสิงคโปร์ได้ออกจดหมายตำหนิ Resorts World Sentosa (RWS) อย่างเป็นทางการ เกี่ยวกับข้อผิดพลาดในการควบคุมการดำเนินงานภายใน หน่วยงานกำกับดูแลกำหนดให้ผู้ประกอบการต้องปรับปรุงระบบการจัดการเพื่อให้สอดคล้องกับกฎระเบียบด้านการพนันที่เข้มงวดและมาตรฐานความรับผิดชอบต่อสังคมของสิงคโปร์" data-hi="सिंगापुर के कैसीनो रेगुलेटरी अथॉरिटी (GRA) ने रिसॉर्ट्स वर्ल्ड सेंटोसा (RWS) को उनके आंतरिक संचालन नियंत्रण में खामियों के लिए औपचारिक रूप से निंदा पत्र जारी किया है। नियामक ने ऑपरेटरों से अपनी प्रबंधन प्रणाली को मजबूत करने और सिंगापुर के सख्त जुआ नियमों व सामाजिक उत्तरदायित्व मानकों का पालन सुनिश्चित करने को कहा है।">新加坡賭場監管局（GRA）針對聖淘沙名勝世界（RWS）在內部營運控制方面的疏失，正式發出譴責信。監管機構要求運營商必須加強管理體系，確保符合新加坡嚴格的博弈法規與合規標準，以維護市場秩序與社會責任義務。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="新加坡監管規格極高，此舉對在當地或亞太市場經營的供應商具警示作用。Jili 應強化後台合規審計能力，確保與合作客戶的 API 串接與數據傳輸均符合最高規格的內部監控標準，以應對未來更嚴格的供應鏈合規檢查。" data-en="Singapore&#39;s regulatory standards are extremely high, serving as a warning to all APAC suppliers. Jili should strengthen internal audit capabilities to ensure API integration and data transmission meet the highest compliance standards for future supply chain audits." data-th="มาตรฐานการกำกับดูแลของสิงคโปร์สูงมาก ซึ่งเป็นคำเตือนสำหรับซัพพลายเออร์ที่ดำเนินงานในพื้นที่หรือในตลาดเอเชียแปซิฟิก Jili ควรเพิ่มขีดความสามารถในการตรวจสอบการปฏิบัติตามกฎระเบียบภายใน เพื่อให้แน่ใจว่าการเชื่อมต่อ API และการส่งข้อมูลกับลูกค้าเป็นไปตามมาตรฐานการตรวจสอบภายในระดับสูงสุด" data-hi="सिंगापुर के नियामक मानक अत्यंत उच्च हैं, जो एपीएसी बाजार में काम करने वाले आपूर्तिकर्ताओं के लिए एक चेतावनी है। Jili को अपनी आंतरिक अनुपालन ऑडिट क्षमताओं को मजबूत करना चाहिए ताकि यह सुनिश्चित हो सके कि एपीआई एकीकरण और डेटा ट्रांसमिशन उच्चतम निगरानी मानकों का पालन करते हैं, ताकि भविष्य में और भी सख्त आपूर्ति श्रृंखला ऑडिट का सामना किया जा सके।">新加坡監管規格極高，此舉對在當地或亞太市場經營的供應商具警示作用。Jili 應強化後台合規審計能力，確保與合作客戶的 API 串接與數據傳輸均符合最高規格的內部監控標準，以應對未來更嚴格的供應鏈合規檢查。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 60</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -3156,21 +3062,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="遊戲供應商 PopOK Gaming 宣布與德國知名博弈運營商 Tipico 建立戰略合作關係。透過此次結盟，PopOK Gaming 將其遊戲產品線引入 Tipico 在德國市場的平台，進一步擴大其歐洲市場的市佔率與品牌影響力。" data-en="Game supplier PopOK Gaming has announced a strategic partnership with German operator Tipico. Through this alliance, PopOK Gaming will introduce its game portfolio to Tipico&#39;s platform in the German market, expanding its European footprint and brand influence." data-th="ผู้ให้บริการเกม PopOK Gaming ประกาศความเป็นพันธมิตรเชิงกลยุทธ์กับ Tipico ผู้ประกอบการพนันชื่อดังของเยอรมนี ผ่านความร่วมมือนี้ PopOK Gaming จะนำเสนอผลิตภัณฑ์เกมของตนเข้าสู่แพลตฟอร์มของ Tipico ในตลาดเยอรมนี เพื่อขยายส่วนแบ่งการตลาดและอิทธิพลของแบรนด์ในยุโรป" data-hi="गेम प्रदाता PopOK Gaming ने जर्मनी के प्रसिद्ध ऑपरेटर Tipico के साथ रणनीतिक साझेदारी की घोषणा की है। इस गठबंधन के माध्यम से, PopOK Gaming अपने गेम पोर्टफोलियो को जर्मन बाजार में Tipico के प्लेटफॉर्म पर पेश करेगा, जिससे यूरोपीय बाजार में उसकी हिस्सेदारी और ब्रांड की पहुंच बढ़ेगी।">遊戲供應商 PopOK Gaming 宣布與德國知名博弈運營商 Tipico 建立戰略合作關係。透過此次結盟，PopOK Gaming 將其遊戲產品線引入 Tipico 在德國市場的平台，進一步擴大其歐洲市場的市佔率與品牌影響力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="德國市場准入門檻高，PopOK 的佈局顯示該市場對優質內容需求強勁。我們應密切觀察歐洲監管下的產品獲客數據，並評估將 Jili 高性能老虎機內容透過合規代理進行歐洲市場測試的可能性，以多元化營收渠道。" data-en="The German market has high entry barriers; PopOK&#39;s expansion shows strong demand for quality content. We should monitor conversion data under European regulations and evaluate testing Jili&#39;s high-performance slots via compliant agents to diversify revenue." data-th="ตลาดเยอรมนีมีอุปสรรคในการเข้าสู่ตลาดสูง การดำเนินการของ PopOK แสดงให้เห็นถึงความต้องการเนื้อหาคุณภาพสูงที่แข็งแกร่ง เราควรเฝ้าติดตามข้อมูลผู้เล่นภายใต้กฎระเบียบของยุโรป และประเมินความเป็นไปได้ในการนำเกมสล็อตประสิทธิภาพสูงของ Jili ไปทดสอบในตลาดยุโรปผ่านตัวแทนที่ปฏิบัติตามกฎระเบียบ เพื่อกระจายช่องทางรายได้" data-hi="जर्मन बाजार में प्रवेश के लिए बाधाएं अधिक हैं; PopOK का यह कदम गुणवत्तापूर्ण सामग्री की उच्च मांग को दर्शाता है। हमें यूरोपीय नियमों के तहत डेटा की निगरानी करनी चाहिए और राजस्व विविधीकरण के लिए Jili के हाई-परफॉर्मेंस स्लॉट को अनुपालन एजेंटों के माध्यम से यूरोपीय बाजार में परीक्षण करने की संभावना का आकलन करना चाहिए।">德國市場准入門檻高，PopOK 的佈局顯示該市場對優質內容需求強勁。我們應密切觀察歐洲監管下的產品獲客數據，並評估將 Jili 高性能老虎機內容透過合規代理進行歐洲市場測試的可能性，以多元化營收渠道。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 60</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
 
                     </div>
 
@@ -3223,21 +3121,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Bally&#39;s Intralot 已與希臘國家彩票運營商 Hellenic Lotteries 簽署了新的合作協議。根據合約，Intralot 將為該平台提供技術支援與彩票解決方案，協助其更新系統並提升希臘市場的彩票業務營運效率。" data-en="Bally&#39;s Intralot has signed a new agreement with Hellenic Lotteries. Intralot will provide technical support and lottery solutions to modernize the platform and improve operational efficiency in the Greek lottery market." data-th="Bally&#39;s Intralot ได้ลงนามในข้อตกลงความร่วมมือใหม่กับ Hellenic Lotteries ผู้ให้บริการลอตเตอรีแห่งชาติกรีซ ภายใต้สัญญานี้ Intralot จะให้บริการสนับสนุนด้านเทคนิคและโซลูชันลอตเตอรี เพื่อช่วยอัปเกรดระบบและเพิ่มประสิทธิภาพการดำเนินธุรกิจลอตเตอรีในตลาดกรีซ" data-hi="Bally&#39;s Intralot ने ग्रीस के राष्ट्रीय लॉटरी ऑपरेटर हेलेनिक लॉटरीज के साथ एक नए सहयोग समझौते पर हस्ताक्षर किए हैं। अनुबंध के अनुसार, Intralot प्लेटफॉर्म के लिए तकनीकी सहायता और लॉटरी समाधान प्रदान करेगा, जिससे उन्हें सिस्टम अपडेट करने और ग्रीक बाजार में लॉटरी संचालन की दक्षता बढ़ाने में मदद मिलेगी।">Bally&#39;s Intralot 已與希臘國家彩票運營商 Hellenic Lotteries 簽署了新的合作協議。根據合約，Intralot 將為該平台提供技術支援與彩票解決方案，協助其更新系統並提升希臘市場的彩票業務營運效率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="彩票技術與線上老虎機的市場通路重疊度高。此類大型合約顯示受監管市場對整合技術供應商的依賴加深。Jili 可將此視為技術交付的標竿，持續優化我們在亞太地區針對類彩票、高頻博弈內容的 API 效能。" data-en="There is significant overlap between lottery tech and online slots distribution. This large contract highlights the growing dependence on integrated tech vendors in regulated markets. Jili can treat this as a benchmark for technical delivery, focusing on API performance for high-frequency gaming." data-th="เทคโนโลยีลอตเตอรีและช่องทางการตลาดของสล็อตออนไลน์มีความซ้อนทับกันสูง สัญญาขนาดใหญ่นี้แสดงให้เห็นถึงการพึ่งพาซัพพลายเออร์เทคโนโลยีแบบบูรณาการในตลาดที่มีการกำกับดูแลมากขึ้น Jili สามารถใช้สิ่งนี้เป็นเกณฑ์มาตรฐานสำหรับการส่งมอบทางเทคนิค โดยเน้นที่การเพิ่มประสิทธิภาพ API สำหรับเนื้อหาเกมที่มีความถี่สูงในภูมิภาคเอเชียแปซิฟิก" data-hi="लॉटरी तकनीक और ऑनलाइन स्लॉट के बाजार चैनलों में काफी समानता है। इस तरह के बड़े अनुबंध विनियमित बाजारों में एकीकृत तकनीकी विक्रेताओं पर बढ़ती निर्भरता को उजागर करते हैं। Jili इसे तकनीकी डिलीवरी के लिए बेंचमार्क मान सकता है, और एपीएसी क्षेत्र में लॉटरी-आधारित, उच्च-आवृत्ति वाली गेमिंग सामग्री के लिए एपीआई प्रदर्शन को अनुकूलित करना जारी रख सकता है।">彩票技術與線上老虎機的市場通路重疊度高。此類大型合約顯示受監管市場對整合技術供應商的依賴加深。Jili 可將此視為技術交付的標竿，持續優化我們在亞太地區針對類彩票、高頻博弈內容的 API 效能。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -3289,21 +3179,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="遊戲開發商 Agreegain 與 18Peaches 宣布達成合作協議，雙方將整合各自的產品優勢，共同研發並發行高品質的老虎機遊戲內容，旨在提升玩家體驗並擴大雙方在線上娛樂領域的市場競爭力。" data-en="Game developers Agreegain and 18Peaches have announced a partnership to integrate their product strengths, jointly developing and distributing high-quality slot games to enhance player experience and market competitiveness in the online entertainment sector." data-th="ผู้พัฒนาเกม Agreegain และ 18Peaches ประกาศข้อตกลงร่วมมือโดยทั้งสองฝ่ายจะบูรณาการจุดแข็งของผลิตภัณฑ์ เพื่อร่วมกันวิจัยและพัฒนา รวมถึงเผยแพร่เกมสล็อตคุณภาพสูง โดยมีเป้าหมายเพื่อยกระดับประสบการณ์ของผู้เล่นและเพิ่มขีดความสามารถในการแข่งขันในตลาดบันเทิงออนไลน์" data-hi="गेम डेवलपर Agreegain और 18Peaches ने एक साझेदारी समझौते की घोषणा की है। दोनों कंपनियां अपने उत्पाद की ताकत को एकीकृत करेंगी और संयुक्त रूप से उच्च गुणवत्ता वाले स्लॉट गेम विकसित और जारी करेंगी, जिसका उद्देश्य खिलाड़ी के अनुभव को बेहतर बनाना और ऑनलाइन मनोरंजन क्षेत्र में बाजार प्रतिस्पर्धात्मकता बढ़ाना है।">遊戲開發商 Agreegain 與 18Peaches 宣布達成合作協議，雙方將整合各自的產品優勢，共同研發並發行高品質的老虎機遊戲內容，旨在提升玩家體驗並擴大雙方在線上娛樂領域的市場競爭力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="內容供應商之間的整合趨勢頻繁。Jili 需保持產品差異化，透過強化數據驅動的研發模式（Player Behavior Analytics），確保我們在競爭激烈的市場中，仍能透過高回報率與創新機制保持內容交付的競爭壁壘。" data-en="Consolidation among content providers is frequent. Jili must maintain product differentiation through data-driven R&amp;D (Player Behavior Analytics) to ensure competitive barriers remain high via high RTP and innovative mechanics." data-th="แนวโน้มการบูรณาการระหว่างผู้ให้บริการเนื้อหามีให้เห็นบ่อยครั้ง Jili จำเป็นต้องรักษาความแตกต่างของผลิตภัณฑ์ผ่านโมเดลการวิจัยและพัฒนาที่ขับเคลื่อนด้วยข้อมูล (Player Behavior Analytics) เพื่อให้มั่นใจว่าเรายังคงมีความสามารถในการแข่งขันในตลาดที่มีการแข่งขันสูงผ่านผลตอบแทน (RTP) ที่สูงและกลไกเกมที่สร้างสรรค์" data-hi="कंटेंट प्रदाताओं के बीच एकीकरण का चलन बार-बार देखा जा रहा है। Jili को डेटा-संचालित आरएंडडी (खिलाड़ी व्यवहार एनालिटिक्स) के माध्यम से उत्पाद विभेदीकरण बनाए रखना चाहिए ताकि यह सुनिश्चित हो सके कि हम उच्च आरटीपी और अभिनव तंत्र के माध्यम से प्रतिस्पर्धी बाजारों में अपनी बढ़त बनाए रखें।">內容供應商之間的整合趨勢頻繁。Jili 需保持產品差異化，透過強化數據驅動的研發模式（Player Behavior Analytics），確保我們在競爭激烈的市場中，仍能透過高回報率與創新機制保持內容交付的競爭壁壘。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
 
                     </div>
 
@@ -3356,21 +3238,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="發行平台 QTech Games 宣布將 UU Slots 的遊戲內容納入其分發網絡，進一步擴大其遊戲組合的豐富度。此次合作將協助 UU Slots 的產品進入 QTech 的全球運營商客戶網絡，強化平台的市場吸引力。" data-en="Distribution platform QTech Games announced the integration of UU Slots&#39; content into its distribution network. This partnership will bring UU Slots&#39; products to QTech&#39;s global network of operators, enhancing the platform&#39;s market appeal." data-th="แพลตฟอร์มการจัดจำหน่ายเกม QTech Games ประกาศรวมเนื้อหาเกมจาก UU Slots เข้าสู่เครือข่ายการกระจายสินค้าของตน ซึ่งจะช่วยขยายความหลากหลายของพอร์ตโฟลิโอเกม ความร่วมมือนี้จะช่วยให้ผลิตภัณฑ์ของ UU Slots เข้าถึงเครือข่ายลูกค้าผู้ประกอบการทั่วโลกของ QTech ได้ง่ายขึ้น" data-hi="वितरण प्लेटफॉर्म QTech Games ने UU Slots की गेम सामग्री को अपने वितरण नेटवर्क में शामिल करने की घोषणा की है। यह सहयोग UU Slots के उत्पादों को QTech के वैश्विक ऑपरेटर नेटवर्क तक पहुँचाने में मदद करेगा, जिससे प्लेटफॉर्म का आकर्षण और बढ़ेगा।">發行平台 QTech Games 宣布將 UU Slots 的遊戲內容納入其分發網絡，進一步擴大其遊戲組合的豐富度。此次合作將協助 UU Slots 的產品進入 QTech 的全球運營商客戶網絡，強化平台的市場吸引力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="AGG (Aggregator) 平台市場版圖持續擴張。QTech 此舉證明內容聚合模式仍是觸達碎片化運營商的最佳手段。Jili 應持續優化與大型 AGG 平台的接入接口，提升內容交付效率，並透過數據反饋優化產品佈局。" data-en="The aggregator (AGG) market is expanding. QTech&#39;s move confirms that the content aggregation model remains the best way to reach fragmented operators. Jili should continue optimizing interfaces with major AGG platforms and leverage data feedback to refine product strategy." data-th="ตลาดแพลตฟอร์มผู้รวบรวม (AGG) กำลังขยายตัว การดำเนินการของ QTech ยืนยันว่าโมเดลการรวบรวมเนื้อหายังคงเป็นวิธีที่ดีที่สุดในการเข้าถึงผู้ประกอบการที่มีอยู่อย่างกระจัดกระจาย Jili ควรเพิ่มประสิทธิภาพการเชื่อมต่อกับแพลตฟอร์ม AGG ขนาดใหญ่ต่อไป และใช้ข้อมูลป้อนกลับเพื่อปรับปรุงแผนการนำเสนอผลิตภัณฑ์" data-hi="एग्रीगेटर (AGG) प्लेटफॉर्म बाजार का विस्तार जारी है। QTech का यह कदम साबित करता है कि कंटेंट एग्रीगेशन मॉडल अभी भी खंडित ऑपरेटरों तक पहुंचने का सबसे अच्छा साधन है। Jili को प्रमुख AGG प्लेटफॉर्म के साथ अपने इंटरफेस को अनुकूलित करना जारी रखना चाहिए और डेटा फीडबैक के माध्यम से उत्पाद रणनीति में सुधार करना चाहिए।">AGG (Aggregator) 平台市場版圖持續擴張。QTech 此舉證明內容聚合模式仍是觸達碎片化運營商的最佳手段。Jili 應持續優化與大型 AGG 平台的接入接口，提升內容交付效率，並透過數據反饋優化產品佈局。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 50</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 50</span>
 
                     </div>
 
@@ -3423,21 +3297,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="為迎合全球體育賽事熱潮，遊戲開發商 DragonGaming 推出全新主題老虎機《Ultimate Soccer Shootout》。該遊戲結合足球元素與互動博弈機制，旨在吸引在大型體育賽事期間活躍的玩家群體，提升留存率。" data-en="To capitalize on global sports enthusiasm, developer DragonGaming has launched a new themed slot titled &#39;Ultimate Soccer Shootout.&#39; The game combines football elements with interactive betting mechanics to attract players during major sporting events." data-th="เพื่อตอบรับกระแสการแข่งขันกีฬาระดับโลก นักพัฒนาเกม DragonGaming ได้เปิดตัวสล็อตธีมใหม่ล่าสุด &#39;Ultimate Soccer Shootout&#39; ซึ่งผสมผสานองค์ประกอบของฟุตบอลเข้ากับกลไกการพนันแบบโต้ตอบ โดยมีเป้าหมายเพื่อดึงดูดกลุ่มผู้เล่นที่ใช้งานอยู่ในช่วงที่มีการแข่งขันกีฬารายการใหญ่" data-hi="वैश्विक खेल उत्साह को भुनाने के लिए, गेम डेवलपर DragonGaming ने &#39;Ultimate Soccer Shootout&#39; नाम से एक नया थीम आधारित स्लॉट लॉन्च किया है। यह गेम फुटबॉल तत्वों को इंटरैक्टिव सट्टेबाजी तंत्र के साथ जोड़ता है, जिसका उद्देश्य बड़े खेल आयोजनों के दौरान सक्रिय खिलाड़ी समूह को आकर्षित करना है।">為迎合全球體育賽事熱潮，遊戲開發商 DragonGaming 推出全新主題老虎機《Ultimate Soccer Shootout》。該遊戲結合足球元素與互動博弈機制，旨在吸引在大型體育賽事期間活躍的玩家群體，提升留存率。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="體育賽事結合博弈內容是極佳的獲客策略。Jili 可借鑑此模式，針對即將到來的亞太區域體育賽事提前規劃主題遊戲發布，並確保技術架構能承受賽事期間的瞬時高併發流量，強化平台穩定性。" data-en="Sports-integrated gaming is an excellent acquisition strategy. Jili should study this model for upcoming APAC sports events, ensuring technical architecture can handle high concurrency during peak times to enhance stability." data-th="การรวมการพนันเข้ากับเหตุการณ์กีฬาเป็นกลยุทธ์การหาลูกค้าที่ดีเยี่ยม Jili สามารถนำแบบจำลองนี้ไปปรับใช้ โดยการวางแผนเปิดตัวเกมตามธีมสำหรับการแข่งขันกีฬาในภูมิภาคเอเชียแปซิฟิกที่จะมาถึง และต้องมั่นใจว่าสถาปัตยกรรมทางเทคนิคสามารถรองรับการเข้าถึงพร้อมกันจำนวนมากในช่วงเวลาดังกล่าวได้ เพื่อเสริมความเสถียรของแพลตฟอร์ม" data-hi="खेल आयोजनों के साथ जुआ सामग्री का मिश्रण एक बेहतरीन अधिग्रहण रणनीति है। Jili इस मॉडल से सीख सकता है और आगामी एपीएसी क्षेत्रीय खेल आयोजनों के लिए थीम वाले गेम लॉन्च करने की योजना बना सकता है। साथ ही, यह सुनिश्चित करना महत्वपूर्ण है कि तकनीकी संरचना पीक समय के दौरान उच्च ट्रैफिक को संभालने में सक्षम हो।">體育賽事結合博弈內容是極佳的獲客策略。Jili 可借鑑此模式，針對即將到來的亞太區域體育賽事提前規劃主題遊戲發布，並確保技術架構能承受賽事期間的瞬時高併發流量，強化平台穩定性。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 35</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -3490,21 +3356,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="遊戲開發商 Playnetic 宣布已與知名加密貨幣博弈平台 Stake 達成內容供應協議。Playnetic 的產品組合將整合至 Stake 的遊戲庫中，藉由後者龐大的加密貨幣玩家社群，快速提升遊戲產品的曝光率與用戶觸達。" data-en="Game developer Playnetic announced a content supply agreement with the crypto-gaming platform Stake. Playnetic&#39;s portfolio will be integrated into Stake’s game library, leveraging the platform&#39;s large cryptocurrency player community to increase product exposure." data-th="ผู้พัฒนาเกม Playnetic ประกาศทำข้อตกลงจัดหาเนื้อหากับ Stake แพลตฟอร์มคริปโตเคอเรนซีชั้นนำ ผลิตภัณฑ์ของ Playnetic จะถูกรวมเข้ากับไลบรารีเกมของ Stake โดยใช้ประโยชน์จากชุมชนผู้เล่นคริปโตขนาดใหญ่ เพื่อเพิ่มการมองเห็นและเข้าถึงกลุ่มผู้ใช้ให้รวดเร็วขึ้น" data-hi="गेम डेवलपर Playnetic ने प्रसिद्ध क्रिप्टोकरेंसी जुआ प्लेटफॉर्म Stake के साथ कंटेंट आपूर्ति समझौते की घोषणा की है। Playnetic के उत्पादों को Stake की गेम लाइब्रेरी में एकीकृत किया जाएगा, जिससे उनकी बड़ी क्रिप्टोकरेंसी खिलाड़ी कम्युनिटी का लाभ उठाकर गेम की दृश्यता और यूजर पहुंच को तेजी से बढ़ाया जा सके।">遊戲開發商 Playnetic 宣布已與知名加密貨幣博弈平台 Stake 達成內容供應協議。Playnetic 的產品組合將整合至 Stake 的遊戲庫中，藉由後者龐大的加密貨幣玩家社群，快速提升遊戲產品的曝光率與用戶觸達。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="加密博弈平台是當前增長最快的通路。與 Stake 此類大型平台合作對供應商具有戰略價值。Jili 應評估現有內容對加密貨幣玩家的適配性，並優化加密支付環境下的遊戲加載速度與體驗。" data-en="Crypto-gaming platforms are the fastest-growing channels. Partnership with Stake is strategically valuable. Jili should evaluate content compatibility for crypto-players and optimize game loading speeds within crypto-payment environments." data-th="แพลตฟอร์มการพนันคริปโตเป็นช่องทางที่เติบโตเร็วที่สุดในปัจจุบัน การร่วมมือกับแพลตฟอร์มขนาดใหญ่อย่าง Stake มีมูลค่าเชิงกลยุทธ์สูง Jili ควรประเมินความเหมาะสมของเนื้อหาที่มีอยู่สำหรับผู้เล่นคริปโต และปรับปรุงความเร็วในการโหลดเกมภายใต้สภาพแวดล้อมการชำระเงินด้วยคริปโต" data-hi="क्रिप्टो-गेमिंग प्लेटफॉर्म वर्तमान में सबसे तेजी से बढ़ते चैनल हैं। Stake जैसे बड़े प्लेटफॉर्म के साथ साझेदारी रणनीतिक रूप से मूल्यवान है। Jili को क्रिप्टो-खिलाड़ियों के लिए मौजूदा सामग्री की अनुकूलता का आकलन करना चाहिए और क्रिप्टो-भुगतान वातावरण के भीतर गेम लोड होने की गति को अनुकूलित करना चाहिए।">加密博弈平台是當前增長最快的通路。與 Stake 此類大型平台合作對供應商具有戰略價值。Jili 應評估現有內容對加密貨幣玩家的適配性，並優化加密支付環境下的遊戲加載速度與體驗。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 30</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -3556,21 +3414,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="一名來自愛爾蘭都柏林的線上彩票玩家，近日幸運贏得了價值 431 萬美元的頭獎。此類大型獎金事件再次推動了當地對於線上彩票與博弈平台的關注，並引發關於線上博弈平台獎金發放與合規性的媒體討論。" data-en="An online lottery player from Dublin, Ireland, recently won a $4.31 million jackpot. This major win has fueled local discussions about online lottery and gaming platforms, raising media interest in payout transparency and compliance." data-th="ผู้เล่นลอตเตอรีออนไลน์รายหนึ่งจากดับลิน ประเทศไอร์แลนด์ เพิ่งได้รับรางวัลแจ็กพอตมูลค่า 4.31 ล้านดอลลาร์ เหตุการณ์รางวัลใหญ่เช่นนี้ส่งผลให้เกิดความสนใจในแพลตฟอร์มลอตเตอรีและการพนันออนไลน์ในพื้นที่มากขึ้น และนำไปสู่การอภิปรายของสื่อเกี่ยวกับการจ่ายเงินรางวัลและการปฏิบัติตามกฎระเบียบของแพลตฟอร์ม" data-hi="आयरलैंड के डबलिन के एक ऑनलाइन लॉटरी खिलाड़ी ने हाल ही में $4.31 मिलियन का जैकपॉट जीता। इस बड़ी जीत ने स्थानीय स्तर पर ऑनलाइन लॉटरी और गेमिंग प्लेटफॉर्म के बारे में चर्चा को हवा दी है और भुगतान की पारदर्शिता व अनुपालन पर मीडिया का ध्यान आकर्षित किया है।">一名來自愛爾蘭都柏林的線上彩票玩家，近日幸運贏得了價值 431 萬美元的頭獎。此類大型獎金事件再次推動了當地對於線上彩票與博弈平台的關注，並引發關於線上博弈平台獎金發放與合規性的媒體討論。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="大型中獎新聞是極佳的市場行銷素材，但也易招致監管注意。對於我們的平台而言，應確保對「大額獎金發放」的透明度審核，並以此案例作為宣傳亮點，提升玩家對品牌信譽的信任感，同時強化風險隔離機制。" data-en="Big win news is excellent marketing material but invites regulatory scrutiny. For our platform, we must ensure transparency in large payout audits and use such cases as a highlight to build brand trust while reinforcing risk isolation mechanisms." data-th="ข่าวการถูกรางวัลใหญ่เป็นสื่อการตลาดที่ยอดเยี่ยม แต่ก็นำมาซึ่งการตรวจสอบจากหน่วยงานกำกับดูแล สำหรับแพลตฟอร์มของเรา เราควรตรวจสอบความโปร่งใสในการจ่ายรางวัลใหญ่ และใช้กรณีนี้เป็นจุดเด่นในการสร้างความเชื่อมั่นในแบรนด์ไปพร้อมกับการเสริมกลไกการแยกความเสี่ยง" data-hi="बड़ी जीत की खबर बेहतरीन मार्केटिंग सामग्री है, लेकिन यह नियामक जांच को भी आमंत्रित करती है। हमारे प्लेटफॉर्म के लिए, हमें बड़े भुगतान ऑडिट में पारदर्शिता सुनिश्चित करनी चाहिए और ऐसे मामलों को ब्रांड विश्वास बनाने के लिए एक हाइलाइट के रूप में उपयोग करना चाहिए, साथ ही जोखिम अलगाव तंत्र को भी मजबूत करना चाहिए।">大型中獎新聞是極佳的市場行銷素材，但也易招致監管注意。對於我們的平台而言，應確保對「大額獎金發放」的透明度審核，並以此案例作為宣傳亮點，提升玩家對品牌信譽的信任感，同時強化風險隔離機制。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 30</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
 
                     </div>
 
@@ -3623,21 +3473,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="泰國媒體報導，以招牌冷面幽默聞名的網紅 Khaby Lame 宣布參與遊戲《007 First Light》的開發與宣傳，將其個人風格融入這款預期受到高度關注的作品中，引發遊戲圈對跨界合作行銷的新討論。" data-en="Thai media reports that influencer Khaby Lame, known for his signature deadpan humor, has announced his involvement in the development and promotion of &#39;007 First Light&#39;, integrating his personal style into the highly anticipated title and sparking new discussions on cross-industry marketing." data-th="สื่อไทยรายงานว่า Khaby Lame อินฟลูเอนเซอร์ผู้โด่งดังจากมุกตลกหน้านิ่ง ได้ประกาศเข้าร่วมการพัฒนาและโปรโมตเกม &#39;007 First Light&#39; โดยนำสไตล์เฉพาะตัวมาผสมผสานในผลงานที่ได้รับความสนใจสูงนี้ จนเกิดเป็นประเด็นการตลาดข้ามสายงานที่น่าจับตามอง" data-hi="थाई मीडिया के अनुसार, अपने सिग्नेचर डेडपैन ह्यूमर के लिए मशहूर इन्फ्लुएंसर खाबी लाम ने &#39;007 फर्स्ट लाइट&#39; गेम के विकास और प्रचार में भाग लेने की घोषणा की है। उन्होंने अपने व्यक्तिगत स्टाइल को इस बहुप्रतीक्षित गेम में शामिल किया है, जिससे क्रॉस-मार्केटिंग के नए तौर-तरीकों पर चर्चा शुरू हो गई है।">泰國媒體報導，以招牌冷面幽默聞名的網紅 Khaby Lame 宣布參與遊戲《007 First Light》的開發與宣傳，將其個人風格融入這款預期受到高度關注的作品中，引發遊戲圈對跨界合作行銷的新討論。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="此類頂級網紅參與遊戲製作的模式，能有效拉高產品聲量與用戶留存。Jili 應評估在核心產品中引入類似「名人聯名」或「角色客製化」的機制，以提升品牌辨識度並增加對年輕市場的吸引力。" data-en="Collaborations with top-tier influencers can effectively boost product visibility and user retention. Jili should evaluate incorporating &#39;celebrity collaborations&#39; or &#39;character customization&#39; mechanics into core products to enhance brand recognition and appeal to the younger market." data-th="โมเดลการร่วมงานกับอินฟลูเอนเซอร์ระดับท็อปสามารถเพิ่มยอดการมองเห็นและรักษาฐานผู้ใช้งานได้อย่างมีประสิทธิภาพ Jili ควรพิจารณานำกลไก &#39;การร่วมมือกับคนดัง&#39; หรือ &#39;การปรับแต่งตัวละคร&#39; มาใช้ในผลิตภัณฑ์หลักเพื่อสร้างอัตลักษณ์ของแบรนด์และดึงดูดตลาดคนรุ่นใหม่" data-hi="शीर्ष इन्फ्लुएंसर्स के साथ सहयोग उत्पाद की दृश्यता और यूजर रिटेंशन को प्रभावी ढंग से बढ़ा सकता है। Jili को अपने मुख्य उत्पादों में &#39;सेलिब्रिटी सहयोग&#39; या &#39;कैरेक्टर कस्टमाइज़ेशन&#39; जैसे तंत्रों को शामिल करने का मूल्यांकन करना चाहिए, ताकि ब्रांड की पहचान बढ़ सके और युवा बाजार को आकर्षित किया जा सके।">此類頂級網紅參與遊戲製作的模式，能有效拉高產品聲量與用戶留存。Jili 應評估在核心產品中引入類似「名人聯名」或「角色客製化」的機制，以提升品牌辨識度並增加對年輕市場的吸引力。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -3689,21 +3531,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="知名 YouTuber PewDiePie 近期公開表示，為了保護兒子的隱私，將暫停發布家庭相關的 Vlog 影片，將內容重心回歸至個人創作與原有規劃，此舉引發粉絲對網紅隱私權與創作自由的討論。" data-en="Renowned YouTuber PewDiePie recently stated he will stop posting family-related vlogs to protect his son&#39;s privacy, shifting his content focus back to personal creation, sparking debates on influencer privacy and creative freedom." data-th="PewDiePie ยูทูบเบอร์ชื่อดังประกาศหยุดทำคลิปวิดีโอแนว Vlog เกี่ยวกับครอบครัว เพื่อปกป้องความเป็นส่วนตัวของลูกชาย และจะหันกลับไปโฟกัสที่การสร้างสรรค์คอนเทนต์ส่วนตัวตามแผนเดิม ซึ่งกระตุ้นให้เกิดการถกเถียงเรื่องความเป็นส่วนตัวและเสรีภาพในการสร้างสรรค์ของอินฟลูเอนเซอร์" data-hi="प्रसिद्ध यूट्यूबर PewDiePie ने हाल ही में घोषणा की कि वे अपने बेटे की निजता की सुरक्षा के लिए पारिवारिक व्लॉग पोस्ट करना बंद कर देंगे। वे अपना ध्यान वापस व्यक्तिगत कंटेंट क्रिएशन पर केंद्रित करेंगे, जिसने इन्फ्लुएंसर प्राइवेसी और रचनात्मक स्वतंत्रता पर नई बहस छेड़ दी है।">知名 YouTuber PewDiePie 近期公開表示，為了保護兒子的隱私，將暫停發布家庭相關的 Vlog 影片，將內容重心回歸至個人創作與原有規劃，此舉引發粉絲對網紅隱私權與創作自由的討論。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="數位內容創作者對個人隱私與品牌邊界的重視日益增加。對於 Jili 而言，這提醒我們在進行數位網紅行銷時，必須建立更嚴謹的合約架構，同時關注內容創作者生態的變動對市場行銷帶來的潛在影響。" data-en="Digital creators are increasingly prioritizing privacy and brand boundaries. For Jili, this serves as a reminder to establish more rigorous contractual frameworks when conducting influencer marketing and to monitor how shifts in the creator ecosystem impact market strategies." data-th="นักสร้างคอนเทนต์ให้ความสำคัญกับความเป็นส่วนตัวและขอบเขตของแบรนด์มากขึ้น สำหรับ Jili นี่คือเครื่องเตือนใจว่าในการทำการตลาดผ่านอินฟลูเอนเซอร์ เราต้องสร้างโครงสร้างสัญญาที่รัดกุมขึ้น พร้อมทั้งติดตามการเปลี่ยนแปลงของระบบนิเวศนักสร้างคอนเทนต์ที่มีผลกระทบต่อกลยุทธ์การตลาด" data-hi="डिजिटल कंटेंट क्रिएटर्स अपनी निजता और ब्रांड सीमाओं को लेकर अधिक सतर्क हो रहे हैं। Jili के लिए, यह एक अनुस्मारक है कि इन्फ्लुएंसर मार्केटिंग करते समय अधिक कठोर अनुबंध ढांचे स्थापित किए जाएं और कंटेंट क्रिएटर इकोसिस्टम में होने वाले बदलावों के बाजार पर पड़ने वाले प्रभाव पर नजर रखी जाए।">數位內容創作者對個人隱私與品牌邊界的重視日益增加。對於 Jili 而言，這提醒我們在進行數位網紅行銷時，必須建立更嚴謹的合約架構，同時關注內容創作者生態的變動對市場行銷帶來的潛在影響。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 25</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 25</span>
 
                     </div>
 
@@ -3756,21 +3590,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="模擬經營類遊戲《動物園之星 2》(Planet Zoo 2) 已正式對外公布，開發團隊預告將在近期揭露更多遊戲機制與視覺技術細節，這款備受期待的續作將延續其模擬經營市場的影響力。" data-en="Simulation game &#39;Planet Zoo 2&#39; has been officially announced. The development team plans to reveal more details regarding gameplay mechanics and visual technologies, as the highly anticipated sequel aims to extend its influence in the management simulation market." data-th="เกมแนวบริหารจัดการ &#39;Planet Zoo 2&#39; ได้ประกาศการพัฒนาอย่างเป็นทางการแล้ว ทีมงานเตรียมเผยรายละเอียดเพิ่มเติมเกี่ยวกับกลไกเกมและเทคโนโลยีภาพในเร็วๆ นี้ โดยภาคต่อที่หลายคนรอคอยนี้คาดว่าจะยังคงอิทธิพลในตลาดเกมแนวบริหารจัดการไว้ได้ต่อไป" data-hi="सिमुलेशन गेम &#39;Planet Zoo 2&#39; की आधिकारिक घोषणा कर दी गई है। विकास टीम जल्द ही गेमप्ले मैकेनिक्स और विजुअल तकनीक के बारे में अधिक जानकारी साझा करेगी। यह बहुप्रतीक्षित सीक्वल मैनेजमेंट सिमुलेशन मार्केट में अपना प्रभाव बनाए रखने के लिए तैयार है।">模擬經營類遊戲《動物園之星 2》(Planet Zoo 2) 已正式對外公布，開發團隊預告將在近期揭露更多遊戲機制與視覺技術細節，這款備受期待的續作將延續其模擬經營市場的影響力。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="高品質模擬遊戲的市場表現依然強勁。Jili 的產品線可藉此觀察「深度經營類」遊戲的核心循環機制，優化遊戲內的數值平衡系統，提升玩家長期沉浸感與互動黏著度。" data-en="High-quality simulation games maintain a strong market presence. Jili can study the core loop mechanisms of &#39;deep management&#39; games to optimize in-game numerical balancing systems and enhance long-term player immersion and stickiness." data-th="เกมแนวจำลองสถานการณ์คุณภาพสูงยังคงมีผลงานในตลาดที่แข็งแกร่ง Jili สามารถศึกษา &#39;กลไกหลัก&#39; (Core Loop) ของเกมแนวบริหารจัดการเชิงลึก เพื่อนำมาปรับปรุงระบบสมดุลตัวเลขในเกม และเพิ่มความดื่มด่ำรวมถึงความผูกพันของผู้เล่นในระยะยาว" data-hi="उच्च गुणवत्ता वाले सिमुलेशन गेम्स का बाजार में दबदबा कायम है। Jili &#39;डीप मैनेजमेंट&#39; गेम्स के कोर लूप मैकेनिज्म का अध्ययन करके इन-गेम बैलेंसिंग सिस्टम को बेहतर बना सकती है, जिससे खिलाड़ियों का जुड़ाव और लंबे समय तक गेम खेलने की रुचि बढ़ सके।">高品質模擬遊戲的市場表現依然強勁。Jili 的產品線可藉此觀察「深度經營類」遊戲的核心循環機制，優化遊戲內的數值平衡系統，提升玩家長期沉浸感與互動黏著度。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -3823,21 +3649,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="熱門動作遊戲《鳴潮》(Wuthering Waves) 發布官方公告，將於 5 月 29 日舉辦特別直播節目，預計針對遊戲 3.4 版本進行詳細內容展示與開發進度更新。" data-en="Popular action game &#39;Wuthering Waves&#39; officially announced a special livestream on May 29 to showcase content details and development updates for version 3.4." data-th="เกมแอ็กชันยอดฮิต &#39;Wuthering Waves&#39; ได้ออกประกาศอย่างเป็นทางการว่าจะจัดรายการไลฟ์สตรีมพิเศษในวันที่ 29 พฤษภาคมนี้ โดยคาดว่าจะนำเสนอรายละเอียดเนื้อหาและอัปเดตความคืบหน้าการพัฒนาสำหรับเวอร์ชัน 3.4" data-hi="लोकप्रिय एक्शन गेम &#39;Wuthering Waves&#39; ने आधिकारिक घोषणा की है कि वे 29 मई को एक विशेष लाइवस्ट्रीम आयोजित करेंगे, जिसमें वर्जन 3.4 के कंटेंट और विकास के बारे में विस्तृत जानकारी दी जाएगी।">熱門動作遊戲《鳴潮》(Wuthering Waves) 發布官方公告，將於 5 月 29 日舉辦特別直播節目，預計針對遊戲 3.4 版本進行詳細內容展示與開發進度更新。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="定期的大型版本更新與公開直播是維持用戶活躍的關鍵。Jili 在經營長線產品時，應效仿此類節奏，透過高品質的預告與更新內容，穩定社區情緒並提升產品長尾效益。" data-en="Regular major version updates and public livestreams are key to maintaining user activity. When managing long-term products, Jili should replicate this rhythm, using high-quality teasers and update content to stabilize community sentiment and enhance the product&#39;s long-tail effect." data-th="การอัปเดตเวอร์ชันใหญ่ตามรอบและการไลฟ์สตรีมสาธารณะเป็นกุญแจสำคัญในการรักษาความคึกคักของผู้ใช้ Jili ควรจำลองจังหวะการทำตลาดนี้ในการบริหารผลิตภัณฑ์ระยะยาว โดยใช้ตัวอย่างคุณภาพสูงและเนื้อหาอัปเดตเพื่อสร้างความมั่นใจให้ชุมชนและยืดอายุผลิตภัณฑ์ให้ยาวนานขึ้น" data-hi="नियमित बड़े अपडेट और लाइवस्ट्रीम उपयोगकर्ता सक्रियता बनाए रखने की कुंजी हैं। दीर्घकालिक उत्पादों के प्रबंधन में, Jili को इस लय का अनुसरण करना चाहिए, उच्च गुणवत्ता वाले टीज़र और अपडेट के माध्यम से सामुदायिक भावना को स्थिर करना चाहिए और उत्पाद की दीर्घकालिक प्रासंगिकता को बढ़ाना चाहिए।">定期的大型版本更新與公開直播是維持用戶活躍的關鍵。Jili 在經營長線產品時，應效仿此類節奏，透過高品質的預告與更新內容，穩定社區情緒並提升產品長尾效益。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -3889,21 +3707,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="知名遊戲製作人小島秀夫公開分享了觀賞《星際大戰：曼達洛人與格羅古》(The Mandalorian and Grogu) 的感受，對其視覺敘事與製作水準給予高度評價，再次引發遊戲開發者與影視創作邊界的熱議。" data-en="Renowned game producer Hideo Kojima shared his thoughts after watching &#39;The Mandalorian and Grogu&#39;, giving high praise to its visual storytelling and production standards, sparking new discussions on the blurred lines between game development and film production." data-th="Hideo Kojima โปรดิวเซอร์เกมระดับตำนานได้แชร์ความรู้สึกหลังชม &#39;The Mandalorian and Grogu&#39; โดยชื่นชมมาตรฐานการเล่าเรื่องด้วยภาพและคุณภาพการผลิตเป็นอย่างสูง ซึ่งจุดประเด็นการพูดคุยเรื่องเส้นแบ่งระหว่างการพัฒนาเกมและการสร้างภาพยนตร์อีกครั้ง" data-hi="प्रसिद्ध गेम निर्माता हिदेओ कोजिमा ने &#39;द मंडलोरियन एंड ग्रोगु&#39; देखने के बाद अपने विचार साझा किए। उन्होंने इसके विजुअल स्टोरीटेलिंग और प्रोडक्शन मानकों की अत्यधिक प्रशंसा की है, जिससे गेम डेवलपमेंट और फिल्म निर्माण के बीच की धुंधली रेखाओं पर एक नई चर्चा शुरू हो गई है।">知名遊戲製作人小島秀夫公開分享了觀賞《星際大戰：曼達洛人與格羅古》(The Mandalorian and Grogu) 的感受，對其視覺敘事與製作水準給予高度評價，再次引發遊戲開發者與影視創作邊界的熱議。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="業界頂尖創作者的跨界觀點常能啟發新技術應用。Jili 應持續關注技術與敘事結合的趨勢，特別是在遊戲視覺呈現與電影化沉浸體驗方面，以作為開發高階遊戲產品的參考標準。" data-en="Cross-disciplinary perspectives from top industry creators often inspire new technology applications. Jili should continue to monitor the trend of integrating technology with storytelling, particularly in cinematic immersion and visual presentation, as a benchmark for high-end product development." data-th="มุมมองข้ามสายงานจากนักสร้างสรรค์ระดับแนวหน้ามักเป็นแรงบันดาลใจในการประยุกต์ใช้เทคโนโลยีใหม่ๆ Jili ควรติดตามแนวโน้มการผสานเทคโนโลยีเข้ากับการเล่าเรื่องอย่างต่อเนื่อง โดยเฉพาะในด้านประสบการณ์ความดื่มด่ำแบบภาพยนตร์และการนำเสนอภาพ เพื่อใช้เป็นมาตรฐานอ้างอิงในการพัฒนาผลิตภัณฑ์เกมระดับสูง" data-hi="उद्योग के शीर्ष रचनाकारों के क्रॉस-डिसिप्लिनरी दृष्टिकोण अक्सर नई तकनीक के अनुप्रयोगों को प्रेरित करते हैं। Jili को तकनीक और कहानी के एकीकरण, विशेष रूप से सिनेमैटिक इमर्शन और विजुअल प्रस्तुति में रुझानों पर नजर रखनी चाहिए, ताकि उच्च-स्तरीय उत्पाद विकास के लिए एक बेंचमार्क स्थापित किया जा सके।">業界頂尖創作者的跨界觀點常能啟發新技術應用。Jili 應持續關注技術與敘事結合的趨勢，特別是在遊戲視覺呈現與電影化沉浸體驗方面，以作為開發高階遊戲產品的參考標準。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 25</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 25</span>
 
                     </div>
 
@@ -3955,21 +3765,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="在《Deus Ex》系列中飾演主角的配音員 Elias Toufexis 近日發表言論，表達對當前網路文化中普遍存在的「唱衰遊戲與開發者」現象感到不解，並呼籲大眾給予創作團隊更多尊重。" data-en="Voice actor Elias Toufexis, known for his role in the &#39;Deus Ex&#39; series, recently expressed confusion regarding the prevalent culture of bashing games and developers on the internet, urging the public to show more respect to creative teams." data-th="Elias Toufexis นักพากย์ผู้ให้เสียงตัวเอกในซีรีส์ &#39;Deus Ex&#39; ได้ออกมาแสดงความเห็นถึงความไม่เข้าใจต่อวัฒนธรรมบนโลกออนไลน์ที่มักจะ &#39;ดูแคลนเกมและนักพัฒนา&#39; พร้อมเรียกร้องให้สาธารณชนให้ความเคารพแก่ทีมงานสร้างสรรค์มากขึ้น" data-hi="&#39;Deus Ex&#39; सीरीज के मुख्य किरदार को आवाज देने वाले वॉयस एक्टर एलियास टौफेक्सिस ने इंटरनेट पर गेम्स और डेवलपर्स के प्रति प्रचलित नकारात्मकता पर नाराजगी जताई है। उन्होंने जनता से रचनात्मक टीमों के प्रति अधिक सम्मान दिखाने का आग्रह किया है।">在《Deus Ex》系列中飾演主角的配音員 Elias Toufexis 近日發表言論，表達對當前網路文化中普遍存在的「唱衰遊戲與開發者」現象感到不解，並呼籲大眾給予創作團隊更多尊重。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="遊戲從業者的心理健康與產業輿論壓力正受到關注。Jili 在對外溝通時應注意企業形象傳達，透過正向的市場教育與優質產品輸出，緩解潛在的負面產業輿論影響。" data-en="The mental health of industry professionals and the pressure from public opinion are gaining attention. Jili should focus on corporate image and communication, using positive market education and quality output to mitigate potential negative industry discourse." data-th="สุขภาพจิตของคนในวงการและแรงกดดันจากกระแสสังคมกำลังได้รับความสนใจ Jili ควรระมัดระวังในการสื่อสารภาพลักษณ์องค์กรผ่านการให้ความรู้ตลาดในเชิงบวก และผลิตผลงานที่มีคุณภาพเพื่อลดผลกระทบเชิงลบจากกระแสในอุตสาหกรรม" data-hi="उद्योग के पेशेवरों का मानसिक स्वास्थ्य और सार्वजनिक राय का दबाव चर्चा में है। Jili को कॉरपोरेट छवि के प्रति सावधान रहना चाहिए और सकारात्मक मार्केट एजुकेशन तथा गुणवत्तापूर्ण उत्पाद के जरिए उद्योग के नकारात्मक चर्चाओं के प्रभाव को कम करने का प्रयास करना चाहिए।">遊戲從業者的心理健康與產業輿論壓力正受到關注。Jili 在對外溝通時應注意企業形象傳達，透過正向的市場教育與優質產品輸出，緩解潛在的負面產業輿論影響。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 25</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 10</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 25</span>
 
                     </div>
 
@@ -4022,21 +3824,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="Acer 正式發布三款搭載 AI 技術的 премиум 筆記型電腦：Swift Go 16 AI、Swift Edge 16 AI 及 Swift Edge 14 AI，強化電腦在人工智慧處理效率與硬體效能上的表現。" data-en="Acer officially released three AI-powered premium laptops: Swift Go 16 AI, Swift Edge 16 AI, and Swift Edge 14 AI, enhancing processing efficiency and hardware performance for AI tasks." data-th="Acer เปิดตัวแล็ปท็อปพรีเมียมสามรุ่นที่มาพร้อมเทคโนโลยี AI ได้แก่ Swift Go 16 AI, Swift Edge 16 AI และ Swift Edge 14 AI เพื่อยกระดับประสิทธิภาพในการประมวลผล AI และประสิทธิภาพของฮาร์ดแวร์ให้ดียิ่งขึ้น" data-hi="Acer ने आधिकारिक तौर पर तीन AI-संचालित प्रीमियम लैपटॉप जारी किए हैं: Swift Go 16 AI, Swift Edge 16 AI, और Swift Edge 14 AI। ये लैपटॉप AI टास्क के लिए प्रोसेसिंग दक्षता और हार्डवेयर प्रदर्शन को बढ़ाते हैं।">Acer 正式發布三款搭載 AI 技術的 премиум 筆記型電腦：Swift Go 16 AI、Swift Edge 16 AI 及 Swift Edge 14 AI，強化電腦在人工智慧處理效率與硬體效能上的表現。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="AI 硬體規格的升級將帶動更流暢的遊戲體驗，尤其是移動端玩家。Jili 的遊戲內容優化應考量這些高效能硬體配置，確保在具備 AI 輔助的裝置上，遊戲效能與載入體驗能達到最佳化。" data-en="Upgraded AI hardware specifications will drive smoother gaming experiences, especially for mobile users. Jili’s content optimization should account for these high-performance configurations to ensure optimal gameplay and loading performance on AI-assisted devices." data-th="การอัปเกรดสเปกฮาร์ดแวร์ AI จะช่วยให้ประสบการณ์การเล่นเกมราบรื่นยิ่งขึ้น โดยเฉพาะสำหรับผู้เล่นบนมือถือ/แล็ปท็อป Jili ควรคำนึงถึงการกำหนดค่าฮาร์ดแวร์ที่มีประสิทธิภาพสูงเหล่านี้ในการปรับแต่งคอนเทนต์ เพื่อให้มั่นใจว่าประสิทธิภาพของเกมและการโหลดบนอุปกรณ์ที่รองรับ AI จะทำงานได้อย่างเต็มที่" data-hi="AI हार्डवेयर विनिर्देशों में अपग्रेड बेहतर गेमिंग अनुभव प्रदान करेंगे, विशेष रूप से मोबाइल उपयोगकर्ताओं के लिए। Jili को कंटेंट ऑप्टिमाइजेशन करते समय इन उच्च-प्रदर्शन वाले कॉन्फ़िगरेशन का ध्यान रखना चाहिए ताकि यह सुनिश्चित हो सके कि AI-सहायता प्राप्त उपकरणों पर गेमप्ले और लोडिंग का प्रदर्शन सर्वोत्तम रहे।">AI 硬體規格的升級將帶動更流暢的遊戲體驗，尤其是移動端玩家。Jili 的遊戲內容優化應考量這些高效能硬體配置，確保在具備 AI 輔助的裝置上，遊戲效能與載入體驗能達到最佳化。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 40</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
 
                     </div>
 
@@ -4425,7 +4219,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "全球", "count": 13, "coords": [20.36357751013464, 10.053353513573935], "sentiment": "利多", "news_full": [{"title": "電子競技產業擴張與蒙古戰隊的崛起：市場影響力觀察", "title_en": "Esports Industry Expansion and the Rise of The Mongolz: Market Influence", "title_th": "การขยายตัวของอุตสาหกรรมอีสปอร์ตและการผงาดของทีม The Mongolz: มุมมองอิทธิพลต่อตลาด", "title_hi": "ईस्पोर्ट्स उद्योग का विस्तार और द मोंगोल्ज़ का उदय: बाजार प्रभाव का अवलोकन", "link": "https://asgam.com/2026/05/26/an-interview-with-pgl-esports-and-the-mongolz/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Fast Track 推動 AI 代理工作流，升級新一代客戶關係管理", "title_en": "Fast Track Drives AI Agent Workflow to Upgrade Next-Generation CRM", "title_th": "Fast Track ขับเคลื่อน AI Agent Workflow ยกระดับ CRM ยุคใหม่", "title_hi": "Fast Track ने नई पीढ़ी के CRM को अपग्रेड करने के लिए AI एजेंट वर्कफ़्लो को बढ़ावा दिया", "link": "https://agbrief.com/news/europe/26/05/2026/fast-track-ai-powers-next-generation-crm-with-agentic-workflows/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}, {"title": "Agreegain 與 18Peaches 攜手提供優質老虎機內容", "title_en": "Agreegain and 18Peaches partner to provide premium slot content", "title_th": "Agreegain และ 18Peaches ผนึกกำลังส่งมอบเนื้อหาสล็อตคุณภาพระดับพรีเมียม", "title_hi": "Agreegain और 18Peaches ने प्रीमियम स्लॉट सामग्री प्रदान करने के लिए हाथ मिलाया", "link": "https://agbrief.com/news/world/25/05/2026/agreegain-and-18peaches-unite-to-deliver-premium-slot-content/", "sentiment": "中立", "impact": 45.0, "urgency": 25.0}, {"title": "QTech Games 透過 UU Slots 增強其頂級遊戲產品陣容", "title_en": "QTech Games enhances game portfolio with UU Slots", "title_th": "QTech Games เสริมทัพด้วยเนื้อหาเกมระดับท็อปจาก UU Slots", "title_hi": "QTech Games ने UU Slots के साथ अपना टॉप गेम पोर्टफोलियो बढ़ाया", "link": "https://agbrief.com/news/world/25/05/2026/qtech-games-enhances-its-premium-offering-with-uu-slots/", "sentiment": "利多", "impact": 50.0, "urgency": 25.0}, {"title": "DragonGaming 推出世足賽主題遊戲搶佔玩家熱度", "title_en": "DragonGaming launches World Cup themed game to capture player interest", "title_th": "DragonGaming เปิดตัวเกมธีมฟุตบอลโลกเพื่อแย่งชิงความสนใจของผู้เล่น", "title_hi": "DragonGaming ने खिलाड़ियों की रुचि पकड़ने के लिए वर्ल्ड कप थीम वाला गेम लॉन्च किया", "link": "https://www.gamblingnews.com/news/dragongaming-stokes-the-world-cup-fans-with-ultimate-soccer-shootout/", "sentiment": "利多", "impact": 40.0, "urgency": 35.0}, {"title": "Playnetic 將內容整合至 Stake 平台", "title_en": "Playnetic integrates content onto Stake platform", "title_th": "Playnetic นำเนื้อหาเข้าสู่แพลตฟอร์ม Stake", "title_hi": "Playnetic ने Stake प्लेटफॉर्म पर कंटेंट को एकीकृत किया", "link": "https://www.gamblingnews.com/news/playnetic-adds-content-to-stakes-library/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "網紅 Khaby Lame 跨界加盟遊戲《007 First Light》", "title_en": "Influencer Khaby Lame Joins the Game '007 First Light'", "title_th": "อินฟลูเอนเซอร์ชื่อดัง Khaby Lame เข้าร่วมโปรเจกต์เกม '007 First Light'", "title_hi": "इन्फ्लुएंसर खाबी लाम गेम '007 फर्स्ट लाइट' के साथ जुड़े", "link": "https://www.gamingdose.com/news/khaby-lame-influencer-%e0%b8%95%e0%b8%a5%e0%b8%81%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%95%e0%b8%b2%e0%b8%a2-%e0%b8%a3%e0%b9%88%e0%b8%a7%e0%b8%a1%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%aa/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "PewDiePie 為保護家人隱私宣布停止製作 Vlog 內容", "title_en": "PewDiePie Announces End to Vlog Content to Protect Family Privacy", "title_th": "PewDiePie ประกาศเลิกทำ Vlog เพื่อปกป้องความเป็นส่วนตัวของครอบครัว", "title_hi": "PewDiePie ने परिवार की निजता की सुरक्षा के लिए व्लॉगिंग बंद करने की घोषणा की", "link": "https://www.gamingdose.com/news/pewdiepie-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%ab%e0%b8%a2%e0%b8%b8%e0%b8%94%e0%b8%97%e0%b8%b3%e0%b8%84%e0%b8%a5%e0%b8%b4%e0%b8%9b-vlog-%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%9a/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "《動物園之星 2》正式公布開發消息", "title_en": "'Planet Zoo 2' Officially Announced", "title_th": "ประกาศการพัฒนาเกม 'Planet Zoo 2' อย่างเป็นทางการ", "title_hi": "'Planet Zoo 2' के विकास की आधिकारिक घोषणा", "link": "https://www.gamingdose.com/news/planet-zoo-2-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%81/", "sentiment": "利多", "impact": 40.0, "urgency": 10.0}, {"title": "《鳴潮》確認於 5 月 29 日直播揭露 3.4 版本細節", "title_en": "'Wuthering Waves' Confirms Livestream for Version 3.4 Details on May 29", "title_th": "'Wuthering Waves' ยืนยันไลฟ์สตรีมเผยรายละเอียดเวอร์ชัน 3.4 ในวันที่ 29 พฤษภาคมนี้", "title_hi": "'Wuthering Waves' 29 मई को वर्जन 3.4 की जानकारी के लिए लाइवस्ट्रीम करेगा", "link": "https://www.gamingdose.com/news/wuthering-waves-%e0%b9%80%e0%b8%95%e0%b8%a3%e0%b8%b5%e0%b8%a2%e0%b8%a1%e0%b8%88%e0%b8%b1%e0%b8%94%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%81%e0%b8%81%e0%b8%a3%e0%b8%a1%e0%b8%9e%e0%b8%b4%e0%b9%80%e0%b8%a8/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "小島秀夫高度評價《曼達洛人與格羅古》", "title_en": "Hideo Kojima Highly Praises 'The Mandalorian and Grogu'", "title_th": "Hideo Kojima ชื่นชม 'The Mandalorian and Grogu' เป็นอย่างสูง", "title_hi": "हिदेओ कोजिमा ने 'द मंडलोरियन एंड ग्रोगु' की अत्यधिक प्रशंसा की", "link": "https://www.gamingdose.com/news/hideo-kojima-%e0%b8%a3%e0%b9%88%e0%b8%b2%e0%b8%a2%e0%b8%a2%e0%b8%b2%e0%b8%a7%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%94%e0%b8%b5%e0%b8%87%e0%b8%b2%e0%b8%a1-%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "配音員 Elias Toufexis 呼籲大眾停止看衰遊戲產業", "title_en": "Voice Actor Elias Toufexis Calls to Stop Negativity Against Gaming Industry", "title_th": "นักพากย์ Elias Toufexis เรียกร้องให้ยุติการโจมตีอุตสาหกรรมเกม", "title_hi": "वॉयस एक्टर एलियास टौफेक्सिस ने गेमिंग उद्योग के प्रति नकारात्मकता रोकने का आह्वान किया", "link": "https://www.gamingdose.com/news/elias-toufexis-%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b9%81%e0%b8%aa%e0%b8%94%e0%b8%87%e0%b8%88%e0%b8%b2%e0%b8%81-deus-ex-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%80/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "Acer 推崇 AI 技術，發布 Swift Go 與 Edge 系列筆電", "title_en": "Acer Embraces AI, Launches Swift Go and Edge Laptop Series", "title_th": "Acer ผลักดันเทคโนโลยี AI เปิดตัวแล็ปท็อปตระกูล Swift Go และ Edge", "title_hi": "Acer ने AI तकनीक अपनाई, स्विफ्ट गो और एज लैपटॉप सीरीज लॉन्च की", "link": "https://www.gamingdose.com/news/acer-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b9%82%e0%b8%99%e0%b9%89%e0%b8%95%e0%b8%9a%e0%b8%b8%e0%b9%8a%e0%b8%81%e0%b8%9e%e0%b8%a3%e0%b8%b5%e0%b9%80%e0%b8%a1%e0%b8%b5/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}]}, {"region": "澳洲", "count": 2, "coords": [-25.735279675848524, 134.21015832178662], "sentiment": "利空", "news_full": [{"title": "澳洲新南威爾斯州研擬：十年內削減半數老虎機數量", "title_en": "New South Wales, Australia, Plans to Cut Slot Machine Count by Half in a Decade", "title_th": "รัฐนิวเซาท์เวลส์ ออสเตรเลีย วางแผนลดจำนวนสล็อตแมชชีนลงครึ่งหนึ่งใน 10 ปี", "title_hi": "ऑस्ट्रेलिया के न्यू साउथ वेल्स की योजना: एक दशक में स्लॉट मशीनों की संख्या आधी करना", "link": "https://asgam.com/2026/05/26/nsw-government-set-to-discuss-proposal-to-halve-states-poker-machine-number-over-next-decade/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "澳洲執政黨審議削減 8.7 萬台老虎機計畫", "title_en": "Australia's Ruling Party Considers Plan to Cut 87,000 Slot Machines", "title_th": "พรรครัฐบาลออสเตรเลียพิจารณาแผนลดจำนวนสล็อตแมชชีน 87,000 ตู้", "title_hi": "ऑस्ट्रेलिया की सत्ताधारी पार्टी 87,000 स्लॉट मशीनों को काटने की योजना पर विचार कर रही है", "link": "https://agbrief.com/news/australia/26/05/2026/nsw-ruling-party-weighs-plan-to-halve-87000-poker-machines/", "sentiment": "利空", "impact": 80.0, "urgency": 75.0}]}, {"region": "孟加拉", "count": 1, "coords": [23.30406799167738, 89.98173092914118], "sentiment": "利空", "news_full": [{"title": "孟加拉擬修法：全面加強線上博彩禁令", "title_en": "Bangladesh Proposes Legislative Amendment: Comprehensive Ban on Online Gambling", "title_th": "บังกลาเทศเตรียมแก้ไขกฎหมาย: ยกระดับการห้ามพนันออนไลน์อย่างเต็มรูปแบบ", "title_hi": "बांग्लादेश प्रस्तावित कानून: ऑनलाइन सट्टेबाजी पर व्यापक प्रतिबंध", "link": "https://asgam.com/2026/05/26/bangladesh-to-update-gambling-law-to-tighten-ban-on-betting-and-online-gambling/", "sentiment": "利空", "impact": 60.0, "urgency": 80.0}]}, {"region": "新加坡", "count": 2, "coords": [1.4976971965536099, 104.12133071359835], "sentiment": "利空", "news_full": [{"title": "新加坡監管機構向聖淘沙名勝世界發出譴責函", "title_en": "Singapore Regulator Issues Censure Letter to Resorts World Sentosa", "title_th": "หน่วยงานกำกับดูแลของสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa", "title_hi": "सिंगापुर नियामक ने रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://asgam.com/2026/05/26/resorts-world-sentosa-issued-letter-of-censure-by-singapore-regulator/", "sentiment": "利空", "impact": 30.0, "urgency": 75.0}, {"title": "新加坡賭場監管局因內部控制失效向聖淘沙名勝世界發出譴責信", "title_en": "Singapore's GRA issues censure to Resorts World Sentosa for internal control failures", "title_th": "หน่วยงานกำกับดูแลคาสิโนสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa เหตุความล้มเหลวในการควบคุมภายใน", "title_hi": "सिंगापुर के कैसीनो नियामक ने आंतरिक नियंत्रण विफलताओं के लिए रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://agbrief.com/news/singapore/25/05/2026/singapore-gra-issues-letter-of-censure-to-rws-over-internal-control-failure/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "菲律賓", "count": 2, "coords": [14.62120182413701, 120.87230175669927], "sentiment": "利空", "news_full": [{"title": "NUSTAR 於宿霧推動植樹活動，深耕社會責任", "title_en": "NUSTAR Promotes Tree Planting in Cebu to Deepen Corporate Social Responsibility", "title_th": "NUSTAR ในเซบูส่งเสริมกิจกรรมปลูกป่า ตอกย้ำความรับผิดชอบต่อสังคม", "title_hi": "NUSTAR ने सेबू में वृक्षारोपण को बढ़ावा दिया, कॉर्पोरेट सामाजिक जिम्मेदारी को गहरा किया", "link": "https://www.ggrasia.com/nustar-advances-reforestation-push-with-community-tree-planting-in-cebu?utm_source=rss&utm_medium=rss&utm_campaign=nustar-advances-reforestation-push-with-community-tree-planting-in-cebu", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "菲律賓政壇變動，Sherwin Gatchalian 被點名角逐參議院議長", "title_en": "Philippine political shift: Sherwin Gatchalian tipped for Senate Presidency", "title_th": "การเมืองฟิลิปปินส์เปลี่ยนทิศ: Sherwin Gatchalian ถูกจับตามองชิงตำแหน่งประธานวุฒิสภา", "title_hi": "फिलीपींस में राजनीतिक बदलाव: शेरविन गचालीयन सीनेट अध्यक्ष पद की दौड़ में आगे", "link": "https://agbrief.com/news/philippines/26/05/2026/senator-sherwin-gatchalian-floated-as-senate-president-amid-coalition-talks/", "sentiment": "利空", "impact": 85.0, "urgency": 75.0}]}, {"region": "越南", "count": 1, "coords": [20.940442415456157, 105.80508736370838], "sentiment": "中立", "news_full": [{"title": "會安南岸度假村推動永續發展與員工關懷專案", "title_en": "Hoiana Resort Launches Sustainable Development and Employee Care Program", "title_th": "Hoiana Resort เปิดตัวโครงการพัฒนาที่ยั่งยืนและดูแลพนักงาน", "title_hi": "होइयाना रिज़ॉर्ट ने सतत विकास और कर्मचारी देखभाल कार्यक्रम शुरू किया", "link": "https://www.ggrasia.com/hoiana-launches-sustainability-campaign-involving-employees-community?utm_source=rss&utm_medium=rss&utm_campaign=hoiana-launches-sustainability-campaign-involving-employees-community", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}]}, {"region": "亞太", "count": 1, "coords": [24.8183802950684, 138.23959894139287], "sentiment": "利多", "news_full": [{"title": "Weike 發布新電子輪盤與連線老虎機，積極爭取年輕受眾", "title_en": "Weike Launches New Electronic Roulette and Linked Slot Machines to Target Younger Audiences", "title_th": "Weike เปิดตัวรูเล็ตอิเล็กทรอนิกส์และสล็อตแมชชีนเชื่อมต่อรุ่นใหม่ หวังดึงกลุ่มคนรุ่นใหม่", "title_hi": "Weike ने युवा दर्शकों को आकर्षित करने के लिए नई इलेक्ट्रॉनिक रूलेट और लिंक्ड स्लॉट मशीनें जारी कीं", "link": "https://www.ggrasia.com/weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette?utm_source=rss&utm_medium=rss&utm_campaign=weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette", "sentiment": "利多", "impact": 55.0, "urgency": 45.0}]}, {"region": "柬埔寨", "count": 1, "coords": [11.481526999747995, 104.92538267817035], "sentiment": "利空", "news_full": [{"title": "柬埔寨總理下令徹查庇護網投犯罪的官員", "title_en": "Cambodian Prime Minister orders crackdown on officials shielding cybercrime", "title_th": "นายกฯ กัมพูชาสั่งกวาดล้างเจ้าหน้าที่รัฐที่ให้การสนับสนุนอาชญากรรมไซเบอร์", "title_hi": "कंबोडिया के प्रधानमंत्री ने साइबर अपराध को संरक्षण देने वाले अधिकारियों के खिलाफ सख्त कार्रवाई का आदेश दिया", "link": "https://agbrief.com/news/cambodia/26/05/2026/cambodian-pm-orders-crackdown-on-officials-shielding-cyber-scam-networks/", "sentiment": "利空", "impact": 80.0, "urgency": 90.0}]}, {"region": "德國", "count": 1, "coords": [51.17105262868064, 10.770754260557167], "sentiment": "利多", "news_full": [{"title": "PopOK Gaming 與德國 Tipico 達成戰略合作夥伴關係", "title_en": "PopOK Gaming enters strategic partnership with Germany's Tipico", "title_th": "PopOK Gaming จับมือ Tipico เยอรมนี สร้างพันธมิตรเชิงกลยุทธ์", "title_hi": "PopOK Gaming ने जर्मनी के Tipico के साथ रणनीतिक साझेदारी की", "link": "https://agbrief.com/news/europe/25/05/2026/popok-gaming-announces-strategic-partnership-with-tipico-in-germany/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}, {"region": "歐洲", "count": 2, "coords": [49.955956385608964, 15.167564053342302], "sentiment": "利多", "news_full": [{"title": "Bally's Intralot 與希臘 Hellenic Lotteries 簽訂新彩票合約", "title_en": "Bally's Intralot signs new lottery contract with Hellenic Lotteries in Greece", "title_th": "Bally's Intralot เซ็นสัญญาหวยใหม่กับ Hellenic Lotteries ในกรีซ", "title_hi": "Bally's Intralot ने ग्रीस में हेलेनिक लॉटरीज के साथ नए लॉटरी अनुबंध पर हस्ताक्षर किए", "link": "https://agbrief.com/news/europe/25/05/2026/ballys-intralot-secures-new-lottery-contract-with-hellenic-lotteries-in-greece/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "都柏林線上彩票玩家贏得 431 萬美元大獎", "title_en": "Dublin online lottery player wins $4.31 million jackpot", "title_th": "ผู้เล่นลอตเตอรีออนไลน์ในดับลินถูกรางวัลแจ็กพอต 4.31 ล้านดอลลาร์", "title_hi": "डबलिन के ऑनलाइन लॉटरी खिलाड़ी ने $4.31 मिलियन का जैकपॉट जीता", "link": "https://www.gamblingnews.com/news/dublin-online-lottery-player-wins-4-31m-lotto-jackpot/", "sentiment": "中立", "impact": 30.0, "urgency": 10.0}]}];
+        const mapMarkersData = [{"region": "全球", "count": 13, "coords": [20.089911127016688, 10.118964929396803], "sentiment": "利多", "news_full": [{"title": "電子競技產業擴張與蒙古戰隊的崛起：市場影響力觀察", "title_en": "Esports Industry Expansion and the Rise of The Mongolz: Market Influence", "title_th": "การขยายตัวของอุตสาหกรรมอีสปอร์ตและการผงาดของทีม The Mongolz: มุมมองอิทธิพลต่อตลาด", "title_hi": "ईस्पोर्ट्स उद्योग का विस्तार और द मोंगोल्ज़ का उदय: बाजार प्रभाव का अवलोकन", "link": "https://asgam.com/2026/05/26/an-interview-with-pgl-esports-and-the-mongolz/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Fast Track 推動 AI 代理工作流，升級新一代客戶關係管理", "title_en": "Fast Track Drives AI Agent Workflow to Upgrade Next-Generation CRM", "title_th": "Fast Track ขับเคลื่อน AI Agent Workflow ยกระดับ CRM ยุคใหม่", "title_hi": "Fast Track ने नई पीढ़ी के CRM को अपग्रेड करने के लिए AI एजेंट वर्कफ़्लो को बढ़ावा दिया", "link": "https://agbrief.com/news/europe/26/05/2026/fast-track-ai-powers-next-generation-crm-with-agentic-workflows/", "sentiment": "利多", "impact": 65.0, "urgency": 50.0}, {"title": "Agreegain 與 18Peaches 攜手提供優質老虎機內容", "title_en": "Agreegain and 18Peaches partner to provide premium slot content", "title_th": "Agreegain และ 18Peaches ผนึกกำลังส่งมอบเนื้อหาสล็อตคุณภาพระดับพรีเมียม", "title_hi": "Agreegain और 18Peaches ने प्रीमियम स्लॉट सामग्री प्रदान करने के लिए हाथ मिलाया", "link": "https://agbrief.com/news/world/25/05/2026/agreegain-and-18peaches-unite-to-deliver-premium-slot-content/", "sentiment": "中立", "impact": 45.0, "urgency": 25.0}, {"title": "QTech Games 透過 UU Slots 增強其頂級遊戲產品陣容", "title_en": "QTech Games enhances game portfolio with UU Slots", "title_th": "QTech Games เสริมทัพด้วยเนื้อหาเกมระดับท็อปจาก UU Slots", "title_hi": "QTech Games ने UU Slots के साथ अपना टॉप गेम पोर्टफोलियो बढ़ाया", "link": "https://agbrief.com/news/world/25/05/2026/qtech-games-enhances-its-premium-offering-with-uu-slots/", "sentiment": "利多", "impact": 50.0, "urgency": 25.0}, {"title": "DragonGaming 推出世足賽主題遊戲搶佔玩家熱度", "title_en": "DragonGaming launches World Cup themed game to capture player interest", "title_th": "DragonGaming เปิดตัวเกมธีมฟุตบอลโลกเพื่อแย่งชิงความสนใจของผู้เล่น", "title_hi": "DragonGaming ने खिलाड़ियों की रुचि पकड़ने के लिए वर्ल्ड कप थीम वाला गेम लॉन्च किया", "link": "https://www.gamblingnews.com/news/dragongaming-stokes-the-world-cup-fans-with-ultimate-soccer-shootout/", "sentiment": "利多", "impact": 40.0, "urgency": 35.0}, {"title": "Playnetic 將內容整合至 Stake 平台", "title_en": "Playnetic integrates content onto Stake platform", "title_th": "Playnetic นำเนื้อหาเข้าสู่แพลตฟอร์ม Stake", "title_hi": "Playnetic ने Stake प्लेटफॉर्म पर कंटेंट को एकीकृत किया", "link": "https://www.gamblingnews.com/news/playnetic-adds-content-to-stakes-library/", "sentiment": "利多", "impact": 65.0, "urgency": 30.0}, {"title": "網紅 Khaby Lame 跨界加盟遊戲《007 First Light》", "title_en": "Influencer Khaby Lame Joins the Game '007 First Light'", "title_th": "อินฟลูเอนเซอร์ชื่อดัง Khaby Lame เข้าร่วมโปรเจกต์เกม '007 First Light'", "title_hi": "इन्फ्लुएंसर खाबी लाम गेम '007 फर्स्ट लाइट' के साथ जुड़े", "link": "https://www.gamingdose.com/news/khaby-lame-influencer-%e0%b8%95%e0%b8%a5%e0%b8%81%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%95%e0%b8%b2%e0%b8%a2-%e0%b8%a3%e0%b9%88%e0%b8%a7%e0%b8%a1%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%aa/", "sentiment": "利多", "impact": 55.0, "urgency": 25.0}, {"title": "PewDiePie 為保護家人隱私宣布停止製作 Vlog 內容", "title_en": "PewDiePie Announces End to Vlog Content to Protect Family Privacy", "title_th": "PewDiePie ประกาศเลิกทำ Vlog เพื่อปกป้องความเป็นส่วนตัวของครอบครัว", "title_hi": "PewDiePie ने परिवार की निजता की सुरक्षा के लिए व्लॉगिंग बंद करने की घोषणा की", "link": "https://www.gamingdose.com/news/pewdiepie-%e0%b8%9b%e0%b8%a3%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a8%e0%b8%ab%e0%b8%a2%e0%b8%b8%e0%b8%94%e0%b8%97%e0%b8%b3%e0%b8%84%e0%b8%a5%e0%b8%b4%e0%b8%9b-vlog-%e0%b8%84%e0%b8%a3%e0%b8%ad%e0%b8%9a/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "《動物園之星 2》正式公布開發消息", "title_en": "'Planet Zoo 2' Officially Announced", "title_th": "ประกาศการพัฒนาเกม 'Planet Zoo 2' อย่างเป็นทางการ", "title_hi": "'Planet Zoo 2' के विकास की आधिकारिक घोषणा", "link": "https://www.gamingdose.com/news/planet-zoo-2-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b8%ad%e0%b8%a2%e0%b9%88%e0%b8%b2%e0%b8%87%e0%b9%80%e0%b8%9b%e0%b9%87%e0%b8%99%e0%b8%97%e0%b8%b2%e0%b8%87%e0%b8%81/", "sentiment": "利多", "impact": 40.0, "urgency": 10.0}, {"title": "《鳴潮》確認於 5 月 29 日直播揭露 3.4 版本細節", "title_en": "'Wuthering Waves' Confirms Livestream for Version 3.4 Details on May 29", "title_th": "'Wuthering Waves' ยืนยันไลฟ์สตรีมเผยรายละเอียดเวอร์ชัน 3.4 ในวันที่ 29 พฤษภาคมนี้", "title_hi": "'Wuthering Waves' 29 मई को वर्जन 3.4 की जानकारी के लिए लाइवस्ट्रीम करेगा", "link": "https://www.gamingdose.com/news/wuthering-waves-%e0%b9%80%e0%b8%95%e0%b8%a3%e0%b8%b5%e0%b8%a2%e0%b8%a1%e0%b8%88%e0%b8%b1%e0%b8%94%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%81%e0%b8%81%e0%b8%a3%e0%b8%a1%e0%b8%9e%e0%b8%b4%e0%b9%80%e0%b8%a8/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}, {"title": "小島秀夫高度評價《曼達洛人與格羅古》", "title_en": "Hideo Kojima Highly Praises 'The Mandalorian and Grogu'", "title_th": "Hideo Kojima ชื่นชม 'The Mandalorian and Grogu' เป็นอย่างสูง", "title_hi": "हिदेओ कोजिमा ने 'द मंडलोरियन एंड ग्रोगु' की अत्यधिक प्रशंसा की", "link": "https://www.gamingdose.com/news/hideo-kojima-%e0%b8%a3%e0%b9%88%e0%b8%b2%e0%b8%a2%e0%b8%a2%e0%b8%b2%e0%b8%a7%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%94%e0%b8%b5%e0%b8%87%e0%b8%b2%e0%b8%a1-%e0%b8%ab%e0%b8%a5%e0%b8%b1%e0%b8%87/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "配音員 Elias Toufexis 呼籲大眾停止看衰遊戲產業", "title_en": "Voice Actor Elias Toufexis Calls to Stop Negativity Against Gaming Industry", "title_th": "นักพากย์ Elias Toufexis เรียกร้องให้ยุติการโจมตีอุตสาหกรรมเกม", "title_hi": "वॉयस एक्टर एलियास टौफेक्सिस ने गेमिंग उद्योग के प्रति नकारात्मकता रोकने का आह्वान किया", "link": "https://www.gamingdose.com/news/elias-toufexis-%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b9%81%e0%b8%aa%e0%b8%94%e0%b8%87%e0%b8%88%e0%b8%b2%e0%b8%81-deus-ex-%e0%b8%81%e0%b8%a5%e0%b9%88%e0%b8%b2%e0%b8%a7-%e0%b9%84%e0%b8%a1%e0%b9%88%e0%b9%80/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "Acer 推崇 AI 技術，發布 Swift Go 與 Edge 系列筆電", "title_en": "Acer Embraces AI, Launches Swift Go and Edge Laptop Series", "title_th": "Acer ผลักดันเทคโนโลยี AI เปิดตัวแล็ปท็อปตระกูล Swift Go และ Edge", "title_hi": "Acer ने AI तकनीक अपनाई, स्विफ्ट गो और एज लैपटॉप सीरीज लॉन्च की", "link": "https://www.gamingdose.com/news/acer-%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b8%a7%e0%b9%82%e0%b8%99%e0%b9%89%e0%b8%95%e0%b8%9a%e0%b8%b8%e0%b9%8a%e0%b8%81%e0%b8%9e%e0%b8%a3%e0%b8%b5%e0%b9%80%e0%b8%a1%e0%b8%b5/", "sentiment": "利多", "impact": 40.0, "urgency": 25.0}]}, {"region": "澳洲", "count": 2, "coords": [-25.20274757463647, 134.22645278849325], "sentiment": "利空", "news_full": [{"title": "澳洲新南威爾斯州研擬：十年內削減半數老虎機數量", "title_en": "New South Wales, Australia, Plans to Cut Slot Machine Count by Half in a Decade", "title_th": "รัฐนิวเซาท์เวลส์ ออสเตรเลีย วางแผนลดจำนวนสล็อตแมชชีนลงครึ่งหนึ่งใน 10 ปี", "title_hi": "ऑस्ट्रेलिया के न्यू साउथ वेल्स की योजना: एक दशक में स्लॉट मशीनों की संख्या आधी करना", "link": "https://asgam.com/2026/05/26/nsw-government-set-to-discuss-proposal-to-halve-states-poker-machine-number-over-next-decade/", "sentiment": "利空", "impact": 75.0, "urgency": 70.0}, {"title": "澳洲執政黨審議削減 8.7 萬台老虎機計畫", "title_en": "Australia's Ruling Party Considers Plan to Cut 87,000 Slot Machines", "title_th": "พรรครัฐบาลออสเตรเลียพิจารณาแผนลดจำนวนสล็อตแมชชีน 87,000 ตู้", "title_hi": "ऑस्ट्रेलिया की सत्ताधारी पार्टी 87,000 स्लॉट मशीनों को काटने की योजना पर विचार कर रही है", "link": "https://agbrief.com/news/australia/26/05/2026/nsw-ruling-party-weighs-plan-to-halve-87000-poker-machines/", "sentiment": "利空", "impact": 80.0, "urgency": 75.0}]}, {"region": "孟加拉", "count": 1, "coords": [23.218825385221926, 90.47840719508734], "sentiment": "利空", "news_full": [{"title": "孟加拉擬修法：全面加強線上博彩禁令", "title_en": "Bangladesh Proposes Legislative Amendment: Comprehensive Ban on Online Gambling", "title_th": "บังกลาเทศเตรียมแก้ไขกฎหมาย: ยกระดับการห้ามพนันออนไลน์อย่างเต็มรูปแบบ", "title_hi": "बांग्लादेश प्रस्तावित कानून: ऑनलाइन सट्टेबाजी पर व्यापक प्रतिबंध", "link": "https://asgam.com/2026/05/26/bangladesh-to-update-gambling-law-to-tighten-ban-on-betting-and-online-gambling/", "sentiment": "利空", "impact": 60.0, "urgency": 80.0}]}, {"region": "新加坡", "count": 2, "coords": [1.5303956596718336, 103.49926924027963], "sentiment": "利空", "news_full": [{"title": "新加坡監管機構向聖淘沙名勝世界發出譴責函", "title_en": "Singapore Regulator Issues Censure Letter to Resorts World Sentosa", "title_th": "หน่วยงานกำกับดูแลของสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa", "title_hi": "सिंगापुर नियामक ने रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://asgam.com/2026/05/26/resorts-world-sentosa-issued-letter-of-censure-by-singapore-regulator/", "sentiment": "利空", "impact": 30.0, "urgency": 75.0}, {"title": "新加坡賭場監管局因內部控制失效向聖淘沙名勝世界發出譴責信", "title_en": "Singapore's GRA issues censure to Resorts World Sentosa for internal control failures", "title_th": "หน่วยงานกำกับดูแลคาสิโนสิงคโปร์ออกจดหมายตำหนิ Resorts World Sentosa เหตุความล้มเหลวในการควบคุมภายใน", "title_hi": "सिंगापुर के कैसीनो नियामक ने आंतरिक नियंत्रण विफलताओं के लिए रिसॉर्ट्स वर्ल्ड सेंटोसा को निंदा पत्र जारी किया", "link": "https://agbrief.com/news/singapore/25/05/2026/singapore-gra-issues-letter-of-censure-to-rws-over-internal-control-failure/", "sentiment": "利空", "impact": 30.0, "urgency": 60.0}]}, {"region": "菲律賓", "count": 2, "coords": [14.605232305743574, 121.27220812946108], "sentiment": "利空", "news_full": [{"title": "NUSTAR 於宿霧推動植樹活動，深耕社會責任", "title_en": "NUSTAR Promotes Tree Planting in Cebu to Deepen Corporate Social Responsibility", "title_th": "NUSTAR ในเซบูส่งเสริมกิจกรรมปลูกป่า ตอกย้ำความรับผิดชอบต่อสังคม", "title_hi": "NUSTAR ने सेबू में वृक्षारोपण को बढ़ावा दिया, कॉर्पोरेट सामाजिक जिम्मेदारी को गहरा किया", "link": "https://www.ggrasia.com/nustar-advances-reforestation-push-with-community-tree-planting-in-cebu?utm_source=rss&utm_medium=rss&utm_campaign=nustar-advances-reforestation-push-with-community-tree-planting-in-cebu", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "菲律賓政壇變動，Sherwin Gatchalian 被點名角逐參議院議長", "title_en": "Philippine political shift: Sherwin Gatchalian tipped for Senate Presidency", "title_th": "การเมืองฟิลิปปินส์เปลี่ยนทิศ: Sherwin Gatchalian ถูกจับตามองชิงตำแหน่งประธานวุฒิสภา", "title_hi": "फिलीपींस में राजनीतिक बदलाव: शेरविन गचालीयन सीनेट अध्यक्ष पद की दौड़ में आगे", "link": "https://agbrief.com/news/philippines/26/05/2026/senator-sherwin-gatchalian-floated-as-senate-president-amid-coalition-talks/", "sentiment": "利空", "impact": 85.0, "urgency": 75.0}]}, {"region": "越南", "count": 1, "coords": [21.210175832814286, 106.03246569328195], "sentiment": "中立", "news_full": [{"title": "會安南岸度假村推動永續發展與員工關懷專案", "title_en": "Hoiana Resort Launches Sustainable Development and Employee Care Program", "title_th": "Hoiana Resort เปิดตัวโครงการพัฒนาที่ยั่งยืนและดูแลพนักงาน", "title_hi": "होइयाना रिज़ॉर्ट ने सतत विकास और कर्मचारी देखभाल कार्यक्रम शुरू किया", "link": "https://www.ggrasia.com/hoiana-launches-sustainability-campaign-involving-employees-community?utm_source=rss&utm_medium=rss&utm_campaign=hoiana-launches-sustainability-campaign-involving-employees-community", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}]}, {"region": "亞太", "count": 1, "coords": [25.15421884973838, 137.87740516156057], "sentiment": "利多", "news_full": [{"title": "Weike 發布新電子輪盤與連線老虎機，積極爭取年輕受眾", "title_en": "Weike Launches New Electronic Roulette and Linked Slot Machines to Target Younger Audiences", "title_th": "Weike เปิดตัวรูเล็ตอิเล็กทรอนิกส์และสล็อตแมชชีนเชื่อมต่อรุ่นใหม่ หวังดึงกลุ่มคนรุ่นใหม่", "title_hi": "Weike ने युवा दर्शकों को आकर्षित करने के लिए नई इलेक्ट्रॉनिक रूलेट और लिंक्ड स्लॉट मशीनें जारी कीं", "link": "https://www.ggrasia.com/weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette?utm_source=rss&utm_medium=rss&utm_campaign=weike-aims-to-capture-wider-younger-range-of-players-with-fresh-progressive-slot-links-new-electronic-roulette", "sentiment": "利多", "impact": 55.0, "urgency": 45.0}]}, {"region": "柬埔寨", "count": 1, "coords": [11.137228321705674, 105.3722151804449], "sentiment": "利空", "news_full": [{"title": "柬埔寨總理下令徹查庇護網投犯罪的官員", "title_en": "Cambodian Prime Minister orders crackdown on officials shielding cybercrime", "title_th": "นายกฯ กัมพูชาสั่งกวาดล้างเจ้าหน้าที่รัฐที่ให้การสนับสนุนอาชญากรรมไซเบอร์", "title_hi": "कंबोडिया के प्रधानमंत्री ने साइबर अपराध को संरक्षण देने वाले अधिकारियों के खिलाफ सख्त कार्रवाई का आदेश दिया", "link": "https://agbrief.com/news/cambodia/26/05/2026/cambodian-pm-orders-crackdown-on-officials-shielding-cyber-scam-networks/", "sentiment": "利空", "impact": 80.0, "urgency": 90.0}]}, {"region": "德國", "count": 1, "coords": [51.24031870588908, 10.068523285225021], "sentiment": "利多", "news_full": [{"title": "PopOK Gaming 與德國 Tipico 達成戰略合作夥伴關係", "title_en": "PopOK Gaming enters strategic partnership with Germany's Tipico", "title_th": "PopOK Gaming จับมือ Tipico เยอรมนี สร้างพันธมิตรเชิงกลยุทธ์", "title_hi": "PopOK Gaming ने जर्मनी के Tipico के साथ रणनीतिक साझेदारी की", "link": "https://agbrief.com/news/europe/25/05/2026/popok-gaming-announces-strategic-partnership-with-tipico-in-germany/", "sentiment": "利多", "impact": 60.0, "urgency": 40.0}]}, {"region": "歐洲", "count": 2, "coords": [50.137202851307435, 15.297500161937597], "sentiment": "利多", "news_full": [{"title": "Bally's Intralot 與希臘 Hellenic Lotteries 簽訂新彩票合約", "title_en": "Bally's Intralot signs new lottery contract with Hellenic Lotteries in Greece", "title_th": "Bally's Intralot เซ็นสัญญาหวยใหม่กับ Hellenic Lotteries ในกรีซ", "title_hi": "Bally's Intralot ने ग्रीस में हेलेनिक लॉटरीज के साथ नए लॉटरी अनुबंध पर हस्ताक्षर किए", "link": "https://agbrief.com/news/europe/25/05/2026/ballys-intralot-secures-new-lottery-contract-with-hellenic-lotteries-in-greece/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "都柏林線上彩票玩家贏得 431 萬美元大獎", "title_en": "Dublin online lottery player wins $4.31 million jackpot", "title_th": "ผู้เล่นลอตเตอรีออนไลน์ในดับลินถูกรางวัลแจ็กพอต 4.31 ล้านดอลลาร์", "title_hi": "डबलिन के ऑनलाइन लॉटरी खिलाड़ी ने $4.31 मिलियन का जैकपॉट जीता", "link": "https://www.gamblingnews.com/news/dublin-online-lottery-player-wins-4-31m-lotto-jackpot/", "sentiment": "中立", "impact": 30.0, "urgency": 10.0}]}];
 
         const regionMarkers = {};
 
@@ -4866,14 +4660,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -4890,7 +4676,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -5588,7 +5374,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
