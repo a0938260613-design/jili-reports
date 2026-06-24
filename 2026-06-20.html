@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JILI 戰略情報指揮中心 - 2026-06-20</title>
+    <title>JILI 市場情報指揮中心 - 2026-06-20</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -934,6 +934,24 @@
 
         .splash-lang-btn:hover { transform:scale(1.07) translateY(-5px); background:rgba(255,255,255,0.1); }
 
+        body:not(.dark) .splash-lang-btn { background:rgba(255,255,255,0.36); border-color:rgba(15,23,42,0.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.55), 0 12px 28px rgba(15,23,42,0.06); }
+
+        body:not(.dark) .splash-lang-btn:hover { background:rgba(255,255,255,0.62); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.7), 0 16px 34px rgba(15,23,42,0.1); }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] { border-color:rgba(8,145,178,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] { border-color:rgba(37,99,235,0.34) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] { border-color:rgba(190,18,60,0.28) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] { border-color:rgba(180,83,9,0.34) !important; }
+
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-primary { color:#0891b2 !important; text-shadow:0 0 12px rgba(8,145,178,0.18) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="cn"] .splash-lang-secondary { color:rgba(15,118,110,0.86) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-primary { color:#2563eb !important; text-shadow:0 0 12px rgba(37,99,235,0.16) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="en"] .splash-lang-secondary { color:rgba(29,78,216,0.84) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-primary { color:#be123c !important; text-shadow:0 0 12px rgba(190,18,60,0.14) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="th"] .splash-lang-secondary { color:rgba(159,18,57,0.82) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-primary { color:#b45309 !important; text-shadow:0 0 12px rgba(180,83,9,0.15) !important; }
+        body:not(.dark) .splash-lang-btn[data-lang="hi"] .splash-lang-secondary { color:rgba(146,64,14,0.84) !important; }
+
 
 
         /* Collapsible section body */
@@ -1650,35 +1668,35 @@
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
-                    <button class="splash-lang-btn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="cn" onclick="selectLang('cn',this)" style="border-color:rgba(0,240,255,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.8rem;font-weight:900;color:#00f0ff;text-shadow:0 0 22px rgba(0,240,255,0.55);line-height:1.1;">中文</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
-
-                    </button>
-
-                    <button class="splash-lang-btn" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
-
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(0,240,255,0.78);margin-top:5px;">繁體中文</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="en" onclick="selectLang('en',this)" style="border-color:rgba(99,179,237,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
+                        <div class="splash-lang-primary" style="font-family:'JetBrains Mono',monospace;font-size:2.8rem;font-weight:900;color:#63b3ed;text-shadow:0 0 22px rgba(99,179,237,0.5);line-height:1.1;">EN</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(99,179,237,0.78);margin-top:5px;">English</div>
 
                     </button>
 
-                    <button class="splash-lang-btn" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+                    <button class="splash-lang-btn" data-lang="th" onclick="selectLang('th',this)" style="border-color:rgba(252,165,165,0.28);padding:32px 20px;">
 
-                        <div style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fca5a5;text-shadow:0 0 18px rgba(252,165,165,0.45);line-height:1.2;">ไทย</div>
 
-                        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(252,165,165,0.75);margin-top:5px;">Thai</div>
+
+                    </button>
+
+                    <button class="splash-lang-btn" data-lang="hi" onclick="selectLang('hi',this)" style="border-color:rgba(251,191,36,0.28);padding:32px 20px;">
+
+                        <div class="splash-lang-primary" style="font-family:'Noto Sans TC',sans-serif;font-size:2.4rem;font-weight:700;color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,0.4);line-height:1.2;">हिन्दी</div>
+
+                        <div class="splash-lang-secondary" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:rgba(251,191,36,0.75);margin-top:5px;">Hindi</div>
 
                     </button>
 
@@ -1704,7 +1722,7 @@
 
                 <span class="header-tagline text-blue-600 dark:text-neon-cyan font-mono font-black tracking-[0.2em] text-[10px] uppercase mb-2" data-i18n="tactical-terminal">Tactical Command Terminal</span>
 
-                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">戰略情報站</span></h1>
+                <h1 class="header-h1 text-4xl md:text-5xl font-black tracking-tighter text-high-contrast transition-colors">JILI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-neon-cyan dark:to-blue-500" data-i18n="strategic-hub">市場情報站</span></h1>
 
                 <span class="header-date text-[10px] font-mono text-mid-contrast mt-2 tracking-widest uppercase"><i class="fa-regular fa-clock mr-1.5 opacity-60"></i>2026-06-20</span>
 
@@ -1818,7 +1836,7 @@
 
                     <i class="fa-solid fa-compass text-blue-600 dark:text-neon-cyan text-lg animate-pulse"></i>
 
-                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 戰略情報站 — 使用指南</h2>
+                    <h2 class="text-sm font-mono font-black uppercase tracking-widest text-high-contrast truncate" data-i18n="guide-title">JILI 市場情報站 — 使用指南</h2>
 
                 </div>
 
@@ -1906,7 +1924,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2150,7 +2168,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2158,9 +2176,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
-
-                    <button id="sortUrgency" onclick="sortNews('urgency')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-urgency">急迫性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
 
                 </div>
 
@@ -2250,27 +2266,13 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
                         </div>
 
                         <input type="range" id="impactSlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
-
-                    </div>
-
-                    <div>
-
-                        <div class="flex justify-between items-center mb-3">
-
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="urgency-min">急迫性 ≥</span>
-
-                            <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="urgencySliderVal">0</span>
-
-                        </div>
-
-                        <input type="range" id="urgencySlider" class="score-slider w-full" min="0" max="100" step="5" value="0">
 
                     </div>
 
@@ -2346,21 +2348,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="針對持續進行的假球調查案，NBA 官方正採取更嚴格的措施，限制相關球員在籃球賽場的活動權限。此事件凸顯體育賽事與博彩合規性的敏感度，官方正透過加強內部監管與法律行動，旨在維護賽事公平性，防範博彩醜聞對聯盟商業聲譽與運作造成的潛在衝擊。" data-en="In response to ongoing match-fixing investigations, the NBA is implementing stricter measures to restrict player participation in sports betting. This move highlights the sensitivity of sports compliance and aims to maintain integrity to protect the league&#39;s reputation." data-th="ท่ามกลางการสอบสวนคดีการล็อกผลการแข่งขัน NBA ได้ประกาศใช้มาตรการที่เข้มงวดขึ้นในการจำกัดการมีส่วนร่วมของผู้เล่นในกิจกรรมที่เกี่ยวข้องกับการพนัน เหตุการณ์นี้เน้นย้ำถึงความอ่อนไหวในเรื่องความถูกต้องของกีฬา โดยลีกมุ่งเน้นการเสริมสร้างกฎระเบียบภายในเพื่อรักษาความยุติธรรมและป้องกันผลกระทบต่อชื่อเสียงทางธุรกิจ" data-hi="चल रही मैच फिक्सिंग जांच के जवाब में, NBA खिलाड़ियों की खेल सट्टेबाजी में भागीदारी को प्रतिबंधित करने के लिए कड़े कदम उठा रहा है। यह कदम खेल अनुपालन की संवेदनशीलता को उजागर करता है और लीग की प्रतिष्ठा की रक्षा के लिए अखंडता बनाए रखने का लक्ष्य रखता है।">針對持續進行的假球調查案，NBA 官方正採取更嚴格的措施，限制相關球員在籃球賽場的活動權限。此事件凸顯體育賽事與博彩合規性的敏感度，官方正透過加強內部監管與法律行動，旨在維護賽事公平性，防範博彩醜聞對聯盟商業聲譽與運作造成的潛在衝擊。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="體育賽事監管收緊，將導致相關博彩市場合規壓力增加。我們應主動與合作夥伴溝通，強化系統的誠信審核機制，確保所有 API 串接均符合最新的體育誠信法規。" data-en="With tightening sports regulation, compliance pressure on the betting market is increasing. We should proactively communicate with partners to strengthen system integrity audit mechanisms, ensuring all API connections comply with the latest sports integrity regulations." data-th="การควบคุมกฎระเบียบด้านกีฬาที่เข้มงวดขึ้นจะส่งผลให้แรงกดดันด้านการปฏิบัติตามกฎระเบียบในตลาดการพนันเพิ่มขึ้น เราควรสื่อสารเชิงรุกกับพันธมิตรเพื่อเสริมสร้างกลไกการตรวจสอบความซื่อสัตย์ของระบบ เพื่อให้แน่ใจว่าการเชื่อมต่อ API ทั้งหมดเป็นไปตามกฎระเบียบความโปร่งใสของกีฬาล่าสุด" data-hi="खेल विनियमन कड़े होने के कारण सट्टेबाजी बाजार पर अनुपालन दबाव बढ़ रहा है। हमें भागीदारों के साथ सक्रिय रूप से संवाद करना चाहिए ताकि सिस्टम अखंडता ऑडिट तंत्र को मजबूत किया जा सके, यह सुनिश्चित करते हुए कि सभी API कनेक्शन नवीनतम खेल अखंडता नियमों का पालन करते हैं।">體育賽事監管收緊，將導致相關博彩市場合規壓力增加。我們應主動與合作夥伴溝通，強化系統的誠信審核機制，確保所有 API 串接均符合最新的體育誠信法規。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 70</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 70</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
 
                     </div>
 
@@ -2413,21 +2407,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="分析師 Adam Bjorn 指出，美國政治與時事相關的預測市場近期成為交易核心動力。隨著預測平台交易量激增，此類新型博彩模式吸引了更多主流投資者的目光，顯示出預測市場正逐漸脫離小眾範疇，成為資本與公眾參與度極高的博弈細分領域，對傳統博彩格局構成挑戰。" data-en="Analyst Adam Bjorn notes that prediction markets tied to US politics and current events have become a core driver of trading volume. This emerging betting model is attracting mainstream investors, challenging the traditional betting landscape." data-th="นักวิเคราะห์ Adam Bjorn ชี้ว่าตลาดทายผล (Prediction Markets) ที่เกี่ยวข้องกับการเมืองสหรัฐฯ และเหตุการณ์ปัจจุบันกลายเป็นแรงขับเคลื่อนสำคัญของปริมาณการซื้อขาย รูปแบบการพนันใหม่นี้กำลังดึงดูดนักลงทุนกระแสหลักมากขึ้น แสดงให้เห็นว่าตลาดทายผลกำลังก้าวข้ามขอบเขตเฉพาะกลุ่มไปสู่การเป็นเซ็กเมนต์ที่มีการเดิมพันสูงและได้รับความสนใจจากสาธารณชน" data-hi="विश्लेषक एडम ब्योर्न का कहना है कि अमेरिकी राजनीति और समसामयिक घटनाओं से जुड़े पूर्वानुमान बाजार ट्रेडिंग वॉल्यूम के प्रमुख चालक बन गए हैं। यह उभरता हुआ सट्टेबाजी मॉडल मुख्यधारा के निवेशकों को आकर्षित कर रहा है, जो पारंपरिक सट्टेबाजी परिदृश्य को चुनौती दे रहा है।">分析師 Adam Bjorn 指出，美國政治與時事相關的預測市場近期成為交易核心動力。隨著預測平台交易量激增，此類新型博彩模式吸引了更多主流投資者的目光，顯示出預測市場正逐漸脫離小眾範疇，成為資本與公眾參與度極高的博弈細分領域，對傳統博彩格局構成挑戰。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="預測市場的崛起是博彩形態的演變。我們應密切關注其合規演進，並研究將『熱門事件即時預測』功能模組化的可能性，以適應市場對高頻率、大眾化博弈內容的需求。" data-en="The rise of prediction markets is an evolution of betting forms. We should closely monitor compliance developments and study the feasibility of modularizing a &#39;real-time hot event prediction&#39; feature to meet market demand for high-frequency, popular betting content." data-th="การเติบโตของตลาดทายผลคือวิวัฒนาการของรูปแบบการพนัน เราควรติดตามการพัฒนาด้านกฎระเบียบอย่างใกล้ชิดและศึกษความเป็นไปได้ในการพัฒนาฟีเจอร์ &#39;ทายผลเหตุการณ์ร้อนทันที&#39; แบบโมดูล เพื่อรองรับความต้องการของตลาดสำหรับเนื้อหาการพนันที่รวดเร็วและเข้าถึงมวลชน" data-hi="पूर्वानुमान बाजारों का उदय सट्टेबाजी के रूपों का विकास है। हमें अनुपालन विकास पर बारीकी से नज़र रखनी चाहिए और उच्च-आवृत्ति, लोकप्रिय सट्टेबाजी सामग्री के लिए बाजार की मांग को पूरा करने के लिए &#39;वास्तविक समय हॉट इवेंट भविष्यवाणी&#39; सुविधा को मॉडुलर बनाने की व्यवहार्यता का अध्ययन करना चाहिए।">預測市場的崛起是博彩形態的演變。我們應密切關注其合規演進，並研究將『熱門事件即時預測』功能模組化的可能性，以適應市場對高頻率、大眾化博弈內容的需求。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 55</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 40</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
 
                     </div>
 
@@ -2480,21 +2466,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="預測市場平台 Kalshi 正積極籌備首次公開募股 (IPO)，同時大型體育運彩商在紐約面臨相關立法挑戰。隨著新玩家進入市場並提供更多樣化的預測選項，傳統博彩供應商面臨市佔被分散的壓力，市場整體格局正因監管博弈與資本運作而經歷顯著重組。" data-en="The prediction market platform Kalshi is preparing for an IPO while traditional sportsbooks face legislative challenges in New York. New entrants offering diverse prediction options are putting pressure on the market share of traditional betting providers." data-th="Kalshi แพลตฟอร์มตลาดทายผลกำลังเตรียมทำ IPO ในขณะที่บริษัทพนันกีฬาขนาดใหญ่ในนิวยอร์กกำลังเผชิญกับความท้าทายทางกฎหมาย การที่มีผู้เล่นหน้าใหม่เข้าสู่ตลาดและเสนอทางเลือกการทายผลที่หลากหลายมากขึ้น ทำให้ผู้ให้บริการพนันแบบดั้งเดิมกำลังเผชิญกับแรงกดดันเรื่องส่วนแบ่งตลาด" data-hi="पूर्वानुमान बाजार प्लेटफॉर्म Kalshi IPO की तैयारी कर रहा है, जबकि न्यूयॉर्क में पारंपरिक स्पोर्ट्सबुक्स को विधायी चुनौतियों का सामना करना पड़ रहा है। विविध भविष्यवाणी विकल्प पेश करने वाले नए खिलाड़ी पारंपरिक सट्टेबाजी प्रदाताओं के बाजार हिस्सेदारी पर दबाव डाल रहे हैं।">預測市場平台 Kalshi 正積極籌備首次公開募股 (IPO)，同時大型體育運彩商在紐約面臨相關立法挑戰。隨著新玩家進入市場並提供更多樣化的預測選項，傳統博彩供應商面臨市佔被分散的壓力，市場整體格局正因監管博弈與資本運作而經歷顯著重組。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="預測市場對傳統體育博弈構成威脅。JILI 在擴展產品線時，需評估是否進入預測市場賽道，或是透過加強核心產品體驗（如更直觀的 UI 與即時賽況整合）來穩固護城河。" data-en="Prediction markets pose a threat to traditional sports betting. As JILI expands its product line, we must evaluate whether to enter the prediction market space or strengthen our core product experience (such as more intuitive UI and real-time integration) to solidify our moat." data-th="ตลาดทายผลเป็นภัยคุกคามต่อการพนันกีฬาแบบดั้งเดิม ในขณะที่ JILI กำลังขยายกลุ่มผลิตภัณฑ์ เราต้องประเมินว่าจะเข้าสู่ตลาดนี้หรือไม่ หรือควรเสริมสร้างประสบการณ์ผลิตภัณฑ์หลัก (เช่น UI ที่ใช้งานง่ายขึ้นและการรวมข้อมูลการแข่งขันสด) เพื่อสร้างความได้เปรียบในการแข่งขัน" data-hi="पूर्वानुमान बाजार पारंपरिक खेल सट्टेबाजी के लिए खतरा पैदा करते हैं। जैसे-जैसे JILI अपनी उत्पाद श्रृंखला का विस्तार कर रहा है, हमें यह मूल्यांकन करना होगा कि क्या पूर्वानुमान बाजार में प्रवेश करना है, या अपनी खंदक (moat) को मजबूत करने के लिए मुख्य उत्पाद अनुभव (जैसे अधिक सहज UI और रीयल-टाइम एकीकरण) को मजबूत करना है।">預測市場對傳統體育博弈構成威脅。JILI 在擴展產品線時，需評估是否進入預測市場賽道，或是透過加強核心產品體驗（如更直觀的 UI 與即時賽況整合）來穩固護城河。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 75</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
 
                     </div>
 
@@ -2547,21 +2525,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="最新產業報告揭示，AI 生成的虛擬網紅與足球社群帳號，正大量參與推廣未受監管的非法博彩內容。這些行為主要透過社交媒體平台觸及青少年群體，引發監管機構的高度關注。英國當局正考慮強化針對社群媒體博彩廣告的規範，以遏止數位通路的不當行銷行為。" data-en="A new industry report reveals that AI-generated virtual influencers and football fan accounts are heavily promoting unregulated illegal gambling, targeting minors on social media. UK authorities are considering stricter regulations on gambling advertising." data-th="รายงานอุตสาหกรรมล่าสุดเผยว่า อินฟลูเอนเซอร์เสมือนที่สร้างโดย AI และบัญชีแฟนบอลกำลังมีส่วนร่วมในการส่งเสริมการพนันผิดกฎหมายที่ไม่มีการควบคุมเป็นจำนวนมาก พฤติกรรมเหล่านี้มุ่งเป้าไปที่กลุ่มเยาวชนผ่านสื่อสังคมออนไลน์ ทำให้ทางการอังกฤษกำลังพิจารณาเพิ่มความเข้มงวดของกฎระเบียบโฆษณาการพนันเพื่อยับยั้งการตลาดที่ไม่เหมาะสม" data-hi="नवीनतम उद्योग रिपोर्ट से पता चलता है कि AI-जनरेटेड वर्चुअल इन्फ्लुएंसर और फुटबॉल प्रशंसक खाते सोशल मीडिया पर नाबालिगों को लक्षित करते हुए अनियमित अवैध जुए को बढ़ावा दे रहे हैं। यूके के अधिकारी जुआ विज्ञापन पर कड़े नियमों पर विचार कर रहे हैं।">最新產業報告揭示，AI 生成的虛擬網紅與足球社群帳號，正大量參與推廣未受監管的非法博彩內容。這些行為主要透過社交媒體平台觸及青少年群體，引發監管機構的高度關注。英國當局正考慮強化針對社群媒體博彩廣告的規範，以遏止數位通路的不當行銷行為。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="社群行銷的合規風險加劇。JILI 作為供應商，應嚴格審核所有品牌推廣素材，確保合作運營商遵循嚴苛的廣告法規，避免因行銷合規問題波及企業聲譽。" data-en="Social marketing compliance risks are intensifying. As a supplier, JILI should strictly audit all brand promotional materials to ensure our operators adhere to stringent advertising laws, preventing reputational damage caused by marketing compliance issues." data-th="ความเสี่ยงในการปฏิบัติตามกฎระเบียบด้านการตลาดผ่านสื่อสังคมออนไลน์กำลังเพิ่มขึ้น ในฐานะซัพพลายเออร์ JILI ควรตรวจสอบวัสดุส่งเสริมการขายของแบรนด์อย่างเข้มงวดเพื่อให้มั่นใจว่าพันธมิตรผู้ให้บริการปฏิบัติตามกฎหมายโฆษณาที่เคร่งครัด เพื่อหลีกเลี่ยงความเสียหายต่อชื่อเสียงบริษัทจากปัญหาความไม่ปฏิบัติตามกฎระเบียบ" data-hi="सोशल मार्केटिंग अनुपालन जोखिम बढ़ रहे हैं। एक आपूर्तिकर्ता के रूप में, JILI को सभी ब्रांड प्रचार सामग्रियों का सख्ती से ऑडिट करना चाहिए ताकि यह सुनिश्चित हो सके कि हमारे ऑपरेटर सख्त विज्ञापन कानूनों का पालन करते हैं, जिससे मार्केटिंग अनुपालन मुद्दों के कारण होने वाली प्रतिष्ठा को नुकसान से बचा जा सके।">社群行銷的合規風險加劇。JILI 作為供應商，應嚴格審核所有品牌推廣素材，確保合作運營商遵循嚴苛的廣告法規，避免因行銷合規問題波及企業聲譽。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 80</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 85</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
 
                     </div>
 
@@ -2613,21 +2583,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="芝加哥市議會於近期會議中投票否決了針對 Sweepstakes（抽獎類博彩）的全面禁令，但針對視訊博彩終端機 (VGT) 的合規討論仍在持續。此結果暫緩了當地市場的全面緊縮風險，但博彩營運商與地方監管單位的矛盾未解，未來針對 VGT 與 sweepstakes 的監管政策仍存在高度不確定性。" data-en="The Chicago City Council recently voted against a total ban on sweepstakes-style gambling, though debates over Video Gaming Terminals (VGT) continue. This results in temporary relief for local markets but high uncertainty remains regarding future regulations." data-th="สภาเมืองชิคาโกได้ลงมติปฏิเสธการแบนการพนันแบบชิงโชค (Sweepstakes) อย่างเต็มรูปแบบ แต่การอภิปรายเกี่ยวกับตู้เกมพนัน (VGT) ยังคงดำเนินต่อไป ผลลัพธ์นี้ช่วยผ่อนคลายความเสี่ยงในการหดตัวของตลาดท้องถิ่นชั่วคราว แต่ยังมีความไม่แน่นอนสูงเกี่ยวกับนโยบายกำกับดูแลในอนาคต" data-hi="शिकागो सिटी काउंसिल ने हाल ही में स्वीपस्टेक्स-शैली के जुए पर पूर्ण प्रतिबंध के खिलाफ मतदान किया है, हालांकि वीडियो गेमिंग टर्मिनलों (VGT) पर बहस जारी है। यह स्थानीय बाजारों के लिए एक अस्थायी राहत है, लेकिन भविष्य के नियमों को लेकर उच्च अनिश्चितता बनी हुई है।">芝加哥市議會於近期會議中投票否決了針對 Sweepstakes（抽獎類博彩）的全面禁令，但針對視訊博彩終端機 (VGT) 的合規討論仍在持續。此結果暫緩了當地市場的全面緊縮風險，但博彩營運商與地方監管單位的矛盾未解，未來針對 VGT 與 sweepstakes 的監管政策仍存在高度不確定性。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="地區性博彩政策波動頻繁。我們需為終端合作商提供更靈活的產品配置工具，以便在法規變動時，能快速調整產品參數以符合當地合規性要求，降低業務中斷風險。" data-en="Regional gambling policies are volatile. We need to provide partner operators with more flexible product configuration tools, enabling them to quickly adjust parameters to meet local compliance requirements when regulations change, thereby reducing business disruption risk." data-th="นโยบายการพนันระดับภูมิภาคมีความผันผวนบ่อยครั้ง เราจำเป็นต้องจัดหาเครื่องมือปรับแต่งผลิตภัณฑ์ที่มีความยืดหยุ่นมากขึ้นให้กับคู่ค้า เพื่อให้สามารถปรับพารามิเตอร์ของผลิตภัณฑ์ให้สอดคล้องกับข้อกำหนดการปฏิบัติตามกฎระเบียบของท้องถิ่นได้อย่างรวดเร็วเมื่อมีการเปลี่ยนแปลงกฎหมาย เพื่อลดความเสี่ยงจากการหยุดชะงักของธุรกิจ" data-hi="क्षेत्रीय जुआ नीतियां अक्सर बदलती रहती हैं। हमें भागीदार ऑपरेटरों को अधिक लचीले उत्पाद कॉन्फ़िगरेशन उपकरण प्रदान करने की आवश्यकता है, ताकि जब नियम बदलें, तो वे स्थानीय अनुपालन आवश्यकताओं को पूरा करने के लिए उत्पाद मापदंडों को जल्दी से समायोजित कर सकें, जिससे व्यावसायिक व्यवधान का जोखिम कम हो सके।">地區性博彩政策波動頻繁。我們需為終端合作商提供更靈活的產品配置工具，以便在法規變動時，能快速調整產品參數以符合當地合規性要求，降低業務中斷風險。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 55</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2680,21 +2642,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="本週預測市場動盪不斷。美國密西根州法院針對特定博弈類產品做出關鍵判決，影響未來合規框架；同時，CME集團面臨法律訴訟，涉及市場交易規則爭議。此外，多個預測平台在本週推出新產品，試圖透過技術創新搶佔市場份額，顯示出預測市場在法律規範不明確的環境下，正經歷快速且具競爭性的擴張期。" data-en="The prediction market faced significant volatility this week. A Michigan court issued a key ruling on specific wagering products, impacting future compliance frameworks. Meanwhile, CME Group faces a lawsuit regarding trading rule disputes. Additionally, several platforms launched new products to capture market share through technological innovation, highlighting a period of rapid and competitive expansion despite regulatory uncertainty." data-th="ตลาดคาดการณ์มีความผันผวนอย่างต่อเนื่องในสัปดาห์นี้ ศาลในรัฐมิชิแกนได้ตัดสินคดีสำคัญเกี่ยวกับผลิตภัณฑ์การพนันบางประเภท ซึ่งส่งผลต่อกรอบการปฏิบัติตามกฎระเบียบในอนาคต ในขณะเดียวกัน CME Group เผชิญกับการฟ้องร้องทางกฎหมายที่เกี่ยวข้องกับข้อพิพาทด้านกฎการซื้อขาย นอกจากนี้ แพลตฟอร์มหลายแห่งยังเปิดตัวผลิตภัณฑ์ใหม่เพื่อแย่งชิงส่วนแบ่งการตลาดผ่านนวัตกรรมทางเทคโนโลยี สะท้อนให้เห็นว่าตลาดคาดการณ์กำลังอยู่ในช่วงขยายตัวอย่างรวดเร็วและมีการแข่งขันสูงท่ามกลางความไม่ชัดเจนทางกฎหมาย" data-hi="इस सप्ताह भविष्यवाणी बाजार में काफी उथल-पुथल रही। मिशिगन की एक अदालत ने विशिष्ट सट्टेबाजी उत्पादों पर एक महत्वपूर्ण निर्णय सुनाया, जो भविष्य के अनुपालन ढांचे को प्रभावित करेगा। साथ ही, CME समूह को ट्रेडिंग नियमों के विवाद को लेकर कानूनी मुकदमों का सामना करना पड़ रहा है। इसके अलावा, कई प्लेटफार्मों ने तकनीकी नवाचार के माध्यम से बाजार हिस्सेदारी हासिल करने के लिए नए उत्पाद लॉन्च किए हैं, जो यह दर्शाता है कि विनियामक अनिश्चितता के बावजूद यह बाजार तेजी से विस्तार और प्रतिस्पर्धी दौर से गुजर रहा है।">本週預測市場動盪不斷。美國密西根州法院針對特定博弈類產品做出關鍵判決，影響未來合規框架；同時，CME集團面臨法律訴訟，涉及市場交易規則爭議。此外，多個預測平台在本週推出新產品，試圖透過技術創新搶佔市場份額，顯示出預測市場在法律規範不明確的環境下，正經歷快速且具競爭性的擴張期。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="預測市場的法律風險正外溢至博弈產業，影響客戶端合規信心。JILI應審慎評估與相關平台對接的風險，避免因監管動盪波及核心產品線。技術端應強化帳戶風控與數據隔離，同時監測此類產品對傳統電子遊戲市場的玩家分流效應，作為產品防禦佈局的參考。" data-en="Legal risks in the prediction market are spilling over into the gaming industry, impacting client compliance confidence. JILI should cautiously assess the risks of integrating with relevant platforms to prevent regulatory turmoil from affecting core product lines. On the technical side, account risk control and data isolation should be strengthened, while monitoring player churn from traditional e-gaming to these platforms as a reference for defensive product strategy." data-th="ความเสี่ยงทางกฎหมายของตลาดคาดการณ์กำลังลุกลามเข้าสู่อุตสาหกรรมเกม ส่งผลกระทบต่อความเชื่อมั่นในการปฏิบัติตามกฎระเบียบของลูกค้า JILI ควรประเมินความเสี่ยงในการเชื่อมต่อกับแพลตฟอร์มที่เกี่ยวข้องอย่างระมัดระวัง เพื่อป้องกันไม่ให้ความผันผวนด้านกฎระเบียบส่งผลกระทบต่อกลุ่มผลิตภัณฑ์หลัก ในด้านเทคนิค ควรเสริมสร้างการควบคุมความเสี่ยงของบัญชีและการแยกข้อมูล พร้อมทั้งติดตามผลกระทบของการแย่งชิงผู้เล่นจากตลาดเกมอิเล็กทรอนิกส์แบบดั้งเดิมไปยังผลิตภัณฑ์ดังกล่าว เพื่อเป็นข้อมูลอ้างอิงในการวางแผนกลยุทธ์ป้องกันผลิตภัณฑ์" data-hi="भविष्यवाणी बाजार का कानूनी जोखिम गेमिंग उद्योग में फैल रहा है, जिससे ग्राहक अनुपालन विश्वास प्रभावित हो रहा है। JILI को संबंधित प्लेटफार्मों के साथ जुड़ने के जोखिमों का सावधानीपूर्वक आकलन करना चाहिए ताकि विनियामक अस्थिरता से मुख्य उत्पाद लाइन प्रभावित न हो। तकनीकी पक्ष पर, खाता जोखिम नियंत्रण और डेटा अलगाव को मजबूत किया जाना चाहिए, साथ ही पारंपरिक ई-गेमिंग बाजार से खिलाड़ियों के पलायन की निगरानी की जानी चाहिए, जिसे रक्षात्मक उत्पाद रणनीति के लिए संदर्भ के रूप में उपयोग किया जा सके।">預測市場的法律風險正外溢至博弈產業，影響客戶端合規信心。JILI應審慎評估與相關平台對接的風險，避免因監管動盪波及核心產品線。技術端應強化帳戶風控與數據隔離，同時監測此類產品對傳統電子遊戲市場的玩家分流效應，作為產品防禦佈局的參考。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 65</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 45</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
 
                     </div>
 
@@ -2747,21 +2701,13 @@
 
                     <p class="text-sm leading-relaxed text-mid-contrast font-medium" data-cn="知名遊戲《星刃》（Stellar Blade）的玩家展現出極高的忠誠度，社群成員承諾將在該作 DLC 或後續作品《Blood Rain》發布前，持續挑戰並反覆擊敗遊戲內最終 Boss。此舉反映出核心玩家群體對高品質動作遊戲體驗的強烈沉浸感，以及對 IP 內容的高度黏著與期待，形成穩定的社群長尾效應。" data-en="The player base of the acclaimed game &#39;Stellar Blade&#39; has demonstrated remarkable loyalty, with community members pledging to continuously challenge and defeat the final boss until the release of upcoming DLC or the sequel, &#39;Blood Rain.&#39; This reflects the core player group&#39;s deep immersion in high-quality action gameplay and strong attachment to the IP, fostering a stable community long-tail effect." data-th="ฐานผู้เล่นของเกมชื่อดัง &#39;Stellar Blade&#39; แสดงให้เห็นถึงความภักดีอย่างสูง โดยสมาชิกในชุมชนต่างให้คำมั่นว่าจะกลับมาท้าทายและเอาชนะบอสตัวสุดท้ายอย่างต่อเนื่องจนกว่า DLC หรือภาคต่ออย่าง &#39;Blood Rain&#39; จะวางจำหน่าย สะท้อนให้เห็นถึงความดื่มด่ำในประสบการณ์เกมแอ็กชันคุณภาพสูงและความผูกพันที่แน่นแฟ้นต่อตัว IP ซึ่งส่งผลให้เกิดปรากฏการณ์ Long-tail ที่มั่นคงในชุมชน" data-hi="प्रशंसित गेम &#39;स्टेलर ब्लेड&#39; के खिलाड़ियों ने अत्यधिक वफादारी दिखाई है, जहाँ समुदाय के सदस्यों ने आगामी DLC या सीक्वल &#39;ब्लड रेन&#39; (Blood Rain) के जारी होने तक अंतिम बॉस को लगातार चुनौती देने और हराने का संकल्प लिया है। यह कोर प्लेयर ग्रुप की उच्च-गुणवत्ता वाले एक्शन गेमिंग अनुभव के प्रति गहरी संलग्नता और IP के प्रति मजबूत जुड़ाव को दर्शाता है, जो एक स्थिर सामुदायिक लॉन्ग-टेल प्रभाव बनाता है।">知名遊戲《星刃》（Stellar Blade）的玩家展現出極高的忠誠度，社群成員承諾將在該作 DLC 或後續作品《Blood Rain》發布前，持續挑戰並反覆擊敗遊戲內最終 Boss。此舉反映出核心玩家群體對高品質動作遊戲體驗的強烈沉浸感，以及對 IP 內容的高度黏著與期待，形成穩定的社群長尾效應。</p>
 
-                    <div class="pt-4 border-t border-slate-200 dark:border-obsidian-700 mt-4">
-
-                        <div class="text-[11px]"><strong class="text-blue-700 dark:text-neon-cyan font-black uppercase tracking-widest block mb-1.5"><i class="fa-solid fa-terminal mr-1"></i> JILI Insight:</strong><span class="text-high-contrast font-bold" data-cn="玩家對高品質視覺與打擊感的追求是遊戲產品成功的核心。作為內容供應商，我們應借鑒此類高黏著度 IP 的交互節奏，優化遊戲內的成就獎勵機制。透過強化「目標導向」的關卡設計，提升玩家留存率，並以此作為 JILI 產品在高端玩家市場的競爭防禦指標。" data-en="The pursuit of high-quality visuals and combat feedback is the core of a game&#39;s success. As content providers, we should leverage the engagement rhythms of such high-retention IPs to optimize in-game achievement reward mechanisms. By enhancing &#39;goal-oriented&#39; level design, we can improve player retention and establish it as a competitive defensive metric for JILI products in the high-end gaming market." data-th="การแสวงหาคุณภาพงานภาพและความรู้สึกในการต่อสู้ที่ยอดเยี่ยมคือหัวใจสำคัญของความสำเร็จของเกม ในฐานะผู้ให้บริการเนื้อหา เราควรนำจังหวะการโต้ตอบของ IP ที่มีความเหนียวแน่นสูงเหล่านี้มาใช้เพื่อเพิ่มประสิทธิภาพกลไกการให้รางวัลความสำเร็จในเกม ผ่านการเสริมการออกแบบด่านที่ &#39;เน้นเป้าหมาย&#39; เพื่อยกระดับอัตราการรักษาผู้เล่น (Retention) และใช้เป็นดัชนีชี้วัดความสามารถในการแข่งขันสำหรับผลิตภัณฑ์ของ JILI ในตลาดเกมระดับไฮเอนด์" data-hi="उच्च-गुणवत्ता वाले दृश्यों और कॉम्बैट फीडबैक की खोज ही गेम की सफलता का मूल आधार है। सामग्री प्रदाता के रूप में, हमें इस तरह के उच्च-प्रतिधारण वाले IP के इंटरैक्शन रिदम से सीखकर इन-गेम उपलब्धि पुरस्कार तंत्र को अनुकूलित करना चाहिए। &#39;लक्ष्य-उन्मुख&#39; लेवल डिज़ाइन को मजबूत करके, हम खिलाड़ी प्रतिधारण (retention) को बढ़ा सकते हैं और इसे हाई-एंड गेमिंग बाजार में JILI उत्पादों के लिए एक प्रतिस्पर्धात्मक सुरक्षा संकेतक के रूप में स्थापित कर सकते हैं।">玩家對高品質視覺與打擊感的追求是遊戲產品成功的核心。作為內容供應商，我們應借鑒此類高黏著度 IP 的交互節奏，優化遊戲內的成就獎勵機制。透過強化「目標導向」的關卡設計，提升玩家留存率，並以此作為 JILI 產品在高端玩家市場的競爭防禦指標。</span></div>
-
-                    </div>
-
                 </div>
 
                 <div class="flex justify-between items-center">
 
                     <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
 
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">影響:</span> 45</span>
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-urgency">急迫:</span> 25</span>
+                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
 
                     </div>
 
@@ -3150,7 +3096,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [37.474040578441716, -95.90081091327751], "sentiment": "利空", "news_full": [{"title": "美職籃聯賽因假球調查案，欲進一步限制球員參與博彩相關活動", "title_en": "NBA Tightens Restrictions on Player Betting Activities Amid Match-Fixing Probe", "title_th": "NBA เพิ่มมาตรการเข้มงวดจำกัดผู้เล่นเกี่ยวข้องกับการพนัน หลังพบการสอบสวนเรื่องการล็อกผล", "title_hi": "मैच फिक्सिंग की जांच के बीच NBA ने खिलाड़ियों की सट्टेबाजी गतिविधियों पर प्रतिबंध कड़े किए", "link": "https://www.gamblinginsider.com/news/167877/nba-wants-to-keep-terry-rozier-off-the-basketball-court-as-game-fixing-case-continues", "sentiment": "利空", "impact": 70.0, "urgency": 70.0}, {"title": "預測市場活躍：美國大選及熱點預測推動市場交易量增長", "title_en": "Prediction Markets Active: US Election and Hot Topics Drive Growth in Trading Volume", "title_th": "ตลาดทายผลคึกคัก: การเลือกตั้งสหรัฐฯ และประเด็นร้อนผลักดันปริมาณการซื้อขาย", "title_hi": "पूर्वानुमान बाजार सक्रिय: अमेरिकी चुनाव और हॉट टॉपिक्स ने ट्रेडिंग वॉल्यूम में वृद्धि की", "link": "https://www.gamblinginsider.com/news/167417/q-and-a-adam-bjorn-sees-possibilities-in-prediction-markets", "sentiment": "利多", "impact": 55.0, "urgency": 40.0}, {"title": "預測市場競爭升溫：Kalshi 籌備 IPO，傳統運彩商面臨市佔擠壓", "title_en": "Prediction Market Competition Heats Up: Kalshi Prepares for IPO, Traditional Bookmakers Face Pressure", "title_th": "การแข่งขันในตลาดทายผลดุเดือด: Kalshi เตรียม IPO ในขณะที่เจ้ามือรับพนันแบบดั้งเดิมเผชิญแรงกดดัน", "title_hi": "पूर्वानुमान बाजार में प्रतिस्पर्धा तेज: Kalshi IPO की तैयारी में, पारंपरिक बुकमेकर्स पर दबाव", "link": "https://www.gamblinginsider.com/news/167832/new-players-enter-prediction-markets-kalshi-eyes-ipo-knicks-ding-sportsbooks", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}, {"title": "芝加哥市議會否決博彩抽獎禁令，VGT 爭議持續發酵", "title_en": "Chicago City Council Rejects Sweepstakes Gambling Ban, VGT Controversy Persists", "title_th": "สภาเมืองชิคาโกคว่ำร่างแบนการพนันแบบชิงโชค ความขัดแย้งเรื่อง VGT ยังคงดำเนินต่อไป", "title_hi": "शिकागो सिटी काउंसिल ने स्वीपस्टेक्स जुआ प्रतिबंध को खारिज किया, VGT विवाद जारी", "link": "https://www.gamblinginsider.com/news/167739/chicago-city-council-rejects-sweepstakes-machine-ban", "sentiment": "中立", "impact": 65.0, "urgency": 55.0}, {"title": "全球預測市場週報：密西根州判決、CME訴訟與新產品上線共築動態變局", "title_en": "Global Prediction Market Weekly: Michigan Ruling, CME Lawsuit, and New Product Launches Create a Dynamic Landscape", "title_th": "รายงานรายสัปดาห์ตลาดคาดการณ์ระดับโลก: คำตัดสินในมิชิแกน, การฟ้องร้อง CME และผลิตภัณฑ์ใหม่สร้างสถานการณ์ที่เปลี่ยนแปลงตลอดเวลา", "title_hi": "वैश्विक भविष्यवाणी बाजार साप्ताहिक रिपोर्ट: मिशिगन का निर्णय, CME मुकदमा, और नए उत्पादों का लॉन्च एक गतिशील परिदृश्य बना रहे हैं", "link": "https://www.gamblinginsider.com/news/167702/prediction-markets-weekly-roundup-litigation-launches", "sentiment": "利空", "impact": 65.0, "urgency": 45.0}]}, {"region": "英國", "count": 1, "coords": [51.33364418636106, -0.12071845738666839], "sentiment": "利空", "news_full": [{"title": "英國報告：AI 與網紅帳號助長未受監管的非法博彩推廣", "title_en": "UK Report: AI and Influencer Accounts Fuel Unregulated Illegal Gambling Promotions", "title_th": "รายงานจากอังกฤษ: AI และบัญชีอินฟลูเอนเซอร์เป็นตัวเร่งการส่งเสริมการพนันผิดกฎหมายที่ไม่มีการควบคุม", "title_hi": "यूके रिपोर्ट: AI और इन्फ्लुएंसर अकाउंट्स अनियमित अवैध जुआ प्रचार को बढ़ावा दे रहे हैं", "link": "https://www.gamblinginsider.com/news/167785/report-ai-youtubers-sell-pre-verified-accounts-vpn-workarounds-uk-gamblers", "sentiment": "利空", "impact": 80.0, "urgency": 85.0}]}, {"region": "全球", "count": 1, "coords": [19.725802674460567, 9.782065668260431], "sentiment": "利多", "news_full": [{"title": "《星刃》玩家社群凝聚力強勁，長尾效應顯著", "title_en": "Stellar Blade Community Shows Strong Cohesion and Significant Long-Tail Effect", "title_th": "ชุมชนผู้เล่น Stellar Blade มีความเหนียวแน่นสูงและสร้างปรากฏการณ์ Long-tail ที่โดดเด่น", "title_hi": "स्टेलर ब्लेड (Stellar Blade) का प्लेयर समुदाय मजबूत एकजुटता और महत्वपूर्ण लॉन्ग-टेल प्रभाव प्रदर्शित करता है", "link": "https://www.gamingdose.com/news/%e0%b9%81%e0%b8%9f%e0%b8%99%e0%b9%80%e0%b8%81%e0%b8%a1-stellar-blade-%e0%b8%95%e0%b8%b1%e0%b9%89%e0%b8%87%e0%b8%a1%e0%b8%b1%e0%b9%88%e0%b8%99%e0%b8%95%e0%b8%9a%e0%b8%9a%e0%b8%ad%e0%b8%aa%e0%b8%aa/", "sentiment": "利多", "impact": 45.0, "urgency": 25.0}]}];
+        const mapMarkersData = [{"region": "美國", "count": 5, "coords": [36.68366984921926, -95.54793347907274], "sentiment": "利空", "news_full": [{"title": "美職籃聯賽因假球調查案，欲進一步限制球員參與博彩相關活動", "title_en": "NBA Tightens Restrictions on Player Betting Activities Amid Match-Fixing Probe", "title_th": "NBA เพิ่มมาตรการเข้มงวดจำกัดผู้เล่นเกี่ยวข้องกับการพนัน หลังพบการสอบสวนเรื่องการล็อกผล", "title_hi": "मैच फिक्सिंग की जांच के बीच NBA ने खिलाड़ियों की सट्टेबाजी गतिविधियों पर प्रतिबंध कड़े किए", "link": "https://www.gamblinginsider.com/news/167877/nba-wants-to-keep-terry-rozier-off-the-basketball-court-as-game-fixing-case-continues", "sentiment": "利空", "impact": 70.0, "urgency": 70.0}, {"title": "預測市場活躍：美國大選及熱點預測推動市場交易量增長", "title_en": "Prediction Markets Active: US Election and Hot Topics Drive Growth in Trading Volume", "title_th": "ตลาดทายผลคึกคัก: การเลือกตั้งสหรัฐฯ และประเด็นร้อนผลักดันปริมาณการซื้อขาย", "title_hi": "पूर्वानुमान बाजार सक्रिय: अमेरिकी चुनाव और हॉट टॉपिक्स ने ट्रेडिंग वॉल्यूम में वृद्धि की", "link": "https://www.gamblinginsider.com/news/167417/q-and-a-adam-bjorn-sees-possibilities-in-prediction-markets", "sentiment": "利多", "impact": 55.0, "urgency": 40.0}, {"title": "預測市場競爭升溫：Kalshi 籌備 IPO，傳統運彩商面臨市佔擠壓", "title_en": "Prediction Market Competition Heats Up: Kalshi Prepares for IPO, Traditional Bookmakers Face Pressure", "title_th": "การแข่งขันในตลาดทายผลดุเดือด: Kalshi เตรียม IPO ในขณะที่เจ้ามือรับพนันแบบดั้งเดิมเผชิญแรงกดดัน", "title_hi": "पूर्वानुमान बाजार में प्रतिस्पर्धा तेज: Kalshi IPO की तैयारी में, पारंपरिक बुकमेकर्स पर दबाव", "link": "https://www.gamblinginsider.com/news/167832/new-players-enter-prediction-markets-kalshi-eyes-ipo-knicks-ding-sportsbooks", "sentiment": "利空", "impact": 75.0, "urgency": 55.0}, {"title": "芝加哥市議會否決博彩抽獎禁令，VGT 爭議持續發酵", "title_en": "Chicago City Council Rejects Sweepstakes Gambling Ban, VGT Controversy Persists", "title_th": "สภาเมืองชิคาโกคว่ำร่างแบนการพนันแบบชิงโชค ความขัดแย้งเรื่อง VGT ยังคงดำเนินต่อไป", "title_hi": "शिकागो सिटी काउंसिल ने स्वीपस्टेक्स जुआ प्रतिबंध को खारिज किया, VGT विवाद जारी", "link": "https://www.gamblinginsider.com/news/167739/chicago-city-council-rejects-sweepstakes-machine-ban", "sentiment": "中立", "impact": 65.0, "urgency": 55.0}, {"title": "全球預測市場週報：密西根州判決、CME訴訟與新產品上線共築動態變局", "title_en": "Global Prediction Market Weekly: Michigan Ruling, CME Lawsuit, and New Product Launches Create a Dynamic Landscape", "title_th": "รายงานรายสัปดาห์ตลาดคาดการณ์ระดับโลก: คำตัดสินในมิชิแกน, การฟ้องร้อง CME และผลิตภัณฑ์ใหม่สร้างสถานการณ์ที่เปลี่ยนแปลงตลอดเวลา", "title_hi": "वैश्विक भविष्यवाणी बाजार साप्ताहिक रिपोर्ट: मिशिगन का निर्णय, CME मुकदमा, और नए उत्पादों का लॉन्च एक गतिशील परिदृश्य बना रहे हैं", "link": "https://www.gamblinginsider.com/news/167702/prediction-markets-weekly-roundup-litigation-launches", "sentiment": "利空", "impact": 65.0, "urgency": 45.0}]}, {"region": "英國", "count": 1, "coords": [51.69472566278553, 0.11358554384725453], "sentiment": "利空", "news_full": [{"title": "英國報告：AI 與網紅帳號助長未受監管的非法博彩推廣", "title_en": "UK Report: AI and Influencer Accounts Fuel Unregulated Illegal Gambling Promotions", "title_th": "รายงานจากอังกฤษ: AI และบัญชีอินฟลูเอนเซอร์เป็นตัวเร่งการส่งเสริมการพนันผิดกฎหมายที่ไม่มีการควบคุม", "title_hi": "यूके रिपोर्ट: AI और इन्फ्लुएंसर अकाउंट्स अनियमित अवैध जुआ प्रचार को बढ़ावा दे रहे हैं", "link": "https://www.gamblinginsider.com/news/167785/report-ai-youtubers-sell-pre-verified-accounts-vpn-workarounds-uk-gamblers", "sentiment": "利空", "impact": 80.0, "urgency": 85.0}]}, {"region": "全球", "count": 1, "coords": [20.164735157267977, 10.136876448174958], "sentiment": "利多", "news_full": [{"title": "《星刃》玩家社群凝聚力強勁，長尾效應顯著", "title_en": "Stellar Blade Community Shows Strong Cohesion and Significant Long-Tail Effect", "title_th": "ชุมชนผู้เล่น Stellar Blade มีความเหนียวแน่นสูงและสร้างปรากฏการณ์ Long-tail ที่โดดเด่น", "title_hi": "स्टेलर ब्लेड (Stellar Blade) का प्लेयर समुदाय मजबूत एकजुटता और महत्वपूर्ण लॉन्ग-टेल प्रभाव प्रदर्शित करता है", "link": "https://www.gamingdose.com/news/%e0%b9%81%e0%b8%9f%e0%b8%99%e0%b9%80%e0%b8%81%e0%b8%a1-stellar-blade-%e0%b8%95%e0%b8%b1%e0%b9%89%e0%b8%87%e0%b8%a1%e0%b8%b1%e0%b9%88%e0%b8%99%e0%b8%95%e0%b8%9a%e0%b8%9a%e0%b8%ad%e0%b8%aa%e0%b8%aa/", "sentiment": "利多", "impact": 45.0, "urgency": 25.0}]}];
 
         const regionMarkers = {};
 
@@ -3591,14 +3537,6 @@
 
 
 
-                // 獲取 AI 洞察（JILI Insight span）
-
-                const insightSpan = item.querySelector('.card-body span[data-cn]');
-
-                const insight = (insightSpan?.dataset.cn || '').toLowerCase();
-
-
-
                 const region = item.dataset.region;
 
                 const sentiment = item.dataset.sentiment;
@@ -3615,7 +3553,7 @@
 
                 const srcMatch = selSrcs.length === 0 || selSrcs.includes(source);
 
-                const searchMatch = !term || title.includes(term) || summary.includes(term) || insight.includes(term);
+                const searchMatch = !term || title.includes(term) || summary.includes(term);
 
                 const scoreMatch = impact >= impactMin && urgency >= urgencyMin;
 
@@ -4313,7 +4251,52 @@ const regionMap = {
 
         };
 
-        const pageTitles = { cn:'JILI 戰略情報指揮中心', en:'JILI Strategic Intel Hub', th:'ศูนย์ข่าวกรองยุทธศาสตร์ JILI', hi:'JILI रणनीतिक इंटेलिजेंस हब' };
+        Object.assign(i18n.cn, {
+            'guide-title':'JILI 市場情報站 — 使用指南',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'strategic-hub':'市場情報站',
+            'score-filter':'相關性篩選',
+            'impact-min':'相關性 ≥',
+            'card-impact':'相關:',
+            'axis-y':'相關性',
+            'matrix-title':'相關性與急迫性矩陣',
+            'sort-impact':'相關性'
+        });
+        Object.assign(i18n.en, {
+            'guide-title':'JILI Market Intel Hub — User Guide',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'strategic-hub':'Market Intel Hub',
+            'score-filter':'Relevance Filter',
+            'impact-min':'Relevance ≥',
+            'card-impact':'Relevance:',
+            'axis-y':'Relevance',
+            'matrix-title':'Relevance vs Urgency Matrix',
+            'sort-impact':'Relevance'
+        });
+        Object.assign(i18n.th, {
+            'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'strategic-hub':'ศูนย์ข่าวกรองตลาด',
+            'score-filter':'กรองความเกี่ยวข้อง',
+            'impact-min':'ความเกี่ยวข้อง ≥',
+            'card-impact':'เกี่ยวข้อง:',
+            'axis-y':'ความเกี่ยวข้อง',
+            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
+            'sort-impact':'ความเกี่ยวข้อง'
+        });
+        Object.assign(i18n.hi, {
+            'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'strategic-hub':'बाज़ार इंटेलिजेंस हब',
+            'score-filter':'प्रासंगिकता फ़िल्टर',
+            'impact-min':'प्रासंगिकता ≥',
+            'card-impact':'प्रासंगिकता:',
+            'axis-y':'प्रासंगिकता',
+            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रासंगिकता'
+        });
+
+        const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
 
         function getLocalRegion(cn) {
 
