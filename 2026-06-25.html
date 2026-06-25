@@ -1424,14 +1424,14 @@
                 padding-bottom: 1.5rem !important;
                 display: block !important;
             }
+            /* 手機版：取消內部捲動框，讓卡片依自然高度展開，由整頁捲動，
+               避免巢狀捲動陷阱導致無法滑到最底部 */
             #regionalSentimentBoard {
-                height: 32rem !important;
-                max-height: 65vh !important;
-                overflow-y: auto !important;
-                -webkit-overflow-scrolling: touch !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow-y: visible !important;
                 display: block !important;
-                padding-bottom: 3rem !important;
-                overscroll-behavior-y: contain !important;
+                padding-bottom: 1rem !important;
             }
 
         }
