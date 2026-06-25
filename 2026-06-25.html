@@ -1380,6 +1380,13 @@
             /* === MISC SPACING === */
             /* Dashboard section: tighter gap */
             #dashboardSection { gap: 1rem !important; }
+            /* 手機版：展開時取消 max-height:600px 的裁切，否則單欄堆疊內容會被
+               overflow:hidden 截掉、無法向下捲到市場情緒明細卡。摺疊時(data-collapsed)
+               不套用此規則，維持收合動畫正常 */
+            #dashboardSection:not([data-collapsed]) {
+                max-height: none !important;
+                overflow: visible !important;
+            }
             /* Reduce mb on various sections */
             .mb-8 { margin-bottom: 1.5rem !important; }
             .mb-10 { margin-bottom: 1.5rem !important; }
