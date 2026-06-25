@@ -1065,12 +1065,19 @@
                 max-height: 70vh !important;
                 overflow-y: auto !important;
                 -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior: contain !important;
                 border-radius: 1.25rem 1.25rem 0 0 !important;
                 box-shadow: 0 -12px 32px -8px rgba(0,0,0,0.45) !important;
                 padding-bottom: calc(18px + env(safe-area-inset-bottom)) !important;
                 z-index: 10000 !important;
             }
             #mapCustomPopup::after, #mapCustomPopup.flipped::after { display: none !important; }
+            /* 手機版：取消內層新聞清單的獨立捲動，整張卡片只用單一捲動層，
+               避免在內外捲動邊界把捲動「漏」給整頁 */
+            #mapCustomPopup .popup-news-list {
+                max-height: none !important;
+                overflow: visible !important;
+            }
 
             /* Leaflet popup: shrink */
             .leaflet-popup-content { min-width: 220px !important; max-width: 85vw !important; }
@@ -1184,6 +1191,7 @@
                 border-radius: 1.25rem 1.25rem 0 0 !important;
                 box-shadow: 0 -12px 32px -8px rgba(0,0,0,0.45) !important;
                 overflow-y: auto !important;
+                overscroll-behavior: contain !important;
                 -webkit-overflow-scrolling: touch;
             }
             .filter-panel > .grid {
@@ -4850,7 +4858,7 @@
 
                     </div>
 
-                    <div style="max-height:320px;overflow-y:auto;">
+                    <div class="popup-news-list" style="max-height:320px;overflow-y:auto;overscroll-behavior:contain;">
 
                         ${newsHtml}
 
