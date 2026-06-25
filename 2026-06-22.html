@@ -1052,14 +1052,23 @@
             .dark #mapTouchOverlay .overlay-text { color: #00f0ff; }
 
             /* Map custom popup: center + pin to bottom */
+            /* 手機版：地圖資訊卡固定為底部彈出表單，位置與大小不隨點擊位置改變 */
             #mapCustomPopup {
-                width: calc(100vw - 2rem) !important;
-                max-width: 340px !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
+                width: auto !important;
+                max-width: none !important;
+                left: 0 !important;
+                right: 0 !important;
+                transform: none !important;
                 position: fixed !important;
                 top: auto !important;
-                bottom: 5rem !important;
+                bottom: 0 !important;
+                max-height: 70vh !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                border-radius: 1.25rem 1.25rem 0 0 !important;
+                box-shadow: 0 -12px 32px -8px rgba(0,0,0,0.45) !important;
+                padding-bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+                z-index: 10000 !important;
             }
             #mapCustomPopup::after, #mapCustomPopup.flipped::after { display: none !important; }
 
@@ -4837,6 +4846,8 @@
 
                         <span style="font-size:12px;color:${txtMuted};font-family:monospace;font-weight:700;white-space:nowrap;flex-shrink:0;">${m.news_full.length} ${itemsTxt}</span>
 
+                        <button type="button" onclick="closeMapPopup()" aria-label="Close" style="flex-shrink:0;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid ${borderClr};background:${btnBg};color:${txtMain};font-size:16px;line-height:1;cursor:pointer;margin-left:4px;">&times;</button>
+
                     </div>
 
                     <div style="max-height:320px;overflow-y:auto;">
@@ -4864,6 +4875,19 @@
                 popup.innerHTML = window.renderPopupHtml(markerIndex, page);
 
             }
+
+        };
+
+        // 關閉地圖資訊卡
+        window.closeMapPopup = function(event) {
+
+            if (event) event.stopPropagation();
+
+            if (typeof mapCloseTimer !== 'undefined') clearTimeout(mapCloseTimer);
+
+            const popup = document.getElementById('mapCustomPopup');
+
+            if (popup) popup.style.display = 'none';
 
         };
 
