@@ -1424,21 +1424,23 @@
             }
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
-            /* Card: give mobile a tall-enough height for comfortable scrolling */
-            #regionalSentimentCard { 
-                height: auto !important; 
-                max-height: none !important; 
-                padding-bottom: 1.5rem !important;
-                display: block !important;
+            /* 手機版：卡片維持固定高度（精簡、不拉長整頁），內容在卡片內捲動 */
+            #regionalSentimentCard {
+                height: 24rem !important;
+                max-height: 24rem !important;
+                display: flex !important;
+                flex-direction: column !important;
             }
-            /* 手機版：取消內部捲動框，讓卡片依自然高度展開，由整頁捲動，
-               避免巢狀捲動陷阱導致無法滑到最底部 */
             #regionalSentimentBoard {
+                flex: 1 1 auto !important;
+                min-height: 0 !important;
                 height: auto !important;
                 max-height: none !important;
-                overflow-y: visible !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                overscroll-behavior-y: contain !important;
                 display: block !important;
-                padding-bottom: 1rem !important;
+                padding-bottom: 0.5rem !important;
             }
 
         }
