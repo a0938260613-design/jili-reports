@@ -1159,18 +1159,21 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+            /* 手機版：篩選面板固定為底部彈出表單(bottom sheet)，
+               位置與大小不受捲動位置影響，永遠貼齊頁面下方 */
             .filter-panel {
                 position: fixed !important;
-                left: 0.75rem !important;
-                right: 0.75rem !important;
-                top: var(--mobile-filter-panel-top, calc(7.25rem + env(safe-area-inset-top))) !important;
-                bottom: auto !important;
+                left: 0 !important;
+                right: 0 !important;
+                top: auto !important;
+                bottom: 0 !important;
                 z-index: 10000 !important;
                 width: auto !important;
-                max-height: var(--mobile-filter-panel-max, min(48vh, 24rem)) !important;
-                margin-top: 0 !important;
-                padding: 1rem !important;
-                border-radius: 1rem !important;
+                max-height: 70vh !important;
+                margin: 0 !important;
+                padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom)) !important;
+                border-radius: 1.25rem 1.25rem 0 0 !important;
+                box-shadow: 0 -12px 32px -8px rgba(0,0,0,0.45) !important;
                 overflow-y: auto !important;
                 -webkit-overflow-scrolling: touch;
             }
