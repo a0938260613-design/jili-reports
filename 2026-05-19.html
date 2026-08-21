@@ -1099,22 +1099,25 @@
                 margin-bottom: 1.25rem !important;
             }
             .filter-console-bar {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) 44px auto;
                 gap: 0.5rem !important;
                 padding: 0.65rem !important;
                 border-radius: 1rem !important;
-                overflow: visible !important;
+                overflow-y: auto !important;
+                align-items: stretch !important;
             }
             .filter-console-bar > div.flex-1 {
-                flex: 0 0 100% !important;
+                grid-column: 1 / -1 !important;
                 min-width: 0 !important;
-                order: -1;
+                width: 100% !important;
             }
             #searchInput {
                 min-height: 44px !important;
                 font-size: 16px !important;
             }
             .filter-console-bar > div.flex.gap-2 {
-                flex: 0 0 100% !important;
+                grid-column: 1 / -1 !important;
                 width: 100% !important;
                 overflow-x: auto !important;
                 overscroll-behavior-inline: contain;
@@ -1130,12 +1133,13 @@
                 white-space: nowrap !important;
             }
             .filter-console-bar > div.flex.gap-1 {
-                flex: 1 1 calc(100% - 7.25rem) !important;
+                grid-column: 1 / 2 !important;
                 border-left: 0 !important;
                 padding-left: 0 !important;
                 display: grid !important;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: minmax(0, 1fr);
                 gap: 0.4rem !important;
+                min-width: 0 !important;
             }
             .sort-btn {
                 min-height: 44px !important;
@@ -1143,9 +1147,10 @@
                 padding-left: 0.45rem !important;
                 padding-right: 0.45rem !important;
                 white-space: nowrap !important;
+                width: 100% !important;
             }
             #viewToggle {
-                flex: 0 0 44px !important;
+                grid-column: 2 / 3 !important;
                 width: 44px !important;
                 min-height: 44px !important;
                 display: inline-flex !important;
@@ -1153,10 +1158,11 @@
                 justify-content: center !important;
             }
             .filter-console-bar > button[onclick="resetAllFilters()"] {
-                flex: 0 0 auto !important;
+                grid-column: 3 / 4 !important;
                 min-height: 44px !important;
                 padding-left: 0.5rem !important;
                 padding-right: 0.5rem !important;
+                white-space: nowrap !important;
             }
             #keywordsRow,
             #activeFiltersRow {
@@ -1309,30 +1315,17 @@
                 align-items: stretch !important;
                 gap: 0.65rem !important;
             }
-            .news-card > div:last-child > div:first-child {
-                width: 100% !important;
-                display: grid !important;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 0.5rem !important;
-            }
-            .news-card > div:last-child > div:first-child span {
-                min-height: 40px !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                white-space: nowrap !important;
-            }
-            .news-card > div:last-child > div:last-child {
+            .news-card-actions {
                 width: 100% !important;
                 display: grid !important;
                 grid-template-columns: 44px minmax(0, 1fr);
                 gap: 0.55rem !important;
             }
-            .news-card > div:last-child > div:last-child button {
+            .news-card-actions button {
                 width: 44px !important;
                 height: 44px !important;
             }
-            .news-card > div:last-child > div:last-child a[href] {
+            .news-card-actions a[href] {
                 min-height: 44px !important;
                 width: 100% !important;
                 justify-content: center !important;
@@ -1451,14 +1444,26 @@
             }
             /* Sentiment cell padding */
             .regional-sentiment-cell { padding: 0.55rem 0.65rem !important; }
-            /* Card: give mobile a tall-enough height for comfortable scrolling */
-            #regionalSentimentCard { height: 72vh !important; max-height: none !important; }
-            /* Board: internal scroll with iOS momentum touch */
+            /* 手機版：卡片維持固定高度（精簡、不拉長整頁），內容在卡片內捲動 */
+            #regionalSentimentCard {
+                height: 24rem !important;
+                max-height: 24rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            /* 內捲區：填滿卡片剩餘空間並可垂直捲動到底。
+               能順利捲到底的前提是外層 #dashboardSection 不再用 overflow:hidden
+               把這張卡的下半截裁掉（見上方 #dashboardSection 規則） */
             #regionalSentimentBoard {
+                flex: 1 1 auto !important;
+                min-height: 0 !important;
+                height: auto !important;
+                max-height: none !important;
                 overflow-y: auto !important;
                 -webkit-overflow-scrolling: touch !important;
-                max-height: none !important;
-                flex: 1 !important;
+                overscroll-behavior-y: contain !important;
+                display: block !important;
+                padding-bottom: 0.5rem !important;
             }
 
         }
@@ -1847,6 +1852,10 @@
 
                 <button onclick="goToLatest()" class="h-8 px-4 rounded-lg card-base font-mono font-black text-[10px] uppercase tracking-widest text-blue-600 dark:text-neon-cyan menu-trigger border dark:border-obsidian-600 hover:border-blue-400 dark:hover:border-neon-cyan transition-all" data-i18n="date-latest">最新</button>
 
+                <a href="range_report.html" class="h-8 px-4 rounded-lg card-base font-mono font-black text-[10px] uppercase tracking-widest text-blue-600 dark:text-neon-cyan border dark:border-neon-cyan/60 hover:border-blue-400 dark:hover:border-neon-cyan transition-all flex items-center gap-1.5" title="查看一段區間的新聞" data-title-i18n="date-range-title" style="box-shadow:0 0 12px rgba(0,240,255,.15)">
+                    <i class="fa-solid fa-layer-group text-[9px]"></i> <span data-i18n="date-range">區間查詢</span>
+                </a>
+
             </div>
 
         </div>
@@ -1953,7 +1962,7 @@
 
                             <h4 class="text-xs font-bold text-high-contrast mb-0.5" data-i18n="guide-step4-title">進階資料流過濾器</h4>
 
-                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
+                            <p class="text-[11px] text-mid-contrast leading-relaxed" data-i18n="guide-step4-desc">點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。</p>
 
                         </div>
 
@@ -2121,7 +2130,7 @@
 
                 </div>
 
-                <div id="regionalSentimentBoard" class="flex-1 overflow-y-auto custom-scrollbar pr-1 flex flex-col gap-2">
+                <div id="regionalSentimentBoard" class="flex-1 min-h-[0px] overflow-y-auto custom-scrollbar pr-1 flex flex-col gap-2">
 
                     <!-- 由 JavaScript 動態生成區域情緒列 -->
 
@@ -2197,7 +2206,7 @@
 
                     <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="sourceMenu"><span data-i18n="filter-source">來源</span><span id="badge-source" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span><i class="fa-solid fa-chevron-down ml-1 text-[9px]"></i></button>
 
-                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">相關性篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
+                    <button class="menu-trigger card-base px-5 py-2.5 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center" data-target="scoreMenu"><span data-i18n="score-filter">得分篩選</span><span id="badge-score" class="hidden ml-1.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">●</span><i class="fa-solid fa-sliders ml-1 text-[9px]"></i></button>
 
                 </div>
 
@@ -2205,7 +2214,7 @@
 
                 <div class="flex gap-1 border-l border-slate-200 dark:border-obsidian-600 pl-3">
 
-                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">相關性</span></button>
+                    <button id="sortImpact" onclick="sortNews('impact')" class="sort-btn card-base px-3 py-2 text-xs font-bold text-mid-contrast dark:text-slate-100 hover:text-blue-600 dark:hover:text-neon-cyan border border-transparent dark:border-neon-cyan/20 dark:bg-obsidian-800 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-wide-short text-[9px]"></i><span data-i18n="sort-impact">影響力</span></button>
 
                 </div>
 
@@ -2267,9 +2276,9 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
 
-                    
+                    <label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="菲律賓"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="菲律賓">菲律賓</span> <span class="text-[10px] text-mid-contrast ml-1">(2)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="斯里蘭卡"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="斯里蘭卡">斯里蘭卡</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="泰國"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="泰國">泰國</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="美國"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="美國">美國</span> <span class="text-[10px] text-mid-contrast ml-1">(10)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="全球"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="全球">全球</span> <span class="text-[10px] text-mid-contrast ml-1">(8)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="澳門"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="澳門">澳門</span> <span class="text-[10px] text-mid-contrast ml-1">(5)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="北美"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="北美">北美</span> <span class="text-[10px] text-mid-contrast ml-1">(4)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="拉丁美洲"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="拉丁美洲">拉丁美洲</span> <span class="text-[10px] text-mid-contrast ml-1">(3)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="歐洲"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="歐洲">歐洲</span> <span class="text-[10px] text-mid-contrast ml-1">(3)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="亞洲"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="亞洲">亞洲</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="加拿大"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="加拿大">加拿大</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="英國"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="英國">英國</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label>
 
-                    <label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="美國"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="美國">美國</span> <span class="text-[10px] text-mid-contrast ml-1">(5)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="中東"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="中東">中東</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="region" data-value="歐洲"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-region-cn="歐洲">歐洲</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label>
+                
 
                 </div>
 
@@ -2279,7 +2288,7 @@
 
                 <div class="flex gap-8">
 
-                    <label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="sentiment" data-value="利多"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-cn="利多" data-en="Bullish" data-th="กระทิง" data-hi="तेजड़िया">利多</span> <span class="text-[10px] text-mid-contrast ml-1">(2)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="sentiment" data-value="中立"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-cn="中立" data-en="Neutral" data-th="กลาง" data-hi="तटस्थ">中立</span> <span class="text-[10px] text-mid-contrast ml-1">(4)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="sentiment" data-value="利空"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-cn="利空" data-en="Bearish" data-th="หมี" data-hi="मंदड़िया">利空</span> <span class="text-[10px] text-mid-contrast ml-1">(1)</span></span></label>
+                    <label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="sentiment" data-value="利多"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-cn="利多" data-en="Bullish" data-th="กระทิง" data-hi="तेजड़िया">利多</span> <span class="text-[10px] text-mid-contrast ml-1">(19)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="sentiment" data-value="中立"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-cn="中立" data-en="Neutral" data-th="กลาง" data-hi="तटस्थ">中立</span> <span class="text-[10px] text-mid-contrast ml-1">(11)</span></span></label><label class="flex items-center gap-3 cursor-pointer p-2.5 hover:bg-slate-50 dark:hover:bg-obsidian-700 rounded-lg transition-all border border-transparent dark:hover:border-neon-cyan/30 group"><input type="checkbox" class="filter-checkbox hidden" data-type="sentiment" data-value="利空"><div class="w-4 h-4 border border-slate-400 dark:border-obsidian-600 rounded flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-neon-cyan"><i class="fa-solid fa-check text-[9px] text-blue-600 dark:text-neon-cyan hidden"></i></div><span class="text-xs font-bold text-high-contrast"><span data-cn="利空" data-en="Bearish" data-th="หมี" data-hi="मंदड़िया">利空</span> <span class="text-[10px] text-mid-contrast ml-1">(10)</span></span></label>
 
                 </div>
 
@@ -2303,7 +2312,7 @@
 
                         <div class="flex justify-between items-center mb-3">
 
-                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">相關性 ≥</span>
+                            <span class="text-xs font-bold text-mid-contrast font-mono uppercase tracking-widest" data-i18n="impact-min">影響力 ≥</span>
 
                             <span class="text-sm font-black text-blue-600 dark:text-neon-cyan font-mono" id="impactSliderVal">0</span>
 
@@ -2387,15 +2396,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/youtube-video/aneta-khalatyan-popok-gaming-our-games-are-already-among-the-top-providers-in-latin-america', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2446,15 +2448,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/events/sbc-americas-2026', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2505,15 +2500,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/160495/prediction-markets-state-bills-gambling-stories-watch', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2564,15 +2552,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblinginsider.com/news/160653/draftkings-shutters-wrigley-field-location-as-in-venue-sportsbooks-wane', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2623,15 +2604,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/sbc-summit-americas-to-introduce-interactive-industry-masterclasses', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2682,15 +2656,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/tada-gaming-will-be-one-beat-ahead-at-sbc-summit-americas', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2741,15 +2708,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 85</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/05/20/gli-expanding-philippines-focus-amid-implementation-of-new-regulatory-framework-for-online-operations/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2800,15 +2760,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/05/20/macau-outlook-concerning-but-with-upside-as-vip-volatility-competitive-environment-continue-to-make-earnings-forecasts-challenging/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2858,15 +2811,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 90</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/05/20/study-finds-unregulated-online-gambling-worth-us5-9-trillion-annually-enough-to-rank-as-worlds-third-largest-economy/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2917,15 +2863,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://asgam.com/2026/05/19/a-point-of-difference-eddie-au-details-lt-games-casino-offerings/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -2976,15 +2915,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/sri-lanka/20/05/2026/scam-networks-move-into-sri-lanka-just-as-it-tries-to-build-a-legitimate-gambling-market/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3035,15 +2967,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/macau/19/05/2026/macau-commission-and-promotional-spending-climbs-28-in-1q26-squeezing-operator-margins-cbre/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3093,15 +3018,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 25</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/europe/19/05/2026/pronet-gaming-secures-multiple-nominations-at-wig-diversity-awards-2026/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3152,15 +3070,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/philippines/19/05/2026/pagcor-remits-92m-to-national-treasury-in-2025-dividends/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3211,15 +3122,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/macau/19/05/2026/macau-may-ggr-expected-to-reach-2-79b-supported-by-non-gaming-events-citigroup/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3270,15 +3174,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/europe/19/05/2026/playson-expands-swiss-market-footprint-via-admiral-ch-partnership/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3329,15 +3226,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/thailand/19/05/2026/thailand-ends-60-day-visa-free-stay-as-concerns-mount-over-foreign-run-grey-businesses/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3388,15 +3278,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 85</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/nfl-sends-letter-to-cftc-urging-it-to-control-prediction-markets-more-strictly/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3446,15 +3329,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 40</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/prepare-for-explosive-entertainment-in-bgamings-hot-rocket-5x-3x-2x/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3505,15 +3381,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 90</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/macquarie-bullish-on-us-igaming-as-the-sectors-revenues-soar/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3564,15 +3433,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/draftkings-shutters-wrigley-field-sportsbook-due-to-tax-pressures/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3622,15 +3484,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/virginia-player-wins-2m-from-powerball-jackpot-remains-unconquered/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3681,15 +3536,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 75</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/everymatrix-secures-alberta-license-ahead-of-igaming-market-launch/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3739,15 +3587,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/kalshi-national-council-on-problem-gambling-join-forces-to-champion-trader-health/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3797,15 +3638,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/michigan-woman-scoops-1m-prize-from-lucky-stars-instant-game/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3856,15 +3690,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 60</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/sporttrade-to-exit-the-us-online-betting-market/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3915,15 +3742,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamblingnews.com/news/spinomenal-strengthens-estonian-presence-with-entain-nce/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -3973,15 +3793,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamingdose.com/news/%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b8%a7%e0%b8%b4%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%b2%e0%b8%b0%e0%b8%ab%e0%b9%8c%e0%b8%95%e0%b8%a5%e0%b8%b2%e0%b8%94%e0%b9%80%e0%b8%81%e0%b8%a1%e0%b8%81%e0%b8%a5%e0%b9%88/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4032,15 +3845,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 50</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.gamingdose.com/news/fortnite-%e0%b8%81%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%a1%e0%b8%b2%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94%e0%b9%83%e0%b8%99-app-store-%e0%b8%9a%e0%b8%99-ios-%e0%b9%80%e0%b8%a5/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4091,15 +3897,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://www.ggrasia.com/macau-1q-premium-mass-offsets-soft-vip-londoner-macao-joins-top-3-for-ggr-share-jp-morgan?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=macau-1q-premium-mass-offsets-soft-vip-londoner-macao-joins-top-3-for-ggr-share-jp-morgan', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4150,15 +3949,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 30</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/19/05/2026/premium-guests-carry-asia-recovery/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4209,15 +4001,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://agbrief.com/news/world/19/05/2026/ibia-and-apal-join-forces-to-help-shape-chiles-online-betting-framework/', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4268,15 +4053,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 55</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/sbc-summit-americas-2026-introduces-sbc-connections-delivering-a-structured-approach-to-networking', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4327,15 +4105,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 80</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/financial-checks-caused-no-unintended-consequences-for-most-operators-gambling-commission-says', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4385,15 +4156,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 20</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/focus-gaming-news-appoints-rick-godds-as-global-brand-ambassador', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4443,15 +4207,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 35</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/where-gambling-industry-figures-came-in-the-sunday-times-rich-list-2026', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4501,15 +4258,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 45</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/century-casinos-names-lyle-randolph-as-executive-vice-president-of-operations-for-us', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4560,15 +4310,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 70</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/codere-online-sees-record-first-quarter-results', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4618,15 +4361,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 15</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/category/interviews/video-interviews', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -4677,15 +4413,8 @@
 
                 </div>
 
-                <div class="flex justify-between items-center">
-
-                    <div class="flex gap-4 font-mono text-[9px] text-mid-contrast font-bold uppercase tracking-widest">
-
-                        <span class="bg-slate-100 dark:bg-obsidian-900 px-2.5 py-1.5 rounded border border-slate-200 dark:border-obsidian-700"><span class="text-slate-400" data-i18n="card-impact">相關:</span> 65</span>
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
+                <div class="news-card-footer flex justify-end items-center">
+<div class="news-card-actions flex items-center gap-2">
 
                         <button onclick="copyLink('https://focusgn.com/youtube-video/sergey-shulgin-creedroomz-if-you-think-about-the-live-casino-industry-game-shows-are-the-main-driver-of-traffic-acquisition', this)" title="複製連結" data-title-i18n="card-copy" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-obsidian-700 hover:bg-slate-200 dark:hover:bg-obsidian-600 text-mid-contrast rounded-lg transition-all border border-slate-200 dark:border-neon-cyan/25 dark:hover:border-neon-cyan/50">
 
@@ -5070,7 +4799,7 @@
 
         const searchInput = document.getElementById('searchInput');
 
-        const mapMarkersData = [{"region": "拉丁美洲", "count": 3, "coords": [-15.496096635835341, -59.739373922577386], "sentiment": "利空", "news_full": [{"title": "PopOK Gaming：遊戲產品在拉丁美洲市場名列前茅", "title_en": "PopOK Gaming: Games Rank Among Top in Latin American Market", "title_th": "PopOK Gaming: ผลิตภัณฑ์เกมครองอันดับต้นในตลาดละตินอเมริกา", "title_hi": "PopOK Gaming: गेम उत्पाद लैटिन अमेरिकी बाजार में शीर्ष पर", "link": "https://focusgn.com/youtube-video/aneta-khalatyan-popok-gaming-our-games-are-already-among-the-top-providers-in-latin-america", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "IBIA 與 aPAL 攜手推動智利線上博彩監管框架建設", "title_en": "IBIA and aPAL partner to promote Chile's online gambling regulatory framework", "title_th": "IBIA และ aPAL จับมือผลักดันกรอบกำกับดูแลการพนันออนไลน์ของชิลี", "title_hi": "IBIA और aPAL ने चिली के ऑनलाइन जुआ नियामक ढांचे को बढ़ावा देने के लिए साझेदारी की", "link": "https://agbrief.com/news/world/19/05/2026/ibia-and-apal-join-forces-to-help-shape-chiles-online-betting-framework/", "sentiment": "利多", "impact": 65.0, "urgency": 60.0}, {"title": "Codere Online 第一季財報表現強勁創新高", "title_en": "Codere Online Reports Strong Q1 Results, Hits Record High", "title_th": "Codere Online เผยผลประกอบการไตรมาสแรกแข็งแกร่ง ทำสถิติสูงสุดใหม่", "title_hi": "Codere Online का Q1 परिणाम मजबूत, रिकॉर्ड ऊंचाई पर", "link": "https://focusgn.com/codere-online-sees-record-first-quarter-results", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}]}, {"region": "北美", "count": 4, "coords": [45.21035022026872, -100.00243757016293], "sentiment": "利空", "news_full": [{"title": "SBC Summit Americas 展會前瞻", "title_en": "SBC Summit Americas Preview", "title_th": "พรีวิวงาน SBC Summit Americas", "title_hi": "SBC Summit Americas पूर्वावलोकन", "link": "https://focusgn.com/events/sbc-americas-2026", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC Summit Americas 導入互動式產業大師班", "title_en": "SBC Summit Americas Introduces Interactive Industry Masterclasses", "title_th": "SBC Summit Americas เปิดตัวคลาสเรียนเชิงโต้ตอบสำหรับอุตสาหกรรม", "title_hi": "SBC Summit Americas ने इंटरैक्टिव इंडस्ट्री मास्टरक्लास पेश किए", "link": "https://focusgn.com/sbc-summit-americas-to-introduce-interactive-industry-masterclasses", "sentiment": "利多", "impact": 65.0, "urgency": 55.0}, {"title": "TaDa Gaming 參展 SBC Summit Americas 策略曝光", "title_en": "TaDa Gaming Strategy Exposure at SBC Summit Americas", "title_th": "กลยุทธ์การเข้าร่วมงาน SBC Summit Americas ของ TaDa Gaming", "title_hi": "SBC Summit Americas में TaDa Gaming की रणनीतिक भागीदारी", "link": "https://focusgn.com/tada-gaming-will-be-one-beat-ahead-at-sbc-summit-americas", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "SBC Summit Americas 2026 推出連結計畫", "title_en": "SBC Summit Americas 2026 Launches Connection Program", "title_th": "SBC Summit Americas 2026 เปิดตัวโครงการเชื่อมต่อธุรกิจ", "title_hi": "SBC Summit Americas 2026 ने कनेक्शन प्रोग्राम लॉन्च किया", "link": "https://focusgn.com/sbc-summit-americas-2026-introduces-sbc-connections-delivering-a-structured-approach-to-networking", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}]}, {"region": "美國", "count": 10, "coords": [37.074297812090855, -95.37930743709902], "sentiment": "利空", "news_full": [{"title": "預測市場發展與各州法案：本週博彩產業重點動態", "title_en": "Prediction Market Developments and State Bills: Key Highlights in the Betting Industry This Week", "title_th": "ความเคลื่อนไหวตลาดการคาดการณ์และร่างกฎหมายระดับรัฐ: ไฮไลท์อุตสาหกรรมการพนันในสัปดาห์นี้", "title_hi": "प्रेडिक्शन मार्केट का विकास और राज्य के विधेयक: इस सप्ताह जुआ उद्योग की प्रमुख झलकियाँ", "link": "https://www.gamblinginsider.com/news/160495/prediction-markets-state-bills-gambling-stories-watch", "sentiment": "利多", "impact": 75.0, "urgency": 70.0}, {"title": "DraftKings 關閉 Wrigley Field 實體據點，反映場內體育博彩熱度下滑", "title_en": "DraftKings Closes Wrigley Field Retail Location, Reflecting Decline in In-Stadium Sports Betting", "title_th": "DraftKings ปิดสาขาหน้าร้านที่ Wrigley Field สะท้อนความนิยมการพนันกีฬาในสนามที่ลดลง", "title_hi": "DraftKings ने रिग्ली फील्ड (Wrigley Field) रिटेल आउटलेट बंद किया, इन-स्टेडियम स्पोर्ट्स बेटिंग में गिरावट का संकेत", "link": "https://www.gamblinginsider.com/news/160653/draftkings-shutters-wrigley-field-location-as-in-venue-sportsbooks-wane", "sentiment": "利多", "impact": 65.0, "urgency": 45.0}, {"title": "NFL致信CFTC，要求加強對預測市場的監管力道", "title_en": "NFL Writes to CFTC, Urging Stricter Regulation of Prediction Markets", "title_th": "NFL ทำหนังสือถึง CFTC เรียกร้องให้เพิ่มความเข้มงวดในการกำกับดูแลตลาดคาดการณ์ผล", "title_hi": "NFL ने CFTC को पत्र लिखकर प्रेडिक्शन मार्केट के कड़े नियमन का आग्रह किया", "link": "https://www.gamblingnews.com/news/nfl-sends-letter-to-cftc-urging-it-to-control-prediction-markets-more-strictly/", "sentiment": "利空", "impact": 85.0, "urgency": 60.0}, {"title": "麥格理集團看好美國iGaming市場，產業營收成長強勁", "title_en": "Macquarie Group Bullish on US iGaming Market with Strong Revenue Growth", "title_th": "Macquarie Group มองบวกต่อตลาด iGaming ในสหรัฐฯ เผยรายได้เติบโตแข็งแกร่ง", "title_hi": "Macquarie Group अमेरिकी iGaming बाजार को लेकर उत्साहित, राजस्व में मजबूत वृद्धि", "link": "https://www.gamblingnews.com/news/macquarie-bullish-on-us-igaming-as-the-sectors-revenues-soar/", "sentiment": "利多", "impact": 90.0, "urgency": 30.0}, {"title": "DraftKings 因稅務壓力關閉 Wrigley Field 實體博彩站", "title_en": "DraftKings closes Wrigley Field retail sportsbook due to tax pressure", "title_th": "DraftKings ปิดสถานพนันหน้าร้านที่ Wrigley Field เนื่องจากแรงกดดันด้านภาษี", "title_hi": "DraftKings ने टैक्स के दबाव के कारण Wrigley Field स्पोर्ट्सबुक बंद किया", "link": "https://www.gamblingnews.com/news/draftkings-shutters-wrigley-field-sportsbook-due-to-tax-pressures/", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}, {"title": "維吉尼亞州彩民中得 200 萬美元強力球獎金，頭獎持續累計", "title_en": "Virginia lottery player wins $2 million Powerball prize, jackpot continues to roll", "title_th": "ผู้เล่นลอตเตอรีในรัฐเวอร์จิเนียถูกรางวัล Powerball 2 ล้านดอลลาร์ แจ็กพอตยังคงสะสมต่อไป", "title_hi": "वर्जिनिया लॉटरी खिलाड़ी ने $2 मिलियन का पावरबॉल पुरस्कार जीता, जैकपॉट लगातार बढ़ रहा है", "link": "https://www.gamblingnews.com/news/virginia-player-wins-2m-from-powerball-jackpot-remains-unconquered/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Kalshi 與問題博彩全國委員會合作，推動交易員健康守則", "title_en": "Kalshi partners with NCPG to promote trader safety standards", "title_th": "Kalshi ร่วมมือกับ NCPG ส่งเสริมมาตรฐานความปลอดภัยของนักเทรด", "title_hi": "Kalshi ने ट्रेडर सुरक्षा मानकों को बढ़ावा देने के लिए NCPG के साथ साझेदारी की", "link": "https://www.gamblingnews.com/news/kalshi-national-council-on-problem-gambling-join-forces-to-champion-trader-health/", "sentiment": "中立", "impact": 45.0, "urgency": 40.0}, {"title": "密西根州女子贏得 100 萬美元即開型彩券獎金", "title_en": "Michigan woman wins $1 million instant lottery prize", "title_th": "หญิงชาวมิชิแกนถูกรางวัลลอตเตอรีแบบขูดลุ้นโชค 1 ล้านดอลลาร์", "title_hi": "मिशिगन की महिला ने $1 मिलियन का इंस्टेंट लॉटरी पुरस्कार जीता", "link": "https://www.gamblingnews.com/news/michigan-woman-scoops-1m-prize-from-lucky-stars-instant-game/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Sporttrade 退出美國線上博彩市場", "title_en": "Sporttrade exits US online gambling market", "title_th": "Sporttrade ถอนตัวจากตลาดการพนันออนไลน์ในสหรัฐฯ", "title_hi": "Sporttrade ने अमेरिकी ऑनलाइन जुआ बाजार से बाहर होने की घोषणा की", "link": "https://www.gamblingnews.com/news/sporttrade-to-exit-the-us-online-betting-market/", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "Century Casinos 任命 Lyle Randolph 為美國營運執行副總裁", "title_en": "Century Casinos Appoints Lyle Randolph as EVP of US Operations", "title_th": "Century Casinos แต่งตั้ง Lyle Randolph เป็นรองประธานบริหารฝ่ายปฏิบัติการสหรัฐฯ", "title_hi": "Century Casinos ने लाइल रैंडोल्फ को अमेरिकी संचालन के लिए EVP नियुक्त किया", "link": "https://focusgn.com/century-casinos-names-lyle-randolph-as-executive-vice-president-of-operations-for-us", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "菲律賓", "count": 2, "coords": [14.43115961960038, 120.67760982414552], "sentiment": "利多", "news_full": [{"title": "GLI 深耕菲律賓市場，配合全新線上營運監管框架", "title_en": "GLI Deepens Foothold in Philippines Amid New Online Regulatory Framework", "title_th": "GLI เสริมความแข็งแกร่งในตลาดฟิลิปปินส์ รับกรอบการกำกับดูแลการดำเนินงานออนไลน์ใหม่", "title_hi": "GLI फिलीपींस बाजार में अपनी पैठ मजबूत कर रहा है, नए ऑनलाइन परिचालन नियामक ढांचे के अनुरूप", "link": "https://asgam.com/2026/05/20/gli-expanding-philippines-focus-amid-implementation-of-new-regulatory-framework-for-online-operations/", "sentiment": "利多", "impact": 85.0, "urgency": 75.0}, {"title": "菲律賓PAGCOR繳庫9,200萬美元，展現博弈產業對國庫貢獻", "title_en": "Philippines' PAGCOR Contributes $92 Million to National Treasury, Highlighting Gaming's Economic Role", "title_th": "PAGCOR ของฟิลิปปินส์นำส่งรายได้ 92 ล้านดอลลาร์เข้าคลัง เผยบทบาทสำคัญของอุตสาหกรรมเกมต่อเศรษฐกิจ", "title_hi": "फिलीपींस के PAGCOR ने राष्ट्रीय खजाने में 92 मिलियन डॉलर का योगदान दिया, गेमिंग उद्योग का योगदान प्रदर्शित", "link": "https://agbrief.com/news/philippines/19/05/2026/pagcor-remits-92m-to-national-treasury-in-2025-dividends/", "sentiment": "利多", "impact": 80.0, "urgency": 30.0}]}, {"region": "澳門", "count": 5, "coords": [21.91501663841553, 113.32327433414338], "sentiment": "利空", "news_full": [{"title": "澳門博彩業展望謹慎：VIP波動與競爭加劇挑戰財報預測", "title_en": "Macau Gaming Outlook Remains Cautious: VIP Volatility and Increased Competition Challenge Forecasts", "title_th": "มุมมองอุตสาหกรรมเกมในมาเก๊ายังคงระมัดระวัง: ความผันผวนของตลาด VIP และการแข่งขันที่เพิ่มขึ้นท้าทายการคาดการณ์กำไร", "title_hi": "मकाऊ गेमिंग दृष्टिकोण सतर्क: वीआईपी अस्थिरता और बढ़ती प्रतिस्पर्धा ने वित्तीय पूर्वानुमानों को चुनौती दी", "link": "https://asgam.com/2026/05/20/macau-outlook-concerning-but-with-upside-as-vip-volatility-competitive-environment-continue-to-make-earnings-forecasts-challenging/", "sentiment": "利空", "impact": 30.0, "urgency": 40.0}, {"title": "澳門博弈營運商首季推廣與佣金成本激增28%，利潤空間受壓", "title_en": "Macau Gaming Operators See 28% Surge in Q1 Marketing and Commission Costs, Pressuring Profit Margins", "title_th": "ผู้ให้บริการคาสิโนในมาเก๊าเผชิญต้นทุนค่าการตลาดและคอมมิชชันพุ่ง 28% ในไตรมาสแรก กดดันอัตรากำไร", "title_hi": "मकाऊ के गेमिंग ऑपरेटरों की पहली तिमाही में मार्केटिंग और कमीशन लागत में 28% की वृद्धि, लाभ मार्जिन पर दबाव", "link": "https://agbrief.com/news/macau/19/05/2026/macau-commission-and-promotional-spending-climbs-28-in-1q26-squeezing-operator-margins-cbre/", "sentiment": "利空", "impact": 30.0, "urgency": 40.0}, {"title": "澳門5月博彩總收入預期達27.9億美元，非博弈活動貢獻顯著", "title_en": "Macau May Gaming Revenue Projected to Hit $2.79 Billion, Non-Gaming Activities Contribute Significantly", "title_th": "รายได้รวมจากการพนันของมาเก๊าในเดือนพฤษภาคมคาดการณ์ว่าจะแตะ 2.79 พันล้านดอลลาร์ กิจกรรมที่ไม่ใช่การพนันมีส่วนสำคัญ", "title_hi": "मकाऊ का मई गेमिंग राजस्व 2.79 बिलियन डॉलर तक पहुंचने का अनुमान, गैर-गेमिंग गतिविधियों का बड़ा योगदान", "link": "https://agbrief.com/news/macau/19/05/2026/macau-may-ggr-expected-to-reach-2-79b-supported-by-non-gaming-events-citigroup/", "sentiment": "利多", "impact": 30.0, "urgency": 25.0}, {"title": "澳門第一季高端中場表現亮眼，抵銷貴賓廳疲軟影響", "title_en": "Macau Q1 High-End Mass Market Performance Strong, Offsetting VIP Weakness", "title_th": "มาเก๊าเผยผลประกอบการไตรมาสแรก ตลาดมวลชนระดับไฮเอนด์แข็งแกร่ง ชดเชยจุดอ่อนของวีไอพี", "title_hi": "मकाऊ की पहली तिमाही में हाई-एंड मास मार्केट का प्रदर्शन शानदार, वीआईपी कमजोरी की भरपाई", "link": "https://www.ggrasia.com/macau-1q-premium-mass-offsets-soft-vip-londoner-macao-joins-top-3-for-ggr-share-jp-morgan?utm_source=rss&utm_medium=rss&utm_campaign=macau-1q-premium-mass-offsets-soft-vip-londoner-macao-joins-top-3-for-ggr-share-jp-morgan", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}, {"title": "亞洲博彩簡報：高端貴賓客群支撐澳門市場復甦", "title_en": "Asia Gaming Brief: High-end VIP customers support Macau's market recovery", "title_th": "สรุปอุตสาหกรรมเกมเอเชีย: กลุ่มลูกค้าระดับ VIP ช่วยสนับสนุนการฟื้นตัวของตลาดมาเก๊า", "title_hi": "एशिया गेमिंग ब्रीफ: उच्च-स्तरीय VIP ग्राहक मकाऊ बाजार की रिकवरी का समर्थन कर रहे हैं", "link": "https://agbrief.com/news/19/05/2026/premium-guests-carry-asia-recovery/", "sentiment": "利多", "impact": 30.0, "urgency": 35.0}]}, {"region": "全球", "count": 8, "coords": [19.75263918682934, 9.647904652122369], "sentiment": "利多", "news_full": [{"title": "研究顯示全球未受監管線上博彩規模達 5.9 兆美元", "title_en": "Research Reveals Global Unregulated Online Gaming Market Reaches $5.9 Trillion", "title_th": "งานวิจัยเผยตลาดการพนันออนไลน์ที่ไม่มีการกำกับดูแลทั่วโลกมีมูลค่าถึง 5.9 ล้านล้านดอลลาร์", "title_hi": "शोध से पता चला है कि वैश्विक अनियंत्रित ऑनलाइन गेमिंग बाजार 5.9 ट्रिलियन डॉलर तक पहुंच गया है", "link": "https://asgam.com/2026/05/20/study-finds-unregulated-online-gambling-worth-us5-9-trillion-annually-enough-to-rank-as-worlds-third-largest-economy/", "sentiment": "中立", "impact": 90.0, "urgency": 30.0}, {"title": "BGaming推出Hot Rocket新產品，強調高爆發性娛樂體驗", "title_en": "BGaming Launches 'Hot Rocket', Emphasizing High-Volatility Entertainment", "title_th": "BGaming เปิดตัวเกมใหม่ 'Hot Rocket' เน้นประสบการณ์ความบันเทิงที่ตื่นเต้นเร้าใจ", "title_hi": "BGaming ने Hot Rocket लॉन्च किया, हाई-वोलेटिलिटी मनोरंजन पर जोर", "link": "https://www.gamblingnews.com/news/prepare-for-explosive-entertainment-in-bgamings-hot-rocket-5x-3x-2x/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "分析師稱《殺戮尖塔 2》儘管面臨 Steam 負評，銷量依舊強勁", "title_en": "Analysts: 'Slay The Spire 2' sees strong sales despite negative Steam reviews", "title_th": "นักวิเคราะห์ชี้ 'Slay The Spire 2' ยอดขายยังคงแข็งแกร่งแม้เจอรีวิวแง่ลบบน Steam", "title_hi": "विश्लेषकों का कहना है कि नकारात्मक स्टीम समीक्षाओं के बावजूद 'Slay The Spire 2' की बिक्री मजबूत है", "link": "https://www.gamingdose.com/news/%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b8%a7%e0%b8%b4%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%b2%e0%b8%b0%e0%b8%ab%e0%b9%8c%e0%b8%95%e0%b8%a5%e0%b8%b2%e0%b8%94%e0%b9%80%e0%b8%81%e0%b8%a1%e0%b8%81%e0%b8%a5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《要塞英雄》重返 iOS App Store，iPhone 與 iPad 用戶可下載遊玩", "title_en": "'Fortnite' returns to iOS App Store for iPhone and iPad users", "title_th": "'Fortnite' กลับมาบน iOS App Store แล้ว ผู้ใช้ iPhone และ iPad สามารถดาวน์โหลดเล่นได้", "title_hi": "'Fortnite' की iOS ऐप स्टोर में वापसी, iPhone और iPad उपयोगकर्ता इसे डाउनलोड कर सकते हैं", "link": "https://www.gamingdose.com/news/fortnite-%e0%b8%81%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%a1%e0%b8%b2%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94%e0%b9%83%e0%b8%99-app-store-%e0%b8%9a%e0%b8%99-ios-%e0%b9%80%e0%b8%a5/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Focus Gaming News 委任 Rick Godds 為全球品牌大使", "title_en": "Focus Gaming News Appoints Rick Godds as Global Brand Ambassador", "title_th": "Focus Gaming News แต่งตั้ง Rick Godds เป็นทูตแบรนด์ระดับโลก", "title_hi": "Focus Gaming News ने रिक गॉड्स को ग्लोबल ब्रांड एंबेसडर नियुक्त किया", "link": "https://focusgn.com/focus-gaming-news-appoints-rick-godds-as-global-brand-ambassador", "sentiment": "中立", "impact": 20.0, "urgency": 15.0}, {"title": "博彩業巨頭入圍《星期日泰晤士報》2026 富豪榜", "title_en": "Gaming Giants Listed in The Sunday Times 2026 Rich List", "title_th": "ยักษ์ใหญ่ในอุตสาหกรรมเกมติดอันดับ Sunday Times 2026 Rich List", "title_hi": "गेमिंग दिग्गज संडे टाइम्स 2026 रिच लिस्ट में शामिल", "link": "https://focusgn.com/where-gambling-industry-figures-came-in-the-sunday-times-rich-list-2026", "sentiment": "中立", "impact": 35.0, "urgency": 25.0}, {"title": "產業視頻專訪資訊更新", "title_en": "Industry Video Interview Updates", "title_th": "อัปเดตบทสัมภาษณ์วิดีโอจากอุตสาหกรรม", "title_hi": "उद्योग वीडियो साक्षात्कार अपडेट", "link": "https://focusgn.com/category/interviews/video-interviews", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}, {"title": "CreedRoomz：遊戲秀（Game Shows）成為真人娛樂場產業的核心動能", "title_en": "CreedRoomz: Game Shows Become the Core Driver for Live Casino Industry", "title_th": "CreedRoomz: เกมโชว์กลายเป็นแรงขับเคลื่อนหลักของอุตสาหกรรมคาสิโนสด", "title_hi": "CreedRoomz: गेम शो लाइव कैसीनो उद्योग के लिए मुख्य चालक बने", "link": "https://focusgn.com/youtube-video/sergey-shulgin-creedroomz-if-you-think-about-the-live-casino-industry-game-shows-are-the-main-driver-of-traffic-acquisition", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "亞洲", "count": 1, "coords": [20.24136438420678, 10.150626171731327], "sentiment": "利空", "news_full": [{"title": "LT Game 展現差異化競爭策略，詳述娛樂場產品佈局", "title_en": "LT Game Showcases Differentiation Strategy, Details Casino Product Roadmap", "title_th": "LT Game เผยกลยุทธ์การแข่งขันที่แตกต่าง รายละเอียดแผนผลิตภัณฑ์คาสิโน", "title_hi": "LT Game ने विभेदित प्रतिस्पर्धात्मक रणनीति का प्रदर्शन किया, कैसीनो उत्पाद लेआउट का विवरण दिया", "link": "https://asgam.com/2026/05/19/a-point-of-difference-eddie-au-details-lt-games-casino-offerings/", "sentiment": "利空", "impact": 55.0, "urgency": 45.0}]}, {"region": "斯里蘭卡", "count": 1, "coords": [6.840457653324203, 80.23756084079646], "sentiment": "利空", "news_full": [{"title": "斯里蘭卡博弈市場合法化進程面臨非法犯罪網絡滲透挑戰", "title_en": "Sri Lanka's Legalized Gaming Market Faces Infiltration Risks from Illegal Crime Networks", "title_th": "กระบวนการทำให้ตลาดเกมในศรีลังกาถูกกฎหมายเผชิญกับความท้าทายจากการแทรกซึมของเครือข่ายอาชญากรรมผิดกฎหมาย", "title_hi": "श्रीलंका के वैध गेमिंग बाजार में अवैध अपराध नेटवर्क की घुसपैठ की चुनौती", "link": "https://agbrief.com/news/sri-lanka/20/05/2026/scam-networks-move-into-sri-lanka-just-as-it-tries-to-build-a-legitimate-gambling-market/", "sentiment": "利空", "impact": 55.0, "urgency": 60.0}]}, {"region": "歐洲", "count": 3, "coords": [49.782225312154374, 15.258517366524485], "sentiment": "利多", "news_full": [{"title": "Pronet Gaming獲WIG Diversity獎項提名，展現產業品牌影響力", "title_en": "Pronet Gaming Nominated for WIG Diversity Awards, Highlighting Industry Brand Influence", "title_th": "Pronet Gaming ได้รับการเสนอชื่อเข้าชิงรางวัล WIG Diversity Awards ตอกย้ำอิทธิพลของแบรนด์ในอุตสาหกรรม", "title_hi": "Pronet Gaming को WIG डायवर्सिटी अवार्ड्स के लिए नामांकित किया गया, उद्योग ब्रांड का प्रभाव प्रदर्शित", "link": "https://agbrief.com/news/europe/19/05/2026/pronet-gaming-secures-multiple-nominations-at-wig-diversity-awards-2026/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "Playson透過Admiral.ch合作擴大瑞士市場布局", "title_en": "Playson Expands Swiss Market Footprint Through Admiral.ch Partnership", "title_th": "Playson ขยายฐานสู่ตลาดสวิตเซอร์แลนด์ผ่านความร่วมมือกับ Admiral.ch", "title_hi": "Playson ने Admiral.ch के साथ साझेदारी के माध्यम से स्विस बाजार में विस्तार किया", "link": "https://agbrief.com/news/europe/19/05/2026/playson-expands-swiss-market-footprint-via-admiral-ch-partnership/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "Spinomenal 攜手 Entain NCE，強化在愛沙尼亞市場布局", "title_en": "Spinomenal partners with Entain NCE to strengthen position in Estonian market", "title_th": "Spinomenal จับมือ Entain NCE เสริมแกร่งในตลาดเอสโตเนีย", "title_hi": "Spinomenal ने एस्टोनियाई बाजार में स्थिति मजबूत करने के लिए Entain NCE के साथ साझेदारी की", "link": "https://www.gamblingnews.com/news/spinomenal-strengthens-estonian-presence-with-entain-nce/", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}]}, {"region": "泰國", "count": 1, "coords": [13.914907904896776, 100.36181302480028], "sentiment": "利空", "news_full": [{"title": "泰國因憂慮灰色產業影響，取消60天免簽政策", "title_en": "Thailand Cancels 60-Day Visa-Free Policy Due to Concerns Over Gray Market Industries", "title_th": "ไทยยกเลิกนโยบายฟรีวีซ่า 60 วันจากความกังวลเรื่องอุตสาหกรรมสีเทา", "title_hi": "थाईलैंड ने ग्रे-मार्केट उद्योगों की चिंताओं के कारण 60-दिन की वीज़ा-मुक्त नीति रद्द की", "link": "https://agbrief.com/news/thailand/19/05/2026/thailand-ends-60-day-visa-free-stay-as-concerns-mount-over-foreign-run-grey-businesses/", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}]}, {"region": "加拿大", "count": 1, "coords": [55.87820535254922, -105.91138193315999], "sentiment": "利多", "news_full": [{"title": "EveryMatrix 獲取加拿大亞伯達省博彩牌照，搶灘 iGaming 市場", "title_en": "EveryMatrix secures Alberta, Canada betting license to enter iGaming market", "title_th": "EveryMatrix คว้าใบอนุญาตการพนันในรัฐอัลเบอร์ตา ประเทศแคนาดา บุกตลาด iGaming", "title_hi": "EveryMatrix ने कनाडा के अल्बर्टा में जुआ लाइसेंस हासिल किया, iGaming बाजार में प्रवेश", "link": "https://www.gamblingnews.com/news/everymatrix-secures-alberta-license-ahead-of-igaming-market-launch/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}]}, {"region": "英國", "count": 1, "coords": [51.835069566384796, -0.5429886960930682], "sentiment": "利多", "news_full": [{"title": "英國博彩委員會：金融核查未對營運商造成預期外負面影響", "title_en": "UK Gambling Commission: Financial Checks Do Not Negatively Impact Operators", "title_th": "คณะกรรมการการพนันแห่งสหราชอาณาจักร: การตรวจสอบทางการเงินไม่ส่งผลกระทบเชิงลบต่อผู้ประกอบการ", "title_hi": "यूके जुआ आयोग: वित्तीय जांच का ऑपरेटरों पर कोई प्रतिकूल प्रभाव नहीं", "link": "https://focusgn.com/financial-checks-caused-no-unintended-consequences-for-most-operators-gambling-commission-says", "sentiment": "利多", "impact": 80.0, "urgency": 50.0}]}];
+        const mapMarkersData = [{"region": "拉丁美洲", "count": 3, "coords": [-15.056764066341927, -59.71254101439217], "sentiment": "利空", "news_full": [{"title": "PopOK Gaming：遊戲產品在拉丁美洲市場名列前茅", "title_en": "PopOK Gaming: Games Rank Among Top in Latin American Market", "title_th": "PopOK Gaming: ผลิตภัณฑ์เกมครองอันดับต้นในตลาดละตินอเมริกา", "title_hi": "PopOK Gaming: गेम उत्पाद लैटिन अमेरिकी बाजार में शीर्ष पर", "link": "https://focusgn.com/youtube-video/aneta-khalatyan-popok-gaming-our-games-are-already-among-the-top-providers-in-latin-america", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "IBIA 與 aPAL 攜手推動智利線上博彩監管框架建設", "title_en": "IBIA and aPAL partner to promote Chile's online gambling regulatory framework", "title_th": "IBIA และ aPAL จับมือผลักดันกรอบกำกับดูแลการพนันออนไลน์ของชิลี", "title_hi": "IBIA और aPAL ने चिली के ऑनलाइन जुआ नियामक ढांचे को बढ़ावा देने के लिए साझेदारी की", "link": "https://agbrief.com/news/world/19/05/2026/ibia-and-apal-join-forces-to-help-shape-chiles-online-betting-framework/", "sentiment": "利多", "impact": 65.0, "urgency": 60.0}, {"title": "Codere Online 第一季財報表現強勁創新高", "title_en": "Codere Online Reports Strong Q1 Results, Hits Record High", "title_th": "Codere Online เผยผลประกอบการไตรมาสแรกแข็งแกร่ง ทำสถิติสูงสุดใหม่", "title_hi": "Codere Online का Q1 परिणाम मजबूत, रिकॉर्ड ऊंचाई पर", "link": "https://focusgn.com/codere-online-sees-record-first-quarter-results", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}]}, {"region": "北美", "count": 4, "coords": [44.86293038148748, -100.0818578182232], "sentiment": "利空", "news_full": [{"title": "SBC Summit Americas 展會前瞻", "title_en": "SBC Summit Americas Preview", "title_th": "พรีวิวงาน SBC Summit Americas", "title_hi": "SBC Summit Americas पूर्वावलोकन", "link": "https://focusgn.com/events/sbc-americas-2026", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}, {"title": "SBC Summit Americas 導入互動式產業大師班", "title_en": "SBC Summit Americas Introduces Interactive Industry Masterclasses", "title_th": "SBC Summit Americas เปิดตัวคลาสเรียนเชิงโต้ตอบสำหรับอุตสาหกรรม", "title_hi": "SBC Summit Americas ने इंटरैक्टिव इंडस्ट्री मास्टरक्लास पेश किए", "link": "https://focusgn.com/sbc-summit-americas-to-introduce-interactive-industry-masterclasses", "sentiment": "利多", "impact": 65.0, "urgency": 55.0}, {"title": "TaDa Gaming 參展 SBC Summit Americas 策略曝光", "title_en": "TaDa Gaming Strategy Exposure at SBC Summit Americas", "title_th": "กลยุทธ์การเข้าร่วมงาน SBC Summit Americas ของ TaDa Gaming", "title_hi": "SBC Summit Americas में TaDa Gaming की रणनीतिक भागीदारी", "link": "https://focusgn.com/tada-gaming-will-be-one-beat-ahead-at-sbc-summit-americas", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "SBC Summit Americas 2026 推出連結計畫", "title_en": "SBC Summit Americas 2026 Launches Connection Program", "title_th": "SBC Summit Americas 2026 เปิดตัวโครงการเชื่อมต่อธุรกิจ", "title_hi": "SBC Summit Americas 2026 ने कनेक्शन प्रोग्राम लॉन्च किया", "link": "https://focusgn.com/sbc-summit-americas-2026-introduces-sbc-connections-delivering-a-structured-approach-to-networking", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}]}, {"region": "美國", "count": 10, "coords": [37.4877616887134, -95.70156716960817], "sentiment": "利空", "news_full": [{"title": "預測市場發展與各州法案：本週博彩產業重點動態", "title_en": "Prediction Market Developments and State Bills: Key Highlights in the Betting Industry This Week", "title_th": "ความเคลื่อนไหวตลาดการคาดการณ์และร่างกฎหมายระดับรัฐ: ไฮไลท์อุตสาหกรรมการพนันในสัปดาห์นี้", "title_hi": "प्रेडिक्शन मार्केट का विकास और राज्य के विधेयक: इस सप्ताह जुआ उद्योग की प्रमुख झलकियाँ", "link": "https://www.gamblinginsider.com/news/160495/prediction-markets-state-bills-gambling-stories-watch", "sentiment": "利多", "impact": 75.0, "urgency": 70.0}, {"title": "DraftKings 關閉 Wrigley Field 實體據點，反映場內體育博彩熱度下滑", "title_en": "DraftKings Closes Wrigley Field Retail Location, Reflecting Decline in In-Stadium Sports Betting", "title_th": "DraftKings ปิดสาขาหน้าร้านที่ Wrigley Field สะท้อนความนิยมการพนันกีฬาในสนามที่ลดลง", "title_hi": "DraftKings ने रिग्ली फील्ड (Wrigley Field) रिटेल आउटलेट बंद किया, इन-स्टेडियम स्पोर्ट्स बेटिंग में गिरावट का संकेत", "link": "https://www.gamblinginsider.com/news/160653/draftkings-shutters-wrigley-field-location-as-in-venue-sportsbooks-wane", "sentiment": "利多", "impact": 65.0, "urgency": 45.0}, {"title": "NFL致信CFTC，要求加強對預測市場的監管力道", "title_en": "NFL Writes to CFTC, Urging Stricter Regulation of Prediction Markets", "title_th": "NFL ทำหนังสือถึง CFTC เรียกร้องให้เพิ่มความเข้มงวดในการกำกับดูแลตลาดคาดการณ์ผล", "title_hi": "NFL ने CFTC को पत्र लिखकर प्रेडिक्शन मार्केट के कड़े नियमन का आग्रह किया", "link": "https://www.gamblingnews.com/news/nfl-sends-letter-to-cftc-urging-it-to-control-prediction-markets-more-strictly/", "sentiment": "利空", "impact": 85.0, "urgency": 60.0}, {"title": "麥格理集團看好美國iGaming市場，產業營收成長強勁", "title_en": "Macquarie Group Bullish on US iGaming Market with Strong Revenue Growth", "title_th": "Macquarie Group มองบวกต่อตลาด iGaming ในสหรัฐฯ เผยรายได้เติบโตแข็งแกร่ง", "title_hi": "Macquarie Group अमेरिकी iGaming बाजार को लेकर उत्साहित, राजस्व में मजबूत वृद्धि", "link": "https://www.gamblingnews.com/news/macquarie-bullish-on-us-igaming-as-the-sectors-revenues-soar/", "sentiment": "利多", "impact": 90.0, "urgency": 30.0}, {"title": "DraftKings 因稅務壓力關閉 Wrigley Field 實體博彩站", "title_en": "DraftKings closes Wrigley Field retail sportsbook due to tax pressure", "title_th": "DraftKings ปิดสถานพนันหน้าร้านที่ Wrigley Field เนื่องจากแรงกดดันด้านภาษี", "title_hi": "DraftKings ने टैक्स के दबाव के कारण Wrigley Field स्पोर्ट्सबुक बंद किया", "link": "https://www.gamblingnews.com/news/draftkings-shutters-wrigley-field-sportsbook-due-to-tax-pressures/", "sentiment": "利空", "impact": 65.0, "urgency": 50.0}, {"title": "維吉尼亞州彩民中得 200 萬美元強力球獎金，頭獎持續累計", "title_en": "Virginia lottery player wins $2 million Powerball prize, jackpot continues to roll", "title_th": "ผู้เล่นลอตเตอรีในรัฐเวอร์จิเนียถูกรางวัล Powerball 2 ล้านดอลลาร์ แจ็กพอตยังคงสะสมต่อไป", "title_hi": "वर्जिनिया लॉटरी खिलाड़ी ने $2 मिलियन का पावरबॉल पुरस्कार जीता, जैकपॉट लगातार बढ़ रहा है", "link": "https://www.gamblingnews.com/news/virginia-player-wins-2m-from-powerball-jackpot-remains-unconquered/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Kalshi 與問題博彩全國委員會合作，推動交易員健康守則", "title_en": "Kalshi partners with NCPG to promote trader safety standards", "title_th": "Kalshi ร่วมมือกับ NCPG ส่งเสริมมาตรฐานความปลอดภัยของนักเทรด", "title_hi": "Kalshi ने ट्रेडर सुरक्षा मानकों को बढ़ावा देने के लिए NCPG के साथ साझेदारी की", "link": "https://www.gamblingnews.com/news/kalshi-national-council-on-problem-gambling-join-forces-to-champion-trader-health/", "sentiment": "中立", "impact": 45.0, "urgency": 40.0}, {"title": "密西根州女子贏得 100 萬美元即開型彩券獎金", "title_en": "Michigan woman wins $1 million instant lottery prize", "title_th": "หญิงชาวมิชิแกนถูกรางวัลลอตเตอรีแบบขูดลุ้นโชค 1 ล้านดอลลาร์", "title_hi": "मिशिगन की महिला ने $1 मिलियन का इंस्टेंट लॉटरी पुरस्कार जीता", "link": "https://www.gamblingnews.com/news/michigan-woman-scoops-1m-prize-from-lucky-stars-instant-game/", "sentiment": "中立", "impact": 20.0, "urgency": 10.0}, {"title": "Sporttrade 退出美國線上博彩市場", "title_en": "Sporttrade exits US online gambling market", "title_th": "Sporttrade ถอนตัวจากตลาดการพนันออนไลน์ในสหรัฐฯ", "title_hi": "Sporttrade ने अमेरिकी ऑनलाइन जुआ बाजार से बाहर होने की घोषणा की", "link": "https://www.gamblingnews.com/news/sporttrade-to-exit-the-us-online-betting-market/", "sentiment": "利空", "impact": 60.0, "urgency": 50.0}, {"title": "Century Casinos 任命 Lyle Randolph 為美國營運執行副總裁", "title_en": "Century Casinos Appoints Lyle Randolph as EVP of US Operations", "title_th": "Century Casinos แต่งตั้ง Lyle Randolph เป็นรองประธานบริหารฝ่ายปฏิบัติการสหรัฐฯ", "title_hi": "Century Casinos ने लाइल रैंडोल्फ को अमेरिकी संचालन के लिए EVP नियुक्त किया", "link": "https://focusgn.com/century-casinos-names-lyle-randolph-as-executive-vice-president-of-operations-for-us", "sentiment": "中立", "impact": 45.0, "urgency": 30.0}]}, {"region": "菲律賓", "count": 2, "coords": [14.509297527976381, 121.21356018362192], "sentiment": "利多", "news_full": [{"title": "GLI 深耕菲律賓市場，配合全新線上營運監管框架", "title_en": "GLI Deepens Foothold in Philippines Amid New Online Regulatory Framework", "title_th": "GLI เสริมความแข็งแกร่งในตลาดฟิลิปปินส์ รับกรอบการกำกับดูแลการดำเนินงานออนไลน์ใหม่", "title_hi": "GLI फिलीपींस बाजार में अपनी पैठ मजबूत कर रहा है, नए ऑनलाइन परिचालन नियामक ढांचे के अनुरूप", "link": "https://asgam.com/2026/05/20/gli-expanding-philippines-focus-amid-implementation-of-new-regulatory-framework-for-online-operations/", "sentiment": "利多", "impact": 85.0, "urgency": 75.0}, {"title": "菲律賓PAGCOR繳庫9,200萬美元，展現博弈產業對國庫貢獻", "title_en": "Philippines' PAGCOR Contributes $92 Million to National Treasury, Highlighting Gaming's Economic Role", "title_th": "PAGCOR ของฟิลิปปินส์นำส่งรายได้ 92 ล้านดอลลาร์เข้าคลัง เผยบทบาทสำคัญของอุตสาหกรรมเกมต่อเศรษฐกิจ", "title_hi": "फिलीपींस के PAGCOR ने राष्ट्रीय खजाने में 92 मिलियन डॉलर का योगदान दिया, गेमिंग उद्योग का योगदान प्रदर्शित", "link": "https://agbrief.com/news/philippines/19/05/2026/pagcor-remits-92m-to-national-treasury-in-2025-dividends/", "sentiment": "利多", "impact": 80.0, "urgency": 30.0}]}, {"region": "澳門", "count": 5, "coords": [22.54810329475502, 113.62811120053694], "sentiment": "利空", "news_full": [{"title": "澳門博彩業展望謹慎：VIP波動與競爭加劇挑戰財報預測", "title_en": "Macau Gaming Outlook Remains Cautious: VIP Volatility and Increased Competition Challenge Forecasts", "title_th": "มุมมองอุตสาหกรรมเกมในมาเก๊ายังคงระมัดระวัง: ความผันผวนของตลาด VIP และการแข่งขันที่เพิ่มขึ้นท้าทายการคาดการณ์กำไร", "title_hi": "मकाऊ गेमिंग दृष्टिकोण सतर्क: वीआईपी अस्थिरता और बढ़ती प्रतिस्पर्धा ने वित्तीय पूर्वानुमानों को चुनौती दी", "link": "https://asgam.com/2026/05/20/macau-outlook-concerning-but-with-upside-as-vip-volatility-competitive-environment-continue-to-make-earnings-forecasts-challenging/", "sentiment": "利空", "impact": 30.0, "urgency": 40.0}, {"title": "澳門博弈營運商首季推廣與佣金成本激增28%，利潤空間受壓", "title_en": "Macau Gaming Operators See 28% Surge in Q1 Marketing and Commission Costs, Pressuring Profit Margins", "title_th": "ผู้ให้บริการคาสิโนในมาเก๊าเผชิญต้นทุนค่าการตลาดและคอมมิชชันพุ่ง 28% ในไตรมาสแรก กดดันอัตรากำไร", "title_hi": "मकाऊ के गेमिंग ऑपरेटरों की पहली तिमाही में मार्केटिंग और कमीशन लागत में 28% की वृद्धि, लाभ मार्जिन पर दबाव", "link": "https://agbrief.com/news/macau/19/05/2026/macau-commission-and-promotional-spending-climbs-28-in-1q26-squeezing-operator-margins-cbre/", "sentiment": "利空", "impact": 30.0, "urgency": 40.0}, {"title": "澳門5月博彩總收入預期達27.9億美元，非博弈活動貢獻顯著", "title_en": "Macau May Gaming Revenue Projected to Hit $2.79 Billion, Non-Gaming Activities Contribute Significantly", "title_th": "รายได้รวมจากการพนันของมาเก๊าในเดือนพฤษภาคมคาดการณ์ว่าจะแตะ 2.79 พันล้านดอลลาร์ กิจกรรมที่ไม่ใช่การพนันมีส่วนสำคัญ", "title_hi": "मकाऊ का मई गेमिंग राजस्व 2.79 बिलियन डॉलर तक पहुंचने का अनुमान, गैर-गेमिंग गतिविधियों का बड़ा योगदान", "link": "https://agbrief.com/news/macau/19/05/2026/macau-may-ggr-expected-to-reach-2-79b-supported-by-non-gaming-events-citigroup/", "sentiment": "利多", "impact": 30.0, "urgency": 25.0}, {"title": "澳門第一季高端中場表現亮眼，抵銷貴賓廳疲軟影響", "title_en": "Macau Q1 High-End Mass Market Performance Strong, Offsetting VIP Weakness", "title_th": "มาเก๊าเผยผลประกอบการไตรมาสแรก ตลาดมวลชนระดับไฮเอนด์แข็งแกร่ง ชดเชยจุดอ่อนของวีไอพี", "title_hi": "मकाऊ की पहली तिमाही में हाई-एंड मास मार्केट का प्रदर्शन शानदार, वीआईपी कमजोरी की भरपाई", "link": "https://www.ggrasia.com/macau-1q-premium-mass-offsets-soft-vip-londoner-macao-joins-top-3-for-ggr-share-jp-morgan?utm_source=rss&utm_medium=rss&utm_campaign=macau-1q-premium-mass-offsets-soft-vip-londoner-macao-joins-top-3-for-ggr-share-jp-morgan", "sentiment": "利多", "impact": 30.0, "urgency": 40.0}, {"title": "亞洲博彩簡報：高端貴賓客群支撐澳門市場復甦", "title_en": "Asia Gaming Brief: High-end VIP customers support Macau's market recovery", "title_th": "สรุปอุตสาหกรรมเกมเอเชีย: กลุ่มลูกค้าระดับ VIP ช่วยสนับสนุนการฟื้นตัวของตลาดมาเก๊า", "title_hi": "एशिया गेमिंग ब्रीफ: उच्च-स्तरीय VIP ग्राहक मकाऊ बाजार की रिकवरी का समर्थन कर रहे हैं", "link": "https://agbrief.com/news/19/05/2026/premium-guests-carry-asia-recovery/", "sentiment": "利多", "impact": 30.0, "urgency": 35.0}]}, {"region": "全球", "count": 8, "coords": [19.56030735282984, 9.562360738501853], "sentiment": "利多", "news_full": [{"title": "研究顯示全球未受監管線上博彩規模達 5.9 兆美元", "title_en": "Research Reveals Global Unregulated Online Gaming Market Reaches $5.9 Trillion", "title_th": "งานวิจัยเผยตลาดการพนันออนไลน์ที่ไม่มีการกำกับดูแลทั่วโลกมีมูลค่าถึง 5.9 ล้านล้านดอลลาร์", "title_hi": "शोध से पता चला है कि वैश्विक अनियंत्रित ऑनलाइन गेमिंग बाजार 5.9 ट्रिलियन डॉलर तक पहुंच गया है", "link": "https://asgam.com/2026/05/20/study-finds-unregulated-online-gambling-worth-us5-9-trillion-annually-enough-to-rank-as-worlds-third-largest-economy/", "sentiment": "中立", "impact": 90.0, "urgency": 30.0}, {"title": "BGaming推出Hot Rocket新產品，強調高爆發性娛樂體驗", "title_en": "BGaming Launches 'Hot Rocket', Emphasizing High-Volatility Entertainment", "title_th": "BGaming เปิดตัวเกมใหม่ 'Hot Rocket' เน้นประสบการณ์ความบันเทิงที่ตื่นเต้นเร้าใจ", "title_hi": "BGaming ने Hot Rocket लॉन्च किया, हाई-वोलेटिलिटी मनोरंजन पर जोर", "link": "https://www.gamblingnews.com/news/prepare-for-explosive-entertainment-in-bgamings-hot-rocket-5x-3x-2x/", "sentiment": "中立", "impact": 40.0, "urgency": 20.0}, {"title": "分析師稱《殺戮尖塔 2》儘管面臨 Steam 負評，銷量依舊強勁", "title_en": "Analysts: 'Slay The Spire 2' sees strong sales despite negative Steam reviews", "title_th": "นักวิเคราะห์ชี้ 'Slay The Spire 2' ยอดขายยังคงแข็งแกร่งแม้เจอรีวิวแง่ลบบน Steam", "title_hi": "विश्लेषकों का कहना है कि नकारात्मक स्टीम समीक्षाओं के बावजूद 'Slay The Spire 2' की बिक्री मजबूत है", "link": "https://www.gamingdose.com/news/%e0%b8%99%e0%b8%b1%e0%b8%81%e0%b8%a7%e0%b8%b4%e0%b9%80%e0%b8%84%e0%b8%a3%e0%b8%b2%e0%b8%b0%e0%b8%ab%e0%b9%8c%e0%b8%95%e0%b8%a5%e0%b8%b2%e0%b8%94%e0%b9%80%e0%b8%81%e0%b8%a1%e0%b8%81%e0%b8%a5%e0%b9%88/", "sentiment": "中立", "impact": 30.0, "urgency": 20.0}, {"title": "《要塞英雄》重返 iOS App Store，iPhone 與 iPad 用戶可下載遊玩", "title_en": "'Fortnite' returns to iOS App Store for iPhone and iPad users", "title_th": "'Fortnite' กลับมาบน iOS App Store แล้ว ผู้ใช้ iPhone และ iPad สามารถดาวน์โหลดเล่นได้", "title_hi": "'Fortnite' की iOS ऐप स्टोर में वापसी, iPhone और iPad उपयोगकर्ता इसे डाउनलोड कर सकते हैं", "link": "https://www.gamingdose.com/news/fortnite-%e0%b8%81%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%a1%e0%b8%b2%e0%b9%83%e0%b8%ab%e0%b9%89%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94%e0%b9%83%e0%b8%99-app-store-%e0%b8%9a%e0%b8%99-ios-%e0%b9%80%e0%b8%a5/", "sentiment": "利多", "impact": 50.0, "urgency": 30.0}, {"title": "Focus Gaming News 委任 Rick Godds 為全球品牌大使", "title_en": "Focus Gaming News Appoints Rick Godds as Global Brand Ambassador", "title_th": "Focus Gaming News แต่งตั้ง Rick Godds เป็นทูตแบรนด์ระดับโลก", "title_hi": "Focus Gaming News ने रिक गॉड्स को ग्लोबल ब्रांड एंबेसडर नियुक्त किया", "link": "https://focusgn.com/focus-gaming-news-appoints-rick-godds-as-global-brand-ambassador", "sentiment": "中立", "impact": 20.0, "urgency": 15.0}, {"title": "博彩業巨頭入圍《星期日泰晤士報》2026 富豪榜", "title_en": "Gaming Giants Listed in The Sunday Times 2026 Rich List", "title_th": "ยักษ์ใหญ่ในอุตสาหกรรมเกมติดอันดับ Sunday Times 2026 Rich List", "title_hi": "गेमिंग दिग्गज संडे टाइम्स 2026 रिच लिस्ट में शामिल", "link": "https://focusgn.com/where-gambling-industry-figures-came-in-the-sunday-times-rich-list-2026", "sentiment": "中立", "impact": 35.0, "urgency": 25.0}, {"title": "產業視頻專訪資訊更新", "title_en": "Industry Video Interview Updates", "title_th": "อัปเดตบทสัมภาษณ์วิดีโอจากอุตสาหกรรม", "title_hi": "उद्योग वीडियो साक्षात्कार अपडेट", "link": "https://focusgn.com/category/interviews/video-interviews", "sentiment": "中立", "impact": 15.0, "urgency": 10.0}, {"title": "CreedRoomz：遊戲秀（Game Shows）成為真人娛樂場產業的核心動能", "title_en": "CreedRoomz: Game Shows Become the Core Driver for Live Casino Industry", "title_th": "CreedRoomz: เกมโชว์กลายเป็นแรงขับเคลื่อนหลักของอุตสาหกรรมคาสิโนสด", "title_hi": "CreedRoomz: गेम शो लाइव कैसीनो उद्योग के लिए मुख्य चालक बने", "link": "https://focusgn.com/youtube-video/sergey-shulgin-creedroomz-if-you-think-about-the-live-casino-industry-game-shows-are-the-main-driver-of-traffic-acquisition", "sentiment": "利多", "impact": 65.0, "urgency": 40.0}]}, {"region": "亞洲", "count": 1, "coords": [19.761986822212997, 9.587966540875994], "sentiment": "利空", "news_full": [{"title": "LT Game 展現差異化競爭策略，詳述娛樂場產品佈局", "title_en": "LT Game Showcases Differentiation Strategy, Details Casino Product Roadmap", "title_th": "LT Game เผยกลยุทธ์การแข่งขันที่แตกต่าง รายละเอียดแผนผลิตภัณฑ์คาสิโน", "title_hi": "LT Game ने विभेदित प्रतिस्पर्धात्मक रणनीति का प्रदर्शन किया, कैसीनो उत्पाद लेआउट का विवरण दिया", "link": "https://asgam.com/2026/05/19/a-point-of-difference-eddie-au-details-lt-games-casino-offerings/", "sentiment": "利空", "impact": 55.0, "urgency": 45.0}]}, {"region": "斯里蘭卡", "count": 1, "coords": [7.188345937580907, 80.30910011282919], "sentiment": "利空", "news_full": [{"title": "斯里蘭卡博弈市場合法化進程面臨非法犯罪網絡滲透挑戰", "title_en": "Sri Lanka's Legalized Gaming Market Faces Infiltration Risks from Illegal Crime Networks", "title_th": "กระบวนการทำให้ตลาดเกมในศรีลังกาถูกกฎหมายเผชิญกับความท้าทายจากการแทรกซึมของเครือข่ายอาชญากรรมผิดกฎหมาย", "title_hi": "श्रीलंका के वैध गेमिंग बाजार में अवैध अपराध नेटवर्क की घुसपैठ की चुनौती", "link": "https://agbrief.com/news/sri-lanka/20/05/2026/scam-networks-move-into-sri-lanka-just-as-it-tries-to-build-a-legitimate-gambling-market/", "sentiment": "利空", "impact": 55.0, "urgency": 60.0}]}, {"region": "歐洲", "count": 3, "coords": [49.89418206675018, 14.503543303613686], "sentiment": "利多", "news_full": [{"title": "Pronet Gaming獲WIG Diversity獎項提名，展現產業品牌影響力", "title_en": "Pronet Gaming Nominated for WIG Diversity Awards, Highlighting Industry Brand Influence", "title_th": "Pronet Gaming ได้รับการเสนอชื่อเข้าชิงรางวัล WIG Diversity Awards ตอกย้ำอิทธิพลของแบรนด์ในอุตสาหกรรม", "title_hi": "Pronet Gaming को WIG डायवर्सिटी अवार्ड्स के लिए नामांकित किया गया, उद्योग ब्रांड का प्रभाव प्रदर्शित", "link": "https://agbrief.com/news/europe/19/05/2026/pronet-gaming-secures-multiple-nominations-at-wig-diversity-awards-2026/", "sentiment": "中立", "impact": 25.0, "urgency": 10.0}, {"title": "Playson透過Admiral.ch合作擴大瑞士市場布局", "title_en": "Playson Expands Swiss Market Footprint Through Admiral.ch Partnership", "title_th": "Playson ขยายฐานสู่ตลาดสวิตเซอร์แลนด์ผ่านความร่วมมือกับ Admiral.ch", "title_hi": "Playson ने Admiral.ch के साथ साझेदारी के माध्यम से स्विस बाजार में विस्तार किया", "link": "https://agbrief.com/news/europe/19/05/2026/playson-expands-swiss-market-footprint-via-admiral-ch-partnership/", "sentiment": "利多", "impact": 55.0, "urgency": 30.0}, {"title": "Spinomenal 攜手 Entain NCE，強化在愛沙尼亞市場布局", "title_en": "Spinomenal partners with Entain NCE to strengthen position in Estonian market", "title_th": "Spinomenal จับมือ Entain NCE เสริมแกร่งในตลาดเอสโตเนีย", "title_hi": "Spinomenal ने एस्टोनियाई बाजार में स्थिति मजबूत करने के लिए Entain NCE के साथ साझेदारी की", "link": "https://www.gamblingnews.com/news/spinomenal-strengthens-estonian-presence-with-entain-nce/", "sentiment": "利多", "impact": 70.0, "urgency": 40.0}]}, {"region": "泰國", "count": 1, "coords": [13.383229340956252, 100.88010088393447], "sentiment": "利空", "news_full": [{"title": "泰國因憂慮灰色產業影響，取消60天免簽政策", "title_en": "Thailand Cancels 60-Day Visa-Free Policy Due to Concerns Over Gray Market Industries", "title_th": "ไทยยกเลิกนโยบายฟรีวีซ่า 60 วันจากความกังวลเรื่องอุตสาหกรรมสีเทา", "title_hi": "थाईलैंड ने ग्रे-मार्केट उद्योगों की चिंताओं के कारण 60-दिन की वीज़ा-मुक्त नीति रद्द की", "link": "https://agbrief.com/news/thailand/19/05/2026/thailand-ends-60-day-visa-free-stay-as-concerns-mount-over-foreign-run-grey-businesses/", "sentiment": "利空", "impact": 70.0, "urgency": 80.0}]}, {"region": "加拿大", "count": 1, "coords": [56.1939351198571, -106.46601063215854], "sentiment": "利多", "news_full": [{"title": "EveryMatrix 獲取加拿大亞伯達省博彩牌照，搶灘 iGaming 市場", "title_en": "EveryMatrix secures Alberta, Canada betting license to enter iGaming market", "title_th": "EveryMatrix คว้าใบอนุญาตการพนันในรัฐอัลเบอร์ตา ประเทศแคนาดา บุกตลาด iGaming", "title_hi": "EveryMatrix ने कनाडा के अल्बर्टा में जुआ लाइसेंस हासिल किया, iGaming बाजार में प्रवेश", "link": "https://www.gamblingnews.com/news/everymatrix-secures-alberta-license-ahead-of-igaming-market-launch/", "sentiment": "利多", "impact": 75.0, "urgency": 60.0}]}, {"region": "英國", "count": 1, "coords": [51.95042710872516, -0.15322501963681476], "sentiment": "利多", "news_full": [{"title": "英國博彩委員會：金融核查未對營運商造成預期外負面影響", "title_en": "UK Gambling Commission: Financial Checks Do Not Negatively Impact Operators", "title_th": "คณะกรรมการการพนันแห่งสหราชอาณาจักร: การตรวจสอบทางการเงินไม่ส่งผลกระทบเชิงลบต่อผู้ประกอบการ", "title_hi": "यूके जुआ आयोग: वित्तीय जांच का ऑपरेटरों पर कोई प्रतिकूल प्रभाव नहीं", "link": "https://focusgn.com/financial-checks-caused-no-unintended-consequences-for-most-operators-gambling-commission-says", "sentiment": "利多", "impact": 80.0, "urgency": 50.0}]}];
 
         const regionMarkers = {};
 
@@ -5477,7 +5206,7 @@
 
         };
 
-        // 關閉地圖資訊卡
+        // 關閉地圖資訊卡（供 ✕ 關閉鈕呼叫）
         window.closeMapPopup = function(event) {
 
             if (event) event.stopPropagation();
@@ -6230,59 +5959,59 @@ const regionMap = {
 
         const i18n = {
 
-            cn: { 'tactical-terminal':'戰略指揮終端','label-news-count':'則','label-items':'則','btn-guide-title':'使用指南','guide-title':'JILI 戰略情報站 — 使用指南','guide-close':'我知道了，不再顯示','guide-step1-title':'市場情緒指標釋義','guide-step1-desc':'點擊「市場情緒分佈」標題右側的「 ? 」按鈕，即可開啟懸浮說明視窗，查閱系統對「利多 / 中立 / 利空」情報的分類與判定標準。','guide-step2-title':'互動情報雷達地圖','guide-step2-desc':'地圖上的圓點代表各國情報熱度，點擊即可彈出新聞快訊視窗，直接掌握焦點；按住 Ctrl 鍵可使用滑鼠滾輪進行地圖縮放。','guide-step3-title':'各地區市場情緒明細','guide-step3-desc':'卡片內可切換市場範圍，逐區顯示利空、利多、中立數量，並列出各情緒最重要新聞。','guide-step4-title':'進階資料流過濾器','guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。','sentiment-metrics':'情緒解析','top-news-by-region-title':'本日各地市場情緒明細','desc-bullish':'有利擴展與合規鬆綁','desc-neutral':'無明確影響或純資訊','desc-bearish':'監管打擊與合規收緊','dashboard-title':'分析總覽','strategic-hub':'戰略情報站','map-title':'全球雷達','map-ctrl-zoom':'[按住 CTRL 縮放]','map-touch-hint':'點擊啟用地圖 / 雙指縮放','empty-no-signals':'無訊號偵測','search-placeholder':'搜尋關鍵字... ( / )','sentiment-title':'市場情緒分佈 (24H)','matrix-title':'戰略重要性與急迫性矩陣','matrix-expand':'點擊放大','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空','filter-region':'區域','filter-sentiment':'情緒','filter-source':'來源','filter-keyword':'關鍵字','score-filter':'得分篩選','impact-min':'影響力 ≥','urgency-min':'急迫性 ≥','card-impact':'影響:','card-urgency':'急迫:','card-link':'新聞連結','card-copy':'複製連結','axis-x':'急迫性','axis-y':'影響力','fab-search':'回到搜尋欄','fab-top':'回到頂部','exec-title':'戰略內參','sort-impact':'影響力','sort-urgency':'急迫性','toggle-view':'切換緊湊/格狀檢視','news-feed-label':'情報快訊','empty-hint':'請調整篩選條件以查看更多新聞','quad-tr':'立即處理','quad-tl':'計劃處理','quad-br':'快速應對','quad-bl':'觀察追蹤','date-history':'歷史紀錄','date-latest':'最新','date-viewing-history':'查看歷史報告','date-prev':'前一天','date-next':'後一天','highlight-locked':'目標鎖定','reset':'重置()' },
+            cn: { 'tactical-terminal':'戰略指揮終端','label-news-count':'則','label-items':'則','btn-guide-title':'使用指南','guide-title':'JILI 戰略情報站 — 使用指南','guide-close':'我知道了，不再顯示','guide-step1-title':'市場情緒指標釋義','guide-step1-desc':'點擊「市場情緒分佈」標題右側的「 ? 」按鈕，即可開啟懸浮說明視窗，查閱系統對「利多 / 中立 / 利空」情報的分類與判定標準。','guide-step2-title':'互動情報雷達地圖','guide-step2-desc':'地圖上的圓點代表各國情報熱度，點擊即可彈出新聞快訊視窗，直接掌握焦點；按住 Ctrl 鍵可使用滑鼠滾輪進行地圖縮放。','guide-step3-title':'各地區市場情緒明細','guide-step3-desc':'卡片內可切換市場範圍，逐區顯示利空、利多、中立數量，並列出各情緒最重要新聞。','guide-step4-title':'進階資料流過濾器','guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。','sentiment-metrics':'情緒解析','top-news-by-region-title':'本日各地市場情緒明細','desc-bullish':'有利擴展與合規鬆綁','desc-neutral':'無明確影響或純資訊','desc-bearish':'監管打擊與合規收緊','dashboard-title':'分析總覽','strategic-hub':'戰略情報站','map-title':'全球雷達','map-ctrl-zoom':'[按住 CTRL 縮放]','map-touch-hint':'點擊啟用地圖 / 雙指縮放','empty-no-signals':'無訊號偵測','search-placeholder':'搜尋關鍵字... ( / )','sentiment-title':'市場情緒分佈 (24H)','matrix-title':'戰略重要性與急迫性矩陣','matrix-expand':'點擊放大','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空','filter-region':'區域','filter-sentiment':'情緒','filter-source':'來源','filter-keyword':'關鍵字','score-filter':'得分篩選','impact-min':'影響力 ≥','urgency-min':'急迫性 ≥','card-impact':'影響:','card-urgency':'急迫:','card-link':'新聞連結','card-copy':'複製連結','axis-x':'急迫性','axis-y':'影響力','fab-search':'回到搜尋欄','fab-top':'回到頂部','exec-title':'戰略內參','sort-impact':'影響力','sort-urgency':'急迫性','toggle-view':'切換緊湊/格狀檢視','news-feed-label':'情報快訊','empty-hint':'請調整篩選條件以查看更多新聞','quad-tr':'立即處理','quad-tl':'計劃處理','quad-br':'快速應對','quad-bl':'觀察追蹤','date-history':'歷史紀錄','date-latest':'最新','date-viewing-history':'查看歷史報告','date-prev':'前一天','date-next':'後一天','highlight-locked':'目標鎖定','date-range':'區間查詢','date-range-title':'查看一段區間的新聞','reset':'重置()' },
 
-            en: { 'tactical-terminal':'Tactical Command Terminal','label-news-count':'NEWS','label-items':'items','btn-guide-title':'User Guide','guide-title':'JILI Strategic Hub — User Guide','guide-close':'Got it, do not show again','guide-step1-title':'Market Sentiment Definition','guide-step1-desc':'Click the "?" button next to "Market Sentiment" to open a popover explaining the classification and criteria for Bullish/Neutral/Bearish news.','guide-step2-title':'Interactive Radar Map','guide-step2-desc':'Dots on the map represent regional hot intel. Click to pop up a brief, or hold Ctrl and use your mouse wheel to zoom the map.','guide-step3-title':'Regional Sentiment Details','guide-step3-desc':"Switch markets inside the card to see each region's Bearish/Bullish/Neutral counts and the most important story for each sentiment.",'guide-step4-title':'Advanced Intel Filter Console','guide-step4-desc':'Click region, source, or sentiment buttons, or adjust impact/urgency sliders to filter data. Switch grid or compact views at the top right.','sentiment-metrics':'Sentiment Metrics','top-news-by-region-title':"REGIONAL SENTIMENT DETAILS",'desc-bullish':'Favorable for expansion & compliance easing','desc-neutral':'No clear impact or purely informational','desc-bearish':'Regulatory crackdowns & tighter compliance','dashboard-title':'Analytics Overview','strategic-hub':'Strategic Intel Hub','map-title':'Global Radar','map-ctrl-zoom':'[HOLD CTRL TO ZOOM]','map-touch-hint':'Tap to enable map / Pinch to zoom','empty-no-signals':'NO SIGNALS DETECTED','search-placeholder':'Search keywords... ( / )','sentiment-title':'Market Sentiment (24H)','matrix-title':'Impact vs Urgency Matrix','matrix-expand':'Click to expand','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish','filter-region':'Region','filter-sentiment':'Sentiment','filter-source':'Source','filter-keyword':'Keywords','score-filter':'Score Filter','impact-min':'Impact ≥','urgency-min':'Urgency ≥','card-impact':'Impact:','card-urgency':'Urgency:','card-link':'Read More','card-copy':'Copy Link','axis-x':'Urgency','axis-y':'Impact','fab-search':'Back to Search','fab-top':'Back to Top','exec-title':'Strategic Brief','sort-impact':'Impact','sort-urgency':'Urgency','toggle-view':'Toggle Compact/Grid View','news-feed-label':'Intel Feed','empty-hint':'Adjust filters to see more results','quad-tr':'Act Now','quad-tl':'Plan Ahead','quad-br':'Quick Response','quad-bl':'Monitor','date-history':'History','date-latest':'Latest','date-viewing-history':'Viewing Historical Report','date-prev':'Previous','date-next':'Next','highlight-locked':'TARGET LOCKED','reset':'RESET()' },
+            en: { 'tactical-terminal':'Tactical Command Terminal','label-news-count':'NEWS','label-items':'items','btn-guide-title':'User Guide','guide-title':'JILI Strategic Hub — User Guide','guide-close':'Got it, do not show again','guide-step1-title':'Market Sentiment Definition','guide-step1-desc':'Click the "?" button next to "Market Sentiment" to open a popover explaining the classification and criteria for Bullish/Neutral/Bearish news.','guide-step2-title':'Interactive Radar Map','guide-step2-desc':'Dots on the map represent regional hot intel. Click to pop up a brief, or hold Ctrl and use your mouse wheel to zoom the map.','guide-step3-title':'Regional Sentiment Details','guide-step3-desc':"Switch markets inside the card to see each region's Bearish/Bullish/Neutral counts and the most important story for each sentiment.",'guide-step4-title':'Advanced Intel Filter Console','guide-step4-desc':'Click region, source, or sentiment buttons, or adjust impact/urgency sliders to filter data. Switch grid or compact views at the top right.','sentiment-metrics':'Sentiment Metrics','top-news-by-region-title':"REGIONAL SENTIMENT DETAILS",'desc-bullish':'Favorable for expansion & compliance easing','desc-neutral':'No clear impact or purely informational','desc-bearish':'Regulatory crackdowns & tighter compliance','dashboard-title':'Analytics Overview','strategic-hub':'Strategic Intel Hub','map-title':'Global Radar','map-ctrl-zoom':'[HOLD CTRL TO ZOOM]','map-touch-hint':'Tap to enable map / Pinch to zoom','empty-no-signals':'NO SIGNALS DETECTED','search-placeholder':'Search keywords... ( / )','sentiment-title':'Market Sentiment (24H)','matrix-title':'Impact vs Urgency Matrix','matrix-expand':'Click to expand','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish','filter-region':'Region','filter-sentiment':'Sentiment','filter-source':'Source','filter-keyword':'Keywords','score-filter':'Score Filter','impact-min':'Impact ≥','urgency-min':'Urgency ≥','card-impact':'Impact:','card-urgency':'Urgency:','card-link':'Read More','card-copy':'Copy Link','axis-x':'Urgency','axis-y':'Impact','fab-search':'Back to Search','fab-top':'Back to Top','exec-title':'Strategic Brief','sort-impact':'Impact','sort-urgency':'Urgency','toggle-view':'Toggle Compact/Grid View','news-feed-label':'Intel Feed','empty-hint':'Adjust filters to see more results','quad-tr':'Act Now','quad-tl':'Plan Ahead','quad-br':'Quick Response','quad-bl':'Monitor','date-history':'History','date-latest':'Latest','date-viewing-history':'Viewing Historical Report','date-prev':'Previous','date-next':'Next','highlight-locked':'TARGET LOCKED','date-range':'Date Range','date-range-title':'View news in a date range','reset':'RESET()' },
 
-            th: { 'tactical-terminal':'ศูนย์บัญชาการยุทธวิธี','label-news-count':'ข่าว','label-items':'รายการ','btn-guide-title':'คู่มือการใช้งาน','guide-title':'ศูนย์ข่าวกรองยุทธศาสตร์ JILI — คู่มือการใช้งาน','guide-close':'ฉันรับทราบแล้ว ไม่ต้องแสดงอีก','guide-step1-title':'1. คำอธิบายความเชื่อมั่นตลาด Popover','guide-step1-desc':'ปุ่มคำถาม ? ข้างชื่อการ์ดความเชื่อมั่นตลาดคือปุ่มอธิบายคำจำกัดความ คลิกเพื่อดูคำจำกัดความของกระทิง/กลาง/หมี','guide-step2-title':'2. แผนที่เรดาร์ข่าวกรองแบบโต้ตอบ','guide-step2-desc':'จุดบนแผนที่แสดงระดับความร้อนของข่าวกรอง คลิกเพื่อแสดงหน้าต่างข่าวกรองสั้นทันที และกดปุ่ม Ctrl ค้างไว้เพื่อซูมแผนที่','guide-step3-title':'3. กระดานข่าวกรองภูมิภาคเด่น Reels','guide-step3-desc':'ด้านซ้ายเป็นเมนูเลื่อนประเทศ (กดปุ่มขึ้นลงเพื่อสลับ) ด้านขวาจะแสดงข่าวกรองหลัก 3 อันดับแรกประจำวันของประเทศที่เลือก','guide-step4-title':'4. คอนโซลตัวกรองข้อมูลขั้นสูง','guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนผลกระทบ/ความเร่งด่วนเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา','sentiment-metrics':'เกณฑ์ความรู้สึก','top-news-by-region-title':'รายละเอียดความรู้สึกตามภูมิภาควันนี้','desc-bullish':'เป็นประโยชน์ต่อการขยายตัวและผ่อนปรน','desc-neutral':'ไม่มีผลกระทบที่ชัดเจนหรือข้อมูลทั่วไป','desc-bearish':'การปราบปรามและการควบคุมที่เข้มงวดขึ้น','dashboard-title':'ภาพรวมการวิเคราะห์','strategic-hub':'ศูนย์ข่าวกรองยุทธศาสตร์','map-title':'เรดาร์ทั่วโลก','map-ctrl-zoom':'[กด CTRL เพื่อซูม]','map-touch-hint':'แตะเพื่อเปิดใช้แผนที่ / บีบเพื่อซูม','empty-no-signals':'ไม่พบสัญญาณ','search-placeholder':'ค้นหาคำสำคัญ... ( / )','sentiment-title':'ความเชื่อมั่นตลาด (24H)','matrix-title':'เมทริกซ์ผลกระทบและความเร่งด่วน','matrix-expand':'คลิกเพื่อขยาย','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี','filter-region':'ภูมิภาค','filter-sentiment':'ความรู้สึก','filter-source':'แหล่งข่าว','filter-keyword':'คำสำคัญ','score-filter':'กรองคะแนน','impact-min':'ผลกระทบ ≥','urgency-min':'ความเร่งด่วน ≥','card-impact':'ผลกระทบ:','card-urgency':'ความเร่งด่วน:','card-link':'อ่านข่าว','card-copy':'คัดลอกลิงก์','axis-x':'ความเร่งด่วน','axis-y':'ผลกระทบ','fab-search':'กลับไปค้นหา','fab-top':'กลับขึ้นด้านบน','exec-title':'สรุปกลยุทธ์','sort-impact':'ผลกระทบ','sort-urgency':'ความเร่งด่วน','toggle-view':'สลับมุมมอง','news-feed-label':'ฟีดข่าวกรอง','empty-hint':'ปรับตัวกรองเพื่อดูข้อมูลเพิ่มเติม','quad-tr':'ดำเนินการทันที','quad-tl':'วางแผนล่วงหน้า','quad-br':'ตอบสนองเร็ว','quad-bl':'ติดตาม','date-history':'ประวัติ','date-latest':'ล่าสุด','date-viewing-history':'กำลังดูรายงานเก่า','date-prev':'ก่อนหน้า','date-next':'ถัดไป','highlight-locked':'ล็อคเป้าหมาย','reset':'รีเซ็ต()' },
+            th: { 'tactical-terminal':'ศูนย์บัญชาการยุทธวิธี','label-news-count':'ข่าว','label-items':'รายการ','btn-guide-title':'คู่มือการใช้งาน','guide-title':'ศูนย์ข่าวกรองยุทธศาสตร์ JILI — คู่มือการใช้งาน','guide-close':'ฉันรับทราบแล้ว ไม่ต้องแสดงอีก','guide-step1-title':'1. คำอธิบายความเชื่อมั่นตลาด Popover','guide-step1-desc':'ปุ่มคำถาม ? ข้างชื่อการ์ดความเชื่อมั่นตลาดคือปุ่มอธิบายคำจำกัดความ คลิกเพื่อดูคำจำกัดความของกระทิง/กลาง/หมี','guide-step2-title':'2. แผนที่เรดาร์ข่าวกรองแบบโต้ตอบ','guide-step2-desc':'จุดบนแผนที่แสดงระดับความร้อนของข่าวกรอง คลิกเพื่อแสดงหน้าต่างข่าวกรองสั้นทันที และกดปุ่ม Ctrl ค้างไว้เพื่อซูมแผนที่','guide-step3-title':'3. กระดานข่าวกรองภูมิภาคเด่น Reels','guide-step3-desc':'ด้านซ้ายเป็นเมนูเลื่อนประเทศ (กดปุ่มขึ้นลงเพื่อสลับ) ด้านขวาจะแสดงข่าวกรองหลัก 3 อันดับแรกประจำวันของประเทศที่เลือก','guide-step4-title':'4. คอนโซลตัวกรองข้อมูลขั้นสูง','guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนผลกระทบ/ความเร่งด่วนเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา','sentiment-metrics':'เกณฑ์ความรู้สึก','top-news-by-region-title':'รายละเอียดความรู้สึกตามภูมิภาควันนี้','desc-bullish':'เป็นประโยชน์ต่อการขยายตัวและผ่อนปรน','desc-neutral':'ไม่มีผลกระทบที่ชัดเจนหรือข้อมูลทั่วไป','desc-bearish':'การปราบปรามและการควบคุมที่เข้มงวดขึ้น','dashboard-title':'ภาพรวมการวิเคราะห์','strategic-hub':'ศูนย์ข่าวกรองยุทธศาสตร์','map-title':'เรดาร์ทั่วโลก','map-ctrl-zoom':'[กด CTRL เพื่อซูม]','map-touch-hint':'แตะเพื่อเปิดใช้แผนที่ / บีบเพื่อซูม','empty-no-signals':'ไม่พบสัญญาณ','search-placeholder':'ค้นหาคำสำคัญ... ( / )','sentiment-title':'ความเชื่อมั่นตลาด (24H)','matrix-title':'เมทริกซ์ผลกระทบและความเร่งด่วน','matrix-expand':'คลิกเพื่อขยาย','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี','filter-region':'ภูมิภาค','filter-sentiment':'ความรู้สึก','filter-source':'แหล่งข่าว','filter-keyword':'คำสำคัญ','score-filter':'กรองคะแนน','impact-min':'ผลกระทบ ≥','urgency-min':'ความเร่งด่วน ≥','card-impact':'ผลกระทบ:','card-urgency':'ความเร่งด่วน:','card-link':'อ่านข่าว','card-copy':'คัดลอกลิงก์','axis-x':'ความเร่งด่วน','axis-y':'ผลกระทบ','fab-search':'กลับไปค้นหา','fab-top':'กลับขึ้นด้านบน','exec-title':'สรุปกลยุทธ์','sort-impact':'ผลกระทบ','sort-urgency':'ความเร่งด่วน','toggle-view':'สลับมุมมอง','news-feed-label':'ฟีดข่าวกรอง','empty-hint':'ปรับตัวกรองเพื่อดูข้อมูลเพิ่มเติม','quad-tr':'ดำเนินการทันที','quad-tl':'วางแผนล่วงหน้า','quad-br':'ตอบสนองเร็ว','quad-bl':'ติดตาม','date-history':'ประวัติ','date-latest':'ล่าสุด','date-viewing-history':'กำลังดูรายงานเก่า','date-prev':'ก่อนหน้า','date-next':'ถัดไป','highlight-locked':'ล็อคเป้าหมาย','date-range':'ค้นหาช่วงวันที่','date-range-title':'ดูข่าวในช่วงวันที่','reset':'รีเซ็ต()' },
 
-            hi: { 'tactical-terminal':'सामरिक कमांड टर्मिनल','label-news-count':'समाचार','label-items':'आइटम','btn-guide-title':'उपयोगकर्ता मार्गदर्शिका','guide-title':'JILI रणनीतिक इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका','guide-close':'समझ गया, फिर न दिखाएं','guide-step1-title':'1. बाजार भावना पॉपओवर स्पष्टीकरण','guide-step1-desc':'बाजार भावना कार्ड शीर्षक के बगल में प्रश्न चिह्न बटन ? स्पष्टीकरण बटन है, तेजड़िया/तटस्थ/मंदड़िया की परिभाषा देखने के लिए क्लिक करें।','guide-step2-title':'2. इंटरैक्टिव इंटेलिजेंस रडार मानचित्र','guide-step2-desc':'मानचित्र पर बिंदु क्षेत्रीय खुफिया हॉटस्पॉट का प्रतिनिधित्व करते हैं, समाचार फ्लैश देखने के लिए क्लिक करें; ज़ूम करने के लिए Ctrl दबाएं और माउस व्हील घुमाएं।','guide-step3-title':'3. क्षेत्रीय मुख्य समाचार (शीर्ष 3) रील्स','guide-step3-desc':'कार्ड के बाईं ओर देश रोटेशन menu है (ऊपर और नीचे बटन दबाएं), दाईं ओर चयनित देश की शीर्ष 3 मुख्य समाचार दिखाई देंगे।','guide-step4-title':'4. उन्नत डेटा फ़िल्टर कंसोल','guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रभाव/तात्कालिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू स्विच करें。','sentiment-metrics':'भावना मीट्रिक','top-news-by-region-title':'आज का क्षेत्रीय भावना विवरण','desc-bullish':'विस्तार और ढील के लिए अनुकूल','desc-neutral':'कोई स्पष्ट प्रभाव नहीं या सूचनात्मक','desc-bearish':'नियामक कार्रवाई और कड़ा अनुपालन','dashboard-title':'विश्लेषण अवलोकन','strategic-hub':'रणनीतिक इंटेलिजेंस हब','map-title':'वैश्विक रडาร','map-ctrl-zoom':'[ज़ूम के लिए CTRL दबाएं]','map-touch-hint':'मानचित्र सक्षम करने के लिए टैप करें / ज़ूम के लिए पिंच करें','empty-no-signals':'कोई संकेत नहीं मिला','search-placeholder':'कीवर्ड खोजें... ( / )','sentiment-title':'बाजार भावना (24H)','matrix-title':'प्रभाव बनाम तात्कालिकता मैट्रिक्स','matrix-expand':'बड़ा करने के लिए क्लिक करें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया','filter-region':'क्षेत्र','filter-sentiment':'भावना','filter-source':'स्रोत','filter-keyword':'कीवर्ड','score-filter':'स्कोर फ़िल्टर','impact-min':'प्रभाव ≥','urgency-min':'तात्कालिकता ≥','card-impact':'प्रभाव:','card-urgency':'तात्कालिकता:','card-link':'खबर पढ़ें','card-copy':'लिंक कॉपी करें','axis-x':'तात्कालिकता','axis-y':'प्रभाव','fab-search':'खोज पर वापस जाएं','fab-top':'शीर्ष पर वापस जाएं','exec-title':'रणनीतिक संक्षेप','sort-impact':'प्रभाव','sort-urgency':'तात्कालिकता','toggle-view':'व्यू बदलें','news-feed-label':'इंटेल फ़ीड','empty-hint':'अधिक समाचार देखने के लिए फ़िल्टर समायोजित करें','quad-tr':'तुरंत कार्य करें','quad-tl':'योजना बनाएं','quad-br':'त्वरित प्रतिक्रिया','quad-bl':'निगरानी करें','date-history':'इतिहास','date-latest':'नवीनतम','date-viewing-history':'ऐतिहासिक रिपोर्ट देख रहे हैं','date-prev':'पिछला','date-next':'अगला','highlight-locked':'लक्षय लॉक','reset':'रीसेट()' }
+            hi: { 'tactical-terminal':'सामरिक कमांड टर्मिनल','label-news-count':'समाचार','label-items':'आइटम','btn-guide-title':'उपयोगकर्ता मार्गदर्शिका','guide-title':'JILI रणनीतिक इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका','guide-close':'समझ गया, फिर न दिखाएं','guide-step1-title':'1. बाजार भावना पॉपओवर स्पष्टीकरण','guide-step1-desc':'बाजार भावना कार्ड शीर्षक के बगल में प्रश्न चिह्न बटन ? स्पष्टीकरण बटन है, तेजड़िया/तटस्थ/मंदड़िया की परिभाषा देखने के लिए क्लिक करें।','guide-step2-title':'2. इंटरैक्टिव इंटेलिजेंस रडार मानचित्र','guide-step2-desc':'मानचित्र पर बिंदु क्षेत्रीय खुफिया हॉटस्पॉट का प्रतिनिधित्व करते हैं, समाचार फ्लैश देखने के लिए क्लिक करें; ज़ूम करने के लिए Ctrl दबाएं और माउस व्हील घुमाएं।','guide-step3-title':'3. क्षेत्रीय मुख्य समाचार (शीर्ष 3) रील्स','guide-step3-desc':'कार्ड के बाईं ओर देश रोटेशन menu है (ऊपर और नीचे बटन दबाएं), दाईं ओर चयनित देश की शीर्ष 3 मुख्य समाचार दिखाई देंगे।','guide-step4-title':'4. उन्नत डेटा फ़िल्टर कंसोल','guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रभाव/तात्कालिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू स्विच करें。','sentiment-metrics':'भावना मीट्रिक','top-news-by-region-title':'आज का क्षेत्रीय भावना विवरण','desc-bullish':'विस्तार और ढील के लिए अनुकूल','desc-neutral':'कोई स्पष्ट प्रभाव नहीं या सूचनात्मक','desc-bearish':'नियामक कार्रवाई और कड़ा अनुपालन','dashboard-title':'विश्लेषण अवलोकन','strategic-hub':'रणनीतिक इंटेलिजेंस हब','map-title':'वैश्विक रडาร','map-ctrl-zoom':'[ज़ूम के लिए CTRL दबाएं]','map-touch-hint':'मानचित्र सक्षम करने के लिए टैप करें / ज़ूम के लिए पिंच करें','empty-no-signals':'कोई संकेत नहीं मिला','search-placeholder':'कीवर्ड खोजें... ( / )','sentiment-title':'बाजार भावना (24H)','matrix-title':'प्रभाव बनाम तात्कालिकता मैट्रिक्स','matrix-expand':'बड़ा करने के लिए क्लिक करें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया','filter-region':'क्षेत्र','filter-sentiment':'भावना','filter-source':'स्रोत','filter-keyword':'कीवर्ड','score-filter':'स्कोर फ़िल्टर','impact-min':'प्रभाव ≥','urgency-min':'तात्कालिकता ≥','card-impact':'प्रभाव:','card-urgency':'तात्कालिकता:','card-link':'खबर पढ़ें','card-copy':'लिंक कॉपी करें','axis-x':'तात्कालिकता','axis-y':'प्रभाव','fab-search':'खोज पर वापस जाएं','fab-top':'शीर्ष पर वापस जाएं','exec-title':'रणनीतिक संक्षेप','sort-impact':'प्रभाव','sort-urgency':'तात्कालिकता','toggle-view':'व्यू बदलें','news-feed-label':'इंटेल फ़ीड','empty-hint':'अधिक समाचार देखने के लिए फ़िल्टर समायोजित करें','quad-tr':'तुरंत कार्य करें','quad-tl':'योजना बनाएं','quad-br':'त्वरित प्रतिक्रिया','quad-bl':'निगरानी करें','date-history':'इतिहास','date-latest':'नवीनतम','date-viewing-history':'ऐतिहासिक रिपोर्ट देख रहे हैं','date-prev':'पिछला','date-next':'अगला','highlight-locked':'लक्षय लॉक','date-range':'दिनांक सीमा','date-range-title':'एक निश्चित अवधि की खबरें देखें','reset':'रीसेट()' }
 
         };
 
         Object.assign(i18n.cn, {
             'guide-title':'JILI 市場情報站 — 使用指南',
-            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整相關性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
+            'guide-step4-desc':'點擊網頁上方的地區、來源、情感標籤，或調整影響力/急迫性滑桿，可即時過濾今日資料流。右上角可切換網格與緊湊視圖。',
             'strategic-hub':'市場情報站',
-            'score-filter':'相關性篩選',
-            'impact-min':'相關性 ≥',
-            'card-impact':'相關:',
-            'axis-y':'相關性',
-            'matrix-title':'相關性與急迫性矩陣',
-            'sort-impact':'相關性'
+            'score-filter':'得分篩選',
+            'impact-min':'影響力 ≥',
+            'card-impact':'影響:',
+            'axis-y':'影響力',
+            'matrix-title':'影響力與急迫性矩陣',
+            'sort-impact':'影響力'
         });
         Object.assign(i18n.en, {
             'guide-title':'JILI Market Intel Hub — User Guide',
-            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust the relevance slider to filter data. Switch grid or compact views at the top right.',
+            'guide-step4-desc':'Click region, source, or sentiment buttons, or adjust impact/urgency sliders to filter data. Switch grid or compact views at the top right.',
             'strategic-hub':'Market Intel Hub',
-            'score-filter':'Relevance Filter',
-            'impact-min':'Relevance ≥',
-            'card-impact':'Relevance:',
-            'axis-y':'Relevance',
-            'matrix-title':'Relevance vs Urgency Matrix',
-            'sort-impact':'Relevance'
+            'score-filter':'Score Filter',
+            'impact-min':'Impact ≥',
+            'card-impact':'Impact:',
+            'axis-y':'Impact',
+            'matrix-title':'Impact vs Urgency Matrix',
+            'sort-impact':'Impact'
         });
         Object.assign(i18n.th, {
             'guide-title':'ศูนย์ข่าวกรองตลาด JILI — คู่มือการใช้งาน',
-            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนความเกี่ยวข้องเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
+            'guide-step4-desc':'คลิกภูมิภาค แหล่งที่มา หรือแท็กความรู้สึก หรือปรับแถบเลื่อนผลกระทบ/ความเร่งด่วนเพื่อกรองข้อมูล และสามารถสลับมุมมองได้ที่มุมบนขวา',
             'strategic-hub':'ศูนย์ข่าวกรองตลาด',
-            'score-filter':'กรองความเกี่ยวข้อง',
-            'impact-min':'ความเกี่ยวข้อง ≥',
-            'card-impact':'เกี่ยวข้อง:',
-            'axis-y':'ความเกี่ยวข้อง',
-            'matrix-title':'เมทริกซ์ความเกี่ยวข้องและความเร่งด่วน',
-            'sort-impact':'ความเกี่ยวข้อง'
+            'score-filter':'กรองคะแนน',
+            'impact-min':'ผลกระทบ ≥',
+            'card-impact':'ผลกระทบ:',
+            'axis-y':'ผลกระทบ',
+            'matrix-title':'เมทริกซ์ผลกระทบและความเร่งด่วน',
+            'sort-impact':'ผลกระทบ'
         });
         Object.assign(i18n.hi, {
             'guide-title':'JILI बाज़ार इंटेलिजेंस हब — उपयोगकर्ता मार्गदर्शिका',
-            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रासंगिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
+            'guide-step4-desc':'डेटा फ़िल्टर करने के लिए क्षेत्र, स्रोत, भावना बटन पर क्लिक करें या प्रभाव/तात्कालिकता स्लाइडर समायोजित करें। ग्रिड या कॉम्पैक्ट व्यू ऊपर दाईं ओर बदलें।',
             'strategic-hub':'बाज़ार इंटेलिजेंस हब',
-            'score-filter':'प्रासंगिकता फ़िल्टर',
-            'impact-min':'प्रासंगिकता ≥',
-            'card-impact':'प्रासंगिकता:',
-            'axis-y':'प्रासंगिकता',
-            'matrix-title':'प्रासंगिकता बनाम तात्कालिकता मैट्रिक्स',
-            'sort-impact':'प्रासंगिकता'
+            'score-filter':'स्कोर फ़िल्टर',
+            'impact-min':'प्रभाव ≥',
+            'card-impact':'प्रभाव:',
+            'axis-y':'प्रभाव',
+            'matrix-title':'प्रभाव बनाम तात्कालिकता मैट्रिक्स',
+            'sort-impact':'प्रभाव'
         });
 
         const pageTitles = { cn:'JILI 市場情報指揮中心', en:'JILI Market Intel Hub', th:'ศูนย์ข่าวกรองตลาด JILI', hi:'JILI बाज़ार इंटेलिजेंस हब' };
