@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JILI 區間新聞查詢</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    obsidian: { 900: '#050505', 800: '#0a0a0f', 700: '#121218', 600: '#1a1a24' },
+                    neon: { cyan: '#00f0ff', mint: '#00ff88', rose: '#ff0055', gold: '#ffb700' }
+                },
+                fontFamily: {
+                    mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                }
+            }
+        }
+    }
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<style>
+    html { font-size: 19px; }
+    :root {
+        --bg-body: #f1f5f9; --bg-card: #ffffff; --text-main: #0f172a;
+        --border-color: #cbd5e1; --mid: #475569;
+    }
+    .dark {
+        --bg-body: #050505; --bg-card: #0a0a0f; --text-main: #f8fafc;
+        --border-color: #1a1a24; --mid: #94a3b8;
+    }
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-body); color: var(--text-main); transition: background-color .3s, color .3s; }
+    .card-base { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; transition: all .3s cubic-bezier(.4,0,.2,1); }
+    .dark .card-base { box-shadow: 0 4px 20px -2px rgba(0,240,255,.03); border: 1px solid rgba(0,240,255,.08); }
+    .text-mid-contrast { color: var(--mid); }
+    .text-high-contrast { color: var(--text-main); }
+    .news-card { transition: all .4s cubic-bezier(.175,.885,.32,1.275); border-left-width: 4px; }
+    .news-card:hover { transform: translateY(-6px) scale(1.015); box-shadow: 0 25px 50px -12px rgba(15,23,42,.2); }
+    .dark .news-card:hover { box-shadow: 0 15px 40px -5px rgba(255,183,0,.25); }
+    .badge-利多 { background: rgba(0,255,136,.12); color: #059669; border: 1px solid rgba(0,255,136,.3); font-weight: 800; }
+    .dark .badge-利多 { color: #00ff88; }
+    .badge-利空 { background: rgba(255,0,85,.1); color: #dc2626; border: 1px solid rgba(255,0,85,.25); font-weight: 800; }
+    .dark .badge-利空 { color: #ff5588; }
+    .badge-中立 { background: rgba(148,163,184,.15); color: #475569; border: 1px solid rgba(148,163,184,.3); font-weight: 800; }
+    .dark .badge-中立 { color: #94a3b8; }
+    .preset-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .dark .preset-btn.active { background: #00f0ff; color: #050505; border-color: #00f0ff; }
+
+    /* 緊湊/格狀檢視切換 — 與 daily_report.html 邏輯一致 */
+    #newsContainer.compact-view { grid-template-columns: 1fr !important; gap: 3px !important; }
+    #newsContainer.compact-view .news-card { padding: 0.625rem 1rem !important; border-radius: 0.5rem !important; }
+    #newsContainer.compact-view .news-card h3 { font-size: 0.875rem !important; margin-bottom: 0.375rem !important; }
+    #newsContainer.compact-view .card-body { display: none !important; }
+    #newsContainer.compact-view .news-card > div:last-child { margin-top: 0 !important; }
+
+    .spinner { border: 3px solid rgba(148,163,184,.25); border-top-color: #00f0ff; border-radius: 50%; width: 28px; height: 28px; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body class="dark">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+    <!-- Header -->
+    <div class="flex flex-wrap items-center gap-3 mb-6">
+        <div class="w-11 h-11 rounded-xl card-base flex items-center justify-center text-blue-500 dark:text-neon-cyan text-lg">
+            <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <div>
+            <h1 class="text-xl font-black text-high-contrast leading-tight">JILI 區間新聞查詢</h1>
+            <p class="text-[11px] font-mono text-mid-contrast">JILI Market Intel — Date Range Query</p>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+            <a href="Daily_Insight_Report.html" class="h-9 px-4 rounded-lg card-base font-mono font-black text-[10px] uppercase tracking-widest text-blue-600 dark:text-neon-cyan border dark:border-obsidian-600 hover:border-blue-400 dark:hover:border-neon-cyan transition-all flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left text-[9px]"></i> 返回單日報告
+            </a>
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-lg card-base flex items-center justify-center hover:bg-slate-100 dark:hover:bg-obsidian-700 transition-all border dark:border-obsidian-600">
+                <i id="themeIcon" class="fa-solid fa-sun text-yellow-500 dark:text-neon-gold"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Range picker bar -->
+    <div id="rangeBar" class="flex flex-wrap items-center gap-3 mb-4 card-base px-4 sm:px-5 py-3 sm:py-4">
+        <span class="text-[10px] font-mono font-black uppercase tracking-widest text-mid-contrast flex items-center gap-2">
+            <i class="fa-solid fa-calendar-days text-blue-500 dark:text-neon-cyan"></i> 選擇區間
+        </span>
+        <div class="relative">
+            <input id="rangePicker" type="text" readonly placeholder="YYYY-MM-DD 至 YYYY-MM-DD"
+                class="h-9 pl-8 pr-3 rounded-lg card-base font-mono font-black text-sm text-blue-600 dark:text-neon-cyan cursor-pointer outline-none border dark:border-neon-cyan/40 hover:border-blue-400 dark:hover:border-neon-cyan transition-all w-56">
+            <i class="fa-regular fa-calendar absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] text-blue-400 dark:text-neon-cyan pointer-events-none"></i>
+        </div>
+        <div class="flex gap-1.5 flex-wrap">
+            <button class="preset-btn card-base px-3 py-2 text-[11px] font-bold font-mono rounded-lg border dark:border-neon-cyan/20" data-days="7">近 7 天</button>
+            <button class="preset-btn card-base px-3 py-2 text-[11px] font-bold font-mono rounded-lg border dark:border-neon-cyan/20" data-days="30">近 30 天</button>
+            <button class="preset-btn card-base px-3 py-2 text-[11px] font-bold font-mono rounded-lg border dark:border-neon-cyan/20" data-days="90">近 90 天</button>
+            <button class="preset-btn card-base px-3 py-2 text-[11px] font-bold font-mono rounded-lg border dark:border-neon-cyan/20" data-days="all">全部</button>
+        </div>
+        <button onclick="toggleView()" id="viewToggle" title="切換緊湊/格狀檢視" class="card-base w-9 h-9 flex items-center justify-center text-mid-contrast hover:text-blue-600 dark:hover:text-neon-cyan border dark:border-neon-cyan/20">
+            <i class="fa-solid fa-list text-sm" id="viewIcon"></i>
+        </button>
+        <button id="clearBtn" class="ml-auto text-[11px] font-bold font-mono text-red-500 dark:text-neon-rose hover:underline">RESET()</button>
+    </div>
+
+    <!-- Stats -->
+    <div id="statsBar" class="grid grid-cols-3 gap-3 mb-8">
+        <div class="card-base p-4 text-center">
+            <div id="statCount" class="text-2xl font-black text-blue-600 dark:text-neon-cyan font-mono">0</div>
+            <div class="text-[10px] font-mono text-mid-contrast uppercase tracking-widest mt-1">篇新聞</div>
+        </div>
+        <div class="card-base p-4 text-center">
+            <div id="statDays" class="text-2xl font-black text-blue-600 dark:text-neon-cyan font-mono">0</div>
+            <div class="text-[10px] font-mono text-mid-contrast uppercase tracking-widest mt-1">涵蓋天數</div>
+        </div>
+        <div class="card-base p-4 text-center">
+            <div id="statSources" class="text-2xl font-black text-blue-600 dark:text-neon-cyan font-mono">0</div>
+            <div class="text-[10px] font-mono text-mid-contrast uppercase tracking-widest mt-1">來源數</div>
+        </div>
+    </div>
+
+    <div id="loadingState" class="hidden flex items-center justify-center gap-3 py-16 text-mid-contrast font-mono text-sm">
+        <div class="spinner"></div> 載入中...
+    </div>
+
+    <!-- Cards -->
+    <div id="newsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    <div id="emptyState" class="hidden text-center py-16 text-mid-contrast font-mono text-sm">
+        <i class="fa-regular fa-folder-open text-3xl mb-3 block"></i> 此區間無資料
+    </div>
+    <div id="errorState" class="hidden text-center py-16 text-red-500 dark:text-neon-rose font-mono text-sm">
+        <i class="fa-solid fa-triangle-exclamation text-3xl mb-3 block"></i> 資料載入失敗，請稍後重試
+    </div>
+</div>
+
+<script>
+    // ── 主題（與 daily_report.html 共用同一組 localStorage key）──
+    (function initTheme() {
+        const saved = localStorage.getItem('jili-theme');
+        if (saved === 'light') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+    })();
+    function toggleTheme() {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('jili-theme', isDark ? 'dark' : 'light');
+        document.getElementById('themeIcon').className = isDark ? 'fa-solid fa-sun text-yellow-500 dark:text-neon-gold' : 'fa-solid fa-moon text-blue-500';
+    }
+
+    // ── 緊湊/格狀檢視（與 daily_report.html 邏輯一致）──
+    function toggleView() {
+        const isCompact = document.getElementById('newsContainer').classList.toggle('compact-view');
+        document.getElementById('viewIcon').className = isCompact ? 'fa-solid fa-grip text-sm' : 'fa-solid fa-list text-sm';
+        localStorage.setItem('jili-range-view', isCompact ? 'compact' : 'grid');
+    }
+    if (localStorage.getItem('jili-range-view') === 'compact') {
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('newsContainer').classList.add('compact-view');
+            document.getElementById('viewIcon').className = 'fa-solid fa-grip text-sm';
+        });
+    }
+
+    // ── 資料載入（依月份分片抓取 output/data/*.json，快取避免重複請求）──
+    const monthCache = {};
+    let indexData = null;
+
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function fmt(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+    function monthsBetween(startStr, endStr) {
+        const months = [];
+        let d = new Date(startStr.slice(0,7) + '-01');
+        const endD = new Date(endStr.slice(0,7) + '-01');
+        while (d <= endD) {
+            months.push(d.getFullYear()+'-'+pad(d.getMonth()+1));
+            d.setMonth(d.getMonth() + 1);
+        }
+        return months;
+    }
+
+    async function loadIndex() {
+        const res = await fetch('data/index.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('index fetch failed');
+        return res.json();
+    }
+    async function loadMonth(month) {
+        if (monthCache[month]) return monthCache[month];
+        try {
+            const res = await fetch(`data/${month}.json`, { cache: 'no-store' });
+            monthCache[month] = res.ok ? await res.json() : [];
+        } catch (e) {
+            monthCache[month] = [];
+        }
+        return monthCache[month];
+    }
+
+    function renderCards(items) {
+        const container = document.getElementById('newsContainer');
+        const empty = document.getElementById('emptyState');
+        container.innerHTML = '';
+        empty.classList.toggle('hidden', items.length > 0);
+
+        items.forEach(item => {
+            const stars = Array.from({length: Math.min(Math.max(parseInt(item['重要性']) || 1, 1), 5)})
+                .map(() => '<i class="fa-solid fa-star"></i>').join('');
+            const sentiment = item['情感'] || '中立';
+            const borderColor = sentiment === '利多' ? '#00ff88' : sentiment === '利空' ? '#ff0055' : '#94a3b8';
+            const card = document.createElement('div');
+            card.className = 'news-card card-base p-7 dark:bg-obsidian-800';
+            card.style.borderLeftColor = borderColor;
+            card.innerHTML = `
+                <div class="flex justify-between items-start mb-5 font-mono text-[10px] font-bold">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-obsidian-900 text-slate-600 dark:text-neon-cyan/80 rounded border border-slate-200 dark:border-neon-cyan/20 uppercase">${item['來源'] || ''}</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-obsidian-900 text-slate-600 dark:text-slate-400 rounded border border-slate-200 dark:border-obsidian-600 uppercase">${item['區域'] || ''}</span>
+                        <span class="px-2.5 py-1 badge-${sentiment} rounded">${sentiment}</span>
+                    </div>
+                    <div class="flex gap-0.5 text-yellow-500 dark:text-neon-gold text-sm mt-0.5">${stars}</div>
+                </div>
+                <h3 class="text-xl md:text-2xl font-black mb-2 leading-snug text-high-contrast">${item['中文標題'] || ''}</h3>
+                <div class="text-[10px] font-mono text-slate-400 dark:text-slate-500 mb-5 flex items-center gap-1.5">
+                    <i class="fa-regular fa-calendar text-[9px]"></i> ${item['發布日期'] || ''}
+                </div>
+                <div class="card-body bg-slate-50 dark:bg-obsidian-900/50 p-5 rounded-xl border border-slate-200 dark:border-obsidian-700 mb-6">
+                    <p class="text-sm leading-relaxed text-mid-contrast font-medium">${item['中文摘要'] || ''}</p>
+                </div>
+                <div class="flex justify-end items-center">
+                    <a href="${item['連結'] || '#'}" target="_blank" class="bg-blue-600 dark:bg-obsidian-700 dark:border dark:border-obsidian-600 text-white text-[10px] font-mono font-bold px-4 py-2 rounded-lg flex items-center gap-2">
+                        新聞連結 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function updateStats(items) {
+        document.getElementById('statCount').textContent = items.length;
+        document.getElementById('statDays').textContent = new Set(items.map(i => (i['發布日期']||'').slice(0,10))).size;
+        document.getElementById('statSources').textContent = new Set(items.map(i => i['來源'])).size;
+    }
+
+    async function applyRange(startStr, endStr) {
+        const loading = document.getElementById('loadingState');
+        const error = document.getElementById('errorState');
+        loading.classList.remove('hidden');
+        error.classList.add('hidden');
+        document.getElementById('newsContainer').innerHTML = '';
+        document.getElementById('emptyState').classList.add('hidden');
+        try {
+            const months = monthsBetween(startStr, endStr).filter(m => indexData.months.includes(m));
+            const chunks = await Promise.all(months.map(loadMonth));
+            const merged = chunks.flat().filter(item => {
+                const d = (item['發布日期'] || '').slice(0, 10);
+                return d >= startStr && d <= endStr;
+            });
+            merged.sort((a, b) => (b['發布日期']||'').localeCompare(a['發布日期']||''));
+            renderCards(merged);
+            updateStats(merged);
+        } catch (e) {
+            error.classList.remove('hidden');
+        } finally {
+            loading.classList.add('hidden');
+        }
+    }
+
+    function setPresetActive(days) {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('active', b.dataset.days == days));
+    }
+
+    let fp;
+    async function init() {
+        try {
+            indexData = await loadIndex();
+        } catch (e) {
+            document.getElementById('errorState').classList.remove('hidden');
+            return;
+        }
+        if (!indexData.months.length) {
+            document.getElementById('emptyState').classList.remove('hidden');
+            return;
+        }
+
+        const today = new Date();
+        const todayStr = fmt(today);
+        const earliestMonth = indexData.months[indexData.months.length - 1];
+
+        fp = flatpickr('#rangePicker', {
+            mode: 'range',
+            dateFormat: 'Y-m-d',
+            disableMobile: true,
+            onChange: function(selectedDates) {
+                if (selectedDates.length === 2) {
+                    applyRange(fmt(selectedDates[0]), fmt(selectedDates[1]));
+                    setPresetActive(null);
+                }
+            }
+        });
+
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const days = btn.dataset.days;
+                let start;
+                if (days === 'all') {
+                    start = new Date(earliestMonth + '-01');
+                } else {
+                    start = new Date(today);
+                    start.setDate(start.getDate() - parseInt(days));
+                }
+                fp.setDate([start, today], false);
+                applyRange(fmt(start), todayStr);
+                setPresetActive(days);
+            });
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            const start = new Date(today); start.setDate(start.getDate() - 7);
+            fp.setDate([start, today], false);
+            applyRange(fmt(start), todayStr);
+            setPresetActive('7');
+        });
+
+        // 預設：近 7 天
+        const defaultStart = new Date(today); defaultStart.setDate(defaultStart.getDate() - 7);
+        fp.setDate([defaultStart, today], false);
+        setPresetActive('7');
+        applyRange(fmt(defaultStart), todayStr);
+    }
+
+    init();
+</script>
+</body>
+</html>
