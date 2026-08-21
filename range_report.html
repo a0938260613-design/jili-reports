@@ -101,6 +101,21 @@
             <button class="preset-btn card-base px-3 py-2 text-[11px] font-bold font-mono rounded-lg border dark:border-neon-cyan/20" data-days="90">近 90 天</button>
             <button class="preset-btn card-base px-3 py-2 text-[11px] font-bold font-mono rounded-lg border dark:border-neon-cyan/20" data-days="all">全部</button>
         </div>
+        <div class="relative">
+            <button id="regionBtn" class="card-base px-3 py-2 text-[11px] font-bold font-mono rounded-lg border dark:border-neon-cyan/20 flex items-center gap-1.5">
+                <i class="fa-solid fa-earth-asia text-[10px]"></i> 地區
+                <span id="regionBadge" class="hidden ml-0.5 bg-blue-600 dark:bg-neon-cyan text-white dark:text-obsidian-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">0</span>
+                <i class="fa-solid fa-chevron-down text-[8px]"></i>
+            </button>
+            <div id="regionPanel" class="hidden absolute z-50 top-11 left-0 w-64 card-base p-3 dark:bg-obsidian-800 shadow-2xl">
+                <input id="regionSearch" type="text" placeholder="搜尋地區..." class="w-full mb-2 px-2 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-obsidian-900 border border-slate-200 dark:border-obsidian-600 outline-none text-high-contrast">
+                <div class="flex justify-between mb-2 text-[10px] font-mono">
+                    <button id="regionSelectAll" class="text-blue-600 dark:text-neon-cyan hover:underline">全選</button>
+                    <button id="regionClearAll" class="text-red-500 dark:text-neon-rose hover:underline">清除</button>
+                </div>
+                <div id="regionOptions" class="max-h-64 overflow-y-auto flex flex-col gap-1"></div>
+            </div>
+        </div>
         <button onclick="toggleView()" id="viewToggle" title="切換緊湊/格狀檢視" class="card-base w-9 h-9 flex items-center justify-center text-mid-contrast hover:text-blue-600 dark:hover:text-neon-cyan border dark:border-neon-cyan/20">
             <i class="fa-solid fa-list text-sm" id="viewIcon"></i>
         </button>
@@ -139,13 +154,15 @@
 
 <script>
     // ── 主題（與 daily_report.html 共用同一組 localStorage key）──
+    // 注意：<body> 標籤本身就寫死 class="dark"，切換必須作用在 body 上才會生效
+    // （原本誤寫成 document.documentElement，導致按鈕點了但畫面不變）。
     (function initTheme() {
         const saved = localStorage.getItem('jili-theme');
-        if (saved === 'light') document.documentElement.classList.remove('dark');
-        else document.documentElement.classList.add('dark');
+        if (saved === 'light') document.body.classList.remove('dark');
+        else document.body.classList.add('dark');
     })();
     function toggleTheme() {
-        const isDark = document.documentElement.classList.toggle('dark');
+        const isDark = document.body.classList.toggle('dark');
         localStorage.setItem('jili-theme', isDark ? 'dark' : 'light');
         document.getElementById('themeIcon').className = isDark ? 'fa-solid fa-sun text-yellow-500 dark:text-neon-gold' : 'fa-solid fa-moon text-blue-500';
     }
@@ -242,6 +259,51 @@
         document.getElementById('statSources').textContent = new Set(items.map(i => i['來源'])).size;
     }
 
+    // ── 地區篩選（依目前選定區間內實際出現的地區動態列出，可複選）──
+    let dateFilteredItems = [];
+    const selectedRegions = new Set();
+
+    function renderRegionOptions(items) {
+        const counts = {};
+        items.forEach(i => {
+            const r = i['區域'] || '未分類';
+            counts[r] = (counts[r] || 0) + 1;
+        });
+        const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+        const container = document.getElementById('regionOptions');
+        container.innerHTML = sorted.map(([region, count]) => `
+            <label class="region-option flex items-center justify-between gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-obsidian-900 cursor-pointer text-xs" data-region-name="${region}">
+                <span class="flex items-center gap-2 text-high-contrast">
+                    <input type="checkbox" class="region-checkbox accent-blue-600" value="${region}" ${selectedRegions.has(region) ? 'checked' : ''}>
+                    ${region}
+                </span>
+                <span class="text-mid-contrast font-mono text-[10px]">${count}</span>
+            </label>
+        `).join('') || '<div class="text-center text-mid-contrast text-xs py-4">此區間無資料</div>';
+
+        container.querySelectorAll('.region-checkbox').forEach(cb => {
+            cb.addEventListener('change', () => {
+                if (cb.checked) selectedRegions.add(cb.value); else selectedRegions.delete(cb.value);
+                updateRegionBadge();
+                applyRegionFilter();
+            });
+        });
+    }
+
+    function updateRegionBadge() {
+        const badge = document.getElementById('regionBadge');
+        badge.textContent = selectedRegions.size;
+        badge.classList.toggle('hidden', selectedRegions.size === 0);
+    }
+
+    function applyRegionFilter() {
+        const filtered = selectedRegions.size === 0
+            ? dateFilteredItems
+            : dateFilteredItems.filter(i => selectedRegions.has(i['區域'] || '未分類'));
+        renderCards(filtered);
+        updateStats(filtered);
+    }
+
     async function applyRange(startStr, endStr) {
         const loading = document.getElementById('loadingState');
         const error = document.getElementById('errorState');
@@ -257,8 +319,9 @@
                 return d >= startStr && d <= endStr;
             });
             merged.sort((a, b) => (b['發布日期']||'').localeCompare(a['發布日期']||''));
-            renderCards(merged);
-            updateStats(merged);
+            dateFilteredItems = merged;
+            renderRegionOptions(merged);
+            applyRegionFilter();
         } catch (e) {
             error.classList.remove('hidden');
         } finally {
@@ -269,6 +332,38 @@
     function setPresetActive(days) {
         document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('active', b.dataset.days == days));
     }
+
+    // ── 地區篩選面板開關/搜尋/全選/清除 ──
+    document.getElementById('regionBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('regionPanel').classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+        const panel = document.getElementById('regionPanel');
+        if (!panel.classList.contains('hidden') && !panel.contains(e.target) && e.target.id !== 'regionBtn') {
+            panel.classList.add('hidden');
+        }
+    });
+    document.getElementById('regionSearch').addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        document.querySelectorAll('.region-option').forEach(el => {
+            el.style.display = el.dataset.regionName.toLowerCase().includes(q) ? '' : 'none';
+        });
+    });
+    document.getElementById('regionSelectAll').addEventListener('click', () => {
+        document.querySelectorAll('.region-option:not([style*="display: none"]) .region-checkbox').forEach(cb => {
+            cb.checked = true;
+            selectedRegions.add(cb.value);
+        });
+        updateRegionBadge();
+        applyRegionFilter();
+    });
+    document.getElementById('regionClearAll').addEventListener('click', () => {
+        selectedRegions.clear();
+        document.querySelectorAll('.region-checkbox').forEach(cb => cb.checked = false);
+        updateRegionBadge();
+        applyRegionFilter();
+    });
 
     let fp;
     async function init() {
@@ -316,6 +411,8 @@
         });
 
         document.getElementById('clearBtn').addEventListener('click', () => {
+            selectedRegions.clear();
+            updateRegionBadge();
             const start = new Date(today); start.setDate(start.getDate() - 7);
             fp.setDate([start, today], false);
             applyRange(fmt(start), todayStr);
