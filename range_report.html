@@ -72,8 +72,8 @@
             <i class="fa-solid fa-layer-group"></i>
         </div>
         <div>
-            <h1 class="text-xl font-black text-high-contrast leading-tight">JILI 區間新聞查詢</h1>
-            <p class="text-[11px] font-mono text-mid-contrast">JILI Market Intel — Date Range Query</p>
+            <h1 class="text-xl font-black text-high-contrast leading-tight">JILI <span data-i18n="app-title">區間新聞查詢</span></h1>
+            <p class="text-[11px] font-mono text-mid-contrast" data-i18n="tagline">JILI 戰略情報 — 區間新聞查詢</p>
         </div>
         <div class="ml-auto flex items-center gap-2">
             <a href="Daily_Insight_Report.html" class="h-9 px-4 rounded-lg card-base font-mono font-black text-[10px] uppercase tracking-widest text-blue-600 dark:text-neon-cyan border dark:border-obsidian-600 hover:border-blue-400 dark:hover:border-neon-cyan transition-all flex items-center gap-2">
@@ -194,11 +194,55 @@
     // 文章的英/泰/印地文翻譯不在主資料檔內，切到中文以外的語言時才會另外抓取
     // data/{month}.i18n.json（懶載入，避免預設中文使用者多下載 3 倍資料量）。
     const i18n = {
-        cn: { 'back':'返回單日報告','pick-range':'選擇區間','preset-7':'近 7 天','preset-30':'近 30 天','preset-90':'近 90 天','preset-all':'全部','region':'地區','region-search':'搜尋地區...','select-all':'全選','clear':'清除','toggle-view':'切換緊湊/格狀檢視','reset':'RESET()','stat-count':'篇新聞','stat-days':'涵蓋天數','stat-sources':'來源數','loading':'載入中...','empty':'此區間無資料','load-error':'資料載入失敗，請稍後重試','retry':'重新載入','card-link':'新聞連結','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空' },
-        en: { 'back':'Back to Daily Report','pick-range':'Select Range','preset-7':'Last 7d','preset-30':'Last 30d','preset-90':'Last 90d','preset-all':'All','region':'Region','region-search':'Search region...','select-all':'Select All','clear':'Clear','toggle-view':'Toggle Compact/Grid View','reset':'RESET()','stat-count':'Articles','stat-days':'Days Covered','stat-sources':'Sources','loading':'Loading...','empty':'No data in this range','load-error':'Failed to load data, please retry','retry':'Retry','card-link':'Read More','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish' },
-        th: { 'back':'กลับไปหน้ารายวัน','pick-range':'เลือกช่วงวันที่','preset-7':'7 วันล่าสุด','preset-30':'30 วันล่าสุด','preset-90':'90 วันล่าสุด','preset-all':'ทั้งหมด','region':'ภูมิภาค','region-search':'ค้นหาภูมิภาค...','select-all':'เลือกทั้งหมด','clear':'ล้าง','toggle-view':'สลับมุมมอง','reset':'รีเซ็ต()','stat-count':'ข่าว','stat-days':'จำนวนวัน','stat-sources':'แหล่งข่าว','loading':'กำลังโหลด...','empty':'ไม่มีข้อมูลในช่วงนี้','load-error':'โหลดข้อมูลไม่สำเร็จ กรุณาลองใหม่','retry':'ลองอีกครั้ง','card-link':'อ่านข่าว','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี' },
-        hi: { 'back':'दैनिक रिपोर्ट पर वापस','pick-range':'दिनांक सीमा चुनें','preset-7':'पिछले 7 दिन','preset-30':'पिछले 30 दिन','preset-90':'पिछले 90 दिन','preset-all':'सभी','region':'क्षेत्र','region-search':'क्षेत्र खोजें...','select-all':'सभी चुनें','clear':'साफ़ करें','toggle-view':'व्यू बदलें','reset':'रीसेट()','stat-count':'समाचार','stat-days':'दिन','stat-sources':'स्रोत','loading':'लोड हो रहा है...','empty':'इस अवधि में कोई डेटा नहीं','load-error':'डेटा लोड विफल, कृपया पुनः प्रयास करें','retry':'पुनः प्रयास करें','card-link':'खबर पढ़ें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया' },
+        cn: { 'app-title':'區間新聞查詢','tagline':'JILI 戰略情報 — 區間新聞查詢','page-title':'JILI 區間新聞查詢','back':'返回單日報告','pick-range':'選擇區間','preset-7':'近 7 天','preset-30':'近 30 天','preset-90':'近 90 天','preset-all':'全部','region':'地區','region-search':'搜尋地區...','select-all':'全選','clear':'清除','toggle-view':'切換緊湊/格狀檢視','reset':'RESET()','stat-count':'篇新聞','stat-days':'涵蓋天數','stat-sources':'來源數','loading':'載入中...','empty':'此區間無資料','load-error':'資料載入失敗，請稍後重試','retry':'重新載入','card-link':'新聞連結','label-bullish':'利多','label-neutral':'中立','label-bearish':'利空' },
+        en: { 'app-title':'Date Range Query','tagline':'JILI Market Intel — Date Range Query','page-title':'JILI Date Range Query','back':'Back to Daily Report','pick-range':'Select Range','preset-7':'Last 7d','preset-30':'Last 30d','preset-90':'Last 90d','preset-all':'All','region':'Region','region-search':'Search region...','select-all':'Select All','clear':'Clear','toggle-view':'Toggle Compact/Grid View','reset':'RESET()','stat-count':'Articles','stat-days':'Days Covered','stat-sources':'Sources','loading':'Loading...','empty':'No data in this range','load-error':'Failed to load data, please retry','retry':'Retry','card-link':'Read More','label-bullish':'Bullish','label-neutral':'Neutral','label-bearish':'Bearish' },
+        th: { 'app-title':'ค้นหาข่าวตามช่วงเวลา','tagline':'JILI ข่าวกรองตลาด — ค้นหาข่าวตามช่วงเวลา','page-title':'JILI ค้นหาข่าวตามช่วงเวลา','back':'กลับไปหน้ารายวัน','pick-range':'เลือกช่วงวันที่','preset-7':'7 วันล่าสุด','preset-30':'30 วันล่าสุด','preset-90':'90 วันล่าสุด','preset-all':'ทั้งหมด','region':'ภูมิภาค','region-search':'ค้นหาภูมิภาค...','select-all':'เลือกทั้งหมด','clear':'ล้าง','toggle-view':'สลับมุมมอง','reset':'รีเซ็ต()','stat-count':'ข่าว','stat-days':'จำนวนวัน','stat-sources':'แหล่งข่าว','loading':'กำลังโหลด...','empty':'ไม่มีข้อมูลในช่วงนี้','load-error':'โหลดข้อมูลไม่สำเร็จ กรุณาลองใหม่','retry':'ลองอีกครั้ง','card-link':'อ่านข่าว','label-bullish':'กระทิง','label-neutral':'กลาง','label-bearish':'หมี' },
+        hi: { 'app-title':'दिनांक सीमा खोज','tagline':'JILI बाज़ार इंटेलिजेंस — दिनांक सीमा खोज','page-title':'JILI दिनांक सीमा खोज','back':'दैनिक रिपोर्ट पर वापस','pick-range':'दिनांक सीमा चुनें','preset-7':'पिछले 7 दिन','preset-30':'पिछले 30 दिन','preset-90':'पिछले 90 दिन','preset-all':'सभी','region':'क्षेत्र','region-search':'क्षेत्र खोजें...','select-all':'सभी चुनें','clear':'साफ़ करें','toggle-view':'व्यू बदलें','reset':'रीसेट()','stat-count':'समाचार','stat-days':'दिन','stat-sources':'स्रोत','loading':'लोड हो रहा है...','empty':'इस अवधि में कोई डेटा नहीं','load-error':'डेटा लोड विफल, कृपया पुनः प्रयास करें','retry':'पुनः प्रयास करें','card-link':'खबर पढ़ें','label-bullish':'तेजड़िया','label-neutral':'तटस्थ','label-bearish':'मंदड़िया' },
     };
+    // 地區/國家名稱翻譯 — 與 daily_report.html 的 regionMap 同一份內容，確保兩頁一致
+    // （原本這裡漏了這份表，導致切換語言時卡片跟地區篩選面板上的地區名稱不會跟著變。）
+    const regionMap = {
+        '菲律賓':{en:'Philippines',th:'ฟิลิปปินส์',hi:'फिलीपींस'}, '泰國':{en:'Thailand',th:'ไทย',hi:'थाईलैंड'},
+        '越南':{en:'Vietnam',th:'เวียดนาม',hi:'वियतनाम'}, '印度':{en:'India',th:'อินเดีย',hi:'भारत'},
+        '馬來西亞':{en:'Malaysia',th:'มาเลเซีย',hi:'मलेशिया'}, '印尼':{en:'Indonesia',th:'อินโดนีเซีย',hi:'इंडोनेशिया'},
+        '日本':{en:'Japan',th:'ญี่ปุ่น',hi:'जापान'}, '韓國':{en:'South Korea',th:'เกาหลีใต้',hi:'दक्षिण कोरिया'},
+        '南韓':{en:'South Korea',th:'เกาหลีใต้',hi:'दक्षिण कोरिया'}, '台灣':{en:'Taiwan',th:'ไต้หวัน',hi:'ताइवान'},
+        '柬埔寨':{en:'Cambodia',th:'กัมพูชา',hi:'कंबोडिया'}, '緬甸':{en:'Myanmar',th:'เมียนมา',hi:'म्यांमार'},
+        '寮國':{en:'Laos',th:'ลาว',hi:'लाओस'}, '新加坡':{en:'Singapore',th:'สิงคโปร์',hi:'सिंगापुर'},
+        '巴西':{en:'Brazil',th:'บราซิล',hi:'ब्राज़ील'}, '馬爾他':{en:'Malta',th:'มอลตา',hi:'माल्टा'},
+        '英國':{en:'UK',th:'สหราชอาณาจักร',hi:'यूके'}, '美國':{en:'USA',th:'สหรัฐอเมริกา',hi:'यूएसए'},
+        '澳洲':{en:'Australia',th:'ออสเตรเลีย',hi:'ऑस्ट्रेलिया'}, '阿聯酋':{en:'UAE',th:'สหรัฐอาหรับเอมิเรตส์',hi:'यूएई'},
+        '澳門':{en:'Macao',th:'มาเก๊า',hi:'मकाऊ'}, '香港':{en:'Hong Kong',th:'ฮ่องกง',hi:'हांग कांग'},
+        '哈薩克':{en:'Kazakhstan',th:'คาซัคสถาน',hi:'कज़ाकिस्तान'}, '烏茲別克':{en:'Uzbekistan',th:'อุซเบกิสถาน',hi:'उज़्बेकिस्तान'},
+        '斯里蘭卡':{en:'Sri Lanka',th:'ศรีลังกา',hi:'श्रीलंका'}, '全球':{en:'Global',th:'ทั่วโลก',hi:'वैश्विक'},
+        '東南亞':{en:'Southeast Asia',th:'เอเชียตะวันออกเฉียงใต้',hi:'दक्षिण-पूर्व एशिया'},
+        '亞太':{en:'Asia-Pacific',th:'เอเชียแปซิฟิก',hi:'एशिया-प्रशांत'}, '亞太地區':{en:'Asia-Pacific',th:'เอเชียแปซิฟิก',hi:'एशिया-प्रशांत'},
+        '亞洲':{en:'Asia',th:'เอเชีย',hi:'एशिया'}, '美洲':{en:'The Americas',th:'ทวีปอเมริกา',hi:'अमेरिका महाद्वीप'},
+        '歐洲':{en:'Europe',th:'ยุโรป',hi:'यूरोप'}, '北美':{en:'North America',th:'อเมริกาเหนือ',hi:'उत्तर अमेरिका'},
+        '拉丁美洲':{en:'Latin America',th:'ละตินอเมริกา',hi:'लैटिन अमेरिका'}, '中東':{en:'Middle East',th:'ตะวันออกกลาง',hi:'मध्य पूर्व'},
+        '巴基斯坦':{en:'Pakistan',th:'ปากีสถาน',hi:'पाकिस्तान'}, '尼泊爾':{en:'Nepal',th:'เนปาล',hi:'नेपाल'},
+        '土耳其':{en:'Turkey',th:'ตุรกี',hi:'तुर्की'}, '阿根廷':{en:'Argentina',th:'อาร์เจนตินา',hi:'अर्जेंटीना'},
+        '墨西哥':{en:'Mexico',th:'เม็กซิโก',hi:'मेक्सिको'}, '葡萄牙':{en:'Portugal',th:'โปรตุเกส',hi:'पुर्तगाल'},
+        '西班牙':{en:'Spain',th:'สเปน',hi:'स्पेन'}, '義大利':{en:'Italy',th:'อิตาลี',hi:'इटली'},
+        '荷蘭':{en:'Netherlands',th:'เนเธอร์แลนด์',hi:'नीदरलैंड'}, '波蘭':{en:'Poland',th:'โปแลนด์',hi:'पोलैंड'},
+        '加拿大':{en:'Canada',th:'แคนาดา',hi:'कनाडा'}, '中國':{en:'China',th:'จีน',hi:'चीन'},
+        '孟加拉':{en:'Bangladesh',th:'บังกลาเทศ',hi:'बांग्लादेश'}, '沙烏地阿拉伯':{en:'Saudi Arabia',th:'ซาอุดีอาระเบีย',hi:'सऊदी अरब'},
+        '德國':{en:'Germany',th:'เยอรมนี',hi:'जर्मनी'}, '法國':{en:'France',th:'ฝรั่งเศส',hi:'फ्रांस'},
+        '哥倫比亞':{en:'Colombia',th:'โคลอมเบีย',hi:'कोलंबिया'}, '紐西蘭':{en:'New Zealand',th:'นิวซีแลนด์',hi:'न्यूज़ीलैंड'},
+        '南非':{en:'South Africa',th:'แอฟริกาใต้',hi:'दक्षिण अफ्रीका'}, '奈及利亞':{en:'Nigeria',th:'ไนจีเรีย',hi:'नाइजीरिया'},
+        '非洲':{en:'Africa',th:'แอฟริกา',hi:'अफ्रीका'}, '南亞':{en:'South Asia',th:'เอเชียใต้',hi:'दक्षिण एशिया'},
+        '東北亞':{en:'Northeast Asia',th:'เอเชียตะวันออกเฉียงเหนือ',hi:'पूर्वोत्तर एशिया'},
+    };
+    function getLocalRegion(cn) {
+        if (!cn) return '';
+        if (currentLang === 'cn') return cn;
+        if (regionMap[cn]) return regionMap[cn][currentLang] || regionMap[cn].en || cn;
+        for (const k of Object.keys(regionMap)) {
+            if (cn.includes(k)) return regionMap[k][currentLang] || regionMap[k].en || cn;
+        }
+        return cn;
+    }
+
     let currentLang = localStorage.getItem('jili-lang') || 'cn';
     const i18nMonthCache = {}; // month -> {url: {en:{t,s}, th:{...}, hi:{...}}}
     const translationsByUrl = {}; // 已載入翻譯的合併查找表
@@ -216,6 +260,8 @@
         if (viewToggle) viewToggle.title = i18n[currentLang]['toggle-view'];
         const sel = document.getElementById('langSelect');
         if (sel) sel.value = currentLang;
+        document.title = i18n[currentLang]['page-title'];
+        document.documentElement.lang = { cn:'zh-Hant', en:'en', th:'th', hi:'hi' }[currentLang] || 'zh-Hant';
     }
 
     async function loadI18nMonth(month) {
@@ -237,6 +283,7 @@
         if (lang !== 'cn' && currentMonths.length) {
             await Promise.all(currentMonths.map(loadI18nMonth));
         }
+        renderRegionOptions(dateFilteredItems);
         applyRegionFilter();
     }
 
@@ -319,7 +366,7 @@
                 <div class="flex justify-between items-start mb-5 font-mono text-[10px] font-bold">
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2.5 py-1 bg-slate-100 dark:bg-obsidian-900 text-slate-600 dark:text-neon-cyan/80 rounded border border-slate-200 dark:border-neon-cyan/20 uppercase">${escapeHtml(item['來源'] || '')}</span>
-                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-obsidian-900 text-slate-600 dark:text-slate-400 rounded border border-slate-200 dark:border-obsidian-600 uppercase">${escapeHtml(item['區域'] || '')}</span>
+                        <span class="px-2.5 py-1 bg-slate-100 dark:bg-obsidian-900 text-slate-600 dark:text-slate-400 rounded border border-slate-200 dark:border-obsidian-600 uppercase">${escapeHtml(getLocalRegion(item['區域'] || ''))}</span>
                         <span class="px-2.5 py-1 badge-${sentiment} rounded">${escapeHtml(sentimentLabel[sentiment] || sentiment)}</span>
                     </div>
                     <div class="flex gap-0.5 text-yellow-500 dark:text-neon-gold text-sm mt-0.5">${stars}</div>
@@ -359,15 +406,19 @@
         });
         const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
         const container = document.getElementById('regionOptions');
-        container.innerHTML = sorted.map(([region, count]) => `
-            <label class="region-option flex items-center justify-between gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-obsidian-900 cursor-pointer text-xs" data-region-name="${region}">
+        container.innerHTML = sorted.map(([region, count]) => {
+            const label = getLocalRegion(region);
+            // data-region-name 同時放中文原名+目前語言顯示名，兩者都能被搜尋框比對到
+            return `
+            <label class="region-option flex items-center justify-between gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-obsidian-900 cursor-pointer text-xs" data-region-name="${escapeHtml(region + ' ' + label)}">
                 <span class="flex items-center gap-2 text-high-contrast">
-                    <input type="checkbox" class="region-checkbox accent-blue-600" value="${region}" ${selectedRegions.has(region) ? 'checked' : ''}>
-                    ${region}
+                    <input type="checkbox" class="region-checkbox accent-blue-600" value="${escapeHtml(region)}" ${selectedRegions.has(region) ? 'checked' : ''}>
+                    ${escapeHtml(label)}
                 </span>
                 <span class="text-mid-contrast font-mono text-[10px]">${count}</span>
             </label>
-        `).join('') || '<div class="text-center text-mid-contrast text-xs py-4">此區間無資料</div>';
+        `;
+        }).join('') || `<div class="text-center text-mid-contrast text-xs py-4">${escapeHtml(i18n[currentLang]['empty'])}</div>`;
 
         container.querySelectorAll('.region-checkbox').forEach(cb => {
             cb.addEventListener('change', () => {
